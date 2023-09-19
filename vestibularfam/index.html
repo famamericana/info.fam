@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/famlogo.png">
+    <title>Vestibular FAM</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="titulo">
+            <div class="esduremaisfam"><span class="estudena">Estude na </span> <svg width="100%" height="100%"
+                    viewBox="0 0 245 88" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                    <g transform="matrix(1,0,0,1,-442.972,-1648.91)">
+                        <g transform="matrix(0.642078,0,0,0.642078,-337.892,-260.367)">
+                            <g transform="matrix(1.71004,0,0,1.7563,767.712,2249.32)">
+                                <g transform="matrix(0.641122,0,0,0.624232,35.759,340.239)">
+                                    <path
+                                        d="M379.642,236.752L392.995,190.529L449.075,190.524C451.381,190.496 453.35,188.95 454.002,186.848L460.428,165.602L401.957,165.689C401.957,165.689 400.827,165.551 400.327,166.45C400.17,166.738 399.405,168.108 399.405,168.108C399.405,168.108 405.788,146.13 414.975,146.13L462.395,146.13C464.709,146.13 466.666,144.611 467.342,142.524L475.268,115.67L417.375,115.581C398.602,116.944 384.897,132.533 376.257,162.34L353.257,240.547L374.63,240.547C377.009,240.547 379.025,238.935 379.642,236.752"
+                                        style="fill:white;fill-rule:nonzero;" />
+                                </g>
+                                <g transform="matrix(0.641122,0,0,0.624232,35.759,340.294)">
+                                    <path
+                                        d="M517.084,192.037L497.028,192.037C497.028,192.037 496.148,192.072 495.919,192.072C495.028,192.072 494.028,193.682 494.028,193.682L511.364,154.04L519.832,189.797C519.852,189.891 520.271,192.037 517.084,192.037M553.857,237.436L524.731,115.581C523.787,115.591 509.336,115.581 507.498,115.581C503.85,115.581 502.551,117.31 501.766,118.881L448.304,240.458L469.263,240.458C473.419,240.458 474.135,238.635 474.772,237.225L487.002,209.6L520.017,209.457C523.955,209.457 525.047,212.186 525.047,212.186L531.726,240.458L549.357,240.458C549.357,240.458 554.585,240.458 553.857,237.436"
+                                        style="fill:white;fill-rule:nonzero;" />
+                                </g>
+                                <g transform="matrix(0.641122,0,0,0.624232,35.759,340.294)">
+                                    <path
+                                        d="M679.579,115.581C674.313,115.581 671.528,115.581 668.395,121.381L627.939,196.025C627.939,196.025 627.407,196.97 627.256,197.274C626.447,198.894 626.544,201.124 626.544,201.124L612.563,115.581L592.235,115.581C586.743,115.581 582.733,115.581 581.665,122.054L559.16,240.458C561.79,240.366 572.987,240.458 572.987,240.458C582.461,240.458 582.461,240.458 583.634,234.07L596.93,163.792L609.109,238.763C616.85,238.777 609.812,238.777 616.85,238.777L620.717,238.777C628.29,238.763 628.29,238.763 631.078,233.732L668.592,164.296L654.123,240.458L668.653,240.458C677.286,240.458 677.286,240.458 678.636,233.985L701.153,115.581L679.579,115.581Z"
+                                        style="fill:white;fill-rule:nonzero;" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg></div>
+            <p class="escolha">Escolha sua forma de ingressar</p>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="estudenafamcontainer">
+                <div class="btn-group">
+                    <button onclick="showText(2)" data-number="2">Vestibular</button>
+                    <button onclick="showText(1)" data-number="1">ENEM</button>
+                    <button onclick="showText(3)" data-number="3">2° Graduação</button>
+                    <button onclick="showText(4)" data-number="4">Transferência</button>
+                    <button onclick="showText(5)" data-number="5">Pós-Graduação</button>
+                </div>
+                <div class="campanha" id="text-container">
+                    <img id="initial-image" src="images/img.jpeg" alt="Imagem inicial" />
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="meceinfo">
+                
+                <div class="informacoes">
+                    <a target="_blank" href="https://www.famportal.com.br/fam/">
+                        <p>Portal Acadêmico FAM</p>
+                    </a>
+                    <a target="_blank" href="https://www.fam.br/cursos/">
+                        <p>Guia de Cursos</p>
+                    </a>
+                    <a target="_blank" href="https://www.fam.br/wp-content/uploads/2023/05/Edital-001_23_VESTIBULARinvernoFAM2023-2.pdf">
+                        <p>Edital 2023</p>
+                    </a>
+                    <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/">
+                        <p>Bolsas e descontos</p>
+                    </a>
+                </div>
+                <a target="_blank" href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/MTMxMA=="><img class="mec" src="images/selo-e-mec.png"></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-logo">
+            <a target="_blank" href="https://www.fam.br"><img src="images/logo_fam.svg" alt="Logo da Empresa"></a>
+          </div>
+          <div class="footer-info">
+            <p><a target="_blank" href="https://www.facebook.com/famamericana/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z" />
+              </svg></a><a target="_blank" href="https://www.youtube.com/@famamericana"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M10 9.333l5.333 2.662-5.333 2.672v-5.334zm14-4.333v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-4 7c-.02-4.123-.323-5.7-2.923-5.877-2.403-.164-7.754-.163-10.153 0-2.598.177-2.904 1.747-2.924 5.877.02 4.123.323 5.7 2.923 5.877 2.399.163 7.75.164 10.153 0 2.598-.177 2.904-1.747 2.924-5.877z" />
+              </svg></a><a target="_blank" href="https://www.linkedin.com/school/famamericana/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg></a><a target="_blank" href="https://www.instagram.com/famamericana/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" />
+              </svg></a>
+              /famamericana</p>
+            <p><i class="fa fa-phone"></i>  0800 771 2449 ‎‎ㅤ<i style="font-size: 16px;" class="fa-brands fa-whatsapp"></i> 19 99437.9555 </p>
+
+            <p><i class="fas fa-map-marker-alt"></i> Av. Joaquim Bôer, 733 - Jardim Luciane, Americana - SP | 13477-360</p>
+          </div>
+        </div>
+        <div class="footer-c">
+          <p class="créditos"><span class="azulclarinho"> 2023 © FAM - Faculdade de Americana. Todos os direitos reservados. </span></br>Feito por <a style="text-decoration: none; color: #3a6092;" target="_blank" href="https://www.nikkoin.art">Nicole H</a></p>
+        </div>
+    </footer>
+    <script>
+        function highlightButton(btn) {
+            // Remove a classe 'active' de todos os botões
+            const buttons = document.querySelectorAll('.btn-group button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Adicione a classe 'active' ao botão clicado
+            btn.classList.add('active');
+        }
+
+        function showText(btnNumber) {
+            const textContainer = document.getElementById('text-container');
+            const initialImage = document.getElementById('initial-image');
+
+            let content = '';
+
+            switch (btnNumber) {
+                case 1:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/21"><button class="btn2">Inscreva-se com a nota do ENEM</button></a>
+                    <p class="texto">O Exame Nacional do Ensino Médio <b>(ENEM)</b> é aceito como forma de ingresso na FAM, basta você ter tido média igual ou maior que <b>400 pontos</b> na redação. Para ingressar basta acessar a área do candidato com o seu CPF e senha, e seguir as indicações de apresentação da nota do ENEM. Nesta forma de ingresso <i>não a possibilidade</i> de solicitar análise de grade curricular.</p>
+                    `;
+                    break;
+                case 2:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/20"><button class="btn2">Inscreva-se realizando uma redação ONLINE</button></a>
+                    <p class="texto">O Vestibular FAM é <b>online e totalmente gratuito</b>. Basta acessar a área do candidato com o seu CPF e senha, e seguir as indicações para a realização da prova que é online, composta por uma redação dissertativa argumentativa. Importante lembrar, que aqui você pode prestar o vestibular a <b>qualquer hora</b>, nos 7 dias da semana e o resultado sai em minutos.</p>
+                    `;
+                    break;
+                case 3:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/22" ><button class="btn2">Matricula-se</button></a>
+                    <p class="texto">Se você já tem formação superior e deseja cursar uma nova faculdade, basta selecionar a forma de ingresso, acessar a área do candidato com o seu CPF e senha, escolher seu curso e seguir com a matrícula. Se desejar <b>eliminar matérias</b> já cursadas da primeira graduação, este poderá ser solicitado após a matrícula conforme calendário acadêmico. </p>
+                    <p class="textodireita">Em caso de dúvidas envie email: </br><span style="color: #45b7e5;"> matricula@fam.br<span></p>
+                    `;
+                    break;
+                case 4:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/23" ><button class="btn2">Faça sua transferência</button></a>
+                    <p class="texto">Aos que desejam migrar de outra instituição para a FAM, oferecemos dentro de nosso calendário acadêmico o processo de transferência. Basta selecionar a forma de ingresso transferência, acessar a área do candidato com o seu CPF e senha, escolher seu curso, apresentar a documentação solicitada, adiantamos que é preciso ter em mãos o conteúdo programático e histórico escolar completo. A taxa de transferência tem o valor de R$ 40,00. A documentação será encaminhada à coordenação do curso para análise comparativa das séries e disciplinas cursadas com aprovação do interessado. Havendo deferimento do pedido e sua aprovação, a assistente da coordenação entrará em contato para prosseguir com a matrícula.</p>
+                    <p class="textodireita">Em caso de dúvidas envie email: </br><span style="color: #45b7e5;"> matricula@fam.br<span></p>
+
+                    `;
+                    break;
+                case 5:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/18" ><button class="btn2">Faça sua pós na fam</button></a>
+                    <p class="texto">De olho nas tendências profissionais e tecnológicas a FAM está sempre buscando cursos de Pós-Graduação que correspondam as exigências do mercado de trabalho. Para os interessados em um upgrade na carreira não é preciso realizar prova. Basta selecionar a forma de ingresso, acessar a área do candidato com o seu CPF e senha, escolher seu curso e seguir com a matrícula.</p>
+                    `;
+                    break;
+                default:
+                    content = '';
+            }
+            if (initialImage) {
+                initialImage.style.display = 'none';
+            }
+
+            textContainer.innerHTML = content;
+
+            const button = document.querySelector(`.btn-group button[data-number="${btnNumber}"]`);
+            highlightButton(button);
+        }
+
+    </script>
+</body>
+
+</html>
