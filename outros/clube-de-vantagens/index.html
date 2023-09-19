@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube de Vantagens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --clubecor: #e53888;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(0deg, #5d378d 0%, #5d378d 70%, var(--clubecor) 70%, var(--clubecor) 100%);
+        }
+
+        .limite {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .clubedescontos {
+            width: 100%;
+            margin: 0 auto;
+            background-color: #f2f3f8;
+            background-image: url('images/fundo.png');
+            background-repeat: repeat;
+            border-radius: 0;
+        }
+
+        .containerlogo {
+            max-width: 500px;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+            padding: 0 50px;
+        }
+
+        .containerlogo img {
+            width: 100%;
+            height: auto;
+        }
+
+        header {
+            height: 260px;
+        }
+
+        .descontos {
+            height: fit-content;
+            background-color: white;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .linha {
+            width: 50%;
+            background-color: #f2f3f8;
+            height: 1px;
+            margin: 0 auto;
+        }
+
+        /*Topicos*/
+        .grid-container {
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .grid-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            padding: 10px;
+
+        }
+
+        .contentdogrid h3 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .contentdogrid p {
+            text-align: justify;
+            margin: 0;
+        }
+
+        .textodescontos h1 {
+            font-size: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .textodescontos {
+            text-align: center;
+            padding-top: 15px;
+            background-color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item {
+                width: 90%;
+            }
+            
+        .empresasparticipar {
+            font-size: 12px;
+        }
+
+        .empresasparticipar i {
+            font-size: 10px;
+        }
+        }
+
+        @media screen and (max-width: 768px) {
+            .containerinfo {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .containerinfo>* {
+                flex-basis: calc(50% - var(--margin-5));
+            }
+        }
+
+
+        .gridcontainerdescontos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            /* Espaçamento entre os itens */
+            padding: 20px;
+            padding-bottom: 0;
+
+        }
+
+        .griditemdescontos {
+            border-radius: 10px;
+        }
+
+        .griditemdescontos:nth-child(2) h2 {
+            background-color: var(--clubecor);
+            border-radius: 5px;
+        }
+
+        .griditemdescontos:nth-child(1) h2 {
+            background-color: #5d378d;
+            border-radius: 5px;
+        }
+
+        .griditemdescontos:nth-child(3) h2 {
+            background-color: #f9e20f;
+            border-radius: 5px;
+        }
+
+        .desconto-col {
+            background-color: #f2f3f8;
+            padding: 10px;
+            padding-bottom: 0;
+        }
+
+        .griditemdescontos h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .griditemdescontos img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .descricao {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            margin-top: -5px;
+            margin-bottom: 20px;
+        }
+
+        .descricao a {
+            text-decoration: none;
+        }
+
+        .descricao p {
+            text-align: center;
+        }
+
+        .deslocamento {
+            margin-bottom: 0;
+        }
+
+        .desc-btn {
+            box-shadow: inset 0 0 0 2px #1b3556;
+            color: #242527;
+            background-color: transparent;
+            display: block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Source Sans 3', sans-serif;
+            transition: all 0.3s;
+            width: 100%;
+            margin: 0 auto;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .desc-btn:hover {
+            color: white;
+            box-shadow: inset 0 0 0 2px var(--clubecor);
+            background-color: var(--clubecor);
+        }
+
+        .fimclube {
+            height: 20px;
+            width: 100%;
+            border-radius: 0 0 10px 10px;
+            background-color: white;
+            margin-bottom: 20px;
+
+        }
+
+        .sobre {
+            background-color: white;
+            border-radius: 10px 10px 0 0;
+            margin-top: 40px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-bottom: 0px;
+            text-indent: 15px;
+        }
+
+        .sobre2 {
+            background-color: white;
+            border-radius: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-bottom: 0px;
+        }
+
+        .grid-containerativa {
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 20px;
+            border-radius: 0;
+            background-color: white;
+        }
+
+        .grid-containerativa .grid-item {
+            display: flex;
+            flex-direction: row-reverse;
+            margin: 0;
+        }
+
+        .grid-containerativa .grid-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .grid-containerativa .grid-item:nth-child(even) {
+            text-align: right;
+
+        }
+        .grid-containerativa .grid-item:nth-child(even) img {
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        .empresasparticipar {
+            text-align: right;
+            background-color: white;
+            font-size: 14px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+            margin-bottom: 1px;
+        }
+
+        .empresasparticipar i {
+            margin-left: 2px;
+            font-size: 12px;
+            color: #e53888;
+
+        }
+
+        .empresasparticipar a {
+            text-decoration: none;
+            color: #505050;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="limite containerlogo">
+        <img src="images/clubedevantagens.svg">
+    </div>
+    <section>
+        <div class="limite">
+            <p class="sobre">ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra efficitur
+                nibh, quis sagittis enim euismod at. Orci varius natoque penatibus et magnis dis parturient montes,
+                nascetur
+                ridiculus mus. Morbi
+                in est sed purus pulvinar malesuada eget at quam. Nam vestibulum efficitur turpis hendrerit dignissim.
+            </p>
+            <div class="empresasparticipar"><a
+                    href="mailto:nicom@fam.br?subject=CdV%20%7C%20Clube%20de%20Vantagens%20-%20(coloque%20o%20nome%20da%20empresa%20aqui)%20&body=Aos%20encarregados%2C%0D%0A%0D%0AGostar%C3%ADamos%20de%20participar%20do%20Clube%20de%20Vantagens%20da%20FAM%20-%20Faculdade%20de%20Americana%2C%20como%20procedemos%3F">Como
+                    participar com a minha empresa no Clube de Vantagens<i class="fa-solid fa-question"></i></a>
+            </div>
+        </div>
+
+        <div class="clubedescontos">
+            <div style="margin-bottom: -25px;" class="limite textodescontos">
+                <h1>Sobre</h1>
+            </div>
+            <div class="motivosfam">
+                <div class="grid-container limite">
+                    <div class="grid-item">
+                        <img src="images/desconto.svg" alt="Ícone 1" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Benefícios</h3>
+                            <p>Ser aluno FAM tem sua vantagens, Confira os descontos de serviços e produtos de empresas
+                                parceiras :)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/joinha.svg" alt="Ícone 2" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 2</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada
+                                pellentesque. </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/noun-text-2132279.png" alt="Ícone 3" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 3</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada
+                                pellentesque. </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/noun-text-2132279.png" alt="Ícone 4" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 4</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada
+                                pellentesque. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="descontos">
+                <div class="linha"></div>
+
+                <div class="textodescontos">
+                    <h1>descontos</h1>
+                </div>
+
+                <div class="gridcontainerdescontos">
+                    <div class="griditemdescontos desconto-col" id="desconto-40">
+                        <h2>40%</h2>
+                    </div>
+                    <div class="griditemdescontos desconto-col" id="desconto-20">
+                        <h2>20%</h2>
+                    </div>
+                    <div class="griditemdescontos desconto-col" id="desconto-10">
+                        <h2>10%</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class=" limite fimclube"></div>
+
+    <div class="limite containerlogo">
+        <img src="images/ativafam.svg">
+    </div>
+    <section>
+        <p style="margin-bottom: 1px;" class=" sobre limite">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec viverra efficitur nibh,
+            quis sagittis enim
+            euismod at. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi in
+            est sed purus pulvinar malesuada eget at quam. Nam vestibulum efficitur turpis hendrerit dignissim. </p>
+        <div class="clubedescontos">
+            <div style="margin-bottom: -25px;" class="limite textodescontos">
+                <h1>Benefícios</h1>
+            </div>
+            <div class="motivosativa">
+                <div class="grid-containerativa limite">
+                    <div class="grid-item">
+                        <img src="images/1.svg" alt="Ícone 1" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 1</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Maecenas blandit sem non felis
+                                malesuada Maecenas blandit sem non felis malesuada pellentesque.
+                                pellentesque. </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/2.svg" alt="Ícone 2" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 2</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada Maecenas blandit sem non felis malesuada pellentesque.
+                                pellentesque. </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/3.svg" alt="Ícone 3" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 3</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada
+                                pellentesque. Maecenas blandit sem non felis malesuada pellentesque.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <img src="images/4.svg" alt="Ícone 4" class="icon">
+                        <div class="contentdogrid">
+                            <h3>Título 4</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit sem non felis
+                                malesuada Maecenas blandit sem non felis malesuada pellentesque.
+                                pellentesque. </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        
+        <div style="margin-bottom: -25px;" class="limite textodescontos">
+            <div class="linha"></div>
+            <h1>Responsabilidades</h1>
+            
+        </div>
+
+        <div class="limite">
+            <p class="sobre2">ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra efficitur
+                nibh, quis sagittis enim euismod at. Orci varius natoque penatibus et magnis dis parturient montes,
+                nascetur
+                ridiculus mus. Morbi
+                in est sed purus pulvinar malesuada eget at quam. Nam vestibulum efficitur turpis hendrerit dignissim.
+            </p>
+            <div style="margin-bottom: 0px;" class="empresasparticipar"><a
+                href="mailto:nicom@fam.br?subject=AtivaFAM%20%7C%20(coloque%20o%20nome%20da%20empresa%20aqui)&body=Aos%20encarregados%2C%0D%0A%0D%0AGostar%C3%ADamos%20de%20participar%20do%20AtivaFAM%2C%20como%20procedemos%3F">Como
+                participar com a minha empresa no AtivaFAM<i class="fa-solid fa-question"></i></a>
+        </div>
+        </div>
+    </div>
+    </section>
+    <div class=" limite fimclube"></div>
+
+
+    <div id="meuFooter"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfEwrOn4LplY12o8ybuJRJ22dgw-phIEvM8ZNzb8KIpUOwfvx_aJEgqyS8GxLhb31DkJZq5b53badH/pub?output=csv';
+
+            fetch(googleSheetURL)
+                .then(response => response.text())
+                .then(data => {
+                    let rows = data.split('\n').slice(1);
+                    rows.forEach(row => {
+                        let columns = row.split(',');
+
+                        // Adicionar itens nas respectivas colunas
+                        addItemToColumn('desconto-40', columns[0], columns[1], columns[2]);
+                        addItemToColumn('desconto-20', columns[3], columns[4], columns[5]);
+                        addItemToColumn('desconto-10', columns[6], columns[7], columns[8]);
+                    });
+
+                });
+        });
+
+        function addItemToColumn(columnId, imageUrl, descricao, linkUrl) {
+            const column = document.getElementById(columnId);
+
+            if (!imageUrl.trim()) return;
+
+            const itemHtml = `
+        <div class="griditemdescontos">
+            <img src="${imageUrl.replace(/"/g, '')}" alt="imagem da empresa" class="desconto-img">
+            <div class="descricao">
+                <p>${descricao.replace(/"/g, '')}</p>
+                <a href="${linkUrl.replace(/"/g, '')}">
+                    <button class="desc-btn">Saiba Mais</button>
+                </a>
+            </div>
+        </div>
+    `;
+
+            column.innerHTML += itemHtml;
+        }
+
+    </script>
+</body>
+
+</html>
