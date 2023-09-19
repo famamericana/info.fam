@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Cores */
+    --azulprincipal: #1b3556;
+    --azulclaro: #45b7e5;
+    --comunicação: #e53888;
+    --veterinaria: #3eb288;
+    --saudeum: #45b7e5;
+    --educaçao: #5d378d;
+    --amarelo: #f9e20f;
+    --neutral-light: #f2f3f8;
+
+    --cordoeventoatual: #5d378d;
+
+
+    /* Tipografia */
+    --primary-font: 'Source Sans 3', sans-serif;
+    --h1-title-font-size: 26px;
+    --caixatexto: uppercase;
+
+    /* Medidas */
+    --container-width: 960px;
+    --margin-20: 20px;
+    --margin-10: 10px;
+    --margin-5: 5px;
+    --border-50: 50px;
+    --border-10: 10px;
+    --border-5: 5px;
+
+    /* Transições */
+    --transition-speed: 0.3s;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    list-style: none;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    color: #45b7e5;
+}
+
+.breadcrumb-item,
+.breadcrumb-current {
+    color: black;
+    /* Você pode ajustar a cor conforme desejar. */
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumb-item:hover {
+    color: var(--azulclaro);
+}
+
+.breadcrumb-separator {
+    margin-right: 5px;
+}
+
+.breadcrumb-current {
+    color: #8d8d8d;
+    /* Cor para o item atual no breadcrumb. */
+}
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .breadcrumb{
+        font-size: 13px;
+    }
+
+}
