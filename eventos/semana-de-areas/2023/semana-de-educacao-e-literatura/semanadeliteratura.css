@@ -10,7 +10,6 @@ h2 {
 
 h1 {
     margin: 0;
-
 }
 
 header {
@@ -139,6 +138,7 @@ main {
     height: auto;
     position: relative;
     display: inline-block;
+
 }
 
 
@@ -152,6 +152,7 @@ main {
     padding: 5px 10px;
     border-radius: 3px;
     width: 240px;
+    font-size: 20px;
 }
 
 .image-title-mobile {
@@ -283,10 +284,11 @@ section {
     p {
         font-size: 0.9rem;
     }
-.details {
-    font-size: 0.9rem;
 
-}
+    .details {
+        font-size: 0.9rem;
+
+    }
 
 }
 
@@ -311,10 +313,9 @@ section {
     background: var(--educaçao);
 }
 
-iframe{
+iframe {
     margin-top: 20px;
     background-color: var(--neutral-light);
     height: 50vh;
     border: 1px solid var(--neutral-light);
 }
-
