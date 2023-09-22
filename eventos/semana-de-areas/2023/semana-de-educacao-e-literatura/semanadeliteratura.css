@@ -24,14 +24,22 @@ header {
 }
 
 .titulodasemana {
-    background-color: var(--educaçao);
-    padding: 20px;
     color: white;
     font-size: 50px;
     font-weight: 900;
     text-transform: uppercase;
+}
+
+.containertitulodasemana {
+    background-color: var(--educaçao);
+    padding: 20px;
     text-align: center;
     border-radius: 0 0 10px 10px;
+}
+
+.containertitulodasemana p {
+    color: var(--amarelo);
+    margin-top: 0;
 }
 
 main {
@@ -282,6 +290,9 @@ section {
 
     .titulodasemana {
         font-size: 6vw;
+    }
+    .containertitulodasemana p {
+        font-size: 2.5vw;
     }
 
     p {
