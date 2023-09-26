@@ -124,6 +124,7 @@ button:hover {
 .esduremaisfam svg {
     width: 94px;
     margin-left: 15px;
+    margin-bottom: 2px;
 }
 
 .esduremaisfam {
@@ -271,7 +272,7 @@ button:hover {
 
     .esduremaisfam svg {
         margin-left: 8px;
-        margin-bottom: 2px;
+        margin-bottom: 1px;
     }
 
     .escolha {
