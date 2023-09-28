@@ -337,3 +337,30 @@ iframe {
     height: 50vh;
     border: 1px solid var(--neutral-light);
 }
+
+.btn2 {
+    box-sizing: border-box;
+    display: inline-block;
+    color: var(--bg-dark);
+    border: none;
+    padding: 8px 16px;
+    background-color: #f9e20f;
+    border-radius: var(--border-5);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--primary-font);
+    text-transform: var(--caixatexto);
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btn2:hover {
+    color: var(--bg-dark);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    text-decoration: none;
+}
