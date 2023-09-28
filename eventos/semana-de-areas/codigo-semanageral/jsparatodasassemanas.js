@@ -2,6 +2,8 @@
  const substitutions = {
     "areas": "Áreas",
     "educacao": "Educação",
+    "comunicacao": "Comunicação",
+
 };
 
 function capitalizeWords(str) {
