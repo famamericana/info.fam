@@ -1,0 +1,370 @@
+:root{
+    --cordoeventoatualpag: #79a744;
+}
+
+body {
+    margin: 0;
+    font-family: var(--primary-font);
+    background-color: white;
+}
+
+h2 {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+font {
+    margin-top: 0;
+}
+
+header {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.titulodasemana {
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.containertitulodasemana {
+    background-color: var(--cordoeventoatualpag);
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.containertitulodasemana p {
+    color: var(--amarelo);
+    margin-top: -5px;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 0 20px ;
+
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px var(--cordoeventoatualpag);
+    height: 300px;
+}
+
+.left-side {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+.left-side:nth-child(even) {
+    padding-left: 20px;
+
+}
+
+.left-side:nth-child(odd) {
+    padding-right: 20px;
+}
+
+.left-side img {
+    max-width: 300px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    position: relative;
+}
+
+.left-side h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.scrollable-text {
+    height: 90px;
+    padding: 10px;
+    padding-top: 0;
+    margin-top: 20px;
+    overflow-y: auto;
+    background-color: var(--neutral-light);
+    border-radius: 5px;
+}
+
+.right-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-side h1 {
+    font-size: 35px;
+
+}
+
+.right-side h2 {
+    padding-bottom: 15px;
+    line-height: 0.7;
+    border-bottom: 2px dotted var(--amarelo);
+}
+
+.details {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    gap: 15px;
+    color: black;
+}
+
+
+.details i {
+    color: var(--cordoeventoatualpag);
+    font-size: 14px;
+    margin-right: 2px;
+}
+
+.time {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: var(--neutral-light);
+}
+
+.location {
+    background-color: var(--neutral-light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.image-container {
+    height: auto;
+    position: relative;
+    display: inline-block;
+
+}
+
+
+.image-title {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--cordoeventoatualpag);
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    width: 240px;
+    font-size: 20px;
+}
+
+.image-title-mobile {
+    display: none;
+}
+
+.titulo {
+    font-weight: 900;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-bottom: 10px;
+    color: #242527;
+    border-radius: 5px 5px 0 0;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.cursos {
+    display: flex;
+    width: 100%;
+    padding-bottom: 0;
+    margin-top: 13px;
+    box-sizing: border-box;
+    gap: 20px;
+    color: black;
+}
+
+.cursos i {
+    color: var(--cordoeventoatualpag);
+    font-size: 14px;
+    margin-right: 2px;
+}
+
+.image-container-text {
+    display: none;
+}
+
+section {
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-side {
+        display: none;
+    }
+
+    .right-side h1 {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .right-side h2 {
+        border-bottom: 0;
+    }
+
+    .scrollable-text {
+        height: 120px;
+        width: 100%;
+        margin-top: 10px;
+
+    }
+
+    .image-title-mobile {
+        display: block;
+        border-top: 2px dotted var(--amarelo);
+        color: var(--cordoeventoatualpag);
+        border-radius: 3px;
+        margin-top: 10px;
+        padding-top: 10px;
+        text-align: right;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .juntostextimg {
+        display: flex;
+    }
+
+    .image-container-text:nth-child(even) {
+        margin-left: 20px;
+    }
+
+    .image-container-text:nth-child(odd) {
+        margin-right: 20px;
+    }
+
+
+    .image-container-text {
+        display: block;
+        width: 120px;
+        height: 130px;
+        overflow: hidden;
+        margin-top: 10px;
+        flex: none;
+        border-radius: 5px;
+    }
+
+    .image-container-text img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .right-side h2 {
+        font-size: 3.5vw;
+    }
+
+
+    .right-side h1 {
+        font-size: 5vw;
+    }
+
+    .image-container-text {
+        display: none;
+    }
+
+    .titulodasemana {
+        font-size: 6vw;
+    }
+    .containertitulodasemana p {
+        font-size: 2.5vw;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .details {
+        font-size: 0.9rem;
+
+    }
+
+}
+
+
+
+
+/* Personaliza o fundo da barra de rolagem */
+.scrollable-text::-webkit-scrollbar-track {
+    background: var(--neutral-light);
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+.scrollable-text::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--neutral-light);
+    border-radius: 10px;
+}
+
+/* Personaliza a barra de rolagem quando você passa o mouse sobre ela */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cordoeventoatualpag);
+}
+
+iframe {
+    margin-top: 20px;
+    background-color: var(--neutral-light);
+    height: 50vh;
+    border: 1px solid var(--neutral-light);
+}
+
+.btn2 {
+    box-sizing: border-box;
+    display: inline-block;
+    color: var(--bg-dark);
+    border: none;
+    padding: 8px 16px;
+    background-color: #f9e20f;
+    border-radius: var(--border-5);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--primary-font);
+    text-transform: var(--caixatexto);
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btn2:hover {
+    color: var(--bg-dark);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    text-decoration: none;
+}
