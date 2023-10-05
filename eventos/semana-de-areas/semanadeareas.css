@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #5d378d;
+    --cordoeventoatual: #205c7e;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -299,15 +299,15 @@ main {
 }
 
 .umevento {
-    background-color: #E93F3C;
+    background-color: #5d378d;
 }
 
 .doisevento {
-    background-color: #199eae;
+    background-color: #E93F3C;
 }
 
 .tresevento {
-    background-color: #1b3556;
+    background-color: #199eae;
 }
 
 .accordion {
@@ -377,10 +377,10 @@ main {
         align-items: flex-start;
     }
 
-    .qualsemana {
-        font-size: 5vw;
+     /*.qualsemana {
+       font-size: 5vw;
         margin-bottom: 10px;
-    }
+    }*/
 
     .eventoatualtitulo {
         margin-bottom: -10px;
@@ -512,7 +512,7 @@ main {
 }
 
 .gestao{
-    color: #7778BD;
+    color: #205c7e;
     font-weight: bold;
 }
 
