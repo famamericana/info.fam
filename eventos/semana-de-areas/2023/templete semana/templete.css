@@ -1,5 +1,6 @@
+/* Aqui determina a cor da semana, mude para a cor correta da semana */
 :root{
-    --cordoeventoatualpag: #205c7e;
+    --cordoeventoatualpag: #6993e0;
 }
 
 body {
@@ -65,6 +66,7 @@ main {
     height: 300px;
 }
 
+/*chama left-side, mas ele as vezes fica no lado direito, é o local para colocar a imagem e nome */
 .left-side {
     flex: 1;
     position: relative;
@@ -104,6 +106,7 @@ main {
     border-radius: 5px;
 }
 
+/*chama right-side, mas ele as vezes fica no lado esquerdo, é o local para colocar os textos */
 .right-side {
     flex: 2;
     display: flex;
@@ -182,7 +185,7 @@ main {
     font-weight: 900;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding-bottom: 10px;
+    margin-bottom: -10px;
     color: #242527;
     border-radius: 5px 5px 0 0;
     font-size: 35px;
@@ -209,10 +212,11 @@ main {
     display: none;
 }
 
-section {
+section .container{
     margin-top: 20px;
 }
 
+/* para telas menores, a imagem do palestrante fica do lado do texto*/
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -282,6 +286,8 @@ section {
 
 }
 
+/* para telas menores, não tem imagem do palestrante*/
+
 @media (max-width: 600px) {
     .right-side h2 {
         font-size: 3.5vw;
@@ -335,12 +341,16 @@ section {
     background: var(--cordoeventoatualpag);
 }
 
+/* caso tenha um formulario do google formularios */
+
 iframe {
     margin-top: 20px;
     background-color: var(--neutral-light);
     height: 50vh;
     border: 1px solid var(--neutral-light);
 }
+
+/* botão de inscrição */
 
 .btn2 {
     box-sizing: border-box;
