@@ -3,6 +3,7 @@
     "areas": "Áreas",
     "educacao": "Educação",
     "comunicacao": "Comunicação",
+    "gestao": "Gestão",
 
 };
 
