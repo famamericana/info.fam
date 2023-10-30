@@ -134,7 +134,7 @@ main {
 }
 
 .qualsemana {
-    font-size: 50px;
+    font-size: clamp(30px, 9vw, 50px);
     color: white;
     font-weight: 900;
     text-transform: uppercase;
