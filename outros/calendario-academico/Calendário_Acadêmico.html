@@ -1,0 +1,67 @@
+<!-- Código original feito por Derek: https://codepen.io/moongoat/pen/PEeWON 
+Código modificado por mim: Nicole - nikkoin.art -->
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="images/famlogo.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Calendário Acadêmico</title>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
+<body>
+
+    <div class="caixinha">
+        <h1> Calendário Acadêmico</h1>
+        <p id="ano"></p>
+        <div class="teste">
+            <a class="barra" target="_blank"
+                href="https://calendar.google.com/calendar/embed?src=c_1d632bae559723f223004e21450411782b68de51ac45be3c47dfc51cd1c4b3b4%40group.calendar.google.com&ctz=America%2FSao_Paulo">
+                <p class="pezinho">Salve no <b>Google Agenda</b></p>
+                <img src="https://svgur.com/i/v4s.svg">
+            </a>
+        </div>
+    </div>
+
+    <div class="divbody">
+        <div id="calendar-container">
+            <div class="juntar">
+                <div id="calendar-list">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="meuFooter"></div>
+
+    <script>
+        var dataAtual = new Date();
+        var anoAtual = dataAtual.getFullYear();
+        var semestreAtual = (dataAtual.getMonth() < 6) ? ".1" : ".2";
+
+        document.getElementById("ano").innerHTML = "Acompanhe o que irá ocorrer no seu semestre letivo de " + anoAtual + semestreAtual;
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/pt-br.min.js"
+        integrity="sha512-1IpxmBdyZx3okPiZ14mzw6+pOGa690uDmcdjqvT310Kwv3NRcjvL/aOtoSprEyvkDdAb7ZtM2um6KrLqLOY97w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
