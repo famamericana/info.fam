@@ -18,12 +18,6 @@ $.getJSON(
         items = items.slice().sort();
         items = [...new Set(items)];
 
-        //  for (var i = 0; i < items.length - 1; i++) {
-        //    if (items[i + 1] == items[i]) {
-        //      items.splice(i, 1);
-        //    }
-        //  }
-
         var events = {};
         items.forEach(function (item) {
             $.each(data["items"], function (key, val) {
