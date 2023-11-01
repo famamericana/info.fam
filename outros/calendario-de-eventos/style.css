@@ -276,6 +276,19 @@ a:hover {
     pointer-events: none;
 }
 
+.event-description-horario i{
+    font-size: 14px;
+    margin-right: 2px;
+
+}
+
+.event-description i{
+    font-size: 14px;
+    margin-right: 3px;
+
+}
+
+
 .event-description-texto {
     font-family: 'Source Sans 3', sans-serif;
     text-align: left;
