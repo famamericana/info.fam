@@ -338,12 +338,18 @@ a:hover {
     margin-top: 10px;
     pointer-events: none;
 }
+.event-description-horario i{
+    font-size: 14px;
+    margin-right: 2px;
 
-.clock-icon {
-    font-size: 18px;
-    color: #000;
-    /* Adicione a cor desejada aqui */
 }
+
+.event-description i{
+    font-size: 14px;
+    margin-right: 3px;
+
+}
+
 
 .events>li.cal:not(:last-child) {
     margin-bottom: -10px;

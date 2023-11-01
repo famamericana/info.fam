@@ -56,8 +56,8 @@ $.getJSON(
                 markup += "<li class='cal'>";
                 markup += "<h3 class='calendar-title'>" + event["eventTitle"] + "</h3>";
                 markup += "<div class='event-details'>";
-                markup += "<div class='event-description-horario'><i class='fa fa-clock-o'></i><span class='start-time'> " + event["startTime"] + "</span> às <span class='end-time'>" + event["endTime"] + "</span><br/><br/></div>";
-                markup += "<div class='event-description'>Data: " + event["endDate"] + "<br/></div>";
+                markup += "<div class='event-description-horario'><i class='fa-regular fa-clock'></i><span class='start-time'> " + event["startTime"] + "</span> às <span class='end-time'>" + event["endTime"] + "</span><br/><br/></div>";
+                markup += "<div class='event-description'><i class='fa-regular fa-calendar'></i> " + event["endDate"] + "<br/></div>";
                 if (event["eventLocation"]) {
                     markup += "<div class='event-description-local'>Local: <span class='event-location'><a href='https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(event["eventLocation"]) + "' target='_blank'>" + event["eventLocation"] + "</a></span><br/><br/></div>";
                 }
