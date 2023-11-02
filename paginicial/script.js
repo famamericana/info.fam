@@ -68,8 +68,8 @@ var dCounters = document.querySelectorAll('.CountLike');
 //MAIS RELEVANTES ----------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Função para verificar e atualizar os valores de likes
-    function updateLikesValues() {
+    // Função para verificar e atualizar os valores de likes e classificar elementos
+    function updateLikesValuesAndSort() {
         const gridItems = document.querySelectorAll('.grid-item');
         const itemData = [];
 
@@ -88,15 +88,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const maisRelevantesContainer = document.querySelector('.grid-container');
         maisRelevantesContainer.innerHTML = '';
 
-        // Adicione os elementos classificados de volta à seção "Mais Relevantes"
+        // Crie um novo array para armazenar os elementos que não foram movidos para "Mais Relevantes"
+        const restItems = [];
+
         itemData.slice(0, 5).forEach((data) => {
             maisRelevantesContainer.appendChild(data.element);
+        });
+
+        // Adicione os elementos restantes de volta à seção "Todos"
+        itemData.slice(5).forEach((data) => {
+            restItems.push(data.element);
+        });
+
+        const todosContainer = document.querySelectorAll('.grid-container')[1];
+        restItems.forEach((element) => {
+            todosContainer.appendChild(element);
         });
     }
 
     // Chame a função de atualização periodicamente a cada segundo
-    setInterval(updateLikesValues, 1000);
-    
+    setInterval(updateLikesValuesAndSort, 1000);
+
     // Chame a função de atualização uma vez imediatamente após o carregamento da página
-    updateLikesValues();
+    updateLikesValuesAndSort();
 });
