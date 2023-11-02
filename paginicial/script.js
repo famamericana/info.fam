@@ -40,7 +40,9 @@ var dCounters = document.querySelectorAll('.CountLike');
     });
 
     // set firebase data
-    el.addEventListener('click', function () {
+    el.addEventListener('click', function (event) {
+        event.preventDefault(); // Impede o comportamento padrão do botão
+    
         usersLikedRef.child(userID).once('value', function (snap) {
             if (snap.exists()) {
                 usersLikedRef.child(userID).remove();
@@ -57,44 +59,44 @@ var dCounters = document.querySelectorAll('.CountLike');
             }
         });
     });
+    
 });
 
 
 
 
-
+//MAIS RELEVANTES ----------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Seleciona todos os elementos .grid-item
-    const gridItems = document.querySelectorAll('.grid-item');
+    // Função para verificar e atualizar os valores de likes
+    function updateLikesValues() {
+        const gridItems = document.querySelectorAll('.grid-item');
+        const itemData = [];
 
-    // Cria um array para armazenar informações sobre os elementos
-    const itemData = [];
+        gridItems.forEach((gridItem, index) => {
+            const counterStat = gridItem.querySelector('.counterStat');
+            if (counterStat) {
+                const likesCount = parseInt(counterStat.textContent || 0);
+                itemData.push({ element: gridItem, likesCount, index });
+            }
+        });
 
-    // Itera sobre os elementos .grid-item
-    gridItems.forEach((gridItem, index) => {
-        // Obtém a quantidade de .counterStat do elemento, verificando se existe
-        const counterStat = gridItem.querySelector('.counterStat');
-        if (counterStat) {
-            const likesCount = parseInt(counterStat.textContent || 0);
+        // Classifique os elementos com base na quantidade de likesCount em ordem decrescente
+        itemData.sort((a, b) => b.likesCount - a.likesCount);
 
-            // Armazena os dados do elemento no array
-            itemData.push({ element: gridItem, likesCount, index });
-        }
-    });
+        // Remova todos os elementos .grid-item da seção "Mais Relevantes"
+        const maisRelevantesContainer = document.querySelector('.grid-container');
+        maisRelevantesContainer.innerHTML = '';
 
-    // Classifica os elementos com base na quantidade de likesCount em ordem decrescente
-    itemData.sort((a, b) => b.likesCount - a.likesCount);
+        // Adicione os elementos classificados de volta à seção "Mais Relevantes"
+        itemData.slice(0, 5).forEach((data) => {
+            maisRelevantesContainer.appendChild(data.element);
+        });
+    }
+
+    // Chame a função de atualização periodicamente a cada segundo
+    setInterval(updateLikesValues, 1000);
     
-    // Crie um novo array para armazenar os 5 principais elementos
-    const top5Items = itemData.slice(0, 5);
-    
-    // Remove todos os elementos .grid-item da seção "Mais Relevantes"
-    const maisRelevantesContainer = document.querySelector('.grid-container');
-    maisRelevantesContainer.innerHTML = '';
-
-    // Adicione os elementos classificados de volta à seção "Mais Relevantes"
-    top5Items.forEach((data) => {
-        maisRelevantesContainer.appendChild(data.element);
-    });
+    // Chame a função de atualização uma vez imediatamente após o carregamento da página
+    updateLikesValues();
 });
