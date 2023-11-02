@@ -5,6 +5,11 @@ body {
 
 }
 
+section{
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
 /*botão de like -------------------------------------------------------------------------------------------------------- */
 
 .CountLike .button {
@@ -94,3 +99,46 @@ header h2 {
         font-size: 19px;
     }
 }
+
+
+/* conteiners -------------------------------------------------------------------------------------------------- */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 16px;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.grid-item img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.grid-item h3 {
+    margin-top: 8px;
+}
+
+.grid-item p {
+    margin-top: 4px;
+}
+
+
