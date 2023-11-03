@@ -112,3 +112,33 @@ document.addEventListener('DOMContentLoaded', function () {
     // Chame a função de atualização uma vez imediatamente após o carregamento da página
     updateLikesValuesAndSort();
 });
+
+
+// ARRUMANDO O EFEITO DE HOVER NO LIKE E GRID-ITEM -----------------------------------------------------------
+const gridItems = document.querySelectorAll('.grid-item');
+
+gridItems.forEach((gridItem) => {
+    gridItem.addEventListener('mouseenter', function () {
+        gridItem.style.transform = 'scale(1.05)';
+    });
+
+    gridItem.addEventListener('mouseleave', function () {
+        gridItem.style.transform = 'scale(1)';
+    });
+});
+
+const buttonsLike = document.querySelectorAll('.button1');
+
+buttonsLike.forEach((button) => {
+    button.addEventListener('mouseenter', function () {
+        button.style.backgroundColor = 'white';
+        button.style.boxShadow = 'inset 0 0 0 2px #e53888';
+        button.style.color = '#e53888';
+    });
+
+    button.addEventListener('mouseleave', function () {
+        button.style.backgroundColor = '';
+        button.style.boxShadow = '';
+        button.style.color = '';
+    });
+});
