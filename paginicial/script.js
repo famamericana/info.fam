@@ -91,12 +91,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Crie um novo array para armazenar os elementos que não foram movidos para "Mais Relevantes"
         const restItems = [];
 
-        itemData.slice(0, 5).forEach((data) => {
+        itemData.slice(0, 4).forEach((data) => {
             maisRelevantesContainer.appendChild(data.element);
         });
 
         // Adicione os elementos restantes de volta à seção "Todos"
-        itemData.slice(5).forEach((data) => {
+        itemData.slice(4).forEach((data) => {
             restItems.push(data.element);
         });
 
