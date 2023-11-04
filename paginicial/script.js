@@ -7,13 +7,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
 var dCounters = document.querySelectorAll('.CountLike');
 
 [].forEach.call(dCounters, function (dCounter) {
     var el = dCounter.querySelector('button');
-    var cId = dCounter.id; // Isso nos dará "LikeCount1", "LikeCount2", etc.
-    var dDatabase = firebase.database().ref('Like Number Counter/' + cId); // Salve cada contagem de likes em um nó separado
+    var cId = dCounter.id;
+    var dDatabase = firebase.database().ref('Like Number Counter/' + cId);
     var likesCountRef = dDatabase.child('likesCount');
     var usersLikedRef = dDatabase.child('usersLiked');
 
@@ -26,23 +25,23 @@ var dCounters = document.querySelectorAll('.CountLike');
         localStorage.setItem('userID', userID);
     }
 
-    // Verifique se o usuário já deu like anteriormente
     usersLikedRef.child(userID).once('value', function (snap) {
         if (snap.exists()) {
             el.classList.add('button1-liked');
         }
     });
 
-    // get firebase data
     likesCountRef.on('value', function (snap) {
         var data = snap.val() || 0;
         dCounter.querySelector('span').innerHTML = data;
     });
 
-    // set firebase data
     el.addEventListener('click', function (event) {
-        event.preventDefault(); // Impede o comportamento padrão do botão
-    
+        event.preventDefault();
+
+        // Desabilita o botão imediatamente após o clique
+        el.disabled = true;
+
         usersLikedRef.child(userID).once('value', function (snap) {
             if (snap.exists()) {
                 usersLikedRef.child(userID).remove();
@@ -57,9 +56,13 @@ var dCounters = document.querySelectorAll('.CountLike');
                 });
                 el.classList.add('button1-liked');
             }
+
+            // Reabilita o botão após 1 segundo
+            setTimeout(function () {
+                el.disabled = false;
+            }, 1000);
         });
     });
-    
 });
 
 
