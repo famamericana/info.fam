@@ -33,7 +33,7 @@
 }
 
 .breadcrumb {
-    font-size: 14px;
+    font-size: clamp(12px, 1vw, 18px);
     list-style: none;
     padding: 10px 0;
     display: flex;
