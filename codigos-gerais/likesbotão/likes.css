@@ -1,0 +1,61 @@
+
+.CountLike .button {
+    /* Green */
+    border: none;
+    padding: 0 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    margin-top: 0;
+}
+
+.button1 {
+    background-color: #e53888;
+    color: white;
+    border-radius: 50px;
+}
+
+.button1:hover {
+    background-color: white;
+    color: #e53888;
+    box-shadow: inset 0 0 0 2px #e53888;
+}
+
+.button1 i {
+    font-size: 12px;
+}
+
+
+.counterStat {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.button1-liked {
+    background-color: #3eb288;
+    /* Esta é a cor de hover, mas você pode mudar para a cor que desejar */
+}
+
+/* ESTILOS QUE ENVOLVE O BOTÃO DE LIKE ------------------------------------------------------------------------------------------------------- */
+
+.textoinfofam {
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.textooelike {
+    display: flex;
+    gap: 10px;
+    background-color: white;
+    width: 500px;
+    justify-content: center;
+    padding: 5px;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.textooelike a{
+    color: #45b7e5;
+}
