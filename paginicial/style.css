@@ -58,7 +58,7 @@ section{
 }
 
 header {
-    background: url('https://images3.alphacoders.com/132/1322308.jpeg');
+    background: url('images/Willian-Gregio-fotofam.png');
     text-align: center;
     width: 100%;
     height: auto;
@@ -73,7 +73,7 @@ header .overlay {
     height: 100%;
     padding: 100px;
     color: #FFF;
-    background-image: linear-gradient(135deg, #9f05ff69 10%, #fd5e086b 100%);
+    background-image: linear-gradient(135deg, #00000044 10%, #00000059 100%);
 
 }
 
