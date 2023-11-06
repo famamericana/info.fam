@@ -24,7 +24,7 @@ font {
 header {
     max-width: 960px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
     padding-top: 0;
 }
 
@@ -54,7 +54,7 @@ header {
 main {
     max-width: 960px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .container {
@@ -293,7 +293,6 @@ section .container{
         font-size: clamp(16px, 3.5vw, 30px);
     }
 
-
     .right-side h1 {
         font-size: clamp(20px, 7vw, 50px);
     }
@@ -302,15 +301,12 @@ section .container{
     }
 
     .titulodasemana {
-        font-size: 6vw;
+        font-size: clamp(20px, 9vw, 50px);
     }
     .containertitulodasemana p {
-        font-size: 2.5vw;
+        font-size: clamp(14px, 2.5vw, 18px);
     }
 
-    p {
-        font-size: 0.9rem;
-    }
 
     .details {
         font-size: 0.9rem;
