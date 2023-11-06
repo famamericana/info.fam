@@ -290,12 +290,13 @@ section .container{
 
 @media (max-width: 600px) {
     .right-side h2 {
-        font-size: 3.5vw;
+        font-size: clamp(16px, 3.5vw, 30px);
     }
 
 
     .right-side h1 {
-        font-size: 5vw;
+        font-size: clamp(20px, 7vw, 50px);
+
     }
 
     .image-container-text {
@@ -377,4 +378,8 @@ iframe {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #f9e20f;
     text-decoration: none;
+}
+
+.coratual {
+    color: var(--cordoeventoatualpag);
 }
