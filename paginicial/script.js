@@ -1,3 +1,12 @@
+
+$(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
+
+
+
+
 var config = {
     apiKey: "AIzaSyA-nZmId8FWeXerbSWbVV33QMN5YZH0Q9I",
     authDomain: "likes-do-infofam.firebaseapp.com",
