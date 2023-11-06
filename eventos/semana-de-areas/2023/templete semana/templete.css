@@ -296,7 +296,6 @@ section .container{
 
     .right-side h1 {
         font-size: clamp(20px, 7vw, 50px);
-
     }
 
     .image-container-text {
