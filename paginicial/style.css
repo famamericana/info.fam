@@ -2,10 +2,11 @@
 
 body {
     font-family: 'Source Sans 3', sans-serif;
-
+    margin: 0;
+    padding: 0;
 }
 
-section{
+section {
     max-width: 960px;
     margin: 0 auto;
     margin-top: 40px;
@@ -27,13 +28,14 @@ section{
     font-family: 'Source Sans 3', sans-serif;
 
 }
+
 .button1 {
     background-color: #e53888;
     color: white;
     border-radius: 50px;
 }
 
-.button1 i{
+.button1 i {
     font-size: 14px;
 }
 
@@ -51,11 +53,6 @@ section{
 
 /* header ---------------------------------------------------------------------------------- */
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
 header {
     background: url('images/Willian-Gregio-fotofam.png');
@@ -93,13 +90,13 @@ header h2 {
         margin-bottom: 30px;
         margin-top: 10px;
         font-size: clamp(16px, 3.5vw, 30px);
-    }    
+    }
 
     .grid-item h3 {
         margin-top: 8px;
         font-size: 20px;
     }
-    
+
 }
 
 
@@ -145,5 +142,3 @@ header h2 {
     font-size: 15px;
 
 }
-
-
