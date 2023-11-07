@@ -112,7 +112,7 @@ header h2 {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     padding: 16px;
-    padding-top: 0;
+    padding-top: 20px;
 }
 
 .grid-item {
@@ -145,5 +145,16 @@ header h2 {
     margin-top: 2px;
     margin-bottom: 10px;
     font-size: 15px;
+
+}
+
+.titulo{
+    max-width: 930px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #45b7e5;
+    margin-left: 15px;
+    margin-right: 15px;
 
 }
