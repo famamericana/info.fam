@@ -130,11 +130,14 @@ header h2 {
 
 .grid-item h3 {
     margin-top: 8px;
+    font-size: 16px;
 }
 
 .grid-item p {
     margin-top: 2px;
     margin-bottom: 10px;
+    font-size: 15px;
+
 }
 
 
