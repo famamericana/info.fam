@@ -95,6 +95,11 @@ header h2 {
         font-size: clamp(16px, 3.5vw, 30px);
     }    
 
+    .grid-item h3 {
+        margin-top: 8px;
+        font-size: 20px;
+    }
+    
 }
 
 
