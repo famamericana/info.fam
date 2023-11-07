@@ -109,16 +109,9 @@ html {
 }
 
 .divbody {
-    background-color: white;
-    max-width: 960px;
-    height: fit-content;
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    margin-top: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-
+    margin-bottom: -20px;
 }
 
 h3:hover {
@@ -158,6 +151,8 @@ a:hover {
     align-items: center;
     flex-direction: column;
     background-color: white;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 
@@ -361,4 +356,15 @@ a:hover {
 
 .events>li.cal:not(:last-child) {
     margin-bottom: -10px;
+}
+
+.likesecalendario{
+    display: block;
+    background-color: white;
+    border-radius: 15px;
+    padding-bottom: 10px;
+    max-width: 960px;
+    height: fit-content;
+    margin: 0 auto;
+
 }
