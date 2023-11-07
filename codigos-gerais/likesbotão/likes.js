@@ -1,4 +1,41 @@
 
+// Função para criar um cookie
+function createCookie(name, value, days) {
+    var expires;
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+// Função para ler um cookie
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Função para apagar um cookie
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}
+
+// Verifique se o userID já está definido no cookie
+var userID = readCookie('userID');
+if (!userID) {
+    userID = 'user_' + Math.random().toString(36).substr(2, 16);
+    createCookie('userID', userID, 365); // O cookie expira em 365 dias
+}
+
 var config = {
     apiKey: "AIzaSyA-nZmId8FWeXerbSWbVV33QMN5YZH0Q9I",
     authDomain: "likes-do-infofam.firebaseapp.com",
@@ -17,7 +54,7 @@ var dCounters = document.querySelectorAll('.CountLike');
     var likesCountRef = dDatabase.child('likesCount');
     var usersLikedRef = dDatabase.child('usersLiked');
 
-    var userID;
+ 
 
     if (localStorage.getItem('userID')) {
         userID = localStorage.getItem('userID');
