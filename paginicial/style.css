@@ -54,6 +54,7 @@ section {
 /* header ---------------------------------------------------------------------------------- */
 
 
+
 header {
     background: url('images/Willian-Gregio-fotofam.png');
     text-align: center;
@@ -63,6 +64,8 @@ header {
     position: relative;
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
+    box-sizing: border-box;
+
 }
 
 header .overlay {
@@ -71,6 +74,7 @@ header .overlay {
     padding: 50px;
     color: #FFF;
     background-image: linear-gradient(135deg, #00000044 10%, #00000059 100%);
+    box-sizing: border-box;
 
 }
 
@@ -108,6 +112,7 @@ header h2 {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     padding: 16px;
+    padding-top: 0;
 }
 
 .grid-item {
