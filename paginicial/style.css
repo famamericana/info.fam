@@ -118,7 +118,7 @@ header h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid #d5dcf1;
     border-radius: 10px;
     padding: 16px;
     transition: transform 0.3s;
