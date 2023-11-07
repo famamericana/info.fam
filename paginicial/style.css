@@ -84,7 +84,6 @@ header h2 {
 
 .infofamlogo {
     max-width: 500px;
-    min-width: 280px;
 }
 
 
@@ -95,7 +94,9 @@ header h2 {
         margin-top: 10px;
         font-size: clamp(16px, 3.5vw, 30px);
     }    
+
 }
+
 
 
 /* conteiners -------------------------------------------------------------------------------------------------- */
