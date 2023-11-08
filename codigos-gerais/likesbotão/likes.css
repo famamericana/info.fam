@@ -64,6 +64,10 @@
 @media (max-width: 650px) {
     .textooelike {
         transform: scale(.9);
+        flex-direction: column;
+        align-items: center;
     }
-
+    .textoinfofam {
+        margin-bottom: -20px;
+    }
 }
