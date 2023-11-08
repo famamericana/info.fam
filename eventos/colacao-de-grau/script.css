@@ -14,11 +14,23 @@ body{
 header{
     max-width: 960px;
     margin: 0 auto;
+    display: flex;
+}
+header img{
+    max-width: 480px;
 }
 
-header img{
-    border-radius:  0 0 10px 10px;
+
+@media (max-width: 650px) {
+    header {
+        display: block;
+    }
+    header img{
+        margin-top: -6px;
+    }
+    
 }
+
 
 /* Abas Sobre a FAM e Sobre o curso*/
 .tab {
