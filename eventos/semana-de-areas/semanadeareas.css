@@ -25,25 +25,25 @@
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
     width: 12px;
-  }
-  
-  /* Personaliza o fundo da barra de rolagem */
-  ::-webkit-scrollbar-track {
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
     background: white;
     border-radius: 5px;
-  }
-  
-  /* Personaliza a barra de rolagem em si */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
     border: 2px solid white;
     border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.5);
-  }
-  
+}
+
 
 body {
     margin: 0;
@@ -388,7 +388,7 @@ main {
         align-items: flex-start;
     }
 
-     /*.qualsemana {
+    /*.qualsemana {
        font-size: 5vw;
         margin-bottom: 10px;
     }*/
@@ -420,7 +420,7 @@ main {
     .eventoatual {
         height: 600px;
     }
-    
+
 }
 
 .slideshow {
@@ -443,7 +443,8 @@ main {
     transition: all 0.2s ease-in-out;
     width: 100%;
     height: 100%;
-    overflow: hidden;  /* Esconde o excesso de imagem, se houver */
+    overflow: hidden;
+    /* Esconde o excesso de imagem, se houver */
 
 }
 
@@ -487,47 +488,47 @@ main {
     z-index: 2;
 }
 
-.veterinaria{
+.veterinaria {
     color: #3eb288;
     font-weight: bold;
 }
 
-.saudeum{
+.saudeum {
     color: #45b7e5;
     font-weight: bold;
 }
 
-.saudedois{
+.saudedois {
     color: #199eae;
     font-weight: bold;
 }
 
-.exatas{
+.exatas {
     color: #1b3556;
     font-weight: bold;
 }
 
-.direito{
+.direito {
     color: #E93F3C;
     font-weight: bold;
 }
 
-.educaçao{
+.educaçao {
     color: #5d378d;
     font-weight: bold;
 }
 
-.comunicacao{
+.comunicacao {
     color: #e53888;
     font-weight: bold;
 }
 
-.gestao{
+.gestao {
     color: #205c7e;
     font-weight: bold;
 }
 
-.tec{
+.tec {
     color: #79a744;
     font-weight: bold;
 }
