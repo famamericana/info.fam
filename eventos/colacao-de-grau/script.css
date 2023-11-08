@@ -8,6 +8,29 @@
   --container-width: 960px;
 }
 
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.219);
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,19 +48,55 @@ header {
   background-color: #f9e20f;
   margin-bottom: 40px;
   border-radius: 0 0 10px 10px;
-
-
 }
 
 header img {
   object-fit: cover;
   border-radius: 10px;
+}
 
+.titulocolação{
+  margin-bottom: 10px;
+}
+.titulocolação h1, .titulocolação h3{
+  max-width: var(--container-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.titulocolação h1{
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  padding: 0;
+}
+
+.titulocolação h3{
+  font-size: 18px;
+  color: #45b7e5;
+  margin-top: -5px;
+  font-weight: 600;
+}
+
+.title-container {
+  display: flex; /* Use flexbox para alinhar os itens */
+  align-items: center; /* Centraliza verticalmente */
+  color: black;
+}
+
+.title-container::before,
+.title-container::after {
+  content: ''; /* Conteúdo vazio para os pseudo-elementos */
+  flex: 1; /* Faz com que cada linha ocupe o espaço disponível igualmente */
+  border-bottom: 1px solid #f9e20f; /* Define a linha como uma borda inferior azul */
 }
 
 section {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 auto;
+  max-width: var(--container-width);
 }
 
 .capa {
@@ -78,7 +137,7 @@ section {
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 14px 0;
   transition: all 0.3s;
   text-align: center;
   box-sizing: border-box;
@@ -110,7 +169,7 @@ section {
   display: none;
   padding: 0 var(--margin-20);
   border-top: none;
-  height: 200px;
+  height: 150px;
   max-width: var(--container-width);
   margin: auto;
   box-sizing: border-box;
@@ -130,6 +189,8 @@ section {
   border-radius: 5px;
   margin-bottom: var(--margin-20);
   padding-bottom: var(--margin-10);
+  margin-left: 10px;
+  margin-right: 10px;
 
 }
 
@@ -184,4 +245,9 @@ section {
     margin-bottom: -20px;
     margin-top: 20px;
   }
+}
+
+
+.indentado {
+  text-indent: 20px; 
 }
