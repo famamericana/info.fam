@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --azul-claro: #45b7e5;
+    --margin-10: 10px;
+    --margin-20: 20px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family:  'Source Sans 3', sans-serif;;
+}
+
+header{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+header img{
+    border-radius:  0 0 10px 10px;
+}
+
+/* Abas Sobre a FAM e Sobre o curso*/
+.tab {
+    display: flex;
+    overflow: hidden;
+    max-width: 960px;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  /* Estilo dos botões das abas */
+  .tab button {
+    flex-grow: 1;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: all 0.3s;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: larger;
+    font-weight: 700;
+    background-color: var(--azul-claro);
+    color: white;
+    margin-bottom: var(--margin-10);
+    font-size: 22px;
+  }
+  
+  /* Altera a cor de fundo dos botões ao passar o mouse */
+  .tab button:hover {
+    background-color: var(--azul-principal);
+  }
+  
+  .tab button.active:hover {
+    color: var(--azul-claro);
+  }
+  
+  /* Ativa a aba com cor de fundo diferente */
+  .tab button.active {
+    background-color: #f2f3f8;
+    color: #242527;
+  }
+  
+  /* Estilo do conteúdo das abas */
+  .tabcontent {
+    display: none;
+    padding: 0 var(--margin-20);
+    border-top: none;
+    height: 200px;
+    max-width: 960px;
+    margin: auto;
+    box-sizing: border-box;
+    background-color: #f2f3f8;
+    border-radius: 0 0 5px 5px;
+    overflow-y: auto;
+    text-align: justify;
+    color: #242527;
+    position: relative;
+  }
+  
+  .scroll-container {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #f2f3f8;
+    border-radius: 5px;
+    margin-bottom: var(--margin-20);
+    padding-bottom: var(--margin-10);
+  
+  }
+  
+  .tabcontent::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .tabcontent::-webkit-scrollbar-track {
+    background-color: #f2f3f8;
+    border-radius: 50px;
+  }
+  
+  .tabcontent::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.253);
+    border: 3px solid #f2f3f8;
+    border-radius: 50px;
+  }
+  
+  .slide-container {
+    margin-top: var(--margin-20);
+    max-width: var(--container-width);
+    width: 100%;
+    padding: 40px 0;
+  }
+  
+  .slide-content {
+    margin: 0 40px;
+    overflow: hidden;
+  }
