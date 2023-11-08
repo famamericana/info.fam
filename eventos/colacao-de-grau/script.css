@@ -270,7 +270,7 @@ section {
   margin-bottom: 20px;
   position: relative;
   height: 420px;
-  width: 100%;
+  width: calc(100% - 20px);
   margin-top: 20px;
 }
 
