@@ -5,7 +5,7 @@
   --margin-10: 10px;
   --margin-20: 20px;
   --azul-principal: #1b3556;
-  --container-width: 920px;
+  --container-width: 960px;
 }
 
 /* Personaliza a barra de rolagem inteira */
@@ -28,14 +28,12 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
-
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans 3', sans-serif;
-  ;
 }
 
 header {
