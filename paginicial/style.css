@@ -31,7 +31,7 @@ body {
 }
 
 section {
-    max-width: 960px;
+    max-width: 990px;
     margin: 0 auto;
     margin-top: 40px;
 }
@@ -173,7 +173,7 @@ header h2 {
 }
 
 .titulo{
-    max-width: 930px;
+    max-width: 990px;
     margin: 0 auto;
     padding-top: 20px;
     padding-bottom: 10px;
