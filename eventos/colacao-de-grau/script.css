@@ -95,6 +95,9 @@ header img {
 section {
   margin: 0 auto;
   max-width: var(--container-width);
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 .capa {
@@ -324,4 +327,13 @@ section {
 .slideshow-item.visible {
   opacity: 1;
   z-index: 2;
+}
+
+
+.chamaratenção{
+  color: #e53888;
+}
+
+.azulclaro{
+  color: #45b7e5;
 }
