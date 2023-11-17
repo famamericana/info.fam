@@ -7,7 +7,7 @@
     <title>Colação de Grau</title>
     <link rel="stylesheet" href="script.css">
     <link rel="icon" href="/images-gerais/famlogo.png">
-
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -168,7 +168,8 @@
             cerimônia. Após o evento, as fotos estarão disponíveis para compra, permitindo que
             você guarde uma lembrança tangível deste marco em sua vida acadêmica.
         </p>
-        <p class="textomenortab">*Toda a captura fotográfica é de responsabilidade da Perfil e a FAM não se responsabiliza pela
+        <p class="textomenortab">*Toda a captura fotográfica é de responsabilidade da Perfil e a FAM não se
+            responsabiliza pela
             comercialização.
         </p>
 
@@ -211,23 +212,36 @@
             <a class="arrow arrow-next" data-direction="next"></a>
         </div>
     </section>
-
     <section>
         <div class="button-containercalendario">
-          <a target="_blank" href="https://info.fam.br/calendario-academico" class="responsive-button um">Calendário
-            Acadêmico</a>
-          <a target="_blank" href="https://www.famportal.com.br/fam/index.php"
-            class="responsive-button dois">Requerimento / Colação de Grau</a>
+            <a target="_blank" href="https://info.fam.br/calendario-academico" class="responsive-button um">Calendário
+                Acadêmico</a>
+            <a target="_blank" href="https://www.famportal.com.br/fam/index.php"
+                class="responsive-button dois">Requerimento / Colação de Grau</a>
         </div>
         <div class="button-containercalendario">
-          <a target="_blank" href="https://www.instagram.com/famamericana/" class="responsive-button três">Fique por dentro do mundo FAM</a>
+            <a target="_blank" href="https://www.instagram.com/famamericana/" class="responsive-button três">Fique por
+                dentro do mundo FAM</a>
         </div>
-      </section>
-      
-      <div id="meuFooter"></div>
+    </section>
+    <div class="textooelike">
+        <div class="textoinfofam">
+            Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+            </p>
+        </div>
+        <div class="CountLike" id="LikeCountColaçãoGrau">
+            <button class="button button1">
+                <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="meuFooter"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
 </body>
 
 </html>
