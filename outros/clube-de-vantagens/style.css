@@ -111,14 +111,14 @@ header {
     .grid-item {
         width: 90%;
     }
-    
-.empresasparticipar {
-    font-size: 12px;
-}
 
-.empresasparticipar i {
-    font-size: 10px;
-}
+    .empresasparticipar {
+        font-size: 12px;
+    }
+
+    .empresasparticipar i {
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -136,41 +136,59 @@ header {
 .gridcontainerdescontos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    /* Espaçamento entre os itens */
-    padding: 20px;
+    gap: 0;
+    padding: 10px;
     padding-bottom: 0;
 
 }
 
 .griditemdescontos {
     border-radius: 10px;
+    padding-top: 0;
+    margin: 10px;
+    background-color: rgba(242, 243, 248, 0.685)
 }
 
 .griditemdescontos:nth-child(2) h2 {
     background-color: var(--clubecor);
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
 }
 
 .griditemdescontos:nth-child(1) h2 {
     background-color: #5d378d;
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+
 }
 
 .griditemdescontos:nth-child(3) h2 {
     background-color: #f9e20f;
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
 }
 
 .desconto-col {
-    background-color: #f2f3f8;
-    padding: 10px;
+    padding: 0;
     padding-bottom: 0;
 }
 
+#desconto-20 {
+    border: 1px solid #e53888;
+}
+
+#desconto-40 {
+    border: 1px solid #5d378d;
+}
+
+#desconto-10 {
+    border: 1px solid #f9e20f;
+}
+
+
 .griditemdescontos h2 {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     font-size: 50px;
     text-align: center;
     color: white;
@@ -181,6 +199,9 @@ header {
     height: 150px;
     object-fit: cover;
     border-radius: 5px 5px 0 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f2f3f8;
+
 }
 
 .descricao {
@@ -188,10 +209,10 @@ header {
     text-align: center;
     padding: 10px;
     font-size: 16px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 0 0 5px 5px;
-    margin-top: -5px;
-    margin-bottom: 20px;
+    margin-top: -7px;
+
 }
 
 .descricao a {
@@ -200,6 +221,8 @@ header {
 
 .descricao p {
     text-align: center;
+    transform:scale(0.9);
+    margin-top: 0px;
 }
 
 .deslocamento {
@@ -282,6 +305,7 @@ header {
     text-align: right;
 
 }
+
 .grid-containerativa .grid-item:nth-child(even) img {
     margin-left: 20px;
     margin-right: 0;
