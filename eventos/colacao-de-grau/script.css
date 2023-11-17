@@ -53,16 +53,18 @@ header img {
   border-radius: 10px;
 }
 
-.titulocolação{
+.titulocolação {
   margin-bottom: 10px;
 }
-.titulocolação h1, .titulocolação h3{
+
+.titulocolação h1,
+.titulocolação h3 {
   max-width: var(--container-width);
   margin: 0 auto;
   text-align: center;
 }
 
-.titulocolação h1{
+.titulocolação h1 {
   font-size: 25px;
   text-transform: uppercase;
   font-weight: 800;
@@ -72,7 +74,7 @@ header img {
   padding: 0;
 }
 
-.titulocolação h3{
+.titulocolação h3 {
   font-size: 18px;
   color: #45b7e5;
   margin-top: -5px;
@@ -80,16 +82,21 @@ header img {
 }
 
 .title-container {
-  display: flex; /* Use flexbox para alinhar os itens */
-  align-items: center; /* Centraliza verticalmente */
+  display: flex;
+  /* Use flexbox para alinhar os itens */
+  align-items: center;
+  /* Centraliza verticalmente */
   color: black;
 }
 
 .title-container::before,
 .title-container::after {
-  content: ''; /* Conteúdo vazio para os pseudo-elementos */
-  flex: 1; /* Faz com que cada linha ocupe o espaço disponível igualmente */
-  border-bottom: 1px solid #f9e20f; /* Define a linha como uma borda inferior azul */
+  content: '';
+  /* Conteúdo vazio para os pseudo-elementos */
+  flex: 1;
+  /* Faz com que cada linha ocupe o espaço disponível igualmente */
+  border-bottom: 1px solid #f9e20f;
+  /* Define a linha como uma borda inferior azul */
 }
 
 section {
@@ -176,7 +183,7 @@ section {
   background-color: #f2f3f8;
   border-radius: 0 0 5px 5px;
   overflow-y: auto;
-  text-align: justify;
+  text-align: left;
   color: #242527;
   position: relative;
 }
@@ -231,7 +238,7 @@ section {
     padding-left: 0;
     align-items: center;
     margin-bottom: 20px;
-
+    text-align: center;
   }
 
   header img {
@@ -241,13 +248,23 @@ section {
     margin-top: 20px;
   }
 
-  
 
+
+}
+
+@media (max-width: 500px) {
+  .capa {
+    transform: scale(0.8);
+  }
+
+  header img {
+    width: 90%;
+  }
 }
 
 
 .indentado {
-  text-indent: 20px; 
+  text-indent: 20px;
 }
 
 /* IMG SLIDER ------------------------------------------------------------------------------------------------------------------------*/
@@ -267,7 +284,7 @@ section {
   height: 420px;
   width: calc(100% - 80px);
   margin-top: 20px;
-  padding: 10px;
+  padding: 0;
 }
 
 .slideshow-item {
@@ -281,7 +298,8 @@ section {
   transition: all 0.2s ease-in-out;
   width: 100%;
   height: 100%;
-  overflow: hidden;  /* Esconde o excesso de imagem, se houver */
+  overflow: hidden;
+  /* Esconde o excesso de imagem, se houver */
 
 }
 
@@ -325,11 +343,11 @@ section {
 }
 
 
-.chamaratenção{
+.chamaratenção {
   color: #e53888;
 }
 
-.azulclaro{
+.azulclaro {
   color: #45b7e5;
 }
 
