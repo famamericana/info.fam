@@ -97,7 +97,6 @@ section {
   max-width: var(--container-width);
   padding-left: 20px;
   padding-right: 20px;
-
 }
 
 .capa {
@@ -188,8 +187,6 @@ section {
   margin: 0 auto;
   background-color: #f2f3f8;
   border-radius: 5px;
-  margin-bottom: var(--margin-20);
-  padding-bottom: var(--margin-10);
 }
 
 .tabcontent::-webkit-scrollbar {
@@ -243,10 +240,7 @@ section {
     margin-bottom: -20px;
     margin-top: 20px;
   }
-  .scroll-container {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+
   
 
 }
@@ -271,8 +265,9 @@ section {
   margin-bottom: 20px;
   position: relative;
   height: 420px;
-  width: calc(100% - 20px);
+  width: calc(100% - 80px);
   margin-top: 20px;
+  padding: 10px;
 }
 
 .slideshow-item {
