@@ -337,3 +337,64 @@ section {
 .azulclaro{
   color: #45b7e5;
 }
+
+
+
+/* 3 botoes --------------------------------------------------------*/
+.button-containercalendario {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: var(--margin-10);
+}
+
+.button-containercalendario a {
+  text-decoration: none;
+}
+
+.um {
+  color: white;
+  background-color: #5d378d;
+}
+
+.um:hover {
+  color: #242527;
+  background-color: white;
+  box-shadow: inset 0 0 0 2px #5d378d;
+}
+
+.dois {
+  background-color: var(--azul-principal);
+  color: white;
+}
+
+.três {
+  margin-top: var(--margin-10);
+  background-color: #e53888;
+  color: white;
+}
+
+.três:hover {
+  color: #242527;
+  background-color: white;
+  box-shadow: inset 0 0 0 2px #e53888;
+}
+
+.dois:hover {
+  color: #242527;
+  background-color: white;
+  box-shadow: inset 0 0 0 2px var(--azul-principal);
+}
+
+.responsive-button {
+  border: none;
+  padding: var(--margin-20);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--primary-font);
+  font-weight: 400;
+  border-radius: 5px;
+  flex: 1 0 auto;
+  text-align: center;
+}
