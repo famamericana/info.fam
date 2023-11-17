@@ -49,3 +49,13 @@ function openTab(evt, tabName) {
         slides.eq(nextIndex).addClass('visible');
     });
 });
+
+
+
+
+
+
+$(document).ready(function () {
+  $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
