@@ -103,7 +103,7 @@ header .overlay {
 }
 
 header h2 {
-    margin-bottom: 30px;
+
     margin-top: 10px;
 }
 
@@ -115,7 +115,6 @@ header h2 {
 
 @media (max-width: 650px) {
     header h2 {
-        margin-bottom: 30px;
         margin-top: 10px;
         font-size: clamp(16px, 3.5vw, 30px);
     }
