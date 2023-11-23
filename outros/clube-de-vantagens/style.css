@@ -146,6 +146,8 @@ header {
     border-radius: 10px;
     padding-top: 0;
     margin: 10px;
+    margin-bottom: 0px;
+
     background-color: rgba(242, 243, 248, 0.685)
 }
 
@@ -170,7 +172,7 @@ header {
 
 .desconto-col {
     padding: 0;
-    padding-bottom: 0;
+    padding-bottom: 10px;
 }
 
 #desconto-20 {
