@@ -32,47 +32,96 @@ body {
 header {
     width: 100%;
     background-color: #5d378d;
-    border-radius: 0 0 20px 20px ;
+    border-radius: 0 0 20px 20px;
 }
 
 main {
-    max-width: 960px;
+    max-width: 910px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    
 }
 
 th,
 td {
     border: 1px solid #d5dcf1;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f2f3f8;
+    padding: 8px 2px;
     text-align: center;
 }
 
-.logointegrafam{
+th {
+    background-color: #d5dcf1;
+    text-align: center;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f2f3f8;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.logointegrafam {
     max-width: 600px;
 }
 
-.integramfamespaço{
+.integramfamespaço {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 50px 20px;
-
 }
 
-.tema{
+.tema {
     text-align: center;
     font-size: xx-large;
-    margin-top: 30px;
+    margin-top: 10px;
     font-weight: 600;
+    padding: 0 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens se ajustem automaticamente */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.flex-item {
+    background-color: #f9e20f;
+    padding: 10px;
+    margin: 10px;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    flex: 1 1 200px;
+    /* Flexibilidade dos itens */
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.horizontal {
+    overflow-x: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.bolinhas {
+    color: #5d378d;
+    font-size: 28px;
 }
