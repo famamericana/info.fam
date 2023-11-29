@@ -110,6 +110,7 @@ table tr:nth-child(even) {
 
 h2 {
     text-align: center;
+    margin: 20px;
 }
 
 p {
