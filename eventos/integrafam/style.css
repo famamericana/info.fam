@@ -48,15 +48,16 @@ table {
 
 th,
 td {
-    border: 1px solid #1b3556;
     padding: 8px 2px;
     text-align: center;
+    border: 1px solid #1b3556;
 }
 
 th {
     background-color: #1b3556;
     color: white;
     text-align: center;
+    
 }
 
 table tr:nth-child(odd) {
@@ -85,6 +86,7 @@ table tr:nth-child(even) {
     margin-top: 10px;
     font-weight: 600;
     padding: 0 20px;
+    color: #1b3556;
 }
 
 .flex-container {
