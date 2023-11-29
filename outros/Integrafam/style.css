@@ -48,13 +48,14 @@ table {
 
 th,
 td {
-    border: 1px solid #d5dcf1;
+    border: 1px solid #1b3556;
     padding: 8px 2px;
     text-align: center;
 }
 
 th {
-    background-color: #d5dcf1;
+    background-color: #1b3556;
+    color: white;
     text-align: center;
 }
 
@@ -93,17 +94,17 @@ table tr:nth-child(even) {
     justify-content: space-around;
     align-items: center;
     padding: 10px;
+    padding-top: 20px;
 }
 
 .flex-item {
-    background-color: #f9e20f;
+    background-color: #45b7e5;
     padding: 10px;
-    margin: 10px;
-    color: black;
+    margin: 5px;
+    color: white;
     text-align: center;
     border-radius: 5px;
     flex: 1 1 200px;
-    /* Flexibilidade dos itens */
 }
 
 h2 {
@@ -122,6 +123,6 @@ p {
 }
 
 .bolinhas {
-    color: #5d378d;
+    color: #45b7e5;
     font-size: 28px;
 }
