@@ -28,8 +28,37 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     background-color: white;
     overflow-x: hidden;
-    overflow-y: auto;
 }
+
+header{
+    background-color: #199eae;
+    height: 100dvh;
+}
+.headertamanho{
+    display: flex;
+    width: 960px;
+    margin: 0 auto;
+    height: 100dvh;
+
+}
+.ladodireito{
+    background-color: aliceblue;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ladoesquerdo{
+    width: 50%;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*
 
 header {
     width: 100%;
@@ -63,15 +92,33 @@ header img {
     max-width: 500px;
 }
 
+.logofam{
+    max-width: 210px;
+    align-self: center;
+}
+
 .pdbolsasinfo {
-    background-color: aliceblue;
     display: flex;
+    padding: 10px;
+    padding-bottom: 0 10px;
+    font-size: x-large;
+    font-weight: 900;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .pdbolsashorario {
-    background-color: aqua;
+    text-align: right;
+    padding: 0 10px;
 }
 
+.pdbolsaspresencial{
+    padding: 0 10px;
+    text-align: left;
+    border-left: 1px solid #f9e20f;
+    
+}
 .capa {
     width: 45%;
     display: flex;
@@ -134,3 +181,5 @@ header img {
         align-items: center;
     }
 }
+
+*/
