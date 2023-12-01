@@ -30,18 +30,28 @@ body {
     overflow-x: hidden;
 }
 
-header{
+main {
+    max-width: 960px;
+    background-color: aqua;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 20px;
+    margin-top: -20px;
+}
+
+header {
     background-color: #199eae;
     height: 100dvh;
 }
-.headertamanho{
+
+.headertamanho {
     display: flex;
     width: 960px;
     margin: 0 auto;
-    height: 100dvh;
-
+    height: calc(100vh - 40px);
 }
-.ladodireito{
+
+.ladodireito {
     background-color: aliceblue;
     width: 50%;
     display: flex;
@@ -49,14 +59,63 @@ header{
     justify-content: center;
 }
 
-.ladoesquerdo{
+.ladoesquerdo {
     width: 50%;
-    background-color: antiquewhite;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.subtitulo{
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;   
+    max-width: 450px; 
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens se ajustem automaticamente */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.flex-item {
+    background-color: #45b7e5;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    flex: 1 1 200px;
+}
+
+@media (max-width: 960px) {
+
+    .headertamanho {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .ladodireito {
+        width: 100%;
+        height: 100%;
+    }
+
+    .ladoesquerdo {
+        width: 100%;
+        height: 100%;
+    }
+    
+
+}
 
 /*
 
