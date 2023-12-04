@@ -11,44 +11,77 @@
 
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
 <body>
     <header>
         <div class="headertamanho">
             <div class="ladodireito">
-                outra coisa
+                <img id="logoQuadrado" src="images/logoprovadebolsasPC.svg" alt="Logotipo Quadrado">
+                <img id="logoRetangular" src="images/logoprovadebolsasPHONE.svg" alt="Logotipo Retangular"
+                    style="display: none;">
+
             </div>
             <div class="ladoesquerdo">
                 <div class="subtitulo">Venha conquistar seu lugar na FAM!</div>
                 <div class="flex-container">
                     <div class="flex-item"><b>21</b> de janeiro às <b>14h</b></div>
                     <div class="flex-item">Prova <b>presencial</b></div>
-                    <a  class="flex-item" target="_blank" href=""><i class="fa-solid fa-location-dot"></i> <b>FAM</b> - Faculdade de Americana</a>
+                    <a class="flex-item" target="_blank" href="https://maps.app.goo.gl/SDHNVwrBGhJ1BEi79"><i
+                            class="fa-solid fa-location-dot"></i> <b>FAM</b> - Faculdade de Americana</a>
                 </div>
-                <a class="inscrevase" href="">Inscreva-se aqui</a>
+                <a class="inscrevase" href="https://vestibularfam.com.br">Inscreva-se aqui</a>
             </div>
         </div>
         <!-- animação de https://codepen.io/mohaiman/pen/MQqMyo -->
-        <div class="area" >
+        <div class="area">
             <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
-        </div >
+        </div>
     </header>
 
     <main>
-        <h2>Bolsas de estudo até 100%*</h2>
-
-
+        <h2>Bolsas de estudo disponíveis até 100%*</h2>
+        <section class="bar-graph bar-graph-horizontal bar-graph-one">
+            <div class="bar-one">
+                <span class="year"><b>300</b> Bolsas para Medicina Veterinária</span>
+                <div class="bar" data-percentage="10%"></div>
+            </div>
+            <div class="bar-two">
+                <span class="year"><b>1.000</b> Bolsas (exeto Medicina Veterinária)</span>
+                <div class="bar" data-percentage="20%"></div>
+            </div>
+            <div class="bar-three">
+                <span class="year"><b>1</b> Bolsa</span>
+                <div class="bar" data-percentage="50%"></div>
+            </div>
+            <div class="bar-four">
+                <span class="year"><b>1</b> Bolsa</span>
+                <div class="bar" data-percentage="100%"></div>
+            </div>
+        </section>
     </main>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>
