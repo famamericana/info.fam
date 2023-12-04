@@ -87,6 +87,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    var bg = document.getElementById("buttonBackground");
+
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > window.innerHeight) {
+            bg.style.display = "flex"; 
+        } else {
+            bg.style.display = "none";
+        }
+    });
+});
 
 
 

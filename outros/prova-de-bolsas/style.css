@@ -7,14 +7,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: #f2f3f8;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid white;
+    border: 2px solid #f2f3f8;
     border-radius: 10px;
 }
 
@@ -52,7 +52,7 @@ h2 {
 /*  HEADER ----------------------------------------------------------------------------------------------- */
 
 header {
-    background-color: #199eae;
+    background-color: #e53888;
     height: 100dvh;
 }
 
@@ -79,7 +79,7 @@ header {
 #logoRetangular {
     max-width: 400px;
     width: 100%;
-    padding: 0 20px;
+    margin: 0 20px;
 }
 
 .ladoesquerdo {
@@ -140,12 +140,10 @@ header {
 }
 
 .inscrevase:hover {
-    color: white;
-}
-
-.inscrevase:hover {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px white;
+    color: white;
+
 }
 
 .flex-container {
@@ -373,28 +371,28 @@ header {
 
 /* Classes para animar as barras */
 .animate-bar-1 {
-    background-color: #199eae;
+    background-color: #f9e20f;
     -webkit-animation: show-bar-one 1.2s 0.1s forwards;
     -moz-animation: show-bar-one 1.2s 0.1s forwards;
     animation: show-bar-one 1.2s 0.1s forwards;
 }
 
 .animate-bar-2 {
-    background-color: #108291;
+    background-color: #e53888;
     -webkit-animation: show-bar-two 1.2s 0.2s forwards;
     -moz-animation: show-bar-two 1.2s 0.2s forwards;
     animation: show-bar-two 1.2s 0.2s forwards;
 }
 
 .animate-bar-3 {
-    background-color: #085f79;
+    background-color: #5d378d;
     -webkit-animation: show-bar-three 1.2s 0.3s forwards;
     -moz-animation: show-bar-three 1.2s 0.3s forwards;
     animation: show-bar-three 1.2s 0.3s forwards;
 }
 
 .animate-bar-4 {
-    background-color: rgb(8, 70, 121);
+    background-color: #1b3556;
     -webkit-animation: show-bar-four 1.2s 0.4s forwards;
     -moz-animation: show-bar-four 1.2s 0.4s forwards;
     animation: show-bar-four 1.2s 0.4s forwards;
@@ -546,128 +544,44 @@ header {
     color: #45b7e5;
 }
 
-/*
 
-header {
-    width: 100%;
-    height: 100dvh;
-    background-color: #199eae;
-    display: flex;
-}
-
-.headertamanho {
-    display: flex;
-    flex-direction: row;
-    width: 960px;
-    margin: 0 auto;
-    height: 100dvh;
-}
-
-header img {
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.pdbolsasIMG {
-    width: auto;
-    max-height: 500px;
-    display: flex;
-    margin: auto;
-}
-
-.logopdbolsas {
-    margin-bottom: 20px;
-    max-width: 500px;
-}
-
-.logofam{
-    max-width: 210px;
-    align-self: center;
-}
-
-.pdbolsasinfo {
-    display: flex;
-    padding: 10px;
-    padding-bottom: 0 10px;
-    font-size: x-large;
-    font-weight: 900;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.pdbolsashorario {
-    text-align: right;
-    padding: 0 10px;
-}
-
-.pdbolsaspresencial{
-    padding: 0 10px;
-    text-align: left;
-    border-left: 1px solid #f9e20f;
-    
-}
-.capa {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    padding-left: 80px;
-}
-
-.capa p {
-    margin-top: -15px;
-    margin-bottom: 20px;
-}
-
-.obrigatorioem {
-    background-color: white;
-    border-radius: 50px;
-    padding: 2px 10px;
-    margin-left: -10px;
-}
-
-@media (max-width: 950px) {
-    .headertamanho {
-        flex-direction: column-reverse;
-        justify-content: center;
-    }
-
-    .capa {
-        padding-left: 0;
-        align-items: center;
-        margin-bottom: 20px;
-        text-align: center;
-        align-items: auto;
-        width: auto;
-
-    }
-
-    .pdbolsasIMG {
-        max-width: 440px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
+.button-background {
+    position: fixed;
+    background-color: #e53888; /* Exemplo de fundo semi-transparente */
+    width: 100%; /* Largura do fundo */
+    height: 50px; /* Altura do fundo */
+    z-index: 9; /* Garante que fique atrás do botão */
+    align-items: center; /* Alinha o texto do botão verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    display: none;
 
 }
 
-@media (max-width: 500px) {
-    .capa {
-        transform: scale(0.8);
-    }
+.scroll-button {
+    background-color: #f9e20f;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: fit-content;
+    margin-left: 20px;
+    color: black;
 
-    .pdbolsasIMG {
-        width: 90%;
-    }
 }
 
-@media (max-height: 500px) {
-    header {
-        height: 620px;
-        align-items: center;
-    }
+.scroll-button:hover {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px white;
+    color: white;
 }
 
-*/
+.logo {
+    height: 30px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção da imagem */
+
+}
