@@ -147,8 +147,7 @@ header {
     padding-top: 0;
     margin: 10px;
     margin-bottom: 0px;
-
-    background-color: rgba(242, 243, 248, 0.685)
+    background-color: rgba(242, 243, 248, 0.685);
 }
 
 .griditemdescontos:nth-child(2) h2 {
