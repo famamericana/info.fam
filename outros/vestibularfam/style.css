@@ -352,6 +352,11 @@ footer {
     fill: #f9e20f;
 }
 
+.whatsapplink{
+    color: white;
+    margin-bottom: 0 !important;
+}
+
 @media (max-width: 500px) {
     .footer-container {
         align-items: flex-start;
