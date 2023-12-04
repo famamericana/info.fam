@@ -476,7 +476,9 @@ header {
     position: relative;
     height: 420px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
     padding: 0;
 }
 
@@ -584,4 +586,50 @@ header {
     height: 30px; /* Ajuste a altura conforme necessário */
     width: auto; /* Mantém a proporção da imagem */
 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f3f8;
+}
+
+th:first-child{
+    border-radius: 5px 0 0 0;
+}
+
+th:last-child{
+    border-radius: 0 5px 0 0;
+}
+
+tr:nth-child(2){
+    border-bottom: 1px solid #f9e20f;
+}
+
+tr:nth-child(3){
+    border-bottom: 1px solid #e53888;
+}
+
+tr:nth-child(4){
+    border-bottom: 1px solid #5d378d;
+}
+
+tr:nth-child(5){
+    border-bottom: 1px solid #1b3556;
+}
+
+.bolsa-header {
+    width: 50%;
+}
+
+.info-header {
+    width: 50%;
 }
