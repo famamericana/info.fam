@@ -130,6 +130,7 @@ header {
     border-radius: 5px;
     text-transform: uppercase;
     text-decoration: none;
+    margin: 0 auto;
 }
 
 .inscrevase a {
@@ -319,6 +320,26 @@ header {
 
     .grid-container {
         grid-template-columns: 1fr;
+    }
+
+
+
+}
+
+@media (max-width: 500px) {
+
+    .logo {
+        height: 20px;
+    }
+
+    .scroll-button {
+        width: auto;
+        margin-left: 0;
+        white-space: nowrap;
+
+    }
+    .logoprovadebolsasmininav{
+        display: none !important;
     }
 
 }
@@ -556,21 +577,16 @@ header {
 
 
 .button-background {
+    top: 0;
     position: fixed;
     background-color: #e53888;
-    /* Exemplo de fundo semi-transparente */
     width: 100%;
-    /* Largura do fundo */
     height: 50px;
-    /* Altura do fundo */
     z-index: 9;
-    /* Garante que fique atrás do botão */
     align-items: center;
-    /* Alinha o texto do botão verticalmente */
     justify-content: center;
-    /* Centraliza os itens horizontalmente */
     display: none;
-
+    box-sizing: border-box;
 }
 
 .scroll-button {
@@ -596,11 +612,10 @@ header {
     color: white;
 }
 
-.logo {
+.logoprovadebolsasmininav {
     height: 30px;
-    /* Ajuste a altura conforme necessário */
     width: auto;
-    /* Mantém a proporção da imagem */
+    display: block;
 
 }
 
@@ -691,11 +706,14 @@ tr:nth-child(5) {
 .aviso {
     flex: auto;
     padding: 40px;
-    background-color: #f2f3f8; /* Cor de fundo para cada aviso */
-    border-radius: 10px; /* Bordas arredondadas */
-    text-align: center; /* Alinha o texto ao centro */
+    background-color: #f2f3f8;
+    /* Cor de fundo para cada aviso */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    text-align: center;
+    /* Alinha o texto ao centro */
 }
 
-.temquequermargin{
+.temquequermargin {
     margin-top: 50px;
 }
