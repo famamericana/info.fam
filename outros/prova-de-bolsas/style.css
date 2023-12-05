@@ -651,14 +651,6 @@ tr:nth-child(5) {
     width: 50%;
 }
 
-.infoimpor {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
-}
-
 .infoprazo {
     background-color: #e53888;
     padding: 5px 10px;
@@ -685,4 +677,25 @@ tr:nth-child(5) {
     font-weight: 900;
     text-align: center;
 
+}
+
+.containeraviso {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.aviso {
+    flex: auto;
+    padding: 40px;
+    background-color: #f2f3f8; /* Cor de fundo para cada aviso */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-align: center; /* Alinha o texto ao centro */
+}
+
+.temquequermargin{
+    margin-top: 50px;
 }
