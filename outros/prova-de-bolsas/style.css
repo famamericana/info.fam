@@ -175,10 +175,10 @@ header {
 
 .circles {
     position: absolute;
-    top: 0;
+    top: -20px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh + 10px);
     overflow: hidden;
 }
 
@@ -268,6 +268,14 @@ header {
     height: 150px;
     animation-delay: 0s;
     animation-duration: 11s;
+}
+
+.circles li:nth-child(10) {
+    left: 6%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 6s;
+    animation-duration: 15s;
 }
 
 
@@ -549,12 +557,18 @@ header {
 
 .button-background {
     position: fixed;
-    background-color: #e53888; /* Exemplo de fundo semi-transparente */
-    width: 100%; /* Largura do fundo */
-    height: 50px; /* Altura do fundo */
-    z-index: 9; /* Garante que fique atrás do botão */
-    align-items: center; /* Alinha o texto do botão verticalmente */
-    justify-content: center; /* Centraliza os itens horizontalmente */
+    background-color: #e53888;
+    /* Exemplo de fundo semi-transparente */
+    width: 100%;
+    /* Largura do fundo */
+    height: 50px;
+    /* Altura do fundo */
+    z-index: 9;
+    /* Garante que fique atrás do botão */
+    align-items: center;
+    /* Alinha o texto do botão verticalmente */
+    justify-content: center;
+    /* Centraliza os itens horizontalmente */
     display: none;
 
 }
@@ -583,8 +597,10 @@ header {
 }
 
 .logo {
-    height: 30px; /* Ajuste a altura conforme necessário */
-    width: auto; /* Mantém a proporção da imagem */
+    height: 30px;
+    /* Ajuste a altura conforme necessário */
+    width: auto;
+    /* Mantém a proporção da imagem */
 
 }
 
@@ -593,7 +609,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 8px;
     text-align: left;
 }
@@ -602,27 +619,27 @@ th {
     background-color: #f2f3f8;
 }
 
-th:first-child{
+th:first-child {
     border-radius: 5px 0 0 0;
 }
 
-th:last-child{
+th:last-child {
     border-radius: 0 5px 0 0;
 }
 
-tr:nth-child(2){
+tr:nth-child(2) {
     border-bottom: 1px solid #f9e20f;
 }
 
-tr:nth-child(3){
+tr:nth-child(3) {
     border-bottom: 1px solid #e53888;
 }
 
-tr:nth-child(4){
+tr:nth-child(4) {
     border-bottom: 1px solid #5d378d;
 }
 
-tr:nth-child(5){
+tr:nth-child(5) {
     border-bottom: 1px solid #1b3556;
 }
 
@@ -632,4 +649,40 @@ tr:nth-child(5){
 
 .info-header {
     width: 50%;
+}
+
+.infoimpor {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.infoprazo {
+    background-color: #e53888;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.infoonline {
+    background-color: #5d378d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.margendaora {
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+}
+
+#countdown {
+    font-size: 2rem;
+    margin: 20px;
+    font-weight: 900;
+    text-align: center;
+
 }
