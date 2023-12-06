@@ -13,9 +13,12 @@ function ajustarLogo() {
   }
 }
 
-// Executa ao carregar e ao redimensionar a página
-window.onload = ajustarLogo;
+// Executa assim que o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', ajustarLogo);
+
+// Continua a executar ao redimensionar a página
 window.onresize = ajustarLogo;
+
 
 
 // GRÁFICO BOLSAS QUANTIDADE -------------------------------------------------------------------------------------------------------------------
@@ -100,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
 
 
 //FOOTER -----------------------------------------------------------------------------------------------------------------------------
