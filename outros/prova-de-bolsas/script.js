@@ -125,7 +125,7 @@ function updateCountdown() {
   if (daysLeft < 0) {
     document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para que no próximo semestre você não perca a Prova de Bolsas ;)";
   } else {
-    document.getElementById("countdown").textContent = `Nos vemos em ${daysLeft} dias!`;
+    document.getElementById("countdown").textContent = `Se preparem, nos vemos em ${daysLeft} dias!`;
   }
 }
 
