@@ -116,8 +116,18 @@ header {
     text-align: center;
     color: white;
     font-size: x-large;
-}
-
+  }
+  
+  .subtitulo1{
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 450px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+  }
+  
 .inscrevase {
     background-color: #f9e20f;
     border: none;
@@ -297,6 +307,11 @@ header {
 
 }
 
+.ladomeio {
+    display: none;
+}
+
+
 @media (max-width: 960px) {
 
     .headertamanho {
@@ -309,17 +324,35 @@ header {
         width: 100%;
         height: 100%;
         align-items: last baseline;
-        padding-bottom: 40px;
+        padding-bottom: 20px;
+        flex: 1;
+    }
+
+    .ladodireito img {
+        transform: scale(0.9);
     }
 
     .ladoesquerdo {
         width: 100%;
         height: 100%;
+        flex: 1;
         justify-content: flex-start;
+    }
+
+    .ladomeio {
+        display: flex;
+        width: 100%;
+        height: 5%;
+        justify-content: center;
+        align-items: center;
     }
 
     .grid-container {
         grid-template-columns: 1fr;
+    }
+
+    .subtitulo {
+        display: none;
     }
 
 
@@ -328,17 +361,12 @@ header {
 
 @media (max-width: 500px) {
 
-    .logo {
-        height: 20px;
-    }
-
     .scroll-button {
-        width: auto;
-        margin-left: 0;
-        white-space: nowrap;
+        margin: 0 auto;
 
     }
-    .logoprovadebolsasmininav{
+
+    .logoprovadebolsasmininav {
         display: none !important;
     }
 
@@ -581,14 +609,14 @@ header {
     position: fixed;
     background-color: #e53888;
     width: 100%;
-    height: 50px;
+    height: 60px;
     z-index: 9;
     align-items: center;
     justify-content: center;
     display: none;
     padding: 0 20px;
     box-sizing: border-box;
-}
+  }
 
 .scroll-button {
     background-color: #f9e20f;
@@ -602,15 +630,31 @@ header {
     text-transform: uppercase;
     text-decoration: none;
     width: fit-content;
-    margin-left: 20px;
     color: black;
-
 }
 
 .scroll-button:hover {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px white;
     color: white;
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: auto;
+    z-index: 9;
+    height: 80px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .logoprovadebolsasmininav {
@@ -681,7 +725,7 @@ tr:nth-child(5) {
     color: white;
 }
 
-.infoprovaacabou{
+.infoprovaacabou {
     background-color: #1b3556;
     padding: 5px 10px;
     border-radius: 5px;
@@ -729,4 +773,23 @@ tr:nth-child(5) {
 
 .temquequermargin {
     margin-top: 50px;
+}
+
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: auto;
+    z-index: 9;
+    height: 80px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
