@@ -60,8 +60,8 @@ function register() {
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
 
-            // DOne
-            alert('User Created!!')
+            /*
+            alert('User Created!!') */
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -165,15 +165,18 @@ function toggleForm() {
     if (isLoginFormShown) {
         document.getElementById('login_form_container').style.display = 'none';
         document.getElementById('register_form_container').style.display = 'block';
-        document.getElementById('toggleFormButton').innerText = 'Login';
+        document.getElementById('toggleFormButtonLogin').innerText = 'Entrar';
+        document.getElementById('toggleFormButtonRegistrar').innerText = 'Login';
         isLoginFormShown = false;
     } else {
         document.getElementById('login_form_container').style.display = 'block';
         document.getElementById('register_form_container').style.display = 'none';
-        document.getElementById('toggleFormButton').innerText = 'Register';
+        document.getElementById('toggleFormButtonLogin').innerText = 'Criar conta';
+        document.getElementById('toggleFormButtonRegistrar').innerText = 'Registrar';
         isLoginFormShown = true;
     }
 }
+
 
 
 function logout() {
