@@ -7,6 +7,8 @@ var firebaseConfig = {
     messagingSenderId: "778485195486",
     appId: "1:778485195486:web:21115c37f0e36f1aeb984f"
 };
+
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
@@ -16,19 +18,24 @@ const database = firebase.database()
 // Set up our register function
 function register() {
     // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-    full_name = document.getElementById('full_name').value
-    favourite_song = document.getElementById('favourite_song').value
-    milk_before_cereal = document.getElementById('milk_before_cereal').value
+    var email = document.getElementById('register_email').value
+    var password = document.getElementById('register_password').value
+    var full_name = document.getElementById('register_full_name').value
+    var departamento_nome = document.getElementById('register_departamento_nome').value
+    var confirm_password = document.getElementById('register_confirm_password').value
 
+    // Verificar se as senhas coincidem
+    if (password !== confirm_password) {
+        alert('Passwords do not match');
+        return;
+    }
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
         alert('Email or Password is Outta Line!!')
         return
         // Don't continue running the code
     }
-    if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
+    if (validate_field(full_name) == false || validate_field(departamento_nome) == false) {
         alert('One or More Extra Fields is Outta Line!!')
         return
     }
@@ -46,8 +53,7 @@ function register() {
             var user_data = {
                 email: email,
                 full_name: full_name,
-                favourite_song: favourite_song,
-                milk_before_cereal: milk_before_cereal,
+                departamento_nome: departamento_nome,
                 last_login: Date.now()
             }
 
@@ -69,14 +75,13 @@ function register() {
 // Set up our login function
 function login() {
     // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
+    var email = document.getElementById('login_email').value
+    var password = document.getElementById('login_password').value
 
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
         alert('Email or Password is Outta Line!!')
-        return
-        // Don't continue running the code
+        return;
     }
 
     auth.signInWithEmailAndPassword(email, password)
@@ -87,7 +92,7 @@ function login() {
             // Add this user to Firebase Database
             var database_ref = database.ref()
 
-            // Create User data
+            // Update last login time
             var user_data = {
                 last_login: Date.now()
             }
@@ -95,9 +100,12 @@ function login() {
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).update(user_data)
 
-            // DOne
+            // User Logged In
             alert('User Logged In!!')
 
+            // Aqui a lógica para exibir o conteúdo após o login
+            document.getElementById('content_container').style.display = 'none';
+            document.getElementById('post_login_content').style.display = 'block';
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -109,19 +117,19 @@ function login() {
 }
 
 
-
-
 // Validate Functions
 function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
+    expression = /^[^@]+@fam\.br$/
     if (expression.test(email) == true) {
         // Email is good
         return true
     } else {
         // Email is not good
+        alert('E-mail tem que terminar com @fam.br');
         return false
     }
 }
+
 
 function validate_password(password) {
     // Firebase only accepts lengths greater than 6
@@ -142,4 +150,38 @@ function validate_field(field) {
     } else {
         return true
     }
+}
+
+
+
+var isLoginFormShown = true; // Variável para rastrear o formulário exibido
+
+// Função para alternar entre os formulários
+
+function toggleForm() {
+    if (isLoginFormShown) {
+        document.getElementById('login_form_container').style.display = 'none';
+        document.getElementById('register_form_container').style.display = 'block';
+        document.getElementById('toggleFormButton').innerText = 'Login';
+        isLoginFormShown = false;
+    } else {
+        document.getElementById('login_form_container').style.display = 'block';
+        document.getElementById('register_form_container').style.display = 'none';
+        document.getElementById('toggleFormButton').innerText = 'Register';
+        isLoginFormShown = true;
+    }
+}
+
+
+function logout() {
+    auth.signOut().then(function() {
+        // Logout bem-sucedido
+        document.getElementById('content_container').style.display = 'block';
+        document.getElementById('post_login_content').style.display = 'none';
+        isLoginFormShown = true; // Reset para mostrar o formulário de login
+        document.getElementById('toggleFormButton').innerText = 'Register';
+    }).catch(function(error) {
+        // Tratar erro de logout
+        alert(error.message);
+    });
 }
