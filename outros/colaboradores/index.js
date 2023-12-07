@@ -27,7 +27,7 @@ function register() {
     // Verificar se as senhas coincidem
     if (password !== confirm_password) {
         alert('Passwords do not match');
-        return; 
+        return;
     }
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
@@ -45,9 +45,9 @@ function register() {
         .then(function () {
             // Declare user variable
             var user = auth.currentUser
-            
+
             // Add this user to Firebase Database
-            var database_ref = database.ref('users/' + user.uid);
+            var database_ref = database.ref()
 
             // Create User data
             var user_data = {
@@ -86,6 +86,22 @@ function login() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(function () {
+<<<<<<< HEAD
+=======
+            // Declare user variable
+            var user = auth.currentUser
+
+            // Add this user to Firebase Database
+            var database_ref = database.ref()
+
+            // Update last login time
+            var user_data = {
+                last_login: Date.now()
+            }
+>>>>>>> parent of b0bac47 (Update index.js)
+
+            // Push to Firebase Database
+            database_ref.child('users/' + user.uid).update(user_data)
 
             /* User Logged In
             alert('User Logged In!!') */
@@ -270,4 +286,3 @@ function togglePasswordVisibility(id, icon) {
         icon.classList.add('fa-regular', 'fa-eye');
     }
 }
-
