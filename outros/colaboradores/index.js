@@ -86,8 +86,7 @@ function login() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(function () {
-<<<<<<< HEAD
-=======
+
             // Declare user variable
             var user = auth.currentUser
 
@@ -98,7 +97,6 @@ function login() {
             var user_data = {
                 last_login: Date.now()
             }
->>>>>>> parent of b0bac47 (Update index.js)
 
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).update(user_data)
