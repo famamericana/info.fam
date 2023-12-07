@@ -198,4 +198,6 @@ auth.onAuthStateChanged(function(user) {
         document.getElementById('content_container').style.display = 'block';
         document.getElementById('post_login_content').style.display = 'none';
     }
+    // Esconde a tela de carregamento após a verificação
+    document.getElementById('loadingScreen').style.display = 'none';
 });
