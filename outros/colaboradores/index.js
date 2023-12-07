@@ -103,6 +103,8 @@ function login() {
             /* User Logged In
             alert('User Logged In!!') */
 
+            fetchAndDisplayDocuments();
+
             // Aqui a lógica para exibir o conteúdo após o login
             document.getElementById('content_container').style.display = 'none';
             document.getElementById('post_login_content').style.display = 'block';
@@ -174,13 +176,13 @@ function toggleForm() {
 
 
 function logout() {
-    auth.signOut().then(function() {
+    auth.signOut().then(function () {
         // Logout bem-sucedido
         document.getElementById('content_container').style.display = 'block';
         document.getElementById('post_login_content').style.display = 'none';
         isLoginFormShown = true; // Reset para mostrar o formulário de login
         document.getElementById('toggleFormButton').innerText = 'Register';
-    }).catch(function(error) {
+    }).catch(function (error) {
         // Tratar erro de logout
         alert(error.message);
     });
@@ -188,9 +190,10 @@ function logout() {
 
 
 // Verifica o estado de autenticação quando a aplicação é carregada
-auth.onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function (user) {
     if (user) {
         // Usuário está logado
+        fetchAndDisplayDocuments();
         document.getElementById('content_container').style.display = 'none';
         document.getElementById('post_login_content').style.display = 'block';
     } else {
@@ -206,9 +209,9 @@ auth.onAuthStateChanged(function(user) {
 function sendPasswordResetEmail() {
     var email = prompt("Por favor, insira seu e-mail para redefinição de senha:");
     if (email) {
-        auth.sendPasswordResetEmail(email).then(function() {
+        auth.sendPasswordResetEmail(email).then(function () {
             alert("E-mail de redefinição de senha enviado.");
-        }).catch(function(error) {
+        }).catch(function (error) {
             // Um erro aconteceu, como um e-mail inválido ou problemas de rede
             alert("Erro ao enviar e-mail de redefinição de senha: " + error.message);
         });
@@ -216,3 +219,51 @@ function sendPasswordResetEmail() {
         alert("E-mail não fornecido.");
     }
 }
+
+
+// Inicialize a referência do Firestore
+const db = firebase.firestore();
+
+function fetchAndDisplayDocuments() {
+    db.collection("Documentos").get().then((querySnapshot) => {
+        const postLoginContent = document.getElementById('post_login_content_firestore');
+        postLoginContent.innerHTML = ''; // Limpa o conteúdo anterior
+
+        querySnapshot.forEach((doc) => {
+            // Aqui você pode formatar como deseja exibir os dados
+            const data = doc.data();
+            postLoginContent.innerHTML += `<div><h3>${data.titulo}</h3><p>${data.conteudo}</p></div>`;
+        });
+    });
+}
+
+
+db.collection("Documentos").get().then((querySnapshot) => {
+    console.log("Documentos encontrados: ", querySnapshot.size);
+}).catch((error) => {
+    console.error("Erro ao acessar o Firestore: ", error);
+});
+
+
+
+// qualidade de vida, enter login -----------------------------------------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    var emailInput = document.getElementById('login_email');
+    var passwordInput = document.getElementById('login_password');
+    var loginButton = document.querySelector('#login_form_container button');
+
+    function handleEnterKeyPress(event) {
+        if (event.key === 'Enter') {
+            if (emailInput.value && passwordInput.value) {
+                login(); // Função que executa o login
+            } else if (emailInput.value) {
+                passwordInput.focus();
+            } else {
+                emailInput.focus();
+            }
+        }
+    }
+
+    emailInput.addEventListener('keyup', handleEnterKeyPress);
+    passwordInput.addEventListener('keyup', handleEnterKeyPress);
+});

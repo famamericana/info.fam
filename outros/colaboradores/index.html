@@ -10,15 +10,18 @@
 
 <body>
 
-    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div id="loadingScreen"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
         <p>Carregando...</p>
     </div>
-    
+
     <!-- Conteúdo após o login -->
     <div id="post_login_content" style="display:none;">
         <h2>Bem-vindo!</h2>
+
         <!-- Conteúdo que aparece após o usuário logar -->
-        <!-- ... -->
+        <div id="post_login_content_firestore"></div>
+
         <button id="logout_button" onclick="logout()">Logout</button>
     </div>
 
@@ -55,6 +58,8 @@
          https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
 
 <!-- Our script must be loaded after firebase references -->
 <script src="index.js"></script>
