@@ -86,14 +86,6 @@ function login() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(function () {
-            // Declare user variable
-            var user = auth.currentUser
-            var database_ref = database.ref('users/' + user.uid);
-
-            // Update last login time
-            var user_data = {
-                last_login: Date.now()
-            }
 
             /* User Logged In
             alert('User Logged In!!') */
@@ -263,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('keyup', handleEnterKeyPress);
 });
 
-
+ 
 // login - olho senha -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function togglePasswordVisibility(id, icon) {
