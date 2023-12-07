@@ -267,3 +267,19 @@ document.addEventListener('DOMContentLoaded', function() {
     emailInput.addEventListener('keyup', handleEnterKeyPress);
     passwordInput.addEventListener('keyup', handleEnterKeyPress);
 });
+
+
+// login - olho senha -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function togglePasswordVisibility(id, icon) {
+    var passwordInput = document.getElementById(id);
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove('fa-regular', 'fa-eye');
+        icon.classList.add('fa-solid', 'fa-eye');
+    } else {
+        passwordInput.type = "password";
+        icon.classList.remove('fa-solid', 'fa-eye');
+        icon.classList.add('fa-regular', 'fa-eye');
+    }
+}
