@@ -27,9 +27,6 @@
     </div>
 
     <div id="content_container">
-        <!-- Botão para alternar entre os formulários -->
-        <button id="toggleFormButton" onclick="toggleForm()">Precisa Registrar?</button>
-
         <!-- Formulário de Login -->
         <div id="login_form_container" style="display:block;">
             <h2>Login</h2>
@@ -58,11 +55,40 @@
                 <i class="fa-solid fa-eye toggle-password"
                     onclick="togglePasswordVisibility('register_confirm_password', this)"></i>
             </div>
-            <input type="text" id="register_departamento_nome" placeholder="Departamento">
-            <button onclick="register()">Register</button>
+            <select id="register_departamento_nome">
+                <option value="">Selecione um departamento</option>
+                <option value="ATENDIMENTO">Atendimento</option>
+                <option value="BIBLIOTECA">Biblioteca</option>
+                <option value="CFA">CFA</option>
+                <option value="COMPRAS">Compras</option>
+                <option value="COORDENAÇÃO">Coordenação</option>
+                <option value="CPA">CPA</option>
+                <option value="DIREÇÃO ACADÊMICA">Direção Acadêmica</option>
+                <option value="DOCENTE">Docente</option>
+                <option value="EAD">EAD</option>
+                <option value="EDUCAÇÃO FÍSICA">Educação física</option>
+                <option value="ENFERMAGEM">Enfermagem</option>
+                <option value="FINANCEIRO GERAL">Financeiro geral</option>
+                <option value="HOSPITAL VETERINÁRIO">Hospital veterinário</option>
+                <option value="INFORMÁTICA">Informática</option>
+                <option value="LABORATÓRIO">Laboratório</option>
+                <option value="LIMPEZA">Limpeza</option>
+                <option value="MANUTENÇÃO">Manutenção</option>
+                <option value="NICOM">NICOM</option>
+                <option value="NPJ">NPJ</option>
+                <option value="PORTARIA">Portaria</option>
+                <option value="RECEPÇÃO/MANTENEDORA">Recepção/Mantenedora</option>
+                <option value="RH">RH</option>
+                <option value="S.I.A.">S.I.A.</option>
+                <option value="SECRETARIA">Secretaria</option>
+                <option value="SUPERVISAO">Supervisao</option>
+            </select>
+                        <button onclick="register()">Register</button>
         </div>
 
     </div>
+            <!-- Botão para alternar entre os formulários -->
+            <button id="toggleFormButton" onclick="toggleForm()">Precisa Registrar?</button>
 </body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
