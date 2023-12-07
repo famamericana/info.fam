@@ -100,8 +100,8 @@ function login() {
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).update(user_data)
 
-            // User Logged In
-            alert('User Logged In!!')
+            /* User Logged In
+            alert('User Logged In!!') */
 
             // Aqui a lógica para exibir o conteúdo após o login
             document.getElementById('content_container').style.display = 'none';
