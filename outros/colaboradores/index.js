@@ -201,3 +201,18 @@ auth.onAuthStateChanged(function(user) {
     // Esconde a tela de carregamento após a verificação
     document.getElementById('loadingScreen').style.display = 'none';
 });
+
+
+function sendPasswordResetEmail() {
+    var email = prompt("Por favor, insira seu e-mail para redefinição de senha:");
+    if (email) {
+        auth.sendPasswordResetEmail(email).then(function() {
+            alert("E-mail de redefinição de senha enviado.");
+        }).catch(function(error) {
+            // Um erro aconteceu, como um e-mail inválido ou problemas de rede
+            alert("Erro ao enviar e-mail de redefinição de senha: " + error.message);
+        });
+    } else {
+        alert("E-mail não fornecido.");
+    }
+}
