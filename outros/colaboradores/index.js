@@ -185,3 +185,17 @@ function logout() {
         alert(error.message);
     });
 }
+
+
+// Verifica o estado de autenticação quando a aplicação é carregada
+auth.onAuthStateChanged(function(user) {
+    if (user) {
+        // Usuário está logado
+        document.getElementById('content_container').style.display = 'none';
+        document.getElementById('post_login_content').style.display = 'block';
+    } else {
+        // Usuário não está logado
+        document.getElementById('content_container').style.display = 'block';
+        document.getElementById('post_login_content').style.display = 'none';
+    }
+});
