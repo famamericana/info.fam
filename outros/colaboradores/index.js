@@ -193,12 +193,24 @@ function logout() {
 // Verifica o estado de autenticação quando a aplicação é carregada
 auth.onAuthStateChanged(function (user) {
     if (user) {
-        // Usuário está logado
-        fetchAndDisplayDocuments();
-        document.getElementById('content_container').style.display = 'none';
-        document.getElementById('post_login_content').style.display = 'block';
+        // Usuário está logado, verifique se a conta ainda existe ou se a senha foi alterada
+        database.ref('users/' + user.uid).once('value').then(function (snapshot) {
+            if (snapshot.exists()) {
+                // A conta ainda existe, exiba o conteúdo do usuário
+                fetchAndDisplayDocuments();
+                document.getElementById('content_container').style.display = 'none';
+                document.getElementById('post_login_content').style.display = 'block';
+            } else {
+                // A conta não existe mais, deslogue o usuário
+                logout();
+            }
+        }).catch(function (error) {
+            // Erro ao verificar a conta, possivelmente deslogue o usuário
+            console.error("Erro ao verificar a conta: ", error);
+            logout();
+        });
     } else {
-        // Usuário não está logado
+        // Usuário não está logado, exiba o formulário de login
         document.getElementById('content_container').style.display = 'block';
         document.getElementById('post_login_content').style.display = 'none';
     }
@@ -248,7 +260,7 @@ db.collection("Documentos").get().then((querySnapshot) => {
 
 
 // qualidade de vida, enter login -----------------------------------------------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var emailInput = document.getElementById('login_email');
     var passwordInput = document.getElementById('login_password');
     var loginButton = document.querySelector('#login_form_container button');
@@ -269,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('keyup', handleEnterKeyPress);
 });
 
- 
+
 // login - olho senha -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function togglePasswordVisibility(id, icon) {
@@ -282,5 +294,47 @@ function togglePasswordVisibility(id, icon) {
         passwordInput.type = "password";
         icon.classList.remove('fa-solid', 'fa-eye');
         icon.classList.add('fa-regular', 'fa-eye');
+    }
+}
+
+
+//deletar conta --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Adiciona um ouvinte de eventos ao botão de exclusão de conta
+document.getElementById('deleteAccountButton').addEventListener('click', function () {
+    var confirmDelete = confirm("Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.");
+    if (confirmDelete) {
+        deleteAccount();
+    }
+});
+// Função para deletar os dados do usuário
+function deleteUserData(userId) {
+    var userRef = database.ref('users/' + userId);
+    userRef.remove()
+        .then(function () {
+            console.log("Dados do usuário removidos com sucesso.");
+        })
+        .catch(function (error) {
+            console.error("Erro ao remover dados do usuário: ", error);
+        });
+}
+
+// Função para excluir a conta do usuário
+function deleteAccount() {
+    var user = auth.currentUser;
+
+    if (user) {
+        // Primeiro, deleta os dados do usuário no Realtime Database
+        deleteUserData(user.uid);
+
+        // Em seguida, deleta a conta do usuário no Firebase Auth
+        user.delete().then(function () {
+            alert("Conta excluída com sucesso.");
+            // Redireciona o usuário ou atualiza a interface do usuário conforme necessário
+        }).catch(function (error) {
+            alert("Erro ao excluir a conta: " + error.message);
+        });
+    } else {
+        alert("Nenhum usuário logado para excluir.");
     }
 }
