@@ -62,7 +62,7 @@ function register() {
 
             /*
             alert('User Created!!') */
-            
+
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -216,6 +216,10 @@ auth.onAuthStateChanged(function (user) {
                 fetchAndDisplayDocuments();
                 document.getElementById('content_container').style.display = 'none';
                 document.getElementById('post_login_content').style.display = 'block';
+                
+                // Buscar e exibir a data de criação da conta
+                var creationDate = new Date(user.metadata.creationTime);
+                document.getElementById('accountCreationDate').innerText = "Data de Criação da Conta: " + creationDate.toLocaleDateString();
             } else {
                 // A conta não existe mais, deslogue o usuário
                 logout();
@@ -255,13 +259,18 @@ const db = firebase.firestore();
 
 function fetchAndDisplayDocuments() {
     db.collection("Documentos").get().then((querySnapshot) => {
-        const postLoginContent = document.getElementById('post_login_content_firestore');
+        const postLoginContent = document.getElementById('post_login_content_firestoreDocumentos');
         postLoginContent.innerHTML = ''; // Limpa o conteúdo anterior
 
         querySnapshot.forEach((doc) => {
-            // Aqui você pode formatar como deseja exibir os dados
             const data = doc.data();
-            postLoginContent.innerHTML += `<div><h3>${data.titulo}</h3><p>${data.conteudo}</p></div>`;
+            postLoginContent.innerHTML += `
+                <div>
+                <img src="${data.urlImagem}" alt="Imagem">
+                    <h3>${data.titulo}</h3>
+                    <p>${data.conteudo}</p>
+                    <a href="${data.urlBotao}" target="_blank"><button>Link</button></a>
+                </div>`;
         });
     });
 }
@@ -354,3 +363,24 @@ function deleteAccount() {
         alert("Nenhum usuário logado para excluir.");
     }
 }
+
+
+// mudar nome ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function updateName() {
+    var user = auth.currentUser;
+    var newName = document.getElementById('newName').value;
+
+    if (user && validate_field(newName)) {
+        var userRef = database.ref('users/' + user.uid);
+        userRef.update({ full_name: newName })
+            .then(function () {
+                alert("Nome atualizado com sucesso.");
+            }).catch(function (error) {
+                alert("Erro ao atualizar o nome: " + error.message);
+            });
+    } else {
+        alert("Por favor, insira um nome válido.");
+    }
+}
+

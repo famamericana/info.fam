@@ -34,11 +34,17 @@
         <div class="usuariopções">
             <button id="deleteAccountButton">Excluir Conta</button>
             <button id="logout_button" onclick="logout()">Logout</button>
+            <div>
+                <input type="text" id="newName" placeholder="Novo Nome">
+                <button onclick="updateName()">Atualizar Nome</button>
+            </div>
+            <div id="accountCreationDate">Data de Criação da Conta: </div>
         </div>
+        
         <h2>Bem-vindo</h2>
 
         <!-- Conteúdo que aparece após o usuário logar -->
-        <div id="post_login_content_firestore"></div>
+        <div id="post_login_content_firestoreDocumentos"></div>
 
 
     </div>

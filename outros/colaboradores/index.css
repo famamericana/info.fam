@@ -142,31 +142,50 @@ button {
 
 /*firestore -----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#post_login_content_firestore {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#post_login_content{
+    max-width: 960px;
+    background-color: #45b7e5;
+    margin: 0 auto;
 }
 
-#post_login_content_firestore div {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-bottom: 1px solid #eaeaea;
+#post_login_content_firestoreDocumentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 16px;
+    padding-top: 20px;
 }
 
-#post_login_content_firestore h3 {
-    margin-top: 0;
-    color: #333;
+#post_login_content_firestoreDocumentos div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #d5dcf1;
+    border-radius: 10px;
+    padding: 16px;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
 }
 
-#post_login_content_firestore p {
-    margin: 5px 0 0;
-    color: #666;
+#post_login_content_firestoreDocumentos img{
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+#post_login_content_firestoreDocumentos h3 {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+#post_login_content_firestoreDocumentos p {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
 
 
 /*BOLINHA DE LOADING ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
