@@ -14,20 +14,26 @@ body {
 
 .containerdelogin {
     display: flex;
-    max-width: 400px;
-    margin: 0 auto;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    max-width: 100%; /* Defina a largura máxima para 100% */
+    margin: 0 auto;
     border-radius: 10px;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #content_container {
     border-radius: 8px;
     padding: 20px;
-    width: 100%;
+    width: 400px; /* Defina a largura fixa como 400px */
     box-sizing: border-box;
+    background-color: white;
 }
+
 
 .containerdelogin h2 {
     text-align: center;

@@ -335,7 +335,6 @@ db.collection("Documentos").get().then((querySnapshot) => {
 document.addEventListener('DOMContentLoaded', function () {
     var emailInput = document.getElementById('login_email');
     var passwordInput = document.getElementById('login_password');
-    var loginButton = document.querySelector('#login_form_container button');
 
     function handleEnterKeyPress(event) {
         if (event.key === 'Enter') {
@@ -360,14 +359,15 @@ function togglePasswordVisibility(id, icon) {
     var passwordInput = document.getElementById(id);
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
-        icon.classList.remove('fa-regular', 'fa-eye');
-        icon.classList.add('fa-solid', 'fa-eye');
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
     } else {
         passwordInput.type = "password";
-        icon.classList.remove('fa-solid', 'fa-eye');
-        icon.classList.add('fa-regular', 'fa-eye');
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid');
     }
 }
+
 
 
 //deletar conta --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
