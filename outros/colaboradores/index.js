@@ -218,6 +218,21 @@ auth.onAuthStateChanged(function (user) {
                 // A conta ainda existe, exiba o conteúdo do usuário
                 var userData = snapshot.val();
 
+                
+                if (userData && userData.is_admin) {
+                    // User is an admin, show the adminPanel and toggleButtonADM
+                    document.getElementById('toggleButtonADM').style.display = 'block';
+                    document.getElementById('adminPanel').style.display = 'block';
+                    loadUsers(); // Load admin-specific content
+                } else {
+                    // User is not an admin, hide the toggleButtonADM and adminPanel
+                    document.getElementById('toggleButtonADM').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'none';
+                }
+    
+  
+
+
                 // Verifique o status da conta
                 if (userData.accountStatus === 'ativo') {
                     // Carregue o conteúdo dentro de post_login_content apenas para contas ativas
@@ -477,7 +492,6 @@ auth.onAuthStateChanged(function (user) {
             if (userData && userData.is_admin) {
                 // Mostrar interface administrativa
                 document.getElementById('adminPanel').style.display = 'block';
-                loadUsers(); // Carregar usuários apenas se for administrador
             } else {
                 // Esconder interface administrativa
                 document.getElementById('adminPanel').style.display = 'none';
@@ -671,15 +685,22 @@ function toggleAccountStatus(userId) {
     });
 }
 
- // Função para alternar a visibilidade do painel
- function toggleAdminPanel() {
+
+// Função para alternar a visibilidade do painel
+function toggleAdminPanel() {
     var adminPanel = document.getElementById("adminPanel");
     if (adminPanel.style.display === "block" || adminPanel.style.display === "") {
       adminPanel.style.display = "none";
     } else {
       adminPanel.style.display = "block";
     }
-  }
+}
 
-  // Adicione um evento de clique ao botão para chamar a função toggleAdminPanel
-  document.getElementById("toggleButtonADM").addEventListener("click", toggleAdminPanel);
+// Defina o painel como fechado por padrão
+document.addEventListener("DOMContentLoaded", function () {
+    var adminPanel = document.getElementById("adminPanel");
+    adminPanel.style.display = "none";
+});
+
+// Adicione um evento de clique ao botão para chamar a função toggleAdminPanel
+document.getElementById("toggleButtonADM").addEventListener("click", toggleAdminPanel);
