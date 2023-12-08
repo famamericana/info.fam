@@ -474,11 +474,10 @@ auth.onAuthStateChanged(function (user) {
     }
 });
 
-
 function loadUsers() {
-    var pendingUsersList = document.getElementById('pendingUsersList');
+    var adminsList = document.getElementById('adminsList');
     var approvedUsersList = document.getElementById('approvedUsersList');
-    pendingUsersList.innerHTML = ''; // Limpa a lista de usuários pendentes
+    adminsList.innerHTML = ''; // Limpa a lista de administradores
     approvedUsersList.innerHTML = ''; // Limpa a lista de usuários aprovados
 
     var usersRef = database.ref('users');
@@ -486,9 +485,6 @@ function loadUsers() {
         snapshot.forEach(function (childSnapshot) {
             var user = childSnapshot.val();
             var userId = childSnapshot.key;
-
-            
-        
 
             var userDiv = document.createElement('div');
             userDiv.id = 'user-' + userId;
@@ -499,7 +495,7 @@ function loadUsers() {
                 userType = 'ADM Geral';
                 userClass = 'admin-master';
             } else if (user.is_admin) {
-                userType = 'ADM';
+                userType = 'ADM Normal';
                 userClass = 'admin-normal';
             } else {
                 userType = 'Usuário Comum';
@@ -525,8 +521,11 @@ function loadUsers() {
                 userDiv.innerHTML += `<button onclick="makeUserAdmin('${userId}')">Promover a Admin</button>`;
             }
 
-            approvedUsersList.appendChild(userDiv);
-
+            if (user.is_super_admin || user.is_admin) {
+                adminsList.appendChild(userDiv); // Adicionar administradores à lista de administradores
+            } else {
+                approvedUsersList.appendChild(userDiv); // Adicionar usuários comuns à lista de usuários aprovados
+            }
         });
     });
 }
@@ -537,19 +536,40 @@ loadUsers();
 
 
 function deleteUser(userId) {
-    var confirmation = confirm("Tem certeza de que deseja deletar esta conta?");
-    if (confirmation) {
-        var userRef = database.ref('users/' + userId);
-        userRef.remove()
-            .then(function () {
-                console.log("Conta de usuário deletada com sucesso.");
-                document.getElementById('user-' + userId).remove(); // Remove o usuário da lista
-            })
-            .catch(function (error) {
-                console.error("Erro ao deletar conta de usuário: ", error);
-            });
-    }
+    var currentUser = auth.currentUser;
+    database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
+        var currentAdmin = snapshot.val();
+        database.ref('users/' + userId).once('value').then(function (userSnapshot) {
+            var targetUser = userSnapshot.val();
+            
+            if (currentAdmin.is_super_admin) {
+                // O administrador geral pode deletar qualquer conta
+                var confirmation = confirm("Tem certeza de que deseja deletar esta conta?");
+                if (confirmation) {
+                    var userRef = database.ref('users/' + userId);
+                    userRef.remove()
+                        .then(function () {
+                            console.log("Conta de usuário deletada com sucesso.");
+                            document.getElementById('user-' + userId).remove(); // Remove o usuário da lista
+                        })
+                        .catch(function (error) {
+                            console.error("Erro ao deletar conta de usuário: ", error);
+                        });
+                }
+            } else if (currentAdmin.is_admin && !targetUser.is_super_admin) {
+                // O ADM Normal não pode deletar a conta de outro ADM Normal
+                alert("Você não pode deletar a conta de um administrador.");
+            } else if (currentAdmin.is_admin && targetUser.is_super_admin) {
+                // O ADM Normal não pode deletar a conta do ADM Master
+                alert("Você não pode deletar a conta de um administrador geral.");
+            }
+        });
+    });
 }
+
+
+
+
 
 
 function makeUserSuperAdmin(userId) {
