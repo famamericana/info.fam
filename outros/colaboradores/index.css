@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Source Sans 3', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f2f3f8;
     margin: 0;
     padding: 0;
 }
@@ -30,7 +30,6 @@ body {
 }
 
 .containerdelogin h2 {
-    color: #333;
     text-align: center;
     margin-bottom: 0;
 }
@@ -144,8 +143,9 @@ button {
 
 #post_login_content{
     max-width: 960px;
-    background-color: #45b7e5;
     margin: 0 auto;
+    background-color: white;
+    padding: 20px;
 }
 
 #post_login_content_firestoreDocumentos {
@@ -242,4 +242,54 @@ button {
 		animation-timing-function: ease-out;
 		stroke-dashoffset: -163;
 	}
+}
+
+
+/* usuario --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.usuariopções {
+    display: flex;
+    float: inline-end;
+    position: absolute;
+    right: 20px;
+    top: 55px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #45b7e5;
+}
+
+#toggleButton{
+   color: white;
+   position: absolute;
+   right: 20px;
+   top: 0;
+}
+
+#updateNameButton {
+    display: none; /* Esconde inicialmente o botão Atualizar Nome */
+}
+
+.Namebotão:disabled{
+    background-color: white;
+    color: black;
+}
+
+#editNameButton{
+    padding:  10px;
+    padding-right: 0;
+    height: 38px;
+    background-color: white;
+}
+
+#accountCreationDate{
+    font-size: small;
+    color: #bac0d1;
+}
+
+#lastLoginDate{
+    font-size: small;
+    color: #bac0d1;
+    margin-top: 5px;
+
 }

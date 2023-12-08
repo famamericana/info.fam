@@ -12,7 +12,7 @@
 
 <body>
 
-    <div id="loadingScreen" >
+    <div id="loadingScreen">
         <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="pl-grad1" x1="1" y1="0.5" x2="0" y2="0.5">
@@ -24,27 +24,43 @@
                     <stop offset="100%" stop-color="hsla(267, 44%, 38%, 1)" />
                 </linearGradient>
             </defs>
-            <circle class="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" stroke-width="36" stroke-dasharray="0 257 1 257" stroke-dashoffset="0.01" stroke-linecap="round" transform="rotate(-90,100,100)" />
-            <line class="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" stroke-width="36" stroke-dasharray="1 165" stroke-linecap="round" />
+            <circle class="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" stroke-width="36"
+                stroke-dasharray="0 257 1 257" stroke-dashoffset="0.01" stroke-linecap="round"
+                transform="rotate(-90,100,100)" />
+            <line class="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" stroke-width="36"
+                stroke-dasharray="1 165" stroke-linecap="round" />
         </svg>
     </div>
 
     <!-- Conteúdo após o login -->
     <div id="post_login_content" style="display:none;">
+        <button id="toggleButton"><i class="fa-solid fa-user"></i></button>
+
+
         <div class="usuariopções">
-            <button id="deleteAccountButton">Excluir Conta</button>
-            <button id="logout_button" onclick="logout()">Logout</button>
-            <div>
-                <input type="text" id="newName" placeholder="Novo Nome">
-                <button onclick="updateName()">Atualizar Nome</button>
+            <div style="display: flex;">
+                <input  class="Namebotão" type="text" id="newName" placeholder="Nome Atual" disabled>
+                <button id="editNameButton"><i class="fa fa-edit"></i></button>
             </div>
-            <div id="accountCreationDate">Data de Criação da Conta: </div>
+            <div>
+                <button id="updateNameButton" onclick="updateName()">Atualizar Nome</button>
+
+                <button id="deleteAccountButton">Excluir Conta</button>
+                <button title="Logout" id="logout_button" onclick="logout()"><i class="fa-solid fa-right-to-bracket"></i></button>
+            </div>
+
+            <div id="lastLoginDate">Último Login: </div>
+            <div id="accountCreationDate">Criação da Conta: </div>
+
         </div>
-        
+
         <h2>Bem-vindo</h2>
 
         <!-- Conteúdo que aparece após o usuário logar -->
         <div id="post_login_content_firestoreDocumentos"></div>
+    
+    
+    </div>
 
 
     </div>

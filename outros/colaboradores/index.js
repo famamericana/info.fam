@@ -216,10 +216,19 @@ auth.onAuthStateChanged(function (user) {
                 fetchAndDisplayDocuments();
                 document.getElementById('content_container').style.display = 'none';
                 document.getElementById('post_login_content').style.display = 'block';
-                
+
+                // Buscar o nome atual do usuário e atualizar o placeholder
+                var userData = snapshot.val();
+                document.getElementById('newName').placeholder = userData.full_name;
+
                 // Buscar e exibir a data de criação da conta
                 var creationDate = new Date(user.metadata.creationTime);
                 document.getElementById('accountCreationDate').innerText = "Data de Criação da Conta: " + creationDate.toLocaleDateString();
+
+                // Buscar e exibir a data e hora do último login
+                var lastLoginDate = new Date(userData.last_login);
+                document.getElementById('lastLoginDate').innerText = "Último Login: " + lastLoginDate.toLocaleString();
+
             } else {
                 // A conta não existe mais, deslogue o usuário
                 logout();
@@ -384,3 +393,38 @@ function updateName() {
     }
 }
 
+
+document.getElementById('editNameButton').addEventListener('click', function () {
+    var newNameInput = document.getElementById('newName');
+    var updateNameButton = document.getElementById('updateNameButton');
+
+    newNameInput.disabled = !newNameInput.disabled; // Alterna entre habilitado e desabilitado
+
+    if (!newNameInput.disabled) {
+        newNameInput.focus(); // Coloca o foco no campo de entrada
+        updateNameButton.style.display = 'block'; // Mostra o botão Atualizar Nome
+    } else {
+        updateNameButton.style.display = 'none'; // Esconde o botão Atualizar Nome
+    }
+});
+
+
+// botão de usuario ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.getElementById('toggleButton');
+    var usuarioOpcoes = document.querySelector('.usuariopções');
+
+    // Oculta o botão ao carregar a página
+    usuarioOpcoes.style.display = 'none';
+
+    toggleButton.addEventListener('click', function () {
+        usuarioOpcoes.style.display = usuarioOpcoes.style.display === 'none' ? 'block' : 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (!usuarioOpcoes.contains(event.target) && !toggleButton.contains(event.target)) {
+            usuarioOpcoes.style.display = 'none';
+        }
+    });
+});
