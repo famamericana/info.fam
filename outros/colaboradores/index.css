@@ -303,6 +303,8 @@ button {
 
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
+
+
 .user-type {
     padding: 10px;
     margin-bottom: 10px;
@@ -320,3 +322,4 @@ button {
 .user-common {
     background-color: #ccffcc; /* Verde claro */
 }
+

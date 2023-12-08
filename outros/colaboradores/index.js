@@ -671,3 +671,15 @@ function toggleAccountStatus(userId) {
     });
 }
 
+ // Função para alternar a visibilidade do painel
+ function toggleAdminPanel() {
+    var adminPanel = document.getElementById("adminPanel");
+    if (adminPanel.style.display === "block" || adminPanel.style.display === "") {
+      adminPanel.style.display = "none";
+    } else {
+      adminPanel.style.display = "block";
+    }
+  }
+
+  // Adicione um evento de clique ao botão para chamar a função toggleAdminPanel
+  document.getElementById("toggleButtonADM").addEventListener("click", toggleAdminPanel);
