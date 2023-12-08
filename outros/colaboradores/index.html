@@ -31,12 +31,31 @@
                 stroke-dasharray="1 165" stroke-linecap="round" />
         </svg>
     </div>
+    
+<!-- Conteúdo para usuários pendentes de aprovação -->
+<div id="pending_approval_content" style="display:none;">
+    <h2>Aguardando Aprovação</h2>
+    <p>Sua conta está atualmente pendente de aprovação. Por favor, aguarde a aprovação por um administrador.</p>
+    <button onclick="logout()">Sair</button>
+</div>
 
     <!-- Conteúdo após o login -->
     <div id="post_login_content" style="display:none;">
         <button id="toggleButton"><i class="fa-solid fa-user"></i></button>
 
-
+        <div id="adminPanel">
+            <h2>Painel Administrativo</h2>
+            <h3>Usuários Pendentes</h3>
+            <div id="pendingUsersList">
+                <!-- Usuários pendentes serão listados aqui -->
+            </div>
+            <h3>Usuários Aprovados</h3>
+            <div id="approvedUsersList">
+                <!-- Usuários aprovados serão listados aqui -->
+            </div>
+        </div>
+        
+        
         <div class="usuariopções">
             <div style="display: flex;">
                 <input  class="Namebotão" type="text" id="newName" placeholder="Nome Atual" disabled>

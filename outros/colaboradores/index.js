@@ -54,7 +54,9 @@ function register() {
                 email: email,
                 full_name: full_name,
                 departamento_nome: departamento_nome,
-                last_login: Date.now()
+                last_login: Date.now(),
+                is_admin: false, // padrão para usuários comuns
+                is_super_admin: false // Adiciona esta linha
             }
 
             // Push to Firebase Database
@@ -133,6 +135,7 @@ function validate_email(email) {
         return false
     }
 }
+
 
 
 function validate_password(password) {
@@ -428,3 +431,165 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// adm ----------------------------------------------------------------------------------------------------------------------------------
+
+function makeUserAdmin(userId) {
+    var currentUser = auth.currentUser;
+    database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
+        if (snapshot.val().is_super_admin) {
+            var userRef = database.ref('users/' + userId);
+            userRef.update({ is_admin: true })
+                .then(function () {
+                    console.log("Usuário promovido a Admin Normal.");
+                    loadUsers(); // Recarrega a lista de usuários
+                })
+                .catch(function (error) {
+                    console.error("Erro ao promover usuário a Admin Normal: ", error);
+                });
+        } else {
+            console.error("Ação não permitida: usuário não é Admin Master.");
+        }
+    });
+}
+
+
+
+auth.onAuthStateChanged(function (user) {
+    if (user) {
+        database.ref('users/' + user.uid).once('value').then(function (snapshot) {
+            var userData = snapshot.val();
+            if (userData && userData.is_admin) {
+                // Mostrar interface administrativa
+                document.getElementById('adminPanel').style.display = 'block';
+                loadUsers(); // Carregar usuários apenas se for administrador
+            } else {
+                // Esconder interface administrativa
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+        });
+    } else {
+        // Usuário não está logado ou a sessão expirou
+        document.getElementById('adminPanel').style.display = 'none';
+    }
+});
+
+
+function loadUsers() {
+    var pendingUsersList = document.getElementById('pendingUsersList');
+    var approvedUsersList = document.getElementById('approvedUsersList');
+    pendingUsersList.innerHTML = ''; // Limpa a lista de usuários pendentes
+    approvedUsersList.innerHTML = ''; // Limpa a lista de usuários aprovados
+
+    var usersRef = database.ref('users');
+    usersRef.once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var user = childSnapshot.val();
+            var userId = childSnapshot.key;
+
+            
+        
+
+            var userDiv = document.createElement('div');
+            userDiv.id = 'user-' + userId;
+            userDiv.classList.add('user-type'); // Classe base para todos os usuários
+
+            var userType, userClass;
+            if (user.is_super_admin) {
+                userType = 'ADM Geral';
+                userClass = 'admin-master';
+            } else if (user.is_admin) {
+                userType = 'ADM';
+                userClass = 'admin-normal';
+            } else {
+                userType = 'Usuário Comum';
+                userClass = 'user-common';
+            }
+            userDiv.classList.add(userClass); // Adiciona a classe específica do tipo de usuário
+
+            userDiv.innerHTML = `
+                <p>Nome: ${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</p>
+                <p>Departamento: ${user.departamento_nome || 'Não informado'}</p>
+                <p>Tipo de Usuário: ${userType}</p>
+
+                <button onclick="deleteUser('${userId}')">Deletar Conta</button>
+            `;
+
+            // Botão para remover status de admin
+            if (user.is_admin && !user.is_super_admin) {
+                userDiv.innerHTML += `<button onclick="removeAdminStatus('${userId}')">Remover Status de Admin</button>`;
+            }
+
+            // Botão para promover a Admin Normal
+            if (!user.is_admin && !user.is_super_admin) {
+                userDiv.innerHTML += `<button onclick="makeUserAdmin('${userId}')">Promover a Admin</button>`;
+            }
+
+            approvedUsersList.appendChild(userDiv);
+
+        });
+    });
+}
+
+// Chame esta função para carregar e exibir os usuários
+loadUsers();
+
+
+
+function deleteUser(userId) {
+    var confirmation = confirm("Tem certeza de que deseja deletar esta conta?");
+    if (confirmation) {
+        var userRef = database.ref('users/' + userId);
+        userRef.remove()
+            .then(function () {
+                console.log("Conta de usuário deletada com sucesso.");
+                document.getElementById('user-' + userId).remove(); // Remove o usuário da lista
+            })
+            .catch(function (error) {
+                console.error("Erro ao deletar conta de usuário: ", error);
+            });
+    }
+}
+
+
+function makeUserSuperAdmin(userId) {
+    var currentUser = auth.currentUser;
+    database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
+        if (snapshot.val().is_super_admin) {
+            var userRef = database.ref('users/' + userId);
+            userRef.update({ is_super_admin: true })
+                .then(function () {
+                    console.log("Usuário promovido a Admin Master.");
+                    loadUsers(); // Recarrega a lista de usuários
+                })
+                .catch(function (error) {
+                    console.error("Erro ao promover usuário a Admin Master: ", error);
+                });
+        } else {
+            console.error("Ação não permitida: usuário não é Admin Master.");
+        }
+    });
+}
+function removeAdminStatus(userId) {
+    var currentUser = auth.currentUser;
+    if (currentUser.uid === userId) {
+        alert("Você não pode deixar de ser adm, consulte o administrador geral.");
+        return;
+    }
+
+    database.ref('users/' + currentUser.uid).once('value').then(function(snapshot) {
+        if (snapshot.val().is_super_admin) {
+            var userRef = database.ref('users/' + userId);
+            userRef.update({ is_admin: false, is_super_admin: false })
+                .then(function () {
+                    console.log("Status de admin removido.");
+                    loadUsers(); // Recarrega a lista de usuários
+                })
+                .catch(function (error) {
+                    console.error("Erro ao remover status de admin: ", error);
+                });
+        } else {
+            console.error("Ação não permitida: usuário não é Admin Master.");
+        }
+    });
+}

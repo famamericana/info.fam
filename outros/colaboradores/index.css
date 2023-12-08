@@ -300,3 +300,23 @@ button {
     color: white;
     padding: 5px;
 }
+
+
+/* adm ----------------------------------------------------------------------------------------------------------*/
+.user-type {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.admin-master {
+    background-color: #ffcccc; /* Vermelho claro */
+}
+
+.admin-normal {
+    background-color: #ccccff; /* Azul claro */
+}
+
+.user-common {
+    background-color: #ccffcc; /* Verde claro */
+}
