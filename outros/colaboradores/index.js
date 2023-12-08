@@ -109,11 +109,14 @@ function login() {
             /* User Logged In
             alert('User Logged In!!') */
 
-            fetchAndDisplayDocuments();
 
             // Aqui a lógica para exibir o conteúdo após o login
             document.getElementById('content_container').style.display = 'none';
-            document.getElementById('post_login_content').style.display = 'block';
+            document.getElementById('post_login_content').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'block';
+
+            fetchAndDisplayDocuments();
+
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -203,6 +206,9 @@ function logout() {
         }
 
         isLoginFormShown = true; // Reset para mostrar o formulário de login
+
+        // Recarregue a página
+        location.reload();
     }).catch(function (error) {
         // Tratar erro de logout
         alert(error.message);
@@ -227,16 +233,6 @@ auth.onAuthStateChanged(function (user) {
                     document.getElementById('post_login_content').style.display = 'block';
                     document.getElementById('post_login_content_dormente').style.display = 'none'; // Oculte o conteúdo dormente
 
-                    if (userData && userData.is_admin) {
-                        // User is an admin, show the adminPanel and toggleButtonADM
-                        document.getElementById('toggleButtonADM').style.display = 'block';
-                        document.getElementById('adminPanel').style.display = 'none';
-                        loadUsers(); // Load admin-specific content
-                    } else {
-                        // User is not an admin, hide the toggleButtonADM and adminPanel
-                        document.getElementById('toggleButtonADM').style.display = 'none';
-                        document.getElementById('adminPanel').style.display = 'none';
-                    }
 
                 } else if (userData.accountStatus === 'dormente') {
                     // A conta está dormente, não carregue o conteúdo de post_login_content
@@ -247,6 +243,16 @@ auth.onAuthStateChanged(function (user) {
                     // Outros estados da conta, se necessário
                 }
 
+                if (userData && userData.is_admin) {
+                    // User is an admin, show the adminPanel and toggleButtonADM
+                    document.getElementById('toggleButtonADM').style.display = 'block';
+                    document.getElementById('adminPanel').style.display = 'none';
+                    loadUsers(); // Load admin-specific content
+                } else {
+                    // User is not an admin, hide the toggleButtonADM and adminPanel
+                    document.getElementById('toggleButtonADM').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'none';
+                }
                 // Buscar o nome atual do usuário e atualizar o placeholder
                 document.getElementById('newName').placeholder = userData.full_name;
 
@@ -545,13 +551,17 @@ function loadUsers() {
                 <p>Departamento: ${user.departamento_nome || 'Não informado'}</p>
                 <p>Tipo de Usuário: ${userType}</p>
                 <p>Status da Conta: ${user.accountStatus}</p>
-                <button onclick="toggleAccountStatus('${userId}')">Alternar Status da Conta</button>
-
                 `;
+
+            // Verifica se o usuário não é um administrador
+            if (!user.is_admin && !user.is_super_admin) {
+                // Adicione o botão apenas para usuários não administradores
+                userDiv.innerHTML += `<button onclick="toggleAccountStatus('${userId}')">Status da Conta</button>`;
+            }
 
             // Botão para remover status de admin
             if (user.is_admin && !user.is_super_admin) {
-                userDiv.innerHTML += `<button onclick="removeAdminStatus('${userId}')">Remover Status de Admin</button>`;
+                userDiv.innerHTML += `<button onclick="removeAdminStatus('${userId}')">Remover cargo Admin</button>`;
             }
 
             // Botão para promover a Admin Normal
