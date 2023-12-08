@@ -293,3 +293,10 @@ button {
     margin-top: 5px;
 
 }
+
+#deleteAccountButton{
+    width: 100%;
+    background-color: #d5dcf1;
+    color: white;
+    padding: 5px;
+}
