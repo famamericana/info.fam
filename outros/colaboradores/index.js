@@ -222,7 +222,7 @@ auth.onAuthStateChanged(function (user) {
                 if (userData && userData.is_admin) {
                     // User is an admin, show the adminPanel and toggleButtonADM
                     document.getElementById('toggleButtonADM').style.display = 'block';
-                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('adminPanel').style.display = 'none';
                     loadUsers(); // Load admin-specific content
                 } else {
                     // User is not an admin, hide the toggleButtonADM and adminPanel
@@ -685,22 +685,18 @@ function toggleAccountStatus(userId) {
     });
 }
 
+// Obtém o botão e o painel admin pelo ID
+const toggleButton = document.getElementById("toggleButtonADM");
+const adminPanel = document.getElementById("adminPanel");
 
-// Função para alternar a visibilidade do painel
-function toggleAdminPanel() {
-    var adminPanel = document.getElementById("adminPanel");
-    if (adminPanel.style.display === "block" || adminPanel.style.display === "") {
-      adminPanel.style.display = "none";
+// Adiciona um ouvinte de evento de clique ao botão
+toggleButton.addEventListener("click", function() {
+    // Verifica o estado atual do painel admin
+    if (adminPanel.style.display === "none" || adminPanel.style.display === "") {
+        // Se estiver oculto, exibe-o
+        adminPanel.style.display = "block";
     } else {
-      adminPanel.style.display = "block";
+        // Caso contrário, oculta-o
+        adminPanel.style.display = "none";
     }
-}
-
-// Defina o painel como fechado por padrão
-document.addEventListener("DOMContentLoaded", function () {
-    var adminPanel = document.getElementById("adminPanel");
-    adminPanel.style.display = "none";
 });
-
-// Adicione um evento de clique ao botão para chamar a função toggleAdminPanel
-document.getElementById("toggleButtonADM").addEventListener("click", toggleAdminPanel);
