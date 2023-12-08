@@ -59,7 +59,7 @@ function register() {
                 is_super_admin: false,
                 accountStatus: "ativo" // Defina como "ativo" por padrão
             }
-            
+
 
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
@@ -218,19 +218,6 @@ auth.onAuthStateChanged(function (user) {
                 // A conta ainda existe, exiba o conteúdo do usuário
                 var userData = snapshot.val();
 
-                
-                if (userData && userData.is_admin) {
-                    // User is an admin, show the adminPanel and toggleButtonADM
-                    document.getElementById('toggleButtonADM').style.display = 'block';
-                    document.getElementById('adminPanel').style.display = 'none';
-                    loadUsers(); // Load admin-specific content
-                } else {
-                    // User is not an admin, hide the toggleButtonADM and adminPanel
-                    document.getElementById('toggleButtonADM').style.display = 'none';
-                    document.getElementById('adminPanel').style.display = 'none';
-                }
-    
-  
 
 
                 // Verifique o status da conta
@@ -239,6 +226,18 @@ auth.onAuthStateChanged(function (user) {
                     fetchAndDisplayDocuments();
                     document.getElementById('post_login_content').style.display = 'block';
                     document.getElementById('post_login_content_dormente').style.display = 'none'; // Oculte o conteúdo dormente
+
+                    if (userData && userData.is_admin) {
+                        // User is an admin, show the adminPanel and toggleButtonADM
+                        document.getElementById('toggleButtonADM').style.display = 'block';
+                        document.getElementById('adminPanel').style.display = 'none';
+                        loadUsers(); // Load admin-specific content
+                    } else {
+                        // User is not an admin, hide the toggleButtonADM and adminPanel
+                        document.getElementById('toggleButtonADM').style.display = 'none';
+                        document.getElementById('adminPanel').style.display = 'none';
+                    }
+
                 } else if (userData.accountStatus === 'dormente') {
                     // A conta está dormente, não carregue o conteúdo de post_login_content
                     document.getElementById('post_login_content').style.display = 'none';
@@ -690,7 +689,7 @@ const toggleButton = document.getElementById("toggleButtonADM");
 const adminPanel = document.getElementById("adminPanel");
 
 // Adiciona um ouvinte de evento de clique ao botão
-toggleButton.addEventListener("click", function() {
+toggleButton.addEventListener("click", function () {
     // Verifica o estado atual do painel admin
     if (adminPanel.style.display === "none" || adminPanel.style.display === "") {
         // Se estiver oculto, exibe-o
