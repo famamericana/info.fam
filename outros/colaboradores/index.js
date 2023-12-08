@@ -62,6 +62,7 @@ function register() {
 
             /*
             alert('User Created!!') */
+            
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -165,13 +166,13 @@ function toggleForm() {
     if (isLoginFormShown) {
         document.getElementById('login_form_container').style.display = 'none';
         document.getElementById('register_form_container').style.display = 'block';
-        document.getElementById('toggleFormButtonLogin').innerText = 'Entrar';
+        document.getElementById('toggleFormButtonLogin').innerText = 'Voltar';
         document.getElementById('toggleFormButtonRegistrar').innerText = 'Login';
         isLoginFormShown = false;
     } else {
         document.getElementById('login_form_container').style.display = 'block';
         document.getElementById('register_form_container').style.display = 'none';
-        document.getElementById('toggleFormButtonLogin').innerText = 'Criar conta';
+        document.getElementById('toggleFormButtonLogin').innerText = 'Voltar';
         document.getElementById('toggleFormButtonRegistrar').innerText = 'Registrar';
         isLoginFormShown = true;
     }
@@ -182,15 +183,27 @@ function toggleForm() {
 function logout() {
     auth.signOut().then(function () {
         // Logout bem-sucedido
-        document.getElementById('content_container').style.display = 'block';
-        document.getElementById('post_login_content').style.display = 'none';
+        var contentContainer = document.getElementById('content_container');
+        var postLoginContent = document.getElementById('post_login_content');
+        var toggleFormButton = document.getElementById('toggleFormButton'); // Verifique se este ID está correto
+
+        if (contentContainer) {
+            contentContainer.style.display = 'block';
+        }
+        if (postLoginContent) {
+            postLoginContent.style.display = 'none';
+        }
+        if (toggleFormButton) {
+            toggleFormButton.innerText = 'Register'; // Ou o texto que você deseja
+        }
+
         isLoginFormShown = true; // Reset para mostrar o formulário de login
-        document.getElementById('toggleFormButton').innerText = 'Register';
     }).catch(function (error) {
         // Tratar erro de logout
         alert(error.message);
     });
 }
+
 
 
 // Verifica o estado de autenticação quando a aplicação é carregada
