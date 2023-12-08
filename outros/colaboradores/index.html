@@ -32,11 +32,13 @@
         </svg>
     </div>
 
-    <!-- Conteúdo para usuários pendentes de aprovação -->
-    <div id="pending_approval_content" style="display:none;">
-        <h2>Aguardando Aprovação</h2>
-        <p>Sua conta está atualmente pendente de aprovação. Por favor, aguarde a aprovação por um administrador.</p>
-        <button onclick="logout()">Sair</button>
+    <!-- Conteúdo após o login e a conta está dormente -->
+    <div id="post_login_content_dormente" style="display: none;">
+        <!-- Conteúdo para usuários dormentes -->
+        <p>Sua conta está dormente. Entre em contato com um dos administradores.</p>
+        <button title="Logout" id="logout_button" onclick="logout()"><i
+            class="fa-solid fa-right-to-bracket"></i></button>
+</div>
     </div>
 
     <!-- Conteúdo após o login -->
@@ -51,10 +53,17 @@
             </div>
 
             <!-- Seção de Usuários Aprovados -->
-            <h2>Usuários Aprovados</h2>
-            <div id="approvedUsersList">
-                <!-- Lista de usuários aprovados será exibida aqui -->
+            <h2>Usuários Ativos</h2>
+            <div id="activeUsersList">
+                <!-- Lista de usuários ativos será exibida aqui -->
             </div>
+
+            <!-- Seção de Usuários Aprovados -->
+            <h2>Usuários Dormentes</h2>
+            <div id="dormantUsersList">
+                <!-- Lista de usuários dormentes aparecerá aqui -->
+            </div>
+
         </div>
 
 

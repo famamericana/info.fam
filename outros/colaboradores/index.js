@@ -55,9 +55,11 @@ function register() {
                 full_name: full_name,
                 departamento_nome: departamento_nome,
                 last_login: Date.now(),
-                is_admin: false, // padrão para usuários comuns
-                is_super_admin: false // Adiciona esta linha
+                is_admin: false,
+                is_super_admin: false,
+                accountStatus: "ativo" // Defina como "ativo" por padrão
             }
+            
 
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
@@ -207,8 +209,6 @@ function logout() {
     });
 }
 
-
-
 // Verifica o estado de autenticação quando a aplicação é carregada
 auth.onAuthStateChanged(function (user) {
     if (user) {
@@ -216,12 +216,24 @@ auth.onAuthStateChanged(function (user) {
         database.ref('users/' + user.uid).once('value').then(function (snapshot) {
             if (snapshot.exists()) {
                 // A conta ainda existe, exiba o conteúdo do usuário
-                fetchAndDisplayDocuments();
-                document.getElementById('content_container').style.display = 'none';
-                document.getElementById('post_login_content').style.display = 'block';
+                var userData = snapshot.val();
+
+                // Verifique o status da conta
+                if (userData.accountStatus === 'ativo') {
+                    // Carregue o conteúdo dentro de post_login_content apenas para contas ativas
+                    fetchAndDisplayDocuments();
+                    document.getElementById('post_login_content').style.display = 'block';
+                    document.getElementById('post_login_content_dormente').style.display = 'none'; // Oculte o conteúdo dormente
+                } else if (userData.accountStatus === 'dormente') {
+                    // A conta está dormente, não carregue o conteúdo de post_login_content
+                    document.getElementById('post_login_content').style.display = 'none';
+                    document.getElementById('post_login_content_dormente').style.display = 'block'; // Exiba o conteúdo dormente
+
+                } else {
+                    // Outros estados da conta, se necessário
+                }
 
                 // Buscar o nome atual do usuário e atualizar o placeholder
-                var userData = snapshot.val();
                 document.getElementById('newName').placeholder = userData.full_name;
 
                 // Buscar e exibir a data de criação da conta
@@ -245,10 +257,13 @@ auth.onAuthStateChanged(function (user) {
         // Usuário não está logado, exiba o formulário de login
         document.getElementById('content_container').style.display = 'block';
         document.getElementById('post_login_content').style.display = 'none';
+        document.getElementById('post_login_content_dormente').style.display = 'none'; // Certifique-se de ocultar o conteúdo dormente também
     }
     // Esconde a tela de carregamento após a verificação
     document.getElementById('loadingScreen').style.display = 'none';
 });
+
+
 
 
 function sendPasswordResetEmail() {
@@ -473,12 +488,13 @@ auth.onAuthStateChanged(function (user) {
         document.getElementById('adminPanel').style.display = 'none';
     }
 });
-
 function loadUsers() {
     var adminsList = document.getElementById('adminsList');
-    var approvedUsersList = document.getElementById('approvedUsersList');
+    var activeUsersList = document.getElementById('activeUsersList');
+    var dormantUsersList = document.getElementById('dormantUsersList');
     adminsList.innerHTML = ''; // Limpa a lista de administradores
-    approvedUsersList.innerHTML = ''; // Limpa a lista de usuários aprovados
+    activeUsersList.innerHTML = ''; // Limpa a lista de usuários ativos
+    dormantUsersList.innerHTML = ''; // Limpa a lista de usuários dormentes
 
     var usersRef = database.ref('users');
     usersRef.once('value', function (snapshot) {
@@ -494,22 +510,31 @@ function loadUsers() {
             if (user.is_super_admin) {
                 userType = 'ADM Geral';
                 userClass = 'admin-master';
+                adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else if (user.is_admin) {
                 userType = 'ADM Normal';
                 userClass = 'admin-normal';
+                adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else {
                 userType = 'Usuário Comum';
                 userClass = 'user-common';
+                if (user.accountStatus === 'ativo') {
+                    activeUsersList.appendChild(userDiv); // Adicione usuários ativos à lista de usuários ativos
+                } else {
+                    dormantUsersList.appendChild(userDiv); // Adicione usuários dormentes à lista de usuários dormentes
+                }
             }
-            userDiv.classList.add(userClass); // Adiciona a classe específica do tipo de usuário
+
+            userDiv.classList.add(userClass); // Adicione a classe específica do tipo de usuário
 
             userDiv.innerHTML = `
                 <p>Nome: ${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</p>
                 <p>Departamento: ${user.departamento_nome || 'Não informado'}</p>
                 <p>Tipo de Usuário: ${userType}</p>
+                <p>Status da Conta: ${user.accountStatus}</p>
+                <button onclick="toggleAccountStatus('${userId}')">Alternar Status da Conta</button>
 
-                <button onclick="deleteUser('${userId}')">Deletar Conta</button>
-            `;
+                `;
 
             // Botão para remover status de admin
             if (user.is_admin && !user.is_super_admin) {
@@ -520,54 +545,54 @@ function loadUsers() {
             if (!user.is_admin && !user.is_super_admin) {
                 userDiv.innerHTML += `<button onclick="makeUserAdmin('${userId}')">Promover a Admin</button>`;
             }
-
-            if (user.is_super_admin || user.is_admin) {
-                adminsList.appendChild(userDiv); // Adicionar administradores à lista de administradores
-            } else {
-                approvedUsersList.appendChild(userDiv); // Adicionar usuários comuns à lista de usuários aprovados
-            }
         });
     });
 }
 
-// Chame esta função para carregar e exibir os usuários
-loadUsers();
 
 
 
-function deleteUser(userId) {
+
+function deactivateAccount(userId) {
     var currentUser = auth.currentUser;
     database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
         var currentAdmin = snapshot.val();
         database.ref('users/' + userId).once('value').then(function (userSnapshot) {
             var targetUser = userSnapshot.val();
-            
+
             if (currentAdmin.is_super_admin) {
-                // O administrador geral pode deletar qualquer conta
-                var confirmation = confirm("Tem certeza de que deseja deletar esta conta?");
+                // O administrador geral pode desativar qualquer conta
+                var confirmation = confirm("Tem certeza de que deseja desativar esta conta?");
                 if (confirmation) {
+                    // Atualize o campo accountStatus para "dormant" no banco de dados
                     var userRef = database.ref('users/' + userId);
-                    userRef.remove()
+                    userRef.update({ accountStatus: 'dormant' })
                         .then(function () {
-                            console.log("Conta de usuário deletada com sucesso.");
-                            document.getElementById('user-' + userId).remove(); // Remove o usuário da lista
+                            console.log("Conta de usuário desativada com sucesso.");
+                            // Mova o usuário para outra parte do banco de dados, em vez de removê-lo
+                            var dormantUsersRef = database.ref('dormantUsers/' + userId);
+                            userRef.once('value').then(function (userSnapshot) {
+                                var userData = userSnapshot.val();
+                                dormantUsersRef.set(userData);
+
+                                // Remova o usuário da lista principal
+                                document.getElementById('user-' + userId).remove();
+                            });
                         })
                         .catch(function (error) {
-                            console.error("Erro ao deletar conta de usuário: ", error);
+                            console.error("Erro ao desativar a conta de usuário: ", error);
                         });
                 }
             } else if (currentAdmin.is_admin && !targetUser.is_super_admin) {
-                // O ADM Normal não pode deletar a conta de outro ADM Normal
-                alert("Você não pode deletar a conta de um administrador.");
+                // O ADM Normal não pode desativar a conta de outro ADM Normal
+                alert("Você não pode desativar a conta de um administrador.");
             } else if (currentAdmin.is_admin && targetUser.is_super_admin) {
-                // O ADM Normal não pode deletar a conta do ADM Master
-                alert("Você não pode deletar a conta de um administrador geral.");
+                // O ADM Normal não pode desativar a conta do ADM Master
+                alert("Você não pode desativar a conta de um administrador geral.");
             }
         });
     });
 }
-
-
 
 
 
@@ -597,7 +622,7 @@ function removeAdminStatus(userId) {
         return;
     }
 
-    database.ref('users/' + currentUser.uid).once('value').then(function(snapshot) {
+    database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
         if (snapshot.val().is_super_admin) {
             var userRef = database.ref('users/' + userId);
             userRef.update({ is_admin: false, is_super_admin: false })
@@ -613,3 +638,36 @@ function removeAdminStatus(userId) {
         }
     });
 }
+
+
+function setAccountStatus(userId, status) {
+    var userRef = database.ref('users/' + userId);
+    userRef.update({ accountStatus: status })
+        .then(function () {
+            console.log("Status da conta atualizado com sucesso.");
+            loadUsers(); // Recarrega a lista de usuários
+        })
+        .catch(function (error) {
+            console.error("Erro ao atualizar o status da conta: ", error);
+        });
+}
+
+
+function toggleAccountStatus(userId) {
+    var userRef = database.ref('users/' + userId);
+
+    userRef.once('value', function (snapshot) {
+        var user = snapshot.val();
+        var newStatus = user.accountStatus === 'ativo' ? 'dormente' : 'ativo';
+
+        userRef.update({ accountStatus: newStatus })
+            .then(function () {
+                // Atualização bem-sucedida, atualize a lista de usuários
+                loadUsers();
+            })
+            .catch(function (error) {
+                console.error("Erro ao alternar o status da conta: ", error);
+            });
+    });
+}
+
