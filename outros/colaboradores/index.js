@@ -537,11 +537,11 @@ function loadUsers() {
                 userClass = 'admin-master';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else if (user.is_admin) {
-                userType = 'ADM Normal';
+                userType = 'ADM';
                 userClass = 'admin-normal';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else {
-                userType = 'Usuário Comum';
+                userType = 'Usuário';
                 userClass = 'user-common';
                 if (user.accountStatus === 'ativo') {
                     activeUsersList.appendChild(userDiv); // Adicione usuários ativos à lista de usuários ativos
@@ -554,8 +554,7 @@ function loadUsers() {
 
             userDiv.innerHTML = `
                 <p>Nome: ${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</p>
-                <p>Departamento: ${user.departamento_nome || 'Não informado'}</p>
-                <p>Tipo de Usuário: ${userType}</p>
+                <p>${user.departamento_nome || 'Não informado'} | ${userType}</p>
                 <p>Status da Conta: ${user.accountStatus}</p>
                 `;
 
