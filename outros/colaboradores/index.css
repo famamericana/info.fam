@@ -152,6 +152,8 @@ button {
     margin: 0 auto;
     background-color: white;
     padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
 #post_login_content_firestoreDocumentos {
@@ -303,7 +305,7 @@ button {
 #deleteAccountButton{
     width: 100%;
     background-color: #d5dcf1;
-    color: white;
+    color: #9da6be;
     padding: 5px;
 }
 

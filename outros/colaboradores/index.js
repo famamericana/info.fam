@@ -110,10 +110,14 @@ function login() {
             alert('User Logged In!!') */
 
 
+
             // Aqui a lógica para exibir o conteúdo após o login
             document.getElementById('content_container').style.display = 'none';
             document.getElementById('post_login_content').style.display = 'none';
             document.getElementById('loadingScreen').style.display = 'block';
+
+            // Recarregue a página
+            location.reload();
 
             fetchAndDisplayDocuments();
 
@@ -224,8 +228,6 @@ auth.onAuthStateChanged(function (user) {
                 // A conta ainda existe, exiba o conteúdo do usuário
                 var userData = snapshot.val();
 
-
-
                 // Verifique o status da conta
                 if (userData.accountStatus === 'ativo') {
                     // Carregue o conteúdo dentro de post_login_content apenas para contas ativas
@@ -256,6 +258,9 @@ auth.onAuthStateChanged(function (user) {
                 // Buscar o nome atual do usuário e atualizar o placeholder
                 document.getElementById('newName').placeholder = userData.full_name;
 
+                // Update the greeting message with the user's name
+                document.getElementById('Nomeatual').textContent = ` Explore a sua faculdade, ${userData.full_name}!`;
+
                 // Buscar e exibir a data de criação da conta
                 var creationDate = new Date(user.metadata.creationTime);
                 document.getElementById('accountCreationDate').innerText = "Data de Criação da Conta: " + creationDate.toLocaleDateString();
@@ -263,6 +268,7 @@ auth.onAuthStateChanged(function (user) {
                 // Buscar e exibir a data e hora do último login
                 var lastLoginDate = new Date(userData.last_login);
                 document.getElementById('lastLoginDate').innerText = "Último Login: " + lastLoginDate.toLocaleString();
+
 
             } else {
                 // A conta não existe mais, deslogue o usuário
