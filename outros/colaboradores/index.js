@@ -715,3 +715,42 @@ toggleButton.addEventListener("click", function () {
         adminPanel.style.display = "none";
     }
 });
+
+
+// modo dark ----------------------------------------------------------------------------------------------------
+
+
+const body = document.body;
+const lightModeIcon = document.getElementById('lightModeIcon');
+const darkModeIcon = document.getElementById('darkModeIcon');
+const toggleDarkModeButton = document.getElementById('toggleDarkModeButton');
+
+// Function to toggle between light and dark modes
+function toggleDarkMode() {
+    body.classList.toggle('dark');
+    const isDarkMode = body.classList.contains('dark');
+    
+    // Toggle icons
+    lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
+    darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
+
+    // Toggle button color
+    toggleDarkModeButton.style.backgroundColor = isDarkMode
+        ? getComputedStyle(document.documentElement).getPropertyValue('--button-color-dark')
+        : getComputedStyle(document.documentElement).getPropertyValue('--button-color-light');
+
+    // Save user preference in localStorage if needed
+    localStorage.setItem('darkMode', isDarkMode);
+}
+
+// Check user preference from localStorage on page load
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode && savedDarkMode === 'true') {
+    body.classList.add('dark');
+    lightModeIcon.style.display = 'none';
+    darkModeIcon.style.display = 'inline';
+    toggleDarkModeButton.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-color-dark');
+}
+
+// Attach the toggleDarkMode function to the button click event
+toggleDarkModeButton.addEventListener('click', toggleDarkMode);

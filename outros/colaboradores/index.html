@@ -3,15 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login + Firebase Database</title>
-    <!-- Our stylesheet -->
+    <title>Portal do colaborador FAM</title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="/images-gerais/famlogo.png">
 
 </head>
 
 <body>
-
+    <button id="toggleDarkModeButton">
+        <i id="lightModeIcon" class="fa-solid fa-sun"></i>
+        <i id="darkModeIcon" class="fa-solid fa-moon" style="display: none;"></i>
+    </button>
+    
     <div id="loadingScreen">
         <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -125,7 +129,7 @@
                 <h2>Registre</h2>
                 <h4>É professor? converse com seu coordenador</h4>
                 <input type="text" id="register_full_name" placeholder="Nome completo">
-                <input type="email" id="register_email" placeholder="E-mail">
+                <input type="email" id="register_email" placeholder="E-mail @fam.br">
                 <div class="password-container">
                     <input type="password" id="register_password" placeholder="Senha">
                     <i class="fa-solid fa-eye toggle-password"
