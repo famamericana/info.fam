@@ -553,26 +553,23 @@ function loadUsers() {
             userDiv.classList.add(userClass); // Adicione a classe específica do tipo de usuário
 
             userDiv.innerHTML = `
-                <p>Nome: ${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</p>
-                <p>${user.departamento_nome || 'Não informado'} | ${userType}</p>
-                <p>Status da Conta: ${user.accountStatus}</p>
-                `;
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 25%;">${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</td>
+                    <td style="width: 25%;">${user.departamento_nome || 'Não informado'} | ${userType}</td>
+                    <td style="width: 25%;">${userType}</td>
 
-            // Verifica se o usuário não é um administrador
-            if (!user.is_admin && !user.is_super_admin) {
-                // Adicione o botão apenas para usuários não administradores
-                userDiv.innerHTML += `<button onclick="toggleAccountStatus('${userId}')">Status da Conta</button>`;
-            }
+                    <td style="width: 25%;">Status da Conta: ${user.accountStatus}</td>
+                </tr>
+            </table>
 
-            // Botão para remover status de admin
-            if (user.is_admin && !user.is_super_admin) {
-                userDiv.innerHTML += `<button onclick="removeAdminStatus('${userId}')">Remover cargo Admin</button>`;
-            }
-
-            // Botão para promover a Admin Normal
-            if (!user.is_admin && !user.is_super_admin) {
-                userDiv.innerHTML += `<button onclick="makeUserAdmin('${userId}')">Promover a Admin</button>`;
-            }
+            <div>
+            ${!user.is_admin && !user.is_super_admin ? '<button onclick="toggleAccountStatus(\'' + userId + '\')">Status da Conta</button>' : ''}
+            ${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')">Remover cargo Admin</button>' : ''}
+            ${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')">Promover a Admin</button>' : ''}
+        </div>
+        `;
+        
         });
     });
 }
@@ -728,7 +725,7 @@ const toggleDarkModeButton = document.getElementById('toggleDarkModeButton');
 function toggleDarkMode() {
     body.classList.toggle('dark');
     const isDarkMode = body.classList.contains('dark');
-    
+
     // Toggle icons
     lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
     darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
