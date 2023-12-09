@@ -533,15 +533,15 @@ function loadUsers() {
 
             var userType, userClass;
             if (user.is_super_admin) {
-                userType = 'ADM Geral';
+                userType = '<i class="fa-solid fa-cat"></i> ADM Geral';
                 userClass = 'admin-master';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else if (user.is_admin) {
-                userType = 'ADM';
+                userType = '<i class="fa-solid fa-feather"></i> ADM';
                 userClass = 'admin-normal';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else {
-                userType = 'Usuário';
+                userType = '<i class="fa-solid fa-user-graduate"></i> Usuário';
                 userClass = 'user-common';
                 if (user.accountStatus === 'ativo') {
                     activeUsersList.appendChild(userDiv); // Adicione usuários ativos à lista de usuários ativos
@@ -555,21 +555,20 @@ function loadUsers() {
             userDiv.innerHTML = `
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 25%;">${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</td>
-                    <td style="width: 25%;">${user.departamento_nome || 'Não informado'} | ${userType}</td>
-                    <td style="width: 25%;">${userType}</td>
+                    <td>${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</td>
+                    <td>${user.departamento_nome || 'Não informado'}</td>
+                    <td>${userType}</td>
+                    
+                    <td>${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}</td>
+                    <td>${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}</td>
 
-                    <td style="width: 25%;">Status da Conta: ${user.accountStatus}</td>
+                    <td><i class="fa-solid fa-power-off"></i> ${user.accountStatus}</td>
+                    <td>${!user.is_admin && !user.is_super_admin ? '<button title="uma conta ativa pode acessar o conteúdo do site, uma dormente não" onclick="toggleAccountStatus(\'' + userId + '\')"><i class="fa-solid fa-power-off"></i></button>' : ''}</td>
+
                 </tr>
             </table>
-
-            <div>
-            ${!user.is_admin && !user.is_super_admin ? '<button onclick="toggleAccountStatus(\'' + userId + '\')">Status da Conta</button>' : ''}
-            ${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')">Remover cargo Admin</button>' : ''}
-            ${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')">Promover a Admin</button>' : ''}
-        </div>
         `;
-        
+
         });
     });
 }
