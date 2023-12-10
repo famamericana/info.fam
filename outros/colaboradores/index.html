@@ -15,7 +15,7 @@
         <i id="lightModeIcon" class="fa-solid fa-sun"></i>
         <i id="darkModeIcon" class="fa-solid fa-moon" style="display: none;"></i>
     </button>
-    
+
     <div id="loadingScreen">
         <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -86,11 +86,11 @@
         </div>
 
         <h2 id="Nomeatual"></h2>
-        
+
         <p>Todos os documentos que você precisa estará aqui e se não estiver ou tiver ideias clique >aqui< e sugira</p>
 
-        <!-- Conteúdo que aparece após o usuário logar -->
-        <div id="post_login_content_firestoreDocumentos"></div>
+                <!-- Conteúdo que aparece após o usuário logar -->
+                <div id="post_login_content_firestoreDocumentos"></div>
 
 
     </div>
@@ -103,9 +103,13 @@
             <!-- Formulário de Login -->
             <div id="login_form_container" style="display:block;">
                 <h2>Login</h2>
-                <input type="email" id="login_email" placeholder="E-mail @fam.br">
-                <div class="password-container">
-                    <input type="password" id="login_password" placeholder="Senha">
+                <div class="form-group">
+                    <input type="email" id="login_email" placeholder=" ">
+                    <label for="login_email">@fam.br</label>
+                </div>
+                <div class="form-group password-container">
+                    <input type="password" id="login_password" placeholder=" ">
+                    <label for="login_password">Senha</label>
                     <i class="fa-solid fa-eye toggle-password"
                         onclick="togglePasswordVisibility('login_password', this)"></i>
                 </div>
@@ -123,17 +127,25 @@
             <div id="register_form_container" style="display:none;">
                 <h2>Registre</h2>
                 <h4>É professor? converse com seu coordenador</h4>
-                <input type="text" id="register_full_name" placeholder="Nome completo">
-                <input type="email" id="register_email" placeholder="E-mail @fam.br">
-                <div class="password-container">
-                    <input type="password" id="register_password" placeholder="Senha">
-                    <i class="fa-solid fa-eye toggle-password"
-                        onclick="togglePasswordVisibility('register_password', this)"></i>
+                <div class="form-group">
+                    <input type="text" id="register_full_name" placeholder=" ">
+                    <label for="register_full_name">Nome completo</label>
                 </div>
-                <div class="password-container">
-                    <input type="password" id="register_confirm_password" placeholder="Confirmar senha">
-                    <i class="fa-solid fa-eye toggle-password"
-                        onclick="togglePasswordVisibility('register_confirm_password', this)"></i>
+                <div class="form-group">
+                    <input type="email" id="register_email" placeholder=" ">
+                    <label for="register_email">E-mail @fam.br</label>
+                </div>
+                <div class="form-group password-container">
+                    <input type="password" id="register_password" placeholder=" ">
+                    <label for="register_password">Senha</label>
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePasswordVisibility('register_password', this)"></i>
+                </div>
+            
+                <!-- Confirm Password Input -->
+                <div class="form-group password-container">
+                    <input type="password" id="register_confirm_password" placeholder=" ">
+                    <label for="register_confirm_password">Confirmar senha</label>
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePasswordVisibility('register_confirm_password', this)"></i>
                 </div>
                 <select id="register_departamento_nome">
                     <option value="">Selecione um departamento</option>

@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: var(--cinza-light);
+    margin: 0;
+    padding: 0;
+}
 
 #content_container, #post_login_content {
     display: none;
@@ -72,6 +77,18 @@ button {
     cursor: pointer;
 }
 
+.botoescontainerregistrar{
+    display: flex;
+    flex-direction: column;
+}
+
+.usuarioopções{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+/* login css -------------------------------------------------------------------------------------------------------------------------------------------- */
 .botoescontainer{
     display: flex;
     gap: 10px;
@@ -105,17 +122,6 @@ button {
     background-color: #ff9800;
 }
 
-.botoescontainerregistrar{
-    display: flex;
-    flex-direction: column;
-}
-
-.usuarioopções{
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
-
 #loadingScreen {
     position: fixed;
     top: 0;
@@ -136,9 +142,62 @@ button {
 .toggle-password {
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 23px;
     cursor: pointer;
 }
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    font-family: 'Source Sans 3', sans-serif;
+
+}
+.form-group {
+    position: relative;
+}
+input:focus {
+    outline: none;
+    border-color: #45b7e5;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: transform 0.3s, font-size 0.3s;
+    color: #9da6be;
+    font-size: 14px;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    transform: translateY(-100%) scale(1);
+    font-size: 14px;
+    color: #45b7e5;
+    background-color: white;
+    top: 20px; 
+    padding: 0 5px;
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
 
 /*firestore -----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -383,12 +442,7 @@ body.dark .dark-mode-button {
     --button-color-dark: #333; /* Dark mode button color */
 }
 
-body {
-    font-family: 'Source Sans 3', sans-serif;
-    background-color: var(--cinza-light);
-    margin: 0;
-    padding: 0;
-}
+
 
 body.dark {
     background-color: var(--cinza-dark);
