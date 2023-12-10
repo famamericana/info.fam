@@ -553,18 +553,24 @@ function loadUsers() {
             userDiv.classList.add(userClass); // Adicione a classe específica do tipo de usuário
 
             userDiv.innerHTML = `
-            <table style="width: 100%;">
+            <table class="tabelaadm">
                 <tr>
-                    <td>${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</td>
-                    <td>${user.departamento_nome || 'Não informado'}</td>
-                    <td>${userType}</td>
-                    
-                    <td>${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}</td>
-                    <td>${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}</td>
+                    <td class="tabelaadmtd">${user.full_name || 'Não informado'} (${user.email || 'Não informado'})</td>
+                    <td class="tabelaadmtd">${user.departamento_nome || 'Não informado'}</td>
+                    <td class="tabelaadmtd">
+                        <div class="tabelaadmtdcombotao">
+                            <div>${userType}</div>
+                            <div>
+                                ${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}
+                                ${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}
+                            </div>
+                            </div>
+                    </td>
 
-                    <td><i class="fa-solid fa-power-off"></i> ${user.accountStatus}</td>
-                    <td>${!user.is_admin && !user.is_super_admin ? '<button title="uma conta ativa pode acessar o conteúdo do site, uma dormente não" onclick="toggleAccountStatus(\'' + userId + '\')"><i class="fa-solid fa-power-off"></i></button>' : ''}</td>
-
+                    <td class="tabelaadmtd">
+                    <div class="tabelaadmtdcombotao"><div><i class="fa-solid fa-power-off"></i> ${user.accountStatus}</div>
+                    <div>${!user.is_admin && !user.is_super_admin ? '<button title="uma conta ativa pode acessar o conteúdo do site, uma dormente não" onclick="toggleAccountStatus(\'' + userId + '\')"><i class="fa-solid fa-power-off"></i></button>' : ''}</div></div>
+</td>
                 </tr>
             </table>
         `;
