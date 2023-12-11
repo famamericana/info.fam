@@ -332,7 +332,7 @@ select:-webkit-autofill:focus {
 .usuariopções {
     display: flex;
     float: inline-end;
-    position: absolute;
+    position: fixed;
     right: 20px;
     top: 65px;
     background-color: white;
@@ -343,7 +343,7 @@ select:-webkit-autofill:focus {
 
 #toggleButton{
    color: white;
-   position: absolute;
+   position: fixed;
    right: 20px;
    top: 20px;
 }
@@ -496,22 +496,34 @@ body.dark .dark-mode-button {
 :root {
     --cinza-light: #f2f3f8;
     --texto-light: #000;
-    --cinza-dark: #1a1a1a;
+    --cinza-dark: #202020;
     --texto-dark: #fff;
     --button-color-light: #45b7e5; /* Light mode button color */
     --button-color-dark: #333; /* Dark mode button color */
 }
 
-
-
 body.dark {
-    background-color: var(--cinza-dark);
+    background-color: #1a1a1a;
+    color: #ccc;
+}
+body.dark #post_login_content {
+    background-color: var(--cinza-dark); /* Cor de fundo diferente no modo escuro */
 }
 
+body.dark #post_login_content_firestoreDocumentos div {
+    border: 1px solid #1a1a1a;
+    background-color: #1a1a1a;
 
+}
 
+body.dark button {
+    background-color: #237697;
+}
 
+body.dark #loadingScreen {
+    background: #1a1a1a ;
+}
 
-
-
-
+body.dark .tabelaadmtd:nth-child(2){
+    background-color: #1a1a1a;
+}
