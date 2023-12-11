@@ -60,12 +60,13 @@ function register() {
                 accountStatus: "ativo" // Defina como "ativo" por padrão
             }
 
+
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
 
-            logout();
+            /*
+            alert('User Created!!') */
 
-            alert("Conta criada")
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
