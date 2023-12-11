@@ -348,6 +348,8 @@ select:-webkit-autofill:focus {
    position: fixed;
    right: 20px;
    top: 20px;
+   z-index: 9;
+
 }
 
 #updateNameButton {
@@ -469,6 +471,7 @@ p{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 9;
 }
 
 #toggleDarkModeButton:hover {

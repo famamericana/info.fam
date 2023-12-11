@@ -41,48 +41,48 @@ function register() {
     }
 
     // Move on with Auth
-     // Move on with Auth
-     auth.createUserWithEmailAndPassword(email, password)
-     .then(function () {
-         // Declare user variable
-         var user = auth.currentUser
+    // Move on with Auth
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(function () {
+            // Declare user variable
+            var user = auth.currentUser
 
-         // Enviar email de verificação
-         user.sendEmailVerification().then(function () {
-             // Email enviado
-         })
+            // Enviar email de verificação
+            user.sendEmailVerification().then(function () {
+                // Email enviado
+            })
 
-         // Add this user to Firebase Database
-         var database_ref = database.ref()
+            // Add this user to Firebase Database
+            var database_ref = database.ref()
 
-         // Create User data
-         var user_data = {
-             email: email,
-             full_name: full_name,
-             departamento_nome: departamento_nome,
-             last_login: Date.now(),
-             is_admin: false,
-             is_super_admin: false,
-             accountStatus: "ativo" // Defina como "ativo" por padrão
-         }
+            // Create User data
+            var user_data = {
+                email: email,
+                full_name: full_name,
+                departamento_nome: departamento_nome,
+                last_login: Date.now(),
+                is_admin: false,
+                is_super_admin: false,
+                accountStatus: "ativo" // Defina como "ativo" por padrão
+            }
 
-         // Push to Firebase Database
-         return database_ref.child('users/' + user.uid).set(user_data);
-     })
-     .then(function() {
-         alert("Aguarde a conta ser criada e em seguida verifique seu e-mail e faça o login.");
-         // Depois de registrar o usuário, você pode deslogá-lo imediatamente
-         return auth.signOut();
-     })
-     .then(function() {
-         // Recarregue a página
-         location.reload();
-     })
-     .catch(function (error) {
-         // Tratamento de erro
-         var error_message = error.message
-         alert(error_message)
-     });
+            // Push to Firebase Database
+            return database_ref.child('users/' + user.uid).set(user_data);
+        })
+        .then(function () {
+            alert("Conta criada, verifique seu e-mail e faça o login.");
+            document.getElementById('loadingScreen').style.display = 'block';
+            return auth.signOut();
+        })
+        .then(function () {
+            // Recarregue a página
+            location.reload();
+        })
+        .catch(function (error) {
+            // Tratamento de erro
+            var error_message = error.message
+            alert(error_message)
+        });
 }
 
 // Set up our login function
@@ -243,6 +243,12 @@ auth.onAuthStateChanged(function (user) {
             if (snapshot.exists()) {
                 // A conta ainda existe, exiba o conteúdo do usuário
                 var userData = snapshot.val();
+                var loginContainers = document.querySelectorAll('.containerdelogin');
+
+                // Usuário está logado
+                loginContainers.forEach(function (container) {
+                    container.style.display = 'none';
+                });
 
                 // Verifique o status da conta
                 if (userData.accountStatus === 'ativo') {
@@ -285,10 +291,17 @@ auth.onAuthStateChanged(function (user) {
                 var lastLoginDate = new Date(userData.last_login);
                 document.getElementById('lastLoginDate').innerText = "Último Login: " + lastLoginDate.toLocaleString();
 
-
             } else {
+
+                // Usuário está logado
+                loginContainers.forEach(function (container) {
+                    container.style.display = 'block';
+                });
+
                 // A conta não existe mais, deslogue o usuário
                 logout();
+
+
             }
         }).catch(function (error) {
             // Erro ao verificar a conta, possivelmente deslogue o usuário
@@ -407,6 +420,8 @@ function deleteUserData(userId) {
     userRef.remove()
         .then(function () {
             console.log("Dados do usuário removidos com sucesso.");
+            // Recarregue a página
+            location.reload();
         })
         .catch(function (error) {
             console.error("Erro ao remover dados do usuário: ", error);
