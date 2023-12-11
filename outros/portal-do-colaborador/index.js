@@ -17,6 +17,7 @@ const database = firebase.database()
 
 // Set up our register function
 function register() {
+
     // Get all our input fields
     var email = document.getElementById('register_email').value
     var password = document.getElementById('register_password').value
@@ -40,7 +41,6 @@ function register() {
         return
     }
 
-    // Move on with Auth
     // Move on with Auth
     auth.createUserWithEmailAndPassword(email, password)
         .then(function () {
@@ -68,10 +68,10 @@ function register() {
 
             // Push to Firebase Database
             return database_ref.child('users/' + user.uid).set(user_data);
+            
         })
         .then(function () {
             alert("Conta criada, verifique seu e-mail e faça o login.");
-            document.getElementById('loadingScreen').style.display = 'block';
             return auth.signOut();
         })
         .then(function () {
