@@ -223,11 +223,12 @@ select:-webkit-autofill:focus {
 
 /*firestore -----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#post_login_content{
-    max-width: 960px;
+.conteudoemsi{
+    width: 960px;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
+    min-height: 90vh;
 }
 
 #post_login_content_firestoreDocumentos {
@@ -506,7 +507,7 @@ body.dark {
     background-color: #1a1a1a;
     color: #ccc;
 }
-body.dark #post_login_content {
+body.dark .conteudoemsi {
     background-color: var(--cinza-dark); /* Cor de fundo diferente no modo escuro */
 }
 
@@ -516,8 +517,21 @@ body.dark #post_login_content_firestoreDocumentos div {
 
 }
 
+body.dark #post_login_content_firestoreDocumentos div {
+    border: 1px solid #3a3a3a;
+    background-color: #1a1a1a;
+
+}
+
+body.dark #post_login_content_firestoreDocumentos div button{
+    border: 1px solid #7b7b7b;
+    background-color: #454545;
+    color: white;
+}
+
+
 body.dark button {
-    background-color: #237697;
+    background-color: #25cf25;
 }
 
 body.dark #loadingScreen {
@@ -526,4 +540,20 @@ body.dark #loadingScreen {
 
 body.dark .tabelaadmtd:nth-child(2){
     background-color: #1a1a1a;
+}
+
+
+/* Personaliza o fundo da barra de rolagem */
+body.dark::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+/* Personaliza a barra de rolagem em si */
+body.dark::-webkit-scrollbar-thumb {
+    background: #7b7b7b6f;
+    border: 2px solid #1a1a1a;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
 }

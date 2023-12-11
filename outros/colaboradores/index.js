@@ -755,3 +755,8 @@ if (savedDarkMode && savedDarkMode === 'true') {
 
 // Attach the toggleDarkMode function to the button click event
 toggleDarkModeButton.addEventListener('click', toggleDarkMode);
+
+
+$(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
