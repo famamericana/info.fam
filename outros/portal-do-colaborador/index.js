@@ -41,44 +41,48 @@ function register() {
     }
 
     // Move on with Auth
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(function () {
-            // Declare user variable
-            var user = auth.currentUser
+     // Move on with Auth
+     auth.createUserWithEmailAndPassword(email, password)
+     .then(function () {
+         // Declare user variable
+         var user = auth.currentUser
 
-            // Enviar email de verificação
-            user.sendEmailVerification().then(function () {
-                // Email enviado
-            })
+         // Enviar email de verificação
+         user.sendEmailVerification().then(function () {
+             // Email enviado
+         })
 
-            // Add this user to Firebase Database
-            var database_ref = database.ref()
+         // Add this user to Firebase Database
+         var database_ref = database.ref()
 
-            // Create User data
-            var user_data = {
-                email: email,
-                full_name: full_name,
-                departamento_nome: departamento_nome,
-                last_login: Date.now(),
-                is_admin: false,
-                is_super_admin: false,
-                accountStatus: "ativo" // Defina como "ativo" por padrão
-            }
+         // Create User data
+         var user_data = {
+             email: email,
+             full_name: full_name,
+             departamento_nome: departamento_nome,
+             last_login: Date.now(),
+             is_admin: false,
+             is_super_admin: false,
+             accountStatus: "ativo" // Defina como "ativo" por padrão
+         }
 
-            // Push to Firebase Database
-            database_ref.child('users/' + user.uid).set(user_data)
-
-            alert("Conta criada. Por favor, verifique seu e-mail e faça o login.");
-
-            auth.signOut()
-           
-        })
-        .catch(function (error) {
-            // Firebase will use this to alert of its errors
-            var error_message = error.message
-
-            alert(error_message)
-        })
+         // Push to Firebase Database
+         return database_ref.child('users/' + user.uid).set(user_data);
+     })
+     .then(function() {
+         alert("Aguarde a conta ser criada e em seguida verifique seu e-mail e faça o login.");
+         // Depois de registrar o usuário, você pode deslogá-lo imediatamente
+         return auth.signOut();
+     })
+     .then(function() {
+         // Recarregue a página
+         location.reload();
+     })
+     .catch(function (error) {
+         // Tratamento de erro
+         var error_message = error.message
+         alert(error_message)
+     });
 }
 
 // Set up our login function
