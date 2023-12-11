@@ -46,6 +46,13 @@ function register() {
             // Declare user variable
             var user = auth.currentUser
 
+            // Enviar email de verificação
+            user.sendEmailVerification().then(function () {
+                // Email enviado
+            }).catch(function (error) {
+                // Erro ao enviar email
+            });
+
             // Add this user to Firebase Database
             var database_ref = database.ref()
 
@@ -60,12 +67,12 @@ function register() {
                 accountStatus: "ativo" // Defina como "ativo" por padrão
             }
 
-
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
 
-            /*
-            alert('User Created!!') */
+            logout()
+
+            alert("conta criada, verifique seu email")
 
         })
         .catch(function (error) {
