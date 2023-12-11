@@ -224,7 +224,7 @@ select:-webkit-autofill:focus {
 /*firestore -----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .conteudoemsi{
-    width: 960px;
+    max-width: 960px;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
