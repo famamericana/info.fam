@@ -49,9 +49,7 @@ function register() {
             // Enviar email de verificação
             user.sendEmailVerification().then(function () {
                 // Email enviado
-            }).catch(function (error) {
-                // Erro ao enviar email
-            });
+            })
 
             // Add this user to Firebase Database
             var database_ref = database.ref()
@@ -70,10 +68,13 @@ function register() {
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
 
-            logout()
+            // Depois de registrar o usuário, você pode deslogá-lo imediatamente
+            auth.signOut().then(() => {
+                // Recarregue a página
+                location.reload();
+            });
 
-            alert("conta criada, verifique seu email")
-
+            alert("Conta criada. Por favor, verifique seu e-mail e faça o login.");
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
