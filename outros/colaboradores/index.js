@@ -68,13 +68,10 @@ function register() {
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).set(user_data)
 
-            // Depois de registrar o usuário, você pode deslogá-lo imediatamente
-            auth.signOut().then(() => {
-                // Recarregue a página
-                location.reload();
-            });
-
             alert("Conta criada. Por favor, verifique seu e-mail e faça o login.");
+
+            auth.signOut()
+           
         })
         .catch(function (error) {
             // Firebase will use this to alert of its errors
@@ -106,6 +103,7 @@ function login() {
             if (!user.emailVerified) {
                 alert("Por favor, verifique seu e-mail antes de fazer login.");
                 auth.signOut(); // Desloga o usuário caso ele não tenha verificado o e-mail
+                location.reload();
                 return;
             }
 
