@@ -102,6 +102,13 @@ function login() {
             // Declare user variable
             var user = auth.currentUser
 
+            // Verifica se o e-mail foi verificado
+            if (!user.emailVerified) {
+                alert("Por favor, verifique seu e-mail antes de fazer login.");
+                auth.signOut(); // Desloga o usuário caso ele não tenha verificado o e-mail
+                return;
+            }
+
             // Add this user to Firebase Database
             var database_ref = database.ref()
 
