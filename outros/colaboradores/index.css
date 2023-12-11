@@ -229,6 +229,7 @@ select:-webkit-autofill:focus {
     background-color: white;
     padding: 20px;
     min-height: 90vh;
+    border-radius: 0 0 10px 10px;
 }
 
 #post_login_content_firestoreDocumentos {
@@ -556,4 +557,51 @@ body.dark::-webkit-scrollbar-thumb {
 
 body.dark::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.5);
+}
+
+
+body.dark .esquecisenha {
+    background: none;
+    color: #bac0d1;
+}
+
+body.dark #content_container {
+    background-color: var(--cinza-dark);
+}
+
+body.dark input:focus + label,
+body.dark input:not(:placeholder-shown) + label {
+
+    background-color: var(--cinza-dark);
+
+
+}
+
+body.dark input{
+    background-color: var(--cinza-dark);
+    color: white;
+}
+
+
+body.dark input:-webkit-autofill,
+body.dark input:-webkit-autofill:hover,
+body.dark input:-webkit-autofill:focus,
+body.dark textarea:-webkit-autofill,
+body.dark textarea:-webkit-autofill:hover,
+body.dark textarea:-webkit-autofill:focus,
+body.dark select:-webkit-autofill,
+body.dark select:-webkit-autofill:hover,
+body.dark select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px  var(--cinza-dark) inset !important;
+}
+
+
+body.dark label {
+    color: #bac0d1;
+}
+
+body.dark select {
+    border: 1px solid #ddd;
+    background-color: var(--cinza-dark) ;
+    color: #bac0d1;
 }
