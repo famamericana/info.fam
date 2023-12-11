@@ -749,6 +749,21 @@ toggleButton.addEventListener("click", function () {
 });
 
 
+function searchUsers() {
+    var searchValue = document.getElementById('searchInput').value.toLowerCase();
+    var usersList = document.querySelectorAll('.user-type'); // Seleciona todos os elementos de usuário
+
+    usersList.forEach(function(userDiv) {
+        var userName = userDiv.textContent.toLowerCase();
+        if (userName.includes(searchValue)) {
+            userDiv.style.display = ''; // Mostra os usuários que correspondem
+        } else {
+            userDiv.style.display = 'none'; // Oculta os demais
+        }
+    });
+}
+
+
 // modo dark ----------------------------------------------------------------------------------------------------
 
 
