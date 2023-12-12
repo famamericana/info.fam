@@ -83,6 +83,9 @@
                     <button onclick="showText(4)" data-number="4">Transferência</button>
                     <button onclick="showText(5)" data-number="5">Pós-Graduação</button>
                 </div>
+                <div class="btn-group2">
+                    <button onclick="showText(6)" data-number="6">prova de bolsas</button>
+                </div>
                 <div class="campanha" id="text-container">
                     <img id="initial-image" src="images/960x300.png" alt="Imagem inicial" />
                 </div>
@@ -137,7 +140,8 @@
                         </svg></a>
                     /famamericana</p>
                 <p><i class="fa fa-phone"></i> 0800 771 2449 ‎‎ㅤ<i style="font-size: 16px;"
-                        class="fa-brands fa-whatsapp"></i> <a class="whatsapplink" target="_blank" href="https://wa.me/+5519996348297">19 99634.8297</a></p>
+                        class="fa-brands fa-whatsapp"></i> <a class="whatsapplink" target="_blank"
+                        href="https://wa.me/+5519996348297">19 99634.8297</a></p>
 
                 <p><i class="fas fa-map-marker-alt"></i> Av. Joaquim Bôer, 733 - Jardim Luciane, Americana - SP |
                     13477-360</p>
@@ -151,9 +155,15 @@
     </footer>
     <script>
         function highlightButton(btn) {
-            // Remove a classe 'active' de todos os botões
-            const buttons = document.querySelectorAll('.btn-group button');
-            buttons.forEach(button => {
+            // Remove a classe 'active' de todos os botões em ambos os grupos
+            const buttonsGroup1 = document.querySelectorAll('.btn-group button');
+            const buttonsGroup2 = document.querySelectorAll('.btn-group2 button');
+
+            buttonsGroup1.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            buttonsGroup2.forEach(button => {
                 button.classList.remove('active');
             });
 
@@ -200,6 +210,11 @@
                     <a href="https://fam.inscricao.crmeducacional.com/login/25" ><button class="btn2">Inscreva-se aqui!</button></a>
                     <p class="texto">Após 4, 5 ou 6 anos de graduação e experiência no mercado de trabalho, chegou a hora de fazer uma especialização na sua área de atuação ou até conhecer novas possibilidades. Exigências que o mercado de trabalho pede e você deve estar sempre pronto para sair na frente nas melhores vagas. A <b>Pós FAM</b> é o caminho para novos conhecimentos e muito networking, não é preciso fazer provas, basta seguir os passos orientações no site. Inscreva-se!</p>
                     `;
+                case 6:
+                    content = `
+                    <a href="https://fam.inscricao.crmeducacional.com/login/27" ><button class="btn2">Inscreva-se aqui!</button></a>
+                    <p class="texto">Após 4, 5 ou 6 anos de graduação e experiência no mercado de trabalho, chegou a hora de fazer uma especialização na sua área de atuação ou até conhecer novas possibilidades. Exigências que o mercado de trabalho pede e você deve estar sempre pronto para sair na frente nas melhores vagas. A <b>Pós FAM</b> é o caminho para novos conhecimentos e muito networking, não é preciso fazer provas, basta seguir os passos orientações no site. Inscreva-se!</p>
+                    `;
                     break;
                 default:
                     content = '';
@@ -210,7 +225,11 @@
 
             textContainer.innerHTML = content;
 
-            const button = document.querySelector(`.btn-group button[data-number="${btnNumber}"]`);
+            // Encontra o botão correto em um dos dois grupos de botões
+            let button = document.querySelector(`.btn-group button[data-number="${btnNumber}"]`);
+            if (!button) {
+                button = document.querySelector(`.btn-group2 button[data-number="${btnNumber}"]`);
+            }
             highlightButton(button);
         }
 
@@ -223,7 +242,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 
     <!-- RD Station -->
-    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/cea8a025-02ec-4bae-b3dc-569715728fbb-loader.js" ></script>
+    <script type="text/javascript" async
+        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/cea8a025-02ec-4bae-b3dc-569715728fbb-loader.js"></script>
 
 </body>
 
