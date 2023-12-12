@@ -147,7 +147,6 @@ button {
 #toggleFormButtonLogin {
     background-color:  var(--botaoazulescuro);
     color: white;
-
     padding: 10px 18px;
     border: none;
     border-radius: 5px;
@@ -414,7 +413,7 @@ select:-webkit-autofill:focus {
     float: inline-end;
     position: fixed;
     right: 20px;
-    top: 65px;
+    top: 75px;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
@@ -596,8 +595,7 @@ body.dark #post_login_content_firestoreDocumentos div {
 }
 
 body.dark #post_login_content_firestoreDocumentos div button{
-    border: 1px solid #7b7b7b;
-    background-color: #454545;
+    background-color: #3a3a3a;
     color: white;
 }
 
@@ -690,12 +688,17 @@ body.dark  #adminPanel{
     border: 1px solid #3a3a3a;
 }
 
-body.dark .loginbotão{
-    background-color: var(--botaoazulescuro);
-}
-
 
 body.dark .loginbotão {
     background-color:  var(--botaorosa);
 
+}
+
+body.dark .usuariopções {
+    background-color: var(--cinza-dark);
+    border: 1px solid #45b7e5;
+}
+
+body.dark #toggleFormButtonLogin {
+    background-color:  var(--botaorosa);
 }
