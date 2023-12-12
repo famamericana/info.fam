@@ -766,36 +766,45 @@ function searchUsers() {
 
 // modo dark ----------------------------------------------------------------------------------------------------
 
-
 const body = document.body;
 const lightModeIcon = document.getElementById('lightModeIcon');
 const darkModeIcon = document.getElementById('darkModeIcon');
 const toggleDarkModeButton = document.getElementById('toggleDarkModeButton');
 
-// Function to toggle between light and dark modes
+function updateIcons(isDarkMode) {
+    lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
+    darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
+}
+
+function updateButtonColor(isDarkMode) {
+    const color = isDarkMode 
+        ? getComputedStyle(document.documentElement).getPropertyValue('--botaoazul')
+        : getComputedStyle(document.documentElement).getPropertyValue('--botaorosa');
+    toggleDarkModeButton.style.backgroundColor = color;
+}
+
 function toggleDarkMode() {
     body.classList.toggle('dark');
     const isDarkMode = body.classList.contains('dark');
 
-    // Toggle icons
-    lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
-    darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
+    updateIcons(isDarkMode);
+    updateButtonColor(isDarkMode);
 
-    // Save user preference in localStorage if needed
     localStorage.setItem('darkMode', isDarkMode);
 }
 
-// Check user preference from localStorage on page load
-const savedDarkMode = localStorage.getItem('darkMode');
-if (savedDarkMode && savedDarkMode === 'true') {
-    body.classList.add('dark');
-    lightModeIcon.style.display = 'none';
-    darkModeIcon.style.display = 'inline';
-    toggleDarkModeButton.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-color-dark');
-}
+// Inicializar na carga da página
+document.addEventListener('DOMContentLoaded', () => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (savedDarkMode) {
+        body.classList.add('dark');
+    }
+    updateIcons(savedDarkMode);
+    updateButtonColor(savedDarkMode);
+});
 
-// Attach the toggleDarkMode function to the button click event
 toggleDarkModeButton.addEventListener('click', toggleDarkMode);
+
 
 
 $(document).ready(function () {

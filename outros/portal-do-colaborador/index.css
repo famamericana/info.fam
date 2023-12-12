@@ -10,6 +10,7 @@
 
     --botaoazul: #45b7e5;
     --botaoazulescuro: #1b3556;
+    --botaorosa: #e53888;
 
 }
 
@@ -486,7 +487,6 @@ p{
     top: 20px;
     left: 20px;
     padding: 10px 14px;
-    background-color: var(--botaoazulescuro);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -494,18 +494,6 @@ p{
     z-index: 9;
 }
 
-
-body.dark #toggleDarkModeButton {
-    background-color: var(--botaoazul);
-}
-
-body.dark #toggleDarkModeButton:hover {
-    background-color: #e53888;
-}
-
-#toggleDarkModeButton:hover {
-    background-color: #e53888;
-}
 
 .dark-mode-button {
     position: fixed;
@@ -649,3 +637,7 @@ body.dark .loginbotão{
 }
 
 
+body.dark .loginbotão {
+    background-color:  var(--botaorosa);
+
+}
