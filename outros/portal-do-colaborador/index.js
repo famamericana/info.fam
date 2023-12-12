@@ -781,11 +781,6 @@ function toggleDarkMode() {
     lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
     darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
 
-    // Toggle button color
-    toggleDarkModeButton.style.backgroundColor = isDarkMode
-        ? getComputedStyle(document.documentElement).getPropertyValue('--button-color-dark')
-        : getComputedStyle(document.documentElement).getPropertyValue('--button-color-light');
-
     // Save user preference in localStorage if needed
     localStorage.setItem('darkMode', isDarkMode);
 }

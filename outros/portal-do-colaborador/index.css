@@ -97,6 +97,8 @@ button {
     flex: 1;
     background-color: #45b7e5;
     cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: medium;
 }
 
 .botoescontainerregistrar{
@@ -129,7 +131,7 @@ button {
 }
 
 #toggleFormButtonLogin {
-    background-color: #ff9800;
+    background-color: #f9ba0f;
     padding: 10px 18px;
     border: none;
     border-radius: 5px;
@@ -137,11 +139,13 @@ button {
 }
 
 #toggleFormButton:hover {
-    background-color: #fb8c00;
+    background-color: #f9ba0f;
 }
 
 .loginbotão{
-    background-color: #ff9800;
+    background-color: #e53888;
+    color: white;
+
 }
 
 #loadingScreen {
@@ -362,9 +366,8 @@ select:-webkit-autofill:focus {
 }
 
 #editNameButton{
-    padding:  10px;
+    padding: 10px;
     padding-right: 0;
-    height: 38px;
     background-color: white;
 }
 
@@ -385,6 +388,7 @@ select:-webkit-autofill:focus {
     background-color: #d5dcf1;
     color: #9da6be;
     padding: 5px;
+    margin-top: 10px;
 }
 
 #Nomeatual{
@@ -426,7 +430,8 @@ p{
 }
 
 .tabelaadmtdcombotao i{
-    margin-right: 5px;
+    padding: 0 2px;
+
 }
 
 .user-type {
@@ -436,16 +441,16 @@ p{
 }
 
 .admin-master {
-    border: 1px solid #d51616;
+    border: 1px solid #45b7e5;
 }
 
 .admin-normal {
-    border: 1px solid #cf11d9;
+    border: 1px solid #e53888;
 
 }
 
 .user-common {
-    border: 1px solid #25cf25;
+    border: 1px solid #bac0d1;
 }
 
 #adminPanel{
@@ -474,8 +479,17 @@ p{
     z-index: 9;
 }
 
+
+body.dark #toggleDarkModeButton {
+    background-color: #f9ba0f;
+}
+
+body.dark #toggleDarkModeButton:hover {
+    background-color: #db880b;
+}
+
 #toggleDarkModeButton:hover {
-    background-color: #fb8c00;
+    background-color: #3184c7;
 }
 
 .dark-mode-button {
@@ -535,7 +549,7 @@ body.dark #post_login_content_firestoreDocumentos div button{
 
 
 body.dark button {
-    background-color: #25cf25;
+    background-color: #45b7e5;
 }
 
 body.dark #loadingScreen {
@@ -583,6 +597,7 @@ body.dark input:not(:placeholder-shown) + label {
 body.dark input{
     background-color: var(--cinza-dark);
     color: white;
+    border: 1px solid #3a3a3a;
 }
 
 
@@ -609,3 +624,10 @@ body.dark select {
     color: #bac0d1;
 }
 
+body.dark  #adminPanel{
+    border: 1px solid #3a3a3a;
+}
+
+body.dark .loginbotão{
+    background-color: #f9ba0f;
+}
