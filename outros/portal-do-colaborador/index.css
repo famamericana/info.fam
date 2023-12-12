@@ -251,6 +251,11 @@ select:-webkit-autofill:focus {
     border-radius: 0 0 10px 10px;
 }
 
+@media screen and (max-width: 768px) {
+    .conteudoemsi{
+        margin-top: 82px;
+    }
+}
 #post_login_content_firestoreDocumentos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
