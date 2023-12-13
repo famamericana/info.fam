@@ -521,6 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // adm ----------------------------------------------------------------------------------------------------------------------------------
+var isSuperAdmin = false; // Variável global
 
 function makeUserAdmin(userId) {
     var currentUser = auth.currentUser;
@@ -533,10 +534,10 @@ function makeUserAdmin(userId) {
                     loadUsers(); // Recarrega a lista de usuários
                 })
                 .catch(function (error) {
-                    console.error("Erro ao promover usuário a Admin Normal: ", error);
+                    console.error("Erro ao promover usuário a ADM: ", error);
                 });
         } else {
-            console.error("Ação não permitida: usuário não é Admin Master.");
+            alert("Ação não permitida: usuário não é ADM Geral.");
         }
     });
 }
@@ -547,6 +548,8 @@ auth.onAuthStateChanged(function (user) {
     if (user) {
         database.ref('users/' + user.uid).once('value').then(function (snapshot) {
             var userData = snapshot.val();
+            isSuperAdmin = userData.is_super_admin; // Atualiza a variável global
+
             if (userData && userData.is_admin) {
                 // Mostrar interface administrativa
                 document.getElementById('adminPanel').style.display = 'block';
@@ -577,17 +580,26 @@ function loadUsers() {
             var userDiv = document.createElement('div');
             userDiv.id = 'user-' + userId;
             userDiv.classList.add('user-type'); // Classe base para todos os usuários
+            // Adicionar botão para tornar/modificar status de Moderador
 
+           
+            
             var userType, userClass;
             if (user.is_super_admin) {
                 userType = '<i class="fa-solid fa-cat"></i> ADM Geral';
                 userClass = 'admin-master';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
             } else if (user.is_admin) {
-                userType = '<i class="fa-solid fa-feather"></i> ADM';
+                userType = '<i class="fa-solid fa-dog"></i> ADM';
                 userClass = 'admin-normal';
                 adminsList.appendChild(userDiv); // Adicione administradores à lista de administradores
-            } else {
+            } else if (user.is_mod) {
+                userType = '<i class="fa-solid fa-feather"></i> Escritor'; // Ícone de Moderador
+                userClass = 'moderator';
+                // Adicione os moderadores à lista de administradores ou a uma lista separada de moderadores
+                adminsList.appendChild(userDiv);
+            }
+            else {
                 userType = '<i class="fa-solid fa-user-graduate"></i> Usuário';
                 userClass = 'user-common';
                 if (user.accountStatus === 'ativo') {
@@ -608,9 +620,15 @@ function loadUsers() {
                         <div class="tabelaadmtdcombotao">
                             <div>${userType}</div>
                             <div>
-                                ${!user.is_admin && !user.is_super_admin ? '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}
-                                ${user.is_admin && !user.is_super_admin ? '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-feather"></i></button>' : ''}
-                            </div>
+                            ${!user.is_super_admin && isSuperAdmin ? 
+                                (user.is_admin ? 
+                                    '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-minus"></i> <i class="fa-solid fa-dog"></i></button>' : 
+                                    '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-plus"></i><i class="fa-solid fa-dog"></i></button>') 
+                                : ''}
+                                ${!user.is_super_admin ? 
+                                    '<button onclick="toggleModStatus(\'' + userId + '\')">' + 
+                                    (user.is_mod ? '<i class="fa-solid fa-minus"></i> <i class="fa-solid fa-feather"></i>' : '<i class="fa-solid fa-plus"></i> <i class="fa-solid fa-feather"></i>') + 
+                                    '</button>' : ''}                            </div>
                             </div>
                     </td>
 
@@ -1023,3 +1041,36 @@ document.getElementById('toggleModFormButton').addEventListener('click', functio
         this.textContent = 'Mostrar Formulário de Mod';
     }
 });
+
+
+function toggleModStatus(userId) {
+    var currentUser = auth.currentUser;
+
+    if (!currentUser) {
+        console.error("Nenhum usuário autenticado encontrado.");
+        return;
+    }
+
+    database.ref('users/' + currentUser.uid).once('value').then(function (snapshot) {
+        var currentUserData = snapshot.val();
+
+        if (currentUserData.is_admin) {
+            var userRef = database.ref('users/' + userId);
+            userRef.once('value').then(function (userSnapshot) {
+                var isMod = userSnapshot.val().is_mod || false;
+                userRef.update({ is_mod: !isMod })
+                    .then(function () {
+                        console.log("Status de Moderador alterado com sucesso.");
+                        loadUsers(); // Recarrega a lista de usuários
+                    })
+                    .catch(function (error) {
+                        console.error("Erro ao alterar status de Moderador: ", error);
+                    });
+            });
+        } else {
+            console.error("Ação não permitida: usuário não é ADM ou é ADM Geral.");
+        }
+    }).catch(function (error) {
+        console.error("Erro ao acessar informações do usuário atual: ", error);
+    });
+}

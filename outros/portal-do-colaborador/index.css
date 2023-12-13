@@ -301,6 +301,7 @@ select:-webkit-autofill:focus {
     gap: 10px;
     padding: 16px;
     padding-top: 20px;
+    overflow-x: auto;
 }
 
 .noticia-container {
@@ -382,6 +383,8 @@ border-radius: 0;
 border: none;
 height: 100vh;
 overflow-y: auto;
+padding: 20px;
+text-align: left;
 }
 
 
@@ -610,7 +613,7 @@ p{
 }
 
 .admin-master {
-    border: 1px solid #45b7e5;
+    border: 1px solid #3eb288;
 }
 
 .admin-normal {
@@ -618,6 +621,9 @@ p{
 
 }
 
+.moderator {
+    border: 1px solid #45b7e5;
+}
 .user-common {
     border: 1px solid #bac0d1;
 }
