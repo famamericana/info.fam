@@ -63,12 +63,13 @@ function register() {
                 last_login: Date.now(),
                 is_admin: false,
                 is_super_admin: false,
+                is_mod: false,
                 accountStatus: "ativo" // Defina como "ativo" por padrão
             }
 
             // Push to Firebase Database
             return database_ref.child('users/' + user.uid).set(user_data);
-            
+
         })
         .then(function () {
             alert("Conta criada, verifique seu e-mail e faça o login.");
@@ -135,7 +136,7 @@ function login() {
             // Recarregue a página
             location.reload();
 
-            fetchAndDisplayDocuments();
+
 
         })
         .catch(function (error) {
@@ -235,6 +236,16 @@ function logout() {
     });
 }
 
+function formatarDataHora(data) {
+    if (!data) return '';
+
+    const opcoesData = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const opcoesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+    return data.toLocaleDateString('pt-BR', opcoesData) + ' ' + data.toLocaleTimeString('pt-BR', opcoesHora);
+}
+
+
 // Verifica o estado de autenticação quando a aplicação é carregada
 auth.onAuthStateChanged(function (user) {
     if (user) {
@@ -254,6 +265,8 @@ auth.onAuthStateChanged(function (user) {
                 if (userData.accountStatus === 'ativo') {
                     // Carregue o conteúdo dentro de post_login_content apenas para contas ativas
                     fetchAndDisplayDocuments();
+                    fetchAndDisplayNoticias();
+
                     document.getElementById('post_login_content').style.display = 'block';
                     document.getElementById('post_login_content_dormente').style.display = 'none'; // Oculte o conteúdo dormente
 
@@ -283,14 +296,18 @@ auth.onAuthStateChanged(function (user) {
                 // Update the greeting message with the user's name
                 document.getElementById('Nomeatual').textContent = ` Explore a sua faculdade, ${userData.full_name}!`;
 
-                // Buscar e exibir a data de criação da conta
+                // Atualizar a data/hora do último login no Firebase
+                var userRef = firebase.database().ref('users/' + user.uid);
+                userRef.update({
+                    last_login: Date.now()
+                });
+                // Formatar e exibir a data de criação da conta
                 var creationDate = new Date(user.metadata.creationTime);
-                document.getElementById('accountCreationDate').innerText = "Data de Criação da Conta: " + creationDate.toLocaleDateString();
+                document.getElementById('accountCreationDate').innerText = "Criação da Conta: " + formatarDataHora(creationDate);
 
-                // Buscar e exibir a data e hora do último login
+                // Formatar e exibir a data e hora do último login
                 var lastLoginDate = new Date(userData.last_login);
-                document.getElementById('lastLoginDate').innerText = "Último Login: " + lastLoginDate.toLocaleString();
-
+                document.getElementById('lastLoginDate').innerText = "Último Login: " + formatarDataHora(lastLoginDate);
             } else {
 
                 // Usuário está logado
@@ -356,7 +373,6 @@ function fetchAndDisplayDocuments() {
         });
     });
 }
-
 
 db.collection("Documentos").get().then((querySnapshot) => {
     console.log("Documentos encontrados: ", querySnapshot.size);
@@ -753,7 +769,7 @@ function searchUsers() {
     var searchValue = document.getElementById('searchInput').value.toLowerCase();
     var usersList = document.querySelectorAll('.user-type'); // Seleciona todos os elementos de usuário
 
-    usersList.forEach(function(userDiv) {
+    usersList.forEach(function (userDiv) {
         var userName = userDiv.textContent.toLowerCase();
         if (userName.includes(searchValue)) {
             userDiv.style.display = ''; // Mostra os usuários que correspondem
@@ -777,7 +793,7 @@ function updateIcons(isDarkMode) {
 }
 
 function updateButtonColor(isDarkMode) {
-    const color = isDarkMode 
+    const color = isDarkMode
         ? getComputedStyle(document.documentElement).getPropertyValue('--botaoazul')
         : getComputedStyle(document.documentElement).getPropertyValue('--botaorosa');
     toggleDarkModeButton.style.backgroundColor = color;
@@ -809,4 +825,201 @@ toggleDarkModeButton.addEventListener('click', toggleDarkMode);
 
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
+
+// mod --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Corte o resumo para um determinado número de caracteres
+function gerarResumo(conteudo, maxChars = 100) {
+    return conteudo.length > maxChars ? conteudo.substring(0, maxChars) + '...' : conteudo;
+}
+
+function formatarData(data) {
+    if (!data) return '';
+
+    const opcoes = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+    return new Date(data.seconds * 1000).toLocaleDateString('pt-BR', opcoes);
+}
+
+function fetchAndDisplayNoticias() {
+    db.collection("noticias").get().then((querySnapshot) => {
+        const postLoginContent = document.getElementById('post_login_content_firestoreNoticias');
+        postLoginContent.innerHTML = '';
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const resumo = gerarResumo(data.conteudo, 100); // 100 caracteres como exemplo
+            const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button>Link</button></a>` : '';
+            const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : '';
+            const dataFormatada = formatarData(data.dataPublicacao);
+
+            postLoginContent.innerHTML += `
+                <div class="noticia-container">
+                ${imagemNoticia}
+                <h3 class="noticia-titulo">${data.titulo}</h3>
+                    <p class="noticia-resumo">${resumo}</p>
+                    <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
+                    <p>Publicado por: ${data.autor} (${data.email})</p>
+                    <div>                    
+                        ${botaoLink} <!-- Botão de link condicional -->
+                        <button class="ver-mais">Ver Mais</button>
+                    </div>
+                    <p>${dataFormatada}</p>
+                </div>`;
+        });
+    });
+}
+
+
+document.addEventListener('click', function (e) {
+    if (e.target && e.target.className === 'ver-mais') {
+        var noticiaContainer = e.target.closest('.noticia-container');
+        var overlay = document.getElementById('overlay');
+
+        // Clone o container da notícia
+        var conteudoCompleto = noticiaContainer.cloneNode(true);
+
+        // Mude o botão para "Veja Menos"
+        var verMaisButton = conteudoCompleto.querySelector('.ver-mais');
+        verMaisButton.textContent = 'Veja Menos';
+
+        // Exiba o conteúdo completo
+        var conteudoCompletoDiv = conteudoCompleto.querySelector('.noticia-conteudo.completo');
+        conteudoCompletoDiv.style.display = 'block';
+
+        // Exiba o conteúdo completo
+        var conteudoResumoDiv = conteudoCompleto.querySelector('.noticia-resumo');
+        conteudoResumoDiv.style.display = 'none';
+
+        // Limpe o conteúdo atual do overlay
+        overlay.innerHTML = '';
+
+        // Adicione o conteúdo do container da notícia ao overlay
+        overlay.appendChild(conteudoCompleto);
+
+        // Exiba o overlay
+        overlay.style.display = 'block';
+    }
+});
+
+// Adicione um evento de clique no botão "Veja Menos" dentro do overlay para fechar o overlay
+document.addEventListener('click', function (e) {
+    if (e.target && e.target.className === 'ver-mais' && e.target.textContent === 'Veja Menos') {
+        var overlay = document.getElementById('overlay');
+
+        // Oculte o overlay quando o botão "Veja Menos" é clicado
+        overlay.style.display = 'none';
+    }
+});
+
+
+db.collection("noticias").get().then((querySnapshot) => {
+    console.log("Noticias encontradas: ", querySnapshot.size);
+}).catch((error) => {
+    console.error("Erro ao acessar o Firestore: ", error);
+});
+
+
+document.getElementById('addNoticiaForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Pega os valores do formulário
+    var titulo = document.getElementById('tituloNoticia').value;
+    var conteudo = document.getElementById('conteudoNoticia').value;
+    var urlImagem = document.getElementById('urlImagemNoticia').value;
+    var urlBotao = document.getElementById('urlBotaoNoticia').value;
+
+    // Obter o nome e o email do usuário atual
+    var usuarioAtual = firebase.auth().currentUser;
+    // Buscar o nome completo do usuário no Firebase Realtime Database
+    firebase.database().ref('users/' + usuarioAtual.uid).once('value').then(function (snapshot) {
+        var nomeUsuario = snapshot.val().full_name; // Aqui estamos buscando o full_name
+        var emailUsuario = usuarioAtual.email;
+
+        // Adiciona os dados no Firestore
+        return db.collection("noticias").add({
+            titulo: titulo,
+            conteudo: conteudo,
+            urlImagem: urlImagem,
+            urlBotao: urlBotao,
+            autor: nomeUsuario, // Usando o nome completo do banco de dados
+            email: emailUsuario,  // Adicionando o email do usuário
+            dataPublicacao: firebase.firestore.FieldValue.serverTimestamp() // Adiciona a data e hora da publicação
+
+        });
+    })
+        .then(function (docRef) {
+            console.log("Documento escrito com ID: ", docRef.id);
+            alert("Notícia adicionada com sucesso!");
+            // Limpar formulário ou atualizar a página conforme necessário
+        })
+        .catch(function (error) {
+            console.error("Erro ao adicionar documento: ", error);
+            alert("Erro ao adicionar notícia!");
+        })
+        .then(function (docRef) {
+            console.log("docRef:", docRef);
+            console.log("Documento adicionado com ID: ", docRef.id);
+        })
+
+        .catch(function (error) {
+            console.error("Erro ao adicionar documento: ", error);
+            console.log(error); // Adicionando esta linha para obter mais detalhes
+        });
+});
+
+// Supondo que você tenha uma função de autenticação
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        // Usuário está logado, agora verifique se é um mod
+        verificarStatusMod(user.uid);
+    } else {
+        // Usuário não está logado, esconder formulário
+        document.getElementById('modFormContainer').style.display = 'none';
+    }
+});
+
+// Verificar se o usuário é um moderador usando o Realtime Database
+function verificarStatusMod(userId) {
+    var userRef = firebase.database().ref('users/' + userId);
+    userRef.once('value', function (snapshot) {
+        if (snapshot.exists()) {
+            var userData = snapshot.val();
+            if (userData.is_mod) {
+                // O usuário é um mod, mostrar formulário
+                document.getElementById('modFormContainer').style.display = 'none';
+            } else {
+                // O usuário não é um mod, esconder formulário
+                document.getElementById('modFormContainer').style.display = 'none';
+                document.getElementById('toggleModFormButton').style.display = 'none';
+
+            }
+        } else {
+            console.log("Documento não encontrado no Realtime Database");
+        }
+    }).catch(function (error) {
+        console.log("Erro ao obter dados do usuário:", error);
+    });
+}
+
+// Verificação de estado de autenticação
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        verificarStatusMod(user.uid);
+    } else {
+        document.getElementById('modFormContainer').style.display = 'none';
+    }
+});
+
+
+document.getElementById('toggleModFormButton').addEventListener('click', function () {
+    var modForm = document.getElementById('modFormContainer');
+    if (modForm.style.display === 'none' || modForm.style.display === '') {
+        modForm.style.display = 'block'; // Ou 'flex', dependendo do seu layout
+        this.textContent = 'Esconder Formulário de Mod';
+    } else {
+        modForm.style.display = 'none';
+        this.textContent = 'Mostrar Formulário de Mod';
+    }
 });

@@ -22,12 +22,12 @@
         <div class="wrapper">
             <!-- GOOGLE SPINNER -->
             <div class="spinner">
-              <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-              </svg>
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
             </div>
             <!-- END GOOGLE SPINNER -->
-          </div>
+        </div>
     </div>
 
     <!-- Conteúdo após o login e a conta está dormente -->
@@ -42,8 +42,10 @@
     <div id="post_login_content">
         <div class="conteudoemsi">
             <button id="toggleButton"><i class="fa-solid fa-user-graduate"></i></button>
-
-            <button id="toggleButtonADM">Abrir/Fechar Painel</button>
+            <div style="display: flex; width: fit-content; gap: 10px;">
+                <button id="toggleButtonADM">Abrir/Fechar Painel</button>
+                <button id="toggleModFormButton">Mostrar Formulário de Mod</button>
+            </div>
 
             <div id="adminPanel" style="display: none;">
                 <!-- Barra de pesquisa -->
@@ -83,13 +85,27 @@
 
 
             </div>
+            
+            <div id="overlay" class="overlay" style="display: none;"></div>
+
+            <div id="modFormContainer" style="display:none;"> <!-- Mostrar este div apenas para mods -->
+                <form id="addNoticiaForm">
+                    <input type="text" id="tituloNoticia" placeholder="Título da Notícia" required>
+                    <textarea id="conteudoNoticia" placeholder="Conteúdo da Notícia" required></textarea>
+                    <input type="text" id="urlImagemNoticia" placeholder="URL da Imagem">
+                    <input type="text" id="urlBotaoNoticia" placeholder="URL do Botão">
+                    <button type="submit">Adicionar Notícia</button>
+                </form>
+            </div>
 
             <h2 id="Nomeatual"></h2>
 
             <p>Todos os documentos que você precisa estará aqui e se não estiver ou tiver ideias clique >aqui< e
                     sugira</p>
 
-                    <!-- Conteúdo que aparece após o usuário logar -->
+
+
+                    <div id="post_login_content_firestoreNoticias"></div>
                     <div id="post_login_content_firestoreDocumentos"></div>
         </div>
         <div id="meuFooter"></div>
