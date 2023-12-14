@@ -180,6 +180,7 @@ button {
     z-index: 1000;
 }
 
+
 .password-container {
     position: relative;
 }
@@ -643,6 +644,26 @@ p {
 }
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
+
+#toggleButtonADM{
+    background-color: transparent;
+    color: black;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+    border: 1px solid #e53888;
+}
+
+#toggleModFormButton{
+    background-color: transparent;
+    color: black;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+    border: 1px solid #45b7e5;
+}
 
 .tabelaadm {
     width: 100%;

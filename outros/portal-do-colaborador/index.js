@@ -1041,10 +1041,10 @@ document.getElementById('toggleModFormButton').addEventListener('click', functio
     var modForm = document.getElementById('modFormContainer');
     if (modForm.style.display === 'none' || modForm.style.display === '') {
         modForm.style.display = 'block'; // Ou 'flex', dependendo do seu layout
-        this.textContent = 'Esconder Formulário de Mod';
+        this.textContent = 'Esconder criação de noticia';
     } else {
         modForm.style.display = 'none';
-        this.textContent = 'Mostrar Formulário de Mod';
+        this.textContent = 'Criar notícia';
     }
 });
 
