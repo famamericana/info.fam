@@ -377,13 +377,14 @@ select:-webkit-autofill:focus {
     border-top: 1px dotted #45b7e5;
     width: 100%;
 }
-
+.overlay .horarionoticia {
+    margin-bottom: 100px;
+}
 
 .horarionoticia {
     color: #9da6be;
     font-size: small;
     margin-top: 0;
-    margin-bottom: 100px;
 
 }
 
