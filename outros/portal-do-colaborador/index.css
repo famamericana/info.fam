@@ -383,6 +383,8 @@ select:-webkit-autofill:focus {
     color: #9da6be;
     font-size: small;
     margin-top: 0;
+    margin-bottom: 100px;
+
 }
 
 /* Estilo para o overlay */
@@ -399,10 +401,24 @@ select:-webkit-autofill:focus {
     z-index: 1000;
 }
 
+.overlay .button-container {
+    display: flex;
+    justify-content: center; /* Alinha os itens horizontalmente ao centro */
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o contêiner */
+    background-color: white; /* Fundo branco */
+    padding: 10px; /* Espaçamento interno para não tocar diretamente nos botões */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.315); /* Sombra opcional para destaque */
+    border-radius: 5px; /* Borda arredondada para estética */
+}
+
 .overlay .ver-link,
 .overlay .ver-mais {
-    margin-bottom: 50px;
+    margin: 0 5px; /* Adiciona um pequeno espaço entre os botões */
 }
+
 .overlay .noticia-container {
     max-width: 960px;
     background-color: white;

@@ -886,7 +886,7 @@ function fetchAndDisplayNoticias() {
                     <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
                     <p class="escritor">${data.autor} </br>(${data.email})</p>
                     <p class="horarionoticia">${dataFormatada}</p>
-                    <div>                    
+                    <div class="button-container">                    
                     ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
                     </div>
