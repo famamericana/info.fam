@@ -336,17 +336,8 @@ select:-webkit-autofill:focus {
 .noticia-titulo {
     color: #333;
     margin-top: 10px;
+    margin-bottom: 0;
 }
-
-.noticia-resumo {
-    white-space: nowrap;
-    width: 80%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #666;
-    margin: 0;
-}
-
 
 .noticia-conteudo {
     display: none;
@@ -377,6 +368,7 @@ select:-webkit-autofill:focus {
 
 .escritor {
     margin-bottom: 0;
+    margin-top: 5px;
 }
 
 .horarionoticia {
@@ -399,6 +391,10 @@ select:-webkit-autofill:focus {
     z-index: 1000;
 }
 
+.overlay .ver-link,
+.overlay .ver-mais {
+    margin-bottom: 50px;
+}
 .overlay .noticia-container {
     max-width: 960px;
     background-color: white;
@@ -987,15 +983,15 @@ body.dark #toggleFormButtonLogin {
     font-family: monospace
 }
 
-.mce-content-body ol,
-.mce-content-body ul {
+.tox .tox-editor-container .mce-content-body ol,
+.tox .tox-editor-container .mce-content-body ul {
     margin-left: 15px;
     list-style-position: outside;
     margin-bottom: 20px
 }
 
-.mce-content-body ol li,
-.mce-content-body ul li {
+.tox .tox-editor-container .mce-content-body ol li,
+.tox .tox-editor-container .mce-content-body ul li {
     margin-left: 10px;
     margin-bottom: 10px;
     color: #626262
@@ -1013,31 +1009,31 @@ body.dark #toggleFormButtonLogin {
     text-decoration: underline
 }
 
-.mce-content-body table {
+.tox .tox-editor-container .mce-content-body table {
     width: 100%;
     border-spacing: 0;
     border-collapse: separate;
     border: 1px solid #aaa
 }
 
-.mce-content-body table tr:nth-child(even) {
+.tox .tox-editor-container .mce-content-body table tr:nth-child(even) {
     background: #fafafa
 }
 
-.mce-content-body table caption,
-.mce-content-body table td,
-.mce-content-body table th {
+.tox .tox-editor-container .mce-content-body table caption,
+.tox .tox-editor-container .mce-content-body table td,
+.tox .tox-editor-container .mce-content-body table th {
     padding: 15px 7px;
     font: inherit
 }
 
-.mce-content-body table td,
-.mce-content-body table th {
+.tox .tox-editor-container .mce-content-body table td,
+.tox .tox-editor-container .mce-content-body table th {
     border: 1px solid #aaa;
     border-collapse: collapse
 }
 
-.mce-content-body table th {
+.tox .tox-editor-container .mce-content-body table th {
     font-weight: 400;
     color: #6e6e6e;
     background-position: 100% 100%;
@@ -1045,6 +1041,6 @@ body.dark #toggleFormButtonLogin {
     background-repeat: no-repeat
 }
 
-.mce-content-body hr {
+.tox .tox-editor-container .mce-content-body hr {
     border-top: 2px solid #bbb
 }

@@ -336,8 +336,6 @@ auth.onAuthStateChanged(function (user) {
 });
 
 
-
-
 function sendPasswordResetEmail() {
     var email = prompt("Por favor, insira seu e-mail para redefinição de senha:");
     if (email) {
@@ -848,11 +846,6 @@ $(document).ready(function () {
 
 // mod --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Corte o resumo para um determinado número de caracteres
-function gerarResumo(conteudo, maxChars = 100) {
-    return conteudo.length > maxChars ? conteudo.substring(0, maxChars) + '...' : conteudo;
-}
-
 function formatarData(data) {
     if (!data) return '';
 
@@ -881,7 +874,6 @@ function fetchAndDisplayNoticias() {
 
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            const resumo = gerarResumo(data.conteudo, 100); // 100 caracteres como exemplo
             const botaoLink = data.urlBotao ? `<a  href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
 
             const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : '';
@@ -891,7 +883,6 @@ function fetchAndDisplayNoticias() {
                 <div class="noticia-container">
                 ${imagemNoticia}
                 <h3 class="noticia-titulo">${data.titulo}</h3>
-                    <p class="noticia-resumo">${resumo}</p>
                     <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
                     <p class="escritor">${data.autor} </br>(${data.email})</p>
                     <p class="horarionoticia">${dataFormatada}</p>
@@ -921,10 +912,6 @@ document.addEventListener('click', function (e) {
         // Exiba o conteúdo completo
         var conteudoCompletoDiv = conteudoCompleto.querySelector('.noticia-conteudo.completo');
         conteudoCompletoDiv.style.display = 'block';
-
-        // Exiba o conteúdo completo
-        var conteudoResumoDiv = conteudoCompleto.querySelector('.noticia-resumo');
-        conteudoResumoDiv.style.display = 'none';
 
         // Limpe o conteúdo atual do overlay
         overlay.innerHTML = '';
@@ -1154,5 +1141,4 @@ tinymce.init({
     toolbar_mode: 'sliding',
     contextmenu: "link image imagetools table",
 });
-
 
