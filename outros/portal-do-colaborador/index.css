@@ -45,6 +45,11 @@ body {
     padding: 0;
 }
 
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+  }
+  
 #content_container,
 #post_login_content {
     display: none;
@@ -410,9 +415,10 @@ select:-webkit-autofill:focus {
     left: 50%;
     transform: translateX(-50%); /* Centraliza o contêiner */
     background-color: white; /* Fundo branco */
-    padding: 10px; /* Espaçamento interno para não tocar diretamente nos botões */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.315); /* Sombra opcional para destaque */
+    padding: 15px 10px; /* Espaçamento interno para não tocar diretamente nos botões */
     border-radius: 5px; /* Borda arredondada para estética */
+    border: 1px solid #1b3556;
+
 }
 
 .overlay .ver-link,

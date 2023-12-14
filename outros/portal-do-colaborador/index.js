@@ -921,6 +921,8 @@ document.addEventListener('click', function (e) {
 
         // Exiba o overlay
         overlay.style.display = 'block';
+        document.body.classList.add('no-scroll');
+
     }
 });
 
@@ -931,6 +933,8 @@ document.addEventListener('click', function (e) {
 
         // Oculte o overlay quando o botão "Veja Menos" é clicado
         overlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+
     }
 });
 
@@ -1147,3 +1151,5 @@ tinymce.init({
     }
 });
 
+
+// overlay scroll ------------------------------------------------------------------------------------------------------------------------------------------------------------------
