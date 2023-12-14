@@ -1140,5 +1140,10 @@ tinymce.init({
     noneditable_noneditable_class: "mceNonEditable",
     toolbar_mode: 'sliding',
     contextmenu: "link image imagetools table",
+    setup: function (editor) {
+        editor.on('init', function () {
+            editor.execCommand('JustifyLeft');
+        });
+    }
 });
 
