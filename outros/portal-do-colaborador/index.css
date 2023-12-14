@@ -371,6 +371,13 @@ select:-webkit-autofill:focus {
     margin-bottom: 0;
     margin-top: 5px;
 }
+.overlay .escritor {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px dotted #45b7e5;
+    width: 100%;
+}
+
 
 .horarionoticia {
     color: #9da6be;
