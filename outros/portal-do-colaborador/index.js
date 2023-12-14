@@ -242,7 +242,7 @@ function formatarDataHora(data) {
     const opcoesData = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const opcoesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
 
-    return data.toLocaleDateString('pt-BR', opcoesData) + ' ' + data.toLocaleTimeString('pt-BR', opcoesHora);
+    return data.toLocaleDateString('pt-BR', opcoesData) + ' | ' + data.toLocaleTimeString('pt-BR', opcoesHora);
 }
 
 
@@ -582,8 +582,8 @@ function loadUsers() {
             userDiv.classList.add('user-type'); // Classe base para todos os usuários
             // Adicionar botão para tornar/modificar status de Moderador
 
-           
-            
+
+
             var userType, userClass;
             if (user.is_super_admin) {
                 userType = '<i class="fa-solid fa-cat"></i> ADM Geral';
@@ -620,15 +620,15 @@ function loadUsers() {
                         <div class="tabelaadmtdcombotao">
                             <div>${userType}</div>
                             <div>
-                            ${!user.is_super_admin && isSuperAdmin ? 
-                                (user.is_admin ? 
-                                    '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-minus"></i> <i class="fa-solid fa-dog"></i></button>' : 
-                                    '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-plus"></i><i class="fa-solid fa-dog"></i></button>') 
-                                : ''}
-                                ${!user.is_super_admin ? 
-                                    '<button onclick="toggleModStatus(\'' + userId + '\')">' + 
-                                    (user.is_mod ? '<i class="fa-solid fa-minus"></i> <i class="fa-solid fa-feather"></i>' : '<i class="fa-solid fa-plus"></i> <i class="fa-solid fa-feather"></i>') + 
-                                    '</button>' : ''}                            </div>
+                            ${!user.is_super_admin && isSuperAdmin ?
+                    (user.is_admin ?
+                        '<button onclick="removeAdminStatus(\'' + userId + '\')"><i class="fa-solid fa-minus"></i> <i class="fa-solid fa-dog"></i></button>' :
+                        '<button onclick="makeUserAdmin(\'' + userId + '\')"><i class="fa-solid fa-plus"></i><i class="fa-solid fa-dog"></i></button>')
+                    : ''}
+                                ${!user.is_super_admin ?
+                    '<button onclick="toggleModStatus(\'' + userId + '\')">' +
+                    (user.is_mod ? '<i class="fa-solid fa-minus"></i> <i class="fa-solid fa-feather"></i>' : '<i class="fa-solid fa-plus"></i> <i class="fa-solid fa-feather"></i>') +
+                    '</button>' : ''}                            </div>
                             </div>
                     </td>
 
@@ -856,9 +856,23 @@ function gerarResumo(conteudo, maxChars = 100) {
 function formatarData(data) {
     if (!data) return '';
 
-    const opcoes = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-    return new Date(data.seconds * 1000).toLocaleDateString('pt-BR', opcoes);
+    // Opções para a data
+    const opcoesDatapost = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    // Opções para a hora
+    const opcoesHorapost = { hour: '2-digit', minute: '2-digit' };
+
+    // Convertendo o timestamp para um objeto Date
+    const dataFormatadapost = new Date(data.seconds * 1000);
+
+    // Formatando a data e a hora separadamente
+    const datapostString = dataFormatadapost.toLocaleDateString('pt-BR', opcoesDatapost);
+    const horapostString = dataFormatadapost.toLocaleTimeString('pt-BR', opcoesHorapost);
+
+    // Combinando com o separador '|'
+    return datapostString + ' | ' + horapostString;
 }
+
+
 
 function fetchAndDisplayNoticias() {
     db.collection("noticias").get().then((querySnapshot) => {
@@ -868,7 +882,8 @@ function fetchAndDisplayNoticias() {
         querySnapshot.forEach((doc) => {
             const data = doc.data();
             const resumo = gerarResumo(data.conteudo, 100); // 100 caracteres como exemplo
-            const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button>Link</button></a>` : '';
+            const botaoLink = data.urlBotao ? `<a  href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
+
             const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : '';
             const dataFormatada = formatarData(data.dataPublicacao);
 
@@ -878,12 +893,13 @@ function fetchAndDisplayNoticias() {
                 <h3 class="noticia-titulo">${data.titulo}</h3>
                     <p class="noticia-resumo">${resumo}</p>
                     <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
-                    <p>Publicado por: ${data.autor} (${data.email})</p>
+                    <p class="escritor">${data.autor} </br>(${data.email})</p>
+                    <p class="horarionoticia">${dataFormatada}</p>
                     <div>                    
-                        ${botaoLink} <!-- Botão de link condicional -->
+                    ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
                     </div>
-                    <p>${dataFormatada}</p>
+
                 </div>`;
         });
     });
@@ -944,9 +960,12 @@ document.getElementById('addNoticiaForm').addEventListener('submit', function (e
 
     // Pega os valores do formulário
     var titulo = document.getElementById('tituloNoticia').value;
-    var conteudo = document.getElementById('conteudoNoticia').value;
     var urlImagem = document.getElementById('urlImagemNoticia').value;
     var urlBotao = document.getElementById('urlBotaoNoticia').value;
+
+    // Obter o conteúdo do TinyMCE em vez do valor do textarea
+    var conteudo = tinymce.get('conteudoNoticia').getContent();
+    console.log("Conteúdo capturado do TinyMCE:", conteudo);
 
     // Obter o nome e o email do usuário atual
     var usuarioAtual = firebase.auth().currentUser;
@@ -1074,3 +1093,66 @@ function toggleModStatus(userId) {
         console.error("Erro ao acessar informações do usuário atual: ", error);
     });
 }
+
+
+// editor de texto ------------------------------------------------------------------------------------------------
+
+tinymce.init({
+    selector: '#conteudoNoticia',
+    plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+    imagetools_cors_hosts: ['picsum.photos'],
+    menubar: 'file edit view insert format tools table help',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    toolbar_sticky: true,
+    autosave_ask_before_unload: true,
+    autosave_interval: "30s",
+    autosave_prefix: "{path}{query}-{id}-",
+    autosave_restore_when_empty: false,
+    autosave_retention: "2m",
+    image_advtab: true,
+    content_css: 'index.css',
+    link_list: [
+        { title: 'My page 1', value: 'http://www.tinymce.com' },
+        { title: 'My page 2', value: 'http://www.moxiecode.com' }
+    ],
+    image_list: [
+        { title: 'My page 1', value: 'http://www.tinymce.com' },
+        { title: 'My page 2', value: 'http://www.moxiecode.com' }
+    ],
+    image_class_list: [
+        { title: 'None', value: '' },
+        { title: 'Some class', value: 'class-name' }
+    ],
+    importcss_append: true,
+    file_picker_callback: function (callback, value, meta) {
+        /* Provide file and text for the link dialog */
+        if (meta.filetype === 'file') {
+            callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+        }
+
+        /* Provide image and alt text for the image dialog */
+        if (meta.filetype === 'image') {
+            callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+        }
+
+        /* Provide alternative source and posted for the media dialog */
+        if (meta.filetype === 'media') {
+            callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+        }
+    },
+    templates: [
+        { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
+        { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
+        { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
+    ],
+    template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+    template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+    height: 520,
+    image_caption: true,
+    quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+    noneditable_noneditable_class: "mceNonEditable",
+    toolbar_mode: 'sliding',
+    contextmenu: "link image imagetools table",
+});
+
+

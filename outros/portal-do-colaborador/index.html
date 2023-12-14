@@ -7,6 +7,7 @@
 
     <title>Portal do colaborador FAM</title>
     <link rel="stylesheet" type="text/css" href="index.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="icon" href="/images-gerais/famlogo.png">
 
@@ -85,13 +86,13 @@
 
 
             </div>
-            
+
             <div id="overlay" class="overlay" style="display: none;"></div>
 
             <div id="modFormContainer" style="display:none;"> <!-- Mostrar este div apenas para mods -->
                 <form id="addNoticiaForm">
                     <input type="text" id="tituloNoticia" placeholder="Título da Notícia" required>
-                    <textarea id="conteudoNoticia" placeholder="Conteúdo da Notícia" required></textarea>
+                    <textarea id="conteudoNoticia"></textarea>
                     <input type="text" id="urlImagemNoticia" placeholder="URL da Imagem">
                     <input type="text" id="urlBotaoNoticia" placeholder="URL do Botão">
                     <button type="submit">Adicionar Notícia</button>
@@ -102,7 +103,6 @@
 
             <p>Todos os documentos que você precisa estará aqui e se não estiver ou tiver ideias clique >aqui< e
                     sugira</p>
-
 
 
                     <div id="post_login_content_firestoreNoticias"></div>
@@ -203,6 +203,7 @@
 </body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://cdn.tiny.cloud/1/mkuuouu9nzy95wvjl5x6n9872e84hd902yx0qha9c3woxx9g/tinymce/6/tinymce.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
