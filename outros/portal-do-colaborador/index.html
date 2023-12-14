@@ -53,7 +53,7 @@
     <div id="post_login_content">
         <div class="conteudoemsi">
             <button id="toggleButton"><i class="fa-solid fa-user-graduate"></i></button>
-            <div style="display: flex; max-width: 500px; gap: 10px;">
+            <div class="botoesm" >
                 <button id="toggleButtonADM">Painel</button>
                 <button id="toggleModFormButton">Criar notícia</button>
             </div>
@@ -141,9 +141,10 @@
                 </div>
                 <button class="esquecisenha" onclick="sendPasswordResetEmail()">Esqueci minha senha</button>
                 <div class="botoescontainer">
-                    <button class="loginbotão" onclick="login()">Login</button>
                     <!-- Botão para alternar para o formulário de registro -->
-                    <button id="toggleFormButtonRegistrar" onclick="toggleForm()">Criar conta</button>
+                    <button class="registrobotão" id="toggleFormButtonRegistrar" onclick="toggleForm()">Criar conta</button>
+                    <button class="loginbotão" onclick="login()">Login</button>
+
                 </div>
 
             </div>
@@ -206,7 +207,7 @@
                 <div class="botoescontainerregistrar">
                     <button onclick="register()">Criar conta</button>
                     <!-- Botão para alternar para o formulário de login -->
-                    <button id="toggleFormButtonLogin" onclick="toggleForm()">Voltar</button>
+                    <button style="margin-top: 10px;" class="loginbotãovoltar" id="toggleFormButtonLogin" onclick="toggleForm()">Voltar</button>
                 </div>
             </div>
         </div>
