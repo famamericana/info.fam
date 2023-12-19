@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #3eb288;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid #3eb288;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Personaliza o fundo da barra de rolagem */
+.modal::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Personaliza a barra de rolagem em si */
+.modal::-webkit-scrollbar-thumb {
+    border: 2px solid white;
+}
+
+
 
 /* style.css */
 body {
@@ -5,22 +39,39 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100dvh;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .header {
     text-align: center;
-    padding: 20px 0;
+    padding: 20px ;
 }
 
 .header img {
-    max-width: 100%;
+    max-width: 400px;
     height: auto;
+    margin: 20px;
+}
+
+.footer{
+    text-align: center;
+    padding: 20px;
+}
+
+.footer img{
+    max-width: 200px;
+    height: auto;
+    margin: 20px;
 }
 
 .buttons {
     text-align: center;
     padding: 20px;
-
+    margin: 0 20px;
 }
 
 .button {
@@ -32,12 +83,19 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: medium;
+    min-width: 150px;
+    background-color: white;
+
 }
 
 .button img {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 80px;
     vertical-align: middle;
+    padding: 0 10px;
 }
 
 .button span {
@@ -45,7 +103,14 @@ body {
     vertical-align: middle;
     flex-direction: column;
     display: flex;
+    width: 100px;
+    margin: 0 auto;
 }
+
+.button:nth-child(2) span {
+    width: 50px;
+}
+
 
 .button:hover {
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);
@@ -63,11 +128,119 @@ body {
     overflow: auto;
     background-color: rgba(0,0,0,0.4); /* Opacidade */
 }
+.modal div {
+    background-color: white;
+    padding: 20px;
+}
 
 .modal p {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    width: 80%;
+    padding: 0;
+    margin: 0;
+}
+
+.quotes{
     text-align: center;
+    font-size: large;
+    color: #888;
+}
+
+.quotesfam{
+    text-align: center;
+    font-size: larger;
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+/* Estilos para os cabeçalhos */
+.modal h1 {
+    color: #1b3556;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal h2 {
+    color: #27947c;
+    margin-bottom: 15px;
+}
+
+.modal h3 {
+    color: #3eb288;
+    margin-bottom: 10px;
+}
+
+/* Estilos para as listas */
+.modal ul, .modal ol {
+    text-align: left;
+    margin: 10px auto;
+}
+
+.modal li {
+    margin-bottom: 5px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Ajustes gerais */
+.modal ul li {
+    list-style-type: disc;
+}
+
+.modal ol li {
+    list-style-type: decimal;
+}
+
+/* Novo estilo para o botão de fechar */
+.close-button {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    font-size: 40px;
+    padding: 6px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #3eb288;
+}
+
+/* Estilo para esconder o scroll do body */
+.body-no-scroll {
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%; 
+        display: flex;
+        height: fit-content;
+        justify-content: center;
+    }
+    
+    .button img {
+        width: 40px;
+        height: 60px;
+        vertical-align: middle;
+    }
+
+    .button span {
+        text-align: left;
+        display: flex;
+        align-self: center;
+        width: fit-content;
+        margin: 0;
+    }
+    
+    .button:nth-child(2) span {
+        width: fit-content;
+    }
+    
+
+    .button:hover {
+        box-shadow: none;
+        transform: none;
+    }
+
 }

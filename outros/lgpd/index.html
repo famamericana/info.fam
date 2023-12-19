@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,191 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
+
 <body>
     <div class="header">
-        <img src="logo.png" alt="Logo">
+        <img src="images/lgpdlogo.svg" alt="Logo">
     </div>
-<div class="buttons">
-    <button class="button" onclick="openModal('modal1')">
-        <img src="image1.png" alt="">
-        <span>Botão 1</span>
-    </button>
-    <button class="button" onclick="openModal('modal2')">
-        <img src="image2.png" alt="">
-        <span>Botão 2</span>
-    </button>
-    <button class="button" onclick="location.href='link3.html'">
-        <img src="image3.png" alt="">
-        <span>Botão 3</span>
-    </button>
-    <button class="button" onclick="location.href='link4.html'">
-        <img src="image4.png" alt="">
-        <span>Botão 4</span>
-    </button>
-</div>
+    <div class="buttons">
+        <button class="button" onclick="window.open('https://www.fam.br/politica-de-privacidade/', '_blank')">
+            <img src="images/segurançaicon.svg" alt="">
+            <span>Política de Privacidade</span>
+        </button>
+        <button class="button" onclick="openModal('modal2')">
+            <img src="images/carteiraicon.svg" alt="">
+            <span>Cartilha LGPD</span>
+        </button>
+        <button class="button"
+            onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeI5DxexDuHiIgBDyKJ7K5cGwwh_BaD9xQ3_KbolsmFnabCPg/viewform', '_blank')">
+            <img src="images/formularioicon.svg" alt="">
+            <span>Formulário de Requisição</span>
+        </button>
+        <button class="button" onclick="openModal('modal1')">
+            <img src="images/infoemailicon.svg" alt="">
+            <span>Informativos LGPD</span>
+        </button>
 
+    </div>
+    <div class="footer">
+        <img src="images/logo_fam.svg" alt="Logo">
+    </div>
     <div id="modal1" class="modal">
-        <p>Texto do Modal 1</p>
+        <span class="close-button">&times;</span>
+
+        <div class="modal-content">
+            <h1>Pressupostos da Divulgação</h1>
+
+            <p class="quotes">“Não basta estar em conformidade com a LGPD, é preciso demonstrar a sua conformidade.”</p>
+            <h2 class="quotesfam">A Faculdade de Americana - FAM</h2>
+
+            <p style="text-indent: 20px;">Dentro do procedimento de conformidade com a Lei 13.709/2018, conhecida como
+                Lei Geral de Proteção de
+                Dados (LGPD), que está em vigor desde agosto de 2020, vem informar à nossa comunidade acadêmica sobre a
+                importância dessa Lei e como a FAM adequou procedimentos e políticas institucionais para proteger os
+                seus dados pessoais.</p>
+
+            </br>
+            <p style="text-indent: 20px;">A partir de agora, a FAM apresentará um pequeno informativo semanal chamado
+                “Momento LGPD”, que é uma
+                pílula de conhecimento em que a FAM apresenta informações claras sobre proteção e privacidade de dados
+                pessoais.</p>
+
+            <h3>O que é a LGPD?</h3>
+            <p style="text-indent: 20px;">A Lei 13.709/2018 - Lei Geral de Proteção de Dados Pessoais veio para proteger
+                os direitos fundamentais
+                de liberdade e de privacidade e a livre formação da personalidade de cada indivíduo, assegurando a
+                privacidade aos cidadãos através de regras para coleta, armazenamento e qualquer outro tipo de
+                tratamento realizado com os dados pessoais.</p>
+
+            <h3>Qual a importância da conformidade com a LGPD para nossa Instituição?</h3>
+            <p style="text-indent: 20px;">A LGPD é aplicada para pessoas naturais ou jurídicas que coletam ou armazenam
+                dados pessoais de forma
+                digital ou física; também para órgãos públicos que tratam dados dos cidadãos; e em benefício de todos os
+                brasileiros, titulares de dados.</p>
+            </br>
+            <p style="text-indent: 20px;">A nossa Instituição coleta e trata dados pessoais em vários procedimentos para
+                a sua utilização em sua
+                finalidade educacional, por isso precisamos que todos nossos colaboradores e parceiros tenham a
+                consciência e responsabilidade sobre as novas diretrizes de tratamento de dados pessoais.</p>
+
+            <h3>O que a FAM faz para ficar em conformidade com a LGPD?</h3>
+            <p style="text-indent: 20px;">A FAM instituiu um Comitê de Proteção de Dados Pessoais para auxiliar nas
+                melhorias do tratamento de
+                dados pessoais decorrentes da Lei n. 13.709/2018 (Lei Geral de Proteção de Dados Pessoais - LGPD). Esse
+                comitê realizou a revisão de procedimentos, contratos e demais atos institucionais para a realização do
+                tratamento dos dados pessoais em conformidade com a LGPD.</p>
+
+            <h3>Quais são os dados?</h3>
+            <ul>
+                <li>Dados pessoais: informações que identifiquem diretamente uma pessoa natural. Ex.: RG, CPF e
+                    informações que com algum esforço possam chegar a identificação da pessoa natural. Ex.: Cep, e-mail,
+                    histórico de compras etc.</li>
+                <li>Dados sensíveis: dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política,
+                    filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à
+                    saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural.</li>
+                <li>Dados de crianças e adolescentes.</li>
+            </ul>
+
+            <h3>Quais são os deveres da Instituição?</h3>
+            <ul>
+                <li>Estabelecer boas práticas de gestão de Segurança da Informação, de acordo com a LGPD;</li>
+                <li>Garantir proteção de dados dos titulares; e</li>
+                <li>Conceder acesso e visibilidade aos titulares, caso haja solicitação por parte deles.</li>
+                <li>Garantir os direitos dos titulares dos dados.</li>
+                <li>Obedecer aos princípios estabelecidos na LGPD.</li>
+            </ul>
+
+            <h3>Confira os direitos dos titulares de dados pela LGPD</h3>
+            <ol>
+                <li>Confirmação da existência de tratamento</li>
+                <li>Acesso aos dados</li>
+                <li>Correção de dados</li>
+                <li>Anonimização, bloqueio ou eliminação de dados</li>
+                <li>Portabilidade dos dados</li>
+                <li>Eliminação dos dados tratados com consentimento</li>
+                <li>Informações sobre o compartilhamento de dados</li>
+                <li>Informação sobre a possibilidade de não fornecer consentimento</li>
+                <li>Revogação do consentimento</li>
+            </ol>
+            <p>Além dos 9 direitos principais dos titulares de dados previstos em seu artigo 18, a LGPD menciona outros,
+                como por exemplo:</p>
+            <ul>
+                <li>O direito do titular de dados de se manifestar contra o controlador na ANPD e nos órgãos de defesa
+                    do consumidor.</li>
+                <li>O direito de opor-se ao tratamento realizado com dispensa de consentimento, caso não esteja em
+                    conformidade com a lei.</li>
+            </ul>
+            <p style="text-indent: 20px;">É importante ressaltar, no entanto, que nenhum direito é absoluto e que há
+                situações em que as
+                instituições podem não conseguir atender aos requerimentos do titular, devendo indicar os motivos -como,
+                por exemplo, o cumprimento de obrigações legais ou regulatórias.</p>
+
+            <h3>A LGPD estabelece penalidades para as instituições que não estejam adequadas</h3>
+            <p style="text-indent: 20px;">O não cumprimento das determinações estabelecidas pela LGPD pode resultar em
+                sanções administrativas
+                diversas, dentre elas estão advertência, multa simples, multa diária, publicização da infração, bloqueio
+                dos dados pessoais e eliminação dos dados pessoais.</p>
+
+            </br>
+            <p style="text-indent: 20px;">O setor educacional deve estar antenado às novidades das leis e ser norteador
+                em relação à adequação
+                garantindo o devido respeito aos direitos individuais, pois além da preocupação com a reputação da nossa
+                instituição frente à possíveis infrações, temos o dever de formar cidadãos.</p>
+
+        </div>
     </div>
     <div id="modal2" class="modal">
-        <p>Texto do Modal 2</p>
+        <span class="close-button">&times;</span>
+
+        <div class="modal-content">
+            <h1>Do Encarregado de Proteção dos Dado Pessoais da Faculdade de Americana (FAM)</h1>
+
+            <p style="text-indent: 20px;">O encarregado de proteção de dados (Data Protection Officer) é o
+                profissional/empresa encarregado de
+                informar, aconselhar e controlar o responsável pelo tratamento dos dados e o processador de dados
+                subcontratado, bem como os colaboradores que tratem os dados, a respeito das obrigações da Faculdade de
+                Americana (FAM) nos termos da Lei Geral de Proteção de Dados Pessoais e de outras disposições de
+                proteção de dados presentes na legislação nacional e internacional, em cooperação com a autoridade de
+                controle competente.</p>
+            </br>
+            <p style="text-indent: 20px;">A Faculdade de Americana (FAM) disponibiliza os dados de contato da
+                Encarregada de Dados Pessoais (DPO),
+                sendo a responsável por atender toda e qualquer solicitação por parte dos usuários, ou da Autoridade
+                Nacional, que estejam relacionados com dados pessoais:</p>
+
+            <h2>Encarregado DPO</h2>
+            <p>E-mail: adrianapertille@fam.br OU lgpd@fam.br</p>
+
+            <h2>Direito dos Titulares</h2>
+            <p>Os titulares dos dados possuem os seguintes direitos, conferidos pela Lei de Proteção de Dados Pessoais:
+            </p>
+
+            <ol>
+                <li><strong>Direito de acesso:</strong> é o direito do titular de obter a confirmação de que os dados
+                    pessoais que lhe digam respeito são ou não objeto de tratamento e, se for esse o caso, o direito de
+                    acessar os seus dados pessoais;</li>
+                <li><strong>Direito de Atualização:</strong> é o direito do titular de obter, sem demora injustificada,
+                    a retificação dos dados pessoais inexatos que lhe digam respeito;</li>
+                <li><strong>Direito à eliminação dos dados (direito ao esquecimento):</strong> é o direito do titular de
+                    ter seus dados apagados, desde que eles não estejam sendo mantidos em virtude de outras obrigações
+                    legais;</li>
+                <li><strong>Direito à limitação do tratamento dos dados:</strong> é o direito do titular de limitar o
+                    tratamento de seus dados pessoais, podendo obtê-la quando contesta a exatidão dos dados, quando o
+                    tratamento for ilícito, quando a FACULDADE DE AMERICANA (FAM) não precisar mais dos dados para as
+                    finalidades propostas, quando tiver se oposto ao tratamento dos dados e em caso de tratamento de
+                    dados desnecessários;</li>
+                <li><strong>Direito de portabilidade dos dados:</strong> é o direito do titular de receber os dados
+                    pessoais que lhe digam respeito e que tenha fornecido ao site, num formato estruturado, de uso
+                    corrente e de leitura automática, e o direito de transmitir esses dados a outro site;</li>
+                <li><strong>Direito de não ser submetido a decisões automatizadas:</strong> é o direito do titular de
+                    não ficar sujeito a nenhuma decisão tomada exclusivamente com base no tratamento automatizado,
+                    incluindo a definição de perfis (profiling), que produza efeitos na sua esfera jurídica ou que o
+                    afete significativamente de forma similar.</li>
+            </ol>
+
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
