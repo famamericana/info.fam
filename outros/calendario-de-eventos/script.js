@@ -107,3 +107,7 @@ moment.locale('pt');
             }
         );
 
+//https forçar -------------------------------------------------------------------------------------------------------------------------------
+if (location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}
