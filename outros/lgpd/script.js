@@ -1,3 +1,5 @@
+
+
 function openModal(modalId) {
     document.getElementById(modalId).style.display = "block";
     document.body.classList.add("body-no-scroll");
@@ -21,3 +23,9 @@ document.querySelectorAll('.close-button').forEach(button => {
         closeModal(this.closest('.modal').id);
     };
 });
+
+
+//https forçar -------------------------------------------------------------------------------------------------------------------------------
+if (location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}

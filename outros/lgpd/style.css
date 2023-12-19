@@ -49,12 +49,14 @@ body {
 .header {
     text-align: center;
     padding: 20px ;
+    padding-bottom: 10px;
 }
 
 .header img {
     max-width: 400px;
     height: auto;
     margin: 20px;
+    margin-bottom: 0;
 }
 
 .footer{
