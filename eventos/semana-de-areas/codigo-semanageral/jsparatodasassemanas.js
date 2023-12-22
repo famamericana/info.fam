@@ -49,3 +49,10 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 }
 
 
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
+});
