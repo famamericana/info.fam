@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="/codigos-gerais/navbar-invertido/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<body>
+    <div class="famosanavbar">
+        <nav class="barrafundo">
+            <div class="barra-navegacao">
+                <a href="https://info.fam.br">
+                    <img src="/codigos-gerais/navbar-invertido/images/info.fam.svg" alt="Logo" class="imagem-logo">
+                </a>
+                <ul class="lista-links">
+                    <li><a href="https://info.fam.br">Início</a></li>
+                    <li class="item-dropdown" id="itemnavbarDropdown">
+                        <a href="">Diversos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="agoravai conteudo-dropdown">
+            <div class="flex">
+                <div class="lado-esquerdo-dropdown">
+                    <!-- Links adicionais -->
+                    <h2>Informações</h2>
+                    <a href="https://info.fam.br/eventos/semana-de-areas/">Semana de Áreas</a>
+                    <a href="https://www.fam.br/blog/">Blog FAM</a>
+                </div>
+                <div class="lado-direito-dropdown">
+                    <!-- Imagens com títulos -->
+                    <div class="imagem-com-texto">
+                        <a target="_blank" href="https://info.fam.br/eventos/colacao-de-grau/">
+                            <img src="/paginicial/images/colacaograu.png" alt="Imagem 3">
+                            <h3>Colação de Grau</h3>
+                            <p>Alunos FAM finalizam uma etapa de sua carreira!</p>
+                        </a>
+                        <div class="pagnova"><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="imagem-com-texto">
+                        <a target="_blank" href="https://info.fam.br/calendario-academico/">
+                            <img src="/paginicial/images/calenacademico.png" alt="Imagem 1">
+                            <h3>Calendário Acadêmico</h3>
+                            <p>O que irá ocorrer no seu ano letivo.</p>
+                        </a>
+                    </div>
+                    <div class="imagem-com-texto">
+                        <a target="_blank" href="https://info.fam.br/calendario-de-eventos/">
+                            <img src="/paginicial/images/caleneventos.png" alt="Imagem 2">
+                            <h3>Calendário Eventos</h3>
+                            <p>O que irá ocorrer na sua faculdade, participe! ;)</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setupDropdown() {
+            var dropdown = document.getElementById('itemnavbarDropdown');
+            var dropdownContent = document.querySelector('.agoravai');
+            var timeoutId;
+
+            // Mostra o conteúdo quando passar o mouse ou clicar
+            dropdown.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+                dropdownContent.style.display = 'block';
+            });
+
+            dropdown.addEventListener('click', function () {
+                dropdownContent.style.display = (dropdownContent.style.display === 'none' ? 'block' : 'none');
+            });
+
+            // Função para esconder o dropdown com atraso
+            function hideDropdown() {
+                timeoutId = setTimeout(function () {
+                    dropdownContent.style.display = 'none';
+                }, 300);
+            }
+
+            // Esconde o conteúdo quando o mouse sair da área
+            dropdown.addEventListener('mouseleave', hideDropdown);
+            dropdownContent.addEventListener('mouseleave', hideDropdown);
+
+            // Cancela o esconder se o mouse entrar novamente
+            dropdownContent.addEventListener('mouseenter', function () {
+                clearTimeout(timeoutId);
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.famosanavbar');
+            if (window.pageYOffset > 140) {
+                navbar.classList.add('famosanavbar_fixed-navbar');
+            } else {
+                navbar.classList.remove('famosanavbar_fixed-navbar');
+            }
+        });
+
+    </script>
+
+</body>
