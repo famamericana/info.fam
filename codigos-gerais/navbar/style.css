@@ -3,6 +3,9 @@
 
 .famosanavbar{
     font-family: 'Source Sans 3', sans-serif;
+    position: relative; /* ou 'absolute', dependendo do seu layout */
+    z-index: 9999;
+
 }
 
 .famosanavbar .barra-navegacao {
@@ -60,15 +63,21 @@
     padding: 27px;
 }
 .famosanavbar .conteudo-dropdown {
-    position: fixed;
     display: none;
-    /* Ou 'absolute' se preferir */
+    position: absolute;
     top: 70px;
-    /* Ajuste para a altura da sua barra de navegação */
-    left: 0;
-    width: 100%;
     box-sizing: border-box;
     z-index: 1;
+    max-width: 960px;
+    left: 50%; /* Posiciona a borda esquerda do elemento no centro */
+    transform: translateX(-50%);
+
+}
+
+.famosanavbar .agoravai{
+    width: 100%;
+    margin: 0 auto;
+
 }
 
 .famosanavbar .conteudo-dropdown a{
@@ -160,7 +169,14 @@
     font-size: small;
 }
 
-@media (max-width: 600px) {
+.famosanavbar_fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
     .famosanavbar  .lista-links{
         display: none;
     }
@@ -169,6 +185,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
     }
 }
+

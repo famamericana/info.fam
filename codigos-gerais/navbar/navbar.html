@@ -18,7 +18,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="conteudo-dropdown">
+        <div class="agoravai conteudo-dropdown">
             <div class="flex">
                 <div class="lado-esquerdo-dropdown">
                     <!-- Links adicionais -->
@@ -59,7 +59,7 @@
     <script>
         function setupDropdown() {
             var dropdown = document.getElementById('itemnavbarDropdown');
-            var dropdownContent = document.querySelector('.conteudo-dropdown');
+            var dropdownContent = document.querySelector('.agoravai');
             var timeoutId;
 
             // Mostra o conteúdo quando passar o mouse ou clicar
@@ -88,6 +88,15 @@
                 clearTimeout(timeoutId);
             });
         }
+
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.famosanavbar');
+            if (window.pageYOffset > 140) {
+                navbar.classList.add('famosanavbar_fixed-navbar');
+            } else {
+                navbar.classList.remove('famosanavbar_fixed-navbar');
+            }
+        });
 
     </script>
 
