@@ -9,20 +9,21 @@
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
     background: #5d378d;
+    border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5);
-    border-top: 3px solid #5d378d;
-    border-right: 3px solid #5d378d;
-    border-bottom: 3px solid #5d378d;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #5d378d;
+    border-radius: 10px;
 }
 
-/* Personaliza a barra de rolagem quando você passa o mouse sobre ela */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.212);
+    background: rgba(0, 0, 0, 0.6);
 }
+
+
 
 .teste {
     display: flex;
