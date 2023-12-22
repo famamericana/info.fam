@@ -1,109 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* estilo.css */
-body {
-    margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
 
+.famosanavbar{
+    font-family: 'Source Sans 3', sans-serif;
 }
 
-.barra-navegacao {
+.famosanavbar .barra-navegacao {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 40px;
+    padding: 10px 20px;
     max-width: 960px;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
-.barrafundo{
-    background-color: #333;
+.famosanavbar .barrafundo {
+    background-color: #1b3556;
     width: 100%;
 }
-.imagem-logo {
-    width: 100px; /* Ajuste conforme necessário */
+
+.famosanavbar .imagem-logo {
+    width: 100px;
+    /* Ajuste conforme necessário */
 }
 
-.lista-links {
+.famosanavbar .lista-links {
     list-style: none;
 
 }
 
-.lista-links li {
+.famosanavbar .lista-links li {
     display: inline;
     margin-left: 20px;
 }
 
-.lista-links a {
+.famosanavbar .lista-links a {
     text-decoration: none;
     color: white;
+    display: inline-block;
+    /* Muda para inline-block para aplicar estilos ao ::first-letter */
+
 }
 
-.item-dropdown {
+.famosanavbar .lista-links a:hover {
+    color: #f9e20f;
+}
+
+.famosanavbar .lista-links a::first-letter {
+    color: #f9e20f;
+    /* Altere para a cor desejada */
+}
+
+.famosanavbar .item-dropdown {
     position: relative;
     padding: 26px 0;
 }
 
-.conteudo-dropdown {
+.famosanavbar .conteudo-dropdown {
     display: none;
-    position: fixed; /* Ou 'absolute' se preferir */
-    top: 74px; /* Ajuste para a altura da sua barra de navegação */
+    position: fixed;
+    /* Ou 'absolute' se preferir */
+    top: 70px;
+    /* Ajuste para a altura da sua barra de navegação */
     left: 0;
     width: 100%;
-    background-color: #865353;
     box-sizing: border-box;
     z-index: 1;
+
 }
 
-.flex{
+.famosanavbar .conteudo-dropdown a{
+    text-decoration: 0;
+    color: initial;
+}
+
+.famosanavbar .flex {
     display: flex;
     max-width: 960px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-    background-color: antiquewhite;
+
 }
 
-.lado-esquerdo-dropdown,
-.lado-direito-dropdown {
+.famosanavbar .lado-esquerdo-dropdown,
+.famosanavbar .lado-direito-dropdown {
     padding: 10px;
     float: left;
 }
 
-.lado-esquerdo-dropdown {
+.famosanavbar .lado-esquerdo-dropdown {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
-.lado-direito-dropdown {
+.famosanavbar .lado-direito-dropdown {
     flex: 3;
     display: flex;
     flex-direction: row;
     gap: 10px;
     justify-content: center;
-    background-color:aliceblue;
-    border-left: 1px solid #45b7e5;        
+    padding: 20px;
 }
 
-.imagem-com-texto {
+.famosanavbar .imagem-com-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #d5dcf1;
+    border-radius: 10px;
+    padding: 16px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.famosanavbar .imagem-com-texto h3 {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.famosanavbar .imagem-com-texto p {
+    margin-top: -15px;
     margin-bottom: 10px;
-    width: 200px; /* Ajuste conforme necessário */
-    cursor: pointer;
+    font-size: 15px;
+
 }
 
-.imagem-com-texto h4{
-    text-align: center;
-    margin-top: 5px;
+.famosanavbar .imagem-com-texto img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-.imagem-com-texto p{
-    margin-top: 0;
-    padding-top: 0;
-    text-align: center;
+.famosanavbar .pagnova {
+    background-color: #3eb288;
+    color: white;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: small;
 }
-.imagem-com-texto img {
-    width: 100%; /* Ajuste conforme necessário */
-}
-
-
-/* Adicione mais estilos conforme necessário */
