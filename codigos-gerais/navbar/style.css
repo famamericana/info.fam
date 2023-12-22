@@ -54,12 +54,14 @@
 
 .famosanavbar .item-dropdown {
     position: relative;
-    padding: 26px 0;
 }
 
+#itemDropdown{
+    padding: 27px;
+}
 .famosanavbar .conteudo-dropdown {
-    display: none;
     position: fixed;
+    display: none;
     /* Ou 'absolute' se preferir */
     top: 70px;
     /* Ajuste para a altura da sua barra de navegação */
@@ -67,7 +69,6 @@
     width: 100%;
     box-sizing: border-box;
     z-index: 1;
-
 }
 
 .famosanavbar .conteudo-dropdown a{
@@ -88,7 +89,6 @@
 .famosanavbar .lado-esquerdo-dropdown,
 .famosanavbar .lado-direito-dropdown {
     padding: 10px;
-    float: left;
 }
 
 .famosanavbar .lado-esquerdo-dropdown {
@@ -96,6 +96,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    line-height: 1.5;
 }
 
 .famosanavbar .lado-direito-dropdown {
@@ -117,6 +118,15 @@
     padding: 16px;
     text-decoration: none;
     width: 100%;
+}
+
+.famosanavbar h2{
+    margin-top: 0;
+    border-bottom: 1px solid #d5dcf1;
+    width: fit-content;
+    margin-bottom: 10px;
+    margin-left: 0;
+
 }
 
 .famosanavbar .imagem-com-texto h3 {
@@ -148,4 +158,17 @@
     text-transform: uppercase;
     font-weight: 600;
     font-size: small;
+}
+
+@media (max-width: 600px) {
+    .famosanavbar  .lista-links{
+        display: none;
+    }
+
+    .famosanavbar .barra-navegacao {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
 }
