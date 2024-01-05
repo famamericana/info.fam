@@ -707,7 +707,18 @@ p {
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
 .noticiadeletebutton{
-    padding-left: 10px;
+    background-color: transparent ;
+    color: #000;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+}
+
+.button-container button {
+    flex: 0 1 auto; /* Isso permite que o botão cresça e encolha, mas respeitando o tamanho do conteúdo */
 }
 
 #toggleButtonADM {
