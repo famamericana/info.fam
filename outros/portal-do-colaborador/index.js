@@ -276,9 +276,10 @@ auth.onAuthStateChanged(function (user) {
                     document.getElementById('post_login_content').style.display = 'none';
                     document.getElementById('post_login_content_dormente').style.display = 'block'; // Exiba o conteúdo dormente
 
-                } else {
-                    // Outros estados da conta, se necessário
                 }
+
+
+                
 
                 if (userData && userData.is_admin) {
                     // User is an admin, show the adminPanel and toggleButtonADM
@@ -308,6 +309,7 @@ auth.onAuthStateChanged(function (user) {
                 // Formatar e exibir a data e hora do último login
                 var lastLoginDate = new Date(userData.last_login);
                 document.getElementById('lastLoginDate').innerText = "Último Login: " + formatarDataHora(lastLoginDate);
+
             } else {
 
                 // Usuário está logado
@@ -889,6 +891,7 @@ function fetchAndDisplayNoticias() {
                     <div class="button-container">                    
                     ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
+                        <button style="display:none;" id="noticiadeletebutton" onclick="deleteNoticia('${doc.id}')">Deletar</button>
                     </div>
 
                 </div>`;
@@ -1008,20 +1011,37 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+
+
+
+
 // Verificar se o usuário é um moderador usando o Realtime Database
 function verificarStatusMod(userId) {
     var userRef = firebase.database().ref('users/' + userId);
+    var deleteButton = document.getElementById('noticiadeletebutton');
+
     userRef.once('value', function (snapshot) {
         if (snapshot.exists()) {
             var userData = snapshot.val();
             if (userData.is_mod) {
                 // O usuário é um mod, mostrar formulário
-                document.getElementById('modFormContainer').style.display = 'none';
+                document.getElementById('modFormContainer').style.display = 'none';                
+                setTimeout(function() {
+                    var deleteButton = document.getElementById('noticiadeletebutton');
+                    if (deleteButton) {
+                        deleteButton.style.display = 'flex';
+                    } else {
+                        console.log("Botão de exclusão ainda não existe no DOM");
+                    }
+                }, 500); // Atrasa a execução em 500 milissegundos
             } else {
                 // O usuário não é um mod, esconder formulário
                 document.getElementById('modFormContainer').style.display = 'none';
                 document.getElementById('toggleModFormButton').style.display = 'none';
-
+                // Opcional: Ocultar o botão de exclusão quando o formulário é escondido
+            if (deleteButton) {
+                deleteButton.style.display = 'none';
+            }
             }
         } else {
             console.log("Documento não encontrado no Realtime Database");
@@ -1030,6 +1050,8 @@ function verificarStatusMod(userId) {
         console.log("Erro ao obter dados do usuário:", error);
     });
 }
+
+
 
 // Verificação de estado de autenticação
 firebase.auth().onAuthStateChanged(function (user) {
@@ -1043,6 +1065,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 document.getElementById('toggleModFormButton').addEventListener('click', function () {
     var modForm = document.getElementById('modFormContainer');
+
     if (modForm.style.display === 'none' || modForm.style.display === '') {
         modForm.style.display = 'block'; // Ou 'flex', dependendo do seu layout
         this.textContent = 'Esconder criação de noticia';
@@ -1152,4 +1175,17 @@ tinymce.init({
 });
 
 
-// overlay scroll ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// deletar noticia ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function deleteNoticia(noticiaId) {
+    // Implementar lógica para deletar a notícia
+    if (confirm("Tem certeza que deseja deletar esta notícia?")) {
+        db.collection("noticias").doc(noticiaId).delete().then(() => {
+            console.log("Notícia deletada com sucesso!");
+            // Atualizar a interface do usuário aqui, se necessário
+        }).catch((error) => {
+            console.error("Erro ao deletar notícia: ", error);
+        });
+    }
+}
+
