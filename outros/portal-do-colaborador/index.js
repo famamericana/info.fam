@@ -877,8 +877,8 @@ function fetchAndDisplayNoticias() {
         querySnapshot.forEach((doc) => {
             const data = doc.data();
             const botaoLink = data.urlBotao ? `<a  href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
-
-            const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : '';
+            // Verifica se há uma URL de imagem, se não, usa uma imagem padrão
+            const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : `<img src="https://i.postimg.cc/h4drSDnV/padr-o.png" alt="Imagem Padrão" class="noticia-imagem">`;
             const dataFormatada = formatarData(data.dataPublicacao);
 
             postLoginContent.innerHTML += `
