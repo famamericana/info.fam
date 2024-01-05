@@ -393,14 +393,14 @@ body.dark .ver-mais {
 }
 
 .overlay .escritor {
-    margin-top: 50px;
+    margin-top: 25px;
     padding-top: 30px;
     border-top: 1px dotted #45b7e5;
     width: 100%;
 }
 
 .overlay .horarionoticia {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .horarionoticia {
@@ -424,30 +424,29 @@ body.dark .ver-mais {
     z-index: 1000;
 }
 
+.overlay .ver-link {
+    background-color: #3eb288;
+    color: white;
+}
+
+.overlay .ver-mais {
+    background-color: #e53888;
+    color: white;
+}
+
 .overlay .button-container {
     display: flex;
     justify-content: center;
     /* Alinha os itens horizontalmente ao centro */
     position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Centraliza o contêiner */
-    background-color: white;
+    bottom: 0;
+    width: 100%;
+    background-color: #f2f3f8;
     /* Fundo branco */
-    padding: 15px 10px;
+    padding: 8px 8px;
     /* Espaçamento interno para não tocar diretamente nos botões */
     border-radius: 5px;
     /* Borda arredondada para estética */
-    border: 1px solid #1b3556;
-
-}
-
-.overlay .ver-link,
-.overlay .ver-mais {
-    margin: 0 5px;
-    /* Adiciona um pequeno espaço entre os botões */
-
 }
 
 .overlay .noticia-container {
@@ -779,7 +778,6 @@ p {
 
 .tabelaadmtdcombotao i {
     padding: 0 2px;
-
 }
 
 .user-type {
