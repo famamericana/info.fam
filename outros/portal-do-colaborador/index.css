@@ -358,7 +358,7 @@ body.dark .noticia-container {
 
 .ver-link {
     border: 1px solid #3eb288;
-    margin-right: 5px;
+
 }
 
 .ver-link,
@@ -367,7 +367,6 @@ body.dark .noticia-container {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
     color: black;
 }
 
@@ -707,14 +706,24 @@ p {
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
 .noticiadeletebutton{
-    background-color: transparent ;
-    color: #000;
+    background-color: transparent;
+    color: #d5dcf1;
     text-align: center;
-    margin-top: 10px;
+    border: 1px solid #d5dcf1;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.overlay .noticiadeletebutton{
+ display: none !important;
 }
 
 .button-container {
     display: flex;
+    gap: 5px;
 }
 
 .button-container button {

@@ -279,7 +279,7 @@ auth.onAuthStateChanged(function (user) {
                 }
 
 
-                
+
 
                 if (userData && userData.is_admin) {
                     // User is an admin, show the adminPanel and toggleButtonADM
@@ -891,11 +891,14 @@ function fetchAndDisplayNoticias() {
                     <div class="button-container">                    
                     ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
-                        <button style="display:none;" class="noticiadeletebutton" onclick="deleteNoticia('${doc.id}')"><i class="fa-solid fa-trash"></i></button>
-                    </div>
+                        <button style="display:none;" class="noticiadeletebutton" data-noticia-id="${doc.id}" data-titulo-noticia="${data.titulo}"><i class="fa-solid fa-trash"></i></button>
+                        </div>
 
                 </div>`;
         });
+
+        // Após criar todos os elementos, adicione os ouvintes de eventos
+        Addouviutitulonoticia();
     });
 }
 
@@ -1024,10 +1027,10 @@ function verificarStatusMod(userId) {
             var userData = snapshot.val();
             if (userData.is_mod) {
                 // O usuário é um mod, mostrar formulário
-                document.getElementById('modFormContainer').style.display = 'none';                
-                setTimeout(function() {
+                document.getElementById('modFormContainer').style.display = 'none';
+                setTimeout(function () {
                     var deleteButtons = document.querySelectorAll('.noticiadeletebutton');
-                    deleteButtons.forEach(function(button) {
+                    deleteButtons.forEach(function (button) {
                         button.style.display = 'flex';
                     });
                 }, 500); // Atrasa a execução em 500 milissegundos
@@ -1037,7 +1040,7 @@ function verificarStatusMod(userId) {
                 document.getElementById('toggleModFormButton').style.display = 'none';
                 // Ocultar todos os botões de exclusão
                 var deleteButtons = document.querySelectorAll('.noticiadeletebutton');
-                deleteButtons.forEach(function(button) {
+                deleteButtons.forEach(function (button) {
                     button.style.display = 'none';
                 });
             }
@@ -1176,11 +1179,25 @@ tinymce.init({
 
 // deletar noticia ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function deleteNoticia(noticiaId) {
-    // Implementar lógica para deletar a notícia
-    if (confirm("Tem certeza que deseja deletar esta notícia?")) {
+function deleteNoticia(noticiaId, tituloNoticia) {
+    if (confirm("Tem certeza que deseja deletar a notícia '${tituloNoticia}'?")) {
         db.collection("noticias").doc(noticiaId).delete().then(() => {
             console.log("Notícia deletada com sucesso!");
+
+            // Registrar a ação de deleção
+            var logData = {
+                userId: auth.currentUser.uid, // ID do usuário que deletou a notícia
+                tituloNoticia: tituloNoticia,
+                noticiaId: noticiaId, // ID da notícia deletada
+                timestamp: firebase.firestore.FieldValue.serverTimestamp() // Data e hora da ação
+            };
+
+            db.collection("noticiasdel").add(logData).then(() => {
+                console.log("Log de deleção registrado com sucesso.");
+            }).catch(error => {
+                console.error("Erro ao registrar log de deleção:", error);
+            });
+
             // Atualizar a interface do usuário aqui, se necessário
         }).catch((error) => {
             console.error("Erro ao deletar notícia: ", error);
@@ -1188,3 +1205,14 @@ function deleteNoticia(noticiaId) {
     }
 }
 
+
+function Addouviutitulonoticia() {
+    const botoesDeletar = document.querySelectorAll('.noticiadeletebutton');
+    botoesDeletar.forEach(button => {
+        button.addEventListener('click', function () {
+            const noticiaId = this.getAttribute('data-noticia-id');
+            const tituloNoticia = this.getAttribute('data-titulo-noticia');
+            deleteNoticia(noticiaId, tituloNoticia);
+        });
+    });
+}
