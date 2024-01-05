@@ -891,7 +891,7 @@ function fetchAndDisplayNoticias() {
                     <div class="button-container">                    
                     ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
-                        <button style="display:none;" id="noticiadeletebutton" onclick="deleteNoticia('${doc.id}')">Deletar</button>
+                        <button style="display:none;" class="noticiadeletebutton" onclick="deleteNoticia('${doc.id}')"><i class="fa-solid fa-trash"></i></button>
                     </div>
 
                 </div>`;
@@ -1018,7 +1018,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 // Verificar se o usuário é um moderador usando o Realtime Database
 function verificarStatusMod(userId) {
     var userRef = firebase.database().ref('users/' + userId);
-    var deleteButton = document.getElementById('noticiadeletebutton');
 
     userRef.once('value', function (snapshot) {
         if (snapshot.exists()) {
@@ -1027,21 +1026,20 @@ function verificarStatusMod(userId) {
                 // O usuário é um mod, mostrar formulário
                 document.getElementById('modFormContainer').style.display = 'none';                
                 setTimeout(function() {
-                    var deleteButton = document.getElementById('noticiadeletebutton');
-                    if (deleteButton) {
-                        deleteButton.style.display = 'flex';
-                    } else {
-                        console.log("Botão de exclusão ainda não existe no DOM");
-                    }
+                    var deleteButtons = document.querySelectorAll('.noticiadeletebutton');
+                    deleteButtons.forEach(function(button) {
+                        button.style.display = 'flex';
+                    });
                 }, 500); // Atrasa a execução em 500 milissegundos
             } else {
                 // O usuário não é um mod, esconder formulário
                 document.getElementById('modFormContainer').style.display = 'none';
                 document.getElementById('toggleModFormButton').style.display = 'none';
-                // Opcional: Ocultar o botão de exclusão quando o formulário é escondido
-            if (deleteButton) {
-                deleteButton.style.display = 'none';
-            }
+                // Ocultar todos os botões de exclusão
+                var deleteButtons = document.querySelectorAll('.noticiadeletebutton');
+                deleteButtons.forEach(function(button) {
+                    button.style.display = 'none';
+                });
             }
         } else {
             console.log("Documento não encontrado no Realtime Database");
@@ -1050,6 +1048,7 @@ function verificarStatusMod(userId) {
         console.log("Erro ao obter dados do usuário:", error);
     });
 }
+
 
 
 

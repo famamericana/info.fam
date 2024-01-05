@@ -706,6 +706,9 @@ p {
 }
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
+.noticiadeletebutton{
+    padding-left: 10px;
+}
 
 #toggleButtonADM {
     background-color: transparent;
