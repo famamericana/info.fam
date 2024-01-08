@@ -133,6 +133,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Atualizar a cada dia
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
-if (location.protocol !== 'https:') {
-  location.replace(`https:${location.href.substring(location.protocol.length)}`);
+if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
+
