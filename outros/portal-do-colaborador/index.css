@@ -666,6 +666,7 @@ body.dark .ver-mais {
     padding: 10px;
     padding-right: 0;
     background-color: white;
+    color: #9da6be;
 }
 
 body.dark #editNameButton {
@@ -690,9 +691,14 @@ body.dark #editNameButton {
 #deleteAccountButton {
     width: 100%;
     background-color: #d5dcf1;
-    color: #9da6be;
+    color: white;
     padding: 5px;
     margin-top: 10px;
+}
+
+body.dark #deleteAccountButton {
+    background-color: #535353;
+    color: black;
 }
 
 #Nomeatual {
@@ -714,6 +720,12 @@ p {
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
+}
+
+body.dark .noticiadeletebutton{
+    color: #333;
+    border: 1px solid #333;
+    background-color: #202020;
 }
 
 .overlay .noticiadeletebutton{
