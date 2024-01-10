@@ -7,68 +7,267 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+
 
 </head>
 
 <body>
-    <div class="container p-5">
-        <ul class="nav nav-pills  border-2" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-primary fw-semibold active position-relative" id="pills-home-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
-                    aria-controls="pills-home" aria-selected="true">ProUni</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-primary fw-semibold position-relative" id="pills-profile-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
-                    aria-controls="pills-profile" aria-selected="false">ENEM</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-primary fw-semibold position-relative" id="pills-contact-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab"
-                    aria-controls="pills-contact" aria-selected="false">Policiais e Dependentes</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-primary fw-semibold position-relative" id="pills-sisu-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-sisu" type="button" role="tab"
-                    aria-controls="pills-sisu" aria-selected="false">Ex-alunos FAM</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link text-primary fw-semibold position-relative" id="pills-2graduação-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-2graduação" type="button" role="tab"
-                    aria-controls="pills-2graduação" aria-selected="false">2ª graduação</button>
-            </li>
-        </ul>
-        <div class="tab-content rounded-3 border-primary p-3 " id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <h2>Home</h2>
-                <p>Please check our more design @ <a target="_blank"
-                        href="https://codepen.io/Gaurav-Rana-the-reactor">Codepen</a></p>
-            </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <h2>Profile</h2>
-                <p>Please check our more design @ <a target="_blank"
-                        href="https://codepen.io/Gaurav-Rana-the-reactor">Codepen</a></p>
-            </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <h2>Contact</h2>
-                <p>Please check our more design @ <a target="_blank"
-                        href="https://codepen.io/Gaurav-Rana-the-reactor">Codepen</a></p>
-            </div>
-            <div class="tab-pane fade" id="pills-sisu" role="tabpanel" aria-labelledby="pills-sisu-tab">
-                <h2>Sisu</h2>
-                <p>Conteúdo relacionado ao Sisu.</p>
-            </div>
-            <div class="tab-pane fade" id="pills-2graduação" role="tabpanel" aria-labelledby="pills-2graduação-tab">
-                <h2>2ª graduação</h2>
-                <p>Conteúdo relacionado ao 2graduação.</p>
-            </div>
+    <section class="tabs">
+        <div class="botoestab">
+            <button type="button">ProUni</button>
+            <button type="button">Policiais e Dependentes</button>
+            <button type="button">Ex-alunos graduados FAM</button>
+            <button type="button">2ª graduação</button>
+            <button type="button">Jovens Aprendizes do CIEE</button>
+            <button type="button">Desconto Familiar</button>
+            <button type="button">Parceria com Empresas – Ativa FAM</button>
+            <button type="button">Transferência</button>
+            <button type="button">ENEM</button>
+            <button type="button">Estudante veterano
         </div>
-    </div>
+        <div class="artigos">
+            <div id="textoPadrao">
+                <h1>Descontos</h1>
+                <p>Clique na bolsa que você deseja saber mais</p>
+            </div>
+            <article>
+                <h1>ProUni</h1> <!-- codigo inicial dos tabs de https://codepen.io/RobKmi/details/jExJjg -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+                <h3>O QUE É O PROGRAMA UNIVERSIDADE PARA TODOS (PROUNI)?</h3>
+                <p>
+                    É um programa do Ministério da Educação, criado pelo governo federal em 2004, que oferece bolsas de
+                    estudo, em instituições particulares de educação superior, em cursos de graduação e sequenciais de
+                    formação específica, a estudantes brasileiros sem diploma de nível superior.
+                </p>
+
+                <h3>COMO FUNCIONA O PROUNI? </h3>
+                <p>Destinado a candidatos brasileiros sem diploma de curso superior, a pré-seleção terá como base o
+                    resultado obtido pelo candidato no Exame Nacional do Ensino Médio (Enem), considerando as duas
+                    últimas edições imediatamente anteriores ao processo seletivo do Prouni onde o seu resultado tenha
+                    sido no mínimo 450 pontos na média das 5 (cinco) notas do exame e nota na redação que não seja zero.
+                </p>
+
+                <b>Período de inscrições:</b> o cronograma é definido pelo MEC, portanto, recomenda-se para o
+                candidato
+                acompanhar as informações pelo <a target="_blank" href="https://acessounico.mec.gov.br">SITE DO
+                    MEC/PROUNI</a>.
+                </p>
+                </p>
+            </article>
+            <article>
+                <h1>Desconto Especial para Policiais e seus Dependentes</h1>
+                <p>
+                    Os profissionais da Segurança Pública e seus dependentes têm direito a um desconto de 20% nas
+                    mensalidades até a conclusão da graduação. Esse benefício é estendido a cônjuges e filhos que
+                    residam no mesmo endereço e compartilhem a renda.
+                    </br></br>
+
+                    <b>Importante:</b>
+                    Este desconto é <i>exclusivo</i> para novos alunos que ingressam no primeiro semestre do curso, não
+                    sendo
+                    válido para aqueles já matriculados em semestres subsequentes.
+                </p>
+            </article>
+            <article>
+                <h1>Ex-alunos formados da FAM seja curso técnico e/ou graduação</h1>
+                <p>
+                    <b>Desconto Ex-aluno FAM (Exceto EAD e Med. Veterinária)</b> – Será concedido <span class="rosa">10%</span> de desconto para o
+                    estudante que concluiu, por completo, os cursos de Graduação ou Técnico na FAM - Faculdade de
+                    Americana.
+
+
+                </p>
+            </article>
+            <article>
+                <h1> 2ª graduação</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            <article>
+                <h1> Jovens Aprendizes do CIEE (Centro de Integração Empresa Escola) </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            <article>
+                <h1> Desconto dois ou mais estudantes do mesmo núcleo familiar </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            <article>
+                <h1> Parceria com Empresas – Ativa FAM </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            <article>
+                <h1>Transferências (Sobre a grade cursada)
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            <article>
+                <h1>ENEM
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+            </button>
+            <article>
+                <h1>Estudante veterano
+
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo quam, lacinia ac porttitor
+                    nec,
+                    molestie a odio. Pellentesque lectus nulla, vestibulum eget posuere et, tempus at felis. Duis
+                    vestibulum, odio quis laoreet maximus, felis mi maximus justo, sed elementum velit ligula vitae
+                    lorem.
+                    Ut maximus eros a porttitor mollis. Suspendisse tempor cursus purus sit amet dictum. Cras fringilla
+                    nisl
+                    non ligula feugiat egestas.
+                    <br /><br />
+                    Donec consectetur sem lacinia odio dapibus, at pharetra mauris viverra. Fusce varius, purus at
+                    interdum
+                    feugiat, massa elit congue felis, nec feugiat arcu sapien eu lacus. Fusce sed ante ligula. Nullam
+                    ullamcorper quam lorem, sit amet tristique orci vestibulum id. Cras consectetur fringilla dolor,
+                    ullamcorper egestas tortor aliquet id. Suspendisse viverra, ligula eget facilisis pulvinar, lectus
+                    nunc
+                    congue ligula, nec laoreet lectus leo quis sem.
+                </p>
+            </article>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('section .botoestab button');
+            var articles = document.querySelectorAll('section .artigos article');
+            var textoPadrao = document.getElementById('textoPadrao');
+
+            buttons.forEach(function (button, index) {
+                button.addEventListener('click', function () {
+                    var isActive = articles[index].classList.contains('active');
+
+                    // Desativa todos os articles e esconde o texto padrão
+                    articles.forEach(function (article) {
+                        article.classList.remove('active');
+                    });
+                    textoPadrao.style.display = 'none';
+
+                    // Ativa o article correspondente, se já não estiver ativo
+                    if (!isActive) {
+                        articles[index].classList.add('active');
+                    } else {
+                        textoPadrao.style.display = 'block'; // Mostra o texto padrão se nenhum artigo estiver ativo
+                    }
+
+                    // Atualiza os botões
+                    buttons.forEach(function (btn) {
+                        btn.classList.remove('active-btn');
+                    });
+                    button.classList.add('active-btn');
+                });
+            });
+
+            // Mostra o texto padrão inicialmente
+            textoPadrao.style.display = 'block';
+        });
+
+    </script>
 </body>
 
 </html>
