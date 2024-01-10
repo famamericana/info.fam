@@ -71,7 +71,8 @@
             <article>
                 <h1>Ex-alunos formados da FAM seja curso técnico e/ou graduação</h1>
                 <p>
-                    <b>Desconto Ex-aluno FAM (Exceto EAD e Med. Veterinária)</b> – Será concedido <span class="rosa">10%</span> de desconto para o
+                    <b>Desconto Ex-aluno FAM (Exceto EAD e Med. Veterinária)</b> – Será concedido <span
+                        class="rosa">10%</span> de desconto para o
                     estudante que concluiu, por completo, os cursos de Graduação ou Técnico na FAM - Faculdade de
                     Americana.
 
@@ -233,39 +234,61 @@
         </div>
     </section>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var buttons = document.querySelectorAll('section .botoestab button');
-            var articles = document.querySelectorAll('section .artigos article');
-            var textoPadrao = document.getElementById('textoPadrao');
+document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('section .botoestab button');
+    var articles = document.querySelectorAll('section .artigos article');
+    var textoPadrao = document.getElementById('textoPadrao');
+    var artigosContainer = document.querySelector('section .artigos');
 
-            buttons.forEach(function (button, index) {
-                button.addEventListener('click', function () {
-                    var isActive = articles[index].classList.contains('active');
+    buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+            var isActive = articles[index].classList.contains('active');
 
-                    // Desativa todos os articles e esconde o texto padrão
-                    articles.forEach(function (article) {
-                        article.classList.remove('active');
-                    });
-                    textoPadrao.style.display = 'none';
+            // Em telas menores, verifica se o artigo já está visível
+            if (window.innerWidth < 768 && isActive) {
+                articles[index].style.display = 'none';
+                articles[index].classList.remove('active');
+                textoPadrao.style.display = 'block';
+                return;
+            }
 
-                    // Ativa o article correspondente, se já não estiver ativo
-                    if (!isActive) {
-                        articles[index].classList.add('active');
-                    } else {
-                        textoPadrao.style.display = 'block'; // Mostra o texto padrão se nenhum artigo estiver ativo
-                    }
-
-                    // Atualiza os botões
-                    buttons.forEach(function (btn) {
-                        btn.classList.remove('active-btn');
-                    });
-                    button.classList.add('active-btn');
-                });
+            // Desativa todos os articles e esconde o texto padrão
+            articles.forEach(function (article) {
+                article.classList.remove('active');
+                if (window.innerWidth < 768) {
+                    article.style.display = 'none';
+                }
             });
+            textoPadrao.style.display = 'none';
 
-            // Mostra o texto padrão inicialmente
-            textoPadrao.style.display = 'block';
+            // Atualiza os botões
+            buttons.forEach(function (btn) {
+                btn.classList.remove('active-btn');
+            });
+            button.classList.add('active-btn');
+
+            // Comportamento para telas menores
+            if (window.innerWidth < 768) {
+                // Insere o artigo correspondente logo após o botão clicado
+                button.after(articles[index]);
+                articles[index].style.display = 'block';
+                articles[index].classList.add('active');
+            } else {
+                // Comportamento para telas maiores
+                artigosContainer.appendChild(articles[index]);
+
+                if (!isActive) {
+                    articles[index].classList.add('active');
+                } else {
+                    textoPadrao.style.display = 'block'; // Mostra o texto padrão se nenhum artigo estiver ativo
+                }
+            }
         });
+    });
+
+    // Mostra o texto padrão inicialmente
+    textoPadrao.style.display = 'block';
+});
 
     </script>
 </body>
