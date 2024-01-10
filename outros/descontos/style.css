@@ -10,6 +10,8 @@ body {
   padding: 10px;
   margin: 0 auto;
   box-sizing: border-box;
+  max-width:   900px;
+  margin-bottom: 100px;
 }
 
 .tabs article {
@@ -22,12 +24,17 @@ body {
 }
 
 .tabs p {
-  line-height: 1.5em;
   text-indent: 20px;
 }
 
 .tabs h1 {
   font-size: x-large;
+}
+
+p, li{
+  color: #58595b;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 .tabs h1,
@@ -86,7 +93,7 @@ button {
 .tabs #textoPadrao {
   display: none;
   /* Escondido por padrão */
-  padding: 24px 20px;
+  padding: 5px 20px;
 }
 
 .tabs .rosa {
@@ -121,6 +128,7 @@ button {
   border-collapse: collapse;
   text-align: left;
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .tabs table, th, td {
@@ -145,8 +153,30 @@ button {
   background-color: #f2f2f2;
 }
 
-.tabs tr:hover {
-  background-color: #ddd;
+.informaçõesdescontos{
+  margin: 0 auto;
+  max-width:   900px;
+padding: 20px;
+padding-bottom: 0;
+}
+.titulosbolsas{
+  text-align: center;
+}
+
+.titulosbolsas h1{
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #0e2e7c;
+  line-height: 1.1;
+}
+
+.titulosbolsas p{
+  margin-top: 0;
+}
+
+.textobolsas p{
+  text-indent: 20px;
+
 }
 
 @media all and (min-width: 768px) {
@@ -157,7 +187,6 @@ button {
   .tabs {
     display: flex;
     width: 100vw;
-    padding: 20px 50px;
   }
 
   .tabs .botoestab {
@@ -175,7 +204,7 @@ button {
   }
   .tabs article {
     position: relative;
-    padding: 20px;
+    padding: 0 20px;
     width: 100%;
     display: none;
     box-sizing: border-box;
