@@ -5,6 +5,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs {
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width:   900px;
+  margin-bottom: 100px;
+}
+
+.tabs article {
+  display: none;
+  padding: 0px 15px 20px;
+  border: #45b7e5 solid 1px;
+  margin-top: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.tabs p {
+  text-indent: 20px;
+}
+
+.tabs h1 {
+  font-size: x-large;
+  color: #0e2e7c !important;
+
+}
+
+p, li{
+  color: #58595b;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.tabs h1,
+button {
+  color: black;
+}
+
+.tabs button {
+  font-size: 1em;
+  border-bottom: 1px solid #fff;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 5px;
+  border: 0px;
+  border: 1px solid #d5dcf1;
+}
+
+.tabs button:last-child{
+
+    margin-bottom: 0px;
+
+}
+
+.tabs button::-moz-focus-inner {
+  border: 0;
+}
+
+.tabs button:focus {
+  color: white;
+  background-color: #45b7e5;
+  border: 1px solid #45b7e5;
+
+}
+
+.tabs a {
+  color: #45b7e5;
+}
+
+.tabs .active-btn {
+  background-color: #45b7e5;
+  color: white;
+  border: 1px solid #45b7e5;
+
+}
+
+.tabs .active {
+  display: block;
+}
+
+.tabs #textoPadrao {
+  display: none;
+  /* Escondido por padrão */
+  padding: 5px 20px;
+}
+
+.tabs .rosa {
+  color: #e53888;
+  font-weight: 700;
+}
+
+.tabs .botãoinscrevase{
+  display: flex;
+  padding: 10px 18px;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid #45b7e5;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.tabs .botãoinscrevase:hover{
+  background-color: #1b3556;
+  border: 2px solid #1b3556;
+  color: white;
+}
+
+.tabs table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.tabs table, th, td {
+  border: 1px solid #ddd;
+}
+
+.tabs th{
+  border: 1px solid #1b3556;
+}
+
+.tabs th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+.tabs th {
+  background-color: #1b3556;
+  color: white;
+}
+
+.tabs tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.informaçõesdescontos{
+  margin: 0 auto;
+  max-width:   900px;
+padding: 20px;
+padding-bottom: 0;
+}
+.titulosbolsas{
+  text-align: center;
+}
+
+.titulosbolsas h1{
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #0e2e7c;
+  line-height: 1.1;
+}
+
+.titulosbolsas p{
+  margin-top: 0;
+}
+
+.textobolsas p{
+  text-indent: 20px;
+
+}
+
+@media all and (min-width: 768px) {
+  .tabs .h1{
+    margin-top: 0;
+  }
+
+  .tabs {
+    display: flex;
+    width: 100vw;
+  }
+
+  .tabs .botoestab {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabs button {
+    width: 330px;
+    border-radius: 5px;
+  }
+
+  .tabs .botãoinscrevase{
+    width: fit-content;
+  }
+  .tabs article {
+    position: relative;
+    padding: 0 20px;
+    width: 100%;
+    display: none;
+    box-sizing: border-box;
+    border: 0px;
+    margin-top: 0px;
+  }
+
+  .tabs .active {
+    display: block;
+    /* Mostra o artigo ativo */
+  }
+}
+    </style>
 </head>
 
 <body>
