@@ -66,6 +66,7 @@
         transform: scale(.9);
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
     .textoinfofam {
         margin-bottom: -20px;
