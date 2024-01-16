@@ -7,6 +7,7 @@
     <title>Projeto de Extensão</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
     <link rel="icon" href="/images-gerais/famlogo.png">
 </head>
 
@@ -14,39 +15,59 @@
     <div id="Navbar"></div>
     <header>
         <div>
-            <img class="logopde" src="images/PdE_logo.svg">
+            <img  class="logopdepc" id="logoQuadrado" src="images/PdE_logo2.svg" alt="Logotipo Quadrado">
+            <img  class="logopde" id="logoRetangular" src="images/PdE_logo.svg" alt="Logotipo Retangular"
+                style="display: none;">
+            <p> Eventos dos alunos para a comunidade ;)</p>
         </div>
     </header>
     <main>
-        <div class="desktop_7" unique-script-id="w-w-dm-id">
-            <div class="responsive-container-block bigContainer">
-              <div class="responsive-container-block Container">
-                <div class="responsive-container-block optionsContainer">
-                  <p class="text-blk list all active" data-filter="all">
-                    Todos
-                  </p>
-                  <p class="text-blk list" data-filter="o2024">
-                    2024
-                  </p>
-                  <p class="text-blk list" data-filter="o2023">
-                    2023
-                  </p>
+        <div class="wrapper">
+            <!-- filter Items --><!-- Created By CodingNepal - www.codingnepalweb.com -->
+            <nav>
+                <div class="items">
+                    <span class="item active" data-name="all">Todos</span>
+                    <span class="item" data-name="o2024">2024</span>
+                    <span class="item" data-name="o2023">2023</span>
                 </div>
-                <div class="responsive-container-block imageContainer">
-                  <div class="project">
-                    <img class="squareImg o2023" src="images/integrafam.png">
-                  </div>
-                  <div class="project">
-                    <img class="squareImg o2023" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/d72.png">
-                  </div>
-                </div>
-              </div>
+            </nav>
+            <!-- filter Images -->
+            <div class="gallery">
+                <a target="_blank" href="https://info.fam.br/eventos/integrafam/" class="image" data-name="o2023">
+                    <span><img src="images/integrafam_2023.png" alt=""></span>
+                    <div class="info">
+                        <span class="title">IntegraFAM </span>
+                        <span class="subtitle">02/12/2023</span>
+                    </div>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/inspira.fam/" class="image" data-name="o2023">
+                    <span><img src="images/inspirafam_2023.png" alt=""></span>
+                    <div class="info">
+                        <span class="title">InspiraFAM 2023</span>
+                        <span class="subtitle">16 a 18/11/2023</span>
+                    </div>
+                </a>
             </div>
-          </div>
+        </div>
+
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountProjdeExtensao">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
+        
     </main>
 
     <div id="meuFooter"></div>
 
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>

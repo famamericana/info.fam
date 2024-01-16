@@ -8,14 +8,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: #f2f3f8;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid white;
+    border: 2px solid #f2f3f8;
     border-radius: 10px;
 }
 
@@ -43,6 +43,7 @@ main {
 
 header {
     margin: 50px 20px;
+    text-align: center;
 }
 
 header .logopde {
@@ -51,236 +52,172 @@ header .logopde {
     margin: 0 auto;
 }
 
-.desktop_7 .text-blk {
-    margin: 0px;
+header .logopdepc{
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.desktop_7 .responsive-container-block {
-    min-height: 75px;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-    justify-content: flex-start;
-}
-
-
-.desktop_7 .responsive-container-block.Container {
+/* GALERIUA ------------------------------------------------------------------------------------------------------------------------------------------- */
+.wrapper {
+    margin: 20px 0;
     width: 100%;
-    flex-direction: column;
-
 }
 
-.desktop_7 .text-blk.active {
-    font-size: 20px;
-    font-weight: 400;
-    background-color: #45b7e5;
-    color: white;
+.wrapper a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #1b3556;
 }
 
-.desktop_7 .text-blk.list {
-    font-size: 20px;
+.image img{
     cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
-.desktop_7 .squareImg {
+.wrapper nav {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper .items {
+    display: flex;
     width: 100%;
-    height: 225px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.desktop_7 .responsive-container-block.imageContainer {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-
 }
 
-.desktop_7 .responsive-container-block.optionsContainer {
-    margin-bottom: 10px;
-    margin-top: 20px;
-    margin-left: 10px;
-    min-height: auto;
-    gap: 20px;
-}
-
-
-
-.desktop_7 .project {
-    flex-grow: 1;
-    flex-basis: calc(25% - 10px); /* Ajusta a largura inicial das caixas para cerca de 25% */
-    max-width: 25%; /* Garante que não ultrapassem 25% */
-    position: relative;
-    min-width: 220px;
-    height: 200px;
-
-}
-
-.desktop_7 button {
+.items span {
+    padding: 7px 20px;
+    font-size: 18px;
+    font-weight: 500;
     cursor: pointer;
+    color: #45b7e5;
+    border-radius: 5px;
+    border: 1px solid #45b7e5;
+    transition: all 0.3s ease;
 }
 
-.desktop_7 img {
-    cursor: pointer;
+.items span.active,
+.items span:hover {
+    color: #fff;
+    background: #45b7e5;
 }
 
-.desktop_7 img:hover {
-    transform: scale(1.02);
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-property: all;
-}
-
-.desktop_7 .hdImg {
-    display: none;
-}
-
-.desktop_7 .btn-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-
-.desktop_7 .project:hover .btn-box {
-    display: block;
-}
-
-.desktop_7 .imageContainer {
-    background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: white;
-    position: relative;
+.gallery {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    margin-top: 30px;
+    gap:10px;
+    margin-left: 10px;
 }
 
-.desktop_7 .project {
+.gallery .image {
+    width: calc(100% / 4);
+    transition-duration: 0.4s;
     position: relative;
-    background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
+    display: inline-block; /* Garante que a área de hover corresponda ao tamanho da imagem */
+
 }
 
-.desktop_7 .squareImg.o2023 {
-    border-radius: 5px;
-}
-
-.desktop_7 .project img {
-    object-fit: cover;
+.gallery .image span {
+    display: flex;
     width: 100%;
-    height: 100%;
+    overflow: hidden;
 }
 
-@media (max-width: 970px){
-    .desktop_7 .project {
-        flex-basis: calc(33% - 10px); /* Permite uma imagem por linha em telas menores */
-        max-width: 100%;
-        height: 300px;
+.gallery .image img {
+    width: 100%;
+    height: 200px;
+    transition: all 0.3s ease;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
+.gallery .image:hover {
+    transform: scale(1.05);
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+.gallery .image.hide {
+    display: none;
+}
+
+.gallery .image.show {
+    animation: animate 0.4s ease;
+}
+
+
+.gallery .image:hover .info {
+    visibility: visible;
+    opacity: 1;
+}
+
+.gallery .image .info {
+    position: absolute;
+    bottom: 10px; /* Ajuste a posição conforme necessário */
+    visibility: hidden;
+    opacity: 0;
+    background-color: white;
+    padding: 7px 10px;
+    text-align: center; /* Alinha o texto no centro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 100%;
+}
+
+.title, .subtitle {
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+.subtitle{
+    color: #bac0d1;
+    font-weight: 400;
+    font-size: small;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    .gallery .image {
+        width: calc(100% / 3);
+    }
+}
 
-    .desktop_7 .project {
-        flex-basis: calc(50% - 10px); /* Permite uma imagem por linha em telas menores */
-        max-width: 100%;
-        height: 250px;
+@media (max-width: 800px) {
+    .gallery .image {
+        width: calc(100% / 2 - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        margin: 30px auto;
     }
 
-    .desktop_7 .responsive-container-block.imageContainer {
+    .wrapper nav .items {
+        flex-wrap: wrap;
         justify-content: center;
-        margin-right: auto;
-        margin-left: auto;
     }
 
-    .desktop_7 .responsive-container-block.optionsContainer {
-        margin-right: auto;
-        margin-left: auto;
+    nav .items span {
+        margin: 5px;
     }
 
-    .desktop_7 .text-blk.list {
-        margin-top: 0px;
-        margin-right: auto;
-        margin-bottom: 0px;
-        margin-left: auto;
-    }
-
-    .desktop_7 .text-blk.list.all.active {
-        margin-top: 0px;
-        margin-right: auto;
-        margin-bottom: 0px;
-        margin-left: auto;
-    }
-
-    .desktop_7 .text-blk.list {
-        margin: 0 auto;
-    }
-
-
-}
-
-@media (max-width: 500px) {
-
-    .desktop_7 .text-blk.list {
-        font-size: 14px;
-    }
-
-    .desktop_7 .responsive-container-block.optionsContainer {
-        min-height: auto;
-    }
-
-    .desktop_7 .responsive-container-block.optionsContainer {
-        max-width: 350px;
-        margin-top: 10px;
-        margin-bottom: 2px;
-    }
-
-    .desktop_7 .text-blk.list.all.active {
-        font-size: 17px;
-        margin-top: 0px;
-        margin-right: auto;
-        margin-bottom: 10px;
-        margin-left: auto;
-    }
-
-    .desktop_7 .text-blk.list {
-        font-size: 17px;
-        margin-top: 0px;
-        margin-right: auto;
-        margin-bottom: 10px;
-        margin-left: auto;
-    }
-
-    .desktop_7 .project {
-        flex-basis: 100%;
-        width: 100%;
+    .gallery .image {
+        width: calc(100% - 10px);
         height: 200px;
     }
 
+
 }
+
