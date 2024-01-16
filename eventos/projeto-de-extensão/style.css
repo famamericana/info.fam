@@ -38,9 +38,9 @@ header {
     margin-top: 50px;
     margin-bottom: 50px;
     gap: 50px;
-    height: 50vh;
     padding: 0 20px;
     box-sizing: border-box;
+    height: 500px;
 }
 
 main {
@@ -62,29 +62,133 @@ header .logoesubtitulo {
     flex-direction: column;
 }
 
-.image-carousel {
-    display: flex;
-}
-
-.svgImage {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
-}
-
-.svgImage.fade {
+.imagemprincipal .svgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
+    transition: opacity 1s ease;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.imagemprincipal {
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.card {
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.445);
+    color: black;
+    font-weight: bold;
+    padding: 10px 0;
 }
 
 
-@media (max-width: 600px) {
+.imagemprincipalMobile {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .imagemprincipalMobile {
+        height: calc(100dvh - 50px) !important;
+    }
+}
+
+@media (max-width: 874px) {
     header {
         flex-direction: column;
+        height: auto;
+        position: relative;
+        margin-top: 0;
+        padding: 0px;
+        margin-bottom: 0;
+    }
+
+    .imagemprincipal {
+        display: none;
+    }
+
+    .imagemprincipalMobile {
+        display: flex;
+        height: calc(100dvh - 70px);
+        margin: 0;
+        position: relative;
+    }
+
+    .imagemprincipalMobile .svgImage {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 1s ease;
         height: 100%;
     }
 
-    header .logoesubtitulo {
+    .imagemprincipalMobile img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .logoesubtitulo {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 2;
+        bottom: 20px;
+        background-color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        width: calc(100% - 40px);
+        box-sizing: border-box;
+    }
+
+    header .logopde {
+
         margin: 0 auto;
-        margin-top: -300px;
+        max-width: 700px;
+    }
+
+    .logoesubtitulo {
+        margin: 0 auto;
+    }
+
+    .logoesubtitulo p {
+        margin-bottom: 0;
+    }
+
+
+    main {
+        max-width: 960px;
+        border-radius: 10px;
+        background-color: #f2f3f8;
+        padding: 20px;
+        margin: 0 auto;
     }
 
 }

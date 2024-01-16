@@ -11,22 +11,57 @@ $(document).ready(function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const images = ["images/PdE_imgs.svg", "images/PdE_imgs1.svg", "images/PdE_imgs2.svg"];
-    let currentImageIndex = 0;
-    const imageElement = document.querySelector('.svgImage');
+// LOGO MUDAR TAMANHO PC/MOBILE --------------------------------------------------------------------------------------------------------------------------------------------
+function ajustarLogo() {
+    var largura = window.innerWidth;
+    var logoQuadrado = document.getElementById('logoQuadrado');
+    var logoRetangular = document.getElementById('logoRetangular');
+  
+    if (largura < 875) { // Ponto de corte
+      logoQuadrado.style.display = 'none';
+      logoRetangular.style.display = 'block';
+    } else {
+      logoQuadrado.style.display = 'block';
+      logoRetangular.style.display = 'none';
+    }
+  }
+  
+  // Executa assim que o DOM estiver pronto
+  document.addEventListener('DOMContentLoaded', ajustarLogo);
+  
+  // Continua a executar ao redimensionar a página
+  window.onresize = ajustarLogo;
+  
 
-    setInterval(() => {
-        // Atualiza o índice da imagem
-        currentImageIndex = (currentImageIndex + 1) % images.length;
 
-        // Adiciona uma classe para a transição
-        imageElement.classList.add('fade');
 
-        // Espera a transição terminar para mudar a imagem e remover a classe 'fade'
-        setTimeout(() => {
-            imageElement.src = images[currentImageIndex];
-            imageElement.classList.remove('fade');
-        }, 500); // 500 ms para a duração da transição
-    }, 2000); // Troca a imagem a cada 2000 ms (2 segundos)
-});
+
+
+
+  const images = document.querySelectorAll('.imagemprincipal .svgImage');
+  let currentImageIndex = 0;
+  
+  // Inicialmente, defina a primeira imagem como visível
+  images[currentImageIndex].style.opacity = 1;
+  
+  setInterval(() => {
+      images[currentImageIndex].style.opacity = 0;
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      images[currentImageIndex].style.opacity = 1;
+  }, 3000); // 1000 milissegundos = 1 segundo
+  
+
+  
+  const imagesM = document.querySelectorAll('.imagemprincipalMobile .svgImage');
+  let currentImageMIndex = 0;
+  
+  // Inicialmente, defina a primeira imagem como visível
+  imagesM[currentImageIndex].style.opacity = 1;
+  
+  setInterval(() => {
+      imagesM[currentImageMIndex].style.opacity = 0;
+      currentImageMIndex = (currentImageMIndex + 1) % imagesM.length;
+      imagesM[currentImageMIndex].style.opacity = 1;
+  }, 3000); // 1000 milissegundos = 1 segundo
+  
+
