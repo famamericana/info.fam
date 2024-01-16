@@ -11,57 +11,20 @@ $(document).ready(function () {
 });
 
 
-// LOGO MUDAR TAMANHO PC/MOBILE --------------------------------------------------------------------------------------------------------------------------------------------
-function ajustarLogo() {
-    var largura = window.innerWidth;
-    var logoQuadrado = document.getElementById('logoQuadrado');
-    var logoRetangular = document.getElementById('logoRetangular');
-  
-    if (largura < 875) { // Ponto de corte
-      logoQuadrado.style.display = 'none';
-      logoRetangular.style.display = 'block';
-    } else {
-      logoQuadrado.style.display = 'block';
-      logoRetangular.style.display = 'none';
-    }
-  }
-  
-  // Executa assim que o DOM estiver pronto
-  document.addEventListener('DOMContentLoaded', ajustarLogo);
-  
-  // Continua a executar ao redimensionar a página
-  window.onresize = ajustarLogo;
-  
+// GALERIA --------------------------------------------------------------------------------------------------------------------------------------------
 
+$(document).ready(function() {
 
-
-
-
-
-  const images = document.querySelectorAll('.imagemprincipal .svgImage');
-  let currentImageIndex = 0;
-  
-  // Inicialmente, defina a primeira imagem como visível
-  images[currentImageIndex].style.opacity = 1;
-  
-  setInterval(() => {
-      images[currentImageIndex].style.opacity = 0;
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      images[currentImageIndex].style.opacity = 1;
-  }, 3000); // 1000 milissegundos = 1 segundo
-  
-
-  
-  const imagesM = document.querySelectorAll('.imagemprincipalMobile .svgImage');
-  let currentImageMIndex = 0;
-  
-  // Inicialmente, defina a primeira imagem como visível
-  imagesM[currentImageIndex].style.opacity = 1;
-  
-  setInterval(() => {
-      imagesM[currentImageMIndex].style.opacity = 0;
-      currentImageMIndex = (currentImageMIndex + 1) % imagesM.length;
-      imagesM[currentImageMIndex].style.opacity = 1;
-  }, 3000); // 1000 milissegundos = 1 segundo
-  
-
+    $("[unique-script-id='w-w-dm-id'] .list").click(function() {
+      const value = $(this).attr('data-filter');
+      if (value == 'all') {
+        $("[unique-script-id='w-w-dm-id'] .squareImg").show('1000');
+      } else {
+        $("[unique-script-id='w-w-dm-id'] .squareImg").not('.' + value).hide('1000');
+        $("[unique-script-id='w-w-dm-id'] .squareImg").filter('.' + value).show('1000');
+      }
+    })
+    $("[unique-script-id='w-w-dm-id'] .list").click(function() {
+      $(this).addClass('active').siblings().removeClass('active');
+    })
+  })
