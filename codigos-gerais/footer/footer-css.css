@@ -4,7 +4,7 @@
   color: #3a6092;
   font-size: small;
   margin-top: 10px;
-
+  margin-bottom: 20px;
 }
 
 .azulclarinho {
@@ -74,17 +74,16 @@ footer {
   .footer-container {
     align-items: flex-start;
     flex-direction: column;
-    /* Altera para apresentar o conteúdo em coluna (verticalmente) */
+    align-items: center;
   }
 
   .footer-logo img {
     padding: 20px;
+    padding-top: 0;
     border-bottom: 1px solid #45b7e5;
     border-right: 0;
     margin-left: 0;
-    /* Ajusta a margem esquerda conforme necessário */
     padding-left: 0;
-    /* Ajusta o padding esquerdo conforme necessário */
     border-right: none;
   }
 
@@ -93,4 +92,18 @@ footer {
     margin-right: 0;
   }
 
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-info p{
+    text-align: center;
+  }
+
+  .créditos{
+    margin-bottom: 25px;
+  }
 }

@@ -4,7 +4,7 @@
     color: #b6cbe6;
     font-size: small;
     margin-top: 10px;
-
+    margin-bottom: 20px;
   }
   
   .azulclarinho{
@@ -68,15 +68,18 @@
   @media (max-width: 500px) {
     .footer-container {
       align-items: flex-start;
-      flex-direction: column; /* Altera para apresentar o conteúdo em coluna (verticalmente) */
+      flex-direction: column; 
+      align-items: center;
     }
   
     .footer-logo img {
       padding: 20px;
+      padding-top: 0;
+
       border-bottom: 1px solid #45b7e5;
       border-right: 0;
-      margin-left: 0; /* Ajusta a margem esquerda conforme necessário */
-      padding-left: 0; /* Ajusta o padding esquerdo conforme necessário */
+      margin-left: 0; 
+      padding-left: 0; 
       border-right: none;
     }
   
@@ -85,4 +88,18 @@
       margin-right: 0;
     }
   
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-info p{
+      text-align: center;
+    }
+  
+    .créditos{
+      margin-bottom: 25px;
+    }
   }

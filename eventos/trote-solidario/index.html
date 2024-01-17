@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trote Solidário</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/images-gerais/famlogo.png">
 </head>
@@ -15,15 +15,128 @@
 <body>
     <div id="Navbar"></div>
     <header>
+        <div class="header2">
+            <div class="logoesub">
+                <img src="trotelogo.svg">
+                <p>Ações que transbordam solidariedade.</p>
+            </div>
+            <div class="datatrote">
+                <h1>20/02 <span style="color: #f9e20f;">a</span> 30/04</h1>
+                <span class="nicom">Entregas no NICOM <i id="tooltipTrigger"
+                        class="fa-regular fa-circle-question"></i></span>
+                <div class="tooltip" id="myTooltip">(bloco 1, em frente à fonte) </br>das 9 às 21h, de seg a sex</div>
 
+            </div>
+        </div>
     </header>
     <main>
+        <div class="main2">
+            <h2>O que doar? <i style="color: #45b7e5;" class="fa-solid fa-jug-detergent"></i></h2>
+            <p>Alimentos de cesta básica, higiene e limpeza (conforme lista beem abaixo).</p>
+            <h2>Quem irá receber? <i style="color: #e53888;" class="fa-solid fa-hands-holding-child"></i></h2>
+            <p>Instituições carentes da região.</p>
+            <h2>O que você ganhará? <i style="color: #f9e20f;" class="fa-solid fa-heart"></i></h2>
+            <div class="itenshorascontainer">
+                <div id="itemhoras" class="box">1 Item</div> =
+                <div id="descriptionhoras" class="box">1 hora de atividade complementar</div>
+            </div>
+
+            <p class="cursowow">E O CURSO QUE MAIS DOAR GRANHARÁ</br>
+                <b>+ 8 horas</b> de atividades complementares para <b>TODOS</b> os alunos que tiverem participação nas doações.
+            </p>
+
+            <p class="detalhesquevaoterqueler"> ** Doações individuais, válidas para apenas um RA.</p>
+
+            <h2>Lista de doações aceitas</h2>
+            <p>Cada um desses abaixo, contará como 1 item conforme especificações:</p>
+
+            <section>
+                <div class="scroll-container">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openTab(event, 'itens1')">ALIMENTOS </br> <span
+                            class="textomenortab">NÃO PERECÍVEIS</span></button>
+                        <button class="tablinks" onclick="openTab(event, 'itens2')">PRODUTOS </br><span
+                            class="textomenortab">DE HIGIENE</span></button>
+                        <button class="tablinks" onclick="openTab(event, 'itens3')">PRODUTOS </br><span
+                                class="textomenortab">DE LIMPEZA</span></button>
+                    </div>
+
+                    <div id="itens1" class="tabcontent">
+                        <p>&#8226; Achocolatado <span class="textomenortab">(pacote ou lata, 200 gr)</span><br>
+                            &#8226; Açucar <span class="textomenortab">(1 kg)</span><br>
+                            &#8226; Arroz <span class="textomenortab">(a cada 1 kg, será contado 1 item)</span><br>
+                            &#8226; Aveia <span class="textomenortab">(caixa 175 gr)</span><br>
+                            &#8226; Bolacha cream cracker <span class="textomenortab">(1 pacote 200 gr)</span><br>
+                            &#8226; Bolacha doce <span class="textomenortab">(1 pacote 200 gr)</span><br>
+                            &#8226; Doce de goiabada <span class="textomenortab">(300 gr)</span><br>
+                            &#8226; Farinha de milho <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Farinha de rosca <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Farinha de trigo <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Feijão <span class="textomenortab">(1 kg)</span><br>
+                            &#8226; Fubá <span class="textomenortab">(500 gr)</span><br>
+                            &#8226; Grão de bico <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Legumes em lata - ervilha / milho / seleta <span class="textomenortab">(280grs)</span><br>
+                            &#8226; Leite <span class="textomenortab">(1 litro)</span><br>
+                            &#8226; Leite em pó <span class="textomenortab">(pacote 400 gr)</span><br>
+                            &#8226; Lentilha <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Macarrão <span class="textomenortab">(pacote 500 gr)</span><br>
+                            &#8226; Molho de tomate <span class="textomenortab">(1 pacote 340 gr)</span><br>
+                            &#8226; Óleo para cozinha <span class="textomenortab">(1 litro)</span><br>
+                            &#8226; Pó de café <span class="textomenortab">(pacote 250 gr)</span><br>
+                            &#8226; Sal <span class="textomenortab">(1 kg)</span><br>
+                            &#8226; Sardinha ou Atum <span class="textomenortab">(lata 125 gr)</span><br>
+                            &#8226; 2 refrescos <span class="textomenortab">(25gr cada)</span><br>
+                            &#8226; Vinagre <span class="textomenortab">(750 ml)</span></p>
+                            
+                    </div>
+
+                    <div id="itens2" class="tabcontent">
+                        <p>&#8226; 2 aparelhos de barbear<br>
+                            &#8226; 1 pasta de dente<br>
+                            &#8226; 2 sabonetes<br>
+                            &#8226; Absorvente higiênico <span class="textomenortab">(pacote fechado com 8 unidades)</span><br>
+                            &#8226; Condicionador <span class="textomenortab">(250 ml)</span><br>
+                            &#8226; Desodorante <span class="textomenortab">(90ml)</span><br>
+                            &#8226; Esponja de banho <span class="textomenortab">(1 unidade)</span><br>
+                            &#8226; Fralda - infantil ou adulto <span class="textomenortab">(pacote fechado)</span><br>
+                            &#8226; Fio dental <span class="textomenortab">(caixinha fechada)</span><br>
+                            &#8226; Shampoo <span class="textomenortab">(250 ml)</span><br>
+                            &#8226; Papel higiênico <span class="textomenortab">(pacote fechado com 4 rolos)</span><br>
+                            </p>
+                            
+                    </div>
+                    <div id="itens3" class="tabcontent">
+                        <p>&#8226; 1 detergente <span class="textomenortab">(500 ml)</span><br>
+                            &#8226; Água sanitária <span class="textomenortab">(1 litro)</span><br>
+                            &#8226; Desinfetante <span class="textomenortab">(2 litros)</span><br>
+                            &#8226; Esponja de aço <span class="textomenortab">(pacote fechado)</span><br>
+                            &#8226; Esponja de lavar louça <span class="textomenortab">(1 unidade)</span><br>
+                            &#8226; Sabão em pó <span class="textomenortab">(500 gr)</span><br>
+                            &#8226; Sabão em pedra <span class="textomenortab">(1 unidade)</span><br>
+                            </p>
+                            
+                    </div>
+
+            </section>
+        </div>
 
     </main>
 
+    <svg id="hearts" viewBox="-600 -400 1200 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <symbol id="heart" viewBox="-69 -16 138 138">
+                <path d="M0,12
+                   C 50,-30 110,50  0,120
+                   C-110,50 -50,-30 0,12z" />
+            </symbol>
+        </defs>
+    </svg>
+
     <div id="meuFooter"></div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
