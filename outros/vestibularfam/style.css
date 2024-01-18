@@ -188,8 +188,8 @@ button:hover {
 
 .mec {
     background-color: white;
-    border-radius: 10px;
     margin-top: 20px;
+
 }
 
 .mec img {
@@ -263,8 +263,10 @@ button:hover {
 
     .mec {
         margin: 0 auto;
-        margin: 20px;
+        margin: 20px 0;
         margin-top: 30px;
+        width: 100%;
+
     }
 
     .informacoes a p {
@@ -305,6 +307,14 @@ button:hover {
     .estudenafamcontainer {
         min-height: 0;
     }
+
+}
+
+@media (max-width: 330px) {
+    .btn-group {
+        display: flex;
+    }
+
 }
 
 
