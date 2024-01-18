@@ -3,7 +3,7 @@
 
 
 <body>
-    <div class="famosanavbar">
+    <div id="Navbar" class="famosanavbar" style="display: none;">
         <nav class="barrafundo">
             <div class="barra-navegacao">
                 <a href="https://info.fam.br">
@@ -55,6 +55,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function setupDropdown() {
             var dropdown = document.getElementById('itemnavbarDropdown');
@@ -96,6 +97,26 @@
                 navbar.classList.remove('famosanavbar_fixed-navbar');
             }
         });
+
+        // arrumando a exibição do navbar --------------------------------------------------------------------------------------------------------------------------------------------
+
+        // Observa mudanças no elemento que contém o Navbar
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.addedNodes.length > 0) {
+                    // Torna o Navbar visível
+                    $(".famosanavbar").css("display", "flex");
+
+                    // Outras configurações específicas do Navbar
+
+                    // Desconecta o observer após a alteração
+                    observer.disconnect();
+                }
+            });
+        });
+
+        // Inicia a observação
+        observer.observe(document.body, { childList: true, subtree: true });
 
     </script>
 
