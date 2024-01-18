@@ -64,6 +64,11 @@
     height: 15px;
     fill: #45b7e5;
   }
+
+  .whatsapplink {
+    color: rgb(27, 27, 27) !important;
+    margin-bottom: 0 !important;
+  }
   
   @media (max-width: 500px) {
     .footer-container {
