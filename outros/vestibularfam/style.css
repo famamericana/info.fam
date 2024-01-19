@@ -131,18 +131,15 @@ button:hover {
     border-radius: 0 0 10px 10px;
 }
 
-.esduremaisfam svg {
-    width: 94px;
-    margin-left: 15px;
-    margin-bottom: 2px;
-}
-
 .esduremaisfam {
     display: flex;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
     flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 0;
 }
 
 .estudena {
@@ -153,9 +150,13 @@ button:hover {
     display: inline-block;
 }
 
+.esduremaisfam img{
+    max-width: 450px;
+}
+
 .escolha {
     color: #f9e20f;
-    margin-top: -10px;
+    margin-top: 10px;
 }
 
 .btn-group button.active {
@@ -246,9 +247,6 @@ button:hover {
         grid-column: span 2;
     }
 
-    .estudenafamcontainer {
-        min-height: 450px;
-    }
 
 }
 
@@ -282,27 +280,6 @@ button:hover {
 
 
 @media (max-width: 500px) {
-    .titulo .esduremaisfam .estudena {
-        transform: scale(0.6);
-        transform-origin: right;
-        margin-left: -60px;
-    }
-
-    .titulo .esduremaisfam svg {
-        transform: scale(0.6);
-        transform-origin: left;
-    }
-
-    .esduremaisfam svg {
-        margin-left: 8px;
-        margin-bottom: 1px;
-    }
-
-    .escolha {
-        color: #f9e20f;
-        margin-top: -20px;
-    }
-
 
     .estudenafamcontainer {
         min-height: 0;

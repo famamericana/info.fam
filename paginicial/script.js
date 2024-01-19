@@ -120,50 +120,53 @@ var dCounters = document.querySelectorAll('.CountLike');
 //MAIS RELEVANTES ----------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Função para verificar e atualizar os valores de likes e classificar elementos
     function updateLikesValuesAndSort() {
         const gridItems = document.querySelectorAll('.grid-item');
-        const itemData = [];
+        let itemData = [];
 
         gridItems.forEach((gridItem, index) => {
             const counterStat = gridItem.querySelector('.counterStat');
             if (counterStat) {
                 const likesCount = parseInt(counterStat.textContent || 0);
-                itemData.push({ element: gridItem, likesCount, index });
+                const isNovidade = gridItem.classList.contains('new');
+                itemData.push({ element: gridItem, likesCount, index, isNovidade });
             }
         });
 
         // Classifique os elementos com base na quantidade de likesCount em ordem decrescente
         itemData.sort((a, b) => b.likesCount - a.likesCount);
 
-        // Remova todos os elementos .grid-item da seção "Mais Relevantes"
-        const maisRelevantesContainer = document.querySelector('.grid-container');
+        // Preparação para atualizar seções
+        const maisRelevantesContainer = document.querySelector('.grid-container.mais-relevantes');
+        const novidadesContainer = document.querySelector('.grid-container.novidades');
+        const todosContainer = document.querySelectorAll('.grid-container')[2]; // Assumindo que é o terceiro grid-container
+
         maisRelevantesContainer.innerHTML = '';
+        novidadesContainer.innerHTML = '';
 
-        // Crie um novo array para armazenar os elementos que não foram movidos para "Mais Relevantes"
-        const restItems = [];
+        let restItems = [];
 
-        itemData.slice(0, 4).forEach((data) => {
-            maisRelevantesContainer.appendChild(data.element);
+        // Distribua os elementos para "Mais Relevantes" e "Novidades"
+        itemData.forEach((data) => {
+            if (data.isNovidade) {
+                novidadesContainer.appendChild(data.element);
+            } else if (maisRelevantesContainer.children.length < 4) {
+                maisRelevantesContainer.appendChild(data.element);
+            } else {
+                restItems.push(data.element);
+            }
         });
 
-        // Adicione os elementos restantes de volta à seção "Todos"
-        itemData.slice(4).forEach((data) => {
-            restItems.push(data.element);
-        });
-
-        const todosContainer = document.querySelectorAll('.grid-container')[1];
+        // Adicione os elementos restantes à seção "Todos"
         restItems.forEach((element) => {
             todosContainer.appendChild(element);
         });
     }
 
-    // Chame a função de atualização periodicamente a cada segundo
     setInterval(updateLikesValuesAndSort, 1000);
-
-    // Chame a função de atualização uma vez imediatamente após o carregamento da página
     updateLikesValuesAndSort();
 });
+
 
 
 // ARRUMANDO O EFEITO DE HOVER NO LIKE E GRID-ITEM -----------------------------------------------------------
@@ -197,6 +200,7 @@ buttonsLike.forEach((button) => {
 
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
-if (location.protocol !== 'https:') {
+if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
+

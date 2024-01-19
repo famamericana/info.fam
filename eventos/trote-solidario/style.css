@@ -122,7 +122,7 @@ p {
 }
 
 .detalhesquevaoterqueler {
-    color: #bbbece;
+    color: #45b7e5;
     font-size: small;
     margin-top: -10px;
     margin-bottom: 40px;
@@ -273,6 +273,8 @@ p {
     text-align: left;
     color: #242527;
     position: relative;
+    margin-bottom: 10px;
+
 }
 
 .scroll-container {
