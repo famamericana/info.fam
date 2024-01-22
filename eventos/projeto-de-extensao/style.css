@@ -177,6 +177,21 @@ header .logopdepc{
     font-size: small;
 }
 
+.textaofamexplicacao{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.textaofamexplicacaomini{
+    color: #bac0d1;
+    font-size: small;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
 @keyframes animate {
     0% {
         transform: scale(0.5);

@@ -171,32 +171,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ARRUMANDO O EFEITO DE HOVER NO LIKE E GRID-ITEM -----------------------------------------------------------
 const gridItems = document.querySelectorAll('.grid-item');
-
-gridItems.forEach((gridItem) => {
-    gridItem.addEventListener('mouseenter', function () {
-        gridItem.style.transform = 'scale(1.05)';
-    });
-
-    gridItem.addEventListener('mouseleave', function () {
-        gridItem.style.transform = 'scale(1)';
-    });
-});
-
 const buttonsLike = document.querySelectorAll('.button1');
 
-buttonsLike.forEach((button) => {
-    button.addEventListener('mouseenter', function () {
-        button.style.backgroundColor = 'white';
-        button.style.boxShadow = 'inset 0 0 0 2px #e53888';
-        button.style.color = '#e53888';
-    });
+function updateEventListeners() {
+    if (window.innerWidth >= 500) {
+        // Adiciona os event listeners
+        gridItems.forEach((gridItem) => {
+            gridItem.addEventListener('mouseenter', mouseEnterGrid);
+            gridItem.addEventListener('mouseleave', mouseLeaveGrid);
+        });
 
-    button.addEventListener('mouseleave', function () {
-        button.style.backgroundColor = '';
-        button.style.boxShadow = '';
-        button.style.color = '';
-    });
-});
+        buttonsLike.forEach((button) => {
+            button.addEventListener('mouseenter', mouseEnterButton);
+            button.addEventListener('mouseleave', mouseLeaveButton);
+        });
+    } else {
+        // Remove os event listeners
+        gridItems.forEach((gridItem) => {
+            gridItem.removeEventListener('mouseenter', mouseEnterGrid);
+            gridItem.removeEventListener('mouseleave', mouseLeaveGrid);
+        });
+
+        buttonsLike.forEach((button) => {
+            button.removeEventListener('mouseenter', mouseEnterButton);
+            button.removeEventListener('mouseleave', mouseLeaveButton);
+        });
+    }
+}
+
+function mouseEnterGrid() {
+    this.style.transform = 'scale(1.05)';
+}
+
+function mouseLeaveGrid() {
+    this.style.transform = 'scale(1)';
+}
+
+function mouseEnterButton() {
+    this.style.backgroundColor = 'white';
+    this.style.boxShadow = 'inset 0 0 0 2px #e53888';
+    this.style.color = '#e53888';
+}
+
+function mouseLeaveButton() {
+    this.style.backgroundColor = '';
+    this.style.boxShadow = '';
+    this.style.color = '';
+}
+
+// Inicia a configuração e lida com mudanças de tamanho da tela
+updateEventListeners();
+window.addEventListener('resize', updateEventListeners);
 
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------

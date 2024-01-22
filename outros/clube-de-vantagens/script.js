@@ -1,5 +1,13 @@
 $(document).ready(function () {
-    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+    $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
+});
+
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar-invertido/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -42,7 +50,8 @@ function addItemToColumn(columnId, imageUrl, descricao, linkUrl) {
 }
 
 
+
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
-if (location.protocol !== 'https:') {
+if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }

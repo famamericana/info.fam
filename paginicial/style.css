@@ -192,5 +192,6 @@ header h2 {
     text-transform: uppercase;
     font-weight: 600;
     font-size: small;
+    border: 2px solid white;
 }
 
