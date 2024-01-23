@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #e53888;
+    --cordoeventoatual: #3eb288;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -316,7 +316,7 @@ main {
 }
 
 .tresevento {
-    background-color: #5d378d;
+    background-color: #e53888;
 }
 
 .accordion {
