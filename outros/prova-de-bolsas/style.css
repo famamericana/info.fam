@@ -730,13 +730,19 @@ tr:nth-child(5) {
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 .margendaora {
     margin-top: 50px;
     margin-bottom: 30px;
 
+}
+
+.doisbotoes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #countdown {
