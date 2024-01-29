@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mmain">
+        <div id="filters">
+            <!-- Dropdown para Tipo de Curso -->
+            <div class="dropdown">
+                <button class="dropbtn">Tipo de Curso</button>
+                <div class="dropdown-content" id="filter-curso">
+                    <label><input type="checkbox" value="graduação"> Graduação</label>
+                    <label><input type="checkbox" value="pos-graduação"> Pós-Graduação</label>
+                    <label><input type="checkbox" value="tecnico"> Técnico</label>
+                    <!-- Outras opções... -->
+                </div>
+            </div>
+
+            <!-- Dropdown para Áreas -->
+            <div class="dropdown">
+                <button class="dropbtn">Áreas</button>
+                <div class="dropdown-content" id="filter-tipograduacao">
+                    <label><input type="checkbox" value="design"> Design</label>
+                    <label><input type="checkbox" value="exatas"> Exatas</label>
+                    <label><input type="checkbox" value="saude"> Saúde</label>
+                    <!-- Outras opções... -->
+                </div>
+            </div>
+
+            <!-- Dropdown para Quantidade de Semestres -->
+            <div class="dropdown">
+                <button class="dropbtn">Quantidade de Semestres</button>
+                <div class="dropdown-content" id="filter-semestres">
+                    <label><input type="checkbox" value="4"> 4 Semestres</label>
+                    <label><input type="checkbox" value="8"> 8 Semestres</label>
+                    <label><input type="checkbox" value="10"> 10 Semestres</label>
+                    <!-- Outras opções... -->
+                </div>
+            </div>
+
+
+            <button id="clear-filters">Limpar Filtros</button>
+        </div>
+
+        <div id="cards">
+            <!-- Cards serão inseridos aqui -->
+        </div>
+
+    </div>
+
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
