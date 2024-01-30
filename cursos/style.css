@@ -4,13 +4,28 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #1b3556;
 }
 .mmain{
     max-width: 960px;
     margin: 0 auto;
-    background-color: antiquewhite;
     padding: 0;
+}
+
+/* campo de pesquisa ------------------------------------------------------------------------------------------------------------------------------------*/
+.search-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 50px;
+    font-family: 'Source Sans 3', sans-serif;
+    box-sizing: border-box;
 }
 
 /* drop down legal só que não tão legal --------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -96,7 +111,7 @@ input[type=range] {
 #cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas que se ajustam automaticamente */
-    gap: 10px; /* Espaço entre os cards */
+    gap: 20px;
     justify-content: center;
     margin-top: 10px;
     padding: 10px;
@@ -107,6 +122,8 @@ input[type=range] {
     border-radius: 5px; /* Bordas arredondadas */
     overflow: hidden;
     padding: 20px;
+    height: 300px;
+
 }
 
 .card img {
@@ -116,6 +133,7 @@ input[type=range] {
 
 .card h3 {
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .card p {
@@ -157,3 +175,17 @@ input[type=range] {
 .selected-tag {
     background-color: #f9e20f; /* Ou a cor desejada para tags selecionadas */    
 }
+
+.presencialead{
+    margin: 0;
+    font-size: 14px;
+    color: #45b7e5;
+}
+
+.semestres{
+    margin: 0;
+    font-size: 14px;
+    color: #a9b0cc;
+}
+
+

@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
     <div class="mmain">
+        <!-- Campo de Pesquisa -->
+<div class="search-container">
+    <input type="text" id="search-input" placeholder="Procurar por nome do curso...">
+</div>
+
         <div id="filters">
             <!-- Dropdown para Tipo de Curso -->
             <div class="dropdown">
@@ -26,10 +33,13 @@
             <div class="dropdown">
                 <button class="dropbtn">Áreas</button>
                 <div class="dropdown-content" id="filter-tipograduacao">
-                    <label><input type="checkbox" value="design"> Design</label>
+                    <label><input type="checkbox" value="humanas"> Humanas</label>
                     <label><input type="checkbox" value="exatas"> Exatas</label>
                     <label><input type="checkbox" value="saude"> Saúde</label>
                     <!-- Outras opções... -->
+                    <label><input type="checkbox" value="informatica"> Informática</label>
+                    <label><input type="checkbox" value="contas"> Contas</label>
+                    <label><input type="checkbox" value="leitura"> Leitura</label>
                 </div>
             </div>
 
