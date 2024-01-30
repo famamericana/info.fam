@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { codigogoogle: ["Medicina Silvestres"], nome: "Medicina de Animais Silvestres e Exóticos", semestres: "", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "saúde", "animais"], descricao: "Descrição do curso de Pós Neuro.", link: "" },
         { codigogoogle: ["Pós Neuro"], nome: "Neuropsicopedagogia Clínica e Psicomotricidade", semestres: "", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "saúde"], descricao: "Descrição do curso de Pós Neuro.", link: "https://info.fam.br/cursos/neuropsicopedagogia/" },
         { codigogoogle: ["Nutrição"], nome: "Nutrição", semestres: "8 semestres" ,horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde"], descricao: "Descrição do curso de Nutrição.", link: "link-nutricao.html" },
-        { codigogoogle: ["Pedagogia, Pedagogia EAD"], nome: "Pedagogia com ênfase em educação infantil", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação",  "ead","humanas"], descricao: "Descrição do curso de Pedagogia.", link: "link-pedagogia.html" },
-        { codigogoogle: ["Pedagogia, Pedagogia EAD"], nome: "Pedagogia com ênfase em docentes das séries iniciais do ensino fundamental",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Descrição do curso de Pedagogia EAD.", link: "link-pedagogia-ead.html" },
+        { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em educação infantil", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação",  "ead","humanas"], descricao: "Descrição do curso de Pedagogia.", link: "link-pedagogia.html" },
+        { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em docentes das séries iniciais do ensino fundamental",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Descrição do curso de Pedagogia EAD.", link: "link-pedagogia-ead.html" },
         { codigogoogle: ["Psicologia"], nome: "Psicologia",  semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas"], descricao: "Descrição do curso de Psicologia.", link: "link-psicologia.html" },
         { codigogoogle: ["Pós PsicoEscolar"], nome: "Psicologia Escolar e Educacional", semestres: "", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Descrição do curso de Pós PsicoEscolar.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
         { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Descrição do curso de Sistemas de Informação.", link: "link-sistemas-informacao.html" },
@@ -85,19 +85,24 @@ document.addEventListener('DOMContentLoaded', function () {
             valoresHTML += '</div>'; // Fecha o container
     
             card.innerHTML = `
-                <h3>${curso.nome}</h3>
-                <div style="display: flex;">
-                    <span class="horariodianoite">${curso.horariodianoite}‎ </span>
-                    <span class="horariodianoite">‎ ${curso.tipodegraduacao}</span>
-                </div>  
-                <span class="semestres"><i class="fa-regular fa-clock"></i> ${curso.semestres}</span> 
+                <div>
+                    <h3>${curso.nome}</h3>
+                    <div style="display: flex;">
+                        <span class="horariodianoite">${curso.horariodianoite}‎ </span>
+                        <span class="horariodianoite">‎ ${curso.tipodegraduacao}</span>
+                    </div>  
+                    <span class="semestres"><i class="fa-regular fa-clock"></i> ${curso.semestres}</span> 
+
+                </div>
                 <p>${curso.descricao}</p>
                 ${valoresHTML}
+                <div>
                 <div style="display: flex;">
                     <a class="linkdocurso" href="${curso.link}" target="_blank">Saiba mais</a>
                     <a class="vestibularlinkdaora" href="vestibularfam.com.br" target="_blank">Inscreva-se</a>
                 </div>
                 <div class="tagscursosdesign">${generateTagHTML(curso.tags)}</div>
+                </div>
             `;
     
             cardsContainer.appendChild(card);

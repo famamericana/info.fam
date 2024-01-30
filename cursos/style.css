@@ -148,7 +148,7 @@ input[type=range] {
     border-radius: 5px;
     overflow: hidden;
     padding: 20px;
-    height: 300px;
+    height: 350px;
     display: flex; /* Adicionado */
     flex-direction: column; /* Adicionado */
     justify-content: space-between; /* Adicionado */
