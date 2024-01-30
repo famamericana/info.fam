@@ -6,16 +6,42 @@ body {
     padding: 0;
     background-color: #1b3556;
 }
-.mmain{
+
+.mmain {
     max-width: 960px;
     margin: 0 auto;
     padding: 0;
 }
 
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #1b3556;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.404);
+    border: 2px solid #1b3556;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.603);
+
+}
+
 /* campo de pesquisa ------------------------------------------------------------------------------------------------------------------------------------*/
 .search-container {
-    margin: 20px;
+    margin-top: 20px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 #search-input {
@@ -30,19 +56,19 @@ body {
 
 /* drop down legal só que não tão legal --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#filters{
+#filters {
     display: flex;
     gap: 10px;
 }
 
-#clear-filters{
+#clear-filters {
     background-color: #d5dcf1;
     color: black;
     font-size: 16px;
     border: none;
     cursor: pointer;
     font-family: 'Source Sans 3', sans-serif;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 8px 15px;
 }
 
@@ -72,7 +98,6 @@ body {
     position: absolute;
     background-color: #fafbff;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -101,16 +126,18 @@ input[type=range] {
 }
 
 /* Estilo para os spans que mostram os valores atuais */
-#min-valor-span, #max-valor-span {
+#min-valor-span,
+#max-valor-span {
     font-weight: bold;
 }
 
 
 
-/* design dos cards -------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ 
+/* design dos cards -------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 #cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas que se ajustam automaticamente */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Cria colunas que se ajustam automaticamente */
     gap: 20px;
     justify-content: center;
     margin-top: 10px;
@@ -119,12 +146,15 @@ input[type=range] {
 
 .card {
     background-color: white;
-    border-radius: 5px; /* Bordas arredondadas */
+    border-radius: 5px;
     overflow: hidden;
     padding: 20px;
     height: 300px;
-
+    display: flex; /* Adicionado */
+    flex-direction: column; /* Adicionado */
+    justify-content: space-between; /* Adicionado */
 }
+
 
 .card img {
     max-width: 100%;
@@ -141,51 +171,96 @@ input[type=range] {
     color: #666;
 }
 
-.card a {
-    display: inline-block;
-    margin-top: 15px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.card a:hover {
-    background-color: #45a049;
-}
-
 .tag {
     background-color: #d5dcf1;
     border-radius: 10px;
     padding: 3px 8px;
+    margin-right: 4px;
+
+}
+.tag span:last-child {
+    margin-right: 0px;
 }
 
-.tagscursosdesign span:first-child {
-    margin-right: 2px;
+/* Personaliza a barra de rolagem inteira */
+.tagscursosdesign::-webkit-scrollbar {
+    height: 8px;
 }
 
-.tagscursosdesign{
+.tagscursosdesign::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+}
+
+.tagscursosdesign::-webkit-scrollbar-thumb {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.tagscursosdesign {
     margin-top: 10px;
     text-transform: uppercase;
     font-size: small;
     font-weight: 500;
+    overflow-x: scroll;
+    height: 33px;
+    display: flex;
+    align-content: center;
 }
 
 .selected-tag {
-    background-color: #f9e20f; /* Ou a cor desejada para tags selecionadas */    
+    background-color: #f9e20f;
+    /* Ou a cor desejada para tags selecionadas */
 }
 
-.presencialead{
+.horariodianoite {
     margin: 0;
     font-size: 14px;
     color: #45b7e5;
 }
 
-.semestres{
+.semestres {
     margin: 0;
     font-size: 14px;
     color: #a9b0cc;
 }
 
+.card a{
+    margin-top: 15px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
 
+}
+
+.vestibularlinkdaora {
+    color: black;
+    border: 2px solid #45b7e5;
+    width: 100%;
+}
+
+.linkdocurso {
+    width: 100%;
+    border: 2px solid #1b3556;
+    background-color: #1b3556;
+    color: white;
+    margin-right: 5px;
+}
+
+.valor-curso{
+    margin: 0;
+}
+
+.valores-curso-container {
+    display: flex; /* Usa flexbox para dispor os itens lado a lado */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+
+.valorinteressante{
+    font-size: x-large; 
+    color: #45b7e5;
+    font-weight: 700;
+
+}
