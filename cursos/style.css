@@ -34,7 +34,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.603);
-
 }
 
 /* campo de pesquisa ------------------------------------------------------------------------------------------------------------------------------------*/
@@ -176,6 +175,7 @@ input[type=range] {
     border-radius: 10px;
     padding: 3px 8px;
     margin-right: 4px;
+    white-space: nowrap; /* Impede quebra de linha */
 
 }
 .tag span:last-child {
@@ -195,6 +195,12 @@ input[type=range] {
 .tagscursosdesign::-webkit-scrollbar-thumb {
     border: 2px solid white;
     border-radius: 10px;
+    background: #45b8e53d;
+
+}
+
+.tagscursosdesign::-webkit-scrollbar-thumb:hover {
+    background: #45b8e560;
 }
 
 .tagscursosdesign {
