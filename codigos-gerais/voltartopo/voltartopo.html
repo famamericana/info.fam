@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<button id="botaoTopo"><i class="fa-solid fa-caret-up"></i></button>
+<style>
+
+/* botão pra voltar para o topo --------------------------------------------------------------     */
+#botaoTopo {
+    display: none; /* Esconde o botão inicialmente */
+    position: fixed;
+    bottom: 20px;
+    right: 21px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #1b3556;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    padding-top: 2px;
+    border-radius: 50px;
+    font-size: x-large;
+    border: 1px solid #d5dcf1;
+
+}
+
+#botaoTopo:hover {
+    background-color: #d5dcf1;
+    border: 1px solid #d5dcf1;
+}
+
+</style>
+<script>
+    
+// Botão voltar para o topo ----------------------------------------------------------------------------------------------------------------- */
+const botaoTopo = document.getElementById("botaoTopo");
+
+// Função para verificar a posição de rolagem da página
+function scrollFunction() {
+    if (document.body.scrollTop > window.innerHeight || document.documentElement.scrollTop > window.innerHeight) {
+        botaoTopo.style.display = "block";
+    } else {
+        botaoTopo.style.display = "none";
+    }
+}
+
+// Quando o usuário rola a página, executa a função scrollFunction
+window.onscroll = function() {
+    scrollFunction();
+};
+
+// Quando o usuário clica no botão, rola para o topo do documento
+botaoTopo.onclick = function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+</script>

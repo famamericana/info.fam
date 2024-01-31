@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { codigogoogle: ["Pós EstraFiscal"], nome: "Estratégia Fiscal e Tributária", semestres: "Aulas semanais - 18 Meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "exatas"], descricao: "Especialização em finanças e legislação fiscal.", link: "https://info.fam.br/cursos/estrategia-fiscal/" },
         { codigogoogle: ["Farmácia"], nome: "Farmácia", semestres: "10 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde", "cuidados"], descricao: "Estudos em medicamentos, formulações e farmacologia.", link: "https://www.fam.br/curso/farmacia/" },
         { codigogoogle: ["Fisioterapia"], nome: "Fisioterapia", semestres: "10 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde", "cuidados"], descricao: "Formação em reabilitação e terapias corporais.", link: "https://www.fam.br/curso/fisioterapia/" },
+        { codigogoogle: ["Recursos Humanos", "Recursos Humanos EAD"], nome: "Gestão de Recursos Humanos",  semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Gestão de talentos e desenvolvimento organizacional.", link: "https://www.fam.br/curso/tecnologo-em-gestao-de-recursos-humanos/" },
+        { codigogoogle: ["Gestão Financeira"], nome: "Gestão Financeira",  semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas"], descricao: "Gestão estratégica de finanças corporativas e investimentos.", link: "https://www.fam.br/curso/tecnologo-em-gestao-financeira/" },
         { codigogoogle: ["Letras"], nome: "Letras", semestres: "10 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas", "leitura"], descricao: "Aprofundamento em Português e Inglês, literatura e cultura.", link: "https://www.fam.br/curso/letras-portugues-e-ingles/" },
         { codigogoogle: ["Logística", "Logística EAD"], nome: "Logística", semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Gestão de cadeias de suprimento e distribuição.", link: "https://www.fam.br/curso/tecnologo-em-logistica/" },
         { codigogoogle: ["Pós MBAFinanças"], nome: "MBA em Finanças, Investiment e Banking", semestres: "Aulas quizenais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "exatas"], descricao: "Especialização em finanças corporativas e investimentos.", link: "https://info.fam.br/cursos/mba-financas/" },
@@ -30,13 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         { codigogoogle: ["Medicina Veterinária (noturno)"], nome: "Medicina Veterinária", semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde", "animais"], descricao: "Formação abrangente em saúde animal e veterinária.", link: "https://www.fam.br/curso/medicina-veterinaria/" },
         { codigogoogle: ["Medicina Silvestres"], nome: "Medicina de Animais Silvestres e Exóticos", semestres: "", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "saúde", "animais"], descricao: "Cuidado e estudo de espécies nacionais e exóticas.", link: "https://www.fam.br/curso/medicina-de-animais-silvestres-e-exoticos/" },
         { codigogoogle: ["Pós Neuro"], nome: "Neuropsicopedagogia Clínica e Psicomotricidade", semestres: "Aulas quinzenais - 24 Meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "saúde"], descricao: "Foco em aprendizagem e desenvolvimento cognitivo.", link: "https://info.fam.br/cursos/neuropsicopedagogia/" },
-        { codigogoogle: ["Nutrição"], nome: "Nutrição", semestres: "8 semestres" ,horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde"], descricao: "Estudos em alimentação, dietética e saúde.", link: "https://www.fam.br/curso/nutricao/" },
+        { codigogoogle: ["Nutrição"], nome: "Nutrição", semestres: "8 semestres" ,horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde", "cuidados"], descricao: "Estudos em alimentação, dietética e saúde.", link: "https://www.fam.br/curso/nutricao/" },
         { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em educação infantil", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação",  "ead","humanas"], descricao: "Especialização em ensino e cuidado infantil.", link: "https://www.fam.br/curso/pedagogia/" },
         { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em docentes das séries iniciais do ensino fundamental",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Formação para ensino fundamental e desenvolvimento infantil.", link: "https://www.fam.br/curso/pedagogia-com-enfase-em-docentes-das-series-iniciais-do-ensino-fundamental/" },
         { codigogoogle: ["Psicologia"], nome: "Psicologia",  semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas"], descricao: "Estudos aprofundados em comportamento e mente humana.", link: "https://www.fam.br/curso/psicologia/" },
         { codigogoogle: ["Pós PsicoEscolar"], nome: "Psicologia Escolar e Educacional", semestres: "Aulas semanais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Foco em desenvolvimento educacional e psicológico.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
         { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Formação em tecnologia da informação e sistemas.", link: "https://www.fam.br/curso/sistemas-de-informacao/" },
-        { codigogoogle: ["Recursos Humanos", "Recursos Humanos EAD"], nome: "Recursos Humanos",  semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Gestão de talentos e desenvolvimento organizacional.", link: "https://www.fam.br/curso/tecnologo-em-gestao-de-recursos-humanos/" },
     ];
 
     function generateTagHTML(tags) {
@@ -213,4 +214,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar-invertido/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
+  });
+  
+  $(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
+  });
+  
+    
+  $(document).ready(function () {
+    $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
+  });
+  
+  //https forçar -------------------------------------------------------------------------------------------------------------------------------
+  if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
+      location.replace(`https:${location.href.substring(location.protocol.length)}`);
+  }
+  
+  
+  
+  

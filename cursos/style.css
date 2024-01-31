@@ -37,13 +37,13 @@ body {
 }
 
 /* campo de pesquisa ------------------------------------------------------------------------------------------------------------------------------------*/
-.search-container {
+.mmain .search-container {
     margin-top: 20px;
     text-align: center;
     margin-bottom: 10px;
 }
 
-#search-input {
+.mmain #search-input {
     width: 100%;
     padding: 10px 20px;
     font-size: 16px;
@@ -55,13 +55,13 @@ body {
 
 /* drop down legal só que não tão legal --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#filters {
+.mmain #filters {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-#clear-filters {
+.mmain #clear-filters {
     background-color: #d5dcf1;
     color: black;
     font-size: 16px;
@@ -74,7 +74,7 @@ body {
 }
 
 /* Estilo para o dropdown */
-.dropdown {
+.mmain .dropdown {
     position: relative;
     display: inline-block;
     margin-top: 10px;
@@ -82,7 +82,7 @@ body {
 }
 
 /* Estilo para o botão que abre/fecha o dropdown */
-.dropbtn {
+.mmain .dropbtn {
     background-color: #fafbff;
     color: black;
     font-size: 16px;
@@ -97,7 +97,7 @@ body {
 
 
 /* Conteúdo do dropdown */
-.dropdown-content {
+.mmain .dropdown-content {
     display: none;
     position: absolute;
     background-color: #fafbff;
@@ -108,39 +108,40 @@ body {
 }
 
 /* Itens do dropdown */
-.dropdown-content label {
+.mmain .dropdown-content label {
     color: black;
     padding: 10px 16px;
     text-decoration: none;
     display: block;
+    cursor: pointer;
 }
 
 /* Mostrar o dropdown ao passar o mouse */
-.dropdown:hover .dropdown-content {
+.mmain .dropdown:hover .dropdown-content {
     display: block;
 }
 
 /* Estilo para o botão Limpar Filtros */
-#clear-filters {
+.mmain #clear-filters {
     margin-top: 10px;
 }
 
 /* Estilo para os sliders */
-input[type=range] {
+.mmain input[type=range] {
     width: 100%;
     margin: 5px 0;
 }
 
 /* Estilo para os spans que mostram os valores atuais */
-#min-valor-span,
-#max-valor-span {
+.mmain #min-valor-span,
+.mmain #max-valor-span {
     font-weight: bold;
 }
 
 
 
 /* design dos cards -------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-#cards {
+.mmain #cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     /* Cria colunas que se ajustam automaticamente */
@@ -149,7 +150,7 @@ input[type=range] {
     margin-top: 10px;
 }
 
-.card {
+.mmain .card {
     background-color: white;
     border-radius: 5px;
     overflow: hidden;
@@ -161,22 +162,22 @@ input[type=range] {
 }
 
 
-.card img {
+.mmain .card img {
     max-width: 100%;
     height: auto;
 }
 
-.card h3 {
+.mmain .card h3 {
     margin-top: 10px;
     margin-bottom: 0;
 }
 
-.card p {
+.mmain .card p {
     font-size: 14px;
     color: #666;
 }
 
-.tag {
+.mmain .tag {
     background-color: #d5dcf1;
     border-radius: 10px;
     padding: 3px 8px;
@@ -184,32 +185,32 @@ input[type=range] {
     white-space: nowrap; /* Impede quebra de linha */
 
 }
-.tag span:last-child {
+.mmain .tag span:last-child {
     margin-right: 0px;
 }
 
 /* Personaliza a barra de rolagem inteira */
-.tagscursosdesign::-webkit-scrollbar {
+.mmain .tagscursosdesign::-webkit-scrollbar {
     height: 8px;
 }
 
-.tagscursosdesign::-webkit-scrollbar-track {
+.mmain .tagscursosdesign::-webkit-scrollbar-track {
     background: white;
     border-radius: 5px;
 }
 
-.tagscursosdesign::-webkit-scrollbar-thumb {
+.mmain .tagscursosdesign::-webkit-scrollbar-thumb {
     border: 2px solid white;
     border-radius: 10px;
     background: #45b8e53d;
 
 }
 
-.tagscursosdesign::-webkit-scrollbar-thumb:hover {
+.mmain .tagscursosdesign::-webkit-scrollbar-thumb:hover {
     background: #45b8e560;
 }
 
-.tagscursosdesign {
+.mmain .tagscursosdesign {
     margin-top: 10px;
     text-transform: uppercase;
     font-size: small;
@@ -220,24 +221,24 @@ input[type=range] {
     align-content: center;
 }
 
-.selected-tag {
+.mmain .selected-tag {
     background-color: #f9e20f;
     /* Ou a cor desejada para tags selecionadas */
 }
 
-.horariodianoite {
+.mmain .horariodianoite {
     margin: 0;
     font-size: 14px;
     color: #45b7e5;
 }
 
-.semestres {
+.mmain .semestres {
     margin: 0;
     font-size: 14px;
     color: #a9b0cc;
 }
 
-.card a{
+.mmain .card a{
     margin-top: 15px;
     padding: 5px 10px;
     text-align: center;
@@ -246,13 +247,13 @@ input[type=range] {
 
 }
 
-.vestibularlinkdaora {
+.mmain .vestibularlinkdaora {
     color: black;
     border: 2px solid #45b7e5;
     width: 100%;
 }
 
-.linkdocurso {
+.mmain .linkdocurso {
     width: 100%;
     border: 2px solid #1b3556;
     background-color: #1b3556;
@@ -260,17 +261,17 @@ input[type=range] {
     margin-right: 5px;
 }
 
-.valor-curso{
+.mmain .valor-curso{
     margin: 0;
 }
 
-.valores-curso-container {
+.mmain .valores-curso-container {
     display: flex; /* Usa flexbox para dispor os itens lado a lado */
     gap: 10px; /* Espaçamento entre os itens */
 }
 
 
-.valorinteressante{
+.mmain .valorinteressante{
     font-size: x-large; 
     color: #45b7e5;
     font-weight: 700;
