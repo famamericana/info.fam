@@ -78,7 +78,7 @@ body {
     position: relative;
     display: inline-block;
     margin-top: 10px;
-    
+
 }
 
 /* Estilo para o botão que abre/fecha o dropdown */
@@ -156,9 +156,12 @@ body {
     overflow: hidden;
     padding: 20px;
     min-height: 290px;
-    display: flex; /* Adicionado */
-    flex-direction: column; /* Adicionado */
-    justify-content: space-between; /* Adicionado */
+    display: flex;
+    /* Adicionado */
+    flex-direction: column;
+    /* Adicionado */
+    justify-content: space-between;
+    /* Adicionado */
 }
 
 
@@ -182,9 +185,11 @@ body {
     border-radius: 10px;
     padding: 3px 8px;
     margin-right: 4px;
-    white-space: nowrap; /* Impede quebra de linha */
+    white-space: nowrap;
+    /* Impede quebra de linha */
 
 }
+
 .mmain .tag span:last-child {
     margin-right: 0px;
 }
@@ -238,7 +243,7 @@ body {
     color: #a9b0cc;
 }
 
-.mmain .card a{
+.mmain .card a {
     margin-top: 15px;
     padding: 5px 10px;
     text-align: center;
@@ -261,19 +266,41 @@ body {
     margin-right: 5px;
 }
 
-.mmain .valor-curso{
+.mmain .valor-curso {
     margin: 0;
 }
 
 .mmain .valores-curso-container {
-    display: flex; /* Usa flexbox para dispor os itens lado a lado */
-    gap: 10px; /* Espaçamento entre os itens */
+    display: flex;
+    /* Usa flexbox para dispor os itens lado a lado */
+    gap: 10px;
+    /* Espaçamento entre os itens */
 }
 
 
-.mmain .valorinteressante{
-    font-size: x-large; 
+.mmain .valorinteressante {
+    font-size: x-large;
     color: #45b7e5;
     font-weight: 700;
 
+}
+
+
+@media (max-width: 500px) {
+
+    .mmain #filters {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Estilo para o botão que abre/fecha o dropdown */
+    .mmain .dropbtn {
+        width: calc(100vw - 40px);
+        margin-bottom: 0px;
+    }
+
+    /* Conteúdo do dropdown */
+    .mmain .dropdown-content {
+        width: 100%;
+    }
 }
