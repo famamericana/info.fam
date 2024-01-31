@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { codigogoogle: ["Psicologia"], nome: "Psicologia",  semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas"], descricao: "Descrição do curso de Psicologia.", link: "link-psicologia.html" },
         { codigogoogle: ["Pós PsicoEscolar"], nome: "Psicologia Escolar e Educacional", semestres: "Aulas semanais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Descrição do curso de Pós PsicoEscolar.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
         { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação",  semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Descrição do curso de Sistemas de Informação.", link: "link-sistemas-informacao.html" },
-        { codigogoogle: ["Recursos Humanos, Recursos Humanos EAD"], nome: "Recursos Humanos",  semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Descrição do curso de Recursos Humanos.", link: "link-recursos-humanos.html" },
+        { codigogoogle: ["Recursos Humanos", "Recursos Humanos EAD"], nome: "Recursos Humanos",  semestres: "4 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Descrição do curso de Recursos Humanos.", link: "link-recursos-humanos.html" },
     ];
 
     function generateTagHTML(tags) {
