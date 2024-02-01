@@ -1,6 +1,9 @@
 var valoresCursos = {}; // Objeto para armazenar os valores dos cursos
 
 document.addEventListener('DOMContentLoaded', function () {
+      // Exibe o ícone de carregamento
+      document.getElementById('loadingIcon').style.display = 'flex';
+
     const cursos = [
         { codigogoogle: ["Administração", "Administração EAD"], nome: "Administração", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Formação abrangente em gestão empresarial e liderança.", link: "https://www.fam.br/curso/administracao/" },
         { codigogoogle: ["Biomedicina"], nome: "Biomedicina", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "saúde"], descricao: "Estudos avançados em análises clínicas e biologia molecular.", link: "https://www.fam.br/curso/biomedicina/" },
@@ -206,6 +209,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     
             createCards(); // Chama a função para criar os cards
+
+             // Esconde o ícone de carregamento após os cards serem criados
+             document.getElementById('loadingIcon').style.display = 'none';
+        
         }
     });
     
