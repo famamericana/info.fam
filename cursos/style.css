@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #1b3556;
+    min-height: 100vh;
 }
 
 .mmain {
