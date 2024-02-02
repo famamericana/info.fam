@@ -101,18 +101,21 @@
             }
         });
 
+       
         // arrumando a exibição do navbar --------------------------------------------------------------------------------------------------------------------------------------------
 
         // Observa mudanças no elemento que contém o Navbar
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.addedNodes.length > 0) {
-                    // Torna o Navbar visível
-                    $(".famosanavbar").css("display", "flex");
+                    // Torna o Navbar visível após meio segundo
+                    setTimeout(function () {
+                        $(".famosanavbar").css("display", "flex");
+                    }, 100); // Atraso de 100 milissegundos
 
-                    // Outras configurações específicas do Navbar
+                    // Outras configurações específicas do Navbar podem ser adicionadas aqui, se necessário
 
-                    // Desconecta o observer após a alteração
+                    // Desconecta o observer após a alteração para evitar chamadas repetidas
                     observer.disconnect();
                 }
             });

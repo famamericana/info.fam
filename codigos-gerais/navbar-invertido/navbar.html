@@ -41,7 +41,7 @@
                         <a target="_blank" href="https://info.fam.br/eventos/trote-solidario">
                             <img src="/paginicial/images/trotesolidario.png" alt="Imagem 1">
                             <h3>Trote Solidário</h3>
-                            <p>Ações que transbordam solidariedade <3</p>
+                            <p>Ações que transbordam solidariedade <3< /p>
                         </a>
                         <div class="pagnova"><i class="fas fa-star"></i></div>
 
@@ -107,12 +107,14 @@
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.addedNodes.length > 0) {
-                    // Torna o Navbar visível
-                    $(".famosanavbar").css("display", "flex");
+                    // Torna o Navbar visível após meio segundo
+                    setTimeout(function () {
+                        $(".famosanavbar").css("display", "flex");
+                    }, 100); // Atraso de 500 milissegundos
 
-                    // Outras configurações específicas do Navbar
+                    // Outras configurações específicas do Navbar podem ser adicionadas aqui, se necessário
 
-                    // Desconecta o observer após a alteração
+                    // Desconecta o observer após a alteração para evitar chamadas repetidas
                     observer.disconnect();
                 }
             });

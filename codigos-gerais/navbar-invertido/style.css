@@ -4,9 +4,7 @@
 .famosanavbar {
     font-family: 'Source Sans 3', sans-serif;
     position: relative;
-    /* ou 'absolute', dependendo do seu layout */
     z-index: 9999;
-
 }
 
 .famosanavbar .barra-navegacao {
