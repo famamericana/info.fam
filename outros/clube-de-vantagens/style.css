@@ -30,7 +30,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background: linear-gradient(0deg, #5d378d 0%, #5d378d 70%, var(--clubecor) 70%, var(--clubecor) 100%);
+    background: linear-gradient(0deg, #45b7e5 0%, #45b7e5 70%, var(--clubecor) 70%, var(--clubecor) 100%);
 }
 
 .limite {
