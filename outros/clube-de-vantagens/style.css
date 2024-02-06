@@ -342,3 +342,27 @@ header {
     text-decoration: none;
     color: #505050;
 }
+
+/* facha das logos ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.logo-slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 50px; /* Altura suficiente para as logos */
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #f2f3f8;
+    border-top: 1px solid #f2f3f8;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    position: absolute;
+    height: 30px; /* Ajuste baseado no tamanho real das suas logos */
+    width: 150px; /* Ajuste baseado no tamanho real das suas logos */
+    background-size: contain;
+    background-repeat: no-repeat;
+
+  }
+  
