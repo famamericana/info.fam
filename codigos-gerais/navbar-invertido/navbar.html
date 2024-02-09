@@ -1,9 +1,28 @@
-<link rel="stylesheet" href="/codigos-gerais/navbar-invertido/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
 <body>
-    <div id="Navbar" class="famosanavbar" style="display: none;">
+
+    <div id="Navbar" style="display: none;"></div> <!-- Div que receberá o navbar -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function loadCss(url) {
+            return new Promise((resolve, reject) => {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = url;
+                link.onload = () => resolve();
+                link.onerror = () => reject(`Failed to load CSS: ${url}`);
+                document.head.appendChild(link);
+            });
+        }
+
+        $(document).ready(function () {
+            Promise.all([
+                loadCss('/codigos-gerais/navbar-invertido/style.css'),
+                loadCss('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css')
+            ]).then(() => {
+                var navbarHtml = `
+            <div class="famosanavbar">
         <nav class="barrafundo">
             <div class="barra-navegacao">
                 <a href="https://info.fam.br">
@@ -38,7 +57,7 @@
                         <div class="pagnova"><i class="fas fa-star"></i></div>
                     </div>
 
-                                      <!--                    <div class="imagem-com-texto">
+                    <!--                    <div class="imagem-com-texto">
                         <a target="_blank" href="https://info.fam.br/eventos/trote-solidario">
                             <img src="/paginicial/images/trotesolidario.png" alt="Imagem 1">
                             <h3>Trote Solidário</h3>
@@ -65,9 +84,17 @@
             </div>
         </div>
     </div>
+    `;
+                // Inserindo o HTML do navbar na página
+                $("#Navbar").html(navbarHtml).show();
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+                // Chama a função setupDropdown após o conteúdo ser carregado
+                setupDropdown();
+            }).catch(error => {
+                console.error(error);
+            });
+        });
+
         function setupDropdown() {
             var dropdown = document.getElementById('itemnavbarDropdown');
             var dropdownContent = document.querySelector('.agoravai');
@@ -108,28 +135,6 @@
                 navbar.classList.remove('famosanavbar_fixed-navbar');
             }
         });
-
-        // arrumando a exibição do navbar --------------------------------------------------------------------------------------------------------------------------------------------
-
-        // Observa mudanças no elemento que contém o Navbar
-        var observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.addedNodes.length > 0) {
-                    // Torna o Navbar visível após meio segundo
-                    setTimeout(function () {
-                        $(".famosanavbar").css("display", "flex");
-                    }, 100); // Atraso de 500 milissegundos
-
-                    // Outras configurações específicas do Navbar podem ser adicionadas aqui, se necessário
-
-                    // Desconecta o observer após a alteração para evitar chamadas repetidas
-                    observer.disconnect();
-                }
-            });
-        });
-
-        // Inicia a observação
-        observer.observe(document.body, { childList: true, subtree: true });
 
     </script>
 
