@@ -43,7 +43,7 @@ moment.locale('pt');
                 var markup = "";
                 if (items.length === 0) {
                     // Se não houver eventos, mostra uma mensagem
-                    markup = "<div class='mensagemdeerro'>Se essa mensagem aparecer, significa que os Eventos não estão mostrando corretamente, se possivel, encaminhe um email para: <a href='mailto:nicom@fam.br'> nicom@fam.br</a> para ficarmos sabendo o mais rápido possível, agradecemos!</div>";
+                    markup = "<div class='mensagemdeerro'>Caso apareça essa mensagem, por favor nos notifique que os Eventos não estão aparecendo. Agradecemos a colaboração! E-mail: <a href='mailto:nicom@fam.br'> nicom@fam.br</a></div>";
                 } else {
                 items.forEach(function (eventDate) {
                     var monthName = moment(eventDate).format("MMMM").toUpperCase();
