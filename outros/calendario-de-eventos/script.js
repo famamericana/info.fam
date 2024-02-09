@@ -1,6 +1,3 @@
-$(document).ready(function () {
-    $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
-});
 
 
 moment.locale('pt');
@@ -44,6 +41,10 @@ moment.locale('pt');
                     });
                 });
                 var markup = "";
+                if (items.length === 0) {
+                    // Se não houver eventos, mostra uma mensagem
+                    markup = "<div class='mensagemdeerro'>Se essa mensagem aparecer, significa que os Eventos não estão mostrando corretamente, se possivel, encaminhe um email para: <a href='mailto:nicom@fam.br'> nicom@fam.br</a> para ficarmos sabendo o mais rápido possível, agradecemos!</div>";
+                } else {
                 items.forEach(function (eventDate) {
                     var monthName = moment(eventDate).format("MMMM").toUpperCase();
                     var monthDate = moment(eventDate).format("DD");
@@ -69,6 +70,7 @@ moment.locale('pt');
                     });
                     markup += "</span></ol></div></div>";
                 });
+            }
                 $("#calendar-list").append(markup);
                 //console.log(events);
 
@@ -119,4 +121,8 @@ $(document).ready(function () {
         // Chama a função setupDropdown após o conteúdo ser carregado
         setupDropdown();
     });
+});
+
+$(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
 });

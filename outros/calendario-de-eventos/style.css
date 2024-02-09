@@ -368,3 +368,8 @@ a:hover {
     margin: 0 auto;
 
 }
+
+.mensagemdeerro{
+    text-align: center;
+    height: 20vh;
+}
