@@ -326,3 +326,23 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+.tooltip {
+    margin-top: 10px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #1b3556;
+}
+
+.tooltip.show {
+    display: block;
+}
+
+.tooltipTrigger {
+    cursor: pointer;
+}
