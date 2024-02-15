@@ -257,7 +257,6 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 function setupTooltipTriggers() {
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('tooltipTrigger')) {
-            console.log('Tooltip trigger clicked!'); // Este log agora deve funcionar
             var tooltip = document.getElementById('myTooltip');
             var iconRect = event.target.getBoundingClientRect();
     
@@ -288,27 +287,14 @@ function setupTooltipTriggers() {
         }
     });
     
-
+    // Adiciona manipulador de eventos de scroll ao window para esconder o tooltip
     window.addEventListener('scroll', function() {
         var tooltip = document.getElementById('myTooltip');
-        // Se o tooltip não está visível, não faça nada
-        if (tooltip.style.display !== 'block') return;
-    
-        // Implementação simplificada que assume um único tooltip e trigger visível
-        // Aqui você precisaria ajustar a lógica para determinar o trigger correto baseado em sua aplicação específica
-        var trigger = document.querySelector('.tooltipTrigger'); // Isto é simplificado
-        if (!trigger) return; // Se nenhum gatilho ativo, não faça nada
-    
-        var iconRect = trigger.getBoundingClientRect();
-        var tooltipRect = tooltip.getBoundingClientRect();
-    
-        var leftPosition = iconRect.left + (iconRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
-        var topPosition = iconRect.bottom + window.scrollY;
-    
-        tooltip.style.left = leftPosition + 'px';
-        tooltip.style.top = topPosition + 'px';
+        if (tooltip.style.display === 'block') {
+            tooltip.style.display = 'none';
+        }
     });
-    
+
 }
 
 // Certifique-se de chamar setupTooltipTriggers() após os cartões serem criados
