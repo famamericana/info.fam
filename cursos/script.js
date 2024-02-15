@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <div style="margin-bottom:-28px"> ${tipoCurso} </div>
                                     </br>
                                     R$ 
-                                <span class="valorinteressante">${valor}<span style="color: #f9e20f;" class="tooltipTrigger">*</span>
+                                <span class="valorinteressante">${valor}<span class="tooltipTrigger">*</span>
                                 </span>
                                 <span style="font-size:small; color: #a9b0cc;">/mensais </span> 
                             </span>
