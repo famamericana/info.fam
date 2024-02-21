@@ -34,10 +34,8 @@
         }
 
         nav .dropdown a {
-            font-family: var(--fonte-resto);
             text-decoration: none;
             font-size: 18px;
-            padding: 5px 15px 5px 15px;
             color: rgb(255, 255, 255);
             border-radius: 5px;
             transition: 0.3s;
@@ -45,6 +43,7 @@
             display: flex;
             align-items: center;
         }
+
 
         nav .titulo {
             font-family: var(--fonte-resto);
@@ -59,6 +58,7 @@
             align-items: center;
             text-transform: uppercase;
             font-weight: 600;
+            font-size: medium !important;
         }
 
         nav .links {
@@ -75,6 +75,7 @@
             height: auto;
             margin-right: 100px;
             padding-top: 5px;
+            padding-left: 20px;
         }
 
         nav svg {
@@ -104,13 +105,12 @@
 
         nav .teste {
             display: flex;
-            flex-direction: column;
-            padding: 5px;
+            padding: 10px 10px;
         }
 
         nav .dropdown-content a {
             color: #000;
-            padding: 5px;
+            padding: 3px;
             text-decoration: none;
             display: block;
             text-align: left;
@@ -141,6 +141,42 @@
             padding-bottom: 18px;
             padding-top: 18px;
         }
+
+
+        .inscrevase {
+            display: flex;
+            align-self: center;
+            padding: 10px 20px !important;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+            text-decoration: none;
+            height: fit-content;
+            background-color: transparent;
+            box-shadow: inset 0 0 0 2px #f9e20f;
+            color: #f9e20f !important;
+            margin-left: 10px;
+        }
+
+        .inscrevase a {
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .inscrevase:hover {
+            color: #1b3556 !important;
+            background-color: #f9e20f;
+        }
+
+        .separar{
+            padding-left: 15px;
+            border-left: 1px solid #45b7e5;
+            margin-left: 15px;
+        }
+
+        .chamaratenção{
+            color: #45b7e5;
+        }
     </style>
 </head>
 
@@ -150,20 +186,23 @@
             <div class="logo">
                 <a href="https://fam.br"><img src="logo_fam.svg" alt="FAM logo"></a>
             </div>
+
             <div class="links">
+
                 <div class="dropdown">
                     <div class="hoverparadropdown">
                         <a href="https://www.fam.br/conheca-a-fam/" class="titulo" id="Portifólio">A FAM</a>
                     </div>
                     <div class="dropdown-content">
                         <div class=" teste">
-                            <a href="" id="Nossa História">Nossa História</a>
-                            <a href="" id="Direção">Direção Geral e Acadêmica</a>
-                            <a href="" id="Front-End">Diretrizes Institucionais</a>
-                            <a href="" id="Front-End">Fale conesco</a>
-                            <a href="" id="Front-End">Quero trabalhar na FAM</a>
-                            <a href="" id="Front-End">LGPD</a>
-
+                        <div>
+                            <a href="" id=""><span class="chamaratenção">•</span> Nossa História</a>
+                            <a href="" id="">Direção Geral e Acadêmica</a>
+                            <a href="" id="">Diretrizes Institucionais</a>
+                            <a href="" id="">Fale conesco</a>
+                            <a href="" id="">Quero trabalhar na FAM</a>
+                            <a href="" id="">LGPD</a>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -173,9 +212,11 @@
                     </div>
                     <div class="dropdown-content">
                         <div class=" teste">
-                            <a href="" id="Ilustracoes">Como Ingressar</a>
-                            <a href="" id="DesignGrafico">Visite a FAM</a>
-                            <a href="" id="Front-End">Todos os cursos</a>
+                            <div>
+                            <a href="" id="">Como Ingressar</a>
+                            <a href="" id="">Visite a FAM</a>
+                            <a href="" id=""><span class="chamaratenção">•</span> Todos os cursos</a>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -185,17 +226,21 @@
                     </div>
                     <div class="dropdown-content">
                         <div class=" teste">
-                            <a href="" id="Agende">Agende seu atendimento</a>
-                            <a href="" id="infofam">Centro de Informações para os Alunos</a>
-                            <a href="" id="Transportes">Transportes Universitários</a>
-                            <a href="" id="Rematricula">Rematrícula</a>
-                            <a href="" id="nape">NAPE</a>
-                            <a href="" id="diploma">Diploma e Colação de Grau</a>
-                            <a href="" id="Biblioteca">Biblioteca</a>
-                            <a href="" id="Revista">Revista Acadêmica</a>
-                            <a href="" id="enade">ENADE</a>
-                            <a href="" id="CalendárioAcadêmico">Calendário Acadêmico</a>
-                            <a href="" id="AcervoDigital">Acervo Digital</a>
+                            <div>
+                                <a href="" id="">Agende seu atendimento</a>
+                                <a href="" id="">Calendário Acadêmico</a>
+                                <a href="" id="">Transportes Universitários</a>
+                                <a href="" id="">Rematrícula</a>
+                                <a href="" id="">NAPE</a>
+                                <a href="" id="">Diploma e Colação de Grau</a>
+                            </div>
+                            <div class="separar">
+                                <a href="" id=""><span class="chamaratenção">•</span> Centro de Informações</a>
+                                <a href="" id="">Biblioteca</a>
+                                <a href="" id="">Revista Acadêmica</a>
+                                <a href="" id="">ENADE</a>
+                                <a href="" id="">Acervo Digital</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,14 +250,15 @@
                     </div>
                     <div class="dropdown-content">
                         <div class=" teste">
-                            <a href="" id="FAMNews">FAM News</a>
-                            <a href="" id="Clube">Clube de vantagens</a>
-                            <a href="" id="LocaFAM">LocaFAM</a>
-                            <a href="" id="CPA">CPA – Comissão Própria de Avaliação </a>
-                            <a href="" id="FAMescolas">FAM nas escolas</a>
-                            <a href="" id="ClinicasFAM">Clínicas FAM</a>
-                            <a href="" id="Ex-alunos">Ex-alunos</a>
-
+                        <div>
+                            <a href="" id="">FAM News</a>
+                            <a href="" id="">Clube de vantagens</a>
+                            <a href="" id="">LocaFAM</a>
+                            <a href="" id="">CPA – Comissão Própria de Avaliação </a>
+                            <a href="" id="">FAM nas escolas</a>
+                            <a href="" id="">Clínicas FAM</a>
+                            <a href="" id="">Ex-alunos</a>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -222,21 +268,25 @@
                     </div>
                     <div class="dropdown-content">
                         <div class=" teste">
+                        <div>
                             <a href="" id="">Eventos passados </a>
-                            <a href="" id="">Próximos Eventos</a>
+                            <a href="" id=""><span class="chamaratenção">•</span> Próximos Eventos</a>
                             <a href="" id="">Diploma e Colação de Grau</a>
                             <a href="" id="">Certificados</a>
                             <a href="" id="">Faculdade Aberta</a>
                             <a href="" id="">Encontro com Educadores</a>
                         </div>
+                        </div>
                     </div>
                 </div>
                 <a class="titulo" href="" id="Blog">Blog</a>
-                <a class="titulo" href="" id="Inscrevase">Inscreva-se</a>
+                <a class="titulo inscrevase" href="https://vestibularfam.com.br" id="Inscrevase">Inscreva-se</a>
 
             </div>
         </div>
     </nav>
+
+    não fiz versão mobile
 
 </body>
 
