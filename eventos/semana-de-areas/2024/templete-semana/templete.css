@@ -118,7 +118,7 @@ iframe {
 .containerconvidado {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 100px 50px 1fr 2fr;
+    grid-template-rows: auto 50px auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     width: 100%;
@@ -130,7 +130,6 @@ iframe {
 
 .palestra {
     grid-area: 1 / 2 / 2 / 4;
-    border-bottom: 2px dotted var(--cordoeventoatualpag);
 
 }
 
@@ -151,6 +150,9 @@ iframe {
     grid-area: 2 / 2 / 3 / 4;
     display: flex;
     align-self: center;
+    border-top: 2px dotted var(--cordoeventoatualpag);
+    padding-top: 15px;
+
 }
 
 .nomepalestrante {
@@ -168,6 +170,7 @@ iframe {
     grid-area: 3 / 2 / 4 / 3;
     background-color: white;
     text-align: center;
+    padding: 5px 10px;
 }
 
 .horario i{
@@ -185,6 +188,8 @@ iframe {
     background-color: white;
     border-radius: 5px;
     text-align: center;
+    padding: 5px 10px;
+
 }
 
 .lugar i{
@@ -208,7 +213,7 @@ iframe {
     grid-area: 4 / 2 / 5 / 4;
     background-color: white;
     overflow-y: auto;
-    max-height: 100px;
+    max-height: 150px;
 }
 
 .imagemdopalestrante {
@@ -276,35 +281,26 @@ iframe {
     .palestra {
         grid-area: 1 / 1 / 2 / 4;
         padding-bottom: 10px;
+        border-bottom: 2px dotted var(--cordoeventoatualpag);
+
     }
+
 
     .palestrante {
         grid-area: 2 / 2 / 3 / 4;
+        border-top: 0px;
+        padding-top: 0;
+
     }
 
     .containerconvidado {
-        grid-template-rows: 1fr 50px 1fr 2fr;
+        grid-template-rows: auto 50px auto 2fr;
     }
 
     .curriculo {
         max-height: 170px;
     }
 
-    .horario {
-        flex-direction: column;
-    }
-
-    .horario i{
-        margin-right: 0;
-    }
-        
-    .lugar {
-        flex-direction: column;
-    }   
-    
-    .lugar i{
-        margin-right: 0;
-    }
 
 }
 
@@ -316,7 +312,7 @@ iframe {
     }
 
     .containerconvidado {
-        grid-template-rows: 100px 50px 1fr 50px;
+        grid-template-rows: auto 50px auto 50px;
         max-height: 700px;
     }
 
@@ -375,7 +371,6 @@ iframe {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 120px 50px repeat(3, 1fr);
     }
-    
 
     .palestra {
         grid-area: 1 / 1 / 2 / 3;
