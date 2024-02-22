@@ -53,7 +53,6 @@ header {
 main {
     max-width: 960px;
     margin: 0 auto;
-    padding: 10px;
 }
 
 .titulo {
@@ -66,24 +65,7 @@ main {
     font-size: 35px;
     text-transform: uppercase;
     margin-bottom: 10px;
-}
-
-/* Personaliza o fundo da barra de rolagem */
-.scrollable-text::-webkit-scrollbar-track {
-    background: var(--neutral-light);
-    border-radius: 5px;
-}
-
-/* Personaliza a barra de rolagem em si */
-.scrollable-text::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5);
-    border: 3px solid var(--neutral-light);
-    border-radius: 10px;
-}
-
-/* Personaliza a barra de rolagem quando você passa o mouse sobre ela */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--cordoeventoatualpag);
+    padding-left: 20px;
 }
 
 /* caso tenha um formulario do google formularios */
@@ -97,9 +79,14 @@ iframe {
 
 /* botão de inscrição */
 
+.portal{
+    padding: 0 20px;
+}
+
 .btn2 {
+    display: flex;
     box-sizing: border-box;
-    display: inline-block;
+    justify-content: center;
     color: var(--bg-dark);
     border: none;
     padding: 8px 16px;
@@ -130,8 +117,8 @@ iframe {
 
 .containerconvidado {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Mantém as 3 colunas iguais */
-    grid-template-rows: 2fr 50px 1fr 2fr; /* Define a primeira linha como mais alta */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 50px 1fr 2fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     width: 100%;
@@ -141,9 +128,10 @@ iframe {
     box-sizing: border-box;
 }
 
-.palestra{
+.palestra {
     grid-area: 1 / 2 / 2 / 4;
-    border-bottom: 2px dotted #f9e20f;
+    border-bottom: 2px dotted var(--cordoeventoatualpag);
+
 }
 
 .titulopalestra {
@@ -151,6 +139,7 @@ iframe {
     line-height: 0.95;
     font-weight: 800;
 }
+
 .subtitulopalestra {
     grid-area: 1 / 2 / 2 / 4;
     font-size: x-large;
@@ -170,29 +159,54 @@ iframe {
     font-size: large;
 }
 
-.div3 {
+.horario {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
     border-radius: 5px;
     grid-area: 3 / 2 / 4 / 3;
     background-color: white;
+    text-align: center;
 }
 
-.div4 {
+.horario i{
+    margin-right: 4px;
+    color: var(--cordoeventoatualpag);
+    font-size: 13px;
+}
+
+.lugar {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
     grid-area: 3 / 3 / 4 / 4;
     background-color: white;
     border-radius: 5px;
+    text-align: center;
 }
+
+.lugar i{
+    margin-right: 4px;
+    color: var(--cordoeventoatualpag);
+    font-size: 13px;
+}
+
+.curriculo::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.295);
+}
+
+.curriculo::-webkit-scrollbar-thumb:hover {
+    background: var(--cordoeventoatualpag);
+}
+
 
 .curriculo {
     padding: 10px;
     border-radius: 5px;
     grid-area: 4 / 2 / 5 / 4;
-    background-color: white;  
+    background-color: white;
     overflow-y: auto;
     max-height: 100px;
 }
@@ -210,36 +224,198 @@ iframe {
     margin-right: 10px;
 }
 
-.detalhes{
+.detalhes {
     color: #939fc4;
     padding: 2px 10px;
     background-color: white;
     border-radius: 20px;
+    text-align: center;
 }
 
-.cursospermitidos{
+.cursospermitidos {
     padding: 2px 10px;
-    background-color: var(--cordoeventoatualpag);
+    color: var(--cordoeventoatualpag);
     border-radius: 20px;
     margin-left: 10px;
+    text-align: center;
+    border: 1px solid var(--cordoeventoatualpag);
+    cursor: pointer;
 }
 
-@media (max-width: 760px) {
+.cursospermitidos:hover {
+    background-color: var(--cordoeventoatualpag);
+    color: white;
+}
+
+.descricao {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--cordoeventoatualpag);
+    background-color: white;
+    border-radius: 5px;
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+
+
+@media (max-width: 770px) {
 
     .imagemdopalestrante {
         grid-area: 2 / 1 / 5 / 2;
+        margin-top: 10px;
     }
 
     .imagemdopalestrante img {
-        max-width: 150px;
+        max-width: 220px;
     }
-    
-    .palestra{
+
+    .palestra {
         grid-area: 1 / 1 / 2 / 4;
+        padding-bottom: 10px;
     }
 
     .palestrante {
-        grid-area: 2 / 2 / 3 / 4;    
+        grid-area: 2 / 2 / 3 / 4;
+    }
+
+    .containerconvidado {
+        grid-template-rows: 1fr 50px 1fr 2fr;
+    }
+
+    .curriculo {
+        max-height: 170px;
+    }
+
+    .horario {
+        flex-direction: column;
+    }
+
+    .horario i{
+        margin-right: 0;
+    }
+        
+    .lugar {
+        flex-direction: column;
+    }   
+    
+    .lugar i{
+        margin-right: 0;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .imagemdopalestrante {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .containerconvidado {
+        grid-template-rows: 100px 50px 1fr 50px;
+        max-height: 700px;
+    }
+
+    .palestrante {
+        grid-area: 2 / 1 / 3 / 4;
+    }
+
+    .curriculo {
+        padding: 10px;
+        border-radius: 5px;
+        grid-area: 3 / 2 / 4 / 4;
+        background-color: white;
+        overflow-y: auto;
+        max-height: 100px;
+    }
+
+    .imagemdopalestrante {
+        margin-top: 0px;
+    }
+
+    .curriculo {
+        max-height: 210px;
+    }
+
+    .horario {
+        grid-area: 4 / 1 / 4 / 1;
+        flex-direction: row;
+
+    }
+
+    .lugar {
+        grid-area: 4 / 2 / 4 / 4;
+        flex-direction: row;
+
+    }
+
+    .imagemdopalestrante img {
+        margin-right: 0;
+    }
+
+    .horario i{
+        margin-right: 4px;
     }
     
+    .lugar i{
+        margin-right: 4px;
+    }
+
+}
+
+
+@media (max-width: 580px) {
+
+    .containerconvidado {
+        display: grid; /* Certifique-se de que está definido como um grid */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 120px 50px repeat(3, 1fr);
+    }
+    
+
+    .palestra {
+        grid-area: 1 / 1 / 2 / 3;
+    }
+
+    .palestrante {
+        grid-area: 2 / 1 / 3 / 3;
+    }
+
+
+    .imagemdopalestrante {
+        grid-area: 3 / 1 / 5 / 2;
+    }
+
+    .horario {
+        grid-area: 3 / 2 / 4 / 3;
+    }
+
+    .lugar {
+        grid-area: 4 / 2 / 5 / 3;
+    }
+
+    .curriculo {
+        grid-area: 5 / 1 / 6 / 3;
+    }
+
+    
+    .horario {
+        flex-direction: column;
+    }
+
+    .horario i{
+        margin-right: 0;
+    }
+        
+    .lugar {
+        flex-direction: column;
+    }   
+    
+    .lugar i{
+        margin-right: 0;
+    }
 }
