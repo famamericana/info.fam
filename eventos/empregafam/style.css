@@ -498,3 +498,13 @@ hr {
         width: 100%;
     }
 }
+
+
+iframe {
+    border: 1px solid #00377B; /* Cor da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    width: 100%; /* Largura completa */
+    height: 60vh; /* Altura fixa, ajuste conforme necessário */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
+
+}
