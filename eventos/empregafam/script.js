@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             closeButton.onclick = (e) => {
                 description.style.display = 'none';
                 e.stopPropagation(); // Impede que o evento se propague para elementos pai
-            
+
                 // Aguarda o próximo ciclo do event loop para verificar se ainda existem descrições visíveis
                 setTimeout(() => {
                     let hasVisibleDescription = false;
@@ -120,13 +120,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             hasVisibleDescription = true;
                         }
                     });
-            
+
                     if (!hasVisibleDescription) {
                         document.body.classList.remove('no-scroll');
                     }
                 }, 0);
             };
-            
+
         }
 
         // Impede que o evento se propague

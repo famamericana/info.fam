@@ -485,3 +485,16 @@ hr {
     overflow: hidden;
     height: 100%;
 }
+
+
+
+@media (max-width: 374px) {
+    .logo-item {
+        /* Para telas menores, ajusta novamente a largura mínima se necessário */
+        flex: 1 1 calc(50% - 5px);
+    }
+
+    .logo-item img {
+        width: 100%;
+    }
+}
