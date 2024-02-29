@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const description = e.currentTarget.querySelector('.logo-description');
         description.style.display = 'block';
 
-        
+
         // Reseta os estilos para garantir que não haja estilos residuais de ajustes anteriores
         description.style.position = 'absolute'; // Reseta para o valor padrão
         description.style.left = '';
@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const descriptionWidth = 300; // Largura fixa da descrição
 
         if (screenWidth < 550) {
+            document.body.classList.add('no-scroll');
+
             if (logoRect.right + descriptionWidth > screenWidth) {
                 // Centraliza a descrição na tela para telas menores que 400px
                 description.style.position = 'fixed'; // Usa posicionamento fixo para centralizar na tela
@@ -109,7 +111,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
             closeButton.onclick = (e) => {
                 description.style.display = 'none';
                 e.stopPropagation(); // Impede que o evento se propague para elementos pai
+            
+                // Aguarda o próximo ciclo do event loop para verificar se ainda existem descrições visíveis
+                setTimeout(() => {
+                    let hasVisibleDescription = false;
+                    document.querySelectorAll('.logo-description').forEach(desc => {
+                        if (desc.style.display === 'block') {
+                            hasVisibleDescription = true;
+                        }
+                    });
+            
+                    if (!hasVisibleDescription) {
+                        document.body.classList.remove('no-scroll');
+                    }
+                }, 0);
             };
+            
         }
 
         // Impede que o evento se propague
@@ -125,19 +142,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelectorAll('.logo-description').forEach(desc => {
             desc.style.display = 'none';
         });
+        // Se todas as descrições estiverem fechadas, remove a classe no-scroll
+        document.body.classList.remove('no-scroll');
     });
 
     window.addEventListener('scroll', (e) => {
         document.querySelectorAll('.logo-description').forEach(desc => {
             desc.style.display = 'none';
         });
+        // Se todas as descrições estiverem fechadas, remove a classe no-scroll
+        document.body.classList.remove('no-scroll');
     }, { passive: true });
 });
 
 
 // ------------------------------------------------------------------------------------------------------
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Altura da navbar (ajuste conforme necessário)
     var offsetHeight = 160; // Altura da sua navbar
 
@@ -154,12 +175,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Quando o botão Vagas é clicado
-    document.querySelector('.botaovagas').addEventListener('click', function() {
+    document.querySelector('.botaovagas').addEventListener('click', function () {
         scrollToElement('vagas-section');
     });
 
     // Quando o botão Empresas é clicado
-    document.querySelector('.botaoempresas').addEventListener('click', function() {
+    document.querySelector('.botaoempresas').addEventListener('click', function () {
         scrollToElement('empresas-section');
     });
 });
+
+
+// -------------------------------------------------------------------------------------------
+

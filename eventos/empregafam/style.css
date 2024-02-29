@@ -35,7 +35,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background: linear-gradient(#0089CF, #00377B);
+    background: linear-gradient(to top, #0089CF, #00377B);
     overflow-x: hidden;
 }
 
@@ -362,11 +362,10 @@ hr {
 }
 
 .logo-item {
-    cursor: pointer;
     position: relative;
-    /* Mantém para garantir que o overflow funcione corretamente */
     border-radius: 5px;
     margin-bottom: -6px;
+    cursor: pointer;
 }
 
 
@@ -380,12 +379,12 @@ hr {
     border-radius: 5px;
     margin-top: 2px;
     border: 1px solid #9eafc7;
+    cursor: auto;
 }
 
 .logo-description p {
-
     overflow-y: auto;
-    max-height: 100px;
+    max-height: 150px;
 }
 
 /* Personaliza a barra de rolagem em si */
@@ -419,11 +418,11 @@ hr {
     border: 1px solid #9eafc7;
 }
 
-.espacoembranco{
+.espacoembranco {
     margin-top: 80px;
 }
 
-.espacoembrancomenor{
+.espacoembrancomenor {
     margin-top: 40px;
 }
 
@@ -434,9 +433,9 @@ hr {
     margin-top: 20px;
     gap: 10px;
     text-transform: uppercase;
-  }
-  
-  .button-containercalendario a {
+}
+
+.button-containercalendario a {
     text-decoration: none;
     border-radius: 5px;
     color: white;
@@ -446,31 +445,31 @@ hr {
     transition: all 0.3s;
     cursor: pointer;
     text-decoration: none;
-  }
-  
-  .um {
+}
+
+.um {
     color: white;
     background-color: #0089CF;
-  }
-  
-  .um:hover {
+}
+
+.um:hover {
     color: #242527;
     background-color: white;
     box-shadow: inset 0 0 0 2px #0089CF;
-  }
-  
-  .dois {
+}
+
+.dois {
     background-color: #00377B;
     color: white;
-  }
+}
 
-  .dois:hover {
+.dois:hover {
     color: #242527;
     background-color: white;
     box-shadow: inset 0 0 0 2px #00377B;
-  }
-  
-  .responsive-button {
+}
+
+.responsive-button {
     border: none;
     padding: 20px;
     cursor: pointer;
@@ -479,4 +478,10 @@ hr {
     border-radius: 5px;
     flex: 1 0 auto;
     text-align: center;
-  }
+}
+
+
+.no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
