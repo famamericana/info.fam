@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
     width: 12px;
@@ -22,7 +27,7 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-.ptexto{
+.ptexto {
     text-indent: 10px;
 }
 
@@ -131,7 +136,8 @@ hr {
 }
 
 .botaoempresas,
-.botaovagas, .logo-description a {
+.botaovagas,
+.logo-description a {
     padding: 8px 10px;
     border-radius: 5px;
     color: white;
@@ -207,7 +213,11 @@ hr {
 
     .grid-container {
         grid-template-columns: 1fr !important;
-      }
+    }
+
+    .logo-description {
+        width: 250px !important;
+    }
 }
 
 
@@ -222,64 +232,61 @@ hr {
     margin-top: 20px;
     margin: 0 auto;
     border: 1px solid #0089CF;
-  
-  }
-  
-  .grid-item {
+
+}
+
+.grid-item {
     display: block;
     align-items: flex-start;
     padding: 10px;
     margin: 0 auto;
-  }
-  
-  .icon {
+}
+
+.icon {
     width: 50px;
     height: 50px;
-    margin-right: var(--margin-20);
+    margin-right: 20px;
     padding: 10px;
-  
-  }
-  
-  .contentdogrid h3 {
+
+}
+
+.contentdogrid h3 {
     margin: 0;
     margin-bottom: 10px;
-  
-  }
-  
-  .contentdogrid p {
+
+}
+
+.contentdogrid p {
     text-align: left;
     margin: 0;
-  }
-  
-  section {
-    padding: 0 var(--margin-20);
-  }
+}
 
-  
+
+
 #ondeficaovideo {
     display: flex;
     justify-content: center;
-    margin: 100px auto;
-  }
-  
-  .video-part {
+    margin-top: 20px;
+}
+
+.video-part {
     position: relative;
     width: 100%;
     padding-top: 56.25%;
     /* 16:9 Aspect Ratio */
-  }
-  
-  .video-part iframe {
+}
+
+.video-part iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 10px;
-  }
+}
 
 
-  
+
 .slideshow {
     margin-bottom: 20px;
     position: relative;
@@ -333,11 +340,11 @@ hr {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    padding: 10px;
-    color: var(--texto-preto);
-    font-family: var(--primary-font);
+    padding: 5px 10px;
+    color: black;
     font-size: 14px;
     background-color: #ffffff;
+    border-radius: 5px;
 }
 
 .slideshow-item.visible {
@@ -350,12 +357,14 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    position: relative; /* Permite posicionar as descrições absolutamente em relação a este contêiner */
+    position: relative;
+    /* Permite posicionar as descrições absolutamente em relação a este contêiner */
 }
 
 .logo-item {
     cursor: pointer;
-    position: relative; /* Mantém para garantir que o overflow funcione corretamente */
+    position: relative;
+    /* Mantém para garantir que o overflow funcione corretamente */
     border-radius: 5px;
     margin-bottom: -6px;
 }
@@ -364,14 +373,31 @@ hr {
 .logo-description {
     display: none;
     position: absolute;
-    width: 250px;
+    width: 300px;
     background-color: white;
     padding: 0 15px 15px 15px;
     z-index: 10;
     border-radius: 5px;
-    margin-top: 2px; 
+    margin-top: 2px;
     border: 1px solid #9eafc7;
 }
+
+.logo-description p {
+
+    overflow-y: auto;
+    max-height: 100px;
+}
+
+/* Personaliza a barra de rolagem em si */
+.logo-description p::-webkit-scrollbar-thumb {
+    border: 2px solid white;
+}
+
+/* Personaliza a barra de rolagem em si */
+.logo-description p::-webkit-scrollbar-track {
+    background: white;
+}
+
 
 .logo-description a {
     background-color: #00377B;
@@ -382,3 +408,75 @@ hr {
     justify-content: center;
 }
 
+.close-button {
+    background-color: white;
+    color: #9eafc7;
+    border: none;
+    font-size: 20px;
+    padding: 5px 11px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #9eafc7;
+}
+
+.espacoembranco{
+    margin-top: 80px;
+}
+
+.espacoembrancomenor{
+    margin-top: 40px;
+}
+
+.button-containercalendario {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
+    text-transform: uppercase;
+  }
+  
+  .button-containercalendario a {
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .um {
+    color: white;
+    background-color: #0089CF;
+  }
+  
+  .um:hover {
+    color: #242527;
+    background-color: white;
+    box-shadow: inset 0 0 0 2px #0089CF;
+  }
+  
+  .dois {
+    background-color: #00377B;
+    color: white;
+  }
+
+  .dois:hover {
+    color: #242527;
+    background-color: white;
+    box-shadow: inset 0 0 0 2px #00377B;
+  }
+  
+  .responsive-button {
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 400;
+    border-radius: 5px;
+    flex: 1 0 auto;
+    text-align: center;
+  }
