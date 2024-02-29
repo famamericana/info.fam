@@ -68,18 +68,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const screenWidth = window.innerWidth;
         const descriptionWidth = 300; // Largura fixa da descrição
 
-        if (logoRect.right + descriptionWidth > screenWidth) {
-            // Centraliza a descrição na tela
-            description.style.left = `calc(50% - ${descriptionWidth / 2}px)`;
-            description.style.right = 'initial'; // Remove a propriedade right anterior
+        if (screenWidth < 550){
+            if (logoRect.right + descriptionWidth > screenWidth) {
+                // Centraliza a descrição na tela para telas menores que 400px
+                description.style.position = 'fixed'; // Usa posicionamento fixo para centralizar na tela
+                description.style.left = '50%';
+                description.style.transform = 'translateX(-50%)'; // Ajusta precisamente ao centro no eixo X
+                description.style.right = 'initial';
+                description.style.top = `calc(${logoRect.top}px + 105px)`; // Define o topo da descrição para ser o mesmo que o topo do logo
+            }
+        } else if (screenWidth < 1080) {
+            if (logoRect.right + descriptionWidth > screenWidth) {
+                description.style.right = '0px';
+                description.style.left = `calc(-100% + 18px)`; 
+            } 
         } else {
             // Posição padrão
-            description.style.left = `${logoRect.left}px`; // Ajusta para que fique alinhado com o logo
-            description.style.right = 'initial'; // Remove a propriedade right anterior
+            description.style.position = 'absolute'; // Retorna ao posicionamento absoluto ou original
+            description.style.left = 'initial';
+            description.style.transform = 'initial';
+            description.style.right = 'initial';
         }
-        
+
         // Impede que o evento se propague
         e.stopPropagation();
+
     }
 
     logoItems.forEach(item => {
@@ -96,5 +109,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelectorAll('.logo-description').forEach(desc => {
             desc.style.display = 'none';
         });
-    }, {passive: true});
+    }, { passive: true });
 });
