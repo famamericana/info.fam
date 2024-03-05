@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="Navbar"></div>
 
+    <header>
+        <div class="header2">
+            <div class="containerdatasvagas">
+                <div class="data">
+                    <div class="datahorario">
+                        <h3>Pesquisa atual</h3>
+                        <h1>4 a 20 de Março</h1>
+                    </div>
+                    <a class="botaopesquisa">botão</a>
+                </div>
+            </div>
+            <div class="logoesub">
+                <img src="images/cpalogo.svg">
+                <p><b>Você</b> responde, <b>CPA</b> identifica a <b>FAM</b> atende!</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+
+            <div class="slider">
+                <div class="slide active">
+                    <h1>Wi-Fi</h1>
+                    <p>Foi realizada uma reestruturação na rede wireless da instituição, atualmente são utilizadas 70
+                        antenas com tecnologia 2.4Ghz, estão sendo incluídas mais 70 antenas com uma tecnologia mais
+                        atual que opera tanto em 2.4Ghz como em 5GHz. Serão redistribuídos os pontos para uma ampliação
+                        de sinal e potência. Além da ampliação da estrutura, será implementado um novo gerenciamento,
+                        monitoramento, segmentação e otimização da rede, com detecção de falhas, console de gestão
+                        integrado da rede e central de monitoramento NOC.</p>
+                </div>
+                <div class="slide">
+                    <h1>Refeitório</h1>
+                    <p>Reforma e disponibilização de um espaço dedicado à "cozinha" no campus, localizado no Bloco 1. O
+                        ambiente foi projetado pensando nas necessidades dos alunos, oferecendo um local com microondas,
+                        pia e mesas. Entendemos que, entre aulas, estágio e estudos, é essencial ter um momento de pausa
+                        e nutrição.</p>
+                </div>
+                <div class="slide">
+                    <h1>Troca telhado - Bloco 2</h1>
+                    <p>Significativa melhoria em nossa infraestrutura: a troca dos telhados no Bloco 2. Esta reforma é
+                        parte do nosso compromisso em proporcionar um ambiente de estudo e trabalho seguro e
+                        confortável. A renovação dos telhados no bloco 2 foi concluído no final do ano 2023.</p>
+                </div>
+                <div class="slide">
+                    <h1>Reforma banheiro - Bloco 2</h1>
+                    <p>Reformamos os banheiros do Bloco 2, piso inferior, localizado no corredor das clínicas.
+                        Agradecemos pela paciência durante o período de reformas e estamos sempre abertos a sugestões
+                        para melhorias futuras.</p>
+                </div>
+                <div class="navigation">
+                    <span class="dot" onclick="moveSlide(1)"></span>
+                    <span class="dot" onclick="moveSlide(2)"></span>
+                    <span class="dot" onclick="moveSlide(3)"></span>
+                    <span class="dot" onclick="moveSlide(4)"></span>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
     <div id="meuFooter"></div>
     <div id="BotaoTopo"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
