@@ -25,27 +25,27 @@ let slideIndex = 1; // Inicializa o índice do slide como 1
 showSlides(slideIndex); // Mostra o primeiro slide
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+    showSlides(slideIndex = n);
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1} // Volta ao primeiro slide se passar do último
-  if (n < 1) {slideIndex = slides.length} // Vai para o último slide se for menor que 1
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none"; // Esconde todos os slides
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active-dot", "");
-  }
-  slides[slideIndex-1].style.display = "block"; // Mostra o slide atual
-  dots[slideIndex-1].className += " active-dot"; // Ativa o dot correspondente
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 } // Volta ao primeiro slide se passar do último
+    if (n < 1) { slideIndex = slides.length } // Vai para o último slide se for menor que 1
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Esconde todos os slides
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    slides[slideIndex - 1].style.display = "block"; // Mostra o slide atual
+    dots[slideIndex - 1].className += " active-dot"; // Ativa o dot correspondente
 }
 
 let timeoutId = setTimeout(function autoSlide() {
@@ -55,18 +55,51 @@ let timeoutId = setTimeout(function autoSlide() {
 
 const slider = document.querySelector(".slider");
 slider.addEventListener("mouseover", () => {
-  clearTimeout(timeoutId); // Pausa a mudança automática ao passar o mouse
+    clearTimeout(timeoutId); // Pausa a mudança automática ao passar o mouse
 });
 
 slider.addEventListener("mouseout", () => {
-  timeoutId = setTimeout(function autoSlide() {
-    plusSlides(1); // Continua a mudança automática após tirar o mouse
-    timeoutId = setTimeout(autoSlide, 3000);
-  }, 3000);
+    timeoutId = setTimeout(function autoSlide() {
+        plusSlides(1); // Continua a mudança automática após tirar o mouse
+        timeoutId = setTimeout(autoSlide, 3000);
+    }, 3000);
 });
 
 function moveSlide(n) {
     currentSlide(n); // Move para o slide escolhido
     resetAndStartSlideShow(); // Reseta e reinicia o slideshow
-  }
-  
+}
+
+
+
+// IMG SLIDER ------------------------------------------------------------------------------------------------
+
+
+$(document).ready(function () {
+    $(".arrow").click(function () {
+        let direction = $(this).data('direction');
+
+        // Pegando o slide atual visível
+        let currentSlide = $(this).closest('.slideshow-item');
+
+        // Pegando todos os slides
+        let slides = $('.slideshow-item');
+
+        // Encontrando o índice do slide atual
+        let currentIndex = slides.index(currentSlide);
+
+        // Calculando o próximo índice
+        let nextIndex;
+        if (direction === 'next') {
+            nextIndex = (currentIndex + 1) % slides.length;
+        } else {
+            nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+        }
+
+        // Removendo a classe 'visible' do slide atual
+        currentSlide.removeClass('visible');
+
+        // Adicionando a classe 'visible' ao próximo slide
+        slides.eq(nextIndex).addClass('visible');
+    });
+});
