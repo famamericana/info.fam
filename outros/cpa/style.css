@@ -39,28 +39,28 @@ body {
     overflow-x: hidden;
 }
 
-p{
+.cpa p {
     line-height: 1.5;
     text-align: justify;
 
 }
 
-li{
+.cpa li {
     line-height: 1.5;
     text-align: justify;
 }
 
-h1 {
+.cpa h1 {
     font-size: xx-large;
 }
 
-header {
+.cpa header {
     background-color: #f2f3f8;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.header2 {
+.cpa .header2 {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
@@ -72,14 +72,14 @@ header {
     padding: 0 20px;
 }
 
-.data {
+.cpa .data {
     background-color: white;
     border-radius: 0 10px 0 10px;
     margin-bottom: 10px;
     padding: 5px 15px;
 }
 
-.data h3 {
+.cpa .data h3 {
     font-weight: 500;
     margin-bottom: -25px;
     text-align: left;
@@ -87,19 +87,19 @@ header {
     text-transform: uppercase;
 }
 
-.data h1 {
+.cpa .data h1 {
     font-weight: 800;
     color: #1b3556;
 }
 
-.datahorario {
+.cpa .datahorario {
     margin-top: 10px;
     border: 1px solid #9eafc7;
     border-radius: 0 5px 5px 5px;
     padding: 0 20px;
 }
 
-.data .lugar {
+.cpa .data .lugar {
     display: block;
     text-align: center;
     padding: 5px 15px;
@@ -108,20 +108,20 @@ header {
     margin-top: 20px;
 }
 
-.data i {
+.cpa .data i {
     color: #9eafc7;
     cursor: pointer;
     margin-right: 4px;
     font-size: smaller;
 }
 
-.vagas {
+.cpa .vagas {
     display: flex;
     gap: 10px;
 }
 
 
-.botaopesquisa {
+.cpa .botaopesquisa {
     padding: 8px 10px;
     border-radius: 5px;
     color: white;
@@ -137,13 +137,13 @@ header {
 
 }
 
-.botaopesquisa:hover {
+.cpa .botaopesquisa:hover {
     box-shadow: inset 0 0 0 2px #45b7e5;
     background: transparent;
     color: black;
 }
 
-main {
+.cpa main {
     max-width: 960px;
     box-sizing: border-box;
     padding: 20px;
@@ -155,14 +155,14 @@ main {
 
 /*slider -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-.slider {
+.cpa .slider {
     position: relative;
     width: 100%;
     margin: auto;
     overflow: hidden;
 }
 
-.slide {
+.cpa .slide {
     display: none;
     padding: 20px;
     text-align: center;
@@ -174,25 +174,25 @@ main {
 
 }
 
-.slide p {
+.cpa .slide p {
     text-align: left;
 }
 
-.active {
+.cpa .active {
     display: block;
 }
 
-.slide h2 {
+.cpa .slide h2 {
     font-size: x-large;
     color: #1b3556;
 }
 
-.navigation {
+.cpa .navigation {
     margin-top: 10px;
     text-align: center;
 }
 
-.dot {
+.cpa .dot {
     cursor: pointer;
     height: 10px;
     width: 10px;
@@ -202,7 +202,7 @@ main {
     display: inline-block;
 }
 
-.active-dot {
+.cpa .active-dot {
     background-color: #45b7e5;
 }
 
@@ -210,47 +210,55 @@ main {
 
 @media (max-width: 760px) {
 
-    .header2 {
+    .cpa .header2 {
         flex-direction: column-reverse;
         gap: 20px;
     }
-    
-    .caixasugestao{
+
+    .cpa .caixasugestao {
         flex-direction: column;
         gap: 20px;
     }
-    .caixasugestao p{
+
+    .cpa .caixasugestao p {
         text-align: left !important;
     }
-    .form-box {
+
+    .cpa .form-box {
         width: 100%;
         max-width: 760px !important;
     }
 
+
+    .cpa .progress {
+        top: 20px;
+        height: fit-content;
+    }
+
 }
 
-a {
+.cpa a {
     color: #45b7e5;
 }
 
-.uitexto p {
+.cpa .uitexto p {
     text-indent: 20px;
 }
 
-#ondeficaovideo {
+.cpa #ondeficaovideo {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.video-part {
+.cpa .video-part {
     position: relative;
     width: 100%;
     padding-top: 56.25%;
     /* 16:9 Aspect Ratio */
 }
 
-.video-part iframe {
+.cpa .video-part iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -259,23 +267,23 @@ a {
     border-radius: 10px;
 }
 
-.espacoembranco {
+.cpa .espacoembranco {
     margin-top: 80px;
 }
 
-.espacoembrancomenor {
+.cpa .espacoembrancomenor {
     margin-top: 40px;
 }
 
 
-.containeranos {
+.cpa .containeranos {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     /* Espaçamento entre os botões */
 }
 
-.botao {
+.cpa .botao {
     padding: 8px 15px;
     border-radius: 5px;
     color: white;
@@ -288,13 +296,25 @@ a {
     background-color: #45b7e5;
 }
 
-.botao:hover {
+.cpa .botao:hover {
     box-shadow: inset 0 0 0 2px #45b7e5;
     background: transparent;
     color: black;
 }
 
 /* IMG SLIDER ------------------------------------------------------------------------------------------------------------------------*/
+
+.descricaoslideshow {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-right: 20px;
+    text-align: center;
+}
 
 #headerCarousel .carousel-item {
     opacity: 1;
@@ -371,59 +391,59 @@ a {
 
 /* tabela ------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-table {
+.cpa table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-table,
-th,
-td {
+.cpa table,
+.cpa th,
+.cpa td {
     border: 1px solid #ddd;
 }
 
-th,
-td {
+.cpa th,
+.cpa td {
     text-align: left;
     padding: 10px 20px;
 }
 
-th {
+.cpa th {
     background-color: #f2f2f2;
     color: #333;
 }
 
-tr:nth-child(even) {
+.cpa tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-figcaption.wp-element-caption {
+.cpa figcaption.wp-element-caption {
     margin-top: 20px;
     text-align: center;
     font-style: italic;
     color: #9eafc7;
 }
 
-tfoot td,
-.highlight-row td {
+.cpa tfoot td,
+.cpa .highlight-row td {
     background-color: #e1f5fe;
     font-weight: bold;
 }
 
 /* form-box codigo kaue ----------------------------------------------------------------------------------------------*/
-.caixasugestao {
+.cpa .caixasugestao {
     display: flex;
     align-items: center;
 }
 
-.caixasugestao p {
+.cpa .caixasugestao p {
     text-indent: 20px;
     padding-right: 20px;
     text-align: center;
 }
 
-.form-box {
+.cpa .form-box {
     max-width: 350px;
     width: 100%;
     margin: 0 auto;
@@ -489,7 +509,6 @@ tfoot td,
 }
 
 
-.legalizacao li::marker{
+.legalizacao li::marker {
     font-weight: 700;
 }
-

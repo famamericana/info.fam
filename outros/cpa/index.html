@@ -8,11 +8,22 @@
     <link rel="icon" href="/images-gerais/famlogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
+
 </head>
 
-<body>
-    <div id="Navbar"></div>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
+<body class="cpa">
+    <div id="Navbar"></div>
     <header>
         <div class="header2">
             <div class="containerdatasvagas">
@@ -90,6 +101,7 @@
         <section style="margin-top: 40px;" class="slideshow">
             <div class="slideshow-item item-1 visible">
                 <div class="progress">1 de 4</div>
+                <div class="descricaoslideshow">Criação do Refeitório</div>
                 <img src="images/1.png" />
                 <a class="arrow arrow-prev" data-direction="prev"></a>
                 <a class="arrow arrow-next" data-direction="next"></a>
@@ -97,6 +109,7 @@
 
             <div class="slideshow-item item-2">
                 <div class="progress">2 de 4</div>
+                <div class="descricaoslideshow">Corredor exclusivo para professores</div>
                 <img src="images/2.png" />
                 <a class="arrow arrow-prev" data-direction="prev"></a>
                 <a class="arrow arrow-next" data-direction="next"></a>
@@ -104,6 +117,7 @@
 
             <div class="slideshow-item item-3">
                 <div class="progress">3 de 4</div>
+                <div class="descricaoslideshow">Wi-Fi para alunos FAM</div>
                 <img src="images/3.jpg" />
                 <a class="arrow arrow-prev" data-direction="prev"></a>
                 <a class="arrow arrow-next" data-direction="next"></a>
@@ -111,11 +125,23 @@
 
             <div class="slideshow-item item-3">
                 <div class="progress">4 de 4</div>
+                <div class="descricaoslideshow">Reforma dos banheiros - Bloco 2</div>
                 <img src="images/4.jpg" />
                 <a class="arrow arrow-prev" data-direction="prev"></a>
                 <a class="arrow arrow-next" data-direction="next"></a>
             </div>
         </section>
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountCPA">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
         <section class="espacoembrancomenor uitexto">
             <h1>Quem somos</h1>
             <p>A CPA é formada por diferentes membros, representantes dos vários segmentos da comunidade acadêmica e da
@@ -305,7 +331,7 @@
             </div>
 
             <figcaption class="wp-element-caption">Instrumento de avaliação Interna – Período avaliativo de
-                2021/2022/2023</figcaption>
+                2021/2022/2023/2024</figcaption>
         </section>
         <section>
             <h1>Legislação</h1>
@@ -333,7 +359,11 @@
     <div id="meuFooter"></div>
     <div id="BotaoTopo"></div>
 
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
+
     <script src="script.js"></script>
 </body>
 

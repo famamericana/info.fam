@@ -7,6 +7,10 @@
     z-index: 9999;
 }
 
+.famosanavbar p {
+    text-align: center;
+}
+
 .famosanavbar .barra-navegacao {
     display: flex;
     justify-content: space-between;
