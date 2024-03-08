@@ -424,7 +424,7 @@ hr {
     margin-top: 40px;
 }
 
-.button-containercalendario {
+.button-containeremprega {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -433,7 +433,7 @@ hr {
     text-transform: uppercase;
 }
 
-.button-containercalendario a {
+.button-containeremprega a {
     text-decoration: none;
     border-radius: 5px;
     color: white;
@@ -488,11 +488,17 @@ hr {
 
 @media (max-width: 374px) {
     .logo-item {
-        /* Para telas menores, ajusta novamente a largura mínima se necessário */
         flex: 1 1 calc(50% - 5px);
+        display: flex;
+        justify-content: center;
     }
 
     .logo-item img {
+        width: 100%;
+    }
+
+    .logo-item:last-child img {
+        max-width: 150px;
         width: 100%;
     }
 }
