@@ -512,3 +512,7 @@ iframe {
     overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
 
 }
+
+.logo-item img{
+    border-radius: 5px;
+}
