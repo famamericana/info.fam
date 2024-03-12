@@ -50,10 +50,22 @@ header {
 }
 
 header p {
+    padding: 5px 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+.descricaologo {
+    margin-top: 10px;
     text-align: center;
-    background-color: #1b3556;
-    padding: 5px 10px;
-        
+    width: 100%;
+    max-width: 500px;
+}
+
+.descricaologo i {
+    margin-right: 5px;
+    color: #45b7e5;
 }
 
 main {
@@ -61,8 +73,30 @@ main {
     max-width: 960px;
     margin: 0 auto;
     border-radius: 10px;
+    padding: 20px;
 }
 
 .logoativafam {
     max-width: 500px;
+}
+
+/* facha das logos ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.logo-slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 120px;
+    width: 100%;
+    background: linear-gradient(to right, white, #f2f3f8, white);
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    height: 100px;
+    width: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
 }
