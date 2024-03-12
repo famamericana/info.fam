@@ -80,6 +80,20 @@ main {
     max-width: 500px;
 }
 
+.incentivecursos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.incentivecursos div {
+    background-color: #45b7e5;
+    padding: 10px 20px;
+}
+
+
 /* facha das logos ---------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 .logo-slider-wrapper {
