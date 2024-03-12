@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       Array.from(logos).forEach((logo, index) => {
         logo.style.backgroundImage = `url('${logo.dataset.logo}')`;
         // Posiciona cada logo imediatamente após o anterior
-        positions[index] = index * (160 + 20); // Largura do logo + margem
+        positions[index] = index * (150 + 50); // Largura do logo + margem
       });
     }
   
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
           const maxPosition = Math.max(...positions);
           const wrapperWidth = sliderWrapper.offsetWidth;
           // Calcula a nova posição do logo para que ele reapareça do lado direito
-          positions[index] = maxPosition + 150 + 20 > wrapperWidth ? maxPosition + 100 + 20 : wrapperWidth;
+          positions[index] = maxPosition + 150 + 50 > wrapperWidth ? maxPosition + 100 + 50 : wrapperWidth;
         }
         // Aplica a nova posição ao logo
         logos[index].style.transform = `translateX(${positions[index]}px)`;

@@ -74,6 +74,7 @@ main {
     margin: 0 auto;
     border-radius: 10px;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .logoativafam {
@@ -84,13 +85,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     text-align: center;
 }
 
 .incentivecursos div {
-    background-color: #45b7e5;
+    background-color: #1b3556;
     padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
 }
 
 
@@ -104,6 +107,7 @@ main {
     background: linear-gradient(to right, white, #f2f3f8, white);
     display: flex;
     align-items: center;
+    margin: 50px 0;
 }
 
 .logo {
