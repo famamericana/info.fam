@@ -448,14 +448,14 @@ main {
   /* Card container */
   .timelineconteiner .card {
     position: relative;
-    margin: 0 0 20px 20px;
-    padding: 10px;
+    margin: 0 0 0 20px;
+    padding: 0 10px;
     border-radius: 8px;
   }
   
   /* Card container */
   .timelineconteiner .card:last-child {
-    margin: 0 0 0 20px;
+    padding-bottom: 15px;
   }
   
 
