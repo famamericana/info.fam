@@ -59,3 +59,63 @@ document.addEventListener("DOMContentLoaded", function() {
     requestAnimationFrame(slideLogos);
   });
   
+  
+// faq ------------------------------------------------------------------------------------------------ 
+
+const accordionBtns = document.querySelectorAll(".item-header");
+
+accordionBtns.forEach((accordion) => {
+  accordion.onclick = function () {
+    this.classList.toggle("active");
+
+    let content = this.nextElementSibling;
+    console.log(content);
+
+    if (content.style.maxHeight) {
+      //this is if the accordion is open
+      content.style.maxHeight = null;
+    } else {
+      //if the accordion is currently closed
+      content.style.maxHeight = content.scrollHeight + "px";
+      console.log(content.style.maxHeight);
+    }
+  };
+});
+
+
+
+
+// degradê imagens conheça mais cursos -----------------------------------------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function() {
+  var images = [
+    "url('images/imagescursos/piscina.png')",
+    "url('images/imagescursos/vet.png')",
+    "url('images/imagescursos/praca.png')",
+    "url('images/imagescursos/estacionamento.png')",
+    "url('images/imagescursos/bloco2.png')",
+  ];
+  var currentIndex = 0;
+  var overlayDiv = document.querySelector('.image-overlay');
+  var nextOverlayDiv = document.querySelector('.overlay-next');
+
+  function changeImage() {
+    nextOverlayDiv.style.backgroundImage = images[currentIndex];
+    nextOverlayDiv.style.opacity = '1'; // Torna a próxima imagem visível
+
+    // Espera pela transição para completar antes de trocar as imagens e resetar a opacidade
+    setTimeout(function() {
+      overlayDiv.style.backgroundImage = images[currentIndex];
+      nextOverlayDiv.style.opacity = '0'; // Esconde a próxima imagem após a transição
+      currentIndex = (currentIndex + 1) % images.length; // Avança para a próxima imagem
+    }, 1000); // Deve coincidir com a duração da transição CSS
+  }
+
+  // Inicia com a primeira imagem
+  changeImage();
+  
+  // Muda a imagem a cada 4 segundos + 1 segundo de transição
+  setInterval(changeImage, 5000);
+});
+
+
