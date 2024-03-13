@@ -26,9 +26,19 @@ html {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.beneficios li {
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.beneficios li::marker {
+    font-weight: 700;
+}
+
 .ptexto {
     text-indent: 10px;
     text-align: justify;
+    line-height: 1.5;
 }
 
 h1 {
@@ -135,30 +145,6 @@ main {
 
 }
 
-
-.beneficios-container {
-    margin: 0 auto;
-}
-
-.beneficio {
-    border-radius: 10px 10px 10px 0;
-    padding: 5px 20px;
-    margin-bottom: 20px;
-    background-color: #f2f3f8;
-
-}
-
-.beneficio:last-child {
-    margin-bottom: 0px;
-}
-
-.beneficio:nth-child(even) {
-    border-radius: 10px 10px 0 10px;
-    background-color: white;
-    box-shadow: inset 0 0 0 1px #f2f3f8;
-
-}
-
 .espacobranco {
     margin-top: 80px;
 }
@@ -179,6 +165,7 @@ main {
     cursor: pointer;
     background: #fff;
     margin-bottom: 0.5em;
+    
 }
 
 .accordion-content .item-header {
@@ -208,6 +195,7 @@ main {
     font-size: 1em;
     line-height: 1;
     font-weight: 500;
+    
 }
 
 .accordion-content .active .item-icon i {
@@ -226,11 +214,11 @@ main {
 
 .accordion-content .item-answer {
     color: #8a97a8;
+    text-align: justify;
+    line-height: 1.5;
 }
 
-
 /*cursos ------------------------------------------------------------*/
-
 
 .outroscursos {
     display: flex;
