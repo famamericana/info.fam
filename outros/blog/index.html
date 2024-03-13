@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            display: grid;
+            grid-template-columns: 180px repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 0px;
+            background-color: #f2f3f8;
+            max-width: 960px;
+        }
+
+        .div1 {
+            grid-area: 1 / 1 / 5 / 2;
+        }
+
+        .div1 img {
+            border-radius: 5px;
+        }
+
+        .div2 {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+
+        .div3 {
+            grid-area: 2 / 2 / 3 / 3;
+        }
+
+        .div4 {
+            grid-area: 3 / 2 / 4 / 3;
+        }
+
+        .div5 {
+            grid-area: 4 / 2 / 5 / 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="div1"><img src="https://placehold.co/180x180.png"> </div>
+        <div class="div2"> Tópico</div>
+        <div class="div3"> Titulo</div>
+        <div class="div4"> Subtitulo</div>
+        <div class="div5"> Data: 09/01/2025 - Publicado por: Sabrina Dell</div>
+    </div>
+</body>
+
+</html>
