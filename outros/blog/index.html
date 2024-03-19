@@ -5,51 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .parent {
-            display: grid;
-            grid-template-columns: 180px repeat(4, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            grid-column-gap: 10px;
-            grid-row-gap: 0px;
-            background-color: #f2f3f8;
-            max-width: 960px;
-        }
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .div1 {
-            grid-area: 1 / 1 / 5 / 2;
-        }
-
-        .div1 img {
-            border-radius: 5px;
-        }
-
-        .div2 {
-            grid-area: 1 / 2 / 2 / 3;
-        }
-
-        .div3 {
-            grid-area: 2 / 2 / 3 / 3;
-        }
-
-        .div4 {
-            grid-area: 3 / 2 / 4 / 3;
-        }
-
-        .div5 {
-            grid-area: 4 / 2 / 5 / 3;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="parent">
-        <div class="div1"><img src="https://placehold.co/180x180.png"> </div>
-        <div class="div2"> Tópico</div>
-        <div class="div3"> Titulo</div>
-        <div class="div4"> Subtitulo</div>
-        <div class="div5"> Data: 09/01/2025 - Publicado por: Sabrina Dell</div>
-    </div>
+    <header></header>
+    <main>
+        <div class="parent">
+            <div class="conteinerdaimg"><img src="https://placehold.co/660x440.png"></div>
+            <div class="infosblog">
+                <div class="div2"> Para a população</div>
+                <div>
+                    <div class="div3"> 6º Emprega FAM reúne 700 vagas de emprego em Americana</div>
+                    <div class="div4"> No próximo dia 18 de março, a FAM-Faculdade de Americana realiza a sexta edição
+                        da
+                        mais
+                        tradicional feira de emprego de Americana e região, o Emprega FAM.</div>
+                </div>
+
+                <div class="div5">
+                    <div class="nome"><i class="fa-solid fa-square-pen"></i> Eleine Gomes </div>
+                    <div class="data">11/03/2024</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parent">
+            <div class="infosblog">
+                <div class="div2"> Cursos</div>
+                <div>
+                    <div class="div3"> Engenharia de Produção na FAM tem nota máxima no MEC</div>
+                    <div class="div4"> O curso de Engenharia de Produção da FAM-Faculdade de Americana recebeu nota 5,
+                        considerada máxima, pelo Ministério de Educação – MEC, em visita in loco para o reconhecimento
+                        do
+                        curso.</div>
+                </div>
+
+                <div class="div5">
+                    <div class="nome"><i class="fa-solid fa-square-pen"></i> Eleine Gomes </div>
+                    <div class="data">11/03/2024</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parent">
+            <div class="infosblog">
+                <div class="div2"> FAM</div>
+                <div>
+                    <div class="div3"> FAM recebe bola histórica</div>
+                    <div class="div4"> Na manhã do dia 26 de fevereiro, Flávio Conceição, ícone do futebol brasileiro e
+                        internacional, irá expor na Faculdade de Americana mais uma relíquia da sua carreira. </div>
+                </div>
+
+                <div class="div5">
+                    <div class="nome"><i class="fa-solid fa-square-pen"></i> Eleine Gomes </div>
+                    <div class="data">11/03/2024</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parent">
+            <div class="conteinerdaimg"><img src="https://placehold.co/660x440.png"></div>
+            <div class="infosblog">
+                <div class="div2"> Para a população</div>
+                <div>
+                    <div class="div3"> Juntos contra a Dengue</div>
+                    <div class="div4"> Sabemos que os casos de dengue em nossa região aumentaram. Pensando nisso, as
+                        caras da FAM trouxeram algumas dicas valiosas para prevenir a proliferação do mosquito
+                        transmissor da doença.</div>
+                </div>
+
+                <div class="div5">
+                    <div class="nome"><i class="fa-solid fa-square-pen"></i> Eleine Gomes </div>
+                    <div class="data">11/03/2024</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const div4Elements = document.querySelectorAll('.div4');
+
+        div4Elements.forEach(div4 => {
+            const infosblog = div4.closest('.infosblog');
+
+            const resizeObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    const paddingRight = 20; // Ajuste esse valor conforme necessário
+                    div4.style.width = `${entry.contentRect.width - paddingRight}px`;
+                }
+            });
+
+            resizeObserver.observe(infosblog);
+        });
+    });
+</script>
 
 </html>
