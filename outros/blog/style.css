@@ -91,6 +91,12 @@ main {
     width: 100%;
 }
 
+.div1 .titulotexto {
+    font-size: xx-large;
+    line-height: 1;
+
+}
+
 .comecodotexto {
     white-space: nowrap;
     overflow: hidden;
