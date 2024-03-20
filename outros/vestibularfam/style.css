@@ -231,13 +231,13 @@ button:hover {
 .informacoes a {
     text-decoration: none;
     color: #242527;
+
 }
 
 .informacoes a p {
-    padding: 10px;
+    padding: 3px 10px;
     margin: 10px;
     margin-left: 0;
-
     border-bottom: 1px solid #f9e20f;
     margin-right: 20px;
 
