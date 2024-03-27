@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
 body {
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
@@ -51,14 +75,24 @@ main {
 .conteinerdaimg {
     height: 180px;
     width: 220px;
+    overflow: hidden; 
+    border-radius: 5px;
+
 }
 
 .conteinerdaimg img {
-    border-radius: 5px;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+
 }
+
+.conteinerdaimg img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 
 .topico {
     margin-bottom: 10px;
@@ -71,8 +105,11 @@ main {
     text-transform: uppercase;
     color: #45b7e5;
     position: absolute;
-    top: 15px;
+    top: 20px;
     left: 20px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .titulo {
@@ -131,15 +168,24 @@ main {
 
 .div1 {
     grid-area: 1 / 1 / 3 / 2;
+    overflow: hidden;
+    border-radius: 10px;
+
 }
 
 .div2 {
     grid-area: 1 / 2 / 2 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+
 
 }
 
 .div3 {
     grid-area: 2 / 2 / 3 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+
 }
 
 .div1 img,
@@ -149,21 +195,31 @@ main {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border-radius: 10px;
-
+    transition: transform 0.3s ease-in-out;
+    
 }
 
+.cursortop:hover .conteinerdaimgprincipal{
+    transform: scale(1.05);
+}
+
+.cursortop .titulo, .cursortop .topicochan{
+    z-index: 2;
+}
+
+ 
 
 
-.div1::before, .div2::before, .div3::before {
+.cursortop::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 100%; /* Ajuste este valor conforme necessário para mudar a altura do degradê */
+    height: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.418), rgba(0, 0, 0, 0));
-    border-radius: 10px; /* Arredonda apenas os cantos superiores */
+    border-radius: 10px; 
+    z-index: 2;
 }
 
 .div1,
