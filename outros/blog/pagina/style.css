@@ -227,12 +227,26 @@ main {
 .noticia .titulotexto{
     font-size: large;
 }
-.conteinerdaimg img {
+
+.conteinerdaimg {
+    overflow: hidden; 
     border-radius: 5px;
+}
+
+.conteinerdaimg img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom:  -7px;
+    
 }
+
+.conteinerdaimg img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 
 .infosblog {
     display: flex;
