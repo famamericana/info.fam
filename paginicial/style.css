@@ -77,19 +77,17 @@ section {
 
 /* header ---------------------------------------------------------------------------------- */
 
-
-
 header {
-    background: url('images/Willian-Gregio-fotofam.png');
     text-align: center;
     width: 100%;
     height: auto;
+    margin: 0 auto;
     background-size: cover;
     position: relative;
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
     box-sizing: border-box;
-
+    background: linear-gradient(90deg, #00b7ff, #1b3556);
 }
 
 header .overlay {
@@ -99,7 +97,6 @@ header .overlay {
     color: #FFF;
     background-image: linear-gradient(135deg, #00000044 10%, #00000059 100%);
     box-sizing: border-box;
-
 }
 
 header h2 {
