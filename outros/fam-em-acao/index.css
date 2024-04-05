@@ -61,6 +61,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
+    top: 75px;
 
 }
 
@@ -343,20 +344,6 @@ h2-anos {
     margin-bottom: 0;
 }
 
-body.dark .noticia-titulo {
-    color: white;
-
-}
-
-body.dark .noticia-container {
-    border: 1px solid #3a3a3a;
-}
-
-body.dark .overlay .noticia-container {
-    border: 1px solid #1a1a1a;
-}
-
-
 .noticia-conteudo {
     display: none;
     color: #333;
@@ -381,12 +368,6 @@ body.dark .overlay .noticia-container {
     border-radius: 5px;
     cursor: pointer;
     color: black;
-}
-
-body.dark .ver-link,
-body.dark .ver-mais {
-    background-color: transparent;
-    color: #b4b4b4;
 }
 
 .botoesm {
@@ -433,15 +414,6 @@ body.dark .ver-mais {
     z-index: 1000;
     overflow-y: auto;
 }
-
-body.dark .overlay {
-    background-color: #1a1a1a;
-}
-
-body.dark .overlay .noticia-container {
-    background-color: var(--cinza-dark);
-}
-
 
 .overlay .ver-link {
     background-color: #3eb288;
@@ -649,18 +621,19 @@ body.dark .overlay .noticia-container {
     color: white;
     position: fixed;
     right: 20px;
-    top: 20px;
-    z-index: 9;
-    background-color: var(--botaorosa);
+    top: 15px;
+    background-color: var(--botaoazul);
+    z-index: 999991;
 }
 
 #toggleButtonlogin {
     color: white;
     position: fixed;
     right: 20px;
-    top: 20px;
-    z-index: 10;
-    background-color: var(--button-color-light);
+    top: 15px;
+    background-color: var(--botaorosa);
+    z-index: 999992;
+
 }
 
 #updateNameButton {
@@ -678,13 +651,6 @@ body.dark .overlay .noticia-container {
     padding-right: 0;
     background-color: white;
     color: #9da6be;
-}
-
-body.dark #editNameButton {
-    padding: 10px;
-    padding-right: 0;
-    background-color: transparent;
-    color: #6e6e6e;
 }
 
 #accountCreationDate {
@@ -707,11 +673,6 @@ body.dark #editNameButton {
     margin-top: 10px;
 }
 
-body.dark #deleteAccountButton {
-    background-color: #535353;
-    color: black;
-}
-
 #Nomeatual {
     text-align: center;
 }
@@ -731,12 +692,6 @@ p {
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
-}
-
-body.dark .noticiadeletebutton {
-    color: #333;
-    border: 1px solid #333;
-    background-color: #202020;
 }
 
 .overlay .noticiadeletebutton {
@@ -839,195 +794,16 @@ body.dark .noticiadeletebutton {
 
 /*modo dark ----------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-#toggleDarkModeButton {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 14px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 9;
-}
-
-
-.dark-mode-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px;
-    background-color: var(--button-color-light);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.dark-mode-button:hover {
-    background-color: #fb8c00;
-}
-
-body.dark .dark-mode-button {
-    background-color: var(--button-color-dark);
-}
-
-
-
-body.dark {
-    background-color: #1a1a1a;
-    color: #ccc;
-}
-
-body.dark .conteudoemsi {
-    background-color: var(--cinza-dark);
-    /* Cor de fundo diferente no modo escuro */
-}
-
-body.dark #post_login_content_firestoreDocumentos div {
-    border: 1px solid #1a1a1a;
-    background-color: #1a1a1a;
-
-}
-
-body.dark #post_login_content_firestoreDocumentos div {
-    border: 1px solid #3a3a3a;
-    background-color: #1a1a1a;
-
-}
-
-body.dark #post_login_content_firestoreDocumentos div button {
-    background-color: #3a3a3a;
-    color: white;
-}
-
-
-body.dark button {
-    background-color: #45b7e5;
-}
-
-body.dark #loadingScreen {
-    background: #1a1a1a;
-}
-
-body.dark .tabelaadmtd:nth-child(2) {
-    background-color: #1a1a1a;
-}
-
-
-/* Personaliza o fundo da barra de rolagem */
-body.dark::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-/* Personaliza a barra de rolagem em si */
-body.dark::-webkit-scrollbar-thumb {
-    background: #7b7b7b6f;
-    border: 2px solid #1a1a1a;
-}
-
-body.dark::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-
-body.dark .esquecisenha {
-    background: none;
-    color: #bac0d1;
-}
-
-body.dark #content_container {
-    background-color: var(--cinza-dark);
-}
-
-body.dark input:focus+label,
-body.dark input:not(:placeholder-shown)+label {
-    background-color: var(--cinza-dark);
-
-
-}
-
-body.dark input {
-    background-color: var(--cinza-dark) !important;
-    border: 1px solid #3a3a3a;
-    color: white;
-}
-
-
-body.dark input:-webkit-autofill,
-body.dark input:-webkit-autofill:hover,
-body.dark input:-webkit-autofill:focus,
-body.dark textarea:-webkit-autofill,
-body.dark textarea:-webkit-autofill:hover,
-body.dark textarea:-webkit-autofill:focus,
-body.dark select:-webkit-autofill,
-body.dark select:-webkit-autofill:hover,
-body.dark select:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px var(--cinza-dark) inset !important;
-}
-
-body.dark input:-webkit-autofill {
-    -webkit-text-fill-color: whitesmoke;
-
-}
-
-body.dark input:-webkit-autofill:focus {
-    -webkit-text-fill-color: whitesmoke;
-
-}
-
-body.dark label {
-    color: #bac0d1;
-}
-
-body.dark select {
-    border: 1px solid #ddd;
-    background-color: var(--cinza-dark);
-    color: #bac0d1;
-}
-
-body.dark #adminPanel {
-    border: 1px solid #3a3a3a;
-}
-
-body.dark .registrobotão {
-    border: 1px solid var(--botaoazul);
-    background-color: transparent;
-    color: white;
-}
-
 .registrobotão {
     border: 1px solid var(--botaoazul);
     background-color: transparent;
     color: black;
 }
 
-
-body.dark .loginbotão {
-    background-color: var(--botaorosa);
-}
-
-body.dark .loginbotãovoltar {
-    border: 1px solid var(--botaorosa);
-    background-color: transparent;
-    color: white;
-}
-
 .loginbotãovoltar {
     border: 1px solid var(--botaorosa);
     background-color: transparent;
     color: #000;
-}
-
-body.dark .usuariopções {
-    background-color: var(--cinza-dark);
-    border: 1px solid #45b7e5;
-}
-
-body.dark .botoesm button,
-body.dark .botoesm button {
-    color: white;
 }
 
 /* editor de texto --------------------------------------------------------------------------------------------------------------------------------- */

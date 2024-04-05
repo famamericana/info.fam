@@ -809,53 +809,16 @@ function searchUsers() {
     });
 }
 
-
-// modo dark ----------------------------------------------------------------------------------------------------
-
-const body = document.body;
-const lightModeIcon = document.getElementById('lightModeIcon');
-const darkModeIcon = document.getElementById('darkModeIcon');
-const toggleDarkModeButton = document.getElementById('toggleDarkModeButton');
-
-function updateIcons(isDarkMode) {
-    lightModeIcon.style.display = isDarkMode ? 'none' : 'inline';
-    darkModeIcon.style.display = isDarkMode ? 'inline' : 'none';
-}
-
-function updateButtonColor(isDarkMode) {
-    const color = isDarkMode
-        ? getComputedStyle(document.documentElement).getPropertyValue('--botaoazul')
-        : getComputedStyle(document.documentElement).getPropertyValue('--botaorosa');
-    toggleDarkModeButton.style.backgroundColor = color;
-}
-
-function toggleDarkMode() {
-    body.classList.toggle('dark');
-    const isDarkMode = body.classList.contains('dark');
-
-    updateIcons(isDarkMode);
-    updateButtonColor(isDarkMode);
-
-    localStorage.setItem('darkMode', isDarkMode);
-}
-
-// Inicializar na carga da página
-document.addEventListener('DOMContentLoaded', () => {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (savedDarkMode) {
-        body.classList.add('dark');
-    }
-    updateIcons(savedDarkMode);
-    updateButtonColor(savedDarkMode);
-    
-});
-
-toggleDarkModeButton.addEventListener('click', toggleDarkMode);
-
-
-
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
 });
 
 
