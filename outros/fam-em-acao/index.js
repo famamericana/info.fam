@@ -897,6 +897,11 @@ function fetchAndDisplayNoticias() {
             noticiasPorAno[ano].push(doc);
         });
 
+        // Ordena as notícias dentro de cada ano por dataPublicacao antes de exibir
+        for (const ano in noticiasPorAno) {
+            noticiasPorAno[ano].sort((a, b) => b.data().dataPublicacao.toDate() - a.data().dataPublicacao.toDate());
+        }
+        
         // 'noticiasPorAno' agora contém as notícias agrupadas por ano
         displayNoticiasAgrupadas(noticiasPorAno);
 
