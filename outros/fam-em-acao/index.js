@@ -847,6 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateIcons(savedDarkMode);
     updateButtonColor(savedDarkMode);
+    
 });
 
 toggleDarkModeButton.addEventListener('click', toggleDarkMode);
@@ -1029,6 +1030,7 @@ document.getElementById('addNoticiaForm').addEventListener('submit', function (e
     var tagsano = document.getElementById('tagsano').value; // Capturando o valor do ano
     var urlImagem = document.getElementById('urlImagemNoticia').value;
     var urlBotao = document.getElementById('urlBotaoNoticia').value;
+    
 
     // Obter o conteúdo do TinyMCE em vez do valor do textarea
     var conteudo = tinymce.get('conteudoNoticia').getContent();
@@ -1107,6 +1109,9 @@ function verificarStatusMod(userId) {
                         button.style.display = 'flex';
                     });
                 }, 500); // Atrasa a execução em 500 milissegundos
+
+                Addouviutitulonoticia(); // Certifique-se que esta chamada acontece após os botões serem adicionados ao DOM
+
             } else {
                 // O usuário não é um mod, esconder formulário
                 document.getElementById('modFormContainer').style.display = 'none';
@@ -1253,25 +1258,26 @@ tinymce.init({
 // deletar noticia ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function deleteNoticia(noticiaId, tituloNoticia) {
-    if (confirm("Tem certeza que deseja deletar a notícia '${tituloNoticia}'?")) {
+    if (confirm(`Tem certeza que deseja deletar a notícia '${tituloNoticia}'?`)) {
         db.collection("famemacao").doc(noticiaId).delete().then(() => {
             console.log("Notícia deletada com sucesso!");
 
             // Registrar a ação de deleção
             var logData = {
-                userId: auth.currentUser.uid, // ID do usuário que deletou a notícia
+                userId: auth.currentUser.uid,
                 tituloNoticia: tituloNoticia,
-                noticiaId: noticiaId, // ID da notícia deletada
-                timestamp: firebase.firestore.FieldValue.serverTimestamp() // Data e hora da ação
+                noticiaId: noticiaId,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
 
             db.collection("famemacaodel").add(logData).then(() => {
                 console.log("Log de deleção registrado com sucesso.");
+                alert("Notícia deletada com sucesso!"); // Opcional: Mostrar uma confirmação para o usuário
+                location.reload(); // Recarrega a página
             }).catch(error => {
                 console.error("Erro ao registrar log de deleção:", error);
             });
 
-            // Atualizar a interface do usuário aqui, se necessário
         }).catch((error) => {
             console.error("Erro ao deletar notícia: ", error);
         });
@@ -1279,13 +1285,19 @@ function deleteNoticia(noticiaId, tituloNoticia) {
 }
 
 
+
 function Addouviutitulonoticia() {
     const botoesDeletar = document.querySelectorAll('.noticiadeletebutton');
     botoesDeletar.forEach(button => {
-        button.addEventListener('click', function () {
-            const noticiaId = this.getAttribute('data-noticia-id');
-            const tituloNoticia = this.getAttribute('data-titulo-noticia');
-            deleteNoticia(noticiaId, tituloNoticia);
-        });
+        // Verifica se o ouvinte já foi adicionado
+        if (!button.hasAttribute('data-event-listener-added')) {
+            button.addEventListener('click', function () {
+                const noticiaId = this.getAttribute('data-noticia-id');
+                const tituloNoticia = this.getAttribute('data-titulo-noticia');
+                deleteNoticia(noticiaId, tituloNoticia);
+            });
+            // Marca o botão indicando que o ouvinte foi adicionado
+            button.setAttribute('data-event-listener-added', 'true');
+        }
     });
 }
