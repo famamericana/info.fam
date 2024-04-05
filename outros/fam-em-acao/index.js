@@ -934,7 +934,7 @@ function displayNoticiasAgrupadas(noticiasPorAno) {
         // Exibe cada notícia desse ano
         noticias.forEach((doc) => {
             const data = doc.data();
-            const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
+            const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button class="ver-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></a>` : '';
             const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : `<img src="https://i.postimg.cc/h4drSDnV/padr-o.png" alt="Imagem Padrão" class="noticia-imagem">`;
             const dataFormatada = formatarData(data.dataPublicacao); // Assegure-se de que formatarData está definida corretamente para formatar o campo dataPublicacao
             

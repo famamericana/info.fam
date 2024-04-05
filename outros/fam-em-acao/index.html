@@ -16,11 +16,11 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-Q9MCLKTGL1');
+    gtag('config', 'G-Q9MCLKTGL1');
 </script>
 
 <body>
@@ -53,7 +53,7 @@
     <div id="post_login_content">
         <div class="conteudoemsi">
             <button id="toggleButton"><i class="fa-solid fa-user-graduate"></i></button>
-            <div class="botoesm" >
+            <div class="botoesm">
                 <button id="toggleButtonADM" style="display: none;">Painel</button>
                 <button id="toggleModFormButton" style="display: none;">Criar notícia</button>
             </div>
@@ -81,18 +81,14 @@
                     <input class="Namebotão" type="text" id="newName" placeholder="Nome Atual" disabled>
                     <button id="editNameButton"><i class="fa fa-edit"></i></button>
                 </div>
-                <div>
+                <div style="margin-top: 5px;">
                     <button id="updateNameButton" onclick="updateName()">Atualizar Nome</button>
-
                     <button title="Logout" id="logout_button" onclick="logout()"><i
                             class="fa-solid fa-right-to-bracket"></i></button>
                 </div>
-
                 <div id="lastLoginDate">Último Login: </div>
                 <div id="accountCreationDate">Criação da Conta: </div>
                 <button id="deleteAccountButton">Excluir Conta</button>
-
-
             </div>
 
             <div id="overlay" class="overlay" style="display: none;"></div>
@@ -112,14 +108,14 @@
 
             <p>Acompanhe algumacoisa alguma coisa</p>
 
-                    <div id="post_login_content_firestoreNoticias"></div>
+            <div id="post_login_content_firestoreNoticias"></div>
 
         </div>
         <div id="meuFooter"></div>
     </div>
 
-    </div>            
-    
+    </div>
+
     <button id="toggleButtonlogin"><i class="fa-solid fa-user-graduate"></i></button>
 
     <div class="containerdelogin">
@@ -141,7 +137,8 @@
                 <button class="esquecisenha" onclick="sendPasswordResetEmail()">Esqueci minha senha</button>
                 <div class="botoescontainer">
                     <!-- Botão para alternar para o formulário de registro -->
-                    <button class="registrobotão" id="toggleFormButtonRegistrar" onclick="toggleForm()">Criar conta</button>
+                    <button class="registrobotão" id="toggleFormButtonRegistrar" onclick="toggleForm()">Criar
+                        conta</button>
                     <button class="loginbotão" onclick="login()">Login</button>
 
                 </div>
@@ -206,7 +203,8 @@
                 <div class="botoescontainerregistrar">
                     <button onclick="register()">Criar conta</button>
                     <!-- Botão para alternar para o formulário de login -->
-                    <button style="margin-top: 10px;" class="loginbotãovoltar" id="toggleFormButtonLogin" onclick="toggleForm()">Voltar</button>
+                    <button style="margin-top: 10px;" class="loginbotãovoltar" id="toggleFormButtonLogin"
+                        onclick="toggleForm()">Voltar</button>
                 </div>
             </div>
         </div>
@@ -214,7 +212,8 @@
 </body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-<script src="https://cdn.tiny.cloud/1/mkuuouu9nzy95wvjl5x6n9872e84hd902yx0qha9c3woxx9g/tinymce/6/tinymce.min.js"></script>
+<script
+    src="https://cdn.tiny.cloud/1/mkuuouu9nzy95wvjl5x6n9872e84hd902yx0qha9c3woxx9g/tinymce/6/tinymce.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

@@ -300,12 +300,12 @@ select:-webkit-autofill:focus {
     font-size: 15px;
 }
 
-h2-anos{
+h2-anos {
     font-size: 25px;
     font-weight: 700;
 }
 
-.grupo-noticias{
+.grupo-noticias {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
@@ -327,6 +327,7 @@ h2-anos{
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
+    
 }
 
 .noticia-imagem {
@@ -350,6 +351,11 @@ body.dark .noticia-titulo {
 body.dark .noticia-container {
     border: 1px solid #3a3a3a;
 }
+
+body.dark .overlay .noticia-container {
+    border: 1px solid #1a1a1a;
+}
+
 
 .noticia-conteudo {
     display: none;
@@ -390,7 +396,7 @@ body.dark .ver-mais {
 
 }
 
-.botoesm button{
+.botoesm button {
     color: #000;
 }
 
@@ -406,15 +412,11 @@ body.dark .ver-mais {
     width: 100%;
 }
 
-.overlay .horarionoticia {
-    margin-bottom: 80px;
-}
 
 .horarionoticia {
     color: #9da6be;
     font-size: small;
     margin-top: 0;
-
 }
 
 /* Estilo para o overlay */
@@ -429,7 +431,17 @@ body.dark .ver-mais {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow-y: auto;
 }
+
+body.dark .overlay {
+    background-color: #1a1a1a;
+}
+
+body.dark .overlay .noticia-container {
+    background-color: var(--cinza-dark);
+}
+
 
 .overlay .ver-link {
     background-color: #3eb288;
@@ -444,11 +456,11 @@ body.dark .ver-mais {
 .overlay .button-container {
     display: flex;
     justify-content: center;
-    position: fixed;
     top: 0;
     padding: 8px 8px;
     border-radius: 5px;
     background-color: white;
+    margin-bottom: 80px;
 }
 
 .overlay .noticia-container {
@@ -456,8 +468,6 @@ body.dark .ver-mais {
     background-color: white;
     border-radius: 0;
     border: none;
-    height: 100dvh;
-    overflow-y: auto;
     padding: 20px;
     text-align: left;
     margin: 0 auto;
@@ -474,19 +484,18 @@ body.dark .ver-mais {
 .overlay .noticia-conteudo {
     display: none;
     color: #333;
-    margin-top: 15px;
     text-align: justify;
     padding: 0 10px;
 }
 
 /* Personaliza o fundo da barra de rolagem */
-.overlay ::-webkit-scrollbar-track {
+.overlay::-webkit-scrollbar-track {
     background: white;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
-.overlay ::-webkit-scrollbar-thumb {
+.overlay::-webkit-scrollbar-thumb {
     border: 2px solid white;
 }
 
@@ -711,7 +720,7 @@ p {
 }
 
 /* adm ----------------------------------------------------------------------------------------------------------*/
-.noticiadeletebutton{
+.noticiadeletebutton {
     background-color: transparent;
     color: #d5dcf1;
     text-align: center;
@@ -723,14 +732,14 @@ p {
     align-items: center;
 }
 
-body.dark .noticiadeletebutton{
+body.dark .noticiadeletebutton {
     color: #333;
     border: 1px solid #333;
     background-color: #202020;
 }
 
-.overlay .noticiadeletebutton{
- display: none !important;
+.overlay .noticiadeletebutton {
+    display: none !important;
 }
 
 .button-container {
@@ -739,7 +748,8 @@ body.dark .noticiadeletebutton{
 }
 
 .button-container button {
-    flex: 0 1 auto; /* Isso permite que o botão cresça e encolha, mas respeitando o tamanho do conteúdo */
+    flex: 0 1 auto;
+    /* Isso permite que o botão cresça e encolha, mas respeitando o tamanho do conteúdo */
 }
 
 #toggleButtonADM {
@@ -940,6 +950,7 @@ body.dark input:not(:placeholder-shown)+label {
 body.dark input {
     background-color: var(--cinza-dark) !important;
     border: 1px solid #3a3a3a;
+    color: white;
 }
 
 
