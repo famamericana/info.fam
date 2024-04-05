@@ -91,6 +91,10 @@ function register() {
 // botão de login ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
+    
+    fetchAndDisplayNoticias(); // Isso garante que as notícias sejam buscadas independentemente do estado de autenticação do usuário
+
+
     var toggleButtonlogin = document.getElementById('toggleButtonlogin');
     var Opcoescontainerlogin = document.querySelector('.containerdelogin');
 
@@ -299,8 +303,6 @@ auth.onAuthStateChanged(function (user) {
                 // Verifique o status da conta
                 if (userData.accountStatus === 'ativo') {
                     // Carregue o conteúdo dentro de post_login_content apenas para contas ativas
-                    fetchAndDisplayDocuments();
-                    fetchAndDisplayNoticias();
 
                     document.getElementById('post_login_content').style.display = 'block';
                     document.getElementById('post_login_content_dormente').style.display = 'none'; // Oculte o conteúdo dormente
@@ -313,12 +315,10 @@ auth.onAuthStateChanged(function (user) {
 
                 }
 
-
-
-
                 if (userData && userData.is_admin) {
                     // User is an admin, show the adminPanel and toggleButtonADM
                     document.getElementById('toggleButtonADM').style.display = 'block';
+                    document.getElementById('toggleModFormButton').style.display = 'block';
                     document.getElementById('adminPanel').style.display = 'none';
                     loadUsers(); // Load admin-specific content
                 } else {
@@ -330,7 +330,7 @@ auth.onAuthStateChanged(function (user) {
                 document.getElementById('newName').placeholder = userData.full_name;
 
                 // Update the greeting message with the user's name
-                document.getElementById('Nomeatual').textContent = ` Explore a sua faculdade, ${userData.full_name}!`;
+                document.getElementById('Nomeatual').textContent = `Boa sorte, ${userData.full_name}!`;
 
                 // Atualizar a data/hora do último login no Firebase
                 var userRef = firebase.database().ref('users/' + user.uid);
@@ -391,29 +391,6 @@ function sendPasswordResetEmail() {
 // Inicialize a referência do Firestore
 const db = firebase.firestore();
 
-function fetchAndDisplayDocuments() {
-    db.collection("Documentos").get().then((querySnapshot) => {
-        const postLoginContent = document.getElementById('post_login_content_firestoreDocumentos');
-        postLoginContent.innerHTML = ''; // Limpa o conteúdo anterior
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            postLoginContent.innerHTML += `
-                <div>
-                <img src="${data.urlImagem}" alt="Imagem">
-                    <h3>${data.titulo}</h3>
-                    <p>${data.conteudo}</p>
-                    <a href="${data.urlBotao}" target="_blank"><button>Link</button></a>
-                </div>`;
-        });
-    });
-}
-
-db.collection("Documentos").get().then((querySnapshot) => {
-    console.log("Documentos encontrados: ", querySnapshot.size);
-}).catch((error) => {
-    console.error("Erro ao acessar o Firestore: ", error);
-});
 
 
 
@@ -903,37 +880,89 @@ function formatarData(data) {
 }
 
 
-
 function fetchAndDisplayNoticias() {
-    db.collection("noticias").get().then((querySnapshot) => {
-        const postLoginContent = document.getElementById('post_login_content_firestoreNoticias');
-        postLoginContent.innerHTML = '';
+    db.collection("famemacao").orderBy("tagsano", "desc").get().then((querySnapshot) => {
+        let noticiasPorAno = {};
 
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            const botaoLink = data.urlBotao ? `<a  href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
-            // Verifica se há uma URL de imagem, se não, usa uma imagem padrão
-            const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : `<img src="https://i.postimg.cc/h4drSDnV/padr-o.png" alt="Imagem Padrão" class="noticia-imagem">`;
-            const dataFormatada = formatarData(data.dataPublicacao);
+            const ano = data.tagsano; // 'tagsano' é o campo que contém o ano
 
-            postLoginContent.innerHTML += `
-                <div class="noticia-container">
+            // Se o ano ainda não foi adicionado ao objeto, inicialize com um array vazio
+            if (!noticiasPorAno[ano]) {
+                noticiasPorAno[ano] = [];
+            }
+
+            // Adiciona a notícia ao array correspondente ao seu ano
+            noticiasPorAno[ano].push(doc);
+        });
+
+        // 'noticiasPorAno' agora contém as notícias agrupadas por ano
+        displayNoticiasAgrupadas(noticiasPorAno);
+
+    }).catch(error => {
+        console.error("Erro ao acessar o Firestore: ", error);
+    });
+}
+
+function displayNoticiasAgrupadas(noticiasPorAno) {
+    const postLoginContent = document.getElementById('post_login_content_firestoreNoticias');
+    postLoginContent.innerHTML = ''; // Limpa o conteúdo anterior
+
+     // Obtém as chaves do objeto (os anos), as converte para números e ordena em ordem decrescente
+     const anosOrdenados = Object.keys(noticiasPorAno).map(Number).sort((a, b) => b - a);
+
+
+     anosOrdenados.forEach((ano) => {
+        const noticias = noticiasPorAno[ano];
+
+        // Cria um contêiner para o grupo de notícias de cada ano
+        let grupoNoticiasAno = document.createElement('div');
+        grupoNoticiasAno.classList.add('grupo-noticias-ano');
+        postLoginContent.appendChild(grupoNoticiasAno);
+
+        // Cria e exibe um título para o ano, adicionando ao contêiner do grupo
+        let tituloAno = document.createElement('h2-anos');
+        tituloAno.textContent = `${ano}`;
+        grupoNoticiasAno.appendChild(tituloAno);
+
+        // Cria um novo div que será o contêiner para todos os noticia-container do ano
+        let grupoNoticias = document.createElement('div');
+        grupoNoticias.classList.add('grupo-noticias');
+        grupoNoticiasAno.appendChild(grupoNoticias);
+
+        // Exibe cada notícia desse ano
+        noticias.forEach((doc) => {
+            const data = doc.data();
+            const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button class="ver-link">Link</button></a>` : '';
+            const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : `<img src="https://i.postimg.cc/h4drSDnV/padr-o.png" alt="Imagem Padrão" class="noticia-imagem">`;
+            const dataFormatada = formatarData(data.dataPublicacao); // Assegure-se de que formatarData está definida corretamente para formatar o campo dataPublicacao
+            
+            let elementoNoticia = document.createElement('div');
+            elementoNoticia.classList.add("noticia-container");
+            elementoNoticia.innerHTML = `
                 ${imagemNoticia}
                 <h3 class="noticia-titulo">${data.titulo}</h3>
-                    <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
-                    <p class="escritor">${data.autor} </br>(${data.email})</p>
-                    <p class="horarionoticia">${dataFormatada}</p>
-                    <div class="button-container">                    
-                    ${botaoLink}
+                <div class="noticia-conteudo completo" style="display: none;">${data.conteudo}</div>
+                <p class="escritor">${data.autor} </br>(${data.email})</p>
+                <p class="horarionoticia">${dataFormatada}</p>
+                <div class="button-container">
+                ${botaoLink}
                         <button class="ver-mais">Ver Mais</button>
                         <button style="display:none;" class="noticiadeletebutton" data-noticia-id="${doc.id}" data-titulo-noticia="${data.titulo}"><i class="fa-solid fa-trash"></i></button>
                         </div>
-
-                </div>`;
+            `;
+            grupoNoticias.appendChild(elementoNoticia);
         });
+    });
+}
 
-        // Após criar todos os elementos, adicione os ouvintes de eventos
-        Addouviutitulonoticia();
+// Certifique-se de que a função formatarData está implementada para converter timestamps Firestore para a representação desejada de data/hora
+function formatarData(timestamp) {
+    const data = timestamp.toDate(); // Converte o timestamp do Firestore para um objeto Date do JavaScript
+    return data.toLocaleDateString('pt-BR', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
     });
 }
 
@@ -980,7 +1009,7 @@ document.addEventListener('click', function (e) {
 });
 
 
-db.collection("noticias").get().then((querySnapshot) => {
+db.collection("famemacao").get().then((querySnapshot) => {
     console.log("Noticias encontradas: ", querySnapshot.size);
 }).catch((error) => {
     console.error("Erro ao acessar o Firestore: ", error);
@@ -992,6 +1021,7 @@ document.getElementById('addNoticiaForm').addEventListener('submit', function (e
 
     // Pega os valores do formulário
     var titulo = document.getElementById('tituloNoticia').value;
+    var tagsano = document.getElementById('tagsano').value; // Capturando o valor do ano
     var urlImagem = document.getElementById('urlImagemNoticia').value;
     var urlBotao = document.getElementById('urlBotaoNoticia').value;
 
@@ -1007,8 +1037,9 @@ document.getElementById('addNoticiaForm').addEventListener('submit', function (e
         var emailUsuario = usuarioAtual.email;
 
         // Adiciona os dados no Firestore
-        return db.collection("noticias").add({
+        return db.collection("famemacao").add({
             titulo: titulo,
+            tagsano: tagsano, // Incluindo o campo de ano
             conteudo: conteudo,
             urlImagem: urlImagem,
             urlBotao: urlBotao,
@@ -1061,6 +1092,8 @@ function verificarStatusMod(userId) {
         if (snapshot.exists()) {
             var userData = snapshot.val();
             if (userData.is_mod) {
+                document.getElementById('toggleModFormButton').style.display = 'block';
+
                 // O usuário é um mod, mostrar formulário
                 document.getElementById('modFormContainer').style.display = 'none';
                 setTimeout(function () {
@@ -1216,7 +1249,7 @@ tinymce.init({
 
 function deleteNoticia(noticiaId, tituloNoticia) {
     if (confirm("Tem certeza que deseja deletar a notícia '${tituloNoticia}'?")) {
-        db.collection("noticias").doc(noticiaId).delete().then(() => {
+        db.collection("famemacao").doc(noticiaId).delete().then(() => {
             console.log("Notícia deletada com sucesso!");
 
             // Registrar a ação de deleção
@@ -1227,7 +1260,7 @@ function deleteNoticia(noticiaId, tituloNoticia) {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp() // Data e hora da ação
             };
 
-            db.collection("noticiasdel").add(logData).then(() => {
+            db.collection("famemacaodel").add(logData).then(() => {
                 console.log("Log de deleção registrado com sucesso.");
             }).catch(error => {
                 console.error("Erro ao registrar log de deleção:", error);

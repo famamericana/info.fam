@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Portal do colaborador FAM</title>
+    <title>FAM em Ação</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -54,8 +54,8 @@
         <div class="conteudoemsi">
             <button id="toggleButton"><i class="fa-solid fa-user-graduate"></i></button>
             <div class="botoesm" >
-                <button id="toggleButtonADM">Painel</button>
-                <button id="toggleModFormButton">Criar notícia</button>
+                <button id="toggleButtonADM" style="display: none;">Painel</button>
+                <button id="toggleModFormButton" style="display: none;">Criar notícia</button>
             </div>
 
             <div id="adminPanel" style="display: none;">
@@ -74,9 +74,7 @@
                 <!-- Seção de Usuários Aprovados -->
                 <h2>Usuários Dormentes</h2>
                 <div id="dormantUsersList"></div>
-
             </div>
-
 
             <div class="usuariopções">
                 <div style="display: flex;">
@@ -102,6 +100,7 @@
             <div id="modFormContainer" style="display:none;"> <!-- Mostrar este div apenas para mods -->
                 <form id="addNoticiaForm">
                     <input type="text" id="tituloNoticia" placeholder="Título da Notícia" required>
+                    <input type="text" id="tagsano" placeholder="Ano" required>
                     <textarea id="conteudoNoticia"></textarea>
                     <input type="text" id="urlImagemNoticia" placeholder="URL da Imagem (Não obrigatório)">
                     <input type="text" id="urlBotaoNoticia" placeholder="URL do Botão (Não obrigatório)">
@@ -111,13 +110,10 @@
 
             <h2 id="Nomeatual"></h2>
 
-            <p>Todos os documentos que você precisa estará aqui e se não estiver ou tiver ideias clique >aqui< e
-                    sugira</p>
+            <p>Acompanhe algumacoisa alguma coisa</p>
 
-                    <h2>Notícias</h2>
                     <div id="post_login_content_firestoreNoticias"></div>
-                    <h2>Documentos</h2>
-                    <div id="post_login_content_firestoreDocumentos"></div>
+
         </div>
         <div id="meuFooter"></div>
     </div>
@@ -131,6 +127,7 @@
             <!-- Formulário de Login -->
             <div id="login_form_container" style="display:block;">
                 <h2>Login</h2>
+                <h4 style="color: #e53888">Acesso restrito</h4>
                 <div class="form-group">
                     <input type="email" id="login_email" placeholder=" ">
                     <label for="login_email">@fam.br</label>
@@ -155,7 +152,7 @@
             <!-- Formulário de Registro -->
             <div id="register_form_container" style="display:none;">
                 <h2>Registre</h2>
-                <h4>É professor? converse com seu coordenador</h4>
+                <h4 style="color: #e53888">Você é adm? não? então não tente registrar.</h4>
                 <div class="form-group">
                     <input type="text" id="register_full_name" placeholder=" ">
                     <label for="register_full_name">Nome completo</label>

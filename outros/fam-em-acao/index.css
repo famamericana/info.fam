@@ -98,6 +98,12 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+input[type="text"]:first-child {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 select {
     width: 100%;
     padding: 10px;
@@ -294,13 +300,19 @@ select:-webkit-autofill:focus {
     font-size: 15px;
 }
 
-#post_login_content_firestoreNoticias {
+h2-anos{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.grupo-noticias{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
     padding: 16px;
     padding-top: 20px;
     overflow-x: auto;
+    margin-bottom: 30px;
 }
 
 .noticia-container {
@@ -315,12 +327,11 @@ select:-webkit-autofill:focus {
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
-    /* Animação suave */
 }
 
 .noticia-imagem {
     width: 100%;
-    max-height: 50px;
+    max-height: 150px;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -374,7 +385,7 @@ body.dark .ver-mais {
 
 .botoesm {
     display: flex;
-    max-width: 500px;
+    width: 100%;
     gap: 10px;
 
 }
@@ -413,7 +424,7 @@ body.dark .ver-mais {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -433,16 +444,11 @@ body.dark .ver-mais {
 .overlay .button-container {
     display: flex;
     justify-content: center;
-    /* Alinha os itens horizontalmente ao centro */
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f2f3f8;
-    /* Fundo branco */
+    top: 0;
     padding: 8px 8px;
-    /* Espaçamento interno para não tocar diretamente nos botões */
     border-radius: 5px;
-    /* Borda arredondada para estética */
+    background-color: white;
 }
 
 .overlay .noticia-container {
@@ -458,21 +464,11 @@ body.dark .ver-mais {
 }
 
 .overlay .noticia-imagem {
-    width: 100%;
-    max-height: 30vh;
-    margin-bottom: -35px;
+    display: none;
 }
 
 .overlay .noticia-titulo {
-    color: #333;
-    margin: 0 auto;
-
-    background-color: white;
-    width: calc(100% - 50px);
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 5px 5px 0 0;
-
+    display: none;
 }
 
 .overlay .noticia-conteudo {
