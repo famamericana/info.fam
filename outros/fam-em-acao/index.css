@@ -1189,5 +1189,6 @@ p {
     padding: 15px 20px;
     border-radius:  10px 0 10px 0;
     border: 1px solid #45b7e5;
+    min-width: 200px;
 }
 
