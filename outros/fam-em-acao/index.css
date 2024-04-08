@@ -274,7 +274,22 @@ select:-webkit-autofill:focus {
         top: 8px !important;
         padding: 5px 10px;
     }
+
+    .overlay {
+        height: calc(100% - 50px) !important;
+    }
+
 }
+
+
+@media screen and (max-width: 500px) {
+
+    .bannerimagemduas img {
+        max-height: 250px !important;
+    }
+
+}
+
 
 #post_login_content_firestoreDocumentos {
     display: grid;
@@ -416,10 +431,10 @@ h2-anos {
 /* Estilo para o overlay */
 .overlay {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 74px);
     background-color: white;
     display: flex;
     justify-content: center;
@@ -473,7 +488,7 @@ h2-anos {
     color: #333;
     text-align: justify;
     padding: 0;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 /* Personaliza o fundo da barra de rolagem */
@@ -1024,62 +1039,75 @@ p {
     text-align: left;
 }
 
-.cadapostoverlay .textao a {
+.cadapostoverlay a {
     font-weight: bold;
     color: #45b7e5;
 }
 
-.cadapostoverlay .cursortop{
+.cadapostoverlay .cursortop {
     z-index: 10;
 }
 
 .cadapostoverlay .bannerimagemduas {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.cadapostoverlay .bannerimagemduas .img:nth-child(4) {
+    grid-column: 1 / -1;
+    /* Faz a imagem esticar por todas as colunas disponíveis */
+
+}
+
+.cadapostoverlay .bannerimagemduas .img:nth-child(4) img {
+    max-height: 380px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .cadapostoverlay .bannerimagemduas .img:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
+    .cadapostoverlay .bannerimagemduas .img:nth-child(3) img {
+        max-height: 380px;
+    }
+    
+
+}
+
+
+.cadapostoverlay .bannerimagemduas img {
     width: 100%;
-}
-
-.cadapostoverlay .img1 {
-    grid-area: 1 / 1 / 2 / 2;
-}
-
-.cadapostoverlay .img2 {
-    grid-area: 1 / 2 / 2 / 3;
-}
-
-.img1 img,
-.img2 img{
-    width: 100%;
-    height: 100%;
+    max-height: 550px;
     object-fit: cover;
-    object-position: center;
+    display: block;
+    margin: 0 auto;
     border-radius: 10px;
 }
 
-.cadapostoverlay .soumaimg{
-    border-radius: 10px;
-    width: 100%;
-    width: 100%;
-    height: 100%;
-    margin-bottom: -6px;
-
-}
-
-.cadapostoverlay .sectionimg{
+.cadapostoverlay .sectionimg:first-child {
+    margin-top: 0;
     margin-bottom: 40px;
 }
 
-.cadapostoverlay .descricaodaimgouimgs{
+.cadapostoverlay .sectionimg {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.cadapostoverlay .descricaodaimgouimgs {
     font-size: small;
     color: #9eafc7;
     margin-top: 0;
     text-align: left;
 }
 
-.cadapostoverlay .relacionados{
+.cadapostoverlay .relacionados {
     margin: 70px 0;
 }
 
@@ -1104,7 +1132,7 @@ p {
     color: #45b7e5;
 }
 
-.cadapostoverlay .titulotexto{
+.cadapostoverlay .titulotexto {
     font-size: 30px;
     font-weight: 800;
     text-align: start;
@@ -1113,7 +1141,7 @@ p {
 }
 
 .cadapostoverlay .conteinerdaimg {
-    overflow: hidden; 
+    overflow: hidden;
     border-radius: 5px;
 }
 
@@ -1122,8 +1150,8 @@ p {
     width: 100%;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
-    margin-bottom:  -7px;
-    
+    margin-bottom: -7px;
+
 }
 
 .cadapostoverlay .conteinerdaimg img:hover {
@@ -1141,5 +1169,25 @@ p {
     padding-left: 10px;
 }
 
+/* topicos e icones --------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+.containertopicos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaço entre os itens */
+    justify-content: center; /* Centraliza os itens na linha */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.itemtopicos {
+    display: flex;
+    align-items: start; /* Centraliza os itens no eixo cruzado */
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    flex: 1;
+    padding: 15px 20px;
+    border-radius:  10px 0 10px 0;
+    border: 1px solid #45b7e5;
+}
 

@@ -91,7 +91,7 @@ function register() {
 // botão de login ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     fetchAndDisplayNoticias(); // Isso garante que as notícias sejam buscadas independentemente do estado de autenticação do usuário
 
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Opcoescontainerlogin.style.display = 'none';
 
     // Verifica o estado de autenticação ao carregar a página
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // Se o usuário estiver logado, oculta o botão de login
             toggleButtonlogin.style.display = 'none';
@@ -865,7 +865,7 @@ function fetchAndDisplayNoticias() {
         for (const ano in noticiasPorAno) {
             noticiasPorAno[ano].sort((a, b) => b.data().dataPublicacao.toDate() - a.data().dataPublicacao.toDate());
         }
-        
+
         // 'noticiasPorAno' agora contém as notícias agrupadas por ano
         displayNoticiasAgrupadas(noticiasPorAno);
 
@@ -878,11 +878,11 @@ function displayNoticiasAgrupadas(noticiasPorAno) {
     const postLoginContent = document.getElementById('post_login_content_firestoreNoticias');
     postLoginContent.innerHTML = ''; // Limpa o conteúdo anterior
 
-     // Obtém as chaves do objeto (os anos), as converte para números e ordena em ordem decrescente
-     const anosOrdenados = Object.keys(noticiasPorAno).map(Number).sort((a, b) => b - a);
+    // Obtém as chaves do objeto (os anos), as converte para números e ordena em ordem decrescente
+    const anosOrdenados = Object.keys(noticiasPorAno).map(Number).sort((a, b) => b - a);
 
 
-     anosOrdenados.forEach((ano) => {
+    anosOrdenados.forEach((ano) => {
         const noticias = noticiasPorAno[ano];
 
         // Cria um contêiner para o grupo de notícias de cada ano
@@ -906,7 +906,7 @@ function displayNoticiasAgrupadas(noticiasPorAno) {
             const botaoLink = data.urlBotao ? `<a href="${data.urlBotao}" target="_blank"><button class="ver-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></a>` : '';
             const imagemNoticia = data.urlImagem ? `<img src="${data.urlImagem}" alt="Imagem" class="noticia-imagem">` : `<img src="https://i.postimg.cc/h4drSDnV/padr-o.png" alt="Imagem Padrão" class="noticia-imagem">`;
             const dataFormatada = formatarData(data.dataPublicacao); // Assegure-se de que formatarData está definida corretamente para formatar o campo dataPublicacao
-            
+
             let elementoNoticia = document.createElement('div');
             elementoNoticia.classList.add("noticia-container");
             elementoNoticia.innerHTML = `
@@ -993,7 +993,7 @@ document.getElementById('addNoticiaForm').addEventListener('submit', function (e
     var tagsano = document.getElementById('tagsano').value; // Capturando o valor do ano
     var urlImagem = document.getElementById('urlImagemNoticia').value;
     var urlBotao = document.getElementById('urlBotaoNoticia').value;
-    
+
 
     // Obter o conteúdo do TinyMCE em vez do valor do textarea
     var conteudo = tinymce.get('conteudoNoticia').getContent();
@@ -1264,3 +1264,5 @@ function Addouviutitulonoticia() {
         }
     });
 }
+
+
