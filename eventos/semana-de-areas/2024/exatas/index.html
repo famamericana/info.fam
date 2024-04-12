@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana de Exatas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="templete.css?v=1.2">
+    <link rel="stylesheet" href="exatas.css">
     <link rel="stylesheet" href="../../codigo-semanageral/cssparatodasassemanas.css">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
 
 </head>
 
@@ -38,6 +39,7 @@
         </div>
         <div class="breadcrumb"></div>
     </header>
+    
     <main>
         <!-- Cada palestrante deve ficar em uma .containerconvidado,
         A leading Page tem 3 formatos dependendo do tamanho da tela, observe se todas estão funcionando corretamente antes de publicar-->
@@ -303,7 +305,7 @@
 
 
         <section style="margin-top: 100px;">
-            <h1 class="titulo">3° dia <span class="coratual">(00/00)</span> </h1>
+            <h1 class="titulo">3° dia <span class="coratual">(24/04)</span> </h1>
             <div class="containerconvidado">
                 <div class="palestra">
                     <span class="titulopalestra">A Era do ESG e os Novos Desafios Globais</span>
@@ -370,7 +372,9 @@
                 </div>
                 <div class="lugar"><i class="fa-solid fa-location-dot"></i> Sala VIP II</div>
                 <div class="curriculo">Líder Técnico na Prodata Sistemas. Desenvolvedor Full Stack. Devops. Cientista de
-                    dados pós graduado pela USP</div>
+                    dados pós graduado pela USP
+                </br></br>
+                Foto e Mini curriculo de Angelica Costa: Não informado</div>
                 <div class="imagemdopalestrante"><img src="imagens/treze.png" alt="Imagem Descritiva">
                 </div>
             </div>
@@ -395,7 +399,12 @@
                 <div class="curriculo">Graduado em engenharia mecânica, especialista de aplicação sênior na Autodesk
                     MAPData, atendendo todas as demandas do setor de construção do interior de São Paulo
                     acompanhando o desenvolvimento de contas estratégicas na implementação do BIM nos setores públicos e
-                    privados. </div>
+                    privados. 
+                </br></br>
+
+                Foto e Mini curriculo de Juliana Souza:  Não informado
+                </br>
+                Foto e Mini curriculo de Jaqueline Silva:  Não informado</div>
                 <div class="imagemdopalestrante"><img src="imagens/quatorze.png" alt="Imagem Descritiva">
                 </div>
             </div>
@@ -428,7 +437,17 @@
                 Inscreva-se no Portal Acadêmico
             </a>
         </div>
-
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountSemanadeAreas">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
         <!-- <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSezx_RjPCPIAai7mreRCLxbU50GkWqwCyDAxIgfR6OpdYjfQg/viewform?embedded=true"
             width="100%" frameborder="0" marginheight="0" scrolling="yes" marginwidth="0">Carregando…</iframe> -->
@@ -438,6 +457,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../codigo-semanageral/jsparatodasassemanas.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
     <script>
         // Armazena a descrição atualmente visível
         var descricaoAtual = null;

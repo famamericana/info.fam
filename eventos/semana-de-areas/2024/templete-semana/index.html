@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="templete.css?v=1.2">
     <link rel="stylesheet" href="../../codigo-semanageral/cssparatodasassemanas.css">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
+
 
 </head>
 
@@ -85,7 +87,17 @@
                 Inscreva-se no Portal Acadêmico
             </a>
         </div>
-
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountSemanadeAreas">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
         <!-- <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSezx_RjPCPIAai7mreRCLxbU50GkWqwCyDAxIgfR6OpdYjfQg/viewform?embedded=true"
             width="100%" frameborder="0" marginheight="0" scrolling="yes" marginwidth="0">Carregando…</iframe> -->
@@ -95,6 +107,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../codigo-semanageral/jsparatodasassemanas.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
     <script>
         // Armazena a descrição atualmente visível
         var descricaoAtual = null;
