@@ -56,3 +56,8 @@ $(document).ready(function () {
         setupDropdown();
     });
 });
+
+
+$(document).ready(function () {
+    $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
+});
