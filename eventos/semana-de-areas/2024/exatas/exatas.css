@@ -251,6 +251,16 @@ iframe {
     text-align: center;
 }
 
+.cursospermitidostitulo{
+    padding: 2px 10px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: var(--cordoeventoatualpag);
+
+}
+
 .cursospermitidos {
     padding: 2px 10px;
     color: var(--cordoeventoatualpag);
@@ -429,3 +439,5 @@ iframe {
         margin-right: 0;
     }
 }
+
+

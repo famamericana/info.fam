@@ -30,7 +30,17 @@
     <header>
         <div class="containertitulodasemana">
             <div class="titulodasemana">Título da semana</div>
-            <p></p>
+            <div class="topicosparasemana">
+                <span style="background-color: #f9e20f;color:black" class="detalhes">Evento exclusivo para alunos
+                    FAM</span>
+                <span style="background-color: #f9e20f;color:black" class="detalhes">Foodtrucks na P5</span>
+                <div>
+                    <div class="cursospermitidostitulo" data-descricao-id="todososcursos"><i style="font-size: small;margin-right: 2px;" class="fa-solid fa-chevron-right"></i> Cursos Convidados</div>
+                    <div id="todososcursos" class="descricao" style="display: none;">
+                        Todos os cursos de blank
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="breadcrumb"></div>
     </header>
@@ -50,7 +60,7 @@
                 <div class="palestrante">
 
                     <span class="detalhes"><i class="fa-solid fa-chair"></i> 450 vagas</span>
-                    <span class="cursospermitidos" data-descricao-id="descricao1">Cursos Convidados</span>
+                    <span class="cursospermitidos" data-descricao-id="descricao1"><i style="font-size: small;margin-right: 2px;" class="fa-solid fa-chevron-right"></i> Cursos Convidados</span>
                     <div id="descricao1" class="descricao" style="display: none;">
                         Comunicação Social - PP, Design Gráfico e Marketing
 
@@ -122,7 +132,7 @@
             }
         }
 
-        document.querySelectorAll('.cursospermitidos').forEach(function (el) {
+        document.querySelectorAll('.cursospermitidos, .cursospermitidostitulo').forEach(function (el) {
             el.addEventListener('click', function (event) {
                 event.stopPropagation(); // Impede que o click se propague para o documento
 

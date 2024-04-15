@@ -33,9 +33,9 @@ header {
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1;
-
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
-
 
 .topicosparasemana {
     margin-bottom: 20px;
@@ -90,7 +90,7 @@ iframe {
 
 /* botão de inscrição */
 
-.portal{
+.portal {
     padding: 0 20px;
 }
 
@@ -185,7 +185,7 @@ iframe {
     padding: 5px 10px;
 }
 
-.horario i{
+.horario i {
     margin-right: 4px;
     color: var(--cordoeventoatualpag);
     font-size: 13px;
@@ -204,7 +204,7 @@ iframe {
 
 }
 
-.lugar i{
+.lugar i {
     margin-right: 4px;
     color: var(--cordoeventoatualpag);
     font-size: 13px;
@@ -249,6 +249,16 @@ iframe {
     background-color: white;
     border-radius: 20px;
     text-align: center;
+}
+
+.cursospermitidostitulo{
+    padding: 2px 10px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: var(--cordoeventoatualpag);
+
 }
 
 .cursospermitidos {
@@ -367,11 +377,11 @@ iframe {
         margin-right: 0;
     }
 
-    .horario i{
+    .horario i {
         margin-right: 4px;
     }
-    
-    .lugar i{
+
+    .lugar i {
         margin-right: 4px;
     }
 
@@ -381,7 +391,8 @@ iframe {
 @media (max-width: 580px) {
 
     .containerconvidado {
-        display: grid; /* Certifique-se de que está definido como um grid */
+        display: grid;
+        /* Certifique-se de que está definido como um grid */
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto 50px repeat(3, 1fr);
     }
@@ -411,20 +422,22 @@ iframe {
         grid-area: 5 / 1 / 6 / 3;
     }
 
-    
+
     .horario {
         flex-direction: column;
     }
 
-    .horario i{
+    .horario i {
         margin-right: 0;
     }
-        
+
     .lugar {
         flex-direction: column;
-    }   
-    
-    .lugar i{
+    }
+
+    .lugar i {
         margin-right: 0;
     }
 }
+
+
