@@ -244,7 +244,6 @@ button:hover {
 }
 
 .campanha {
-
     margin-bottom: 10px;
 }
 
@@ -255,6 +254,54 @@ button:hover {
     height: auto;
     margin-top: 20px;
     border-radius: 5px;
+}
+
+.cursosposwow {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cursosposwow a{
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+
+.financas {
+    background-image: linear-gradient(to right, #1f8ab4, #00509b);
+}
+
+.fiscal {
+    background-image: linear-gradient(to right, #003256, #000836);
+}
+
+.clinica {
+    background-image: linear-gradient(to right, #1C5C45, #0a2b3f);
+}
+
+.marketing {
+    background-image: linear-gradient(to right, #e53888, #962690);
+}
+
+.cavalo {
+    background-image: linear-gradient(to right, #3eb288, #268086);
+}
+
+.neuro {
+    background-image: linear-gradient(to right, #008F9F, #014869);
+}
+
+.psicoescolar {
+    background-image: linear-gradient(to right, #5d378d, #2d1755);
+}
+
+.silvestre {
+    background-image: linear-gradient(to right, #3eb251, #166d3a);
 }
 
 @media (max-width: 880px) {
@@ -296,6 +343,11 @@ button:hover {
         display: block;
     }
 
+    .cursosposwow {
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 
 
