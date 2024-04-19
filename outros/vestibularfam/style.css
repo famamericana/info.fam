@@ -367,3 +367,14 @@ button:hover {
 }
 
 
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    z-index: 9999;
+ }
