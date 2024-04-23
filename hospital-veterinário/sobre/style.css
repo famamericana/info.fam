@@ -246,6 +246,7 @@ main a {
     background-color: #f2f3f8;
     border-radius: 0 0 5px 5px;
     font-weight: 900;
+    font-size: larger;
     text-transform: uppercase;
 }
 
