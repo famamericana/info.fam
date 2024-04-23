@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    padding: 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-width: 880px;
+    margin-bottom: 100px;
+}
+
+.texto h1 {
+    color: #0e2e7c !important;
+    margin-top: 20px;
+}
+
+.texto p {
+    text-indent: 20px;
+}
+
+.texto p,
+.texto li {
+    color: #58595b;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.texto h1,
+.texto button {
+    color: black;
+}
+
+.texto button {
+    border-bottom: 1px solid #fff;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 5px;
+    border: 0px;
+    border: 1px solid #d5dcf1;
+    font-size: large;
+
+}
+
+.texto button:last-child {
+
+    margin-bottom: 0px;
+
+}
+
+.texto button::-moz-focus-inner {
+    border: 0;
+}
+
+.texto button:focus {
+    color: white;
+    background-color: #45b7e5;
+    border: 1px solid #45b7e5;
+
+}
+
+main a {
+    color: #45b7e5;
+}
+
+.texto .active-btn {
+    background-color: #45b7e5;
+    color: white;
+    border: 1px solid #45b7e5;
+
+}
+
+.texto .botaoinscrevase {
+    display: flex;
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid #45b7e5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin-top: 20px;
+    justify-content: center;
+    font-size: medium;
+}
+
+.texto .botaoinscrevase:hover {
+    background-color: #1b3556;
+    border: 2px solid #1b3556;
+    color: white;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*Topicos*/
+.grid-container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 20px;
+    margin: 0 auto;
+    border: 1px solid #45b7e5;
+  }
+  
+  .grid-item {
+    display: block;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    padding: 10px;
+  }
+  
+  .contentdogrid h3 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .contentdogrid p {
+    margin: 0;
+  }
+  
+
+
+  
+@media (max-width: 960px) {
+
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+  
+  }
+  
