@@ -37,6 +37,7 @@ main {
 
 .texto {
     padding: 0 10px;
+    padding-top: 40px;
 }
 
 .horario-data-lugar {
