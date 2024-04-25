@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0 auto;
+    max-width: 940px;
+    height: 500px;
+    z-index: 1;
+}
+
+header img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+
+}
+
+button {
+    font-family: 'Source Sans 3', sans-serif;
+
+}
+
+
+main {
+    position: relative;
+    padding: 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-width: 900px;
+    margin-bottom: 100px;
+    margin-top: -10px;
+    background-color: white;
+    z-index: 19;
+    border-radius: 10px;
+}
+
+.texto {
+    padding: 0 10px;
+    padding-top: 40px;
+}
+
+.horario-data-lugar {
+    border: 1px solid #45b7e5;
+}
+
+.texto h1 {
+    color: #0e2e7c !important;
+    line-height: 38px;
+}
+
+main p {
+    text-indent: 20px;
+}
+
+main p,
+main li {
+    color: #58595b;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.texto h1,
+.texto button {
+    color: black;
+}
+
+.texto button {
+    border-bottom: 1px solid #fff;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 5px;
+    border: 0px;
+    border: 1px solid #d5dcf1;
+    font-size: large;
+
+}
+
+.texto button:last-child {
+
+    margin-bottom: 0px;
+
+}
+
+.texto button::-moz-focus-inner {
+    border: 0;
+}
+
+.texto button:focus {
+    color: white;
+    background-color: #45b7e5;
+    border: 1px solid #45b7e5;
+
+}
+
+main a {
+    color: #45b7e5;
+    text-decoration: none;
+}
+
+.texto .active-btn {
+    background-color: #45b7e5;
+    color: white;
+    border: 1px solid #45b7e5;
+
+}
+
+.textofinal {
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+
+}
+
+.azulclaro {
+    color: #45b7e5;
+}
+
+.texto .botaoinscrevase {
+    display: flex;
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid #45b7e5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin-top: 20px;
+    justify-content: center;
+    font-size: medium;
+}
+
+.texto .botaoinscrevase:hover {
+    background-color: #1b3556;
+    border: 2px solid #1b3556;
+    color: white;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*Topicos*/
+.grid-container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px !important;
+    margin: 0 auto;
+    border: 1px solid #45b7e5;
+}
+
+.grid-item {
+    display: block;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.contentdogrid h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.contentdogrid p {
+    margin: 0;
+}
+
+
+.tab {
+    display: flex;
+    overflow: hidden;
+    background-color: #f2f3f8;
+    border-radius: 5px;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    flex: 1;
+    font-weight: bold;    
+}
+
+.tab button:hover {
+    background-color: #d5dcf1;
+}
+
+.tab button.active {
+    background-color: #45b7e5;
+    color: white;
+}
+
+.tabcontent,
+.initial-text {
+    display: none;
+    border-top: none;
+}
+
+.initial-text {
+    display: block;
+    color: #b2b3b6;
+}
+
+
+@media screen and (max-width: 768px) {
+    .tab {
+        flex-direction: column;
+    }
+}
