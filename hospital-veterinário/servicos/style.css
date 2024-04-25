@@ -23,7 +23,7 @@ header img {
 
 button {
     font-family: 'Source Sans 3', sans-serif;
-
+ 
 }
 
 
@@ -80,7 +80,6 @@ main li {
     outline: none;
     border-radius: 5px;
     background-color: white;
-    margin-bottom: 5px;
     border: 0px;
     border: 1px solid #d5dcf1;
     font-size: large;
@@ -152,51 +151,14 @@ main a {
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-/*Topicos*/
-.grid-container {
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 10px !important;
-    margin: 0 auto;
-    border: 1px solid #45b7e5;
-}
-
-.grid-item {
-    display: block;
-    align-items: flex-start;
-    padding: 10px;
-    margin: 0 auto;
-    width: 100%;
-
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-    padding: 10px;
-}
-
-.contentdogrid h3 {
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-.contentdogrid p {
-    margin: 0;
-}
-
-
 .tab {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     overflow: hidden;
-    background-color: #f2f3f8;
     border-radius: 5px;
+    gap: 10px;
+    width: 100%;
 }
 
 .tab button {
@@ -208,8 +170,11 @@ main a {
     padding: 10px 16px;
     transition: 0.3s;
     font-size: 17px;
+    font-weight: bold;   
+    width: fit-content; 
+    border: 1px solid #45b7e5;
     flex: 1;
-    font-weight: bold;    
+    text-align: center;
 }
 
 .tab button:hover {
@@ -230,11 +195,12 @@ main a {
 .initial-text {
     display: block;
     color: #b2b3b6;
+    text-align: center;
 }
 
-
-@media screen and (max-width: 768px) {
-    .tab {
-        flex-direction: column;
-    }
+.tabcontent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #45b7e5;
+    margin-bottom: 40px;
 }

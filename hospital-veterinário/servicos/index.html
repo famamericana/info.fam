@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
@@ -17,17 +17,32 @@
     </header>
 
     <main>
+
+
         <div class="texto">
             <div>
-                <h1>Especializações e Serviços</h1>
-                <p>No Hospital Veterinário FAM, a castração é valorizada como um elemento crucial para a saúde e
+                <p id="initialText" class="initial-text">
+                    <i>Clique em um dos serviços para saber mais.</i>
+                </p>
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'castracao')">Castração</button>
+                    <button class="tablinks" onclick="openTab(event, 'cirurgias')">Cirurgias</button>
+                    <button class="tablinks" onclick="openTab(event, 'vacinacao')">Vacinação</button>
+                    <button class="tablinks" onclick="openTab(event, 'internacao')">Internação </button>
+                    <button class="tablinks" onclick="openTab(event, 'fisioterapia')">Fisioterapia</button>
+                    <button class="tablinks" onclick="openTab(event, 'exames')">Exames</button>
+                </div>
+            </div>
+            <div id="castracao" class="tabcontent">
+                <h1>Castração</h1>
+                <p>A castração é valorizada como um elemento crucial para a saúde e
                     bem-estar dos animais, abordando tanto aspectos populacionais quanto individuais. Realizamos esse
                     procedimento em uma variedade de animais, incluindo cães, gatos, cavalos e espécies exóticas, com
                     uma equipe especializada que assegura a eficácia e segurança do processo.
                 </p>
-                <p>
-                    Benefícios da Castração:
-                </p>
+
+                <h2>Benefícios da Castração</h2>
+
                 <ul>
                     <li>
                         <b>Controle Populacional:</b> Contribui significativamente para a diminuição do número de
@@ -41,9 +56,9 @@
                         <b>Comportamento:</b> Ajuda a mitigar comportamentos como agressividade e marcação territorial.
                     </li>
                 </ul>
-                <p>
-                    Procedimento e Cuidados:
-                </p>
+
+                <h2>Procedimento e Cuidados</h2>
+
                 <ul>
                     <li>
                         <b>Execução do Procedimento: </b>Utilizamos técnicas avançadas sob rigorosos padrões de higiene
@@ -54,203 +69,239 @@
                         tranquila, com atenção especial às necessidades de cada animal.
                     </li>
                 </ul>
-                <p>
-                    Atenção Especial para Animais Exóticos e Silvestres:
+                <h2>Atenção Especial para Animais Exóticos e Silvestres</h2>
                 </p>
                 <ul>
                     <li>
-                        Nosso atendimento é adaptado às peculiaridades de diversas espécies, desde a avaliação pré-operatória até o acompanhamento pós-cirúrgico.
+                        Nosso atendimento é adaptado às peculiaridades de diversas espécies, desde a avaliação
+                        pré-operatória até o acompanhamento pós-cirúrgico.
                     </li>
 
                 </ul>
             </div>
-        </div>
+            <div id="cirurgias" class="tabcontent">
+                <h1>Cirurgias</h1>
+                <p> Oferecemos serviços cirúrgicos avançados para uma ampla gama de animais, utilizando instalações
+                    modernas e tecnologia de ponta para garantir a segurança e a eficácia dos procedimentos.
+                </p>
 
-        <!--
- <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'exotico')">Animais Exóticos e Silvestres</button>
-            <button class="tablinks" onclick="openTab(event, 'grande')">Animais de Grande Porte</button>
-            <button class="tablinks" onclick="openTab(event, 'gatoscachorros')">Clínica de Cães e Gatos</button>
-        </div>
+                <h2>Pequenos Animais</h2>
+
+                <p> Equipados com tecnologia avançada, nossos cirurgiões veterinários realizam desde procedimentos
+                    rotineiros, como castrações, até cirurgias mais complexas em pequenos animais.</p>
+
+                <h2>Grandes Animais</h2>
+
+                <p>
+                    Para animais de grande porte, oferecemos serviços cirúrgicos especializados, incluindo cirurgia
+                    geral e ortopédica. Nossa equipe experiente está preparada para realizar essas operações com
+                    máxima segurança e eficiência.
+                </p>
 
 
-        <p id="initialText" class="initial-text">
-            <i>Clique em um deles para saber mais.</i>
-        </p>
+                <h2>Colaboração com Médicos Veterinários</h2>
 
-        <div id="exotico" class="tabcontent">
-            <div class="motivosfam">
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Equipe Especializada</h3>
-                            <p>Contamos com uma equipe de 3 médicos veterinários especializados em animais exóticos e
-                                silvestres.</p>
-                        </div>
-                    </div>
+                <p>
+                    Encorajamos médicos veterinários que necessitam de nossa infraestrutura cirúrgica para grandes
+                    animais a entrar em contato para organização prévia dos procedimentos.
+                </p>
 
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Atendimento Clínico Personalizado</h3>
-                            <p>Somos equipados para atender às necessidades únicas de animais exóticos e silvestres.
-                                Realizamos
-                                exames clínicos, exames laboratoriais, radiografias e ultrassom para uma variedade de
-                                espécies.</p>
-                        </div>
-                    </div>
 
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Cirurgia e Procedimentos Específicos</h3>
-                            <ol style="margin-bottom: 0;">
-                                <li>Atendimento clínico geral e especializado.</li>
-                                <li>Cirurgias (gerais, ortopédicas, especializadas para animais exóticos).</li>
-                                <li>Exames complementares (radiografias, ultrassonografias, endoscopias).</li>
-                                <li>Internação com suporte médico 24 horas.</li>
-                                <li>Serviços especializados como nutrição especializada, reabilitação, crioterapia, e
-                                    fisioterapia.</li>
-                            </ol>
-                        </div>
-                    </div>
+            </div>
+            <div id="vacinacao" class="tabcontent">
+                <h1>Vacinação para Pequenos Animais</h1>
+                <p>
+                    A vacinação é vista como uma medida essencial para a prevenção de doenças e a manutenção da saúde
+                    dos animais de estimação. Oferecemos um conjunto completo de vacinas para cães e gatos, visando
+                    proteger contra várias doenças comuns e sérias. </p>
 
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Serviços Especializados</h3>
-                            <p>Tratamentos e cuidados especializados para aves, répteis, roedores, anfíbios, entre
-                                outros.</p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <h2>Vacinação para Cães</h2>
+
+                <ul>
+                    <li>
+                        <b>V10:</b> Protege contra Cinomose, Adenovírus Tipo 2, Parainfluenza, Parvovírus, Coronavírus e
+                        Leptospira, garantindo uma cobertura ampla contra doenças caninas cruciais.
+                    </li>
+                    <li>
+                        <b>Antirrábica:</b> Vacina obrigatória que previne a raiva, protegendo tanto o animal quanto a
+                        comunidade.
+                    </li>
+                    <li>
+                        <b>Doença Respiratória Infecciosa Canina: </b> Previne pneumonia e bronquite, protegendo os cães
+                        contra patógenos virais e bacterianos comuns.
+                    </li>
+                </ul>
+
+                <h2>Vacinação para Gatos</h2>
+
+                <ul>
+                    <li>
+                        <b>V4:</b> Oferece proteção contra Rinotraqueíte, Calicivirose, Clamidiose e Panleucopenia
+                        felina, cobrindo várias doenças importantes para a saúde felina.
+                    </li>
+
+                </ul>
+            </div>
+            <div id="internacao" class="tabcontent">
+                <h1>Internação </h1>
+                <p>
+                    Oferecemos um serviço de internação completo com suporte médico disponível 24 horas por dia,
+                    preparados para atender emergências e cuidados contínuos de animais de todos os portes e espécies.
+                </p>
+                </p>
+
+                <h2>Pequenos Animais</h2>
+
+                <p>
+                    Cães e gatos que necessitam de cuidados intensivos têm acesso a instalações separadas e
+                    confortáveis, assegurando um ambiente tranquilo para recuperação sob os cuidados de nossa equipe
+                    especializada.
+                </p>
+
+                <h2> Grandes Animais</h2>
+
+                <p>
+                    Dispomos de cocheiras espaçosas e bem equipadas para a internação de grandes animais, proporcionando
+                    cuidados especializados que incluem administração de medicamentos e acompanhamento pós-operatório e
+                    neonatal.
+                </p>
+            </div>
+            <div id="fisioterapia" class="tabcontent">
+                <h1>Fisioterapia Veterinária</h1>
+                <p>
+                    Oferecemos um serviço de Fisioterapia Veterinária especializado, focado em melhorar a qualidade de
+                    vida e o bem-estar dos animais. Desde recuperação pós-cirúrgica até o manejo de doenças crônicas.
+                </p>
+
+                <h2>Benefícios da Fisioterapia Veterinária</h2>
+
+                <ul>
+                    <li>
+                        <b>Recuperação Pós-Cirúrgica:</b> Acelera a cura e restaura a função normal após cirurgias.
+                    </li>
+                    <li>
+                        <b>Alívio da Dor:</b> Reduz a dor em condições como artrite e outras doenças
+                        musculoesqueléticas.
+                    </li>
+                    <li>
+                        <b>Melhoria da Mobilidade: </b> Aumenta a capacidade de movimento em animais com dificuldades
+                        locomotoras.
+                    </li>
+                    <li>
+                        <b>Reabilitação de Lesões: </b> Auxilia na recuperação de lesões esportivas ou acidentais.
+                    </li>
+                    <li>
+                        <b>Gestão de Condições Crônicas: </b> Contribui para o tratamento de doenças crônicas,
+                        melhorando a qualidade de vida do animal.
+                    </li>
+                </ul>
+
+                <h2>Nossos Serviços de Fisioterapia Incluem</h2>
+
+                <ul>
+                    <li>
+                        <b>Eletroterapia:</b> Para fortalecimento muscular e alívio da dor.
+                    </li>
+                    <li>
+                        <b>Massagem Terapêutica:</b> Relaxa músculos tensos e melhora a circulação.
+                    </li>
+                    <li>
+                        <b>Exercícios Terapêuticos:</b> Programas personalizados para cada animal.
+                    </li>
+                    <li>
+                        <b>Laserterapia:</b> Estimula a regeneração celular e acelera a recuperação.
+                    </li>
+                    <li>
+                        <b>Acupuntura e Ozonioterapia:</b> Terapias complementares para diversas condições.
+                    </li>
+                    <li>
+                        <b>Crioterapia:</b> Utiliza o frio para aliviar a dor e promover a recuperação.
+                    </li>
+                </ul>
+
+            </div>
+            <div id="exames" class="tabcontent">
+                <h1>Exames</h1>
+                <p>
+                    Oferecemos uma extensa gama de exames laboratoriais e de diagnóstico por imagem para garantir a
+                    saúde e o bem-estar de todos os tipos de animais. Contamos com equipamentos de última geração e uma
+                    equipe altamente qualificada para proporcionar diagnósticos precisos e confiáveis.
+                </p>
+
+                <h2>Exames Laboratoriais</h2>
+
+                <ul>
+                    <li>
+                        <b>Hematologia:</b> Avaliação das células sanguíneas para diagnóstico de anemias, infecções e
+                        distúrbios de coagulação.
+                    </li>
+                    <li>
+                        <b>Bioquímica Clínica:</b> Análise dos níveis de enzimas, proteínas e minerais para verificar a função
+                        dos órgãos.
+                    </li>
+                    <li>
+                    <b>Análises Citológicas e Histopatologia:</b> Exame microscópico de células e tecidos para diagnóstico
+                        de câncer e outras condições.
+                    </li>
+                    <li>
+                    <b>Imunologia e Microbiologia:</b> Diagnóstico de doenças autoimunes, infecções e identificação de
+                        microorganismos patogênicos.
+                    </li>
+                    <li>
+                    <b>Parasitologia e Hormônios:</b> Detecção de parasitas e medição dos níveis hormonais para diagnóstico
+                        de infestações e distúrbios endócrinos.
+                    </li>
+                    <li>
+                    <b>Urinálise:</b> Avaliação da urina para diagnóstico de doenças renais e do trato urinário.
+                    </li>
+                </ul>
+
+                <h2>Diagnóstico por Imagem</h2>
+
+                <ul>
+                    <li>
+                    <b>Radiografia Digital e Ultrassonografia:</b> Estas ferramentas permitem a visualização detalhada de
+                        estruturas internas, identificação de lesões, tumores, fraturas e avaliação de órgãos internos.
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div id="grande" class="tabcontent">
-            <div class="motivosfam">
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Equipe Especializada</h3>
-                            <p>Contamos com uma equipe de 7 médicos veterinários especialistas, com parcerias adicionais
-                                com profissionais renomados.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Atendimento Clínico Personalizado</h3>
-                            <p>Instalações equipadas com tecnologia avançada para atendimento, cirurgias e internação.
-                                Áreas específicas incluem centro cirúrgico e cocheiras para grandes animais.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Cirurgia e Procedimentos Específicos</h3>
-                            <ol style="margin-bottom: 0;">
-                                <li>Atendimento clínico geral e especializado.</li>
-                                <li>Cirurgias (gerais, ortopédicas, especializadas para animais exóticos).</li>
-                                <li>Exames complementares (radiografias, ultrassonografias, endoscopias).</li>
-                                <li>Internação com suporte médico 24 horas.</li>
-                                <li>Serviços especializados como nutrição especializada, reabilitação, crioterapia, e
-                                    fisioterapia.</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Serviços Especializados</h3>
-                            <ul style="margin-bottom: 0;">
-                                <li> Atendimento a equinos, bovinos, caprinos, ovinos e suínos.</li>
-                                <li> Estrutura adicional para tratamentos e cirurgias de grande porte.</li>
-                                <li> Suporte para médicos veterinários da região para uso das instalações.</li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="gatoscachorros" class="tabcontent">
-            <div class="motivosfam">
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Equipe Especializada</h3>
-                            <p>Contamos com uma equipe de 7 médicos veterinários dedicados no tratamento de pequenos
-                                animais.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Atendimento Clínico Personalizado</h3>
-                            <p>Instalações equipadas com tecnologia avançada para atendimento, cirurgias e internação.
-                                Áreas específicas incluem centro cirúrgico e áreas de
-                                internação confortáveis para cães e gatos.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Cirurgia e Procedimentos Específicos</h3>
-                            <ol style="margin-bottom: 0;">
-                                <li>Atendimento clínico geral e especializado.</li>
-                                <li>Cirurgias (gerais, ortopédicas, especializadas para animais exóticos).</li>
-                                <li>Exames complementares (radiografias, ultrassonografias, endoscopias).</li>
-                                <li>Internação com suporte médico 24 horas.</li>
-                                <li>Serviços especializados como nutrição especializada, reabilitação, crioterapia, e
-                                    fisioterapia.</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="contentdogrid">
-                            <h3>Serviços Especializados</h3>
-                            <ul style="margin-bottom: 0;">
-                                <li> Serviços específicos para animais de estimação, incluindo áreas de internação separadas para cães e gatos.</li>
-                                <li> Ambiente confortável com controle de temperatura e espaço adequado para o conforto dos pets.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <p class="textofinal">
-            No <span class="azulclaro"> Hospital Veterinário FAM</span>, garantimos o melhor cuidado e bem-estar para
-            todos os tipos de pacientes, seja qual for sua necessidade especializada.
+            No <span class="azulclaro"> Hospital Veterinário FAM</span>, combinamos expertise especializada e tecnologia avançada para oferecer um cuidado completo e personalizado a cada animal, garantindo saúde e bem-estar desde diagnósticos precisos até tratamentos eficazes.
         </p>
-        -->
-
-
     </main>
 
     <script>
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
+            for (var i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
             document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            if (evt) evt.currentTarget.className += " active";
 
             // Esconder o texto inicial
             document.getElementById("initialText").style.display = "none";
         }
 
-
+        // Verifica se há um hash na URL ao carregar a página
+        document.addEventListener("DOMContentLoaded", function () {
+            var hash = window.location.hash.substring(1); // Remove o '#' da string
+            if (hash) {
+                var element = document.getElementById(hash);
+                if (element) {
+                    openTab(null, hash); // Chama openTab sem um evento se o hash corresponder a uma aba
+                    var link = document.querySelector(".tablinks[onclick*='" + hash + "']");
+                    if (link) {
+                        link.className += " active";
+                    }
+                }
+            }
+        });
     </script>
 
 </body>
