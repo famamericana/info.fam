@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #173e70;
+    --cordoeventoatual: #79a744;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -502,7 +502,7 @@ main {
 }
 
 .div2 {
-    grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1/ 1 / 2 / 3;
 }
 
 .div3 {
