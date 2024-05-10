@@ -87,7 +87,7 @@ nav {
     position: fixed;
     height: 80px;
     font-weight: 600;
-    background: linear-gradient(to bottom, #0E2514, #00000000); /* Exemplo de degradê azul para vermelho */
+    background-color: #0e25142d;
     backdrop-filter: blur(5px); /* Aplica o efeito de desfoque no conteúdo abaixo do navbar */
     -webkit-backdrop-filter: blur(5px); /* Necessário para suporte no Safari */
     border-bottom: 1px solid #82A5A0;
@@ -148,6 +148,8 @@ a:hover {
         margin-left: 4px;
         width: fit-content;
         background: none;
+        backdrop-filter: none; 
+        border-bottom: none;
     }
 
     .checkbtn {
