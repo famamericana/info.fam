@@ -36,7 +36,10 @@ body {
     overflow-x: hidden;
 }
 
-
+.pheitor{
+    text-indent: 20px;
+    font-size: large;
+}
 
 header {
     width: 100%;
@@ -46,6 +49,7 @@ header {
     justify-content: center;
     align-items: center;
     background-color: #0e251498;
+    margin-bottom: 20px;
 }
 
 header .carousel {
@@ -65,13 +69,10 @@ header .carousel img {
 
 main {
     padding: 20px;
-    background-color: white;
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: -20px;
     border-radius: 10px;
     display: block;
-    box-shadow: 0px 0px 58px -11px rgba(0, 0, 0, 0.75);
 }
 
 .logoheitor {
@@ -90,10 +91,8 @@ nav {
     background-color: #0e25142d;
     backdrop-filter: blur(5px); /* Aplica o efeito de desfoque no conteúdo abaixo do navbar */
     -webkit-backdrop-filter: blur(5px); /* Necessário para suporte no Safari */
-    border-bottom: 1px solid #82A5A0;
+    border-bottom: 1px solid #F4E4BD;
 }
-
-
 
 nav ul {
     float: right;
@@ -130,7 +129,7 @@ a:hover {
     background-color: #0e25142d;
     backdrop-filter: blur(5px); /* Aplica o efeito de desfoque no conteúdo abaixo do navbar */
     -webkit-backdrop-filter: blur(5px); /* Necessário para suporte no Safari */
-    border: 1px solid #82A5A0;
+    border: 1px solid #F4E4BD;
 
     border-radius: 50px;
     padding: 10px 18px;
@@ -167,7 +166,7 @@ a:hover {
         position: fixed;
         width: 100%;
         height: 100vh;
-        background-color: #82A5A0;
+        background-color: #0E2514;
         left: -100%;
         text-align: center;
         transition: all .5s;
@@ -183,12 +182,59 @@ a:hover {
         font-size: 20px;
     }
 
-    a.active,
-    a:hover {
-        background: #0E2514;
-    }
+
     
     #check:checked~ul {
         left: 0;
     }
 }
+
+
+/*titulo principal -------------------------------------------------------------------------------------------------*/
+
+
+.titulocolação {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .titulocolação h1,
+  .titulocolação h3 {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .titulocolação h1 {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-left: 10px;
+    margin-right: 10px;
+  
+    padding: 0;
+  }
+  
+  .titulocolação h3 {
+    font-size: 18px;
+    color: #82A5A0;
+    margin-top: -5px;
+    font-weight: 600;
+  }
+  
+  .title-container {
+    display: flex;
+    /* Use flexbox para alinhar os itens */
+    align-items: center;
+    /* Centraliza verticalmente */
+    color: black;
+  }
+  
+  .title-container::before,
+  .title-container::after {
+    content: '';
+    /* Conteúdo vazio para os pseudo-elementos */
+    flex: 1;
+    /* Faz com que cada linha ocupe o espaço disponível igualmente */
+    border-bottom: 1px solid #82A5A0;
+    /* Define a linha como uma borda inferior azul */
+  }
