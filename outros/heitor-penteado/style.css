@@ -63,8 +63,11 @@ header .carousel {
 
 header .carousel img {
     object-fit: cover;
-
     height: 100dvh;
+}
+
+h2{
+    font-size: 30px;
 }
 
 main {
@@ -205,9 +208,9 @@ a:hover {
   }
   
   .titulocolação h1 {
-    font-size: 25px;
+    font-size: 30px;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
     margin-left: 10px;
     margin-right: 10px;
   
@@ -215,10 +218,9 @@ a:hover {
   }
   
   .titulocolação h3 {
-    font-size: 18px;
+    font-size: 20px;
     color: #82A5A0;
-    margin-top: -5px;
-    font-weight: 600;
+    font-weight: 500;
   }
   
   .title-container {
@@ -235,6 +237,6 @@ a:hover {
     /* Conteúdo vazio para os pseudo-elementos */
     flex: 1;
     /* Faz com que cada linha ocupe o espaço disponível igualmente */
-    border-bottom: 1px solid #82A5A0;
+    border-bottom: 1px solid #F4E4BD;
     /* Define a linha como uma borda inferior azul */
   }
