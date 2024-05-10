@@ -79,7 +79,7 @@ main {
     margin: 50px;
 }
 
-/* navbar -------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* navbar codigo inicial: https://www.codingnepalweb.com/responsive-navigation-menu-bar-html-css/ -------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 nav {
     display: flex;
     justify-content: center;
@@ -117,6 +117,8 @@ a.active,
 a:hover {
     background: #82A5A0;
     transition: .5s;
+    color: white;
+    text-decoration: none;
 }
 
 .checkbtn {
@@ -165,7 +167,7 @@ a:hover {
         position: fixed;
         width: 100%;
         height: 100vh;
-        background: #2c3e50;
+        background-color: #82A5A0;
         left: -100%;
         text-align: center;
         transition: all .5s;
@@ -181,12 +183,11 @@ a:hover {
         font-size: 20px;
     }
 
-    a:hover,
-    a.active {
-        background: none;
-        color: #0082e6;
+    a.active,
+    a:hover {
+        background: #0E2514;
     }
-
+    
     #check:checked~ul {
         left: 0;
     }
