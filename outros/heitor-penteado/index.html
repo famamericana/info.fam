@@ -14,7 +14,19 @@
 </head>
 
 <body>
-
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a class="active" href="#sobre">Sobre</a></li>
+          <li><a href="#galeria">Galeria de Fotos</a></li>
+          <li><a href="#programacao">Programação</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
     <header>
         <div id="headerCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
@@ -37,6 +49,23 @@
         </div>
         <img class="logoheitor" src="images/logo-centenarioheitor.svg">
     </header>
+
+    <main>
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountHeitorCentenario">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="meuFooter"></div>
+    <div id="BotaoTopo"></div>
 
     <!-- JavaScript e Popper.js do Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
