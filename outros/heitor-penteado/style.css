@@ -117,9 +117,9 @@ nav ul li a {
 
 a.active,
 a:hover {
-    background: #82A5A0;
+    background: #F4E4BD;
     transition: .5s;
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
