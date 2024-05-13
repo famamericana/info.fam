@@ -353,6 +353,14 @@ a:hover {
         columns: 2 auto;
     }
 
+    #sobre,
+    #galeria,
+    #programacao,
+    #localizacao,
+    #contato {
+        scroll-margin-top: 40px;
+        /* Adiciona uma margem superior de 100px */
+    }
 
 }
 
