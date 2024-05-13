@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://i.postimg.cc/8P2rwWhK/famlogo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposição Centenário Heitor Penteado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#galeria">Galeria de Fotos</a></li>
+            <li><a href="#programacao">Programação</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+    <header>
+        <div id="headerCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="2500">
+                    <img src="images/1942_IA.jpg" class="d-block w-100" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/154_IA.jpg" class="d-block w-100" alt="Imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/1968_IA.jpg" class="d-block w-100" alt="Imagem 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/107_IA.jpg" class="d-block w-100" alt="Imagem 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/1978_IA.jpg" class="d-block w-100" alt="Imagem 4">
+                </div>
+            </div>
+        </div>
+        <img class="logoheitor" src="images/logo-centenarioheitor.svg">
+    </header>
+
+    <div class="titulocolação">
+        <div class="title-container">
+            <h1>Sobre a Exposição</h1>
+        </div>
+        <h3>O que você precisa saber</h3>
+    </div>
+
+    <main>
+
+        <section id="sobre">
+
+            <h2>História da Escola</h2>
+            <p class="pheitor">A história da Escola Heitor Penteado em Americana, São Paulo, é marcada por uma série de
+                desenvolvimentos
+                significativos que refletem a evolução educacional e cultural da região. Fundada inicialmente como Grupo
+                Escolar de Villa Americana em 08 de maio de 1925, a instituição foi uma das primeiras formalizações do
+                ensino público na cidade, assumindo um papel central na educação local.
+            </p>
+            <p class="pheitor">
+                Em 1930, o nome foi alterado para Grupo Escolar Dr. Heitor Penteado, em homenagem a Heitor Teixeira
+                Penteado, um político influente na área da educação, nascido em Campinas em 1878. Heitor foi uma figura
+                proeminente na política paulista, servindo como vice-presidente do estado e ocupando cargos importantes
+                no governo estadual, onde promoveu melhorias em infraestrutura e educação.
+            </p>
+            <p class="pheitor">
+                Ao longo dos anos, a escola passou por várias transformações, incluindo uma mudança de nome em 1963 para
+                Instituto de Educação Presidente Kennedy, refletindo a tendência da época de modernizar as instituições
+                educacionais. Em 1979, a escola voltou a se chamar Escola Estadual Dr. Heitor Penteado, consolidando sua
+                identidade atual como um centro de ensino fundamental e médio.
+            </p>
+
+
+
+
+        </section>
+
+        <section id="galeria">
+            <h2>Galeria</h2>
+            <div class="grid-container">
+                <div>
+                    <img class='grid-item grid-item-5' src='images/Heitor_Penteado.jpg' alt=''>
+                    <p>"Heitor Teixeira Penteado"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-2' src='images/154_IA.jpg' alt=''>
+                    <p>"Construção do prédio localizado à Rua dos Professores, 40, Americana"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-3' src='images/1942_IA.jpg' alt=''>
+                    <p>"O diretor Alcindo Soares Nascimento com uma turma. Registro feito em frente ao Intituto Kennedy
+                        em 1942"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-4' src='images/1968_IA.jpg' alt=''>
+                    <p>"1968: Marcelino Tombi e profª Sinesia"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-5' src='images/1978_IA.jpg' alt=''>
+                    <p>"05 maio de 1978: Professores Rubens Oscar Guelli (de Educação Física) e Wilson Camargo."</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-3' src='images/164_IA.jpg' alt=''>
+                    <p>"Anos 80"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-4' src='images/178_IA.jpg' alt=''>
+                    <p>"Anos 90"</p>
+                </div>
+                <div>
+                    <img class='grid-item grid-item-5' src='images/2012_IA.png' alt=''>
+                    <p>"2012: 7 de setembro"</p>
+                </div>
+
+            </div>
+
+            <!-- Popup Overlay -->
+            <div id="popup-overlay" style="display:none;">
+                <div id="popup-content">
+                    <img src="" id="popup-img">
+                    <button class="botao-fechar" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <a class="" href="">vá para a exposição e veja muito mais!</a>
+        </section>
+
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountHeitorCentenario">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="meuFooter"></div>
+    <div id="BotaoTopo"></div>
+
+    <!-- JavaScript e Popper.js do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
