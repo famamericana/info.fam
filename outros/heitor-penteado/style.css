@@ -97,6 +97,7 @@ nav {
     -webkit-backdrop-filter: blur(5px);
     /* Necessário para suporte no Safari */
     border-bottom: 1px solid #F4E4BD;
+    z-index: 2;
 }
 
 nav ul {
@@ -249,7 +250,7 @@ a:hover {
 
 
 .grid-container {
-    columns: 3 auto;
+    columns: 4 auto;
     column-gap: 10px;
     margin: 0 auto;
 
@@ -260,24 +261,26 @@ a:hover {
         border: solid 1px #82A5A0;
         padding: 5px;
         border-radius: 5px;
-        transition: all .25s ease-in-out;
+        transition: all .1s ease-in-out;
 
         &:hover {
             border-color: #F4E4BD;
+            transform: scale(1.025);
         }
 
         img {
             width: 100%;
-
             border-radius: 5px;
-            transition: all .25s ease-in-out;
+            transition: all .1s ease-in-out;
         }
+
 
         p {
             margin: 5px 0;
             padding: 0;
             text-align: center;
             font-style: italic;
+            line-height: 1.2;
         }
     }
 }
@@ -295,4 +298,47 @@ a:hover {
     .grid-container {
         columns: 1 auto;
     }
+}
+
+
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#popup-content {
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    
+}
+
+#popup-img {
+    width: 100%; 
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.botao-fechar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #0E2514;
+    cursor: pointer;
+    background-color: white ;
+    border: none;
+    border-radius: 50px 40px 50px 50px;
+    padding: 10px 18px;
+    z-index: 3;
 }

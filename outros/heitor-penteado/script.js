@@ -32,6 +32,20 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 
 
 
+// galeria -------------------------------------------------------------------------------------------------------------------------------
+
+document.querySelectorAll('.grid-item').forEach(item => {
+    item.addEventListener('click', function() {
+        var src = this.src;
+        var alt = this.alt;
+        document.getElementById('popup-img').src = src;
+        document.getElementById('popup-overlay').style.display = 'flex';
+    });
+});
+
+function closePopup() {
+    document.getElementById('popup-overlay').style.display = 'none';
+}
 
 
 
