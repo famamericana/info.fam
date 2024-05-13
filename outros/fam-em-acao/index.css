@@ -45,6 +45,7 @@ body {
     padding: 0;
 }
 
+
 .no-scroll {
     overflow: hidden;
     height: 100%;
@@ -257,9 +258,7 @@ select:-webkit-autofill:focus {
 }
 
 @media screen and (max-width: 700px) {
-    .conteudoemsi {
-        margin-top: 82px;
-    }
+
 
     .overlay .button-container {
         margin-top: 50px !important;
@@ -1196,5 +1195,16 @@ p {
 /* header ------------------------------------------------------------------------------------------------------------------------------------*/
 
 header{
-    height: 300px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.logo{
+    max-width: 500px;
+    width: 100%;
+
 }

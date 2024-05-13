@@ -342,3 +342,8 @@ a:hover {
     padding: 10px 18px;
     z-index: 3;
 }
+
+
+#sobre, #galeria, #programacao, #localizacao, #contato {
+    scroll-margin-top: 100px;  /* Adiciona uma margem superior de 100px */
+}
