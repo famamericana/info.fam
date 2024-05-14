@@ -118,7 +118,7 @@ nav ul li a {
     border-radius: 3px;
 }
 
-a:hover {
+nav a:hover {
     background: #F4E4BD;
     transition: .5s;
     color: black;
@@ -327,14 +327,12 @@ a:hover {
     z-index: 3;
 }
 
-
 #sobre,
 #galeria,
 #programacao,
 #localizacao,
 #contato {
     scroll-margin-top: 100px;
-    /* Adiciona uma margem superior de 100px */
 }
 
 @media (max-width: 800px){
@@ -344,7 +342,6 @@ a:hover {
         border-radius: 5px;
         height: auto;
     }
-
 }
 
 @media (max-width: 952px) {
@@ -359,9 +356,7 @@ a:hover {
     #localizacao,
     #contato {
         scroll-margin-top: 40px;
-        /* Adiciona uma margem superior de 100px */
     }
-
 }
 
 @media (max-width: 550px) {
