@@ -285,7 +285,6 @@ nav a:hover {
 }
 
 
-
 #popup-overlay {
     position: fixed;
     top: 0;
@@ -436,7 +435,7 @@ nav a:hover {
     grid-row: span 2;
     display: grid;
     grid-template-rows: min-content min-content min-content;
-    border: 1px solid #0E2514;
+    border: 1px solid rgb(225, 225, 225);;
     padding-top: 10px;
     border-radius: 5px;
 }
@@ -445,7 +444,6 @@ nav a:hover {
    color: #82A5A0;
    margin-right: 5px;
 }
-
 
 /* date */
 .programacaodesign ul li .date {
