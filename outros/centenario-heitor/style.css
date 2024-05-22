@@ -258,8 +258,8 @@ nav a:hover {
         display: inline-block;
         width: 100%;
         border: solid 1px #82A5A0;
-        padding: 5px;
-        border-radius: 5px;
+        padding: 10px;
+        border-radius: 10px;
         transition: all .1s ease-in-out;
 
         &:hover {
