@@ -114,9 +114,8 @@ $(document).ready(function () {
 
 
 
-// Data alvo
-const targetDate = new Date('2024-06-30T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
-
+// Data alvo (23 de outubro de 2023)
+const targetDate = new Date('2024-01-21T00:00:00');
 
 function updateCountdown() {
   const currentDate = new Date();
