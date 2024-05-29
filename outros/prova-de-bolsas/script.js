@@ -117,21 +117,32 @@ $(document).ready(function () {
 // Data alvo
 const targetDate = new Date('2024-06-30T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
 
-
 function updateCountdown() {
   const currentDate = new Date();
   const timeLeft = targetDate - currentDate;
   const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.ceil para arredondar para cima
+  const hoursLeft = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Horas restantes
+  const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Minutos restantes
 
   if (daysLeft < 0) {
     document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para que no próximo semestre você não perca a Prova de Bolsas ;)";
+  } else if (daysLeft === 0 && currentDate.getDate() === 30 && currentDate.getHours() < 14) {
+    if (currentDate.getHours() < 14) {
+      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre as 13h30 e a prova começa às 14:00.";
+    } else {
+      document.getElementById("countdown").textContent = "A prova já começou, boa sorte!";
+    }
+  } else if (daysLeft === 1) {
+    document.getElementById("countdown").textContent = `Amanhã é o grande dia!`;
+  } else if (daysLeft === 29 && hoursLeft < 14) {
+    document.getElementById("countdown").textContent = `Se preparem, nos vemos em menos de um dia!`;
   } else {
     document.getElementById("countdown").textContent = `Se preparem, nos vemos em ${daysLeft} dias!`;
   }
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Atualizar a cada dia
+window.addEventListener('load', updateCountdown); // Chama a função quando a página é carregada
+
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
 if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {

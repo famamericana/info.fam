@@ -59,9 +59,16 @@ header {
 
 .headertamanho {
     display: flex;
-    width: 960px;
     margin: 0 auto;
     height: calc(100dvh - 40px);
+    justify-content: center;
+    align-items: center;
+}
+
+.header_div{
+    display: flex;
+    width: 960px;
+
 }
 
 .ladodireito {
@@ -316,7 +323,9 @@ header {
 
 @media (max-width: 960px) {
 
-    .headertamanho {
+
+
+    .header_div{
         width: 100%;
         flex-direction: column;
         justify-content: center;
