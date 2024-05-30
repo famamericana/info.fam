@@ -41,11 +41,12 @@ button{
     bottom: 20px;
     right: 20px;
     background-color: #25d366;
-    color: #fff;
+    color: var(--background-color);
     padding: 10px 15px;
     border-radius: 50px;
     text-decoration: none;
     z-index: 9999;
+    font-weight: 600;
  }
 
  
