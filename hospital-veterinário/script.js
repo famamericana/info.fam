@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const svgContainer = document.getElementById('svg-container');
-    const svgFilePaths = ['images/bg/patinha.svg', 'images/bg/patinha2.svg', "images/bg/patinha3.svg", "images/bg/patinha4.svg"]; // Array com os caminhos dos SVGs
+    const svgFilePaths = ['images/bg/patinha_gatocachorro1.svg', 'images/bg/patinha_gatocachorro2.svg', 'images/bg/patinha_gatocachorro3.svg', 'images/bg/patinha_gatocachorro4.svg', "images/bg/patinha_touro1.svg", "images/bg/patinha_touro2.svg" , "images/bg/patinha_galinha1.svg", "images/bg/patinha_galinha2.svg"]; // Array com os caminhos dos SVGs
     const numSVGs = 20; // Número de SVGs a serem distribuídos aleatoriamente
     const margin = 50; // Margem mínima entre os SVGs
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             do {
                 overlap = false;
                 // Tamanho aleatório
-                size = Math.random() * 200 + 50; // Tamanho entre 50 e 150px
+                size = Math.random() * 200 + 100; // Tamanho entre 50 e 150px
                 img.style.width = `${size}px`;
                 img.style.height = `${size}px`;
 

@@ -3,14 +3,18 @@
 
 /* Cores para o modo claro */
 :root {
-  --background-color: #ffffff;
+  --background-color: #f2f3f8;
+  --main-color: white;
   --button-color: #45B7e5;
+  --img_filter: brightness(200%);
 }
 
 /* Cores para o modo escuro */
 body.dark-mode {
-  --background-color: #121212;
+  --background-color: black;
+  --main-color: #121212;
   --button-color: #f9e20f;
+  --img_filter: brightness(0.09);
 
 }
 
@@ -20,7 +24,7 @@ body {
   margin: 0;
   padding: 0;
   height: 200vh;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 
 button {
@@ -203,18 +207,18 @@ nav .hoverparadropdown {
 }
 
 
-/*header ----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*header e background ----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 header {
-  padding-top: 20px;
   max-width: 1000px;
   margin: 0 auto;
-  height: 500px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 header img {
-  border-radius: 10px;
-
+  border-radius: 0 0 10px 10px;
+  width: 100%;
 }
 
 #svg-container {
@@ -225,11 +229,34 @@ header img {
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  
+  opacity: 0.5;
 }
 
 .svg-pattern {
   position: absolute;
-  opacity: 0.6;
+  filter: var(--img_filter);
 }
 
+
+/* main -------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+main{
+  border-radius: 5px;
+  background-color: var(--main-color);
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.video_section{
+  border-radius: 10px;
+  width: 50%;
+  height: 400px;
+  background-color: #000;
+}
+
+.video_section iframe{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
