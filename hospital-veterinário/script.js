@@ -26,7 +26,7 @@ function toggleDarkMode() {
 document.getElementById("darkModeToggle").addEventListener("click", toggleDarkMode);
 
 // Verificar a preferência do usuário ao carregar a página
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const savedPreference = localStorage.getItem("darkMode");
     if (savedPreference === "enabled") {
         document.body.classList.add("dark-mode");
@@ -38,3 +38,75 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const svgContainer = document.getElementById('svg-container');
+    const svgFilePaths = ['images/bg/patinha.svg', 'images/bg/patinha2.svg', "images/bg/patinha3.svg", "images/bg/patinha4.svg"]; // Array com os caminhos dos SVGs
+    const numSVGs = 20; // Número de SVGs a serem distribuídos aleatoriamente
+    const margin = 50; // Margem mínima entre os SVGs
+
+    function createSVGs() {
+        const placedSVGs = []; // Array para armazenar as posições e tamanhos dos SVGs já colocados
+
+        // Limpar SVGs existentes
+        while (svgContainer.firstChild) {
+            svgContainer.removeChild(svgContainer.firstChild);
+        }
+
+        const pageWidth = Math.max(document.documentElement.clientWidth, document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth);
+        const pageHeight = Math.max(document.documentElement.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+       
+        svgContainer.style.width = `${pageWidth}px`;
+        svgContainer.style.height = `${pageHeight}px`;
+
+        for (let i = 0; i < numSVGs; i++) {
+            const img = document.createElement('img');
+            const randomIndex = Math.floor(Math.random() * svgFilePaths.length);
+            img.src = svgFilePaths[randomIndex];
+            img.className = 'svg-pattern';
+
+            let size, posX, posY, overlap;
+            do {
+                overlap = false;
+                // Tamanho aleatório
+                size = Math.random() * 200 + 50; // Tamanho entre 50 e 150px
+                img.style.width = `${size}px`;
+                img.style.height = `${size}px`;
+
+                // Posição aleatória baseada no tamanho da página
+                posX = Math.random() * (pageWidth - size - margin * 2) + margin;
+                posY = Math.random() * (pageHeight - size - margin * 2) + margin;
+
+               // Verificação de colisão com margem
+               for (let j = 0; j < placedSVGs.length; j++) {
+                const placedSVG = placedSVGs[j];
+                if (
+                    posX < placedSVG.x + placedSVG.size + margin &&
+                    posX + size > placedSVG.x - margin &&
+                    posY < placedSVG.y + placedSVG.size + margin &&
+                    posY + size > placedSVG.y - margin
+                ) {
+                    overlap = true;
+                    break;
+                }
+            }
+        } while (overlap);
+
+            img.style.left = `${posX}px`;
+            img.style.top = `${posY}px`;
+
+            // Adicionar a posição e tamanho do SVG atual ao array
+            placedSVGs.push({ x: posX, y: posY, size: size });
+
+            svgContainer.appendChild(img);
+        }
+    }
+
+    createSVGs();
+
+    // Adicionar listener para redimensionamento
+    window.addEventListener('resize', function () {
+        createSVGs();
+    });
+});
