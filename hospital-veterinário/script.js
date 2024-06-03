@@ -110,3 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
         createSVGs();
     });
 });
+
+
+
+// NAVBAR ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+window.addEventListener('scroll', function () {
+    var navbar = document.querySelector('.famosanavbar');
+    if (window.pageYOffset > 90) {
+        navbar.classList.add('famosanavbar_fixed-navbar');
+    } else {
+        navbar.classList.remove('famosanavbar_fixed-navbar');
+    }
+});

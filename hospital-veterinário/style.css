@@ -227,6 +227,16 @@ nav .hoverparadropdown {
   color: #45b7e5;
 }
 
+.famosanavbar_fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.famosanavbar{
+  top: 0;
+}
 
 /*header e background ----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
