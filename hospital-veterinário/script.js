@@ -168,17 +168,17 @@ function startProgress() {
     progressBar.innerHTML = "<div class='progress'></div>";
     setTimeout(() => {
         const progress = document.querySelector(".progress");
-        progress.style.animation = "progressBar 3s linear forwards";
+        progress.style.animation = "progressBar 10s linear forwards";
     }, 100);
 }
 
 function autoSlide() {
     plusSlides(1);
     startProgress();
-    progressTimer = setTimeout(autoSlide, 3000);
+    progressTimer = setTimeout(autoSlide, 10000);
 }
 
-timeoutId = setTimeout(autoSlide, 3000);
+timeoutId = setTimeout(autoSlide, 10000);
 
 const slider = document.querySelector(".slider");
 slider.addEventListener("mouseover", () => {
@@ -189,12 +189,12 @@ slider.addEventListener("mouseover", () => {
 slider.addEventListener("mouseout", () => {
     resetProgress(); // Resetar a barra de progresso
     startProgress(); // Iniciar a animação novamente
-    timeoutId = setTimeout(autoSlide, 3000);
+    timeoutId = setTimeout(autoSlide, 10000);
 });
 
 function moveSlide(n) {
     currentSlide(n);
     clearTimeout(timeoutId);
     resetProgress();
-    timeoutId = setTimeout(autoSlide, 3000);
+    timeoutId = setTimeout(autoSlide, 10000);
 }
