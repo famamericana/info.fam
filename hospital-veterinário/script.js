@@ -126,8 +126,8 @@ window.addEventListener('scroll', function () {
 
 
 // slider text -----------------------------------------------------------------------------------------------------------------------------------------------------
-let slideIndex = 1; // Inicializa o índice do slide como 1
-showSlides(slideIndex); // Mostra o primeiro slide
+let slideIndex = 1;
+showSlides(slideIndex);
 
 function plusSlides(n) {
     showSlides(slideIndex += n);
@@ -141,37 +141,60 @@ function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 } // Volta ao primeiro slide se passar do último
-    if (n < 1) { slideIndex = slides.length } // Vai para o último slide se for menor que 1
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
     for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Esconde todos os slides
+        slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active-dot", "");
     }
-    slides[slideIndex - 1].style.display = "block"; // Mostra o slide atual
-    dots[slideIndex - 1].className += " active-dot"; // Ativa o dot correspondente
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active-dot";
+    startProgress();
 }
 
-let timeoutId = setTimeout(function autoSlide() {
-    plusSlides(1); // Muda para o próximo slide
-    timeoutId = setTimeout(autoSlide, 3000); // Define o intervalo para mudar slides automaticamente
-}, 3000);
+let timeoutId;
+let progressTimer;
+
+function resetProgress() {
+    clearTimeout(progressTimer);
+    const progressBar = document.querySelector(".progress-bar");
+    progressBar.innerHTML = "";
+}
+
+function startProgress() {
+    const progressBar = document.querySelector(".progress-bar");
+    progressBar.innerHTML = "<div class='progress'></div>";
+    setTimeout(() => {
+        const progress = document.querySelector(".progress");
+        progress.style.animation = "progressBar 3s linear forwards";
+    }, 100);
+}
+
+function autoSlide() {
+    plusSlides(1);
+    startProgress();
+    progressTimer = setTimeout(autoSlide, 3000);
+}
+
+timeoutId = setTimeout(autoSlide, 3000);
 
 const slider = document.querySelector(".slider");
 slider.addEventListener("mouseover", () => {
-    clearTimeout(timeoutId); // Pausa a mudança automática ao passar o mouse
+    clearTimeout(timeoutId);
+    resetProgress();
 });
 
 slider.addEventListener("mouseout", () => {
-    timeoutId = setTimeout(function autoSlide() {
-        plusSlides(1); // Continua a mudança automática após tirar o mouse
-        timeoutId = setTimeout(autoSlide, 3000);
-    }, 3000);
+    resetProgress(); // Resetar a barra de progresso
+    startProgress(); // Iniciar a animação novamente
+    timeoutId = setTimeout(autoSlide, 3000);
 });
 
 function moveSlide(n) {
-    currentSlide(n); // Move para o slide escolhido
-    resetAndStartSlideShow(); // Reseta e reinicia o slideshow
+    currentSlide(n);
+    clearTimeout(timeoutId);
+    resetProgress();
+    timeoutId = setTimeout(autoSlide, 3000);
 }
-
