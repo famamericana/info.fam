@@ -32,7 +32,7 @@ body.dark-mode {
   --titulo_cor: #45B7e5;
   --maincor: #333333;
   --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
-  --narbar: #2e2e2e;
+  --narbar: rgb(34, 34, 34);
 
 }
 
