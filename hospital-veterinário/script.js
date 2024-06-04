@@ -176,11 +176,11 @@ function autoSlide() {
     if (!slideClicked) {
         plusSlides(1); // Avança para o próximo slide se o usuário não tiver clicado em um ponto
     }
-    slideClicked = false; // Reinicia o estado do clique do slide
     startProgress();
-    progressTimer = setTimeout(autoSlide, 10000);
+    slideClicked = false; // Reinicia slideClicked para permitir o avanço automático após 10 segundos
+    clearTimeout(timeoutId); // Limpa o timeout anterior para garantir que não haja múltiplos timeouts ativos
+    timeoutId = setTimeout(autoSlide, 10000);
 }
-
 
 
 timeoutId = setTimeout(autoSlide, 10000);
@@ -201,9 +201,11 @@ let slideClicked = false;
 
 function moveSlide(n) {
     currentSlide(n);
-    slideClicked = true;
     clearTimeout(timeoutId);
     resetProgress();
     startProgress(); // Reinicia o progresso ao mover o slide manualmente
+    if (n !== slideIndex) {
+        slideClicked = true; // Define slideClicked como true apenas se o slide for alterado
+    }
     timeoutId = setTimeout(autoSlide, 10000);
 }
