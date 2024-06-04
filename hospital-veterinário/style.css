@@ -280,11 +280,13 @@ header img {
   pointer-events: none;
   z-index: -1;
   opacity: 0.5;
+  overflow-y: hidden;
 }
 
 .svg-pattern {
   position: absolute;
   filter: var(--img_filter);
+  overflow-y: hidden;
 }
 
 
@@ -443,7 +445,7 @@ main {
   width: calc(100% - 20px);
   box-sizing: border-box;
   margin: 0 auto;
-  min-height: 80vh;
+ 
   padding: 20px;
 
 }
@@ -665,5 +667,117 @@ main a {
 @media screen and (max-width: 768px) {
   .containerinfo {
       flex-wrap: wrap;
+  }
+}
+
+
+/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+.créditos {
+  color: #3a6092;
+  font-size: small;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.azulclarinho {
+  color: #45b7e5;
+}
+
+.footer-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -20px;
+}
+
+.footer-container {
+  display: flex;
+  max-width: 960px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 100px;
+  background-color: #1b3556;
+  color: #242527;
+  padding: 25px;
+  text-align: center;
+  border-top-right-radius: 50px;
+  height: fit-content;
+  margin-right: 20px;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.footer-logo img {
+  width: 180px;
+  margin: 20px;
+  padding-right: 20px;
+  border-right: 1px solid #45b7e5;
+}
+
+.footer-info p {
+  margin: 0 0 10px 0;
+  text-align: left;
+  color: white;
+}
+
+.footer-info p i {
+  color: #45b7e5;
+  font-size: 12px;
+  margin-right: 4px;
+
+}
+
+.footer-info p svg {
+  margin-right: 4px;
+  width: 15px;
+  height: 15px;
+  fill: #f9e20f;
+}
+
+.whatsapplink {
+  color: white;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 500px) {
+  .footer-container {
+    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo img {
+    padding: 20px;
+    padding-top: 0;
+    border-bottom: 1px solid #45b7e5;
+    border-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    border-right: none;
+  }
+
+  footer {
+    height: fit-content;
+    margin-right: 0;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-info p{
+    text-align: center;
+  }
+
+  .créditos{
+    margin-bottom: 25px;
   }
 }

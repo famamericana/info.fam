@@ -60,6 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
         svgContainer.style.width = `${pageWidth}px`;
         svgContainer.style.height = `${pageHeight}px`;
 
+            // Limitando o tamanho do contêiner para evitar que o overflow seja acionado
+    svgContainer.style.maxHeight = `${document.body.offsetHeight}px`;
+    svgContainer.style.overflowY = 'hidden';
+
         for (let i = 0; i < numSVGs; i++) {
             const img = document.createElement('img');
             const randomIndex = Math.floor(Math.random() * svgFilePaths.length);
