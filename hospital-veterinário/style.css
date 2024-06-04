@@ -285,6 +285,7 @@ header img {
   position: absolute;
   border-radius: 5px;
   bottom: 27px;
+  opacity: 0.5;
 }
 
 .progress {
@@ -349,11 +350,6 @@ header img {
 
 
 
-@media (max-width: 760px) {
-  header {
-    padding: 10px;
-  }
-}
 
 /* main -------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -434,4 +430,17 @@ main {
 .servicos_topicos img {
   height: 120px;
   filter: var(--icon_filter);
+}
+
+
+
+@media (max-width: 760px) {
+  header {
+    padding: 10px;
+  }
+
+  .servicos_topicos img {
+    height: 80px;
+  }
+  
 }
