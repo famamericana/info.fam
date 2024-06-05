@@ -118,11 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Adicionar listener para redimensionamento
     window.addEventListener('resize', function () {
-       
+
 
         // Chamar setSVGContainerDimensions ao carregar a página
         setSVGContainerDimensions();
-         createSVGs();
+        createSVGs();
     });
 });
 
@@ -139,7 +139,24 @@ window.addEventListener('scroll', function () {
         navbar.classList.remove('famosanavbar_fixed-navbar');
     }
 });
+const menuToggle = document.getElementById('mobile-menu');
+const mobileLinks = document.getElementById('mobile-links');
+const checkbox = document.getElementById('check');
 
+menuToggle.addEventListener('click', () => {
+    if (checkbox.checked) {
+        mobileLinks.classList.add('open');
+    } else {
+        mobileLinks.classList.remove('open');
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        mobileLinks.classList.remove('open');
+        checkbox.checked = false;
+    }
+});
 
 // slider text -----------------------------------------------------------------------------------------------------------------------------------------------------
 let slideIndex = 1;
