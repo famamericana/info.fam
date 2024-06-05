@@ -687,6 +687,10 @@ footer {
   color: white;
 }
 
+.footer a{
+  color: white;
+}
+
 .footer {
   max-width: 1000px;
   margin: 0 auto;
@@ -768,12 +772,9 @@ footer {
 .footer-info p {
   margin: 0 0 10px 0;
   text-align: left;
-  color: white;
+
 }
 
-.footer-info a {
-  color: white;
-}
 
 .footer-info p i {
   color: #45b7e5;
