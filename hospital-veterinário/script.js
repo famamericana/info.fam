@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const pageHeight = Math.max(document.documentElement.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
 
         svgContainer.style.width = `${pageWidth}px`;
-        svgContainer.style.height = `${pageHeight}px`;
+        svgContainer.style.height = `calc(${pageHeight}px - 100px)`;
 
         // Limitando o tamanho do contêiner para evitar que o overflow seja acionado
         svgContainer.style.maxHeight = `${document.body.offsetHeight}px`;
@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Adicionar listener para redimensionamento
     window.addEventListener('resize', function () {
        
+
         // Chamar setSVGContainerDimensions ao carregar a página
         setSVGContainerDimensions();
          createSVGs();
