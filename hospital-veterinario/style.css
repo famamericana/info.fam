@@ -80,7 +80,7 @@ button {
   color: var(--background-color);
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  top: 20px;
   background-color: var(--button-color);
   border-radius: 50px;
   border: none;
@@ -92,7 +92,7 @@ button {
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
-  right: 65px;
+  right: 20px;
   background-color: #25d366;
   color: var(--background-color);
   padding: 8px 15px;
@@ -351,6 +351,12 @@ nav .hoverparadropdown {
 @media (max-width: 768px) {
   .famosanavbar .links {
     display: none;
+  }
+
+  .botao_mudarcor {
+    right: 20px;
+    top: auto;
+    bottom: 65px;
   }
 
   .menu-toggle {
