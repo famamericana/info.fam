@@ -8,7 +8,8 @@
   --button-color: #45B7e5;
   --button-color_oposto: #f9e20f;
   --img_filter: brightness(200%);
-  --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);;
+  --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);
+  ;
   --texto: black;
   --dot: #1b3556;
   --texto_cinzaclaro: #58595b;
@@ -16,6 +17,7 @@
   --maincor: white;
   --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
   --narbar: #1b3556;
+  --footer: #1b3556;
 }
 
 /* Cores para o modo escuro */
@@ -33,6 +35,7 @@ body.dark-mode {
   --maincor: #333333;
   --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
   --narbar: rgb(34, 34, 34);
+  --footer: #121212;
 
 }
 
@@ -313,10 +316,11 @@ header img {
 
 @keyframes progressBar {
   0% {
-      width: 0;
+    width: 0;
   }
+
   100% {
-      width: 100%;
+    width: 100%;
   }
 }
 
@@ -434,8 +438,9 @@ header img {
   .servicos_topicos img {
     height: 80px;
   }
-  
+
 }
+
 /* main -------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 main {
@@ -445,7 +450,7 @@ main {
   width: calc(100% - 20px);
   box-sizing: border-box;
   margin: 0 auto;
- 
+
   padding: 20px;
 
 }
@@ -463,7 +468,7 @@ main {
 }
 
 .texto h1 {
-  color: var(--titulo_cor) ;
+  color: var(--titulo_cor);
   line-height: 38px;
 }
 
@@ -481,7 +486,7 @@ main li {
 }
 
 
-.servicos p{
+.servicos p {
   color: var(--texto_cinzaclaro);
 }
 
@@ -509,14 +514,14 @@ main a {
 }
 
 
-.textofinal{
+.textofinal {
   text-align: center;
   margin: 10px;
   margin-top: 20px;
 
 }
 
-.azulclaro{
+.azulclaro {
   color: var(--button-color);
 }
 
@@ -553,11 +558,11 @@ main a {
 }
 
 
-.grid-item:nth-child(2) .icon{
+.grid-item:nth-child(2) .icon {
   filter: var(--icon_azulescuro);
 }
 
-.grid-item:nth-child(3) .icon{
+.grid-item:nth-child(3) .icon {
   filter: var(--icon_azulescuro);
 }
 
@@ -578,7 +583,7 @@ main a {
 @media (max-width: 960px) {
 
   .grid-container {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
 }
@@ -666,118 +671,88 @@ main a {
 
 @media screen and (max-width: 768px) {
   .containerinfo {
-      flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 }
 
 
 /* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-.créditos {
-  color: #3a6092;
-  font-size: small;
-  margin-top: 10px;
-  margin-bottom: 20px;
+footer {
+  width: 100%;
+  background-color: var(--footer);
+  margin-top: 100px;
 }
 
-.azulclarinho {
-  color: #45b7e5;
+footer {
+  color: white;
+}
+
+.footer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer img {
+  max-width: 200px;
+}
+
+
+.footer_design {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr) 30px; /* Adicionando uma linha para a div4 */
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 20px;
+  height: 200px; /* Altura total do footer */
+}
+
+.primeiro {
+  grid-area: 1 / 1 / 3 / 2; /* Alterando a grade para ocupar duas linhas */
+}
+
+.segundo {
+  grid-area: 1 / 2 / 3 / 3; /* Alterando a grade para ocupar duas linhas */
+}
+
+.terceiro {
+  grid-area: 1 / 3 / 3 / 4; /* Alterando a grade para ocupar duas linhas */
+}
+
+.div4 {
+  display: flex;
+  border-top: 1px solid #45b7e5;
+  grid-area: 3 / 1 / 4 / 4; /* Definindo a grade para ocupar a última linha */
 }
 
 .footer-c {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: -20px;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.footer-container {
+.créditos {
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
+
+}
+
+.créditos_eu{
   display: flex;
-  max-width: 960px;
-  justify-content: center;
   align-items: center;
-  margin: 0 auto;
+
+  margin-top: 12px;
 }
 
-footer {
-  margin-top: 100px;
-  background-color: #1b3556;
-  color: #242527;
-  padding: 25px;
-  text-align: center;
-  border-top-right-radius: 50px;
-  height: fit-content;
-  margin-right: 20px;
-  font-family: 'Source Sans 3', sans-serif;
+.créditos_eu p{
+  font-size: 14px;
 }
 
-.footer-logo img {
-  width: 180px;
-  margin: 20px;
-  padding-right: 20px;
-  border-right: 1px solid #45b7e5;
+.créditos_eu img{
+  width: 100px;
+  margin-left: 6px;
+  margin-top: 5px;
 }
 
-.footer-info p {
-  margin: 0 0 10px 0;
-  text-align: left;
-  color: white;
-}
-
-.footer-info p i {
-  color: #45b7e5;
-  font-size: 12px;
-  margin-right: 4px;
-
-}
-
-.footer-info p svg {
-  margin-right: 4px;
-  width: 15px;
-  height: 15px;
-  fill: #f9e20f;
-}
-
-.whatsapplink {
-  color: white;
-  margin-bottom: 0 !important;
-}
-
-@media (max-width: 500px) {
-  .footer-container {
-    align-items: flex-start;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-logo img {
-    padding: 20px;
-    padding-top: 0;
-    border-bottom: 1px solid #45b7e5;
-    border-right: 0;
-    margin-left: 0;
-    padding-left: 0;
-    border-right: none;
-  }
-
-  footer {
-    height: fit-content;
-    margin-right: 0;
-  }
-
-  .footer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-info p{
-    text-align: center;
-  }
-
-  .créditos{
-    margin-bottom: 25px;
-  }
-}
