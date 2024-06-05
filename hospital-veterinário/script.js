@@ -38,13 +38,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// SVG ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
     const svgContainer = document.getElementById('svg-container');
-    const svgFilePaths = ['images/bg/patinha_gatocachorro1.svg', 'images/bg/patinha_gatocachorro2.svg', 'images/bg/patinha_gatocachorro3.svg', 'images/bg/patinha_gatocachorro4.svg', "images/bg/patinha_touro1.svg", "images/bg/patinha_touro2.svg" , "images/bg/patinha_galinha1.svg", "images/bg/patinha_galinha2.svg"]; // Array com os caminhos dos SVGs
+    const svgFilePaths = ['images/bg/patinha_gatocachorro1.svg', 'images/bg/patinha_gatocachorro2.svg', 'images/bg/patinha_gatocachorro3.svg', 'images/bg/patinha_gatocachorro4.svg', "images/bg/patinha_touro1.svg", "images/bg/patinha_touro2.svg", "images/bg/patinha_galinha1.svg", "images/bg/patinha_galinha2.svg"]; // Array com os caminhos dos SVGs
     const numSVGs = 20; // Número de SVGs a serem distribuídos aleatoriamente
     const margin = 50; // Margem mínima entre os SVGs
+
+    function setSVGContainerDimensions() {
+        const pageWidth = Math.max(document.documentElement.clientWidth, document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth);
+        const pageHeight = Math.max(document.documentElement.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+
+        svgContainer.style.width = `${pageWidth}px`;
+        svgContainer.style.height = `${pageHeight}px`;
+
+        // Limitando o tamanho do contêiner para evitar que o overflow seja acionado
+        svgContainer.style.maxHeight = `${document.body.offsetHeight}px`;
+        svgContainer.style.overflowY = 'hidden';
+    }
 
     function createSVGs() {
         const placedSVGs = []; // Array para armazenar as posições e tamanhos dos SVGs já colocados
@@ -54,15 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
             svgContainer.removeChild(svgContainer.firstChild);
         }
 
-        const pageWidth = Math.max(document.documentElement.clientWidth, document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth);
-        const pageHeight = Math.max(document.documentElement.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
-       
-        svgContainer.style.width = `${pageWidth}px`;
-        svgContainer.style.height = `${pageHeight}px`;
+        setSVGContainerDimensions(); // Definir dimensões do contêiner
 
-            // Limitando o tamanho do contêiner para evitar que o overflow seja acionado
-    svgContainer.style.maxHeight = `${document.body.offsetHeight}px`;
-    svgContainer.style.overflowY = 'hidden';
+        const pageWidth = svgContainer.offsetWidth;
+        const pageHeight = svgContainer.offsetHeight;
 
         for (let i = 0; i < numSVGs; i++) {
             const img = document.createElement('img');
@@ -74,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             do {
                 overlap = false;
                 // Tamanho aleatório
-                size = Math.random() * 200 + 100; // Tamanho entre 50 e 150px
+                size = Math.random() * 200 + 100; // Tamanho entre 100 e 300px
                 img.style.width = `${size}px`;
                 img.style.height = `${size}px`;
 
@@ -82,20 +89,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 posX = Math.random() * (pageWidth - size - margin * 2) + margin;
                 posY = Math.random() * (pageHeight - size - margin * 2) + margin;
 
-               // Verificação de colisão com margem
-               for (let j = 0; j < placedSVGs.length; j++) {
-                const placedSVG = placedSVGs[j];
-                if (
-                    posX < placedSVG.x + placedSVG.size + margin &&
-                    posX + size > placedSVG.x - margin &&
-                    posY < placedSVG.y + placedSVG.size + margin &&
-                    posY + size > placedSVG.y - margin
-                ) {
-                    overlap = true;
-                    break;
+                // Verificação de colisão com margem
+                for (let j = 0; j < placedSVGs.length; j++) {
+                    const placedSVG = placedSVGs[j];
+                    if (
+                        posX < placedSVG.x + placedSVG.size + margin &&
+                        posX + size > placedSVG.x - margin &&
+                        posY < placedSVG.y + placedSVG.size + margin &&
+                        posY + size > placedSVG.y - margin
+                    ) {
+                        overlap = true;
+                        break;
+                    }
                 }
-            }
-        } while (overlap);
+            } while (overlap);
 
             img.style.left = `${posX}px`;
             img.style.top = `${posY}px`;
@@ -111,9 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Adicionar listener para redimensionamento
     window.addEventListener('resize', function () {
-        createSVGs();
+       
+        // Chamar setSVGContainerDimensions ao carregar a página
+        setSVGContainerDimensions();
+         createSVGs();
     });
 });
+
 
 
 
