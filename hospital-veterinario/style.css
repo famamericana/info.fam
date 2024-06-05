@@ -67,7 +67,10 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+
 }
+
+
 
 button {
   font-family: 'Source Sans 3', sans-serif;
@@ -326,7 +329,7 @@ nav .hoverparadropdown {
 
 .mobile-menu {
   position: fixed;
-  top:90px;
+  top: 90px;
   display: none;
   flex-direction: column;
   width: 100%;
@@ -342,7 +345,7 @@ nav .hoverparadropdown {
   text-decoration: none;
   color: var(--texto);
   background-color: var(--maincor);
- 
+
 }
 
 @media (max-width: 768px) {

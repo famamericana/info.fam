@@ -39,34 +39,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // SVG ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 document.addEventListener("DOMContentLoaded", function () {
     const svgContainer = document.getElementById('svg-container');
-    const svgFilePaths = ['images/bg/patinha_gatocachorro1.svg', 'images/bg/patinha_gatocachorro2.svg', 'images/bg/patinha_gatocachorro3.svg', 'images/bg/patinha_gatocachorro4.svg', "images/bg/patinha_touro1.svg", "images/bg/patinha_touro2.svg", "images/bg/patinha_galinha1.svg", "images/bg/patinha_galinha2.svg"]; // Array com os caminhos dos SVGs
-    const numSVGs = 20; // Número de SVGs a serem distribuídos aleatoriamente
-    const margin = 50; // Margem mínima entre os SVGs
+    const svgFilePaths = [
+        'images/bg/patinha_gatocachorro1.svg', 
+        'images/bg/patinha_gatocachorro2.svg', 
+        'images/bg/patinha_gatocachorro3.svg', 
+        'images/bg/patinha_gatocachorro4.svg', 
+        "images/bg/patinha_touro1.svg", 
+        "images/bg/patinha_touro2.svg", 
+        "images/bg/patinha_galinha1.svg", 
+        "images/bg/patinha_galinha2.svg"
+    ];
+    const numSVGs = 30;
+    const margin = 50;
 
     function setSVGContainerDimensions() {
-        const pageWidth = Math.max(document.documentElement.clientWidth, document.body.scrollWidth, document.documentElement.scrollWidth, document.body.offsetWidth, document.documentElement.offsetWidth);
-        const pageHeight = Math.max(document.documentElement.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+        let pageWidth = document.body.clientWidth;
+        let pageHeight = document.body.clientHeight;
 
         svgContainer.style.width = `${pageWidth}px`;
         svgContainer.style.height = `calc(${pageHeight}px - 100px)`;
-
-        // Limitando o tamanho do contêiner para evitar que o overflow seja acionado
-        svgContainer.style.maxHeight = `${document.body.offsetHeight}px`;
-        svgContainer.style.overflowY = 'hidden';
     }
 
     function createSVGs() {
-        const placedSVGs = []; // Array para armazenar as posições e tamanhos dos SVGs já colocados
+        const placedSVGs = [];
 
-        // Limpar SVGs existentes
         while (svgContainer.firstChild) {
             svgContainer.removeChild(svgContainer.firstChild);
         }
 
-        setSVGContainerDimensions(); // Definir dimensões do contêiner
+        setSVGContainerDimensions();
 
         const pageWidth = svgContainer.offsetWidth;
         const pageHeight = svgContainer.offsetHeight;
@@ -80,16 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let size, posX, posY, overlap;
             do {
                 overlap = false;
-                // Tamanho aleatório
-                size = Math.random() * 200 + 100; // Tamanho entre 100 e 300px
+                size = Math.random() * 100 + 50; // Tamanho entre 50 e 150px
                 img.style.width = `${size}px`;
                 img.style.height = `${size}px`;
 
-                // Posição aleatória baseada no tamanho da página
                 posX = Math.random() * (pageWidth - size - margin * 2) + margin;
                 posY = Math.random() * (pageHeight - size - margin * 2) + margin;
 
-                // Verificação de colisão com margem
                 for (let j = 0; j < placedSVGs.length; j++) {
                     const placedSVG = placedSVGs[j];
                     if (
@@ -104,10 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             } while (overlap);
 
+            img.style.position = 'absolute';
             img.style.left = `${posX}px`;
             img.style.top = `${posY}px`;
 
-            // Adicionar a posição e tamanho do SVG atual ao array
             placedSVGs.push({ x: posX, y: posY, size: size });
 
             svgContainer.appendChild(img);
@@ -116,18 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createSVGs();
 
-    // Adicionar listener para redimensionamento
     window.addEventListener('resize', function () {
-
-
-        // Chamar setSVGContainerDimensions ao carregar a página
-        setSVGContainerDimensions();
         createSVGs();
     });
 });
-
-
-
 
 // NAVBAR ----------------------------------------------------------------------------------------------------------------------------------------------------
 
