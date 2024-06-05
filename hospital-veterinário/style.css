@@ -697,7 +697,7 @@ footer {
 }
 
 .footer img {
-  max-width: 200px;
+  max-width: 250px;
 }
 
 .footer ul{
@@ -710,11 +710,11 @@ footer {
 .footer_design {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: repeat(2, 1fr) 40px; /* Adicionando uma linha para a div4 */
+  grid-template-rows: auto 40px; /* Adicionando uma linha para a div4 */
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding: 20px;
-  height: 200px; /* Altura total do footer */
+  height: 180px; /* Altura total do footer */
 }
 
 .primeiro {
@@ -723,6 +723,8 @@ footer {
   align-content: center;
   grid-area: 1 / 1 / 3 / 2; /* Alterando a grade para ocupar duas linhas */
 }
+
+
 
 .segundo {
   grid-area: 1 / 2 / 3 / 3; /* Alterando a grade para ocupar duas linhas */
@@ -745,7 +747,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-top: 1px solid #45b7e5;
+  border-top: 1px solid var(--button-color);
 }
 
 .créditos {
@@ -764,7 +766,7 @@ footer {
 }
 
 .créditos_eu img{
-  width: 100px;
+  width: 95px;
   margin-left: 6px;
   margin-top: 5px;
 }
