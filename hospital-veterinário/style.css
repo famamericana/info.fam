@@ -450,9 +450,7 @@ main {
   width: calc(100% - 20px);
   box-sizing: border-box;
   margin: 0 auto;
-
   padding: 20px;
-
 }
 
 /*sobre mas vou colocar na pagina inicial ---------------------------------------------------------------------------------------------------------------- */
@@ -712,7 +710,7 @@ footer {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding: 20px;
-  height: 250px; /* Altura total do footer */
+  height: 200px; /* Altura total do footer */
 }
 
 .primeiro {
@@ -767,3 +765,27 @@ footer {
   margin-top: 5px;
 }
 
+.footer-info p {
+  margin: 0 0 10px 0;
+  text-align: left;
+  color: white;
+}
+
+.footer-info a {
+  color: white;
+}
+
+.footer-info p i {
+  color: #45b7e5;
+  font-size: 12px;
+  margin-right: 4px;
+
+}
+
+.footer-info p svg {
+  margin-right: 4px;
+  width: 15px;
+  height: 15px;
+  margin-bottom: -2px;
+  fill: #f9e20f;
+}
