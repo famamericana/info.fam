@@ -52,13 +52,13 @@ body.dark-mode {
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.219);
+  background: var(--button-color);
   border: 4px solid var(--background-color);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--button-color);
+  background: var(--button-color_oposto);
 }
 
 body {
@@ -325,9 +325,12 @@ nav .hoverparadropdown {
 
 
 .mobile-menu {
+  position: fixed;
+  top:90px;
   display: none;
   flex-direction: column;
   width: 100%;
+  z-index: 99;
 }
 
 .mobile-menu.open {
@@ -337,9 +340,9 @@ nav .hoverparadropdown {
 .mobile-menu a {
   padding: 10px;
   text-decoration: none;
-  color: #000;
-  background-color: #f4f4f4;
-  border-top: 1px solid #ccc;
+  color: var(--texto);
+  background-color: var(--maincor);
+ 
 }
 
 @media (max-width: 768px) {
