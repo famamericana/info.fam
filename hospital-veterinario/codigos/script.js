@@ -121,51 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// NAVBAR ----------------------------------------------------------------------------------------------------------------------------------------------------
-
-window.addEventListener('scroll', function () {
-    var navbar = document.querySelector('.famosanavbar');
-    if (window.pageYOffset > 90) {
-        navbar.classList.add('famosanavbar_fixed-navbar');
-    } else {
-        navbar.classList.remove('famosanavbar_fixed-navbar');
-    }
-});
-
-const menuToggle = document.getElementById('mobile-menu');
-const mobileLinks = document.getElementById('mobile-links');
-const checkbox = document.getElementById('check');
-
-menuToggle.addEventListener('click', () => {
-    if (checkbox.checked) {
-        mobileLinks.classList.add('open');
-    } else {
-        mobileLinks.classList.remove('open');
-    }
-});
-
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-    }
-});
-
-document.addEventListener('click', (event) => {
-    const isClickInside = menuToggle.contains(event.target) || mobileLinks.contains(event.target);
-    if (!isClickInside) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-    }
-});
-
-
-window.addEventListener('scroll', () => {
-    if (checkbox.checked) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-    }
-});
 
 // slider text -----------------------------------------------------------------------------------------------------------------------------------------------------
 let slideIndex = 1;
@@ -282,3 +237,14 @@ const executeCodes = () => {
 
 //executeCodes function will be called on webpage load
 window.addEventListener("load", executeCodes);
+
+
+///
+
+$(document).ready(function () {
+    $("#Navbar").load("codigos/navbar/navbar.html");
+});
+
+$(document).ready(function () {
+    $("#Footer").load("codigos/footer/footer.html");
+});

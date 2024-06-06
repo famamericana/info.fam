@@ -1,0 +1,252 @@
+<style>
+    
+
+/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+footer {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  background-color: var(--footer);
+  margin-top: 100px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+footer {
+  color: white;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer img {
+  max-width: 250px;
+}
+
+.footer ul {
+  padding-left: 18px;
+}
+
+.footer h2 {
+  margin-top: 10px;
+}
+
+.footer_design {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 40px;
+  /* Adicionando uma linha para a div4 */
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 20px 0;
+  height: 180px;
+  /* Altura total do footer */
+}
+
+.primeiro {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  grid-area: 1 / 1 / 3 / 2;
+  /* Alterando a grade para ocupar duas linhas */
+}
+
+.segundo {
+  grid-area: 1 / 2 / 3 / 3;
+  /* Alterando a grade para ocupar duas linhas */
+  width: 180px;
+}
+
+.terceiro {
+  grid-area: 1 / 3 / 3 / 4;
+  /* Alterando a grade para ocupar duas linhas */
+}
+
+.div4 {
+  display: flex;
+  align-items: center;
+
+  grid-area: 3 / 1 / 4 / 4;
+  /* Definindo a grade para ocupar a última linha */
+}
+
+.footer-c {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid var(--button-color);
+}
+
+.créditos {
+  color: white;
+  font-size: 14px;
+}
+
+.créditos_eu {
+  display: flex;
+  align-items: center;
+
+}
+
+.créditos_eu p {
+  font-size: 14px;
+
+}
+
+.créditos_eu img {
+  width: 95px;
+  margin-left: 6px;
+  margin-top: 5px;
+}
+
+.footer-info p {
+  margin: 0 0 10px 0;
+  text-align: left;
+
+}
+
+
+.footer-info p i {
+  color: #45b7e5;
+  font-size: 12px;
+  margin-right: 4px;
+
+}
+
+.footer-info p svg {
+  margin-right: 4px;
+  width: 15px;
+  height: 15px;
+  margin-bottom: -2px;
+  fill: #f9e20f;
+}
+
+
+
+@media (max-width: 900px) {
+
+
+
+  .segundo {
+    width: 130px;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .footer_design {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+    max-height: 300px;
+    height: 100%;
+  }
+
+  .primeiro {
+    grid-area: 1 / 1 / 2 / 3;
+    height: 120px;
+    justify-content: start;
+  }
+
+  .segundo {
+    grid-area: 2 / 1 / 3 / 2;
+    width: 150px;
+  }
+
+  .terceiro {
+    grid-area: 2 / 2 / 3 / 3;
+
+  }
+
+  .div4 {
+    grid-area: 3 / 1 / 4 / 3;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .footer_design {
+    grid-template-rows: auto ;
+    max-height: fit-content;
+    height: 100%;
+  }
+  .footer-c {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .créditos {
+    text-align: center;
+  }
+  
+  .créditos_eu {
+    margin-top: -20px;
+  }
+}
+
+</style>
+<footer>
+    <div class="footer">
+        <div class="footer_design">
+            <div class="primeiro">
+                <img src="images/logo_fam.svg">
+            </div>
+            <div class="segundo">
+                <h2>Links</h2>
+                <ul>
+                    <li><a href="estrutura">Estrutura</a></li>
+                    <li><a href="servicos">Serviços</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Cursos</a></li>
+                </ul>
+
+            </div>
+            <div class="terceiro">
+                <h2>Contato</h2>
+                <div class="footer-info">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> Rua Heitor Siqueira, 1139 – Praia Azul, Americana - SP
+                    </p>
+                    <p>
+                        <i class="fa fa-phone"></i> 19
+                        2220.2196 ‎‎ㅤ<i style="font-size: 16px;" class="fa-brands fa-whatsapp"></i> <a
+                            class="whatsapplink" target="_blank" href="https://wa.me/+551922202196">19
+                            2220.2196</a>
+                    </p>
+                    <div class="footer-info">
+                        <p><a target="_blank" href="https://www.instagram.com/hospitalveterinariofam/"><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" />
+                                </svg></a>
+                            /hospitalveterinariofam</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="div4">
+            <div class="footer-c">
+                <p class="créditos"> 2024 © FAM - Faculdade de Americana. Todos os direitos
+                    reservados. </p>
+                <span class="créditos_eu">
+                    <p style="color: #5e85b8;">Feito por </p>
+                    <a target="_blank" href="https://www.nikkoin.art">
+                        <img src="images/Marca_NH.svg">
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
