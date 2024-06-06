@@ -642,16 +642,3 @@ main a {
   border: 1px solid var(--button-color);
   color: var(--texto);
 }
-
-/* blog--------------------------------------------------------------------------------------------------------------------------------------------*/
-
-.blog{
-  border-radius: 5px;
-  background-color: var(--maincor);
-  max-width: 1000px;
-  width: calc(100% - 20px);
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 20px;
-  height: 500px;
-}
