@@ -4,22 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/images-gerais/famlogo.png">
+
+    <title>Hospital Veterinário FAM</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 
 <body>
+    <div id="Navbar"></div>
+
+    <button class="botao_mudarcor" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
+
+    <a href="https://api.whatsapp.com/send?phone=55019994379555" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i> Agende
+    </a>
 
     <header>
         <img src="https://i.postimg.cc/gjDwqdN2/medvetfoto-estrutura.png">
     </header>
 
     <main>
-
-
-
         <div class="texto">
             <div>
                 <h1>Especializações e Serviços</h1>
@@ -174,8 +179,10 @@
                         <div class="contentdogrid">
                             <h3>Serviços Especializados</h3>
                             <ul style="margin-bottom: 0;">
-                                <li> Serviços específicos para animais de estimação, incluindo áreas de internação separadas para cães e gatos.</li>
-                                <li> Ambiente confortável com controle de temperatura e espaço adequado para o conforto dos pets.</li>
+                                <li> Serviços específicos para animais de estimação, incluindo áreas de internação
+                                    separadas para cães e gatos.</li>
+                                <li> Ambiente confortável com controle de temperatura e espaço adequado para o conforto
+                                    dos pets.</li>
                             </ul>
                         </div>
                     </div>
@@ -183,35 +190,16 @@
             </div>
         </div>
 
-
-
         <p class="textofinal">
             No <span class="azulclaro"> Hospital Veterinário FAM</span>, garantimos o melhor cuidado e bem-estar para
             todos os tipos de pacientes, seja qual for sua necessidade especializada.
         </p>
     </main>
 
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+    <div id="Footer"></div>
 
-            // Esconder o texto inicial
-            document.getElementById("initialText").style.display = "none";
-        }
-
-
-    </script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

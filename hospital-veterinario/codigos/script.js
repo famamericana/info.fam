@@ -239,7 +239,7 @@ const executeCodes = () => {
 window.addEventListener("load", executeCodes);
 
 
-///
+/// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 $(document).ready(function () {
     $("#Navbar").load("codigos/navbar/navbar.html");
