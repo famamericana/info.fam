@@ -18,6 +18,7 @@
   --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
   --narbar: #1b3556;
   --footer: #1b3556;
+  --cinza: #bac0d1;
 }
 
 /* Cores para o modo escuro */
@@ -36,7 +37,7 @@ body.dark-mode {
   --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
   --narbar: rgb(34, 34, 34);
   --footer: #121212;
-
+  --cinza: #333;
 }
 
 /* Personaliza a barra de rolagem inteira */
@@ -361,6 +362,8 @@ nav .hoverparadropdown {
 
   .menu-toggle {
     display: flex;
+    padding: 40px 0 40px 40px;
+    margin-right: -15px;
   }
 }
 
@@ -908,6 +911,7 @@ footer {
 
 .créditos_eu p {
   font-size: 14px;
+
 }
 
 .créditos_eu img {
@@ -936,4 +940,92 @@ footer {
   height: 15px;
   margin-bottom: -2px;
   fill: #f9e20f;
+}
+
+/* cookies ---------------------------------------------------------------------------------------------------------------------------------------------------------  */
+
+
+.wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: -570px;
+  max-width: 345px;
+  width: 100%;
+  background: var(--main-color);
+  border-radius: 10px;
+  padding: 20px;
+  transition: left 0.3s ease;
+  border: 1px solid var(--cinza);
+}
+
+.wrapper.show {
+  left: 20px;
+
+}
+
+.wrapper .lgpd-titulo {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.lgpd-titulo i {
+  color: var(--button-color);
+  font-size: 32px;
+}
+
+.lgpd-titulo h2 {
+  color: var(--button-color);
+  font-weight: 500;
+}
+
+
+
+.wrapper .data p {
+  color: var(--texto_cinzaclaro);
+  font-size: 16px;
+  line-height: 25px;
+  text-indent: 10px;
+  text-align: justify;
+}
+
+.data p a {
+  color: #45B7e5;
+  text-decoration: none;
+}
+
+.data p a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .buttons {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons .button {
+  border: none;
+  color: var(--background-color);
+
+  border-radius: 5px;
+  background: #45B7e5;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  padding: 8px 15px;
+  border: 1px solid #45B7e5;
+  font-size: medium;
+}
+
+.buttons #acceptBtn:hover {
+  background-color: var(--main-color);
+  border: 1px solid var(--button-color);
+  color: var(--texto);
 }

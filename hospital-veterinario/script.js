@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const svgContainer = document.getElementById('svg-container');
     const svgFilePaths = [
-        'images/bg/patinha_gatocachorro1.svg', 
-        'images/bg/patinha_gatocachorro2.svg', 
-        'images/bg/patinha_gatocachorro3.svg', 
-        'images/bg/patinha_gatocachorro4.svg', 
-        "images/bg/patinha_touro1.svg", 
-        "images/bg/patinha_touro2.svg", 
-        "images/bg/patinha_galinha1.svg", 
+        'images/bg/patinha_gatocachorro1.svg',
+        'images/bg/patinha_gatocachorro2.svg',
+        'images/bg/patinha_gatocachorro3.svg',
+        'images/bg/patinha_gatocachorro4.svg',
+        "images/bg/patinha_touro1.svg",
+        "images/bg/patinha_touro2.svg",
+        "images/bg/patinha_galinha1.svg",
         "images/bg/patinha_galinha2.svg"
     ];
     const numSVGs = 30;
@@ -251,3 +251,34 @@ function moveSlide(n) {
     }
     timeoutId = setTimeout(autoSlide, 10000);
 }
+
+// cookies ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+const cookieBox = document.querySelector(".wrapper"),
+    buttons = document.querySelectorAll(".button");
+
+const executeCodes = () => {
+    //if cookie contains codinglab it will be returned and below of this code will not run
+    if (document.cookie.includes("codinglab")) return;
+    cookieBox.classList.add("show");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            cookieBox.classList.remove("show");
+
+            // Se o botão tiver o id "acceptBtn"
+            if (button.id == "acceptBtn") {
+                // Cria uma data de expiração para 2 anos a partir da data atual
+                var date = new Date();
+                date.setTime(date.getTime() + (2 * 365 * 24 * 60 * 60 * 1000)); // 2 anos em milissegundos
+                var expires = "; expires=" + date.toUTCString();
+                // Define o cookie com a data de expiração
+                document.cookie = "cookieBy=codinglab" + expires + "; path=/";
+            }
+
+        });
+    });
+};
+
+//executeCodes function will be called on webpage load
+window.addEventListener("load", executeCodes);
