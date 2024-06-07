@@ -1,45 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-/* Cores para o modo claro */
-:root {
-  --background-color: #f2f3f8;
-  --main-color: white;
-  --button-color: #45B7e5;
-  --button-color_oposto: #f9e20f;
-  --img_filter: brightness(200%);
-  --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);
-  ;
-  --texto: black;
-  --dot: #1b3556;
-  --texto_cinzaclaro: #58595b;
-  --titulo_cor: #0e2e7c;
-  --maincor: white;
-  --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
-  --narbar: #1b3556;
-  --footer: #1b3556;
-  --cinza: #bac0d1;
-}
-
-/* Cores para o modo escuro */
-body.dark-mode {
-  --background-color: rgb(34, 34, 34);
-  --main-color: #121212;
-  --button-color: #f9e20f;
-  --button-color_oposto: #45B7e5;
-  --img_filter: brightness(0.2);
-  --icon_filter: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
-  --texto: rgb(255, 255, 255);
-  --dot: #f2f3f8;
-  --texto_cinzaclaro: #c3c5c9;
-  --titulo_cor: #45B7e5;
-  --maincor: #333333;
-  --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
-  --narbar: #121212;
-  --footer: #121212;
-  --cinza: #333;
-}
-
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
   width: 12px;
@@ -62,6 +22,7 @@ body.dark-mode {
   background: var(--button-color_oposto);
 }
 
+
 body {
   background-color: var(--background-color);
   font-family: 'Source Sans 3', sans-serif;
@@ -70,8 +31,6 @@ body {
   overflow-x: hidden;
 
 }
-
-
 
 button {
   font-family: 'Source Sans 3', sans-serif;
