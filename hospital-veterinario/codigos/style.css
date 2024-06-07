@@ -576,7 +576,7 @@ main a {
 }
 
 
-.wrapper  .buttons .button {
+  .buttons .button {
   border: none;
   color: var(--background-color);
 
@@ -591,8 +591,8 @@ main a {
   font-size: medium;
 }
 
-.wrapper  .buttons button:hover {
-  background-color: var(--main-color);
+ .buttons button:hover {
+  background-color: transparent;
   border: 1px solid var(--button-color);
   color: var(--texto);
 }
