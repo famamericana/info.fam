@@ -81,11 +81,12 @@ button {
   color: var(--background-color);
   position: fixed;
   right: 20px;
-  top: 20px;
+  top: 25px;
   background-color: var(--button-color);
   border-radius: 50px;
   border: none;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   z-index: 9999;
 }

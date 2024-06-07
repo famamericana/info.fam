@@ -1,43 +1,43 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
     /* Cores para o modo claro */
-:root {
-  --background-color: #f2f3f8;
-  --main-color: white;
-  --button-color: #45B7e5;
-  --button-color_oposto: #f9e20f;
-  --img_filter: brightness(200%);
-  --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);
-  ;
-  --texto: black;
-  --dot: #1b3556;
-  --texto_cinzaclaro: #58595b;
-  --titulo_cor: #0e2e7c;
-  --maincor: white;
-  --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
-  --narbar: #1b3556;
-  --footer: #1b3556;
-  --cinza: #bac0d1;
-}
+    :root {
+        --background-color: #f2f3f8;
+        --main-color: white;
+        --button-color: #45B7e5;
+        --button-color_oposto: #f9e20f;
+        --img_filter: brightness(200%);
+        --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);
+        ;
+        --texto: black;
+        --dot: #1b3556;
+        --texto_cinzaclaro: #58595b;
+        --titulo_cor: #0e2e7c;
+        --maincor: white;
+        --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
+        --narbar: #1b3556;
+        --footer: #1b3556;
+        --cinza: #bac0d1;
+    }
 
-/* Cores para o modo escuro */
-body.dark-mode {
-  --background-color: rgb(34, 34, 34);
-  --main-color: #121212;
-  --button-color: #f9e20f;
-  --button-color_oposto: #45B7e5;
-  --img_filter: brightness(0.2);
-  --icon_filter: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
-  --texto: rgb(255, 255, 255);
-  --dot: #f2f3f8;
-  --texto_cinzaclaro: #c3c5c9;
-  --titulo_cor: #45B7e5;
-  --maincor: #333333;
-  --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
-  --narbar: #121212;
-  --footer: #121212;
-  --cinza: #333;
-}
+    /* Cores para o modo escuro */
+    body.dark-mode {
+        --background-color: rgb(34, 34, 34);
+        --main-color: #121212;
+        --button-color: #f9e20f;
+        --button-color_oposto: #45B7e5;
+        --img_filter: brightness(0.2);
+        --icon_filter: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
+        --texto: rgb(255, 255, 255);
+        --dot: #f2f3f8;
+        --texto_cinzaclaro: #c3c5c9;
+        --titulo_cor: #45B7e5;
+        --maincor: #333333;
+        --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
+        --narbar: #121212;
+        --footer: #121212;
+        --cinza: #333;
+    }
 
     .navbar-custom {
         position: relative;
@@ -189,15 +189,24 @@ body.dark-mode {
         background-color: var(--maincor);
     }
 
+
+    @media (max-width: 1150px) {
+        .botao_mudarcor {
+            right: 20px;
+            top: auto;
+            bottom: 65px;
+        }
+    }
+
     @media (max-width: 768px) {
         .navbar-custom .links-custom {
             display: none;
         }
 
         .botao_mudarcor {
-            right: 20px;
-            top: auto;
-            bottom: 65px;
+            right: 80px;
+            top: 25px;
+            bottom: auto;
         }
 
         .menu-toggle-custom {
@@ -227,9 +236,10 @@ body.dark-mode {
             </div>
             <div class="dropdown-custom">
                 <div class="hover-dropdown">
-                    <a href="https://info.fam.br/teste/hospital-veterinario/servicos" class="title-custom" id="Services">Serviços</a>
+                    <a href="https://info.fam.br/teste/hospital-veterinario/servicos" class="title-custom"
+                        id="Services">Serviços</a>
                 </div>
-              
+
             </div>
             <div class="dropdown-custom">
                 <div class="hover-dropdown">

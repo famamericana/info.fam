@@ -4,9 +4,11 @@ function checkDarkModePreference() {
     if (prefersDarkScheme.matches) {
         document.body.classList.add("dark-mode");
         localStorage.setItem("darkMode", "enabled");
+        updateDarkModeIcon(true);
     } else {
         document.body.classList.remove("dark-mode");
         localStorage.setItem("darkMode", "disabled");
+        updateDarkModeIcon(false);
     }
 }
 
@@ -15,10 +17,24 @@ function toggleDarkMode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
     // Salvar a escolha da pessoa no armazenamento local
-    if (element.classList.contains("dark-mode")) {
+    const darkModeEnabled = element.classList.contains("dark-mode");
+    if (darkModeEnabled) {
         localStorage.setItem("darkMode", "enabled");
     } else {
         localStorage.setItem("darkMode", "disabled");
+    }
+    updateDarkModeIcon(darkModeEnabled);
+}
+
+// Função para atualizar o ícone do botão
+function updateDarkModeIcon(isDarkMode) {
+    const icon = document.getElementById("darkModeIcon");
+    if (isDarkMode) {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+    } else {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
     }
 }
 
@@ -30,8 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedPreference = localStorage.getItem("darkMode");
     if (savedPreference === "enabled") {
         document.body.classList.add("dark-mode");
+        updateDarkModeIcon(true);
     } else if (savedPreference === "disabled") {
         document.body.classList.remove("dark-mode");
+        updateDarkModeIcon(false);
     } else {
         checkDarkModePreference(); // Verificar se o sistema está em modo escuro
     }
