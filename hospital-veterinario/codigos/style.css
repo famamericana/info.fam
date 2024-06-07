@@ -576,10 +576,9 @@ main a {
 }
 
 
-  .buttons .button {
+.buttons .button {
   border: none;
   color: var(--background-color);
-
   border-radius: 5px;
   background: #45B7e5;
   cursor: pointer;
@@ -591,7 +590,7 @@ main a {
   font-size: medium;
 }
 
- .buttons button:hover {
+.buttons button:hover {
   background-color: transparent;
   border: 1px solid var(--button-color);
   color: var(--texto);
@@ -634,7 +633,7 @@ main a {
 .noticia {
   display: flex;
   flex-direction: row;
-  border: 1px solid #f2f3f8;
+  border: 1px solid var(--background-color);
   border-radius: 0 10px 0 10px;
   max-width: 960px;
   padding: 10px;
@@ -683,7 +682,7 @@ main a {
 .topicoo {
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #45b7e5;
+  color: var(--button-color);
 }
 
 .topicochan {
@@ -693,7 +692,7 @@ main a {
   position: absolute;
   top: 20px;
   left: 20px;
-  background-color: white;
+  background-color: var(--main-color);
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -703,8 +702,8 @@ main a {
   color: black;
 }
 
-.titulo:hover {
-  color: #45b7e5;
+.titulotexto:hover {
+  color: #45B7e5;
 }
 
 .titulotexto {
@@ -712,6 +711,15 @@ main a {
   font-weight: 800;
   line-height: 1.1;
   width: 100%;
+  color: var(--texto);
+}
+
+.titulotexto_principal {
+  font-size: x-large;
+  font-weight: 800;
+  line-height: 1.1;
+  width: 100%;
+  color: white;
 }
 
 .div1 .titulotexto {
@@ -724,7 +732,7 @@ main a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #9eafc7;
+  color: var(--cinzaclaro_texto);
 }
 
 .nomeedata {
@@ -732,12 +740,12 @@ main a {
 }
 
 .nome {
-  color: #1b3556;
+  color: #45B7e5;
   font-weight: 600;
 }
 
 .data {
-  color: #9eafc7;
+  color: var(--cinzaclaro_texto);
   font-size: small;
 }
 
