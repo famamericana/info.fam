@@ -266,3 +266,24 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#Footer").load("codigos/footer/footer.html");
 });
+
+
+// blog ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const comecodotextoElements = document.querySelectorAll('.comecodotexto');
+
+    comecodotextoElements.forEach(comecodotexto => {
+        const infosblog = comecodotexto.closest('.infosblog');
+
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                const paddingRight = 20; // Ajuste esse valor conforme necessário
+                comecodotexto.style.width = `${entry.contentRect.width - paddingRight}px`;
+            }
+        });
+
+        resizeObserver.observe(infosblog);
+    });
+});
