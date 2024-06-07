@@ -69,6 +69,7 @@
     .div4 {
         display: flex;
         align-items: center;
+        height: 90px;
     }
 
     .footer-c {
@@ -128,6 +129,25 @@
     }
 
 
+    @media (max-width: 1150px) {
+        .footer-c {
+            justify-content: left;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+
+        .créditos_eu {
+            margin-top: -20px;
+            justify-content: left;
+
+        }
+
+        
+        .div4 {
+        height: 120px;
+    }
+    }
 
     @media (max-width: 900px) {
 
@@ -136,6 +156,8 @@
         .segundo {
             width: 130px;
         }
+      
+
 
     }
 
@@ -165,6 +187,8 @@
 
         }
 
+  
+
     }
 
 
@@ -176,22 +200,8 @@
             height: 100%;
         }
 
-        .footer-c {
-            justify-content: left;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-
-
-        .créditos_eu {
-            margin-top: -20px;
-            justify-content: left;
-
-        }
-
         .div4 {
-        height: 180px;
+        height: 150px;
     }
     }
 </style>
