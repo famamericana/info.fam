@@ -11,6 +11,13 @@
 </head>
 
 <body>
+    <div id="Navbar"></div>
+
+    <button class="botao_mudarcor" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
+
+    <a href="https://api.whatsapp.com/send?phone=55019994379555" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i> Agende
+    </a>
 
     <header>
         <img src="https://i.postimg.cc/gjDwqdN2/medvetfoto-estrutura.png">
@@ -21,9 +28,7 @@
 
         <div class="texto">
             <div>
-                <p id="initialText" class="initial-text">
-                    <i>Clique em um dos serviços para saber mais.</i>
-                </p>
+               
                 <div class="tab">
                     <button class="tablinks" onclick="openTab(event, 'castracao')">Castração</button>
                     <button class="tablinks" onclick="openTab(event, 'cirurgias')">Cirurgias</button>
@@ -32,6 +37,9 @@
                     <button class="tablinks" onclick="openTab(event, 'fisioterapia')">Fisioterapia</button>
                     <button class="tablinks" onclick="openTab(event, 'exames')">Exames</button>
                 </div>
+                <p id="initialText" class="initial-text">
+                    <i>Clique em um dos serviços para saber mais.</i>
+                </p>
             </div>
             <div id="castracao" class="tabcontent">
                 <h1>Castração</h1>
@@ -278,38 +286,11 @@
         </p>
     </main>
 
-    <script>
-        function openTab(evt, tabName) {
-            var tabcontent = document.getElementsByClassName("tabcontent");
-            var tablinks = document.getElementsByClassName("tablinks");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            if (evt) evt.currentTarget.className += " active";
+ <div id="Footer"></div>
 
-            // Esconder o texto inicial
-            document.getElementById("initialText").style.display = "none";
-        }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 
-        // Verifica se há um hash na URL ao carregar a página
-        document.addEventListener("DOMContentLoaded", function () {
-            var hash = window.location.hash.substring(1); // Remove o '#' da string
-            if (hash) {
-                var element = document.getElementById(hash);
-                if (element) {
-                    openTab(null, hash); // Chama openTab sem um evento se o hash corresponder a uma aba
-                    var link = document.querySelector(".tablinks[onclick*='" + hash + "']");
-                    if (link) {
-                        link.className += " active";
-                    }
-                }
-            }
-        });
-    </script>
 
 </body>
 
