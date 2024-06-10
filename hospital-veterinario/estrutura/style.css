@@ -44,6 +44,7 @@ header {
 
 header img {
     object-fit: cover;
+    object-position: top;
     height: 100%;
     width: 100%;
     border-radius: 10px;
