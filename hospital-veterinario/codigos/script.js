@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "images/bg/patinha_galinha1.svg",
         "images/bg/patinha_galinha2.svg"
     ];
-    const numSVGs = 30;
+    const numSVGs = 40;
     const margin = 50;
 
     function setSVGContainerDimensions() {
