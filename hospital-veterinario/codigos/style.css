@@ -203,7 +203,7 @@ header img {
 /* serviços -------------------------------------------------------------------------------------------------------------*/
 
 .servicos {
-  width: calc(100% - 20px);
+  width: calc(100% - 40px);
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 100px;
@@ -212,7 +212,6 @@ header img {
 }
 
 .servicos_topicos {
-  gap: 10px;
   display: flex;
   gap: 20px;
 }
