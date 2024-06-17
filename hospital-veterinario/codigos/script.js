@@ -1,5 +1,5 @@
 // Função para verificar e aplicar o modo escuro automaticamente com base nas configurações do sistema
-function checkDarkModePreference() {
+/*function checkDarkModePreference() {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
     if (prefersDarkScheme.matches) {
         document.body.classList.add("dark-mode");
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+*/
 
 // SVG ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {

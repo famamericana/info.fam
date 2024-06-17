@@ -9,6 +9,7 @@ $(document).ready(function () {
 
 // darkmode ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 // Função para verificar e aplicar o modo escuro automaticamente com base nas configurações do sistema
 function checkDarkModePreference() {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+*/
 
 
 /// tabs ---------------------------------------------------------------------------------------------------------------------------------------------------------------
