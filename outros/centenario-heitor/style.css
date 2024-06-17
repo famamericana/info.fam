@@ -387,7 +387,6 @@ nav a:hover {
 
 .programacaodesign {
     --color: rgba(30, 30, 30);
-    min-height: 100vh;
     display: grid;
     align-content: center;
     gap: 2rem;
