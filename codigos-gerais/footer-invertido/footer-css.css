@@ -6,7 +6,7 @@
       border-radius: 20px 20px 0 0;
       width: 100%;
       background-color: #fafbff;
-      margin-top: 150px;
+      margin-top: 120px;
       padding: 0 20px;
       box-sizing: border-box;
       height: fit-content;
@@ -20,6 +20,8 @@
 
   .footer a {
       color: rgb(27, 27, 27);
+      text-decoration: underline;
+
   }
 
   .footer {

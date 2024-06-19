@@ -558,3 +558,17 @@ nav a:hover {
         border-radius: 10px;
     }
 }
+
+
+/*  footer ----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+footer .segundo ul{
+    margin-top: revert !important;
+}
+
+footer .quatro .footer-c{
+    padding-top: 22px;
+}
+
+footer .créditos_eu a {
+    margin-top: -26px;
+}
