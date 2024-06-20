@@ -650,3 +650,9 @@ footer .quatro .footer-c{
 footer .créditos_eu a {
     margin-top: -26px;
 }
+
+@media (max-width: 900px){
+    footer .créditos_eu {
+        margin-top: -5px !important;
+    }
+    }

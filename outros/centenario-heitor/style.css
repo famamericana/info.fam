@@ -572,3 +572,94 @@ footer .quatro .footer-c{
 footer .créditos_eu a {
     margin-top: -26px;
 }
+
+@media (max-width: 900px){
+footer .créditos_eu {
+    margin-top: -5px !important;
+}
+}
+
+
+/* realização ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.realizacao{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 50px 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo_realizacao{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #82A5A0;
+    width: fit-content;
+}
+
+
+.logo-container {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.logo-item {
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: -6px;
+}
+
+.close-button {
+    background-color: white;
+    color: #9eafc7;
+    border: none;
+    font-size: 20px;
+    padding: 5px 11px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #9eafc7;
+}
+
+.espacoembranco {
+    margin-top: 80px;
+}
+
+.espacoembrancomenor {
+    margin-top: 40px;
+}
+
+.button-containeremprega {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 374px) {
+    .logo-item {
+        flex: 1 1 calc(50% - 5px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-item img {
+        width: 100%;
+    }
+
+    .logo-item:last-child img {
+        max-width: 150px;
+        width: 100%;
+    }
+}
+
+.logo-item img{
+    border-radius: 5px;
+}
