@@ -74,7 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
 var navbar = document.querySelector('nav');
 var navhumburguer = document.querySelector('.checkbtn');
 
-window.addEventListener('scroll', function () {
+function updateNavbar() {
+   
 
     if (window.innerWidth > 858) {
         if (window.scrollY > window.innerHeight - 100) {
@@ -89,5 +90,13 @@ window.addEventListener('scroll', function () {
             navhumburguer.classList.remove('checkbtn_color');
         }
     }
-});
+}
 
+// Listener para rolagem da página
+window.addEventListener('scroll', updateNavbar);
+
+// Listener para redimensionamento da janela
+window.addEventListener('resize', updateNavbar);
+
+// Executar ao carregar a página
+document.addEventListener("DOMContentLoaded", updateNavbar);
