@@ -366,12 +366,12 @@ nav a:hover {
 
 .botao_localizacao {
     display: flex;
-    border: 1px solid #0E2514;
     justify-content: center;
-    color: black;
+    color: white;
+    background-color: #82A5A0;
     font-weight: 600;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     margin-top: 10px;
 }
 
@@ -642,23 +642,6 @@ footer .créditos_eu {
     text-transform: uppercase;
 }
 
-
-@media (max-width: 374px) {
-    .logo-item {
-        flex: 1 1 calc(50% - 5px);
-        display: flex;
-        justify-content: center;
-    }
-
-    .logo-item img {
-        width: 100%;
-    }
-
-    .logo-item:last-child img {
-        max-width: 150px;
-        width: 100%;
-    }
-}
 
 .logo-item img{
     border-radius: 5px;
