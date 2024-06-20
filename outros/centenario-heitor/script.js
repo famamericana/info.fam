@@ -86,8 +86,10 @@ function updateNavbar() {
     } else {
         if (window.scrollY > window.innerHeight - 100) {
             navhumburguer.classList.add('checkbtn_color');
+            navbar.classList.remove('famosanavbar_color');
         } else {
             navhumburguer.classList.remove('checkbtn_color');
+            navbar.classList.remove('famosanavbar_color');
         }
     }
 }
