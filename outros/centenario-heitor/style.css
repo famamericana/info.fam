@@ -84,6 +84,26 @@ main {
 }
 
 /* navbar codigo inicial: https://www.codingnepalweb.com/responsive-navigation-menu-bar-html-css/ -------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.famosanavbar_color{
+    background-color: white;
+}
+
+.famosanavbar_color ul li a{
+    color: black;
+}
+
+.famosanavbar_color  a:hover {
+    background: #82A5A0;
+    transition: .5s;
+    color: white;
+    text-decoration: none;
+}
+
+.checkbtn_color{
+    background-color: white !important;
+    color: #82A5A0 !important;
+}
+
 nav {
     display: flex;
     justify-content: center;
@@ -91,8 +111,8 @@ nav {
     position: fixed;
     height: 80px;
     font-weight: 600;
-    background-color: #0e25142d;
     backdrop-filter: blur(5px);
+    background-color: #0e25142d;
     /* Aplica o efeito de desfoque no conteúdo abaixo do navbar */
     -webkit-backdrop-filter: blur(5px);
     /* Necessário para suporte no Safari */
