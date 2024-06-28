@@ -149,11 +149,12 @@ header {
     text-transform: uppercase;
     text-decoration: none;
     margin: 0 auto;
+    color: #1b3556;
+
 }
 
 .inscrevase a {
     text-decoration: none;
-    color: #1b3556;
     transition: all 0.3s;
 
 }
@@ -758,7 +759,7 @@ tr:nth-child(5) {
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
-    cursor: not-allowed;
+
 }
 
 .margendaora {
