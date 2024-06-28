@@ -125,7 +125,7 @@ function updateCountdown() {
   const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Minutos restantes
 
   if (daysLeft < 0) {
-    document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para que no próximo semestre você não perca a Prova de Bolsas ;)";
+    document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para não perder as novidades ;)";
   } else if (daysLeft === 0 && currentDate.getDate() === 30 && currentDate.getHours() < 14) {
     if (currentDate.getHours() < 14) {
       document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre as 13h30 e a prova começa às 14:00.";
