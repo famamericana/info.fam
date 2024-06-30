@@ -112,36 +112,36 @@ $(document).ready(function () {
   $("#meuFooter").load("/codigos-gerais/footer/footer.html");
 });
 
-
-
 // Data alvo
 const targetDate = new Date('2024-06-30T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
 
 function updateCountdown() {
   const currentDate = new Date();
+
+  // Verifica se já passou do horário alvo (após as 14:00 do dia 30 de junho)
+  if (currentDate >= targetDate) {
+    document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para não perder as novidades ;)";
+    return;
+  }
+
+  // Calcula o tempo restante apenas se ainda não passou do horário alvo
   const timeLeft = targetDate - currentDate;
   const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.ceil para arredondar para cima
-  const hoursLeft = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Horas restantes
-  const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Minutos restantes
 
-  if (daysLeft < 0) {
-    document.getElementById("countdown").textContent = "A prova já acabou, acompanhe nossas redes sociais para não perder as novidades ;)";
-  } else if (daysLeft === 0 && currentDate.getDate() === 30 && currentDate.getHours() < 14) {
-    if (currentDate.getHours() < 14) {
-      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre as 13h30 e a prova começa às 14:00.";
-    } else {
-      document.getElementById("countdown").textContent = "A prova já começou, boa sorte!";
-    }
+  // Aqui você pode manter as outras condições para exibir mensagens de contagem regressiva, se desejar
+  if (daysLeft === 0 && currentDate.getHours() < 14) {
+    document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 13h30 e a prova começa às 14:00.";
   } else if (daysLeft === 1) {
     document.getElementById("countdown").textContent = `Amanhã é o grande dia!`;
-  } else if (daysLeft === 29 && hoursLeft < 14) {
-    document.getElementById("countdown").textContent = `Se preparem, nos vemos em menos de um dia!`;
+  } else if (daysLeft === 29 && currentDate.getHours() < 14) {
+    document.getElementById("countdown").textContent = `Prepare-se, nos vemos em menos de um dia!`;
   } else {
-    document.getElementById("countdown").textContent = `Se preparem, nos vemos em ${daysLeft} dias!`;
+    document.getElementById("countdown").textContent = `Prepare-se, nos vemos em ${daysLeft} dias!`;
   }
 }
 
 window.addEventListener('load', updateCountdown); // Chama a função quando a página é carregada
+
 
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
