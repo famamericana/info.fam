@@ -1,23 +1,55 @@
+@font-face {
+    font-family: 'Just Sans Regular'; /* Nome que você vai usar para se referir à fonte */
+    src: url('fontes/JustSans-Regular.OTF') format('opentype'); /* Caminho para o arquivo .otf */
+    font-weight: normal; /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal; /* Estilo da fonte (normal, italic, etc.) */
+}
+
+@font-face {
+    font-family: 'Carbon Bold'; /* Nome que você vai usar para se referir à fonte */
+    src: url('fontes/CARBON-BOLD.OTF') format('opentype'); /* Caminho para o arquivo .otf */
+    font-weight: bold; /* Peso da fonte (bold, normal, etc.) */
+    font-style: normal; /* Estilo da fonte (normal, italic, etc.) */
+}
+
+
+
 body{
     background-color: #0070cb;
     padding: 0;
     margin: 0;
+    font-family: 'Just Sans Regular', sans-serif; /* Use o nome definido em @font-face */
+
+}
+
+p{
+    font-size: large;
 }
 
 header{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 30px;
     padding-top: 40px;
     padding-bottom: 40px;
+}
 
+.data{
+    margin-top: 10px;
+    background-color: #FFA000;
+    color: white;
+    padding: 5px 25px;
+    border-radius: 50px;
+    font-size: 22px;
 }
 
 .header_bg{
     position: absolute;
     top: 0;
-    background-image: url('images/sports-abstract-collage.jpg'); /* Substitua com o caminho da sua imagem */
-    background-size: cover; /* Ajusta a imagem para cobrir todo o cabeçalho */
+    background-image: url('images/sports-abstract-collage.jpg'); 
+    background-size: cover;
     background-position: center;
     filter: grayscale(100%);
     opacity: 0.05;
@@ -40,6 +72,7 @@ main{
     box-sizing: border-box;
     overflow-x: hidden;
     padding: 20px;
+    margin: 0 auto;
 }
 
 .logo-expo{
@@ -62,4 +95,6 @@ main{
     height: 80px;
     margin: 0 auto;
     overflow-x: hidden;
+    z-index: -1;
 }
+
