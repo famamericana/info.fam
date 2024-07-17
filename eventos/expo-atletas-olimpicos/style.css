@@ -1,32 +1,45 @@
 @font-face {
-    font-family: 'Just Sans Regular'; /* Nome que você vai usar para se referir à fonte */
-    src: url('fontes/JustSans-Regular.OTF') format('opentype'); /* Caminho para o arquivo .otf */
-    font-weight: normal; /* Peso da fonte (normal, bold, etc.) */
-    font-style: normal; /* Estilo da fonte (normal, italic, etc.) */
+    font-family: 'Just Sans Regular';
+    /* Nome que você vai usar para se referir à fonte */
+    src: url('fontes/JustSans-Regular.OTF') format('opentype');
+    /* Caminho para o arquivo .otf */
+    font-weight: normal;
+    /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal;
+    /* Estilo da fonte (normal, italic, etc.) */
 }
 
 @font-face {
-    font-family: 'Carbon Bold'; /* Nome que você vai usar para se referir à fonte */
-    src: url('fontes/CARBON-BOLD.OTF') format('opentype'); /* Caminho para o arquivo .otf */
-    font-weight: bold; /* Peso da fonte (bold, normal, etc.) */
-    font-style: normal; /* Estilo da fonte (normal, italic, etc.) */
+    font-family: 'Carbon Bold';
+    /* Nome que você vai usar para se referir à fonte */
+    src: url('fontes/CARBON-BOLD.OTF') format('opentype');
+    /* Caminho para o arquivo .otf */
+    font-weight: bold;
+    /* Peso da fonte (bold, normal, etc.) */
+    font-style: normal;
+    /* Estilo da fonte (normal, italic, etc.) */
 }
 
 
 
-body{
+body {
     background-color: #0070cb;
     padding: 0;
     margin: 0;
-    font-family: 'Just Sans Regular', sans-serif; /* Use o nome definido em @font-face */
+    font-family: 'Just Sans Regular', sans-serif;
+    /* Use o nome definido em @font-face */
 
 }
 
-p{
+p {
     font-size: large;
 }
 
-header{
+h1 {
+    color: white;
+}
+
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,39 +49,63 @@ header{
     padding-bottom: 40px;
 }
 
-.data{
-    margin-top: 10px;
-    background-color: #FFA000;
-    color: white;
-    padding: 5px 25px;
-    border-radius: 50px;
-    font-size: 22px;
+.data_container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 490px;
+    padding:  0 30px;
 }
 
-.header_bg{
+.data {
+    color: #00325D;
+    padding: 5px 25px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align: center;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.data_diferente {
+    font-size: 22px;
+    background-color: #00325D;
+    color: white;
+    padding: 5px 25px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+
+}
+
+.data:first-child{
+    flex: 1;
+    width: 100%;
+}
+
+.header_bg {
     position: absolute;
     top: 0;
-    background-image: url('images/sports-abstract-collage.jpg'); 
+    background-image: linear-gradient(to top, #0070cb 20%, rgba(175, 16, 16, 0) 100%), url('images/sports-abstract-collage.jpg');
     background-size: cover;
     background-position: center;
-    filter: grayscale(100%);
-    opacity: 0.05;
     height: 100%;
+    opacity: 0.1;
     max-height: 550px;
     width: 100%;
     z-index: -1;
 }
 
-main{
-    margin: 0 auto;
-    background-color: white;
-    width: 100%;
-    margin-top: 80px;
-    overflow-x: hidden;
-    box-shadow: 0px 24px 30px -30px rgba(0,0,0,0.4);
-}
 
-.container_main{
+
+.container_main {
     max-width: 960px;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -76,12 +113,20 @@ main{
     margin: 0 auto;
 }
 
-.logo-expo{
+.logo-expo {
     max-width: 500px;
     width: 100%;
 }
 
-.bubble{
+.subtitulo {
+    margin: 50px 0;
+
+    text-align: center;
+    color: #0070cb;
+    font-size: large;
+}
+
+.bubble {
     display: flex;
     justify-content: center;
 }
@@ -93,9 +138,22 @@ main{
     position: absolute;
     width: 100%;
     background-color: white;
-    height: 80px;
+    height: 30px;
     margin: 0 auto;
     overflow-x: hidden;
     z-index: -1;
 }
 
+@media (max-width: 450px) {
+
+    .data_diferente {
+        box-sizing: border-box;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .data:first-child{
+        flex: none;
+    }
+
+}
