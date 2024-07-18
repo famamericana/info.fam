@@ -32,7 +32,7 @@ body {
 }
 
 p {
-    font-size: large;
+    font-size: 15px;
     color: rgb(204, 214, 226);
     text-align: justify;
 }
@@ -164,16 +164,17 @@ header {
 
 }
 
-/*cards ----------------------------------------------------------------*/
+/*cards atletas -----------------------------------------------------------------------------------------------------------------*/
+
+li{
+    font-size: 15px;
+}
 
 .container {
-
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-    max-width: 960px;
+
 }
 
 .card {
@@ -207,6 +208,12 @@ header {
 .jogador_icon{
     max-width: 50px;
     width: 100%;
+}
+
+.jogador_esporte{
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffe9c2;
 }
 
 .card-content {
@@ -288,7 +295,5 @@ header {
         object-fit: cover;
         object-position: center;
     }
-
-
 
 }
