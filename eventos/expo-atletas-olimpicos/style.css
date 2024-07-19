@@ -161,12 +161,11 @@ header {
     .data:first-child {
         flex: none;
     }
-
 }
 
 /*cards atletas -----------------------------------------------------------------------------------------------------------------*/
 
-li{
+li {
     font-size: 15px;
 }
 
@@ -201,16 +200,16 @@ li{
     gap: 10px;
 }
 
-.card-title h2{
+.card-title h2 {
     margin: 0;
 }
 
-.jogador_icon{
+.jogador_icon {
     max-width: 50px;
     width: 100%;
 }
 
-.jogador_esporte{
+.jogador_esporte {
     font-size: 17px;
     font-weight: 600;
     color: #ffe9c2;
@@ -221,11 +220,12 @@ li{
     flex-direction: row;
     padding: 20px;
     gap: 10px;
-    flex-wrap: wrap; /* Para garantir que os cartões sejam exibidos corretamente */
+    flex-wrap: wrap;
+    /* Para garantir que os cartões sejam exibidos corretamente */
     flex-direction: row;
 }
 
-.card:nth-child(even) .card-content{
+.card:nth-child(even) .card-content {
     flex-direction: row-reverse;
 }
 
@@ -261,11 +261,11 @@ li{
 
 }
 
-.card:nth-child(even) ul{
+.card:nth-child(even) ul {
     padding-left: 23px;
 }
 
-.card:nth-child(odd) ul{
+.card:nth-child(odd) ul {
     padding-left: 30px;
 }
 
@@ -275,15 +275,15 @@ li{
     .card:nth-child(even) {
         flex-direction: column;
     }
-    
-    .card .card-content{
+
+    .card .card-content {
         flex-direction: column;
     }
 
-    .card:nth-child(even) .card-content{
+    .card:nth-child(even) .card-content {
         flex-direction: column;
     }
- 
+
     .card-image {
         max-width: 100%;
         max-height: 300px;
@@ -300,8 +300,68 @@ li{
 
 /* logos olimpiadas -------------------------------------------------------------------------------------------------*/
 
-.olimpiadas_logos{
+.gallery {
+    text-align: center;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-image img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    margin-bottom: -5px;
+    border: 1px solid #00325D;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.thumbnail-images {
+    margin-left: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 350px;
+    width: 100%;
+    max-width: 150px;
+    box-sizing: border-box;
+}
+
+.thumbnail {
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 750px) {
+
+
+    .gallery {
+        display: block;
+    }
+
     
+.thumbnail-images {
+
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.thumbnail-images {
+    margin: 0 auto;
+    height: 150px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+}
+
+
 }
