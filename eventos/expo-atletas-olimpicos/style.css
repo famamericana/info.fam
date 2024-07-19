@@ -19,7 +19,28 @@
     font-style: normal;
     /* Estilo da fonte (normal, italic, etc.) */
 }
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 14px;
+}
 
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+    border-radius: 10px;
+
+}
+
+/* Personaliza a barra de rolagem quando você passa o mouse sobre ela */
+::-webkit-scrollbar-thumb:hover {
+    background: #1b3556;
+}
 
 
 body {
@@ -31,11 +52,13 @@ body {
 
 }
 
-p {
+.container_main p {
     font-size: 15px;
     color: rgb(204, 214, 226);
     text-align: justify;
+    text-align-last: center;
 }
+
 
 .parte_branca h1 {
     padding-top: 50px;
@@ -48,7 +71,7 @@ header {
     align-items: center;
     justify-content: center;
     padding: 30px;
-    padding-top: 40px;
+    padding-top: 100px;
     padding-bottom: 40px;
 }
 
@@ -96,7 +119,7 @@ header {
 .header_bg {
     position: absolute;
     top: 0;
-    background-image: linear-gradient(to top, #0070cb 20%, rgba(175, 16, 16, 0) 100%), url('images/sports-abstract-collage.jpg');
+    background-image: linear-gradient(to top, #0070cb 20%, rgba(175, 16, 16, 0) 100%), url('images/sports-abstract-collage.png');
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -161,11 +184,13 @@ header {
     .data:first-child {
         flex: none;
     }
+   
 }
+
 
 /*cards atletas -----------------------------------------------------------------------------------------------------------------*/
 
-li {
+.card li {
     font-size: 15px;
 }
 
@@ -311,7 +336,7 @@ li {
     width: 100%;
     height: auto;
     margin-bottom: -5px;
-    border: 1px solid #00325D;
+    border: 1px solid #FFA000;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -320,6 +345,7 @@ li {
 .thumbnail-images {
     margin-left: 10px;
     display: flex;
+    align-items: center;
     gap: 10px;
     padding: 10px;
     flex-direction: column;
@@ -327,14 +353,14 @@ li {
     overflow-x: hidden;
     max-height: 350px;
     width: 100%;
-    max-width: 150px;
+    max-width: 160px;
     box-sizing: border-box;
 }
 
 .thumbnail {
-    width: auto;
     cursor: pointer;
     transition: transform 0.3s;
+    max-width: 150px;
 }
 
 .thumbnail:hover {
@@ -348,20 +374,85 @@ li {
         display: block;
     }
 
-    
-.thumbnail-images {
 
+
+.thumbnail-images {
     flex-direction: row;
     overflow-x: scroll;
     overflow-y: hidden;
 }
 .thumbnail-images {
     margin: 0 auto;
-    height: 150px;
     width: 100%;
     max-width: 500px;
     margin-left: auto;
 }
 
 
+}
+
+
+
+/* realização ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.realizacao_container{
+    display: flex;
+    margin: 0 auto;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.realizacao{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+ 
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo_realizacao{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #82A5A0;
+    width: fit-content;
+}
+
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-item {
+    position: relative;
+    border-radius: 5px;
+    width: 150px;
+    min-height: 80px;
+}
+
+.logo-item img{
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+
+    .realizacao_container{
+        flex-direction: column;
+        gap: 0px !important;
+    
+    }
+   
+}
+
+@media (max-width: 360px) {
+    .logo-container {
+
+        gap: 10px !important;
+
+    }
+   
 }

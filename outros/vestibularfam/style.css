@@ -259,6 +259,7 @@ button:hover {
 .cursosposwow {
     display: flex;
     align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
 }
