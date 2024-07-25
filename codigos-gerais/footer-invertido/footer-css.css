@@ -13,6 +13,9 @@
       font-family: 'Source Sans 3', sans-serif;
   }
 
+  footer p{
+    color: rgb(27, 27, 27);
+}
   footer {
       color: rgb(27, 27, 27);
   }
