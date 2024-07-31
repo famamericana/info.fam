@@ -108,3 +108,11 @@ iframe {
     box-shadow: inset 0 0 0 2px #93d9f5;
 }
 
+.desejamos{
+    text-align: center;
+    border: 2px dotted #93d9f5;
+    padding: 10px 20px;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 7px;
+}
