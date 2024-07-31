@@ -1,23 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recepção de Calouros</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="icon" href="/images-gerais/famlogo.png">
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
 <body>
+    <div id="Navbar"></div>
+
     <header>
         <div class="titulo">
-            <img src="calouro.svg">
-          <div class="datas">1 e 2 de agosto</div>
+            <img class="img-recepcao" src="calouro.svg">
+            <div class="datas"><b style="color: white;">1</b> e <b style="color: white;">2</b> de agosto</div>
         </div>
-        <a class="botao-planilha" href="#planilha">Saiba sua sala</a>
+        <a class="botao-planilha">saiba onde está sua sala</a>
     </header>
     <main>
-        <div>
-            e
+        <section style="margin-bottom: 80px;">
+            <h1 style="text-align: center;">
+                Bem-vindo ao início de uma jornada de aprendizado e conquistas!
+            </h1>
+            <p>
+                Nesta página, você encontrará informações sobre as salas de aula. Caso haja alguma mudança, este será o
+                canal para você identificar sua nova sala. Fique atento também ao portal do aluno para verificar sua
+                grade
+                de aulas. Se a disciplina do dia for EAD (Ensino a Distância), significa que não haverá aula presencial.
+            </p>
+            <p>
+                Em caso de dúvidas, nossos colaboradores uniformizados estão à disposição nos corredores, portarias e
+                departamentos para ajudá-lo.
+            </p>
+           
+                <h3 style="text-align: center;">
+                    Desejamos a todos um excelente início de aulas!
+                </h3>
+        
+        </section>
+        <section id="planilha">
+            <h1 style="text-align: center;">
+                Salas
+            </h1>
+            <iframe
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQjjScYRPGgUH0ZyF6t1GlI1xS7oyDDiHIbcvH3LLJXgGFxsFonhQztt9PyJRWmNQ/pubhtml?gid=849386806&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+        </section>
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a página útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountRecepcaoCalouros">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
         </div>
     </main>
+
+    <div id="meuFooter"></div>
+
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script src="/codigos-gerais/likesbotão/likes.js"></script>
+
+
 </html>
