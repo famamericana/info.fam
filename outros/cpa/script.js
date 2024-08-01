@@ -42,10 +42,10 @@ function showSlides(n) {
         slides[i].style.display = "none"; // Esconde todos os slides
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active-dot", "");
+        dots[i].className = dots[i].className.replace(" activetimeline-dot", "");
     }
     slides[slideIndex - 1].style.display = "block"; // Mostra o slide atual
-    dots[slideIndex - 1].className += " active-dot"; // Ativa o dot correspondente
+    dots[slideIndex - 1].className += " activetimeline-dot"; // Ativa o dot correspondente
 }
 
 let timeoutId = setTimeout(function autoSlide() {
@@ -103,3 +103,48 @@ $(document).ready(function () {
         slides.eq(nextIndex).addClass('visible');
     });
 });
+
+// timeline --------------------------------------------------------------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize with the first event activetimeline
+    const firstEvent = document.querySelector('.event');
+    if (firstEvent) {
+        showText('text1', firstEvent);
+    }
+});
+
+window.addEventListener('resize', updateTimelineLine);
+
+function showText(textId, clickedEvent) {
+    // Remove activetimeline class from all events and text contents
+    const events = document.querySelectorAll('.event');
+    const texts = document.querySelectorAll('.text-content');
+    
+    events.forEach(event => event.classList.remove('activetimeline'));
+    texts.forEach(text => text.classList.remove('activetimeline'));
+
+    // Add activetimeline class to the clicked event and the corresponding text
+    clickedEvent.classList.add('activetimeline');
+    const activetimelineText = document.getElementById(textId);
+    if (activetimelineText) {
+        activetimelineText.classList.add('activetimeline');
+    }
+
+    // Update the line animation
+    updateTimelineLine();
+}
+
+function updateTimelineLine() {
+    const activetimelineEvent = document.querySelector('.event.activetimeline');
+    if (activetimelineEvent) {
+        // Get the bounding rectangle of the activetimeline event and the timeline
+        const clickedEventRect = activetimelineEvent.getBoundingClientRect();
+        const timelineRect = document.querySelector('.timeline').getBoundingClientRect();
+
+        // Calculate the position of the center of the clicked event relative to the timeline
+        const centerX = clickedEventRect.left + clickedEventRect.width / 2 - timelineRect.left;
+
+        // Set the width of the timeline line to end at the center of the clicked event
+        document.querySelector('.timeline-line').style.width = `${centerX}px`;
+    }
+}
