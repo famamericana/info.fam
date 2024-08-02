@@ -519,7 +519,7 @@ body {
 .timeline {
     display: flex;
     justify-content: center;
-    gap: 10%;
+    gap: 70px;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -620,4 +620,13 @@ body {
 
 .text-content.activetimeline {
     display: block;
+}
+
+.text-display h4{
+    margin-top: -10px;
+    color: #1b3556;
+}
+
+.text-display .fa-regular {
+    margin-right: 5px;
 }
