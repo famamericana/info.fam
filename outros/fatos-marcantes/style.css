@@ -12,7 +12,11 @@ body {
     font-family: 'Source Sans 3', sans-serif;
 }
 
-.tl-timeline h1, .tl-timeline h2, .tl-timeline h3, .tl-timeline h4, .tl-timeline h5, .tl-timeline h6, .tl-timeline p, .tl-credit, .tl-caption, .tl-timeaxis{
+/*.tl-timeline h1, .tl-timeline h2, .tl-timeline h3, .tl-timeline h4, .tl-timeline h5, .tl-timeline h6{
+
+}*/
+
+ .tl-timeline p, .tl-credit, .tl-caption, .tl-timeaxis{
     font-family: 'Source Sans 3', sans-serif !important;
 }
 
@@ -52,7 +56,7 @@ main {
     flex: 1 0 auto;
     display: flex;
     width: 100%;
-    height: 700px;
+    height: 750px;
 }
 
 iframe {
@@ -63,7 +67,7 @@ iframe {
 
 @media (max-width: 700px) {
     .iframe-container {
-        height: 99vh;
+        height: 100vh;
     }
     .tl-caption{
         padding-bottom: 50px;
