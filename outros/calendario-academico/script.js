@@ -10,7 +10,7 @@ moment.locale('pt');
 var startDate = Date.now();
 var items = [];
 $.getJSON(
-    "https://www.googleapis.com/calendar/v3/calendars/c_1d632bae559723f223004e21450411782b68de51ac45be3c47dfc51cd1c4b3b4%40group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=15&timeMin=" + new Date(startDate).toISOString(),
+    "https://www.googleapis.com/calendar/v3/calendars/c_1d632bae559723f223004e21450411782b68de51ac45be3c47dfc51cd1c4b3b4%40group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=30&timeMin=" + new Date(startDate).toISOString(),
     function (data) {
         $.each(data["items"], function (key, val) {
             items.push(startDate(val["start"]));
