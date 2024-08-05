@@ -5,18 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fatos Marcantes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.1">
     <link rel="icon" href="/images-gerais/famlogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
 </head>
 
 <body>
-    <iframe
-        src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1qnFr21ymO-b4TbnnIyXjtYgasmE7EWw01RQda2JYh7U&font=OpenSans-GentiumBook&lang=pt-br&timenav_position=top&hash_bookmark=true&initial_zoom=2'
-        webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+    <header>
+        teste
+    </header>
+    <main>
+        <h1>This is a timeline</h1>
+        <div id='timeline-embed' style="width: 100%; height: 600px"></div>
+        <div>The end</div>
+    </main>
 
-
-
-
+    <script type="text/javascript">
+        timeline = new TL.Timeline('timeline-embed',
+            'https://docs.google.com/spreadsheets/d/1qnFr21ymO-b4TbnnIyXjtYgasmE7EWw01RQda2JYh7U/pubhtml');
+    </script>
+    <script src="index.js"></script>
 </body>
+
 </html>
