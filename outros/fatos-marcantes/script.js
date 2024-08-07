@@ -1,3 +1,23 @@
+$(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
+});
+
+
+//https forçar -------------------------------------------------------------------------------------------------------------------------------
+if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}
+
+
+
 //Aniversário FAM --------------------------------------------------------------------------------  
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -23,4 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// 
+// planilha //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var additionalOptions = {
+    lang: 'pt-br'
+};
+var timeline = new TL.Timeline('timeline-embed', 
+    'https://docs.google.com/spreadsheets/d/1qnFr21ymO-b4TbnnIyXjtYgasmE7EWw01RQda2JYh7U/pubhtml', 
+    additionalOptions);

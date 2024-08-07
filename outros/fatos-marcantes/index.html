@@ -7,29 +7,50 @@
     <title>Fatos Marcantes</title>
     <link rel="icon" href="/images-gerais/famlogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-
+    <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
 <body>
+    <div id="Navbar"></div>
     <header>
-        teste
+        <img src="images/LOGO-FAM.svg">
     </header>
     <main>
-        <div id='timeline-embed' style="width: 100%; height: 600px"></div>
-        <div>The end</div>
-    </main>
+        <div class="timeline_container">
+            <div id='timeline-embed'></div>
+        </div>
 
-    <script type="text/javascript">
-        var additionalOptions = {
-            lang: 'pt-br'
-        };
-        var timeline = new TL.Timeline('timeline-embed', 
-            'https://docs.google.com/spreadsheets/d/1qnFr21ymO-b4TbnnIyXjtYgasmE7EWw01RQda2JYh7U/pubhtml', 
-            additionalOptions);
-    </script>
-    <script src="script.js"></script>
+        <div class="textooelike">
+            <div class="textoinfofam">
+                Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                </p>
+            </div>
+            <div class="CountLike" id="LikeCountFatosMarcantes">
+                <button class="button button1">
+                    <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+    <div id="meuFooter"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js?v=1.1"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
 </body>
 
 </html>

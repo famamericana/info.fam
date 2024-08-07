@@ -1,15 +1,36 @@
 @import url('https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f2f3f8;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid #f2f3f8;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     font-family: 'Source Sans 3', sans-serif;
+    background-color: #f2f3f8;
 }
 
 /*.tl-timeline h1, .tl-timeline h2, .tl-timeline h3, .tl-timeline h4, .tl-timeline h5, .tl-timeline h6{
@@ -27,7 +48,24 @@ body {
     width: auto !important;
 }
 
+.tl-slider-container-mask {
+    overflow-x: hidden;
+    overflow-y: hidden !important;
+}
 
+.tl-storyslider {
+    min-height: 500px;
+}
+
+.tl-menubar {
+    top: auto !important;
+    bottom: 40px;
+}
+
+ iframe {
+
+    box-shadow: none !important;
+}
 .tl-media .tl-media-content-container .tl-media-content img,
 .tl-media .tl-media-content-container .tl-media-content embed,
 .tl-media .tl-media-content-container .tl-media-content object,
@@ -40,11 +78,16 @@ body {
 
 }
 
-
 header {
-    height: 500px;
-    background-color: aquamarine;
-    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header img{
+    max-width: 600px;
 }
 
 main {
@@ -53,29 +96,18 @@ main {
     box-sizing: border-box;
     padding: 20px;
     max-width: 960px;
-    width: 100%;
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
+    border-radius: 10px;
 }
 
-.iframe-container {
-    flex: 1 0 auto;
-    display: flex;
-    width: 100%;
-    height: 750px;
-}
-
-iframe {
+.timeline_container{
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
+    flex: 1 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #45b7e5;
 }
 
 @media (max-width: 700px) {
-    .iframe-container {
-        height: 900px;
-    }
     .tl-caption {
         padding-bottom: 20px;
     }
