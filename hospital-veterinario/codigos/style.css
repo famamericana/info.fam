@@ -79,7 +79,7 @@ header {
 header img {
   border-radius: 10px 10px 5px 5px;
   width: 100%;
-  height: calc(85dvh - 100px);
+  height: auto;
   object-fit: cover;
   object-position: center;
 }
