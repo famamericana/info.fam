@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #205c7e;
+    --cordoeventoatual: #199eae;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -306,7 +306,7 @@ main {
 }
 
 .umevento {
-    background-color: #45b7e5;
+    background-color: #205c7e;
 }
 
 .doisevento {
@@ -317,55 +317,8 @@ main {
     background-color: #173e70;
 }
 
-.accordion {
-    width: 100%;
-    padding: 20px 0;
-    padding-bottom: 0;
-}
 
-.tab {
-    width: 100%;
-    background-color: #f2f3f8;
-    cursor: pointer;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
 
-.tab h3 {
-    margin: 0;
-    padding: 10px;
-    margin-left: 10px
-}
-
-.content {
-    display: none;
-    width: 100%;
-    padding: 10px;
-}
-
-.content a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: var(--texto-preto);
-    background-color: white;
-    margin-top: 1px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.content a:hover {
-    color: #45b7e5;
-}
-
-.content a:first-child {
-    border-radius: 5px 5px 0 0;
-    margin-top: 0;
-}
-
-.content a:last-child {
-    border-radius: 0 0 5px 5px;
-}
 
 #headerCarousel .carousel-item {
     opacity: 1;
@@ -655,4 +608,110 @@ footer .créditos_eu a {
     footer .créditos_eu {
         margin-top: -5px !important;
     }
+    }    
+    
+    
+    /*tabs ---------------------------------------------------------------------------------------------------------------------------*/
+
+    
+    /* Core styles/functionality */
+    .tab input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+      .tab__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease-out;
+      }
+
+      /* Visual styles */
+      .accordion {
+        margin-top: 10px;
+        color: #f2f3f8;
+        border: 1px solid;
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      .tab__label,
+      .tab__close {
+        display: flex;
+        
+        background: #f2f3f8;
+        cursor: pointer;
+        margin-bottom: 0;
+
+      }
+
+      .tab__label h3{
+        padding: 10px;
+        padding-left: 17px;
+        padding-bottom: 5px;
+      }
+      .tab__label {
+        justify-content: space-between;
+   
+        margin-bottom: 0;
+        color: black;
+      }
+      .tab__label::after {
+        padding: 15px;
+        padding-right: 30px;
+        font-family: FontAwesome;
+        content: "\f0d7";
+        width: 5px;
+        height: 5px;
+        text-align: center;
+        transition: all 0.35s;
+      }
+
+      .tab__content p {
+        margin: 0;
+        padding: 1rem;
+      }
+      .tab__close {
+        justify-content: flex-end;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        background: #f9e20f;
+        color: black;
+    }
+      .accordion--radio {
+        --theme: var(--secondary);
+      }
+      
+      /* Arrow animation */
+      .tab input:not(:checked) + .tab__label:hover::after {
+        animation: bounce .5s infinite;
+      }
+      @keyframes bounce {
+        25% {
+            transform: translateY(-0.25rem); /* Mover um pouco para cima */
+        }
+        75% {
+            transform: translateY(0.25rem); /* Mover um pouco para baixo */
+        }
+    }
+
+
+      .content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        margin-top: 1px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid #f2f3f8;
+    }
+    
+    .content a:hover {
+        color: #45b7e5;
+    }
+        
+    .content a:last-child {
+        border-bottom: none;
     }

@@ -1,17 +1,3 @@
-function toggleAccordion(index) {
-    const tabs = document.querySelectorAll('.accordion .tab .content');
-    const currentTab = tabs[index];
-
-    if (currentTab.style.display === 'block') {
-        currentTab.style.display = 'none';
-    } else {
-        for (let tab of tabs) {
-            tab.style.display = 'none';
-        }
-        currentTab.style.display = 'block';
-    }
-}
-
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
 });
@@ -85,3 +71,19 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', ajustarConteudo);
   });
   
+
+
+
+  // tab ----------------------------------------------------------------
+  document.querySelectorAll('.accordion input[type="radio"]').forEach(input => {
+    input.addEventListener('change', function() {
+        document.querySelectorAll('.tab__content').forEach(content => {
+            content.style.maxHeight = '0'; // Fecha todos os conteúdos
+        });
+
+        if (this.checked) {
+            const content = this.nextElementSibling.nextElementSibling;
+            content.style.maxHeight = content.scrollHeight + 'px'; // Abre o conteúdo específico
+        }
+    });
+});
