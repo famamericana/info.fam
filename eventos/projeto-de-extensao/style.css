@@ -31,10 +31,26 @@ body {
     
 }
 
+section p{
+    text-indent: 10px;
+}
+
+.main2{
+    margin-top: 30px !important;
+    max-width: 960px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 20px;
+    height: fit-content;
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;  
+}
+
 main {
     max-width: 960px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
     height: fit-content;
     background-color: white;
@@ -179,12 +195,8 @@ header .logopdepc{
 }
 
 .textaofamexplicacao{
-    padding-left: 10px;
-    padding-right: 10px;
+
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: #f9e20f dotted 1px;
-    padding-bottom: 20px;
 }
 
 .textaofamexplicacaomini{

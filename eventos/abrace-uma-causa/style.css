@@ -107,6 +107,11 @@ main {
     color: #5d378d;
 }
 
+
+#como-funciona ul {
+    padding-left: 25px;
+}
+
 main section {
     margin: 10px;
     margin-bottom: 50px;
@@ -227,6 +232,12 @@ iframe {
     }
     iframe{
         min-height: 250px;
+    }
+
+    .main2 {
+       
+        padding: 10px;
+    
     }
 }
 
