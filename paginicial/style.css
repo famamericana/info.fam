@@ -192,3 +192,16 @@ header h2 {
     border: 2px solid white;
 }
 
+.pagnova-atualizacao{
+    background-color: #00b7ff;
+    color: white;
+    padding: 5px 10px;
+    position: absolute;
+    margin-top: -24px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: small;
+    border: 2px solid white;
+}
+

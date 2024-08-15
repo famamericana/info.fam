@@ -91,7 +91,10 @@ iframe {
 /* botão de inscrição */
 
 .portal {
+    margin-top: 50px;
     padding: 0 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .btn2 {
@@ -111,7 +114,6 @@ iframe {
     font-size: 16px;
     text-decoration: none;
     width: 100%;
-    margin-top: 50px;
     text-align: center;
 }
 
@@ -383,6 +385,11 @@ iframe {
 
     .lugar i {
         margin-right: 4px;
+    }
+
+    .portal{
+        flex-wrap: wrap;
+
     }
 
 }
