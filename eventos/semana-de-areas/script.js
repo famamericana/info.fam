@@ -38,11 +38,6 @@ location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
 
 
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     // Função que ajusta o conteúdo baseado na largura da tela
     function ajustarConteudo() {
