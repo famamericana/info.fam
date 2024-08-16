@@ -50,11 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-/// tabs ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/// tabs estrutura ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName("tabcontent-estrutura");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
@@ -66,7 +67,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 
     // Esconder o texto inicial
-    document.getElementById("initialText").style.display = "none";
+    document.getElementById("initialText-estrutura").style.display = "none";
 }
 
 
