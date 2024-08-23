@@ -189,15 +189,14 @@ header{
     background: linear-gradient(157deg,#3eb288 49.8%, #45be92 50%);
 }
 
-
 .inscricao{
+    color: white;
     padding: 20px;
     background-color: #006b69;
     text-align: center;
 }
 
 .inscricao a{
-    color: white;
     text-align: center;
     text-decoration: none;
 }
