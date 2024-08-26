@@ -1,0 +1,311 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    /* Cores para o modo claro */
+    :root {
+        --background-color: #f2f3f8;
+        --main-color: white;
+        --button-color: #45B7e5;
+        --button-color_oposto: #f9e20f;
+        --img_filter: brightness(200%);
+        --icon_filter: invert(71%) sepia(29%) saturate(2936%) hue-rotate(166deg) brightness(96%) contrast(86%);
+
+        --texto: black;
+        --dot: #1b3556;
+        --texto_cinzaclaro: #58595b;
+        --titulo_cor: #0e2e7c;
+        --maincor: white;
+        --icon_azulescuro: invert(15%) sepia(50%) saturate(987%) hue-rotate(179deg) brightness(94%) contrast(91%);
+        --narbar: #1b3556;
+        --footer: #1b3556;
+        --cinza: #bac0d1;
+        --cinzaclaro_texto: #9eafc7;
+        
+    }
+
+    /* Cores para o modo escuro */
+   /* body.dark-mode {
+        --background-color: rgb(34, 34, 34);
+        --main-color: #121212;
+        --button-color: #f9e20f;
+        --button-color_oposto: #45B7e5;
+        --img_filter: brightness(0.2);
+        --icon_filter: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
+        --texto: rgb(255, 255, 255);
+        --dot: #f2f3f8;
+        --texto_cinzaclaro: #c3c5c9;
+        --titulo_cor: #45B7e5;
+        --maincor: #333333;
+        --icon_azulescuro: invert(95%) sepia(88%) saturate(5902%) hue-rotate(330deg) brightness(104%) contrast(100%);
+        --narbar: #121212;
+        --footer: #121212;
+        --cinza: #333;
+        --cinzaclaro_texto: #9c9c9c;
+    } */
+
+    button,
+    label {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+    .navbar-custom {
+        position: relative;
+        z-index: 99;
+        width: 100%;
+        height: 90px;
+        background-color: var(--narbar);
+        display: flex;
+        font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .container-custom {
+        max-width: 1000px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+
+    .dropdown-custom a {
+        text-decoration: none;
+        font-size: 18px;
+        color: rgb(255, 255, 255);
+        border-radius: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .title-custom {
+        font-family: var(--fonte-resto);
+        text-decoration: none;
+        font-size: 18px;
+        padding: 5px 15px 5px 15px;
+        color: rgb(255, 255, 255);
+        border-radius: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: medium !important;
+    }
+
+    .links-custom {
+        display: flex;
+        gap: 10px;
+    }
+
+    .links-custom a:hover {
+        color: var(--button-color);
+        transition: 0.3s;
+        background-color: var(--background-color);
+    }
+
+    .logo-custom {
+        width: 140px;
+        height: auto;
+        margin-top: 5px;
+    }
+
+
+    .navbar-custom_fixed-navbar {
+        position: fixed;
+    }
+
+    .navbar-custom {
+        top: 0;
+    }
+
+    .menu-toggle-custom {
+        display: none;
+    }
+
+    .menu-toggle-custom {
+        display: none;
+        flex-direction: column;
+        width: 70px;
+        cursor: pointer;
+        transform: scale(0.5);
+        margin-right: 0px;
+    }
+
+    .menu-toggle-custom span {
+        background: #fff;
+        border-radius: 10px;
+        height: 7px;
+        margin: 7px 0;
+        transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    .menu-toggle-custom span:nth-of-type(1) {
+        width: 50%;
+    }
+
+    .menu-toggle-custom span:nth-of-type(2) {
+        width: 100%;
+    }
+
+    .menu-toggle-custom span:nth-of-type(3) {
+        width: 75%;
+    }
+
+    .menu-toggle-custom input[type="checkbox"] {
+        display: none;
+    }
+
+    .menu-toggle-custom input[type="checkbox"]:checked~span:nth-of-type(1) {
+        transform-origin: bottom;
+        transform: rotatez(45deg) translate(8px, 0px)
+    }
+
+    .menu-toggle-custom input[type="checkbox"]:checked~span:nth-of-type(2) {
+        transform-origin: top;
+        transform: rotatez(-45deg)
+    }
+
+    .menu-toggle-custom input[type="checkbox"]:checked~span:nth-of-type(3) {
+        transform-origin: bottom;
+        width: 50%;
+        transform: translate(30px, -11px) rotatez(45deg);
+    }
+
+    .mobile-menu-custom {
+        position: fixed;
+        top: 90px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        z-index: 99;
+    }
+
+    .mobile-menu-custom.open {
+        display: flex;
+    }
+
+    .mobile-menu-custom a {
+        padding: 10px;
+        text-decoration: none;
+        color: var(--texto);
+        background-color: var(--maincor);
+    }
+
+
+    @media (max-width: 1150px) {
+        .botao_mudarcor {
+            right: 20px;
+            top: auto;
+            bottom: 65px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar-custom .links-custom {
+            display: none;
+        }
+
+        .botao_mudarcor {
+            right: 80px;
+            top: 25px;
+            bottom: auto;
+        }
+
+        .menu-toggle-custom {
+            display: flex;
+            padding: 40px 0 40px 40px;
+            margin-right: -15px;
+        }
+    }
+</style>
+
+<div class="navbar-custom">
+    <div class="container-custom">
+        <div class="logo-custom">
+            <a href="https://www.fam.br/"><img src="/codigos-gerais/navbar-fam/logo_fam.svg" alt="FAM logo"></a>
+        </div>
+
+        <div class="links-custom">
+
+            <div class="dropdown-custom">
+                <div class="hover-dropdown">
+                    <a href="https://info.fam.br/" class="title-custom" id="Courses">Info.FAM</a>
+                </div>
+            </div>
+            <div class="dropdown-custom">
+                <div class="hover-dropdown">
+                    <a href="https://www.fam.br/" class="title-custom" id="Courses">Cursos</a>
+                </div>
+            </div>
+        </div>
+
+        <label for="check-custom" class="menu-toggle-custom" id="mobile-menu-custom">
+            <input type="checkbox" id="check-custom" />
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+</div>
+
+<div class="mobile-menu-custom" id="mobile-links-custom">
+    <a href="https://info.fam.br/">Info.FAM</a>
+    <a href="https://www.fam.br/">Cursos</a>
+</div>
+
+
+<script>
+    // NAVBAR ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+    window.addEventListener('scroll', function () {
+        var navbar = document.querySelector('.navbar-custom');
+        if (window.pageYOffset > 90) {
+            navbar.classList.add('navbar-custom_fixed-navbar');
+        } else {
+            navbar.classList.remove('navbar-custom_fixed-navbar');
+        }
+    });
+
+    const menuToggle = document.getElementById('mobile-menu-custom');
+    const mobileLinks = document.getElementById('mobile-links-custom');
+    const checkbox = document.getElementById('check-custom');
+
+    menuToggle.addEventListener('click', () => {
+        if (checkbox.checked) {
+            mobileLinks.classList.add('open');
+        } else {
+            mobileLinks.classList.remove('open');
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            mobileLinks.classList.remove('open');
+            checkbox.checked = false;
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        const isClickInside = menuToggle.contains(event.target) || mobileLinks.contains(event.target);
+        if (!isClickInside) {
+            mobileLinks.classList.remove('open');
+            checkbox.checked = false;
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        if (checkbox.checked) {
+            mobileLinks.classList.remove('open');
+            checkbox.checked = false;
+        }
+    });
+
+</script>
