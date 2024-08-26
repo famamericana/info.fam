@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'Salmond Regular';
     /* Nome que você vai usar para se referir à fonte */
-    src: url('fontes/SALMOND - Regular.OTF') format('opentype');
+    src: url('fontes/SALMOND-REGULAR.OTF') format('opentype');
     /* Caminho para o arquivo .otf */
     font-weight: normal;
     /* Peso da fonte (normal, bold, etc.) */
@@ -14,7 +14,7 @@
 @font-face {
     font-family: 'Salmond Bold';
     /* Nome que você vai usar para se referir à fonte */
-    src: url('fontes/SALMOND - BOLD.OTF') format('opentype');
+    src: url('fontes/SALMOND-BOLD.OTF') format('opentype');
     /* Caminho para o arquivo .otf */
     font-weight: bold;
     /* Peso da fonte (bold, normal, etc.) */
@@ -239,6 +239,7 @@ header {
     align-items: center;
     justify-content: center;
     background: linear-gradient(157deg, #3eb288 49.8%, #45be92 50%);
+    font-family: 'Salmond Regular', sans-serif;
 }
 
 .horario {
