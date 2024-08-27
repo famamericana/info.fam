@@ -426,7 +426,7 @@ header {
     display: none;
     padding: 20px;
     text-align: center;
-    border: 2px solid #006b69;
+    background-color: #fbfcff;
     min-height: 200px;
 }
 
