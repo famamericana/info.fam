@@ -348,9 +348,7 @@ header {
 
 .oqueesperar img {
     display: block;
-    /* Garante que a imagem seja tratada como um bloco */
     margin: 0 auto;
-    /* Centraliza a imagem horizontalmente */
 }
 
 .conhecimento {
@@ -392,10 +390,13 @@ header {
     margin-bottom: 20px;
 }
 
+.convidado .container-convidado{
+    width: 700px;
+}
 .convidado img{
-    width: 280px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: -20px;
 }
 
 
@@ -427,11 +428,24 @@ header {
     padding: 20px;
     text-align: center;
     background-color: #fbfcff;
-    min-height: 200px;
+    min-height: 130px;
+    text-align: left;
 }
 
-.slide p {
+.slide p{
+    font-size: 18px;
+    font-style: italic;
     text-align: left;
+}
+
+.slider a{
+    color: #3eb288;
+}
+
+.slider .fonte{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+
 }
 
 .active {
@@ -439,8 +453,11 @@ header {
 }
 
 .slide h2 {
-    font-size: x-large;
-    color: #3eb288;
+    color: #006b69;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-family: 'Salmond Bold', sans-serif;
+
 }
 
 .navigation {
@@ -574,8 +591,13 @@ header {
 @media (max-width: 930px) {
 
     .convidado {
-       flex-direction: column-reverse;
+       flex-direction: column;
     align-items: center;
+    }
+
+    .convidado .container-convidado{
+        width: 100%;
+        height: 300px;
     }
 
     .parent {
@@ -663,7 +685,7 @@ header {
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 840px) {
 
     .oqueesperar {
         grid-template-columns: 1fr;
