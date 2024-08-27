@@ -724,4 +724,9 @@ header {
         height: 600px;
     }
 
+    .progress {
+        top: 20px;
+        height: fit-content;
+    }
+
 }
