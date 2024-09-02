@@ -398,7 +398,7 @@ body {
     .navbar_main .menu-toggle-custom {
         display: flex;
         padding: 40px 10px 40px 10px;
-        margin-right: -8px;
+        margin-right: -4px;
     }
 
     .navbar_main .mobile-inscrevasse {
@@ -429,8 +429,8 @@ body {
         background-color: #f9e20f !important;
         text-transform: uppercase;
         color: #1b3556;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 14px;
+        margin-right: 14px;
         justify-content: center;
         border-radius: 5px;
     }
