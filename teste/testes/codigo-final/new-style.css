@@ -243,6 +243,8 @@ body {
 
 .navbar_main .mobile-menu-custom.open {
     display: flex;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
 }
 
 .navbar_main .mobile-menu-custom a {
@@ -268,10 +270,6 @@ body {
 }
 
 /* Visual styles */
-.navbar_main .accordion {
-    overflow-y: auto;
-    max-height: 60vh;
-}
 
 .navbar_main .tab__label {
     display: flex;
