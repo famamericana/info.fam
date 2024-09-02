@@ -142,8 +142,8 @@ body {
     height: fit-content;
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #f9e20f;
-    color: #f9e20f !important;
-  
+    color: #f9e20f;
+
 }
 
 .navbar_main .inscrevase a {
@@ -152,11 +152,11 @@ body {
 }
 
 .navbar_main .inscrevase:hover {
-    color: #1b3556 !important;
+    color: #1b3556 ;
     background-color: #f9e20f;
 }
 
-.navbar_main .mobile-inscrevasse{
+.navbar_main .mobile-inscrevasse {
     display: none;
 }
 
@@ -250,7 +250,6 @@ body {
     text-decoration: none;
     color: #000;
     background-color: white;
-    border-bottom: 1px solid #f2f3f8;
 }
 
 /*tabs navbar ------------------------------------------------------------------------------------------------------------------------------------*/
@@ -305,9 +304,7 @@ body {
 }
 
 
-.navbar_main .accordion--radio {
-    --theme: var(--secondary);
-}
+
 
 /* Arrow animation */
 .navbar_main .tab input:not(:checked)+.tab__label:hover::after {
@@ -342,7 +339,7 @@ body {
     color: white;
 }
 
-.navbar_main .tab:last-child h3{
+.navbar_main .tab:last-child h3 {
     width: 100%;
 }
 
@@ -353,12 +350,13 @@ body {
     padding-bottom: 0;
 }
 
-.navbar_main .content-tabs{
+.navbar_main .content-tabs {
     display: flex;
     flex-direction: column;
     max-height: 195px;
     overflow-y: scroll;
 }
+
 .navbar_main .content-tabs a {
     display: block;
     padding: 10px;
@@ -369,11 +367,15 @@ body {
 
 .navbar_main .content-tabs a:hover {
     color: #45b7e5;
-     transition: 0.3s;
+    transition: 0.3s;
 }
 
 .navbar_main .content-tabs a:last-child {
     border-bottom: none;
+}
+
+.navbar_main .mobile-inscrevasse2{
+    display: none;
 }
 
 @media (max-width: 1150px) {
@@ -399,16 +401,47 @@ body {
         margin-right: -8px;
     }
 
-    .navbar_main .mobile-inscrevasse{
+    .navbar_main .mobile-inscrevasse {
         display: block;
         text-wrap: nowrap;
-        
+
     }
 }
 
 @media (max-width: 420px) {
 
-    .navbar_main .mobile-inscrevasse{
+
+
+    .navbar_main .mobile-inscrevasse {
         display: none;
+    }
+
+    .navbar_main .mobile-inscrevasse2{
+        display: flex;
+    }
+    
+    .navbar_main .mobile-inscrevasse2{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: inset 0 0 0 2px #f9e20f;
+        background-color: #f9e20f !important;
+        text-transform: uppercase;
+        color: #1b3556;
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: center;
+        border-radius: 5px;
+    }
+    
+    .navbar_main .mobile-inscrevasse2 a {
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .navbar_main .mobile-inscrevasse2:hover {
+        color: #1b3556 !important;
+        background-color: #fff !important;
     }
 }
