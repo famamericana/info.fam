@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -249,6 +250,123 @@
             border-bottom: 1px solid #f2f3f8;
         }
 
+        /*tabs navbar ------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+        /*tabs ---------------------------------------------------------------------------------------------------------------------------*/
+
+
+        /* Core styles/functionality */
+        .navbar_main .tab input {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .navbar_main .tab__content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+        }
+
+        /* Visual styles */
+        .navbar_main .accordion {
+            overflow: hidden;
+        }
+
+        .navbar_main .tab__label,
+        .navbar_main .tab__close {
+            display: flex;
+            border-bottom: #f2f3f8 solid 1px;
+
+            cursor: pointer;
+            margin-bottom: 0;
+
+        }
+
+        .navbar_main .tab__label h3 {
+            padding-left: 5px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+
+        }
+
+        .navbar_main .tab__label {
+            justify-content: space-between;
+
+            margin-bottom: 0;
+            color: black;
+        }
+
+        .navbar_main .tab__label a{
+            border-bottom: none;
+        }
+
+        .navbar_main .tab__content p {
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .navbar_main .tab__close {
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            background: #ebecf1;
+            color: black;
+        }
+
+        .navbar_main .accordion--radio {
+            --theme: var(--secondary);
+        }
+
+        /* Arrow animation */
+        .navbar_main .tab input:not(:checked)+.tab__label:hover::after {
+            animation: bounce .5s infinite;
+        }
+
+        @keyframes bounce {
+            25% {
+                transform: translateY(-0.25rem);
+                /* Mover um pouco para cima */
+            }
+
+            75% {
+                transform: translateY(0.25rem);
+                /* Mover um pouco para baixo */
+            }
+        }
+
+      .navbar_main   .tab__label::after {
+        padding: 15px;
+        padding-right: 30px;
+        font-family: FontAwesome;
+        content: "\f0d7";
+        width: 5px;
+        height: 5px;
+        text-align: center;
+        transition: all 0.35s;
+      }
+
+
+        .navbar_main .content-tabs a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            background-color: #f2f3f8;
+
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .navbar_main .content-tabs a:hover {
+            color: #45b7e5;
+        }
+
+        .navbar_main .content-tabs a:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 1150px) {
             .navbar_main .botao_mudarcor {
                 right: 20px;
@@ -291,11 +409,14 @@
                         <div class="dropdown-content">
                             <div class="teste">
                                 <div>
-                                    <a href="https://www.fam.br/conheca-a-fam/" id=""><span class="chamaratenção">•</span> Nossa História</a>
+                                    <a href="https://www.fam.br/conheca-a-fam/" id=""><span
+                                            class="chamaratenção">•</span> Nossa História</a>
                                     <a href="https://www.fam.br/direcao-geral/" id="">Direção Geral e Acadêmica</a>
-                                    <a href="https://www.fam.br/diretrizes-institucionais/" id="">Diretrizes Institucionais</a>
+                                    <a href="https://www.fam.br/diretrizes-institucionais/" id="">Diretrizes
+                                        Institucionais</a>
                                     <a href="https://www.fam.br/fale-com-a-faculdade/" id="">Fale conesco</a>
-                                    <a href="https://www.fam.br/quero-trabalhar-na-fam/" id="">Quero trabalhar na FAM</a>
+                                    <a href="https://www.fam.br/quero-trabalhar-na-fam/" id="">Quero trabalhar na
+                                        FAM</a>
                                     <a href="https://info.fam.br/lgpd/" id="">LGPD</a>
                                 </div>
                             </div>
@@ -310,7 +431,8 @@
                                 <div>
                                     <a href="https://www.fam.br/como-ingressar/" id="">Como Ingressar</a>
                                     <a href="https://www.fam.br/visita-guiada/" id="">Visite a FAM</a>
-                                    <a href="https://www.fam.br/cursos/" id=""><span class="chamaratenção">•</span> Todos os cursos</a>
+                                    <a href="https://www.fam.br/cursos/" id=""><span class="chamaratenção">•</span>
+                                        Todos os cursos</a>
                                 </div>
                             </div>
                         </div>
@@ -324,13 +446,16 @@
                                 <div>
                                     <a href="https://famamericana.youcanbook.me/" id="">Agende seu atendimento</a>
                                     <a href="" id="">Calendário Acadêmico</a>
-                                    <a href="https://www.fam.br/transportes-universitarios/" id="">Transportes Universitários</a>
+                                    <a href="https://www.fam.br/transportes-universitarios/" id="">Transportes
+                                        Universitários</a>
                                     <a href="https://www.fam.br/rematricula/" id="">Rematrícula</a>
-                                    <a href="https://www.fam.br/nucleo-de-apoio-psicopedagogico-ao-estudante/" id="">NAPE</a>
+                                    <a href="https://www.fam.br/nucleo-de-apoio-psicopedagogico-ao-estudante/"
+                                        id="">NAPE</a>
                                     <a href="" id="">Diploma e Colação de Grau</a>
                                 </div>
                                 <div class="separar">
-                                    <a href="http://info.fam.br/" id=""><span class="chamaratenção">•</span> Centro de Informações</a>
+                                    <a href="http://info.fam.br/" id=""><span class="chamaratenção">•</span> Centro de
+                                        Informações</a>
                                     <a href="" id="">Biblioteca</a>
                                     <a href="" id="">Revista Acadêmica</a>
                                     <a href="" id="">ENADE</a>
@@ -341,7 +466,8 @@
                     </div>
                     <div class="dropdown">
                         <div class="hoverparadropdown">
-                            <a href="https://www.fam.br/fam-para-a-comunidade/" class="titulo" id="Portifólio">Para a comunidade</a>
+                            <a href="https://www.fam.br/fam-para-a-comunidade/" class="titulo" id="Portifólio">Para a
+                                comunidade</a>
                         </div>
                         <div class="dropdown-content">
                             <div class="teste">
@@ -365,7 +491,8 @@
                             <div class="teste">
                                 <div>
                                     <a href="http://info.fam.br/" id="">Eventos passados </a>
-                                    <a href="https://fam.br/eventos" id=""><span class="chamaratenção">•</span> Próximos Eventos</a>
+                                    <a href="https://fam.br/eventos" id=""><span class="chamaratenção">•</span> Próximos
+                                        Eventos</a>
                                     <a href="" id="">Diploma e Colação de Grau</a>
                                     <a href="" id="">Certificados</a>
                                     <a href="" id="">Faculdade Aberta</a>
@@ -391,9 +518,65 @@
         </div>
 
         <div class="mobile-menu-custom" id="mobile-links-custom">
-            <a href="https://www.fam.br/conheca-a-fam/">A FAM</a>
-            <a href="https://www.fam.br/cursos/">Estude na FAM</a>
-            <a href="http://info.fam.br/">Aluno FAM</a>
+
+            <section class="accordion accordion--radio">
+                <div class="tab">
+                    <input type="checkbox" name="accordion-2" id="rd1">
+                    <label for="rd1" class="tab__label">
+                        <h3>  <a href="https://www.fam.br/conheca-a-fam/">A FAM</a></h3>
+                    </label>
+                    <div class="tab__content">
+                        <div class="content-tabs">
+                            <a target="_blank"
+                                href="https://info.fam.br/eventos/semana-de-areas/2024/veterinaria">Fevereiro
+                                26 a 28 | Veterinária</a>
+                            <a target="_blank" href="https://info.fam.br/eventos/semana-de-areas/2024/saude-1">Março
+                                25 a 27 | Saúde I</a>
+                            <a target="_blank" href="https://info.fam.br/eventos/semana-de-areas/2024/exatas">Abril
+                                22 a 24 | Exatas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab">
+                    <input type="checkbox" name="accordion-2" id="rd2">
+                    <label for="rd2" class="tab__label">
+                        <h3> <a href="https://www.fam.br/cursos/">Estude na FAM</a></h3>
+                    </label>
+                    <div class="tab__content">
+                        <div class="content-tabs">
+                          
+                            <a target="_blank"
+                                href="https://info.fam.br/eventos/semana-de-areas/2023/comunicacao/">Novembro
+                                |
+                                Comunicação</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab">
+                    <input type="checkbox" name="accordion-2" id="rd3">
+                    <label for="rd3" class="tab__label">
+                        <h3><a href="http://info.fam.br/">Aluno FAM</a></h3>
+                    </label>
+                    <div class="tab__content">
+                        <div class="content-tabs">
+                            <a target="_blank"
+                                href="https://www.instagram.com/p/CbarJCYOvnq/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==">Março
+                                22 a 24 | Computação e Informática </a>
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+     
+            </section>
+
+
+
+
+
+
+            
             <a href="https://www.fam.br/fam-para-a-comunidade/">Para a comunidade</a>
             <a href="https://fam.br/eventos">Eventos</a>
             <a href="https://fam.br/blog" class="titulo" id="Blog">Blog</a>
@@ -443,6 +626,29 @@
                 checkbox.checked = false;
             }
         });
+
+
+
+        // tab ----------------------------------------------------------------
+        document.querySelectorAll('.accordion input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', function () {
+        const content = this.nextElementSibling.nextElementSibling;
+
+        if (this.checked) {
+            // Fecha todos os conteúdos
+            document.querySelectorAll('.tab__content').forEach(content => {
+                content.style.maxHeight = '0';
+            });
+
+            // Abre o conteúdo específico
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            // Fecha o conteúdo se o checkbox foi desmarcado
+            content.style.maxHeight = '0';
+        }
+    });
+});
+
     </script>
 </body>
 
