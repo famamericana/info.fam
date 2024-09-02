@@ -398,7 +398,7 @@ body {
     .navbar_main .menu-toggle-custom {
         display: flex;
         padding: 40px 10px 40px 10px;
-        margin-right: -4px;
+        margin-right: -6px;
     }
 
     .navbar_main .mobile-inscrevasse {
