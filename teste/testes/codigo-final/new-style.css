@@ -152,7 +152,7 @@ body {
 }
 
 .navbar_main .inscrevase:hover {
-    color: #1b3556 ;
+    color: #1b3556;
     background-color: #f9e20f;
 }
 
@@ -273,8 +273,6 @@ body {
     max-height: 60vh;
 }
 
-
-
 .navbar_main .tab__label {
     display: flex;
     border-bottom: #f2f3f8 solid 1px;
@@ -356,8 +354,6 @@ body {
 .navbar_main .content-tabs {
     display: flex;
     flex-direction: column;
-    max-height: 195px;
-    overflow-y: scroll;
 }
 
 .navbar_main .content-tabs a {
@@ -377,7 +373,7 @@ body {
     border-bottom: none;
 }
 
-.navbar_main .mobile-inscrevasse2{
+.navbar_main .mobile-inscrevasse2 {
     display: none;
 }
 
@@ -419,11 +415,11 @@ body {
         display: none;
     }
 
-    .navbar_main .mobile-inscrevasse2{
+    .navbar_main .mobile-inscrevasse2 {
         display: flex;
     }
-    
-    .navbar_main .mobile-inscrevasse2{
+
+    .navbar_main .mobile-inscrevasse2 {
         margin-top: 10px;
         margin-bottom: 10px;
         cursor: pointer;
@@ -437,12 +433,12 @@ body {
         justify-content: center;
         border-radius: 5px;
     }
-    
+
     .navbar_main .mobile-inscrevasse2 a {
         text-decoration: none;
         transition: all 0.3s;
     }
-    
+
     .navbar_main .mobile-inscrevasse2:hover {
         color: #1b3556 !important;
         background-color: #fff !important;
