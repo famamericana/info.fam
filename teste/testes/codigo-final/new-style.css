@@ -269,8 +269,11 @@ body {
 
 /* Visual styles */
 .navbar_main .accordion {
-    overflow: hidden;
+    overflow-y: auto;
+    max-height: 60vh;
 }
+
+
 
 .navbar_main .tab__label {
     display: flex;
