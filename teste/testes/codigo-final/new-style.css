@@ -244,7 +244,7 @@ body {
 .navbar_main .mobile-menu-custom.open {
     display: flex;
     overflow-y: auto;
-    max-height: calc(100vh - 95px);
+    max-height: calc(100vh - 90px);
 }
 
 .navbar_main .mobile-menu-custom a {
