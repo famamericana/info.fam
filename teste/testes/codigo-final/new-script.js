@@ -1,8 +1,6 @@
-
-
 /* NAVBAR /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-setTimeout(() => {
-   
+document.addEventListener('DOMContentLoaded', function () {
+
 
     window.addEventListener('scroll', function () {
         var navbar = document.querySelector('.navbar_main .navbar-custom');
@@ -12,12 +10,12 @@ setTimeout(() => {
             navbar.classList.remove('navbar-custom_fixed-navbar');
         }
     });
-    
+
     const menuToggle = document.getElementById('mobile-menu-custom');
     const mobileLinks = document.getElementById('mobile-links-custom');
     const checkbox = document.getElementById('check-custom');
-    
-    
+
+
     menuToggle.addEventListener('click', () => {
         if (checkbox.checked) {
             mobileLinks.classList.add('open');
@@ -25,7 +23,7 @@ setTimeout(() => {
         } else {
             mobileLinks.classList.remove('open');
             document.body.classList.remove('no-scroll'); // Remove a classe para habilitar o scroll
-    
+
             // Desmarca o checkbox ativo
             document.querySelectorAll('.accordion input[type="checkbox"]:checked').forEach(checkedInput => {
                 checkedInput.checked = false;
@@ -33,7 +31,7 @@ setTimeout(() => {
             });
         }
     });
-    
+
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
             mobileLinks.classList.remove('open');
@@ -41,7 +39,7 @@ setTimeout(() => {
             document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao redimensionar
         }
     });
-    
+
     document.addEventListener('click', (event) => {
         const isClickInside = menuToggle.contains(event.target) || mobileLinks.contains(event.target);
         if (!isClickInside) {
@@ -50,7 +48,7 @@ setTimeout(() => {
             document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao clicar fora
         }
     });
-    
+
     window.addEventListener('scroll', () => {
         if (checkbox.checked) {
             mobileLinks.classList.remove('open');
@@ -58,18 +56,18 @@ setTimeout(() => {
             document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao rolar
         }
     });
-    
-    
+
+
     document.querySelectorAll('.accordion input[type="checkbox"]').forEach(input => {
         input.addEventListener('change', function () {
             const content = this.nextElementSibling.nextElementSibling;
-    
+
             if (this.checked) {
                 // Fecha todos os conteúdos
                 document.querySelectorAll('.tab__content').forEach(content => {
                     content.style.maxHeight = '0';
                 });
-    
+
                 // Abre o conteúdo específico
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
@@ -78,9 +76,7 @@ setTimeout(() => {
             }
         });
     });
-
-}, 0);  // quando removo esse timeout o link do google planilhas não carrega, mas como você vai remover essa funcionaldiade por algo melhor, depois pode remover isso do navbar.
-
+});
 
 /* CURSOS GERAL - FILTROS /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -126,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em docentes das séries iniciais do ensino fundamental", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Formação para ensino fundamental e desenvolvimento infantil.", link: "https://www.fam.br/curso/pedagogia-com-enfase-em-docentes-das-series-iniciais-do-ensino-fundamental/" },
         { codigogoogle: ["Psicologia"], nome: "Psicologia", semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas"], descricao: "Estudos aprofundados em comportamento e mente humana.", link: "https://www.fam.br/curso/psicologia/" },
         { codigogoogle: ["Pós PsicoEscolar"], nome: "Psicologia Escolar e Educacional", semestres: "Aulas semanais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Foco em desenvolvimento educacional e psicológico.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
-        { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Formação em tecnologia da informação e sistemas.", link: "https://www.fam.br/curso/sistemas-de-informacao/"},
+        { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Formação em tecnologia da informação e sistemas.", link: "https://www.fam.br/curso/sistemas-de-informacao/" },
     ];
 
     function generateTagHTML(tags) {
@@ -149,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
     function createCards() {
         cursos.forEach(curso => {
             const card = document.createElement('div');
@@ -202,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             cardsContainer.appendChild(card);
         });
-        
+
         setupTooltipTriggers();
     }
 
@@ -329,18 +326,18 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 // ****** ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Após a criação dos cards no DOM, você pode adicionar os manipuladores de eventos
 function setupTooltipTriggers() {
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (event.target.classList.contains('tooltipTrigger')) {
             var tooltip = document.getElementById('myTooltip');
             var iconRect = event.target.getBoundingClientRect();
-    
+
             // Verifica a visibilidade atual do tooltip e alterna entre mostrar e esconder
             if (tooltip.style.display === 'block') {
                 tooltip.style.display = 'none';
             } else {
                 // Mostra o tooltip
                 tooltip.style.display = 'block';
-                
+
                 // Calcula e aplica a posição
                 var tooltipRect = tooltip.getBoundingClientRect();
                 var leftPosition = iconRect.left + (iconRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
@@ -348,21 +345,21 @@ function setupTooltipTriggers() {
                 tooltip.style.left = leftPosition + 'px';
                 tooltip.style.top = topPosition + 'px';
             }
-    
+
             event.stopPropagation();
         }
     });
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         var tooltip = document.getElementById('myTooltip');
         // Verifica se o clique foi fora do tooltip e não é um tooltipTrigger
         if (tooltip.style.display === 'block' && !event.target.classList.contains('tooltipTrigger') && !tooltip.contains(event.target)) {
             tooltip.style.display = 'none';
         }
     });
-    
+
     // Adiciona manipulador de eventos de scroll ao window para esconder o tooltip
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         var tooltip = document.getElementById('myTooltip');
         if (tooltip.style.display === 'block') {
             tooltip.style.display = 'none';
