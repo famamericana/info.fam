@@ -126,24 +126,23 @@
                 </div>
 
                 <div style="display: flex;align-items: center;">
-                <div class="mobile-inscrevasse">
-                    <a class="titulo inscrevase" href="https://vestibularfam.com.br">Inscreva-se</a>
+                    <div class="mobile-inscrevasse">
+                        <a class="titulo inscrevase" href="https://vestibularfam.com.br">Inscreva-se</a>
+                    </div>
+
+                    <label for="check-custom" class="menu-toggle-custom" id="mobile-menu-custom">
+                        <input type="checkbox" id="check-custom" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
                 </div>
-                
-                <label for="check-custom" class="menu-toggle-custom" id="mobile-menu-custom">
-                    <input type="checkbox" id="check-custom" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
             </div>
         </div>
 
         <div class="mobile-menu-custom" id="mobile-links-custom">
             <a class="titulo mobile-inscrevasse2" href="https://vestibularfam.com.br">Inscreva-se</a>
             <section class="accordion accordion--radio">
-                
                 <div class="tab">
                     <input type="checkbox" name="accordion-2" id="rd1">
                     <label for="rd1" class="tab__label">
@@ -183,22 +182,20 @@
                         <h3><a href="http://info.fam.br/">Aluno FAM</a></h3>
                     </label>
                     <div class="tab__content">
-                        <div class="content-tabs" >
-                                <a href="https://famamericana.youcanbook.me/" id="">Agende seu atendimento</a>
-                                <a href="" id="">Calendário Acadêmico</a>
-                                <a href="https://www.fam.br/transportes-universitarios/" id="">Transportes
-                                    Universitários</a>
-                                <a href="https://www.fam.br/rematricula/" id="">Rematrícula</a>
-                                <a href="https://www.fam.br/nucleo-de-apoio-psicopedagogico-ao-estudante/"
-                                    id="">NAPE</a>
-                                <a href="" id="">Diploma e Colação de Grau</a>
-                                <a href="http://info.fam.br/" id=""><span class="chamaratenção">•</span> Centro de
-                                    Informações</a>
-                                <a href="" id="">Biblioteca</a>
-                                <a href="" id="">Revista Acadêmica</a>
-                                <a href="" id="">ENADE</a>
-                                <a href="" id="">Acervo Digital</a>
-                            
+                        <div class="content-tabs">
+                            <a href="https://famamericana.youcanbook.me/" id="">Agende seu atendimento</a>
+                            <a href="" id="">Calendário Acadêmico</a>
+                            <a href="https://www.fam.br/transportes-universitarios/" id="">Transportes
+                                Universitários</a>
+                            <a href="https://www.fam.br/rematricula/" id="">Rematrícula</a>
+                            <a href="https://www.fam.br/nucleo-de-apoio-psicopedagogico-ao-estudante/" id="">NAPE</a>
+                            <a href="" id="">Diploma e Colação de Grau</a>
+                            <a href="http://info.fam.br/" id=""><span class="chamaratenção">•</span> Centro de
+                                Informações</a>
+                            <a href="" id="">Biblioteca</a>
+                            <a href="" id="">Revista Acadêmica</a>
+                            <a href="" id="">ENADE</a>
+                            <a href="" id="">Acervo Digital</a>
                         </div>
                     </div>
                 </div>
@@ -241,87 +238,11 @@
                         <h3><a href="https://fam.br/blog" class="titulo" id="Blog">Blog</a></h3>
                     </label>
                 </div>
-
             </section>
-         
-               
-         
         </div>
     </div>
 
-    <script>
-      window.addEventListener('scroll', function () {
-    var navbar = document.querySelector('.navbar_main .navbar-custom');
-    if (window.pageYOffset > 90) {
-        navbar.classList.add('navbar-custom_fixed-navbar');
-    } else {
-        navbar.classList.remove('navbar-custom_fixed-navbar');
-    }
-});
-
-const menuToggle = document.getElementById('mobile-menu-custom');
-const mobileLinks = document.getElementById('mobile-links-custom');
-const checkbox = document.getElementById('check-custom');
-
-menuToggle.addEventListener('click', () => {
-    if (checkbox.checked) {
-        mobileLinks.classList.add('open');
-        document.body.classList.add('no-scroll'); // Adiciona a classe para desabilitar o scroll
-    } else {
-        mobileLinks.classList.remove('open');
-        document.body.classList.remove('no-scroll'); // Remove a classe para habilitar o scroll
-    }
-});
-
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-        document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao redimensionar
-    }
-});
-
-document.addEventListener('click', (event) => {
-    const isClickInside = menuToggle.contains(event.target) || mobileLinks.contains(event.target);
-    if (!isClickInside) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-        document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao clicar fora
-    }
-});
-
-window.addEventListener('scroll', () => {
-    if (checkbox.checked) {
-        mobileLinks.classList.remove('open');
-        checkbox.checked = false;
-        document.body.classList.remove('no-scroll'); // Garante que o scroll seja habilitado ao rolar
-    }
-});
-
-
-
-
-        // tab ----------------------------------------------------------------
-        document.querySelectorAll('.accordion input[type="checkbox"]').forEach(input => {
-            input.addEventListener('change', function () {
-                const content = this.nextElementSibling.nextElementSibling;
-
-                if (this.checked) {
-                    // Fecha todos os conteúdos
-                    document.querySelectorAll('.tab__content').forEach(content => {
-                        content.style.maxHeight = '0';
-                    });
-
-                    // Abre o conteúdo específico
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                } else {
-                    // Fecha o conteúdo se o checkbox foi desmarcado
-                    content.style.maxHeight = '0';
-                }
-            });
-        });
-
-    </script>
+    <script src="/teste/testes/codigo-final/new-script.js"></script>
 </body>
 
 </html>
