@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos FAM</title>
+    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="/images-gerais/famlogo.png">
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
+
+<body>
+
+    <div class="tooltip" id="myTooltip">
+        *Valores para pagamento 
+        </br>
+        até o dia 07 de cada mês
+    </div>
+
+    <div class="mmain">
+
+        <!-- Campo de Pesquisa -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Pesquise um curso...">
+        </div>
+
+        <div id="filters">
+            <!-- Dropdown para Tipo de Curso -->
+            <div class="dropdown">
+                <button class="dropbtn">Tipo de Curso</button>
+                <div class="dropdown-content" id="filter-curso">
+                    <label><input type="checkbox" value="graduação"> Graduação</label>
+                    <label><input type="checkbox" value="ead"> Graduação EAD</label>
+                    <label><input type="checkbox" value="pós-graduação"> Pós-Graduação</label>
+                    <label><input type="checkbox" value="tecnico"> Projeto de Extensão</label>
+                    <label><input type="checkbox" value="tecnico"> Técnico</label>
+                </div>
+            </div>
+
+            <!-- Dropdown para Áreas -->
+            <div class="dropdown">
+                <button class="dropbtn">Áreas</button>
+                <div class="dropdown-content" id="filter-tipograduacao">
+                    <label><input type="checkbox" value="humanas"> Humanas</label>
+                    <label><input type="checkbox" value="exatas"> Exatas</label>
+                    <label><input type="checkbox" value="saúde"> Saúde</label>
+                    <hr>
+                    <label><input type="checkbox" value="contabilidade"> Contabilidade</label>
+                    <label><input type="checkbox" value="criatividade"> Criatividade</label>
+                    <label><input type="checkbox" value="informática"> Informática</label>
+                    <label><input type="checkbox" value="leitura"> Leitura</label>
+                    <label><input type="checkbox" value="animais"> Animais</label>
+                    <label><input type="checkbox" value="cuidados"> Cuidados</label>
+
+                </div>
+            </div>
+
+            <!-- Dropdown para Quantidade de Semestres -->
+            <div class="dropdown">
+                <button class="dropbtn">Semestres</button>
+                <div class="dropdown-content" id="filter-semestres">
+                    <label><input type="checkbox" value="4 semestres"> 4 Semestres</label>
+                    <label><input type="checkbox" value="5 semestres"> 5 Semestres</label>
+                    <label><input type="checkbox" value="8 semestres"> 8 Semestres</label>
+                    <label><input type="checkbox" value="10 semestres"> 10 Semestres</label>
+                </div>
+            </div>
+
+
+            <button id="clear-filters">Limpar Filtros</button>
+        </div>
+
+        <!-- Ícone de Carregamento -->
+        <div class="loadingcontainer">
+            <div id="loadingIcon" class="loader"></div>
+        </div>
+        <div id="cards">
+            <!-- Cards serão inseridos aqui -->
+        </div>
+
+    </div>
+
+    <div id="BotaoTopo"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
