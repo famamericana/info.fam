@@ -505,7 +505,7 @@ body {
 }
 
 .filtros_main .pagina_filtros #clear-filters {
-    background-color: #e7ebf5;
+    background-color: #fafbff;
     border: none;
     color: black;
     font-size: 16px;
@@ -525,7 +525,7 @@ body {
 
 /* Estilo para o botão que abre/fecha o dropdown */
 .filtros_main .pagina_filtros .dropbtn {
-    background-color: #fafbff;
+    background-color: #f2f4fa;
     color: black;
     font-size: 16px;
     border: none;
@@ -542,11 +542,11 @@ body {
 .filtros_main .pagina_filtros .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fafbff;
+    background-color: white;
     width: fit-content;
     z-index: 1;
     border-radius: 5px;
-    border: 1px solid #1b3556;
+    border: 2px solid #e7ebf5;
     text-wrap: nowrap;
 }
 
@@ -625,7 +625,7 @@ body {
 }
 
 .filtros_main .pagina_filtros .tag {
-    background-color: #e7ebf5;
+    background-color: #f2f4fa;
     border-radius: 5px;
     padding: 3px 8px;
     margin-right: 4px;
@@ -744,7 +744,8 @@ body {
     /* Conteúdo do dropdown */
     .filtros_main .pagina_filtros .dropdown-content {
         width: 100%;
-        margin-top: 5px;
+        margin-top: 0px;
+        border-radius: 0 0 5px 5px;
     }
 
     /* Estilo para o dropdown */
@@ -762,9 +763,9 @@ body {
 .filtros_main .loader {
     margin-top: 100px;
     display: none;
-    border: 8px solid white;
+    border: 8px solid #1b3556;
     /* Cor de fundo */
-    border-top: 8px solid #f9e20f;
+    border-top: 8px solid white;
     /* Cor da animação */
     border-radius: 50%;
     width: 70px;
