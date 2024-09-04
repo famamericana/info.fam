@@ -303,16 +303,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
             createCards(); // Chama a função para criar os cards
 
+            // Ativa os checkboxes com base nos parâmetros da URL
+            activateCheckboxesFromURL();
+
             // Esconde o ícone de carregamento após os cards serem criados
             document.getElementById('loadingIcon').style.display = 'none';
 
         }
     });
 
+    // Função para ativar o checkbox se o valor estiver na URL
+    function activateCheckboxesFromURL() {
+        // Obtém os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
 
+        // Itera sobre todos os checkboxes
+        document.querySelectorAll('#filter-curso input, #filter-tipograduacao input, #filter-semestres input').forEach(input => {
+            // Normaliza o valor do checkbox e verifica se ele está nos parâmetros da URL
+            if (params.has(removeAccentsAndSpecialChars(input.value))) {
+                input.checked = true; // Ativa o checkbox
+            }
+        });
+
+        // Atualiza os cards com base nos filtros
+        filterCards();
+    }
+
+    // Adiciona o evento de mudança para os checkboxes
+    document.querySelectorAll('#filter-curso input, #filter-tipograduacao input, #filter-semestres input').forEach(input => {
+        input.addEventListener('change', filterCards);
+    });
 });
 
-
+function removeAccentsAndSpecialChars(str) {
+    return str
+        .normalize("NFD") // Normaliza o texto para separar os caracteres especiais
+        .replace(/[\u0300-\u036f]/g, "") // Remove os diacríticos (acentos)
+        .replace(/[^a-zA-Z0-9\s-]/g, "") // Remove caracteres especiais, mas mantém espaços e hífens
+        .replace(/\s+/g, "-") // Substitui espaços por hífens
+        .toLowerCase(); // Converte para minúsculas
+}
 
 
 $(document).ready(function () {
@@ -373,3 +403,5 @@ function setupTooltipTriggers() {
 
 // Certifique-se de chamar setupTooltipTriggers() após os cartões serem criados
 // Por exemplo, você pode chamar setupTooltipTriggers() no final de createCards() ou após createCards() ser chamada
+
+
