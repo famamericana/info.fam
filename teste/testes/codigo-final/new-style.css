@@ -505,7 +505,8 @@ body {
 }
 
 .filtros_main .pagina_filtros #clear-filters {
-    background-color: #fafbff;
+    box-shadow: inset 0 0 0 2px #e7ebf5;
+    background-color: white;
     border: none;
     color: black;
     font-size: 16px;
@@ -650,7 +651,6 @@ body {
     border: 2px solid white;
     border-radius: 10px;
     background: #45b8e53d;
-
 }
 
 .filtros_main .pagina_filtros .tagscursosdesign::-webkit-scrollbar-thumb:hover {
@@ -670,7 +670,6 @@ body {
 
 .filtros_main .pagina_filtros .selected-tag {
     background-color: #f9e20f;
-    /* Ou a cor desejada para tags selecionadas */
 }
 
 .filtros_main .pagina_filtros .horariodianoite {
@@ -691,7 +690,6 @@ body {
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-
 }
 
 .filtros_main .pagina_filtros .vestibularlinkdaora {
@@ -714,9 +712,7 @@ body {
 
 .filtros_main .pagina_filtros .valores-curso-container {
     display: flex;
-    /* Usa flexbox para dispor os itens lado a lado */
     gap: 10px;
-    /* Espaçamento entre os itens */
 }
 
 
@@ -752,7 +748,6 @@ body {
     .filtros_main .pagina_filtros .dropdown {
         width: 100%;
     }
-
 }
 
 .filtros_main .loadingcontainer {
@@ -765,7 +760,7 @@ body {
     display: none;
     border: 8px solid #1b3556;
     /* Cor de fundo */
-    border-top: 8px solid white;
+    border-top: 8px solid #f2f3f8;
     /* Cor da animação */
     border-radius: 50%;
     width: 70px;
