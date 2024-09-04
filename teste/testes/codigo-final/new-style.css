@@ -80,6 +80,7 @@ body {
     display: none;
     position: absolute;
     background-color: white;
+    border: 2px solid #1b3556;
     width: fit-content;
     z-index: 3;
     border-radius: 5px;
@@ -600,17 +601,14 @@ body {
 
 .filtros_main .pagina_filtros .card {
     background-color: white;
-    border: 2px dotted #e7ebf5;
+    border: 2px solid #e7ebf5;
     border-radius: 5px;
     overflow: hidden;
     padding: 20px;
     min-height: 290px;
     display: flex;
-    /* Adicionado */
     flex-direction: column;
-    /* Adicionado */
     justify-content: space-between;
-    /* Adicionado */
 }
 
 
@@ -744,7 +742,8 @@ body {
     /* Conteúdo do dropdown */
     .filtros_main .pagina_filtros .dropdown-content {
         width: 100%;
-        margin-top: 5px;
+        margin-top: -4px;
+        border-radius: 0 0 5px 5px;
     }
 
     /* Estilo para o dropdown */
