@@ -161,12 +161,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             let tipoCurso = index > 0 ? "EaD" : "Presencial"; // Adiciona "EAD" se for o segundo valor
                             valoresHTML += `
                             <span class="valor-curso"> 
-                                <div style="margin-bottom:-28px"> ${tipoCurso} </div>
+                                <div style="margin-bottom:-18px"> ${tipoCurso} </div>
                                     </br>
                                     R$ 
-                                <span class="valorinteressante">${valor}<span class="tooltipTrigger">*</span>
+                                <span class="valorinteressante">
+                                    ${valor}
+                                    <span class="tooltipTrigger">*</span>
+                                    <span style="font-size:small; color: #a9b0cc;font-weight: normal;">/mensais </span> 
                                 </span>
-                                <span style="font-size:small; color: #a9b0cc;">/mensais </span> 
+                           
                             </span>
                             
                             `;
