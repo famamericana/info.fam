@@ -244,6 +244,7 @@ body {
     display: flex;
     overflow-y: auto;
     max-height: 60vh;
+    border-bottom: 2px solid #1b3556;
 }
 
 .navbar_main .mobile-menu-custom a {
@@ -275,7 +276,10 @@ body {
     border-bottom: #f2f3f8 solid 1px;
     cursor: pointer;
     margin-bottom: 0;
+}
 
+.navbar_main .tab__label:last-child {
+    border-bottom-color: white;
 }
 
 .navbar_main .tab__label h3 {
