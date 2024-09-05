@@ -659,7 +659,6 @@ body {
 
 .filtros_main .pagina_filtros .tagscursosdesign {
     margin-top: 10px;
-    margin-bottom: 7px;
     text-transform: uppercase;
     font-size: small;
     font-weight: 500;
@@ -713,7 +712,7 @@ body {
 
 .filtros_main .pagina_filtros .valores-curso-container {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 
@@ -788,7 +787,7 @@ body {
     background-color: white;
     padding: 5px 10px;
     border-radius: 4px;
-    border: 1px solid #1b3556;
+    border: 2px solid #1b3556;
 }
 
 .filtros_main .tooltip.show {

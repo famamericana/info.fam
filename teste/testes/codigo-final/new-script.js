@@ -400,6 +400,13 @@ function setupTooltipTriggers() {
         }
     });
 
+    window.addEventListener('resize', () => {
+        var tooltip = document.getElementById('myTooltip');
+        if (tooltip.style.display === 'block') {
+            tooltip.style.display = 'none';
+        }
+    });
+
 }
 
 // Certifique-se de chamar setupTooltipTriggers() após os cartões serem criados
