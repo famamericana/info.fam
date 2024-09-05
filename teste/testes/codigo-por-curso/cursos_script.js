@@ -263,11 +263,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   var images = [
-    "url('/graduacoes/codigo-por-curso/imagescursos/piscina.png')",
-    "url('/graduacoes/codigo-por-curso/imagescursos/vet.png')",
-    "url('/graduacoes/codigo-por-curso/imagescursos/praca.png')",
-    "url('/graduacoes/codigo-por-curso/imagescursos/estacionamento.png')",
-    "url('/graduacoes/codigo-por-curso/imagescursos/bloco2.png')",
+    "url('/teste/testes/codigo-por-curso/imagescursos/piscina.png')",
+    "url('/teste/testes/codigo-por-curso/imagescursos/vet.png')",
+    "url('/teste/testes/codigo-por-curso/imagescursos/praca.png')",
+    "url('/teste/testes/codigo-por-curso/imagescursos/estacionamento.png')",
+    "url('/teste/testes/codigo-por-curso/imagescursos/bloco2.png')",
   ];
   var currentIndex = 0;
   var overlayDiv = document.querySelector('.image-overlay');
