@@ -360,7 +360,7 @@ p {
 .texto-eadbotao {
   background-color: var(--corsecundaria);
   border: none;
-  padding: 5px 20px;
+  padding: 8px 20px;
   cursor: pointer;
   transition: all 0.3s;
   margin-right: 20px;
@@ -1046,7 +1046,7 @@ header {
 .inscrevase {
   background-color: #f9e20f;
   border: none;
-  padding: 5px 20px;
+  padding: 8px 20px;
   cursor: pointer;
   transition: all 0.3s;
   margin-right: 20px;
@@ -1067,7 +1067,7 @@ header {
 
 .inscrevase:hover {
   background-color: transparent;
-  box-shadow: inset 0 0 0 2px white;
+  box-shadow: inset 0 0 0 2px var(--amarelo);
   color: white;
 
 }
