@@ -3,10 +3,6 @@ https://codepen.io/a7rarpress/pen/MWPgaMq
 https://jsfiddle.net/4vm1sht5/3/
 */
 
-
-
-
-
 var swiper = new Swiper(".slide-content", {
   slidesPerView: 3,
   spaceBetween: 20,
@@ -60,19 +56,19 @@ function scrollFunction() {
 }
 
 
-$(window).on("scroll", function(){
+$(window).on("scroll", function () {
   highlight();
 });
 
-function highlight(){
+function highlight() {
   var scroll = $(window).scrollTop();
   var height = $(window).height();
 
-  $(".highlight").each(function(){
+  $(".highlight").each(function () {
     var pos = $(this).offset().top;
-    if (scroll+height >= pos) {
+    if (scroll + height >= pos) {
       $(this).addClass("active");
-    } 
+    }
     console.log(pos);
     console.log(scroll);
   });
@@ -97,26 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementsByClassName("tablinks")[0].click();
 });
 
-$(document).ready(function () {
-  $("#meuFooter").load("/codigos-gerais/footer/footer.html");
-});
-
-
-
-
-//MININAVBAR ------------------------------------------------------------------------------------------
-
-document.addEventListener("DOMContentLoaded", function () {
-  var bg = document.getElementById("buttonBackground");
-
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > window.innerHeight) {
-      bg.style.display = "flex";
-    } else {
-      bg.style.display = "none";
-    }
-  });
-});
 
 // LOGO MUDAR TAMANHO PC/MOBILE --------------------------------------------------------------------------------------------------------------------------------------------
 function ajustarLogo() {
@@ -155,55 +131,6 @@ document.querySelectorAll('.containerseta').forEach(item => {
     }
   });
 });
-
-
-// scroll daora --------------------------------------------------------------------------------------------
-function checkSectionInView() {
-  const sections = document.querySelectorAll('section');
-  const navDots = document.querySelectorAll('.nav-dot');
-  let activeIndex = -1; // Índice da seção ativa
-
-  // Obter a posição de scroll atual e a altura da viewport
-  const scrollPosition = window.scrollY + window.innerHeight / 2; // Ponto médio da viewport
-
-  sections.forEach((section, index) => {
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-
-    // Se o ponto médio da viewport estiver dentro da seção
-    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-      activeIndex = index;
-    }
-  });
-
-
-}
-
-// Adicionando a função ao evento de scroll e ao carregar a página
-window.addEventListener('scroll', checkSectionInView);
-document.addEventListener('DOMContentLoaded', checkSectionInView);
-
-// Função para mostrar/esconder o botão de rolar para o topo
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
-
-// Função unificada para rolar para o topo com rolagem suave
-function topFunction() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-
-
-//https forçar -------------------------------------------------------------------------------------------------------------------------------
-if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
-    location.replace(`https:${location.href.substring(location.protocol.length)}`);
-}
-
 
 // faq ------------------------------------------------------------------------------------------------ 
 
@@ -249,7 +176,7 @@ function mostrarDescricao(elemento) {
 // não deixar sozinho matriz -----------------------------------------------------------------------
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const grid = document.querySelector('#lista');
   const items = grid.querySelectorAll('.item');
   if (items.length % 2 !== 0) {
@@ -258,10 +185,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // degradê imagens conheça mais cursos -----------------------------------------------------------------------------------------------------------
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var images = [
     "url('/teste/testes/codigo-por-curso/imagescursos/piscina.png')",
     "url('/teste/testes/codigo-por-curso/imagescursos/vet.png')",
@@ -278,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
     nextOverlayDiv.style.opacity = '1'; // Torna a próxima imagem visível
 
     // Espera pela transição para completar antes de trocar as imagens e resetar a opacidade
-    setTimeout(function() {
+    setTimeout(function () {
       overlayDiv.style.backgroundImage = images[currentIndex];
       nextOverlayDiv.style.opacity = '0'; // Esconde a próxima imagem após a transição
       currentIndex = (currentIndex + 1) % images.length; // Avança para a próxima imagem
@@ -287,10 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Inicia com a primeira imagem
   changeImage();
-  
+
   // Muda a imagem a cada 4 segundos + 1 segundo de transição
   setInterval(changeImage, 5000);
 });
-
-
-
