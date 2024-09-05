@@ -64,13 +64,13 @@ body {
 }
 
 .header-titulo {
-  color: white;
+  color: var(--corprincipal);
   margin-bottom: 0;
-  margin-top: -10px;
+  margin-top: -6px;
 }
 
 .header-subtitulo {
-  color: var(--amarelo);
+  color: var(--corsecundaria);
   font-weight: 400;
   text-transform: var(--caixatexto);
   font-size: medium;
@@ -382,7 +382,7 @@ p {
   transition: all 0.3s;
 }
 
-.nav-dot {
+.navdot {
   text-decoration: none !important;
 }
 
@@ -826,7 +826,7 @@ section {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 
   .containerprofessores::-webkit-scrollbar-track {
     border-radius: 50px;
@@ -838,24 +838,17 @@ section {
 
   .titulo_h1 {
     font-size: 35px;
-
   }
 
   .header-titulo {
-    display: none;
-  }
-
-  .header-subtitulo {
-    display: none;
+    font-size: 3vh;
   }
 
   .inscreva-btn {
     margin: 0 auto;
   }
 
-  .button-background {
-    height: 65px !important;
-  }
+
 
   .button-containercalendario {
     flex-direction: column;
@@ -1102,15 +1095,15 @@ header {
 .button-background {
   top: 0;
   position: fixed;
-  background-color: var(--corprincipal);
+  background-color: var(--bg-branco);
   width: 100%;
-  height: 80px;
   z-index: 9;
   align-items: center;
   justify-content: center;
   display: none;
-  padding: 0 20px;
+  padding: 20px;
   box-sizing: border-box;
+  border-bottom: 1px solid var(--neutral-light);
 }
 
 .scroll-button {
@@ -1135,7 +1128,7 @@ header {
   max-width: var(--container-width);
   margin: auto;
   z-index: 9;
-  height: 80px;
+
 }
 
 .title-container {
@@ -1260,31 +1253,6 @@ header {
   }
 }
 
-#navDots {
-  position: fixed;
-  left: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-}
-
-#navDots a {
-  display: block;
-  margin-bottom: -20px;
-  text-align: center;
-  font-size: 40px;
-  color: var(--amarelo);
-  text-decoration: none;
-  padding-right: 20px;
-}
-
-#navDots a:hover {
-  color: var(--corsecundaria);
-}
-
-.nav-dot-top {
-  color: var(--corprincipal) !important;
-}
 
 .btn-fixo {
   position: fixed;
@@ -1486,3 +1454,10 @@ header {
   border-radius: 10px 0 10px 0;
   opacity: 40%;
 }
+
+
+
+
+
+
+

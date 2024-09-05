@@ -183,28 +183,6 @@ function checkSectionInView() {
 window.addEventListener('scroll', checkSectionInView);
 document.addEventListener('DOMContentLoaded', checkSectionInView);
 
-
-
-// Seleciona todos os elementos que devem ter o comportamento de rolagem suave
-document.querySelectorAll('.nav-dot').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    console.log("Clicado:", this.getAttribute('href')); // Para depuração
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    const offsetTop = targetSection.offsetTop;
-
-    const offsetToScroll = offsetTop - 100; 
-
-    window.scrollTo({
-      top: offsetToScroll,
-      behavior: 'smooth'
-    });
-  });
-});
-
-
-
 // Função para mostrar/esconder o botão de rolar para o topo
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -313,3 +291,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Muda a imagem a cada 4 segundos + 1 segundo de transição
   setInterval(changeImage, 5000);
 });
+
+
+
