@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em educação infantil", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Especialização em ensino e cuidado infantil.", link: "https://www.fam.br/curso/pedagogia/" },
     { codigogoogle: ["Pedagogia", "Pedagogia EAD"], nome: "Pedagogia com ênfase em docentes das séries iniciais do ensino fundamental", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "ead", "humanas"], descricao: "Formação para ensino fundamental e desenvolvimento infantil.", link: "https://www.fam.br/curso/pedagogia-com-enfase-em-docentes-das-series-iniciais-do-ensino-fundamental/" },
     { codigogoogle: ["Psicologia"], nome: "Psicologia", semestres: "10 semestres", horariodianoite: ["Matutino | Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "humanas"], descricao: "Estudos aprofundados em comportamento e mente humana.", link: "https://www.fam.br/curso/psicologia/" },
-    { codigogoogle: ["Pós PsicoEscolar"], nome: "Psicologia Escolar e Educacional", semestres: "Aulas semanais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Foco em desenvolvimento educacional e psicológico.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
+    { codigogoogle: ["Pós Teste"], nome: "Psicologia Escolar e Educacional", semestres: "Aulas semanais - 18 meses", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["pós-graduação", "humanas"], descricao: "Foco em desenvolvimento educacional e psicológico.", link: "https://info.fam.br/cursos/psicologia-escolar/" },
     { codigogoogle: ["Sistemas de Informação"], nome: "Sistemas de Informação", semestres: "8 semestres", horariodianoite: ["Noturno -"], tipodegraduacao: ["Bacharelado"], tags: ["graduação", "exatas", "informática"], descricao: "Formação em tecnologia da informação e sistemas.", link: "https://www.fam.br/curso/sistemas-de-informacao/" },
   ];
 
@@ -724,7 +724,7 @@ Papa.parse(url3, {
     var cardHolder = document.querySelector('.cardHolder');
 
     data.forEach(row => {
-      if (row['Nome PsicoEscolar'] && row['Foto PsicoEscolar'] && row['Cargo PsicoEscolar']) {
+      if (row['Nome Teste'] && row['Foto Teste'] && row['Cargo Teste']) {
         var cardBox = document.createElement('div');
         cardBox.className = 'cardBox swiper-slide';
 
@@ -734,13 +734,15 @@ Papa.parse(url3, {
         var cardDiv = document.createElement('div');
         cardDiv.className = 'teacherSection';
         cardDiv.innerHTML = `
-                  <img class="teacherImg" src="${row['Foto PsicoEscolar']}" alt="${row['Nome PsicoEscolar']}">
-                  <h3>${row['Nome PsicoEscolar']}</h3>
-                  <p>${row['Cargo PsicoEscolar']}</p>
+                  <img class="teacherImg" src="${row['Foto Teste']}" alt="${row['Nome Teste']}">
+                  <h3>${row['Nome Teste']}</h3>
+                  <span style="display: flex;flex-direction: column;justify-content: space-between;height: 100%;">
+                   <p>${row['Cargo Teste']}</p>
                   <div class="teacherCurriculum">
-                      <a class="teacherCurriculumLinks" href="${row['Contato PsicoEscolar']}" target="_blank" title="Contato"><i class="fa-solid fa-message"></i></a>
-                      <a class="teacherCurriculumLinks" href="${row['Currículo PsicoEscolar']}" target="_blank" title="Currículo"><i class="ai ai-lattes"></i>Currículo</a>
+                      <a class="teacherCurriculumLinks" href="${row['Contato Teste']}" target="_blank" title="Contato"><i class="fa-solid fa-message"></i></a>
+                      <a class="teacherCurriculumLinks" href="${row['Currículo Teste']}" target="_blank" title="Currículo"><i class="ai ai-lattes"></i>Currículo</a>
                   </div>
+                  </span>
               `;
         cardDetails.appendChild(cardDiv);
         cardBox.appendChild(cardDetails);

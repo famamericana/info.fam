@@ -925,17 +925,22 @@ html {
 .cursos-individual_main .cardBox {
   border-radius: var(--margin-10) 0px var(--margin-10) 0;
   background-color: #f2f3f8;
+  padding: var(--margin-20);
+  box-sizing: border-box;
 }
 
 .cursos-individual_main .cardDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--margin-20);
+  height: 100%;
 }
 
 .cursos-individual_main .slideContent.swiper-initialized.swiper-horizontal {
   margin: 0;
+}
+ .cardBox.swiper-slide{
+  height: auto; /* ajuste o valor conforme necessário */
 }
 
 .cursos-individual_main .teacherImg {
@@ -958,6 +963,8 @@ html {
   flex-direction: column;
   width: 100%;
   align-items: center;
+  height: 100%;
+
 }
 
 .cursos-individual_main .teacherSection p {
@@ -967,6 +974,8 @@ html {
 .cursos-individual_main .teacherSection h3 {
   color: var(--corprincipal);
   margin-top: -20px !important;
+  line-height: 1.2;
+
 
 }
 
@@ -974,9 +983,10 @@ html {
 .cursos-individual_main .teacherSection p {
   margin: 0;
   padding: 15px 0 var(--margin-20) 0;
-  margin-top: -30px;
+  margin-top: -25px;
   text-align: center;
   font-family: var(--primary-font);
+  
 }
 
 
@@ -985,6 +995,7 @@ html {
   margin: 0 var(--margin-20) 0 var(--margin-20);
   border-top: 1px solid #d7dee7;
   text-align: center;
+
 }
 
 .cursos-individual_main .teacherCurriculumLinks {
