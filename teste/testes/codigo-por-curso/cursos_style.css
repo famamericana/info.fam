@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body{
+  margin: 0;
+}
+
 :root {
   /* Cores */
   --corprincipal: #1b3556;
@@ -55,20 +59,20 @@ html {
   background: rgba(0, 0, 0, 0.5);
 } */
 
-body {
+.cursos-individual_main {
   margin: 0;
   padding: 0;
   font-family: var(--primary-font);
   background-color: var(--bg-branco);
 }
 
-.header-titulo {
+.cursos-individual_main .header-titulo {
   color: var(--corprincipal);
   margin-bottom: 0;
   margin-top: -6px;
 }
 
-.header-subtitulo {
+.cursos-individual_main .header-subtitulo {
   color: var(--corsecundaria);
   font-weight: 400;
   text-transform: var(--caixatexto);
@@ -77,22 +81,22 @@ body {
   margin-top: -8px;
 }
 
-h2 {
+.cursos-individual_main h2 {
   color: var(--texto-preto);
   font-size: 30px;
 }
 
-h3 {
+.cursos-individual_main h3 {
   color: var(--texto-preto);
   font-size: 22px;
 
 }
 
-p {
+.cursos-individual_main p {
   color: var(--texto-preto);
 }
 
-.box {
+.cursos-individual_main .box {
   position: relative;
   overflow-x: hidden;
   padding: 0 auto;
@@ -101,7 +105,7 @@ p {
   background: linear-gradient(to bottom, white 50%, var(--corprincipal) 50%);
 }
 
-.box-inverso {
+.cursos-individual_main .box-inverso {
   position: relative;
   overflow-x: hidden;
   padding: 0 auto;
@@ -110,46 +114,46 @@ p {
   background: linear-gradient(to bottom, var(--corprincipal) 50%, white 50%);
 }
 
-.slideContainer {
+.cursos-individual_main .slideContainer {
   max-width: var(--container-width);
   width: 100%;
   padding: var(--margin-20) 0 40px 0;
 }
 
-.slideContent {
+.cursos-individual_main .slideContent {
   margin: 0 40px;
   overflow: hidden;
 }
 
-.cardBox {
+.cursos-individual_main .cardBox {
   border-radius: var(--margin-10) 0px var(--margin-10) 0;
   background-color: #f2f3f8;
 }
 
-.cardDetails {
+.cursos-individual_main .cardDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--margin-20);
 }
 
-.slideContent.swiper-initialized.swiper-horizontal {
+.cursos-individual_main .slideContent.swiper-initialized.swiper-horizontal {
   margin: 0;
 }
 
-.teacherImg {
+.cursos-individual_main .teacherImg {
   width: 100%;
   height: 250px;
 }
 
-.teacherSection img {
+.cursos-individual_main .teacherSection img {
   margin-bottom: var(--margin-20);
   border-radius: 5px;
   object-fit: cover;
   object-position: center;
 }
 
-.teacherSection {
+.cursos-individual_main .teacherSection {
   border-radius: 10px 0 10px 0;
   margin: 0 auto;
   position: relative;
@@ -159,18 +163,18 @@ p {
   align-items: center;
 }
 
-.teacherSection p {
+.cursos-individual_main .teacherSection p {
   color: #777a7e;
 }
 
-.teacherSection h3 {
+.cursos-individual_main .teacherSection h3 {
   color: var(--corprincipal);
   margin-top: -20px !important;
 
 }
 
-.teacherSection h3,
-.teacherSection p {
+.cursos-individual_main .teacherSection h3,
+.cursos-individual_main .teacherSection p {
   margin: 0;
   padding: 15px 0 var(--margin-20) 0;
   margin-top: -30px;
@@ -179,34 +183,33 @@ p {
 }
 
 
-.teacherCurriculum {
+.cursos-individual_main .teacherCurriculum {
   padding: var(--margin-20) 0 5px;
   margin: 0 var(--margin-20) 0 var(--margin-20);
   border-top: 1px solid #d7dee7;
   text-align: center;
 }
 
-.teacherCurriculumLinks {
+.cursos-individual_main .teacherCurriculumLinks {
   color: #666;
   text-decoration: none;
   font-family: var(--primary-font);
   display: inline-block;
 }
 
-.teacherCurriculumLinks:hover {
+.cursos-individual_main .teacherCurriculumLinks:hover {
   color: var(--corprincipal);
 }
 
-.teacherCurriculum i {
-  font-size: 16px;
+.cursos-individual_main .teacherCurriculum i {
+  font-size: 15px;
 }
 
-.teacherCurriculumLinks {
+.cursos-individual_main .teacherCurriculumLinks {
   margin-right: 0;
 }
 
-
-.titulo {
+.cursos-individual_main .titulo {
   font-family: var(--primary-font);
   font-weight: 700;
   max-width: var(--container-width);
@@ -219,7 +222,7 @@ p {
   font-size: 30px;
 }
 
-.titulo3 {
+.cursos-individual_main .titulo3 {
   font-family: var(--primary-font);
   font-weight: 700;
   max-width: var(--container-width);
@@ -233,7 +236,7 @@ p {
 
 }
 
-.titulo2 {
+.cursos-individual_main .titulo2 {
   box-sizing: border-box;
   font-family: var(--primary-font);
   font-weight: 700;
@@ -246,8 +249,7 @@ p {
 
 }
 
-
-.button-containercalendario {
+.cursos-individual_main .button-containercalendario {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -256,45 +258,45 @@ p {
   gap: var(--margin-10);
 }
 
-.button-containercalendario a {
+.cursos-individual_main .button-containercalendario a {
   text-decoration: none;
 }
 
-.um {
+.cursos-individual_main .um {
   color: white;
   background-color: #5d378d;
 }
 
-.um:hover {
+.cursos-individual_main .um:hover {
   color: #242527;
   background-color: white;
   box-shadow: inset 0 0 0 2px #5d378d;
 }
 
-.dois {
+.cursos-individual_main .dois {
   background-color: #1b3556;
   color: white;
 }
 
-.três {
+.cursos-individual_main .três {
   margin-top: var(--margin-10);
   background-color: #e53888;
   color: white;
 }
 
-.três:hover {
+.cursos-individual_main .três:hover {
   color: #242527;
   background-color: white;
   box-shadow: inset 0 0 0 2px #e53888;
 }
 
-.dois:hover {
+.cursos-individual_main .dois:hover {
   color: #242527;
   background-color: white;
   box-shadow: inset 0 0 0 2px #1b3556;
 }
 
-.responsive-button {
+.cursos-individual_main .responsive-button {
   border: none;
   padding: var(--margin-20);
   cursor: pointer;
@@ -306,7 +308,7 @@ p {
   text-align: center;
 }
 
-.containerinfo {
+.cursos-individual_main .containerinfo {
   display: flex;
   justify-content: space-between;
   max-width: var(--container-width);
@@ -315,7 +317,7 @@ p {
   gap: var(--margin-10);
 }
 
-.caixainfo {
+.cursos-individual_main .caixainfo {
   width: 100%;
   height: 100px;
   display: flex;
@@ -323,7 +325,7 @@ p {
   border-radius: 5px;
 }
 
-.caixaead {
+.cursos-individual_main .caixaead {
   border: 1px solid var(--corsecundaria);
   border-radius: 0 0 5px 5px;
   max-width: 960px;
@@ -334,12 +336,12 @@ p {
   padding-right: 10px;
 }
 
-.menosmargin {
+.cursos-individual_main .menosmargin {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.texto-ead {
+.cursos-individual_main .texto-ead {
   border-radius: 5px 5px 0 0;
   height: 50%;
   display: flex;
@@ -356,7 +358,7 @@ p {
   box-sizing: border-box;
 }
 
-.texto-eadbotao {
+.cursos-individual_main .texto-eadbotao {
   background-color: var(--corsecundaria);
   border: none;
   padding: 8px 20px;
@@ -377,26 +379,26 @@ p {
 
 }
 
-.texto-eadbotao a {
+.cursos-individual_main .texto-eadbotao a {
   transition: all 0.3s;
 }
 
-.navdot {
+.cursos-individual_main .navdot {
   text-decoration: none !important;
 }
 
-.coloridinho {
+.cursos-individual_main .coloridinho {
   color: var(--corsecundaria);
 }
 
-.texto-eadbotao:hover {
+.cursos-individual_main .texto-eadbotao:hover {
   background-color: transparent;
   box-shadow: inset 0 0 0 2px var(--corprincipal) !important;
   color: black;
 }
 
-.texto-cima,
-.texto-baixo {
+.cursos-individual_main .texto-cima,
+.cursos-individual_main .texto-baixo {
   height: 50%;
   display: flex;
   justify-content: center;
@@ -406,11 +408,11 @@ p {
 
 }
 
-.texto-baixo a {
+.cursos-individual_main .texto-baixo a {
   color: var(--texto-preto);
 }
 
-.texto-cima {
+.cursos-individual_main .texto-cima {
   color: var(--texto-preto);
   background-color: white;
   border-radius: 5px;
@@ -420,7 +422,7 @@ p {
   box-shadow: inset 0 0 0 1px #f2f3f8;
 }
 
-.texto-baixo {
+.cursos-individual_main .texto-baixo {
   border-radius: 5px;
   background-color: #f2f3f8;
   border-radius: 0 0 5px 5px;
@@ -430,18 +432,18 @@ p {
 
 }
 
-.piquininha {
+.cursos-individual_main .piquininha {
   font-size: xx-small;
   margin-right: 2px;
   margin-top: 2px;
 }
 
-div.cursos p {
+.cursos-individual_main div.cursos p {
   margin: 0;
 }
 
 /* Abas Sobre a FAM e Sobre o curso*/
-.tab {
+.cursos-individual_main .tab {
   display: flex;
   overflow: hidden;
   max-width: var(--container-width);
@@ -451,7 +453,7 @@ div.cursos p {
 }
 
 /* Estilo dos botões das abas */
-.tab button {
+.cursos-individual_main .tab button {
   flex-grow: 1;
   background-color: inherit;
   border: none;
@@ -471,22 +473,22 @@ div.cursos p {
 }
 
 /* Altera a cor de fundo dos botões ao passar o mouse */
-.tab button:hover {
+.cursos-individual_main .tab button:hover {
   background-color: var(--corprincipal);
 }
 
-.tab button.active:hover {
+.cursos-individual_main .tab button.active:hover {
   color: var(--corsecundaria);
 }
 
 /* Ativa a aba com cor de fundo diferente */
-.tab button.active {
+.cursos-individual_main .tab button.active {
   background-color: #f2f3f8;
   color: #242527;
 }
 
 /* Estilo do conteúdo das abas */
-.tabcontent {
+.cursos-individual_main .tabcontent {
   display: none;
   padding: 0 var(--margin-20);
   border-top: none;
@@ -502,7 +504,7 @@ div.cursos p {
   position: relative;
 }
 
-.scroll-container {
+.cursos-individual_main .scroll-container {
   position: relative;
   max-width: var(--container-width);
   margin: 0 auto;
@@ -513,50 +515,50 @@ div.cursos p {
 
 }
 
-.tabcontent::-webkit-scrollbar {
+.cursos-individual_main .tabcontent::-webkit-scrollbar {
   width: 10px;
 }
 
-.tabcontent::-webkit-scrollbar-track {
+.cursos-individual_main .tabcontent::-webkit-scrollbar-track {
   background-color: #f2f3f8;
   border-radius: 50px;
 }
 
-.tabcontent::-webkit-scrollbar-thumb {
+.cursos-individual_main .tabcontent::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.253);
   border: 3px solid #f2f3f8;
   border-radius: 50px;
 }
 
-.slide-container {
+.cursos-individual_main .slide-container {
   margin-top: var(--margin-20);
   max-width: var(--container-width);
   width: 100%;
   padding: 40px 0;
 }
 
-.slide-content {
+.cursos-individual_main .slide-content {
   margin: 0 40px;
   overflow: hidden;
 }
 
-.card {
+.cursos-individual_main .card {
   border-radius: 10px 0 10px 0;
   background-color: #f2f3f8;
 }
 
-.card-content {
+.cursos-individual_main .card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--margin-10) 14px;
 }
 
-.card-content h3 {
+.cursos-individual_main .card-content h3 {
   border-bottom: 1px solid #d7dee7;
 }
 
-.name {
+.cursos-individual_main .name {
   font-size: 18px;
   font-weight: 500;
   color: #333;
@@ -564,39 +566,37 @@ div.cursos p {
 
 }
 
-.description {
+.cursos-individual_main .description {
   color: #777a7e;
   text-align: center;
   font-family: var(--primary-font);
   margin: 0;
 }
 
-.flex-row {
+.cursos-individual_main .flex-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0px;
 }
 
-.flex-item {
+.cursos-individual_main .flex-item {
   flex: 1;
   margin: var(--margin-5);
   padding: 10px;
 }
 
-.flex-item h4 {
+.cursos-individual_main .flex-item h4 {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-
-
-.button:hover {
+.cursos-individual_main .button:hover {
   color: #242527;
   background-color: transparent;
   box-shadow: inset 0 0 0 2px #1b3556;
 }
 
-.button {
+.cursos-individual_main .button {
   color: white;
   border: none;
   padding: 8px 16px;
@@ -612,37 +612,37 @@ div.cursos p {
   text-decoration: none;
 }
 
-.swiper-navBtn::before,
-.swiper-navBtn::after {
+.cursos-individual_main .swiper-navBtn::before,
+.cursos-individual_main .swiper-navBtn::after {
   font-size: 38px;
 
 }
 
-.swiper-pagination-bullet {
+.cursos-individual_main .swiper-pagination-bullet {
   background-color: var(--corsecundaria);
   opacity: 1;
 }
 
-.swiper-pagination-bullet-active {
+.cursos-individual_main .swiper-pagination-bullet-active {
   background-color: var(--corprincipal);
 }
 
-div.slide-container.swiper {
+.cursos-individual_main div.slide-container.swiper {
   padding-top: 0;
 }
 
-.slide-content.swiper-initialized.swiper-horizontal {
+.cursos-individual_main .slide-content.swiper-initialized.swiper-horizontal {
   margin: 0;
 }
 
-.selectionumpoucomaior {
+.cursos-individual_main .selectionumpoucomaior {
   padding-top: 100px;
   padding-bottom: 100px;
 
 }
 
 /*Topicos*/
-.grid-container {
+.cursos-individual_main .grid-container {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -657,14 +657,14 @@ div.slide-container.swiper {
 
 }
 
-.grid-item {
+.cursos-individual_main .grid-item {
   display: block;
   align-items: flex-start;
   padding: var(--margin-10);
   margin: 0 auto;
 }
 
-.icon {
+.cursos-individual_main .icon {
   width: 50px;
   height: 50px;
   margin-right: var(--margin-20);
@@ -672,23 +672,23 @@ div.slide-container.swiper {
 
 }
 
-.contentdogrid h3 {
+.cursos-individual_main .contentdogrid h3 {
   margin: 0;
   margin-bottom: var(--margin-10);
 
 }
 
-.contentdogrid p {
+.cursos-individual_main .contentdogrid p {
   text-align: left;
   margin: 0;
 }
 
-section {
+.cursos-individual_main section {
   padding: 0 var(--margin-20);
 }
 
 /*MATRIZ ESCOLAR*/
-#lista {
+.cursos-individual_main #lista {
   box-sizing: border-box;
   border-radius: 5px;
   max-width: var(--container-width);
@@ -705,28 +705,28 @@ section {
   padding: 20px;
 }
 
-#lista .item {
+.cursos-individual_main #lista .item {
   border-radius: 5px;
 }
 
 /* Nova classe para quando o último item está sozinho na linha */
-#lista .item-last-alone {
+.cursos-individual_main #lista .item-last-alone {
   grid-column: 1 / -1;
 }
 
-#lista .item:nth-child(odd) {
+.cursos-individual_main #lista .item:nth-child(odd) {
   background-color: white;
 }
 
-#lista .item:nth-child(even) {
+.cursos-individual_main #lista .item:nth-child(even) {
   background-color: white;
 }
 
-#lista .item .descricao {
+.cursos-individual_main #lista .item .descricao {
   color: var(--texto-preto);
 }
 
-.descricao {
+.cursos-individual_main .descricao {
   display: none;
   margin: var(--margin-10);
   background-color: white;
@@ -735,7 +735,7 @@ section {
   border-radius: 5px;
 }
 
-#lista h3 {
+.cursos-individual_main #lista h3 {
   font-size: 20px;
   cursor: pointer;
   transition: color 0.2s;
@@ -744,20 +744,20 @@ section {
   color: var(--corprincipal);
 }
 
-#lista h3:hover {
+.cursos-individual_main #lista h3:hover {
   color: var(--corsecundaria);
 }
 
-.azul {
+.cursos-individual_main .azul {
   background-color: var(--corprincipal);
 }
 
-.espacobranco {
+.cursos-individual_main .espacobranco {
   background-color: var(--bg-branco);
   height: 80px;
 }
 
-.espacoazul {
+.cursos-individual_main .espacoazul {
   height: 80px;
   background-color: var(--corprincipal);
 }
@@ -765,41 +765,41 @@ section {
 @media (max-width: 701px) {
 
 
-  #lista {
+  .cursos-individual_main #lista {
     grid-template-columns: 1fr;
   }
 
-  #lista .item:last-child {
+  .cursos-individual_main #lista .item:last-child {
     grid-column: 1;
   }
 
 }
 
-.teacherCurriculumLinks i {
+.cursos-individual_main .teacherCurriculumLinks i {
   padding-right: 5px;
   border-radius: 2px;
 }
 
-.frasedeefeito {
+.cursos-individual_main .frasedeefeito {
   text-align: center;
   max-width: var(--container-width);
   margin: 0 auto;
   padding: var(--margin-20);
 }
 
-.inscreva {
+.cursos-individual_main .inscreva {
   font-size: 30px;
   cursor: pointer;
   line-height: 0;
 }
 
-.inscreva a {
+.cursos-individual_main .inscreva a {
   text-decoration: none;
   color: var(--texto-preto);
 
 }
 
-.highlight {
+.cursos-individual_main .highlight {
   width: max-content;
   background-size: 200% auto;
   background-image: linear-gradient(to right, transparent 50%, var(--amarelo) 50%);
@@ -811,7 +811,7 @@ section {
 
 }
 
-.highlight.active {
+.cursos-individual_main .highlight.active {
   animation-name: highlight;
 }
 
@@ -828,47 +828,45 @@ section {
 
 @media (max-width: 600px) {
 
-  .containerprofessores::-webkit-scrollbar-track {
+  .cursos-individual_main .containerprofessores::-webkit-scrollbar-track {
     border-radius: 50px;
   }
 
-  .containerprofessores::-webkit-scrollbar-track {
+  .cursos-individual_main .containerprofessores::-webkit-scrollbar-track {
     background-color: #f2f3f8;
   }
 
-  .titulo_h1 {
+  .cursos-individual_main .titulo_h1 {
     font-size: 35px;
   }
 
-  .header-titulo {
+  .cursos-individual_main .header-titulo {
     font-size: 3vh;
   }
 
-  .inscreva-btn {
+  .cursos-individual_main .inscreva-btn {
     margin: 0 auto;
   }
 
-
-
-  .button-containercalendario {
+  .cursos-individual_main .button-containercalendario {
     flex-direction: column;
   }
 
-  .grid-container {
+  .cursos-individual_main .grid-container {
     grid-template-columns: 1fr;
   }
 
-  .grid-item {
+  .cursos-individual_main .grid-item {
     width: 90%;
   }
 
-  .outroscursos {
+  .cursos-individual_main .outroscursos {
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .overlayazul {
+  .cursos-individual_main .overlayazul {
     opacity: 70% !important;
   }
 
@@ -878,7 +876,7 @@ section {
 
 @media only screen and (max-width: 315px) {
 
-  .conhecacursos {
+  .cursos-individual_main .conhecacursos {
     margin-bottom: 10px;
   }
 
@@ -887,67 +885,68 @@ section {
 
 
 @media screen and (max-width: 768px) {
-  .containerinfo {
+  .cursos-individual_main .containerinfo {
     width: 100%;
     flex-wrap: wrap;
   }
 
-  .containerinfo>* {
+  .cursos-individual_main .containerinfo>* {
     flex-basis: calc(50% - var(--margin-5));
     flex-grow: 1;
   }
 
-  .slide-content {
+  .cursos-individual_main .slide-content {
     margin: 0 var(--margin-10);
   }
 
-  .swiper-navBtn {
+  .cursos-individual_main .swiper-navBtn {
     display: none;
   }
 
-  .slideContent {
+  .cursos-individual_main .slideContent {
     margin: 0 var(--margin-10);
   }
 
-  .swiperNavBtn {
+  .cursos-individual_main .swiperNavBtn {
     display: none;
   }
 
 }
 
 
-.rosaead1 {
+.cursos-individual_main .rosaead1 {
   margin-right: 5px;
   margin-left: 3px;
   color: #e53888;
 }
 
-.rosaead {
+.cursos-individual_main .rosaead {
   color: #e53888;
   margin-left: 5px;
   margin-right: 5px;
 
 }
 
-.amarelomec {
+.cursos-individual_main .amarelomec {
   color: #f9e20f;
+  font-size: medium;
 }
 
-#ondeficaovideo {
+.cursos-individual_main #ondeficaovideo {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   max-width: var(--container-width);
 }
 
-.video-part {
+.cursos-individual_main .video-part {
   position: relative;
   width: 100%;
   padding-top: 56.25%;
   /* 16:9 Aspect Ratio */
 }
 
-.video-part iframe {
+.cursos-individual_main .video-part iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -956,19 +955,19 @@ section {
   border-radius: 10px;
 }
 
-.paragrafo {
+.cursos-individual_main .paragrafo {
   text-indent: 20px;
 }
 
 /*  HEADER ----------------------------------------------------------------------------------------------- */
 
-header {
+.cursos-individual_main header {
   background-color: var(--corprincipal);
   height: 100dvh;
   padding: 0 20px;
 }
 
-.headertamanho {
+.cursos-individual_main .headertamanho {
   display: flex;
   margin: 0 auto;
   height: calc(100dvh - 40px);
@@ -976,13 +975,13 @@ header {
   align-items: center;
 }
 
-.header_div {
+.cursos-individual_main .header_div {
   display: flex;
   width: 960px;
 
 }
 
-.ladodireito {
+.cursos-individual_main .ladodireito {
   width: 50%;
   display: flex;
   align-items: center;
@@ -991,16 +990,16 @@ header {
 
 }
 
-#logoQuadrado {
+.cursos-individual_main #logoQuadrado {
   max-width: 400px;
 }
 
-#logoRetangular {
+.cursos-individual_main #logoRetangular {
   max-width: 400px;
   width: 100%;
 }
 
-.ladoesquerdo {
+.cursos-individual_main .ladoesquerdo {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -1009,48 +1008,48 @@ header {
   z-index: 5;
 }
 
-.ladoesquerdo a {
+.cursos-individual_main .ladoesquerdo a {
   text-decoration: none;
   color: black;
 }
 
-.ladoesquerdo i {
+.cursos-individual_main .ladoesquerdo i {
   font-size: small;
   margin-right: 2px;
 }
 
-.flex-item:nth-child(3):hover {
+.cursos-individual_main .flex-item:nth-child(3):hover {
   color: white;
   background-color: transparent;
   box-shadow: inset 0 0 0 2px white;
   cursor: pointer;
 }
 
-.subtitulo {
+.cursos-individual_main .subtitulo {
   padding: 5px 10px;
   border-radius: 5px;
   max-width: 450px;
   box-sizing: border-box;
   text-align: center;
   color: white;
-  font-size: x-large;
+  font-size: larger;
 
 }
 
-.subtitulo1 {
+.cursos-individual_main .subtitulo1 {
   padding: 5px 10px;
   border-radius: 5px;
   max-width: 450px;
   box-sizing: border-box;
   text-align: center;
   color: white;
-  font-size: x-large;
+  font-size: larger;
 }
 
-.inscrevase {
+.cursos-individual_main .inscrevase {
   background-color: #f9e20f;
   border: none;
-  padding: 5px 20px;
+  padding: 8px 20px;
   cursor: pointer;
   transition: all 0.3s;
   margin-right: 20px;
@@ -1064,20 +1063,20 @@ header {
 
 }
 
-.inscrevase a {
+.cursos-individual_main  .inscrevase a {
   text-decoration: none;
   transition: all 0.3s;
 
 }
 
-.inscrevase:hover {
+.cursos-individual_main  .inscrevase:hover {
   background-color: transparent;
-  box-shadow: inset 0 0 0 2px white;
+  box-shadow: inset 0 0 0 2px var(--amarelo);
   color: white;
 
 }
 
-.flex-container {
+.cursos-individual_main .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -1085,11 +1084,11 @@ header {
   padding: 20px 10px;
 }
 
-.ladoesquerdo .flex-item{
+.cursos-individual_main .ladoesquerdo .flex-item{
   background-color: white;
 }
 
-.flex-item {
+.cursos-individual_main .flex-item {
   padding: 10px;
   margin: 5px;
   text-align: center;
@@ -1098,9 +1097,7 @@ header {
   transition: all 0.3s;
 }
 
-
-
-.button-background {
+.cursos-individual_main .button-background {
   top: 0;
   position: fixed;
   background-color: var(--bg-branco);
@@ -1114,7 +1111,7 @@ header {
   border-bottom: 1px solid var(--neutral-light);
 }
 
-.scroll-button {
+.cursos-individual_main .scroll-button {
   background-color: #f9e20f;
   border: none;
   padding: 5px 20px;
@@ -1129,7 +1126,7 @@ header {
   color: black;
 }
 
-.header-container {
+.cursos-individual_main .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1139,14 +1136,14 @@ header {
 
 }
 
-.title-container {
+.cursos-individual_main .title-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
 }
 
-.inscreva-btn {
+.cursos-individual_main .inscreva-btn {
   background-color: var(--amarelo);
   color: black;
   border: none;
@@ -1161,30 +1158,30 @@ header {
   text-decoration: none;
 }
 
-.inscreva-btn:hover {
+.cursos-individual_main .inscreva-btn:hover {
   color: var(--amarelo);
   background-color: transparent;
   box-shadow: inset 0 0 0 2px var(--amarelo);
 }
 
-.scroll-button:hover {
+.cursos-individual_main .scroll-button:hover {
   background-color: transparent;
   box-shadow: inset 0 0 0 2px white;
   color: white;
 }
 
-.ladomeio {
+.cursos-individual_main .ladomeio {
   display: none;
 }
 
 @media (max-width: 960px) {
-  .header_div {
+  .cursos-individual_main .header_div {
     width: 100%;
     flex-direction: column;
     justify-content: center;
   }
 
-  .ladodireito {
+  .cursos-individual_main .ladodireito {
     width: 100%;
     height: 100%;
     align-items: last baseline;
@@ -1192,18 +1189,18 @@ header {
     flex: 1;
   }
 
-  .ladodireito img {
+  .cursos-individual_main .ladodireito img {
     transform: scale(0.9);
   }
 
-  .ladoesquerdo {
+  .cursos-individual_main .ladoesquerdo {
     width: 100%;
     height: 100%;
     flex: 1;
     justify-content: flex-start;
   }
 
-  .ladomeio {
+  .cursos-individual_main .ladomeio {
     display: flex;
     width: 100%;
     height: 5%;
@@ -1213,30 +1210,28 @@ header {
 
   }
 
-  .grid-container {
+  .cursos-individual_main .grid-container {
     grid-template-columns: 1fr;
   }
 
-  .subtitulo {
+  .cursos-individual_main .subtitulo {
     display: none;
   }
 }
 
 
 
-.containerseta {
+.cursos-individual_main .containerseta {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.arrow {
-  border: solid #f9e20f;
-  border-width: 0 3px 3px 0;
+.cursos-individual_main .arrow {
+  font-size: 30px;
+  color: var(--corsecundaria);
   display: inline-block;
   padding: 5px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
   animation: bounce 2s infinite;
 }
 
@@ -1247,37 +1242,37 @@ header {
   50%,
   80%,
   100% {
-    transform: translateY(0) rotate(45deg);
+    transform: translateY(-10px) ;
   }
 
   40% {
-    transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-30px) ;
   }
 
   60% {
-    transform: translateY(-10px) rotate(45deg);
+    transform: translateY(-20px);
   }
 }
 
 
-.btn-fixo {
+.cursos-individual_main .btn-fixo {
   position: fixed;
   bottom: 10px;
 }
 
-.tabcontent .produtofinalcursos {
+.cursos-individual_main .tabcontent .produtofinalcursos {
   display: inline-flex;
 }
 
-.tabcontent .produtofinalcursostotal {
+.cursos-individual_main .tabcontent .produtofinalcursostotal {
   display: inline-flex;
 }
 
-.valorhighlight {
+.cursos-individual_main .valorhighlight {
   margin-top: 10px;
 }
 
-.pmercado {
+.cursos-individual_main .pmercado {
   max-width: 960px;
   margin: 0 auto;
   padding-top: 10px;
@@ -1289,12 +1284,13 @@ header {
 /* faq --------------------------------------------------------------------------------------------------------------------------*/
 
 
-.accordion-content {
+.cursos-individual_main .accordion-content {
   max-width: var(--container-width);
   margin: 0 auto;
+  margin-bottom: 130px;
 }
 
-.accordion-content .accordion-item {
+.cursos-individual_main .accordion-content .accordion-item {
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
@@ -1305,13 +1301,13 @@ header {
   margin-bottom: 0.5em;
 }
 
-.accordion-content .item-header {
+.cursos-individual_main .accordion-content .item-header {
   display: flex;
   justify-content: space-between;
   column-gap: 0.2em;
 }
 
-.accordion-content .item-icon {
+.cursos-individual_main .accordion-content .item-icon {
   margin-top: 1rem;
   flex: 0 0 25px;
   display: grid;
@@ -1321,38 +1317,38 @@ header {
   width: 25px;
   border-radius: 4px;
   cursor: pointer;
+  color: var(--corprincipal);
 }
 
-.accordion-content .item-icon i {
+.cursos-individual_main .accordion-content .item-icon i {
   transition: all 0.25s cubic-bezier(0.5, 0, 0.1, 1);
 }
 
-.accordion-content .item-question {
+.cursos-individual_main .accordion-content .item-question {
   font-size: 1em;
   line-height: 1;
   font-weight: 500;
 }
 
-.accordion-content .active .item-icon i {
+.cursos-individual_main .accordion-content .active .item-icon i {
   transform: rotate(180deg);
 }
 
-.accordion-content .active .item-question {
+.cursos-individual_main .accordion-content .active .item-question {
   font-weight: 500;
 }
 
-.accordion-content .item-content {
+.cursos-individual_main .accordion-content .item-content {
   max-height: 0;
   overflow: hidden;
   transition: all 300ms ease;
 }
 
-.accordion-content .item-answer {
+.cursos-individual_main .accordion-content .item-answer {
   color: #8a97a8;
 }
 
-.outroscursos {
-
+.cursos-individual_main .outroscursos {
   display: flex;
   align-items: center;
   color: white;
@@ -1360,7 +1356,7 @@ header {
   font-weight: 700;
 }
 
-.containerseta2 {
+.cursos-individual_main .containerseta2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1369,21 +1365,21 @@ header {
   z-index: 2;
 }
 
-.arrow2 {
-  border: solid #f9e20f;
-  border-width: 0 3px 3px 0;
+.cursos-individual_main .arrow2 {
+  font-size: 30px;
+  color: var(--corsecundaria);
   display: inline-block;
   padding: 5px;
   animation: bounce 2s infinite;
 }
 
-.conhecacursos {
+.cursos-individual_main .conhecacursos {
   color: white;
   line-height: 1;
   z-index: 2;
 }
 
-.image-overlay {
+.cursos-individual_main .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1395,7 +1391,7 @@ header {
 }
 
 /* Efeito de degradê de opacidade da esquerda para a direita */
-.image-overlay::before {
+.cursos-individual_main .image-overlay::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1409,11 +1405,11 @@ header {
 
 }
 
-.outroscursoscontainer a {
+.cursos-individual_main .outroscursoscontainer a {
   text-decoration: none;
 }
 
-.outroscursoscontainer {
+.cursos-individual_main .outroscursoscontainer {
   position: relative;
   max-width: 970px;
   height: auto;
@@ -1425,7 +1421,7 @@ header {
   margin: 0 auto;
 }
 
-.image-overlay {
+.cursos-individual_main .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1442,13 +1438,12 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-.overlay-next {
+.cursos-individual_main .overlay-next {
   opacity: 0;
   /* Inicia invisível */
 }
 
-
-.overlayazul {
+.cursos-individual_main .overlayazul {
   position: absolute;
   top: 0;
   left: 0;
