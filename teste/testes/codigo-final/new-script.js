@@ -632,11 +632,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   var images = [
-    "url('/teste/testes/codigo-por-curso/imagescursos/piscina.png')",
-    "url('/teste/testes/codigo-por-curso/imagescursos/vet.png')",
-    "url('/teste/testes/codigo-por-curso/imagescursos/praca.png')",
-    "url('/teste/testes/codigo-por-curso/imagescursos/estacionamento.png')",
-    "url('/teste/testes/codigo-por-curso/imagescursos/bloco2.png')",
+    "url('/teste/testes/codigo-final/images/imagescursos/piscina.png')",
+    "url('/teste/testes/codigo-final/images/imagescursos/vet.png')",
+    "url('/teste/testes/codigo-final/images/imagescursos/praca.png')",
+    "url('/teste/testes/codigo-final/images/imagescursos/estacionamento.png')",
+    "url('/teste/testes/codigo-final/images/imagescursos/bloco2.png')",
   ];
   var currentIndex = 0;
   var overlayDiv = document.querySelector('.image-overlay');
