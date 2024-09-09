@@ -229,3 +229,37 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
 
+// pegar esses dados e colocar em outro lugar ------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function() {
+        function updateNewItems() {
+            const newItems = [];
+            
+            // Captura todos os elementos que possuem a classe 'new'
+            const gridItems = document.querySelectorAll('.grid-item.new');
+            
+            if (gridItems.length === 0) {
+                console.warn("Nenhum item 'new' encontrado.");
+            } else {
+                gridItems.forEach(item => {
+                    console.log("Encontrou item: ", item); // Depuração para ver os itens
+                    newItems.push({
+                        href: item.querySelector('a') ? item.querySelector('a').href : 'https://info.fam.br/',
+                        imageSrc: item.querySelector('img').src,
+                        title: item.querySelector('h3').textContent,
+                        description: item.querySelector('p').textContent
+                    });
+                });
+
+                // Se encontrou itens, armazena no localStorage
+                if (newItems.length > 0) {
+                    console.log("Itens armazenados: ", newItems);
+                    localStorage.setItem('newItems', JSON.stringify(newItems));
+                }
+            }
+        }
+
+        updateNewItems();
+    }, 1000); // Espera 1 segundo para garantir que o DOM carregue completamente
+});

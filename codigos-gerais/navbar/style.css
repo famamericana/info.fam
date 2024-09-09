@@ -6,7 +6,6 @@
     position: relative;
     /* ou 'absolute', dependendo do seu layout */
     z-index: 9999;
-
 }
 
 .famosanavbar .barra-navegacao {
@@ -71,7 +70,7 @@
 .famosanavbar .conteudo-dropdown {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 65px;
     box-sizing: border-box;
     z-index: 1;
     max-width: 960px;
@@ -97,7 +96,7 @@
     max-width: 960px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1b3556;
     margin: 0 auto;
 
 }
@@ -113,15 +112,14 @@
     flex-direction: column;
     padding: 20px;
     line-height: 1.5;
+    width: 100%;
+    text-wrap: nowrap;
 }
 
-.famosanavbar .lado-direito-dropdown {
-    flex: 3;
+.famosanavbar .novidades-container {
+  gap: 10px;
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .famosanavbar .imagem-com-texto {
@@ -142,7 +140,14 @@
     width: fit-content;
     margin-bottom: 10px;
     margin-left: 0;
+}
 
+.famosanavbar .grid-item{
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;    
 }
 
 .famosanavbar .imagem-com-texto h3 {
@@ -159,6 +164,7 @@
 
 .famosanavbar .imagem-com-texto img {
     width: 100%;
+    height: auto;
     max-height: 100px;
     object-fit: cover;
     border-radius: 5px;
@@ -199,3 +205,6 @@
     }
 
 }
+
+
+

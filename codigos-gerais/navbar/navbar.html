@@ -1,10 +1,8 @@
 <body>
-
     <div id="Navbar" style="display: none;"></div> <!-- Div que receberá o navbar -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
         function loadCss(url) {
             return new Promise((resolve, reject) => {
                 var link = document.createElement('link');
@@ -22,68 +20,47 @@
                 loadCss('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css')
             ]).then(() => {
                 var navbarHtml = `
-            <div class="famosanavbar">
-        <nav class="barrafundo">
-            <div class="barra-navegacao">
-                <a href="https://info.fam.br">
-                    <img src="/codigos-gerais/navbar/images/info.fam.svg" alt="Logo" class="imagem-logo">
-                </a>
-                <ul class="lista-links">
-                    <li><a href="https://info.fam.br">Início</a></li>
-                    <li class="item-dropdown" id="itemnavbarDropdown">
-                        <a href="">Diversos</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="agoravai conteudo-dropdown">
-            <div class="flex">
-                <div class="lado-esquerdo-dropdown">
-                    <!-- Links adicionais -->
-                    <h2>Informações</h2>
-                    <a href="https://www.fam.br/blog/">Blog FAM</a>
-                    <a href="https://info.fam.br/calendario-academico">Calendário Acadêmico</a>
-                    <a href="https://info.fam.br/calendario-de-eventos">Calendário de Eventos</a>
-                    <a href="https://info.fam.br/eventos/semana-de-areas/">Semana de Áreas</a>
+                <div class="famosanavbar">
+                    <nav class="barrafundo">
+                        <div class="barra-navegacao">
+                            <a href="https://info.fam.br">
+                                <img src="/codigos-gerais/navbar/images/info.fam.svg" alt="Logo" class="imagem-logo">
+                            </a>
+                            <ul class="lista-links">
+                                <li><a href="/">Início</a></li>
+                                <li class="item-dropdown" id="itemnavbarDropdown">
+                                    <a href="">Diversos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="agoravai conteudo-dropdown">
+                        <div class="flex">
+                            <div class="lado-esquerdo-dropdown">
+                                <!-- Links adicionais -->
+                                <h2>Informações</h2>
+                                <a href="https://www.fam.br/blog/">Blog FAM</a>
+                                <a href="https://info.fam.br/calendario-academico">Calendário Acadêmico</a>
+                                <a href="https://info.fam.br/calendario-de-eventos">Calendário de Eventos</a>
+                                <a href="https://info.fam.br/eventos/semana-de-areas/">Semana de Áreas</a>
+                            </div>
+                            <div class="lado-direito-dropdown">
+                                <div class="novidades-container">
+                                    <!-- Os itens 'new' serão inseridos aqui automaticamente -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lado-direito-dropdown">
-                    <!-- Imagens com títulos -->
-                    
-                    <div class="imagem-com-texto">
-                        <a target="_blank" href="https://info.fam.br/eventos/trote-solidario">
-                            <img src="/paginicial/images/trotesolidario.png" alt="Imagem 1">
-                            <h3>Trote Solidário</h3>
-                            <p>Ações que transbordam solidariedade <3</p>
-                        </a>
-                    </div>
-                      
-                    <div class="imagem-com-texto">
-                        <a target="_blank" href="https://info.fam.br/eventos/semana-de-areas/">
-                            <img src="/paginicial/images/semanadeareas.png" alt="Imagem 1">
-                            <h3>Semana de Áreas</h3>
-                            <p>Palestras e Workshops FAM, qual será o proximo?</p>
-                        </a>
-                    </div>
-                    
-                    <div class="imagem-com-texto">
-                        <a target="_blank" href="https://info.fam.br/cpa">
-                            <img src="/paginicial/images/cpaimg.png" alt="Imagem 2">
-                            <h3>CPA</h3>
-                            <p>Você responde, CPA identifica e a FAM atende!</p>
-                        </a>
-                        <div class="pagnova"><i class="fas fa-star"></i></div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
+                `;
                 // Inserindo o HTML do navbar na página
                 $("#Navbar").html(navbarHtml).show();
 
                 // Chama a função setupDropdown após o conteúdo ser carregado
                 setupDropdown();
+
+                // Adiciona o código para pegar automaticamente as informações
+                updateNewItems();
             }).catch(error => {
                 console.error(error);
             });
@@ -121,6 +98,42 @@
             });
         }
 
+
+        function updateNewItems() {
+            const newItemsContainer = document.querySelector('.novidades-container');
+            const newItems = JSON.parse(localStorage.getItem('newItems')) || [];
+
+            // Verifica se há itens no localStorage
+            if (newItems.length === 0) {
+                newItemsContainer.innerHTML = "<p>Nenhum item novo disponível.</p>";
+                return;
+            }
+
+            // Limitar o número de itens a 3
+            const maxItems = 3;
+            let itemCount = 0;
+
+            // Gera os elementos com base nos dados armazenados
+            newItems.forEach(item => {
+                if (itemCount < maxItems) { // Adiciona o item até o limite de 3
+                    const newItemElement = document.createElement('div');
+                    newItemElement.classList.add('grid-item');
+
+                    newItemElement.innerHTML = `
+                <div class="imagem-com-texto">
+                    <a target="_blank" href="${item.href}">
+                        <img src="${item.imageSrc}" alt="${item.title}">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </a>
+                </div>
+                `;
+                    newItemsContainer.appendChild(newItemElement);
+                    itemCount++; // Incrementa o contador de itens
+                }
+            });
+        }
+
         window.addEventListener('scroll', function () {
             var navbar = document.querySelector('.famosanavbar');
             if (window.pageYOffset > 140) {
@@ -129,7 +142,5 @@
                 navbar.classList.remove('famosanavbar_fixed-navbar');
             }
         });
-
     </script>
-
 </body>
