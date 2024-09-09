@@ -58,11 +58,17 @@
     /* Altere para a cor desejada */
 }
 
+.famosanavbar .fofo{
+    padding: 6px 5px;
+    border-radius: 5px;
+    color: #d5dcf1 !important;
+}
+
 .famosanavbar .item-dropdown {
     position: relative;
 }
 
-#itemDropdown {
+.famosanavbar #itemDropdown {
     padding: 27px;
 }
 
