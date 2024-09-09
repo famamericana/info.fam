@@ -77,7 +77,7 @@ body {
     justify-content: center;
 }
 
-.navbar_main .navbar-custom .dropdown-content {
+.navbar_main .navbar-custom .dropdown-content-navbar {
     margin-top: 4px;
     display: none;
     position: absolute;
@@ -97,7 +97,7 @@ body {
     padding: 10px 10px;
 }
 
-.navbar_main .navbar-custom .dropdown-content a {
+.navbar_main .navbar-custom .dropdown-content-navbar a {
     color: #000;
     padding: 3px;
     text-decoration: none;
@@ -105,15 +105,15 @@ body {
     text-align: left;
 }
 
-.navbar_main .navbar-custom .dropdown-content a:hover {
+.navbar_main .navbar-custom .dropdown-content-navbar a:hover {
     color: #45b7e5;
 }
 
-.navbar_main .navbar-custom .dropdown:hover .dropdown-content {
+.navbar_main .navbar-custom .dropdown:hover .dropdown-content-navbar {
     display: block;
 }
 
-.navbar_main .navbar-custom .dropdown-content::before {
+.navbar_main .navbar-custom .dropdown-content-navbar::before {
     content: "";
     position: absolute;
     top: -8px;
@@ -166,7 +166,7 @@ body {
     margin-left: 15px;
 }
 
-.navbar_main .chamaratenção {
+.navbar_main .chamaratencao {
     color: #45b7e5;
 }
 
