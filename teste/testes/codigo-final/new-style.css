@@ -2551,3 +2551,292 @@ html {
       height: 800px;
   }
 }
+
+
+/* BLOG paginas ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.blog-paginas_main main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.blog-paginas_main .topico {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #45b7e5;
+}
+
+.blog-paginas_main .titulotexto {
+  font-size: xx-large;
+  font-weight: 800;
+  line-height: 1.1;
+  width: 100%;
+}
+
+.blog-paginas_main .comecodotexto {
+  color: #9eafc7;
+}
+
+.blog-paginas_main .nomeedata {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.blog-paginas_main .nome {
+  color: #1b3556;
+  font-weight: 600;
+}
+
+.blog-paginas_main .data {
+  color: #9eafc7;
+  margin-left: 5px;
+}
+
+.blog-paginas_main .redessociais {
+  display: flex;
+  gap: 10px;
+}
+
+.blog-paginas_main .redessociais .iconesredes {
+  background-color: #f2f3f8;
+  border-radius: 10px;
+}
+
+.blog-paginas_main .redessociais a{
+  text-decoration: none;
+
+}
+
+.blog-paginas_main .quemeonde {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-paginas_main .fa-facebook-f {
+  color: #1877F2;
+}
+
+.blog-paginas_main .fa-whatsapp {
+  color: #25D366;
+}
+
+.blog-paginas_main .fa-share-nodes {
+  color: #e53888;
+}
+
+.blog-paginas_main .redessociais i {
+  display: flex;
+  justify-content: center;
+  padding: 10px 12px;
+
+}
+
+.blog-paginas_main .redessociais .iconesredes:hover i {
+  color: #1b3556;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #f2f3f8;
+  border-radius: 10px;
+}
+
+.blog-paginas_main .textao {
+  text-indent: 20px;
+  line-height: 1.5;
+}
+
+.blog-paginas_main .iconesredes{
+  cursor: pointer;
+}
+
+.blog-paginas_main .textao a {
+  font-weight: bold;
+  color: #45b7e5;
+}
+
+.blog-paginas_main .cursortop{
+  z-index: 10;
+}
+
+.blog-paginas_main .bannerimagemduas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width: 100%;
+}
+
+.blog-paginas_main .img1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.blog-paginas_main .img2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.blog-paginas_main .img1 img,
+.blog-paginas_main .img2 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.blog-paginas_main .soumaimg{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: -6px;
+  object-fit: cover;
+  object-position: center;
+  max-height: 440px;
+}
+
+.blog-paginas_main .sectionimg{
+  margin-bottom: 40px;
+}
+
+.blog-paginas_main .descricaodaimgouimgs{
+  font-size: small;
+  color: #9eafc7;
+  margin-top: 0;
+}
+
+.blog-paginas_main .relacionados{
+  margin: 70px 0;
+}
+
+.blog-paginas_main .outrosblogs{
+  height: fit-content;
+  background-color: #f2f3f8;
+  border-radius:  0 10px 10px 10px;
+  margin-top: 10px;
+  padding: 20px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.blog-paginas_main .outrosblogs::-webkit-scrollbar-track {
+  background: #f2f3f8;
+  border-radius: 5px;
+}
+
+.blog-paginas_main .outrosblogs::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.219);
+  border: 2px solid #f2f3f8;
+  border-radius: 10px;
+}
+
+.blog-paginas_main .noticia {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f2f3f8;
+  border-radius: 0 10px 0 10px;
+  max-width: 320px;
+  padding: 10px;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.blog-paginas_main .titulo {
+  text-decoration: none;
+  color: black;
+}
+
+.blog-paginas_main .titulo:hover {
+  color: #45b7e5;
+}
+
+.noticia .titulotexto{
+  font-size: large;
+}
+
+.blog-paginas_main .conteinerdaimg {
+  overflow: hidden; 
+  border-radius: 5px;
+}
+
+.blog-paginas_main .conteinerdaimg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom:  -7px;
+  
+}
+
+.blog-paginas_main .conteinerdaimg img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.blog-paginas_main .infosblog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-left: 1px dotted #45b7e5;
+  padding-left: 10px;
+}
+
+.blog-paginas_main .vejaebotao{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-paginas_main .botaoclassico{
+  text-wrap: nowrap;
+  background-color: #45b7e5;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 auto;
+  color: white;
+}
+
+
+
+.blog-paginas_main .botaoclassico:hover {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px #45b7e5;
+  color: black;
+
+}
+
+@media (max-width: 600px) {
+
+  .blog-paginas_main .quemeonde {
+      display: block;
+  }
+
+  .blog-paginas_main .redessociais {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+  }
+
+  .blog-paginas_main .redessociais .iconesredes {
+      flex: 1;
+  }
+}
+
+
+
+@media (max-width: 700px) {
+  .blog-paginas_main .infosblog {
+      width: 300px;
+  }
+}
