@@ -311,19 +311,19 @@ body {
 
 /* Arrow animation */
 .navbar_main .tab input:not(:checked)+.tab__label:hover::after {
-    animation: bounce .5s infinite;
+    animation: bounce_navbar .5s infinite;
 }
 
-@keyframes bounce {
-    25% {
-        transform: translateY(-0.25rem);
-        /* Mover um pouco para cima */
-    }
+@keyframes bounce_navbar {
+  25% {
+      transform: translateY(-5px);
+      /* Mover um pouco para cima */
+  }
 
-    75% {
-        transform: translateY(0.25rem);
-        /* Mover um pouco para baixo */
-    }
+  75% {
+      transform: translateY(5px);
+      /* Mover um pouco para baixo */
+  }
 }
 
 .navbar_main .tab__label::after {
@@ -2042,10 +2042,10 @@ html {
   color: var(--corsecundaria);
   display: inline-block;
   padding: 5px;
-  animation: bounce 2s infinite;
+  animation: bounce_cursos 2s infinite;
 }
 
-@keyframes bounce {
+@keyframes bounce_cursos {
 
   0%,
   20%,
@@ -2180,7 +2180,7 @@ html {
   color: var(--corsecundaria);
   display: inline-block;
   padding: 5px;
-  animation: bounce 2s infinite;
+  animation: bounce_cursos 2s infinite;
 }
 
 .cursos-individual_main .conhecacursos {
