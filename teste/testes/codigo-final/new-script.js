@@ -345,6 +345,60 @@ function removeAccentsAndSpecialChars(str) {
     .toLowerCase(); // Converte para minúsculas
 }
 
+// botão dropdown dos filtros -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Função para fechar todos os dropdowns
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown-content').forEach(function(content) {
+    content.style.display = "none";
+  });
+}
+
+// Adiciona o evento de clique nos botões
+document.querySelectorAll('.dropbtn').forEach(function(button) {
+  button.addEventListener('click', function(event) {
+    var dropdownContent = this.nextElementSibling;
+
+    // Verifica se o dropdown já está aberto
+    if (dropdownContent.style.display === "block") {
+      // Se estiver aberto, fecha
+      dropdownContent.style.display = "none";
+    } else {
+      // Fecha todos os outros dropdowns
+      closeAllDropdowns();
+      // Abre o dropdown clicado
+      dropdownContent.style.display = "block";
+    }
+    
+    // Impede o clique de se propagar para fechar imediatamente o dropdown
+    event.stopPropagation();
+  });
+});
+
+// Impede que o dropdown feche ao clicar dentro dele
+document.querySelectorAll('.dropdown-content').forEach(function(content) {
+  content.addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+});
+
+// Fecha o dropdown ao clicar fora
+document.addEventListener('click', function() {
+  closeAllDropdowns();
+});
+
+  // Adiciona manipulador de eventos de scroll ao window para esconder o tooltip
+  window.addEventListener('scroll', function () {
+    closeAllDropdowns();
+  });
+
+  window.addEventListener('resize', () => {
+    closeAllDropdowns();
+  });
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 $(document).ready(function () {
   $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
@@ -408,11 +462,6 @@ function setupTooltipTriggers() {
   });
 
 }
-
-// Certifique-se de chamar setupTooltipTriggers() após os cartões serem criados
-// Por exemplo, você pode chamar setupTooltipTriggers() no final de createCards() ou após createCards() ser chamada
-
-
 
 /* CURSOS Individual /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
