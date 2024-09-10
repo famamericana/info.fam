@@ -232,34 +232,26 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 // pegar esses dados e colocar em outro lugar ------------------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function() {
-        function updateNewItems() {
-            const newItems = [];
-            
-            // Captura todos os elementos que possuem a classe 'new'
-            const gridItems = document.querySelectorAll('.grid-item.new');
-            
-            if (gridItems.length === 0) {
-                console.warn("Nenhum item 'new' encontrado.");
-            } else {
-                gridItems.forEach(item => {
-                    console.log("Encontrou item: ", item); // Depuração para ver os itens
-                    newItems.push({
-                        href: item.querySelector('a') ? item.querySelector('a').href : 'https://info.fam.br/',
-                        imageSrc: item.querySelector('img').src,
-                        title: item.querySelector('h3').textContent,
-                        description: item.querySelector('p').textContent
-                    });
-                });
+    setTimeout(() => {
+        const newItems = [];
+        const gridItems = document.querySelectorAll('.grid-item.new'); // Captura os itens com a classe 'new'
 
-                // Se encontrou itens, armazena no localStorage
-                if (newItems.length > 0) {
-                    console.log("Itens armazenados: ", newItems);
-                    localStorage.setItem('newItems', JSON.stringify(newItems));
-                }
-            }
+        gridItems.forEach(item => {
+            const href = item.href ? new URL(item.getAttribute('href'), window.location.origin).href : 'https://info.fam.br/'; // Captura o href ou aplica o valor padrão
+
+            newItems.push({
+                href,
+                imageSrc: item.querySelector('img').src,
+                title: item.querySelector('h3').textContent,
+                description: item.querySelector('p').textContent
+            });
+        });
+
+        if (newItems.length > 0) {
+            localStorage.setItem('newItems', JSON.stringify(newItems)); // Armazena os itens no localStorage se houver
+            //console.log("Itens armazenados:", newItems);
+        } else {
+            //console.warn("Nenhum item 'new' encontrado.");
         }
-
-        updateNewItems();
-    }, 1000); // Espera 1 segundo para garantir que o DOM carregue completamente
+    }, 1000); // Atraso de 1 segundo para garantir o carregamento completo do DOM
 });
