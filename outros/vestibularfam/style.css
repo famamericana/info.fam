@@ -328,9 +328,10 @@ button:hover {
         grid-template-columns: 1fr 1fr;
     }
 
-    .btn-group button:last-child {
+   /* .btn-group button:last-child {
         grid-column: span 2;
-    }
+    } */
+
 
 
 }
@@ -366,6 +367,13 @@ button:hover {
         flex-direction: column;
         flex-wrap: nowrap;
     }
+}
+
+@media (max-width: 550px) {
+    .btn-group button:nth-child(5), .btn-group button:last-child {
+        grid-column: span 2;
+    } 
+
 }
 
 
