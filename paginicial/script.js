@@ -243,7 +243,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 href,
                 imageSrc: item.querySelector('img').src,
                 title: item.querySelector('h3').textContent,
-                description: item.querySelector('p').textContent
+                description: item.querySelector('p').textContent,
+                likes: item.querySelector('.counterStat').textContent
             });
         });
 

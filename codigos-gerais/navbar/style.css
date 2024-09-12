@@ -28,9 +28,14 @@
 }
 
 .famosanavbar .imagem-logo {
-    width: 100px;
-    /* Ajuste conforme necessário */
+    background-image: url('/codigos-gerais/navbar/images/info.fam.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px; /* Defina a largura desejada */
+    padding-top: 20%; /* Proporção da altura em relação à largura */
+    height: 0; /* Definimos a altura como 0 e usamos padding para controlar a proporção */
 }
+
 
 .famosanavbar .lista-links {
     list-style: none;
@@ -202,6 +207,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 20px;
     }
 
     .famosanavbar .barra-navegacao img {
