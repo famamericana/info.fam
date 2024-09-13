@@ -148,3 +148,50 @@ function updateTimelineLine() {
         document.querySelector('.timeline-line').style.width = `${centerX}px`;
     }
 }
+
+
+// datas futuras pesquisas no header ---------------------------------------------------------------------------------------------------
+
+  // Defina as datas das pesquisas
+  const pesquisas = [
+    { inicio: new Date('2024-09-02'), fim: new Date('2024-09-18'), texto: '02 a 18 de Setembro' },
+    { inicio: new Date('2024-10-07'), fim: new Date('2024-10-23'), texto: '07 a 23 de Outubro' },
+    { inicio: new Date('2024-11-06'), fim: new Date('2024-11-20'), texto: '06 a 20 de Novembro' },
+    // Adicione mais períodos conforme necessário
+];
+
+// Obter a data atual
+const hoje = new Date();
+
+// Função para verificar o status da pesquisa
+function atualizarPesquisa() {
+    let status = "Última pesquisa";
+    let periodo = "";
+
+    for (let i = 0; i < pesquisas.length; i++) {
+        const { inicio, fim, texto } = pesquisas[i];
+
+        if (hoje >= inicio && hoje <= fim) {
+            status = "Pesquisa Atual";
+            periodo = texto;
+            break;
+        } else if (hoje < inicio) {
+            status = "Próxima pesquisa";
+            periodo = texto;
+            break;
+        }
+    }
+
+    // Se nenhuma data estiver no futuro, manter a última pesquisa
+    if (status === "Última pesquisa") {
+        const ultimaPesquisa = pesquisas[pesquisas.length - 1];
+        periodo = ultimaPesquisa.texto;
+    }
+
+    // Atualizar os elementos HTML
+    document.getElementById("status-pesquisa").innerText = status;
+    document.getElementById("periodo-pesquisa").innerText = periodo;
+}
+
+// Chame a função para atualizar o conteúdo
+atualizarPesquisa();
