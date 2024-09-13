@@ -37,6 +37,90 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// slider text -----------------------------------------------------------------------------------------------------------------------------------------------------
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active-dot";
+    startProgress();
+}
+
+let timeoutId;
+let progressTimer;
+
+function resetProgress() {
+    clearTimeout(progressTimer);
+    const progressBar = document.querySelector(".progress-bar");
+    progressBar.innerHTML = "";
+}
+
+function startProgress() {
+    const progressBar = document.querySelector(".progress-bar");
+    progressBar.innerHTML = "<div class='progress'></div>";
+    setTimeout(() => {
+        const progress = document.querySelector(".progress");
+        progress.style.animation = "progressBar 10s linear forwards";
+    }, 100);
+}
+
+function autoSlide() {
+    if (!slideClicked) {
+        plusSlides(1); // Avança para o próximo slide se o usuário não tiver clicado em um ponto
+    }
+    startProgress();
+    slideClicked = false; // Reinicia slideClicked para permitir o avanço automático após 10 segundos
+    clearTimeout(timeoutId); // Limpa o timeout anterior para garantir que não haja múltiplos timeouts ativos
+    timeoutId = setTimeout(autoSlide, 10000);
+}
+
+
+timeoutId = setTimeout(autoSlide, 10000);
+
+const slider = document.querySelector(".slider");
+slider.addEventListener("mouseover", () => {
+    clearTimeout(timeoutId);
+    resetProgress();
+});
+
+slider.addEventListener("mouseout", () => {
+    resetProgress(); // Resetar a barra de progresso
+    startProgress(); // Iniciar a animação novamente
+    timeoutId = setTimeout(autoSlide, 10000);
+});
+
+let slideClicked = false;
+
+function moveSlide(n) {
+    currentSlide(n);
+    clearTimeout(timeoutId);
+    resetProgress();
+    startProgress(); // Reinicia o progresso ao mover o slide manualmente
+    if (n !== slideIndex) {
+        slideClicked = true; // Define slideClicked como true apenas se o slide for alterado
+    }
+    timeoutId = setTimeout(autoSlide, 10000);
+}
 
 
 
