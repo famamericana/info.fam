@@ -119,7 +119,7 @@ main section {
 
 .textovideo {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 20px;
     min-height: 260px;
     box-sizing: border-box;
@@ -136,20 +136,15 @@ main section {
     text-align: justify;
 }
 
-
-
 iframe {
     width: 100%;
     border-radius: 10px;
-
 }
-
-
 
 .botaopesquisa {
     padding: 8px 10px;
     border-radius: 5px;
-    color: white;
+    color: black;
     text-transform: uppercase;
     text-align: center;
     font-weight: 500;
@@ -159,8 +154,8 @@ iframe {
     text-decoration: none;
     background-color: #f9e20f;
     display: block;
-
-
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .botaopesquisa:hover {
@@ -202,44 +197,6 @@ iframe {
     padding: 20px 15px;
 }
 
-@media (max-width: 600px) {
-
-    .itenshorascontainer {
-        flex-direction: column;
-    }
-
-
-    #descriptionhoras {
-        min-width: 0px;
-        padding: 8px 15px;
-
-    }
-
-    main section {
-        margin: 5px;
-        margin-bottom: 50px;
-    }
-
-
-}
-
-@media (max-width: 800px) {
-    .textovideo {
-        flex-direction: column;
-    }
-    .textoebotao {
-        width: 100%;
-    }
-    iframe{
-        min-height: 250px;
-    }
-
-    .main2 {
-       
-        padding: 10px;
-    
-    }
-}
 
 
 /* corações -------------------------------------------------------------------------------------------*/
@@ -404,9 +361,7 @@ iframe {
     margin-right: 5px;
 }
 
-
-
-.duvidas h2 {
+.main2 h2 {
     text-align: center;
 }
 
@@ -415,4 +370,60 @@ iframe {
     padding: 10px 10px;
     background-color: #f2f3f8;
     border-radius: 10px;
+}
+
+.botoesjuntinhos {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+
+    .itenshorascontainer {
+        flex-direction: column;
+    }
+
+
+    #descriptionhoras {
+        min-width: 0px;
+        padding: 8px 15px;
+
+    }
+
+    main section {
+        margin: 5px;
+        margin-bottom: 50px;
+    }
+
+
+    
+
+}
+
+@media (max-width: 800px) {
+    .textovideo {
+        flex-direction: column;
+    }
+    .botoesjuntinhos {
+        flex-direction: column;
+    }
+    
+    .textoebotao {
+        width: 100%;
+    }
+
+    iframe {
+        min-height: 250px;
+    }
+
+    .main2 {
+
+        padding: 10px;
+
+    }
 }
