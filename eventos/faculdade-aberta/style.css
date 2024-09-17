@@ -32,9 +32,11 @@ header {
     max-width: 960px;
     margin: 0 auto;
     margin-top: 20px;
+    font-family: 'Source Sans 3', sans-serif;
+
 }
 
-.parent {
+.faculdade-aberta_main .parent {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -45,51 +47,77 @@ header {
 
 }
 
-.div1 {
+.faculdade-aberta_main .div1 {
     grid-area: 1 / 1 / 2 / 3;
 }
 
-.div2 {
+.faculdade-aberta_main .div2 {
     grid-area: 3 / 2 / 4 / 4;
 }
 
-.div3 {
+.faculdade-aberta_main .div3 {
     grid-area: 2 / 1 / 4 / 2;
 }
 
-.div4 {
+.faculdade-aberta_main .div4 {
     grid-area: 1 / 3 / 3 / 4;
 }
 
-.div5 {
+.faculdade-aberta_main .div5 {
     grid-area: 2 / 2 / 3 / 3;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.div5 img {
+.faculdade-aberta_main .div5 img {
     width: 100%;
     max-width: 280px;
 }
 
-/*cards ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*cards https://codepen.io/uiforfree/pen/WNYpLJm ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-.myCard {
+.faculdade-aberta_main .myCard {
     background-color: transparent;
     width: 100%;
     height: 100%;
     perspective: 1000px;
 }
 
-.title {
-    font-size: 1.5em;
-    font-weight: 900;
-    text-align: center;
-    margin: 0;
+.faculdade-aberta_main .backSide .title{
+    color: #1b3556;
 }
 
-.innerCard {
+.faculdade-aberta_main .backSide i{
+    color: #45b7e5;
+}
+
+.faculdade-aberta_main .data{
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.faculdade-aberta_main .data-mes{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.faculdade-aberta_main .descricao{
+    text-align: justify;
+    text-indent: 20px;
+}
+
+.faculdade-aberta_main .title {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: -10px;
+}
+
+.faculdade-aberta_main .innerCard {
     position: relative;
     width: 100%;
     height: 100%;
@@ -99,49 +127,73 @@ header {
     cursor: pointer;
 }
 
-.myCard:hover .innerCard {
+.faculdade-aberta_main .myCard:hover .innerCard {
     transform: rotateY(180deg);
+} 
+
+.faculdade-aberta_main .frontSide{
+    color: white;
 }
 
-.frontSide,
-.backSide {
+.faculdade-aberta_main .frontSide,
+.faculdade-aberta_main .backSide {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 10px;
-    color: white;
-    font-weight: 700;
+    padding: 30px 20px;
+    box-sizing: border-box;
 }
 
-.frontSide,
-.frontSide::before {
-    background: blueviolet;
+.faculdade-aberta_main .frontSide,
+.faculdade-aberta_main .frontSide::before {
+    background: #45b7e5;
+    border: 1px solid #45b7e5;
 }
 
-.backSide,
-.backSide::before {
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+.faculdade-aberta_main .backSide,
+.faculdade-aberta_main .backSide::before {
+    background: white;
+    border: 2px solid #45b7e5;
 }
 
-.backSide {
+.faculdade-aberta_main .backSide {
     transform: rotateY(180deg);
 }
 
-.frontSide::before,
-.backSide::before {
+.faculdade-aberta_main .frontSide::before,
+.faculdade-aberta_main .backSide::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: '';
-
+    /*content: '';*/
     position: absolute;
     z-index: -1;
     border-radius: 1em;
 }
 
+.faculdade-aberta_main .div3 p {
+    line-height: 1;
+}
+
+.faculdade-aberta_main ul{
+    text-align: justify;
+    padding-top: 6px;
+    padding-left: 20px;
+
+}
+
+.faculdade-aberta_main .padding{
+    padding-bottom: 10px;
+}
+
+.faculdade-aberta_main .descricao a{
+    font-weight: 600;
+    color: #45b7e5;
+}
