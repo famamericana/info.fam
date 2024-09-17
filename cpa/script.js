@@ -154,7 +154,7 @@ function updateTimelineLine() {
 
   // Defina as datas das pesquisas
   const pesquisas = [
-    { inicio: new Date('2024-09-02'), fim: new Date('2024-09-18'), texto: '02 a 18 de Setembro' },
+    { inicio: new Date('2024-09-02'), fim: new Date('2024-09-21'), texto: '02 a 21 de Setembro' },
     { inicio: new Date('2024-10-07'), fim: new Date('2024-10-23'), texto: '07 a 23 de Outubro' },
     { inicio: new Date('2024-11-06'), fim: new Date('2024-11-20'), texto: '06 a 20 de Novembro' },
     // Adicione mais períodos conforme necessário
