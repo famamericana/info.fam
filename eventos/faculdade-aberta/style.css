@@ -156,6 +156,11 @@ header {
     box-sizing: border-box;
 }
 
+.faculdade-aberta_main .frontSide {
+    justify-content: center;
+}
+
+
 .faculdade-aberta_main .frontSide,
 .faculdade-aberta_main .frontSide::before {
     background-image: linear-gradient(135deg, #36b1e1 25%, transparent 25%), linear-gradient(225deg, #36b1e1 25%, transparent 25%), linear-gradient(45deg, #36b1e1 25%, transparent 25%), linear-gradient(315deg, #36b1e1 25%, #45b7e5 25%);
@@ -205,4 +210,9 @@ header {
 .faculdade-aberta_main a {
     font-weight: 600;
     color: #45b7e5;
+}
+
+.faculdade-aberta_main .seta{
+    position: absolute;
+    bottom: 20px;
 }
