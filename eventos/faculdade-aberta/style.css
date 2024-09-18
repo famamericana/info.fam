@@ -29,7 +29,7 @@ body {
     margin: 0;
 }
 
-main{
+main {
     max-width: 960px;
     margin: 0 auto;
     margin-top: 20px;
@@ -89,26 +89,26 @@ header {
     perspective: 1000px;
 }
 
-.faculdade-aberta_main .backSide .title{
+.faculdade-aberta_main .backSide .title {
     color: #1b3556;
 }
 
-.faculdade-aberta_main .backSide i{
+.faculdade-aberta_main .backSide i {
     color: #45b7e5;
 }
 
-.faculdade-aberta_main .data{
+.faculdade-aberta_main .data {
     font-size: 50px;
     font-weight: 700;
 }
 
-.faculdade-aberta_main .data-mes{
+.faculdade-aberta_main .data-mes {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 600;
 }
 
-.faculdade-aberta_main .descricao{
+.faculdade-aberta_main .descricao {
     text-align: justify;
     text-indent: 20px;
 }
@@ -134,9 +134,9 @@ header {
 
 .faculdade-aberta_main .myCard:hover .innerCard {
     transform: rotateY(180deg);
-} 
+}
 
-.faculdade-aberta_main .frontSide{
+.faculdade-aberta_main .frontSide {
     color: white;
 }
 
@@ -158,8 +158,12 @@ header {
 
 .faculdade-aberta_main .frontSide,
 .faculdade-aberta_main .frontSide::before {
-    background: #45b7e5;
+    background-image: linear-gradient(135deg, #36b1e1 25%, transparent 25%), linear-gradient(225deg, #36b1e1 25%, transparent 25%), linear-gradient(45deg, #36b1e1 25%, transparent 25%), linear-gradient(315deg, #36b1e1 25%, #45b7e5 25%);
+    background-position: 40px 0, 40px 0, 0 0, 0 0;
+    background-size: 40px 40px;
+    background-repeat: repeat;
     border: 1px solid #45b7e5;
+
 }
 
 .faculdade-aberta_main .backSide,
@@ -187,18 +191,18 @@ header {
     line-height: 1;
 }
 
-.faculdade-aberta_main ul{
+.faculdade-aberta_main ul {
     text-align: justify;
     padding-top: 6px;
     padding-left: 20px;
 
 }
 
-.faculdade-aberta_main .padding{
+.faculdade-aberta_main .padding {
     padding-bottom: 10px;
 }
 
-.faculdade-aberta_main a{
+.faculdade-aberta_main a {
     font-weight: 600;
     color: #45b7e5;
 }
