@@ -277,7 +277,7 @@ body {
 }
 
 .topicos-legais {
-    height: 250px;
+    height: 270px;
     display: flex;
     gap: 20px;
     padding-bottom: 10px;
@@ -307,18 +307,19 @@ body {
 }
 
 .topicos-legais img {
-    mask-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Para suporte no Safari */
+    mask-image: linear-gradient(to right, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    /* Para suporte no Safari */
     width: 58%;
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
 
-
 .topicos-legais_container .topicos-legais:nth-child(even) img {
-    mask-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    -webkit-mask-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Para suporte no Safari */
+    mask-image: linear-gradient(to left, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    /* Para suporte no Safari */
 }
 
 .no-bullets {
@@ -331,7 +332,4 @@ body {
 }
 
 
-@media (max-width: 850px) {
-    
-   
-}
+@media (max-width: 850px) {}
