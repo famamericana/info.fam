@@ -80,6 +80,28 @@ header {
     max-width: 280px;
 }
 
+button {
+   width: 100%;
+    color: white;
+    box-shadow: inset 0 0 0 2px transparent;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #1b3556;
+}
+
+button:hover {
+    color: #242527;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #45b7e5;
+}
+
 /*cards https://codepen.io/uiforfree/pen/WNYpLJm ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .faculdade-aberta_main .myCard {
@@ -130,6 +152,12 @@ header {
     transition: transform 0.8s;
     transform-style: preserve-3d;
     cursor: pointer;
+}
+
+/* Estilos existentes omitidos */
+
+.faculdade-aberta_main .flipped .innerCard {
+    transform: rotateY(180deg);
 }
 
 .faculdade-aberta_main .myCard:hover .innerCard {
@@ -192,9 +220,7 @@ header {
     border-radius: 1em;
 }
 
-.faculdade-aberta_main .div3 p {
-    line-height: 1;
-}
+
 
 .faculdade-aberta_main ul {
     text-align: justify;
