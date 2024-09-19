@@ -106,6 +106,8 @@ body {
 
 /*cards https://codepen.io/uiforfree/pen/WNYpLJm ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+
+
 .faculdade-aberta_main .myCard {
     background-color: transparent;
     width: 100%;
@@ -298,7 +300,6 @@ body {
     flex: 1;
     display: flex;
     align-items: center;
-
 }
 
 
@@ -388,7 +389,7 @@ body {
         height: 100%;
     }
 
-    .faculdade-aberta_main .div1 {
+    .faculdade-aberta_main .div1{
         grid-area: 5 / 1 / 6 / 2;
     }
 
@@ -407,5 +408,6 @@ body {
     .faculdade-aberta_main .div5 {
         grid-area: 1 / 1 / 2 / 2;
     }
+
 
 }
