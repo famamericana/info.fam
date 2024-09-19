@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [data-whatintent='mouse'] *:focus,
+        [data-whatintent='touch'] *:focus {
+            outline: none;
+        }
+
+        html {
+            background: radial-gradient(circle at bottom, #1b3556, #0e57b8);
+        }
+
+        body {
+            /**
+   * Define the space between dots. You can also set a fixed value
+   * The default value is min: 10px or 0.6vw if greater
+   */
+            --dots-gap: max(5px, 0.6vw);
+            /*
+   * Set the size of the dots.
+   */
+            --dots-size: 4px;
+            /*
+   * Change the color of the dots
+   */
+            --dots-color: #1876e0;
+            /*
+   * The size of the ripples. Applied to all the circles, even the 
+   * not visible ones.
+   */
+            --ripples-size: 10vmin;
+            /*
+   * Change the opacity of alternated ripples.
+   */
+            --ripples-opacity: 0%;
+
+            /*
+   * Generate the grid by using background image/size.
+   */
+            --computed-dot-size: calc(var(--dots-size) / 2);
+            background-image: radial-gradient(var(--dots-color) var(--computed-dot-size),
+                    transparent var(--computed-dot-size));
+            background-size: calc(var(--dots-gap) + var(--dots-size)) calc(var(--dots-gap) + var(--dots-size));
+
+            /**
+   * Generate the static ripple effect by repeating
+   * radial gradient with hard stops
+   */
+            mask-image: repeating-radial-gradient(circle at top var(--y, -9999px) left var(--x, -9999px),
+                    rgba(0 0 0 / var(--ripples-opacity)) 0,
+                    rgba(0 0 0 / var(--ripples-opacity)) var(--ripples-size),
+                    black calc(var(--ripples-size) + 1.5px),
+                    black calc(var(--ripples-size) * 2),
+                    rgba(0 0 0 / var(--ripples-opacity)) calc((var(--ripples-size) * 2) + 1.5px));
+        }
+
+        html {
+            block-size: 100%;
+            inline-size: 100%;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            min-block-size: 100%;
+            min-inline-size: 100%;
+            box-sizing: border-box;
+            display: grid;
+            margin: 0;
+            place-content: center;
+            font-family: system-ui;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/what-input/dist/what-input.min.js"></script>
+
+    <script>
+        const root = document.documentElement
+        root.addEventListener("mousemove", (event) => {
+            root.style.setProperty('--x', `${event.x}px`)
+            root.style.setProperty('--y', `${event.y}px`)
+        });
+    </script>
+
+</body>
+
+</html>
