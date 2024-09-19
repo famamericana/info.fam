@@ -413,7 +413,7 @@ body {
     .faculdade-aberta_main .div3 {
         grid-area: 3 / 1 / 4 / 2;
         height: 100%;
-        min-height: 380px;
+        min-height: 400px;
         /* Ajusta a altura para mobile */
     }
 
