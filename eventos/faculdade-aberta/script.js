@@ -20,18 +20,22 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Seleciona todos os cards, exceto o da div5
-    const cards = document.querySelectorAll('.myCard:not(.flipped)');
-    const flippedCard = document.querySelector('.div4 .myCard');
+    // Seleciona todos os cards
+    const cards = document.querySelectorAll('.myCard');
 
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            // Remove a classe 'flipped' da div5 quando o mouse passar sobre outro card
-            flippedCard.classList.remove('flipped');
+        card.addEventListener('click', function () {
+            // Se o card já tiver a classe 'flipped', remove, senão, adiciona
+            if (card.classList.contains('flipped')) {
+                card.classList.remove('flipped');
+            } else {
+                // Opcional: se quiser que apenas um card fique virado por vez, pode desvirar todos antes
+                cards.forEach(c => c.classList.remove('flipped'));
+                card.classList.add('flipped');
+            }
         });
     });
 });
-
 
 
 // slider text -----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -50,11 +54,11 @@ function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("dot");
-    
-    if (n > slides.length) { 
+
+    if (n > slides.length) {
         slideIndex = 1; // Volta ao primeiro slide se passar do último
     }
-    if (n < 1) { 
+    if (n < 1) {
         slideIndex = slides.length; // Vai para o último slide se for menor que 1
     }
 
