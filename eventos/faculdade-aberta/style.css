@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
+:root {
+    --_1: #1b3556 35%, #0000 36%;
+    --_2: #34acdb 35%, #0000 36%;
+}
 
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
@@ -27,6 +30,8 @@
 body {
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
+    background-color: #ffffff;
+
 }
 
 .faculdade-aberta_main main {
@@ -35,6 +40,7 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     padding-bottom: 0;
+    background-color: white;
 }
 
 .faculdade-aberta_main header {
@@ -190,14 +196,30 @@ body {
 }
 
 
-.faculdade-aberta_main .frontSide,
-.faculdade-aberta_main .frontSide::before {
-    background-image: linear-gradient(135deg, #36b1e1 25%, transparent 25%), linear-gradient(225deg, #36b1e1 25%, transparent 25%), linear-gradient(45deg, #36b1e1 25%, transparent 25%), linear-gradient(315deg, #36b1e1 25%, #45b7e5 25%);
-    background-position: 40px 0, 40px 0, 0 0, 0 0;
-    background-size: 40px 40px;
-    background-repeat: repeat;
-    border: 1px solid #45b7e5;
+.faculdade-aberta_main .div1 .frontSide,
+.faculdade-aberta_main .div1 .frontSide::before,
+.faculdade-aberta_main .div2 .frontSide,
+.faculdade-aberta_main .div2 .frontSide::before {
+
+    background:
+        radial-gradient(at 100% 100%, var(--_1)),
+        radial-gradient(at 0 0, var(--_1));
+    background-size: 65px 65px;
+    background-color: #193c69;
 }
+
+.faculdade-aberta_main .div3 .frontSide,
+.faculdade-aberta_main .div3 .frontSide::before,
+.faculdade-aberta_main .div4 .frontSide,
+.faculdade-aberta_main .div4 .frontSide::before {
+
+    background:
+        radial-gradient(at 100% 100%, var(--_2)),
+        radial-gradient(at 0 0, var(--_2));
+    background-size: 65px 65px;
+    background-color: #45b7e5;
+}
+
 
 .faculdade-aberta_main .backSide,
 .faculdade-aberta_main .backSide::before {
@@ -246,10 +268,14 @@ body {
 .faculdade-aberta_main .titulo {
     text-align: center;
     text-transform: uppercase;
-    background-image: linear-gradient(135deg, #1c4477 25%, transparent 25%), linear-gradient(225deg, #1c4477 25%, transparent 25%), linear-gradient(45deg, #1c4477 25%, transparent 25%), linear-gradient(315deg, #1c4477 25%, #1b3556 25%);
-    background-position: 40px 0, 40px 0, 0 0, 0 0;
-    background-size: 40px 40px;
-    background-repeat: repeat;
+
+
+    background:
+        radial-gradient(at 100% 100%, var(--_2)),
+        radial-gradient(at 0 0, var(--_2));
+    background-size: 65px 65px;
+    background-color: #45b7e5;
+
     padding: 10px 0;
     margin-bottom: 0;
     border-radius: 10px 10px 0 0;
@@ -262,7 +288,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 2px solid #1b3556;
+    border: 2px solid #45b7e5;
     border-radius: 0 0 10px 10px;
 }
 
@@ -349,16 +375,7 @@ body {
         height: 100%;
     }
 
-    .faculdade-aberta_main .topicos-legais img {
-        mask-image: none;
-        -webkit-mask-image: none;
 
-    }
-
-    .faculdade-aberta_main .topicos-legais_container .topicos-legais:nth-child(even) img {
-        mask-image: none;
-        -webkit-mask-image: none;
-    }
 
     .faculdade-aberta_main .topicos-legais img {
         width: 100%;
@@ -425,6 +442,39 @@ body {
         height: 100%;
         min-height: 250px;
         /* Ajusta a altura para mobile */
+    }
+
+    .faculdade-aberta_main .topicos-legais img {
+        mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .faculdade-aberta_main .topicos-legais_container .topicos-legais:nth-child(even) img {
+        mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+    }
+
+
+    .faculdade-aberta_main .div4 .frontSide,
+    .faculdade-aberta_main .div4 .frontSide::before,
+    .faculdade-aberta_main .div2 .frontSide,
+    .faculdade-aberta_main .div2 .frontSide::before {
+        background:
+            radial-gradient(at 100% 100%, var(--_1)),
+            radial-gradient(at 0 0, var(--_1));
+        background-size: 65px 65px;
+        background-color: #193c69;
+    }
+
+    .faculdade-aberta_main .div1 .frontSide,
+    .faculdade-aberta_main .div1 .frontSide::before,
+    .faculdade-aberta_main .div3.frontSide,
+    .faculdade-aberta_main .div3 .frontSide::before {
+        background:
+            radial-gradient(at 100% 100%, var(--_2)),
+            radial-gradient(at 0 0, var(--_2));
+        background-size: 65px 65px;
+        background-color: #45b7e5;
     }
 
 }
