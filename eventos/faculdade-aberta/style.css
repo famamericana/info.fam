@@ -31,7 +31,6 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
     background-color: #ffffff;
-
 }
 
 .faculdade-aberta_main main {
@@ -101,7 +100,6 @@ body {
     font-weight: 500;
     font-size: 16px;
     background-color: #f9e20f;
-
 }
 
 .faculdade-aberta_main button:hover {
@@ -200,7 +198,6 @@ body {
 .faculdade-aberta_main .div1 .frontSide::before,
 .faculdade-aberta_main .div2 .frontSide,
 .faculdade-aberta_main .div2 .frontSide::before {
-
     background:
         radial-gradient(at 100% 100%, var(--_1)),
         radial-gradient(at 0 0, var(--_1));
@@ -212,7 +209,6 @@ body {
 .faculdade-aberta_main .div3 .frontSide::before,
 .faculdade-aberta_main .div4 .frontSide,
 .faculdade-aberta_main .div4 .frontSide::before {
-
     background:
         radial-gradient(at 100% 100%, var(--_2)),
         radial-gradient(at 0 0, var(--_2));
@@ -242,13 +238,10 @@ body {
     border-radius: 1em;
 }
 
-
-
 .faculdade-aberta_main ul {
     text-align: justify;
     padding-top: 6px;
     padding-left: 20px;
-
 }
 
 .faculdade-aberta_main .padding {
@@ -268,7 +261,6 @@ body {
 .faculdade-aberta_main .titulo {
     text-align: center;
     text-transform: uppercase;
-
 
     background:
         radial-gradient(at 100% 100%, var(--_2)),
@@ -333,7 +325,6 @@ body {
 .faculdade-aberta_main .topicos-legais img {
     mask-image: linear-gradient(to right, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
     -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
-    /* Para suporte no Safari */
     width: 58%;
     height: 100%;
     object-fit: cover;
@@ -343,7 +334,6 @@ body {
 .faculdade-aberta_main .topicos-legais_container .topicos-legais:nth-child(even) img {
     mask-image: linear-gradient(to left, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
     -webkit-mask-image: linear-gradient(to left, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
-    /* Para suporte no Safari */
 }
 
 .faculdade-aberta_main .no-bullets {
@@ -357,7 +347,6 @@ body {
 
 
 @media (max-width: 860px) {
-
     body {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-tap-highlight-color: transparent;
@@ -374,8 +363,6 @@ body {
     .faculdade-aberta_main .topicos-legais {
         height: 100%;
     }
-
-
 
     .faculdade-aberta_main .topicos-legais img {
         width: 100%;
@@ -454,7 +441,6 @@ body {
         -webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
     }
 
-
     .faculdade-aberta_main .div4 .frontSide,
     .faculdade-aberta_main .div4 .frontSide::before,
     .faculdade-aberta_main .div2 .frontSide,
@@ -483,5 +469,4 @@ body {
     .faculdade-aberta_main .myCard:hover .innerCard {
         transform: rotateY(180deg);
     }
-
 }
