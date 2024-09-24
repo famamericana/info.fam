@@ -91,7 +91,10 @@ iframe {
 /* botão de inscrição */
 
 .portal {
+    margin-top: 50px;
     padding: 0 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .btn2 {
@@ -111,7 +114,6 @@ iframe {
     font-size: 16px;
     text-decoration: none;
     width: 100%;
-    margin-top: 50px;
     text-align: center;
 }
 
@@ -143,7 +145,6 @@ iframe {
 .palestra {
     grid-area: 1 / 2 / 2 / 4;
     margin-bottom: -5px;
-
 }
 
 .titulopalestra {
@@ -226,9 +227,8 @@ iframe {
     grid-area: 4 / 2 / 5 / 4;
     background-color: white;
     overflow-y: auto;
-    max-height: 150px;
+    max-height: 160px;
     min-height: 150px;
-
 }
 
 .imagemdopalestrante {
@@ -384,6 +384,11 @@ iframe {
 
     .lugar i {
         margin-right: 4px;
+    }
+
+    .portal{
+        flex-wrap: wrap;
+
     }
 
 }
