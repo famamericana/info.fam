@@ -41,7 +41,7 @@ header {
     align-items: center;
 }
 
-.titulodasemana img{
+.titulodasemana img {
     max-width: 320px;
     width: 100%;
 }
@@ -261,7 +261,7 @@ iframe {
     text-align: center;
 }
 
-.cursospermitidostitulo{
+.cursospermitidostitulo {
     padding: 2px 10px;
     border-radius: 20px;
     text-align: center;
@@ -399,7 +399,7 @@ iframe {
         margin-right: 4px;
     }
 
-    .portal{
+    .portal {
         flex-wrap: wrap;
 
     }
@@ -459,4 +459,13 @@ iframe {
     }
 }
 
-
+.box {
+    --mask:
+        linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat,
+        conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 0 0 /12px 6px space no-repeat,
+        conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 0 100%/12px 6px space no-repeat,
+        conic-gradient(from 45deg at left, #0000, #000 1deg 89deg, #0000 90deg) 0 0 /6px 12px no-repeat space,
+        conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 90deg) 100% 0/6px 12px no-repeat space;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
