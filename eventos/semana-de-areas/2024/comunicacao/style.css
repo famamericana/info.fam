@@ -29,12 +29,21 @@ header {
 
 .titulodasemana {
     color: white;
-    font-size: 50px;
+    font-size: 3rem;
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1;
     margin-bottom: 10px;
     margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulodasemana img{
+    max-width: 320px;
+    width: 100%;
 }
 
 .topicosparasemana {
@@ -291,8 +300,12 @@ iframe {
 }
 
 
-
 @media (max-width: 770px) {
+
+    .titulodasemana {
+        flex-direction: column;
+        gap: 5px;
+    }
 
     .imagemdopalestrante {
         grid-area: 2 / 1 / 5 / 2;
