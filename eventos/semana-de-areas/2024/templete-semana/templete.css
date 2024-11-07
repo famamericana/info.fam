@@ -137,6 +137,10 @@ iframe {
     color: var(--cordoeventoatualpag);
 }
 
+.containerconvidado a{
+    color: #939fc4;
+}
+
 .containerconvidado {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
