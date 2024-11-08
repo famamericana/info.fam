@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #5d378d;
+    --cordoeventoatual: #e53888;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -125,6 +125,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.qualsemana img {
+    max-width: 334px;
+    width: 100%;
 }
 
 .titulo {
@@ -302,11 +307,10 @@ main {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #f9e20f;
     text-decoration: none;
-
 }
 
 .umevento {
-    background-color: #205c7e;
+    background-color: #5d378d;
 }
 
 .doisevento {
@@ -316,9 +320,6 @@ main {
 .tresevento {
     background-color: #199eae;
 }
-
-
-
 
 #headerCarousel .carousel-item {
     opacity: 1;
