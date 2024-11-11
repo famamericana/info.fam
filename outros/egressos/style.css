@@ -27,25 +27,41 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     padding: 0;
     margin: 0;
-}
-
-header {
-    width: calc(100% - 20px);
-    margin: 0 auto;
     background-color: #f2f3f8;
     background-image: linear-gradient(#e9eaf0 1px, transparent 1px), linear-gradient(to right, #e9eaf0 1px, #f2f3f8 1px);
     background-size: 20px 20px;
     border-radius: 0 0 20px 20px;
 }
 
+header {
+    width: calc(100% - 20px);
+    margin: 0 auto;
+
+}
+
 main {
     max-width: 1000px;
     margin: 0 auto;
     box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+main p {
+    text-indent: 20px;
 }
 
 .logoegressos {
     max-width: 600px;
+}
+
+.svgegressos {
+ padding: 50px ;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    
 }
 
 .logoegressosespaco {
@@ -53,18 +69,24 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 20px;
+    padding: 80px 20px;
 }
 
-p {
-    text-indent: 20px;
+.sectiontextoeimg {
+    display: flex;
+    align-items: center;
+   text-align: justify;
+   gap: 20px;
+  
 }
 
-.texto-destaque{
-    margin-top: 30px;
-    background-color: #1b3556;
-    padding: 8px 10px;
-    color: white;
-    text-align: center;
-    border-radius: 5px;
+.sectiontextoeimg > div {
+    flex: 1;
+}
+
+.imgcolacao img{
+object-fit: cover;
+width: 100%;
+max-height: 300px;
+border-radius: 5px;
 }
