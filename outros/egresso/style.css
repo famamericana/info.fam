@@ -28,7 +28,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #f2f3f8;
-    background-image: linear-gradient(#e9eaf0 1px, transparent 1px), linear-gradient(to right, #e9eaf0 1px, #f2f3f8 1px);
+    background-image: linear-gradient(#e0f6ff 1px, transparent 1px), linear-gradient(to right, #e0f6ff 1px, #fafdff 1px);
     background-size: 20px 20px;
     border-radius: 0 0 20px 20px;
 }
