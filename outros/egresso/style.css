@@ -60,7 +60,7 @@ main p {
  padding: 50px 30px;
     width: 100%;
     margin: 0 auto;
-    
+    box-sizing: border-box;
 }
 
 .logoegressosespaco {
@@ -76,6 +76,7 @@ main p {
     align-items: center;
    text-align: justify;
    gap: 20px;
+
   
 }
 
@@ -142,4 +143,22 @@ gap: 10px;
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #1b3556;
     text-decoration: none;
+}
+
+
+@media (max-width: 750px) {
+
+    .sectiontextoeimg {
+       flex-direction: column;
+    }
+
+    .svgegressos {
+        padding: 30px 10px;
+      
+       }
+
+       .containerparticipar{
+flex-direction: column;
+    }
+    
 }
