@@ -7,14 +7,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: #f8f8f8;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid white;
+    border: 2px solid #f8f8f8;
     border-radius: 10px;
 }
 
@@ -28,7 +28,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #f8f9fd;
-   
+
 }
 
 header {
@@ -44,6 +44,8 @@ main {
     padding: 20px;
     background-color: white;
     border-radius: 10px;
+
+
 }
 
 main p {
@@ -55,7 +57,7 @@ main p {
 }
 
 .svgegressos {
- padding: 50px 30px;
+    padding: 50px 30px;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
@@ -72,41 +74,41 @@ main p {
 .sectiontextoeimg {
     display: flex;
     align-items: center;
-   text-align: justify;
-   gap: 20px;
+    text-align: justify;
+    gap: 20px;
 
-  
+
 }
 
-.sectiontextoeimg > div {
+.sectiontextoeimg>div {
     flex: 1;
 }
 
 
 
-.imgcolacao img{
+.imgcolacao img {
     margin: 20px 0;
-object-fit: cover;
-width: 100%;
-height: 100%;
-border-radius: 5px;
-max-height: 10rem;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    max-height: 10rem;
 }
 
-.containerparticipar{
+.containerparticipar {
 
     display: flex;
-gap: 10px;
+    gap: 10px;
 }
 
 
-.containerparticipar i{
-   font-size: 2rem;
-   margin-bottom: 10px;
-   color: #45b7e5;
+.containerparticipar i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #45b7e5;
 }
 
-.containerparticipar > div {
+.containerparticipar>div {
     padding: 20px;
     background-color: #f9f9fc;
     text-align: center;
@@ -131,7 +133,7 @@ gap: 10px;
     margin-top: 10px;
 }
 
-.cta{
+.cta {
     text-align: center;
     margin: 40px 0;
 }
@@ -147,16 +149,23 @@ gap: 10px;
 @media (max-width: 750px) {
 
     .sectiontextoeimg {
-       flex-direction: column;
+        flex-direction: column;
     }
 
     .svgegressos {
         padding: 30px 10px;
-      
-       }
 
-       .containerparticipar{
-flex-direction: column;
     }
-    
+
+    .containerparticipar {
+        flex-direction: column;
+    }
+
+}
+
+.wave {
+    width: 100%;
+    bottom: -20px;
+    z-index: -1;
+    position: fixed;
 }
