@@ -128,11 +128,10 @@ header .logopdepc{
 }
 
 .gallery .image {
-    width: calc(100% / 4);
+    width: calc(100% / 3.1);
     transition-duration: 0.4s;
     position: relative;
     display: inline-block; /* Garante que a área de hover corresponda ao tamanho da imagem */
-
 }
 
 .gallery .image span {
@@ -147,10 +146,7 @@ header .logopdepc{
     transition: all 0.3s ease;
     object-fit: cover;
     border-radius: 5px;
-
 }
-
-
 
 .gallery .image.hide {
     display: none;
@@ -241,10 +237,17 @@ header .logopdepc{
 
     .gallery .image {
         width: calc(100% - 10px);
-        height: 200px;
+        height: 300px;
     }
 
     .gallery .image:hover {
         transform: scale(1);
     }
+
+    .gallery .image img {
+        height: 300px;
+        object-position: top; /* Posiciona a imagem no topo */
+
+    }
+    
 }
