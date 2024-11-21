@@ -113,7 +113,7 @@ $(document).ready(function () {
 });
 
 // Data alvo
-const targetDate = new Date('2024-06-30T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
+const targetDate = new Date('2025-01-19T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
 
 function updateCountdown() {
   const currentDate = new Date();

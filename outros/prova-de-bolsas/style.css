@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+:root{
+    --cor-principal: #233a7e;
+}
+
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
     width: 12px;
@@ -52,7 +57,7 @@ h2 {
 /*  HEADER ----------------------------------------------------------------------------------------------- */
 
 header {
-    background-color: #086AB4;
+    background-color: var(--cor-principal);
     height: 100dvh;
     padding: 0 20px;
 }
@@ -209,7 +214,7 @@ header {
     list-style: none;
     width: 20px;
     height: 20px;
-    background: #047CC2;
+    background: #192a5f;
     animation: animate 25s linear infinite;
     bottom: -150px;
 
@@ -448,14 +453,14 @@ header {
 }
 
 .animate-bar-2 {
-    background-color: #086AB4;
+    background-color: #45b7e5;
     -webkit-animation: show-bar-two 1.2s 0.2s forwards;
     -moz-animation: show-bar-two 1.2s 0.2s forwards;
     animation: show-bar-two 1.2s 0.2s forwards;
 }
 
 .animate-bar-3 {
-    background-color: #199eae;
+    background-color: var(--cor-principal);
     -webkit-animation: show-bar-three 1.2s 0.3s forwards;
     -moz-animation: show-bar-three 1.2s 0.3s forwards;
     animation: show-bar-three 1.2s 0.3s forwards;
@@ -549,6 +554,27 @@ header {
 
 /* IMG SLIDER ------------------------------------------------------------------------------------------------------------------------*/
 
+
+@media (max-width: 760px) {
+    .progress {
+        top: 20px;
+        height: fit-content;
+    }
+}
+/* IMG SLIDER ------------------------------------------------------------------------------------------------------------------------*/
+
+.descricaoslideshow {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-right: 20px;
+    text-align: center;
+}
+
 #headerCarousel .carousel-item {
     opacity: 1;
     transition-duration: 1s;
@@ -559,12 +585,11 @@ header {
 }
 
 .slideshow {
+    margin-bottom: 20px;
     position: relative;
     height: 420px;
     width: 100%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
+    margin-top: 20px;
     padding: 0;
 }
 
@@ -624,6 +649,8 @@ header {
 }
 
 
+
+
 .chamaratenção {
     color: #086AB4;
 }
@@ -636,7 +663,7 @@ header {
 .button-background {
     top: 0;
     position: fixed;
-    background-color: #086AB4;
+    background-color: var(--cor-principal);
     width: 100%;
     height: 60px;
     z-index: 9;
@@ -721,11 +748,11 @@ tr:nth-child(2) {
 }
 
 tr:nth-child(3) {
-    border-bottom: 1px solid #086AB4;
+    border-bottom: 1px solid #45b7e5;
 }
 
 tr:nth-child(4) {
-    border-bottom: 1px solid #199eae;
+    border-bottom: 1px solid var(--cor-principal);
 }
 
 tr:nth-child(5) {
@@ -741,14 +768,14 @@ tr:nth-child(5) {
 }
 
 .infoprazo {
-    background-color: #086AB4;
+    background-color: #45b7e5;
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
 }
 
 .infoonline {
-    background-color: #199eae;
+    background-color: var(--cor-principal);
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
@@ -781,7 +808,7 @@ tr:nth-child(5) {
     text-align: center;
     font-size: 40px;
     font-weight: bold;
-    background-image: linear-gradient(to right, #086AB4, #199eae);
+    background-image: linear-gradient(to right, #0965dd, #233a7e);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -834,9 +861,10 @@ tr:nth-child(5) {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    font-size: larger;
     background-color: #25d366;
     color: #fff;
-    padding: 10px 15px;
+    padding: 9px 15px;
     border-radius: 50px;
     text-decoration: none;
     z-index: 9999;
