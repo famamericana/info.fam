@@ -102,6 +102,11 @@ header .logopdepc {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     margin-bottom: 10px;
+   
+}
+
+.galeria a{
+    text-decoration: none;
 }
 
 .textaofamexplicacao {
