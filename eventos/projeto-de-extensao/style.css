@@ -36,15 +36,15 @@ section p {
 }
 
 .main2 {
-    margin-top: 30px !important;
     max-width: 960px;
     box-sizing: border-box;
     padding: 20px;
+    padding-bottom: 0;
     margin: 20px;
     height: fit-content;
     background-color: white;
     margin: auto;
-    border-radius: 10px;
+    border-radius:  0  0 10px 10px;
 }
 
 main {
@@ -55,8 +55,9 @@ main {
     height: fit-content;
     background-color: white;
     margin: auto;
-    border-radius: 10px;
+    border-radius:  10px 10px 0  0 ;
 }
+
 
 header {
     margin: 50px 20px;
@@ -100,6 +101,7 @@ header .logopdepc {
     grid-template-rows: auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    margin-bottom: 10px;
 }
 
 .textaofamexplicacao {
@@ -107,6 +109,9 @@ header .logopdepc {
 }
 
 .textaofamexplicacaomini {
+    display: flex;
+ 
+    justify-self: center;
     color: #bac0d1;
     font-size: small;
     padding-left: 10px;
@@ -114,8 +119,8 @@ header .logopdepc {
     text-align: center;
     margin-bottom: 5px;
     max-width: 960px;
-    margin: 0 auto;
-    margin-top: 20px;
+
+    margin: 30px 0;
 }
 
 .galeria:first-child {
@@ -182,4 +187,14 @@ header .logopdepc {
     .galeria {
         grid-template-columns: repeat(1, 1fr) !important;
     }
+}
+
+
+.informacoes-extensao{
+    border: 1px solid #45b7e5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
 }
