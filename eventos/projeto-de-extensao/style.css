@@ -75,106 +75,6 @@ header .logopdepc {
 }
 
 /* GALERIUA ------------------------------------------------------------------------------------------------------------------------------------------- */
-.wrapper {
-    margin: 20px 0;
-    width: 100%;
-}
-
-.wrapper a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #1b3556;
-}
-
-.image img {
-    cursor: pointer;
-}
-
-.wrapper nav {
-    display: flex;
-    justify-content: center;
-}
-
-.wrapper .items {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-}
-
-.items span {
-    padding: 7px 20px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    color: #45b7e5;
-    border-radius: 5px;
-    border: 1px solid #45b7e5;
-    transition: all 0.3s ease;
-}
-
-.items span.active,
-.items span:hover {
-    color: #fff;
-    background: #45b7e5;
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    gap: 10px;
-    margin-left: 10px;
-}
-
-.gallery .image {
-    width: calc(100% / 3.1);
-    transition-duration: 0.4s;
-    position: relative;
-    display: inline-block;
-    /* Garante que a área de hover corresponda ao tamanho da imagem */
-}
-
-.gallery .image span {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-}
-
-.gallery .image img {
-    width: 100%;
-    height: 200px;
-    transition: all 0.3s ease;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.gallery .image.hide {
-    display: none;
-}
-
-.gallery .image.show {
-    animation: animate 0.4s ease;
-}
-
-.gallery .image .info {
-    position: absolute;
-    bottom: 10px;
-    /* Ajuste a posição conforme necessário */
-
-    opacity: 1;
-    background-color: white;
-    padding: 7px 10px;
-    text-align: center;
-    /* Alinha o texto no centro */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* Centraliza horizontalmente */
-    width: calc(100% - 30px);
-    border-radius: 0 2px 2px 0;
-
-}
 
 .title,
 .subtitle {
@@ -194,8 +94,15 @@ header .logopdepc {
     font-size: small;
 }
 
-.textaofamexplicacao {
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
 
+.textaofamexplicacao {
     text-align: center;
 }
 
@@ -211,69 +118,7 @@ header .logopdepc {
     margin-top: 20px;
 }
 
-@keyframes animate {
-    0% {
-        transform: scale(0.5);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@media (max-width: 1000px) {
-    .gallery .image {
-        width: calc(100% / 3);
-    }
-}
-
-@media (max-width: 800px) {
-    .gallery .image {
-        width: calc(100% / 2 - 10px);
-    }
-}
-
-@media (max-width: 600px) {
-    .wrapper {
-        margin: 30px auto;
-    }
-
-    .wrapper nav .items {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav .items span {
-        margin: 5px;
-    }
-
-    .gallery .image {
-        width: calc(100% - 10px);
-        height: 300px;
-    }
-
-    .gallery .image:hover {
-        transform: scale(1);
-    }
-
-    .gallery .image img {
-        height: 300px;
-        object-position: top;
-        /* Posiciona a imagem no topo */
-
-    }
-
-}
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-}
-
-.parent:first-child {
+.galeria:first-child {
     grid-row: span 3;
 }
 
@@ -283,11 +128,14 @@ header .logopdepc {
 }
 
 .tags {
+    text-transform: uppercase;
+    color: #1b3556;
+    font-weight: 700;
+    font-size: small;
     background-color: white;
     padding: 2px 8px;
     border-radius: 5px;
 }
-
 
 .card {
     display: flex;
@@ -317,10 +165,21 @@ header .logopdepc {
 .card .content {
     position: relative;
     z-index: 2;
-
     text-align: center;
     padding: 15px;
     background: white;
     border-radius: 5px;
+}
 
+
+@media (max-width: 1000px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }
