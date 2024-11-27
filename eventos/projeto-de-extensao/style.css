@@ -198,3 +198,31 @@ header .logopdepc {
     margin-bottom: 30px;
     text-align: center;
 }
+
+.plantao-duvidas{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.tipo{
+    border: 1px solid #45b7e5;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.tipo-titulo{
+    background-color: #45b7e5;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.plantao-duvidas-container{
+    margin-bottom: 30px;
+}
