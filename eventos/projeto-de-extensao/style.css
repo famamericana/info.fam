@@ -28,14 +28,14 @@ body {
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
     background-color: #f2f3f8;
-    
+
 }
 
-section p{
+section p {
     text-indent: 10px;
 }
 
-.main2{
+.main2 {
     margin-top: 30px !important;
     max-width: 960px;
     box-sizing: border-box;
@@ -44,7 +44,7 @@ section p{
     height: fit-content;
     background-color: white;
     margin: auto;
-    border-radius: 10px;  
+    border-radius: 10px;
 }
 
 main {
@@ -69,7 +69,7 @@ header .logopde {
     margin: 0 auto;
 }
 
-header .logopdepc{
+header .logopdepc {
     max-width: 700px;
     margin: 0 auto;
 }
@@ -80,13 +80,13 @@ header .logopdepc{
     width: 100%;
 }
 
-.wrapper a{
+.wrapper a {
     text-decoration: none;
     font-weight: 600;
     color: #1b3556;
 }
 
-.image img{
+.image img {
     cursor: pointer;
 }
 
@@ -123,7 +123,7 @@ header .logopdepc{
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
-    gap:10px;
+    gap: 10px;
     margin-left: 10px;
 }
 
@@ -131,7 +131,8 @@ header .logopdepc{
     width: calc(100% / 3.1);
     transition-duration: 0.4s;
     position: relative;
-    display: inline-block; /* Garante que a área de hover corresponda ao tamanho da imagem */
+    display: inline-block;
+    /* Garante que a área de hover corresponda ao tamanho da imagem */
 }
 
 .gallery .image span {
@@ -158,36 +159,47 @@ header .logopdepc{
 
 .gallery .image .info {
     position: absolute;
-    bottom: 10px; /* Ajuste a posição conforme necessário */
+    bottom: 10px;
+    /* Ajuste a posição conforme necessário */
 
     opacity: 1;
     background-color: white;
     padding: 7px 10px;
-    text-align: center; /* Alinha o texto no centro */
+    text-align: center;
+    /* Alinha o texto no centro */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
     width: calc(100% - 30px);
-    border-radius:  0 2px 2px 0;
- 
+    border-radius: 0 2px 2px 0;
+
 }
 
-.title, .subtitle {
-    justify-content: center; /* Centraliza horizontalmente */
+.title,
+.subtitle {
+    justify-content: center;
+    /* Centraliza horizontalmente */
 }
 
-.subtitle{
+.title {
+    font-weight: bold;
+    color: #1b3556;
+    font-size: large;
+}
+
+.subtitle {
     color: #bac0d1;
     font-weight: 400;
     font-size: small;
 }
 
-.textaofamexplicacao{
+.textaofamexplicacao {
 
     text-align: center;
 }
 
-.textaofamexplicacaomini{
+.textaofamexplicacaomini {
     color: #bac0d1;
     font-size: small;
     padding-left: 10px;
@@ -246,8 +258,69 @@ header .logopdepc{
 
     .gallery .image img {
         height: 300px;
-        object-position: top; /* Posiciona a imagem no topo */
+        object-position: top;
+        /* Posiciona a imagem no topo */
 
     }
-    
+
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.parent:first-child {
+    grid-row: span 3;
+}
+
+.tags-container {
+    z-index: 2;
+    display: flex;
+}
+
+.tags {
+    background-color: white;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #45b7e5;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+    /* Garante que o conteúdo fique dentro do card */
+}
+
+.card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Faz com que a imagem ocupe todo o espaço */
+    z-index: 1;
+    /* Certifica-se de que a imagem fique no fundo */
+}
+
+.card .content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+
 }
