@@ -76,14 +76,13 @@ h2 {
     
 }
 
-.btn-group .tablinks:first-child a{
+/*.btn-group .tablinks:first-child a{
     color: white;
-}
+} 
 
 .btn-group .tablinks:first-child:hover a{
     color: black;
 }
-
 .btn-group .tablinks:first-child {
     flex-basis: 100%;
     text-align: center;
@@ -99,7 +98,7 @@ h2 {
     background-color: white;
     box-shadow: inset 0 0 0 2px #233a7e;
 }
-
+*/
 .btn-group .tablinks:last-child {
     flex-basis: 100%;
     text-align: center;
