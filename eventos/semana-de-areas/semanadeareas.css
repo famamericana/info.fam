@@ -64,13 +64,15 @@ h3 {
 }
 
 header {
+    position: absolute;
     width: 100%;
-    height: 100dvh;
+    height: 445px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.685);
+    z-index: -1;
 }
 
 header .carousel {
@@ -79,12 +81,12 @@ header .carousel {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: -1;
+    opacity: 0.3;
 }
 
 header .carousel img {
     object-fit: cover;
-    height: 100dvh;
+    height: 445px;
 }
 
 main {
@@ -92,13 +94,15 @@ main {
     background-color: white;
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: -20px;
     border-radius: 10px;
     display: block;
 }
 
 .logosemana {
-    max-width: 600px;
+    padding: 50px 0;
+    max-width: 500px;
+    display: flex;
+    justify-self: center;
 }
 
 .sectionkek {
