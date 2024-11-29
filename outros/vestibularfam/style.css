@@ -98,8 +98,8 @@ h2 {
     background-color: white;
     box-shadow: inset 0 0 0 2px #233a7e;
 }
-*/
-.btn-group .tablinks:last-child {
+
+/*.btn-group .tablinks:last-child {
     flex-basis: 100%;
     text-align: center;
     background-color: #e53888;
@@ -112,7 +112,7 @@ h2 {
     text-align: center;
     background-color: white;
     box-shadow: inset 0 0 0 2px #e53888;
-}
+}*/
 
 .btn-group2 {
     display: flex;
@@ -366,6 +366,10 @@ button:hover, .button_a:hover {
         grid-column: span 2;
     }
 
+        /*.btn-group button:nth-child(5), .btn-group button:last-child {
+            grid-column: span 2;
+        } */
+
     /* .btn-group button:last-child {
         grid-column: span 2;
     } */
@@ -411,9 +415,7 @@ button:hover, .button_a:hover {
 }
 
 @media (max-width: 550px) {
-    /*.btn-group button:nth-child(5), .btn-group button:last-child {
-        grid-column: span 2;
-    } */
+
 
 }
 
