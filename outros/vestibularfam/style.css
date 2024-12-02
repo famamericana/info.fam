@@ -542,3 +542,22 @@ button:hover, .button_a:hover {
 .active-dot {
     background-color: #45b7e5;
 }
+
+
+.esduremaisfam i {
+    display: inline-block; /* Necessário para permitir a animação */
+    animation: moveUpDown 2s infinite ease-in-out; /* Nome da animação, duração, loop infinito */
+}
+
+/* Definição da animação */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(-3px); /* Posição inicial */
+    }
+    70% {
+        transform: translateY(1px); /* Vai para cima */
+    }
+    100% {
+        transform: translateY(-3px); /* Volta à posição inicial */
+    }
+}
