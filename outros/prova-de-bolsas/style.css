@@ -869,3 +869,12 @@ tr:nth-child(5) {
     text-decoration: none;
     z-index: 9999;
  }
+
+
+ .azulclaro{
+    color: white;
+    background-color: #45b7e5;
+    text-decoration: none;
+    padding: 0 5px;
+    border-radius: 2px;
+ }
