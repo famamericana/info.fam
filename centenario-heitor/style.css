@@ -679,7 +679,6 @@ footer .créditos_eu {
     margin-top: 80px;
 }
 
-
 .historias {
     display: flex;
     flex-wrap: wrap;
@@ -697,5 +696,6 @@ footer .créditos_eu {
 @media (max-width: 768px) {
     .historias iframe {
         flex: 1 1 100%;
+        height: 350px;
     }
 }
