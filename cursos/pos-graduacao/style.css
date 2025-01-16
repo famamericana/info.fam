@@ -83,8 +83,11 @@ body {
     .rectangle {
         width: 100%;
         padding: 50px 50px;
-
     }
+}
+
+.biologia{
+    background-image: linear-gradient(to right, #1fb46e, #005fb8);
 }
 
 .financas {
