@@ -44,7 +44,8 @@ header {
     padding-top: 50px;
     padding-bottom: 70px;
 }
-.fontediferenciada{
+
+.fontediferenciada {
     font-family: 'Sue Ellen Francisco', 'Source Sans 3', cursive;
     font-size: x-large;
     color: #1b3556;
@@ -171,11 +172,33 @@ p {
     cursor: pointer;
 }
 
-.cursowow {
+.retangulo{
+    margin-top: 50px;
     background-color: #f2f3f8;
     border-radius: 5px;
     padding: 20px 15px;
 }
+.cursos_lugares {
+    
+    
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cursos_lugares div {
+    text-align: center;
+}
+
+.cursos_lugares p {
+    margin: 0;
+}
+
+.cursos_lugares:last-child {
+    flex-basis: 100%;
+}
+
 
 @media (max-width: 600px) {
 
