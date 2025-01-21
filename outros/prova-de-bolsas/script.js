@@ -124,24 +124,25 @@ function updateCountdown() {
     return;
   }
 
-  // Calcula o tempo restante apenas se ainda não passou do horário alvo
+  // Calcula o tempo restante
   const timeLeft = targetDate - currentDate;
-  const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.ceil para arredondar para cima
+  const daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.floor para calcular apenas dias completos
 
-  // Aqui você pode manter as outras condições para exibir mensagens de contagem regressiva, se desejar
-  if (daysLeft === 0 && currentDate.getHours() < 14) {
-    document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 13h30 e a prova começa às 14:00.";
+  // Condições para exibir mensagens personalizadas
+  if (daysLeft === 0) {
+    if (currentDate.getHours() < 14) {
+      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 13h30 e a prova começa às 14:00.";
+    } else {
+      document.getElementById("countdown").textContent = "A prova já começou ou está para terminar!";
+    }
   } else if (daysLeft === 1) {
-    document.getElementById("countdown").textContent = `Amanhã é o grande dia!`;
-  } else if (daysLeft === 29 && currentDate.getHours() < 14) {
-    document.getElementById("countdown").textContent = `Prepare-se, nos vemos em menos de um dia!`;
+    document.getElementById("countdown").textContent = "Amanhã é o grande dia!";
   } else {
     document.getElementById("countdown").textContent = `Prepare-se, nos vemos em ${daysLeft} dias!`;
   }
 }
 
 window.addEventListener('load', updateCountdown); // Chama a função quando a página é carregada
-
 
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
