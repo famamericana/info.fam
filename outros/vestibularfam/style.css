@@ -39,11 +39,20 @@ main {
     border-radius: 0 0 10px 10px;
 }
 
+/*header /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 header {
     max-width: 960px;
     padding: 0 20px;
     margin: 0 auto;
     background-color: white;
+}
+
+.titulo {
+    background-color: #1b3556;
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
 
 }
 
@@ -53,152 +62,8 @@ header {
     height: auto;
 }
 
-.estudenafamcontainer {
-    background-color: transparent;
-    min-height: 400px;
-
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.btn-group {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.btn-group .tablinks a {
-    text-decoration: none;
-    
-}
-
-.btn-group .tablinks:first-child a{
-    color: white;
-} 
-
-.btn-group .tablinks:first-child:hover a{
-    color: black;
-}
-.btn-group .tablinks:first-child {
-    flex-basis: 100%;
-    text-align: center;
-    background-color: #233a7e;
-    box-shadow: inset 0 0 0 2px #233a7e;
-    grid-column: span 2;
-}
-
-
-.btn-group .tablinks:first-child:hover {
-    flex-basis: 100%;
-    text-align: center;
-    background-color: white;
-    box-shadow: inset 0 0 0 2px #233a7e;
-}
-
-/*.btn-group .tablinks:last-child {
-    flex-basis: 100%;
-    text-align: center;
-    background-color: #e53888;
-    box-shadow: inset 0 0 0 2px #e53888;
-    grid-column: span 2;
-}
-
-.btn-group .tablinks:last-child:hover {
-    flex-basis: 100%;
-    text-align: center;
-    background-color: white;
-    box-shadow: inset 0 0 0 2px #e53888;
-}*/
-
-.btn-group2 {
-    display: flex;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.btn-group2 a {
-    background-color: #086AB4;
-    flex: 1;
-    color: white;
-    box-shadow: inset 0 0 0 2px transparent;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Source Sans 3', sans-serif;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 16px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.btn-group2 a:hover {
-    color: #242527;
-    background-color: transparent;
-    box-shadow: inset 0 0 0 2px #1b3556;
-}
-
-
-
-button, .button_a {
-    text-decoration: none;
-    flex: 1;
-    color: white;
-    box-shadow: inset 0 0 0 2px transparent;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Source Sans 3', sans-serif;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 16px;
-    background-color: #1b3556;
-}
-
-button:hover, .button_a:hover {
-    text-decoration: none;
-    color: #242527;
-    background-color: transparent;
-    box-shadow: inset 0 0 0 2px #1b3556;
-}
-
-.btn2 {
-    width: 100%;
-    background-color: #f9e20f;
-    box-shadow: inset 0 0 0 2px #f9e20f;
-    margin: 0 auto;
-    margin-top: 20px;
-    color: #242527;
-}
-
-.btn2:hover {
-    color: #242527;
-    box-shadow: inset 0 0 0 2px #1b3556;
-    background-color: white;
-}
-
-.texto p {
-    text-indent: 20px;
-    text-align: justify;
-    padding: 0 10px;
-}
-
-.titulo {
-    background-color: #1b3556;
-    padding: 20px;
-    text-align: center;
-    border-radius: 0 0 10px 10px;
-}
-
 .esduremaisfam {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,14 +72,8 @@ button:hover, .button_a:hover {
     flex-direction: column;
     padding: 20px;
     padding-bottom: 0;
-}
+    box-sizing: border-box;
 
-.estudena {
-    color: white;
-    font-size: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    display: inline-block;
 }
 
 .esduremaisfam img {
@@ -226,215 +85,55 @@ button:hover, .button_a:hover {
     margin-top: 10px;
 }
 
-.btn-group button.active {
-    background-color: #45b7e5 !important;
-    color: white;
-    box-shadow: inset 0 0 0 2px #45b7e5 !important;
-
+.esduremaisfam i {
+    display: inline-block;
+    /* Necessário para permitir a animação */
+    animation: moveUpDown 2s infinite ease-in-out;
+    /* Nome da animação, duração, loop infinito */
 }
 
-.btn-group button.active:hover {
-    color: black;
-    background-color: white !important;
-    box-shadow: inset 0 0 0 2px #45b7e5;
+/* Definição da animação */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(-3px);
+        /* Posição inicial */
+    }
+
+    70% {
+        transform: translateY(1px);
+        /* Vai para cima */
+    }
+
+    100% {
+        transform: translateY(-3px);
+        /* Volta à posição inicial */
+    }
 }
 
-.btn-group2 a.active {
-    background-color: #45b7e5;
-    color: white;
-    /* Exemplo de cor. Ajuste conforme desejado. */
-}
+/*cursos ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.btn-group2 a.active:hover {
-    background-color: #45b7e5;
-    box-shadow: inset 0 0 0 2px #45b7e5;
-
-}
-
-.textodireita {
-    font-size: small;
-    padding: 0 10px;
-    text-align: right;
-}
-
-.mec {
-    background-color: white;
-    margin-top: 20px;
-
-}
-
-.mec img {
-    width: 100%;
-    height: auto;
-}
-
-.meceinfo {
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-}
-
-.informacoes {
-    width: 100%;
-}
-
-.informacoes a {
-    text-decoration: none;
-    color: #242527;
-
-}
-
-.informacoes a p {
-    padding: 3px 10px;
-    margin: 10px;
-    margin-left: 0;
-    border-bottom: 1px solid #f9e20f;
-    margin-right: 20px;
-
-}
-
-.campanha {
-    margin-bottom: 10px;
-}
-
-.campanha img {
-    display: block;
-    max-width: 960px;
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-
-.cursosposwow {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.cursosposwow a {
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
+.containercursos {
+    background-color: #f9e20f;
     text-align: center;
-}
-
-
-.financas {
-    background-image: linear-gradient(to right, #1f8ab4, #00509b);
-}
-
-.fiscal {
-    background-image: linear-gradient(to right, #003256, #000836);
-}
-
-.clinica {
-    background-image: linear-gradient(to right, #1C5C45, #0a2b3f);
-}
-
-.marketing {
-    background-image: linear-gradient(to right, #e53888, #962690);
-}
-
-.cavalo {
-    background-image: linear-gradient(to right, #3eb288, #268086);
-}
-
-.neuro {
-    background-image: linear-gradient(to right, #008F9F, #014869);
-}
-
-.psicoescolar {
-    background-image: linear-gradient(to right, #5d378d, #2d1755);
-}
-
-.silvestre {
-    background-image: linear-gradient(to right, #3eb251, #166d3a);
-}
-
-@media (max-width: 880px) {
-    .btn-group {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .btn-group button:nth-child(6),
-    .btn-group button:last-child {
-        grid-column: span 2;
-    }
-
-        /*.btn-group button:nth-child(5), .btn-group button:last-child {
-            grid-column: span 2;
-        } */
-
-    /* .btn-group button:last-child {
-        grid-column: span 2;
-    } */
-
-
+    padding: 5px;
 
 }
 
-
-@media (max-width: 650px) {
-
-
-
-    .meceinfo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .mec {
-        margin: 0 auto;
-        margin: 20px 0;
-        margin-top: 30px;
-        width: 100%;
-
-    }
-
-    .informacoes a p {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .informacoes {
-        display: block;
-    }
-
-    .cursosposwow {
-        justify-content: center;
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
+.todoscursos {
+    padding: 2px 8px;
+    width: 100%;
+    color: #1b3556;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    box-sizing: border-box;
 }
 
-@media (max-width: 550px) {
-
-
+.todoscursos:hover {
+    text-decoration: line-through;
 }
 
-
-@media (max-width: 500px) {
-
-    .estudenafamcontainer {
-        min-height: 0;
-    }
-
-}
-
-@media (max-width: 330px) {
-    .btn-group {
-        display: flex;
-    }
-
-}
-
+/*whatsapp ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .whatsapp-float {
     position: fixed;
@@ -462,17 +161,103 @@ button:hover, .button_a:hover {
     transform: scale(1.10);
 }
 
-.tabcontent,
-.initial-text {
-    display: none;
-    border-top: none;
+/* botoes /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.botoes button.active {
+    background-color: #45b7e5;
+    box-shadow: inset 0 0 0 2px #45b7e5;
+}
+
+.botoes button.active:hover {
+    color: #242527;
+    background-color: white ;
+    box-shadow: inset 0 0 0 2px #45b7e5;
+}
+
+.botoes a.active {
+    background-color: #45b7e5;
+    color: white;
+}
+
+.botoes a.active:hover {
+    background-color: #45b7e5;
+    box-shadow: inset 0 0 0 2px #45b7e5;
+}
+
+.botoes .tablinks:first-child {
+    flex-basis: 100%;
+    background-color: #233a7e;
+    box-shadow: inset 0 0 0 2px #233a7e;
+}
+
+.botoes .tablinks:first-child:hover {
+    color: #242527;
+    background-color: white;
+}
+
+button,
+.botoes a {
+    color: white;
+    box-shadow: inset 0 0 0 2px transparent;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+}
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+button {
+    background-color: #1b3556;
+}
+
+button:hover {
+    text-decoration: none;
+    color: #242527;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #1b3556;
+}
+
+.btn2 {
+    background-color: #f9e20f;
+    width: 100%;
+    color: #242527;
+}
+
+.btn2:hover {
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    width: 100%;
 }
 
 
+/*slider /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.campanha {
+    margin-bottom: 10px;
+}
 
+.campanha img {
+    display: block;
+    max-width: 960px;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
 
-/*slider -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 .progress-bar {
     width: 100%;
     height: 3px;
@@ -543,21 +328,124 @@ button:hover, .button_a:hover {
     background-color: #45b7e5;
 }
 
-
-.esduremaisfam i {
-    display: inline-block; /* Necessário para permitir a animação */
-    animation: moveUpDown 2s infinite ease-in-out; /* Nome da animação, duração, loop infinito */
+/*esconder //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.texto p {
+    text-indent: 20px;
+    text-align: justify;
+    padding: 0 10px;
 }
 
-/* Definição da animação */
-@keyframes moveUpDown {
-    0% {
-        transform: translateY(-3px); /* Posição inicial */
+.tabcontent,
+.initial-text {
+    display: none;
+    border-top: none;
+}
+
+/* mec //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.mec {
+    background-color: white;
+    margin-top: 20px;
+
+}
+
+.mec img {
+    width: 100%;
+    height: auto;
+}
+
+.meceinfo {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.informacoes {
+    width: 100%;
+}
+
+.informacoes a {
+    text-decoration: none;
+    color: #242527;
+
+}
+
+.informacoes a p {
+    padding: 3px 10px;
+    margin: 10px;
+    margin-left: 0;
+    border-bottom: 1px solid #f9e20f;
+    margin-right: 20px;
+
+}
+
+
+@media (max-width: 590px) {
+    .containercursos {
+        flex-wrap: wrap;
     }
-    70% {
-        transform: translateY(1px); /* Vai para cima */
+
+    .containercursos .todoscursos:last-child {
+        flex-basis: 100%;
     }
-    100% {
-        transform: translateY(-3px); /* Volta à posição inicial */
+
+    .todoscursos {
+        flex: 1;
+        font-size: small;
+    }
+
+    .botoes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .botoes button:nth-child(6),
+    .botoes button:last-child,
+    .botoes a {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .todoscursos {
+        font-size: 11px;
+    }
+
+}
+
+
+@media (max-width: 720px) {
+
+
+
+    .meceinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mec {
+        margin: 0 auto;
+        margin: 20px 0;
+        margin-top: 30px;
+        width: 100%;
+
+    }
+
+    .informacoes a p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .informacoes {
+        display: block;
+    }
+
+    .cursosposwow {
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
     }
 }

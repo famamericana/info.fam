@@ -2,44 +2,91 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLSCSLRW');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ3PT7C9XJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HQ3PT7C9XJ');
+    </script> 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="images/famlogo.png">
     <title>Vestibular FAM</title>
     <link rel="stylesheet" href="style.css?v=2.0">
+
+    <!-- HTTP Preconnect -->
+    <link rel="preconnect" href="https://pageview-notify.rdstation.com.br" />
+    <link rel="preconnect" href="https://w-cdn.pzw.io" />
+    <link rel="preconnect" href="https://rec.smartlook.com" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+    <link rel="preconnect" href="https://staticxx.facebook.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="preconnect" href="https://www.googleadservices.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- Tags Header -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '851996656923172');
+        fbq('track', 'PageView');
+    </script>
+
 </head>
 
 <body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLSCSLRW" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <a href="https://api.whatsapp.com/send?phone=5519996348297" target="_blank" class="whatsapp-float">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <header>
-        <div class="containercursos">
-            <a target="_blank" href="https://www.fam.br/cursos/?gradua%C3%A7%C3%A3o=true" class="todoscursos">Gradução
-            </a>•
-            <a target="_blank" href="https://www.fam.br/cursos/?p%C3%B3s%20gradua%C3%A7%C3%A3o=true"
-                class="todoscursos">Pós-gradução</a>•
-            <a target="_blank" href="https://www.fam.br/cursos/?extens%C3%A3o=true" class="todoscursos">Cursos de
-                Extensão</a>
-        </div>
         <div class="titulo">
             <div class="esduremaisfam">
                 <img src="images/estudenafam.svg">
-                <p class="escolha"><span style="font-size: small;margin-right: 3px;"><i
-                            class="fa-solid fa-caret-down"></i></span> Escolha sua forma de ingressar <span
+                <p class="escolha"><span style="font-size: small;margin-right: 3px;"><i class="fa-solid fa-caret-down"></i></span> Escolha sua forma de ingressar <span
                         style="font-size: small;margin-left: 3px;"><i class="fa-solid fa-caret-down"></i></span></p>
             </div>
-        </div>
     </header>
     <main>
         <div class="texto">
             <div class="estudenafamcontainer">
-                <div class="botoes">
-                    <a class="tablinks" href="https://info.fam.br/prova-de-bolsas/">Prova de Bolsas
-                        (resultados)</a>
+                <div class="btn-group">
+                    <a class="tablinks button_a" href="https://info.fam.br/prova-de-bolsas/">Prova de Bolsas (resultados)</a>
                     <button class="tablinks" onclick="openTab(event, 'vestibular')">Vestibular</button>
                     <button class="tablinks" onclick="openTab(event, 'enem')">ENEM</button>
                     <button class="tablinks" onclick="openTab(event, 'segunda-graduacao')">2° Graduação</button>
@@ -47,7 +94,9 @@
                     <button class="tablinks" onclick="openTab(event, 'pos-graduacao')">Pós-Graduação</button>
                     <!--<button class="tablinks" onclick="openTab(event, 'extensao')">Cursos Livres de Extensão</button>-->
                 </div>
-
+                <!--<div class="btn-group2">
+                    <a href="https://info.fam.br/prova-de-bolsas/">prova de bolsas (resultados)</a>
+                </div>-->
                 <div id="initialText" class="campanha">
                     <div class="slider">
                         <div class="progress-bar"></div>
@@ -96,10 +145,9 @@
                         graduação na FAM. É simples, acesse a área do candidato, escolha seu curso e faça sua matrícula.
                         Para a <b>eliminação de matérias já cursadas</b>, será possível a solicitação apenas após a
                         matrícula, conforme calendário acadêmico. Inscreva-se agora!</p>
-                    <p class="textodireita">Em caso de dúvidas envie email:</p>
-                    <p style="margin-top: -15px; color: #45b7e5;"><a style="color: #45b7e5;" class="textodireita"
-                            href="mailto:matricula@fam.br">matricula@fam.br</a> <span></p>
-                    </p>
+                    <p class="textodireita">Em caso de dúvidas envie email:</p> <p class="textodireita" style="margin-top: -15px; color: #45b7e5;">
+                            matricula@fam.br<span></p>
+
                 </div>
                 <div id="transferencia" class="tabcontent">
                     <a href="http://fam.inscricao.crmeducacional.com/login/44"><button
@@ -115,14 +163,11 @@
                         disciplinas cursadas. A taxa de transferência é de <b>R$50,00</b>. Caso seja aprovado, a
                         assistente
                         de coordenação do curso escolhido entrará em contato.</p>
-                    <p class="textodireita">Em caso de dúvidas envie email:</p>
-                    <p style="margin-top: -15px; color: #45b7e5;"><a style="color: #45b7e5;" class="textodireita"
-                            href="mailto:matricula@fam.br">matricula@fam.br</a> <span></p>
-                    </p>
+                    <p class="textodireita">Em caso de dúvidas envie email:</p> <p class="textodireita" style="margin-top: -15px; color: #45b7e5;">
+                            matricula@fam.br<span></p>
                 </div>
                 <div id="pos-graduacao" class="tabcontent">
-                    <a href="https://fam.inscricao.crmeducacional.com/login/48"><button
-                            class="btn2">Inscreva-se</button></a>
+                    <a href="https://fam.inscricao.crmeducacional.com/login/48"><button class="btn2">Inscreva-se</button></a>
                     <p class="texto">Chegou a hora de fazer uma especialização na sua área de atuação ou até conhecer
                         novas
                         possibilidades. Exigências que o mercado de trabalho pede e você deve estar sempre pronto para
@@ -130,7 +175,7 @@
                         na frente nas melhores vagas. A <b>Pós FAM</b> é o caminho para novos conhecimentos e muito
                         networking, não é preciso fazer provas, basta seguir os passos orientações no site. Inscreva-se!
                     </p>
-                    <!-- <P class="texto" style="text-align: center;">Conheça os cursos da Pós: </p>
+                     <!-- <P class="texto" style="text-align: center;">Conheça os cursos da Pós: </p>
                  <span class="cursosposwow">
                         <a class="fiscal" target="_blank"
                             href="https://info.fam.br/cursos/estrategia-fiscal/">Estratégia
@@ -147,7 +192,7 @@
                             target="_blank" href="https://info.fam.br/cursos/neuropsicopedagogia/">Neuropsicopedagogia
                             Clínica e
                             Psicomotricidade</a>
-                    </span>-->
+                    </span>--> 
                 </div>
                 <div id="extensao" class="tabcontent">
                     <a href="http://fam.inscricao.crmeducacional.com/login/40"><button class="btn2">Inscreva-se
@@ -172,21 +217,21 @@
         <section>
             <div class="meceinfo">
                 <div class="informacoes">
-                    <a target="_blank" href="https://fam.br">
-                        <p>FAM.br</p>
+                    <a target="_blank" href="https://www.famportal.com.br/fam/">
+                        <p>Portal Acadêmico FAM</p>
+                    </a>
+                    <a target="_blank" href="https://info.fam.br/cursos/pos-graduacao/">
+                        <p>Cursos de Pós-graduação</p>
+                    </a>
+                    <a target="_blank" href="https://www.fam.br/formacao/graduacao/">
+                        <p>Cursos de Graduação</p>
                     </a>
                     <a target="_blank"
                         href="https://www.fam.br/wp-content/uploads/2024/09/Edital-02-24_VESTIBULARFAM-2025.pdf">
                         <p>Edital 2025</p>
                     </a>
-                    <a target="_blank" href="https://www.famportal.com.br/fam/">
-                        <p>Portal Acadêmico FAM</p>
-                    </a>
                     <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/">
                         <p>Bolsas e descontos</p>
-                    </a>
-                    <a target="_blank" href="https://info.fam.br">
-                        <p>Centro de Informações para Alunos | Info.FAM</p>
                     </a>
                 </div>
                 <a target="_blank"
@@ -199,6 +244,16 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js?v=1.1"></script>
+
+    <!-- Facebook Connect -->
+    <script>window.fbAsyncInit = function () { FB.init({ appId: '1395394967220729', xfbml: true, version: 'v2.9' }); FB.AppEvents.logPageView(); }; (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/pt_BR/sdk.js"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <!-- RD Station
+    <script type="text/javascript" async
+        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/cea8a025-02ec-4bae-b3dc-569715728fbb-loader.js"></script> -->
 
 </body>
 
