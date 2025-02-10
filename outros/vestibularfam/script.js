@@ -122,6 +122,21 @@ function moveSlide(n) {
     timeoutId = setTimeout(autoSlide, 10000);
 }
 
+// trocar img media menor --------///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function checkScreenSize() {
+    const slide1 = document.getElementById("slide1");
+    const slide2 = document.getElementById("slide2");
 
+    if (window.innerWidth < 600) {
+        slide1.src = "images/Vestibular_2025.1_1080x800.png"; // Altere para a imagem desejada
+        slide2.src = "images/Pós_Graduação_2024_1080x800.png";
+    } else {
+        slide1.src = "images/2025960x300.png";
+        slide2.src = "images/Pós_Graduação_2024_960x300.png";
+    }
+}
 
+// Chama a função ao carregar a página e ao redimensionar a tela
+window.addEventListener("load", checkScreenSize);
+window.addEventListener("resize", checkScreenSize);
