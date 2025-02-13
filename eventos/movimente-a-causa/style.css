@@ -101,12 +101,19 @@ main {
 }
 
 #como-funciona h3 {
+    position: relative;
     color: #004EB6;
+    background-color: white;
+    margin-bottom: -10px;
+    z-index: 1;
+    width: fit-content;
+    padding-right: 5px;
 }
 
-
-#como-funciona ul {
-    padding-left: 25px;
+.boardas{
+    border: 2px solid #f2f3f8;
+    padding:  15px 20px 15px 20px;
+    border-radius: 10px 0;
 }
 
 main section {
@@ -366,6 +373,10 @@ iframe {
     background-color: #f2f3f8;
     border-radius: 10px;
 }
+.duvidas a {
+    color: #004EB6;
+    font-weight: 700;
+}
 
 .botoesjuntinhos {
     display: flex;
@@ -436,5 +447,5 @@ iframe {
 }
 
 ol{
-    margin-left: -40px;
+    margin: 0 0 0 -25px;
 }
