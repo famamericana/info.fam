@@ -687,15 +687,20 @@ footer .créditos_eu {
 }
 
 .historias iframe {
-    flex: 1 1 calc(50% - 10px); /* Subtrai o gap para manter a proporção correta */
-    height: 267px;
+    flex: 1; /* Subtrai o gap para manter a proporção correta */
     border-radius: 5px;
+    width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.historias iframe:first-child {
+    flex-basis: 100%;
+ 
 }
 
 /* Ajuste para telas menores */
-@media (max-width: 768px) {
+@media (max-width: 650px) {
     .historias iframe {
-        flex: 1 1 100%;
-        height: 350px;
+        flex:  100%;
     }
 }
