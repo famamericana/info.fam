@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
@@ -7,22 +8,20 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #0e2e7c;
+    background: #044488;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.4);
-    border: 2px solid #0e2e7c;
+    border: 2px solid #044488;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.6);
 }
-
-
 
 .teste {
     display: flex;
@@ -69,7 +68,7 @@
 }
 
 body {
-    background-color: #0e2e7c;
+    background-color: #044488;
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
 }
@@ -147,12 +146,12 @@ a:hover {
     margin: 20px auto;
     max-width: 960px;
     padding: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: white;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
 }
 
 
@@ -174,7 +173,9 @@ a:hover {
 }
 
 .date-day {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 3.5em;
     font-weight: bold;
     text-align: center;
@@ -199,10 +200,11 @@ a:hover {
     cursor: pointer;
     margin-left: 20px;
     background-color: white;
+
     border-radius: 5px;
     padding: 17px 20px 17px 20px;
     color: black;
-    width: 625px;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -221,8 +223,6 @@ a:hover {
     .calendar-title {
         white-space: normal;
         text-overflow: none;
-        width: 100%;
-
     }
 }
 
@@ -232,6 +232,7 @@ a:hover {
     }
 
 }
+
 
 .calendar-title:hover {
     text-decoration: none;
@@ -256,7 +257,7 @@ a:hover {
     color: #252525;
     background-color: white;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     margin-left: 20px;
     width: 100%;
     margin-top: 5px;
@@ -270,24 +271,10 @@ a:hover {
     pointer-events: none;
 }
 
-.event-description-horario i{
-    font-size: 14px;
-    margin-right: 2px;
-
-}
-
-.event-description i{
-    font-size: 14px;
-    margin-right: 3px;
-
-}
-
-
 .event-description-texto {
     font-family: 'Source Sans 3', sans-serif;
     text-align: left;
-    margin-left: 20px;
-    margin-right: 20px;
+
     text-decoration: none;
     font-style: italic;
     color: #414141;
@@ -299,15 +286,13 @@ a:hover {
 .event-description-agenda {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 14px;
-    margin-left: 20px;
-    margin-right: 20px;
+
     margin-bottom: 0px;
 }
 
 .start-time {
     color: #3eb288;
     font-weight: 900;
-
 }
 
 .end-time {
@@ -342,16 +327,21 @@ a:hover {
 
 .event-description-horario {
     margin-bottom: -22px;
-    margin-left: 20px;
-    margin-top: 10px;
+
     pointer-events: none;
 }
+.event-description-horario i{
+    font-size: 14px;
+    margin-right: 2px;
 
-.clock-icon {
-    font-size: 18px;
-    color: #000;
-    /* Adicione a cor desejada aqui */
 }
+
+.event-description i{
+    font-size: 14px;
+    margin-right: 3px;
+
+}
+
 
 .events>li.cal:not(:last-child) {
     margin-bottom: -10px;
@@ -368,7 +358,24 @@ a:hover {
 
 }
 
-.mensagemdeerro{
-    text-align: center;
-    height: 20vh;
+.badge{
+    font-size: small;
+    font-weight: 500;
+    color: #7e889c;
+}
+
+.plusk{
+    font-size: small;
+    margin-right: 5px;
+    color: #7e889c;
+}
+
+.start-time-highlight {
+    color: #3eb288; /* Verde-azulado */
+    font-weight: bold;
+}
+
+.end-time-highlight {
+    color: #e53888; /* Vermelho */
+    font-weight: bold;
 }

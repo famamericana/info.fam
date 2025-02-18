@@ -175,7 +175,9 @@ a:hover {
 }
 
 .date-day {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 3.5em;
     font-weight: bold;
     text-align: center;
@@ -257,7 +259,7 @@ a:hover {
     color: #252525;
     background-color: white;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     margin-left: 20px;
     width: 100%;
     margin-top: 5px;
@@ -274,8 +276,7 @@ a:hover {
 .event-description-texto {
     font-family: 'Source Sans 3', sans-serif;
     text-align: left;
-    margin-left: 20px;
-    margin-right: 20px;
+
     text-decoration: none;
     font-style: italic;
     color: #414141;
@@ -287,15 +288,13 @@ a:hover {
 .event-description-agenda {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 14px;
-    margin-left: 20px;
-    margin-right: 20px;
+
     margin-bottom: 0px;
 }
 
 .start-time {
     color: #3eb288;
     font-weight: 900;
-
 }
 
 .end-time {
@@ -330,8 +329,7 @@ a:hover {
 
 .event-description-horario {
     margin-bottom: -22px;
-    margin-left: 20px;
-    margin-top: 10px;
+
     pointer-events: none;
 }
 .event-description-horario i{
@@ -360,4 +358,26 @@ a:hover {
     height: fit-content;
     margin: 0 auto;
 
+}
+
+.badge{
+    font-size: small;
+    font-weight: 500;
+    color: #7e889c;
+}
+
+.plusk{
+    font-size: small;
+    margin-right: 5px;
+    color: #7e889c;
+}
+
+.start-time-highlight {
+    color: #3eb288; /* Verde-azulado */
+    font-weight: bold;
+}
+
+.end-time-highlight {
+    color: #e53888; /* Vermelho */
+    font-weight: bold;
 }

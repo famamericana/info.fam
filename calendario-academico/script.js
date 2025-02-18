@@ -2,111 +2,211 @@ $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
 });
 
-
 moment.locale('pt');
 
-//string date to start the list range.
-//recommend using Date.now() to filter out past events
 var startDate = Date.now();
 var items = [];
+
 $.getJSON(
     "https://www.googleapis.com/calendar/v3/calendars/c_1d632bae559723f223004e21450411782b68de51ac45be3c47dfc51cd1c4b3b4%40group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=30&timeMin=" + new Date(startDate).toISOString(),
     function (data) {
-        $.each(data["items"], function (key, val) {
-            items.push(startDate(val["start"]));
-        });
-        items = items.slice().sort();
-        items = [...new Set(items)];
-
-        var events = {};
-        items.forEach(function (item) {
-            $.each(data["items"], function (key, val) {
-                if (item == startDate(val["start"])) {
-                    //console.log(val);
-                    if (events[item] === undefined) {
-                        events[item] = new Array();
-                    }
-
-                    events[item].push({
-                        'eventTitle': val["summary"],
-                        'eventDescr': val["description"] === undefined ? "<i>No Event Description</i>" : val["description"],
-                        'startTime': startTime(val["start"]),
-                        'endDate': moment(startDate(val["end"])).format('l'),
-                        'endTime': startTime(val["end"]),
-                        'eventLocation': val["location"],  // nova linha para obter a localização
-                        'htmlLink': val["htmlLink"]
-                    });
-                    //console.log(events);
-                    //console.log(val);
-                }
-
-            });
-        });
-        var markup = "";
-        items.forEach(function (eventDate) {
-            var monthName = moment(eventDate).format("MMMM").toUpperCase();
-            var monthDate = moment(eventDate).format("DD");
-            markup += "<ol class='info clearfix'>";
-            markup += "<div class='date-box'>";
-            markup += "<span class='date-month'>" + monthName + "</span>";
-            markup += "<span class='date-day'>" + monthDate + "</span>";
-            markup += "</div><div class='events'>";
-            events[eventDate].forEach(function (event) {
-                console.log(event);
-                markup += "<li class='cal'>";
-                markup += "<h3 class='calendar-title'>" + event["eventTitle"] + "</h3>";
-                markup += "<div class='event-details'>";
-                markup += "<div class='event-description-horario'><i class='fa-regular fa-clock'></i><span class='start-time'> " + event["startTime"] + "</span> às <span class='end-time'>" + event["endTime"] + "</span><br/><br/></div>";
-                markup += "<div class='event-description'><i class='fa-regular fa-calendar'></i> " + event["endDate"] + "<br/></div>";
-                if (event["eventLocation"]) {
-                    markup += "<div class='event-description-local'>Local: <span class='event-location'><a href='https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(event["eventLocation"]) + "' target='_blank'>" + event["eventLocation"] + "</a></span><br/><br/></div>";
-                }
-                markup += "<div class='event-description-texto'>" + event["eventDescr"] + "<br/><br/></div>";
-
-                markup += "<div class='event-description-agenda'><a href='" + event["htmlLink"] + "'>Veja esse Evento no Google Agenda</a><br/><br/></div>";
-                markup += "</div></li>"
-            });
-            markup += "</span></ol></div></div>";
-        });
-        $("#calendar-list").append(markup);
-        //console.log(events);
-
-        function startDate(d) {
-            if (d["dateTime"] === undefined) return d["date"];
-            else {
-                var formatted = new Date(d["dateTime"]);
-                var day = formatted.getDate();
-                var month = formatted.getMonth() + 1;
-                var year = formatted.getFullYear();
-                return year + "-" + pad(month) + "-" + pad(day);
-            }
+        if (!data["items"] || data["items"].length === 0) {
+            // Se não houver eventos, mostra a mensagem de erro
+            $("#calendar-list").append("<div class='mensagemdeerro'>Caso apareça essa mensagem, por favor nos notifique que o Calendário Acadêmico não está aparecendo. Agradecemos a colaboração! E-mail: <a href='mailto:nicom@fam.br'> nicom@fam.br</a></div>");
+            return;
         }
-
-        function startTime(d) {
-            if (d["dateTime"] === undefined) return "O dia todo";
-            else {
-                var formatted = new Date(d["dateTime"]);
-                return moment(d["dateTime"]).format('LT');
-            }
-        }
-
-        function pad(n) {
-            return n < 10 ? "0" + n : n;
-        }
-
-        $(".events").click(function (e) {
-            $(e.target)
-                .next("div")
-                .siblings("div")
-                .slideUp();
-            $(e.target)
-                .next("div")
-                .slideToggle();
-        });
+        processEvents(data["items"]);
     }
 );
 
+function processEvents(eventItems) {
+    var events = {};
+    
+    eventItems.forEach(function(val) {
+        let eventDates = getEventDates(val);
+        
+        eventDates.forEach(date => {
+            if (events[date] === undefined) {
+                events[date] = [];
+            }
 
+            events[date].push({
+                'eventTitle': val["summary"],
+                'eventDescr': val["description"] || "<i>Sem descrição do evento</i>",
+                'startDate': formatEventDate(val["start"]),
+                'endDate': formatEventDate(val["end"]),
+                'startTime': formatEventTime(val["start"]),
+                'endTime': formatEventTime(val["end"]),
+                'eventLocation': val["location"],
+                'htmlLink': val["htmlLink"],
+                'isMultiDay': eventDates.length > 1,
+                'recurrence': val["recurrence"] ? true : false,
+                // Adicionando informações sobre primeiro e último dia
+                'isFirstDay': date === eventDates[0],
+                'isLastDay': date === eventDates[eventDates.length - 1]
+            });
+        });
+    });
+
+    var sortedDates = Object.keys(events).sort();
+    renderEvents(sortedDates, events);
+}
+
+function getEventDates(event) {
+    let dates = [];
+    let start = moment(event.start.dateTime || event.start.date);
+    let end = moment(event.end.dateTime || event.end.date);
+    const isAllDay = !event.start.dateTime;
+
+    // Ajuste para eventos all-day (end date é exclusivo)
+    if (isAllDay) {
+        end.subtract(1, 'day'); // Converte para data inclusiva
+    }
+    
+    // Verifica se é o mesmo dia após ajustes
+    if (start.isSame(end, 'day')) {
+        dates.push(start.format('YYYY-MM-DD'));
+    } else {
+        dates.push(start.format('YYYY-MM-DD'));
+        dates.push(end.format('YYYY-MM-DD'));
+    }
+    
+    return dates;
+}
+
+function processEvents(eventItems) {
+    var events = {};
+    
+    eventItems.forEach(function(val) {
+        let eventDates = getEventDates(val);
+        
+        eventDates.forEach(date => {
+            if (events[date] === undefined) {
+                events[date] = [];
+            }
+
+            // Calculamos a duração total do evento
+            let start = moment(val.start.dateTime || val.start.date);
+            let end = moment(val.end.dateTime || val.end.date);
+            let totalDays = end.diff(start, 'days');
+
+            events[date].push({
+                'eventTitle': val["summary"],
+                'eventDescr': val["description"] || "<i>Sem descrição do evento</i>",
+                'startDate': formatEventDate(val["start"]),
+                'endDate': formatEventDate(val["end"]),
+                'startTime': formatEventTime(val["start"]),
+                'endTime': formatEventTime(val["end"]),
+                'eventLocation': val["location"],
+                'htmlLink': val["htmlLink"],
+                'isMultiDay': totalDays > 0,
+                'recurrence': val["recurrence"] ? true : false,
+                'isFirstDay': date === eventDates[0],
+                'isLastDay': date === eventDates[eventDates.length - 1]
+            });
+        });
+    });
+
+    var sortedDates = Object.keys(events).sort();
+    renderEvents(sortedDates, events);
+}
+
+function formatEventDate(d) {
+    if (!d) return '';
+    return moment(d.dateTime || d.date).format('L');
+}
+
+function formatEventTime(d) {
+    if (!d) return '';
+    if (d.date) return "O dia todo";
+    return moment(d.dateTime).format('LT');
+}
+
+function renderEvents(sortedDates, events) {
+    var markup = "";
+    
+    sortedDates.forEach(function(eventDate) {
+        var monthName = moment(eventDate).format("MMMM").toUpperCase();
+        var monthDate = moment(eventDate).format("DD");
+        
+        markup += "<ol class='info clearfix'>";
+        markup += "<div class='date-box'>";
+        markup += "<span class='date-month'>" + monthName + "</span>";
+        markup += "<span class='date-day'>";
+        // Movendo o ícone plus para o dia
+        if (events[eventDate].some(event => event.isMultiDay)) {
+            markup += "<i class='fa-solid fa-plus plusk'></i> ";
+        }
+        markup += monthDate + "</span>";
+        markup += "</div><div class='events'>";
+        
+        events[eventDate].forEach(function(event) {
+            markup += "<li class='cal'>";
+            markup += "<h3 class='calendar-title'>" + event["eventTitle"];
+            
+            if (event.isMultiDay) {
+                markup += " <span class='badge multiple-days'>Múltiplos dias</span>";
+            }
+            if (event.recurrence) {
+                markup += " <span class='badge recurring'>Recorrente</span>";
+            }
+            
+            markup += "</h3>";
+            markup += "<div class='event-details'>";
+            
+            // Período do evento
+            markup += "<div class='event-period'>";
+            if (event.isMultiDay) {
+                markup += "<i class='fa-regular fa-calendar-days'></i> ";
+                markup += "De <span class='start-time-highlight'>" + event["startDate"] + "</span>";
+
+                if (event.isFirstDay && event["startTime"] !== "O dia todo") {
+                    markup += " às <span class='start-time-highlight'>" + event["startTime"] + "</span>";
+                }
+                markup += " até <span class='end-time-highlight'>" + event["endDate"] + "</span>";
+                if (event.isLastDay && event["endTime"] !== "O dia todo") {
+                    markup += " às <span class='end-time-highlight'>" + event["endTime"] + "</span>";
+                }
+            } else {
+                markup += "<div class='event-description-horario'>";
+                markup += "<i class='fa-regular fa-clock'></i> ";
+                markup += "<span class='start-time'>" + event["startTime"] + "</span>";
+                if (event["startTime"] !== "O dia todo") {
+                    markup += " às <span class='end-time'>" + event["endTime"] + "</span>";
+                }
+                markup += "</div>";
+            }
+            markup += "</div><br/>";
+            
+            if (event["eventLocation"]) {
+                markup += "<div class='event-description-local'>";
+                markup += "Local: <span class='event-location'>";
+                markup += "<a href='https://www.google.com/maps/search/?api=1&query=" + 
+                         encodeURIComponent(event["eventLocation"]) + 
+                         "' target='_blank'>" + event["eventLocation"] + "</a>";
+                markup += "</span></div><br/>";
+            }
+            
+            markup += "<div class='event-description-texto'>" + event["eventDescr"] + "</div><br/>";
+            
+            markup += "<div class='event-description-agenda'>";
+            markup += "<a href='" + event["htmlLink"] + "' target='_blank'>";
+            markup += "<i class='fa-brands fa-google'></i> Ver no Google Agenda</a>";
+            markup += "</div>";
+            
+            markup += "</div></li>";
+        });
+        markup += "</ol></div>";
+    });
+    
+    $("#calendar-list").append(markup);
+    
+    $(".calendar-title").click(function(e) {
+        $(this).next(".event-details").slideToggle();
+        $(this).parent().siblings().find(".event-details").slideUp();
+    });
+}
+ 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
 if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
