@@ -19,38 +19,6 @@ $.getJSON(
     }
 );
 
-function processEvents(eventItems) {
-    var events = {};
-    
-    eventItems.forEach(function(val) {
-        let eventDates = getEventDates(val);
-        
-        eventDates.forEach(date => {
-            if (events[date] === undefined) {
-                events[date] = [];
-            }
-
-            events[date].push({
-                'eventTitle': val["summary"],
-                'eventDescr': val["description"] || "<i>Sem descrição do evento</i>",
-                'startDate': formatEventDate(val["start"]),
-                'endDate': formatEventDate(val["end"]),
-                'startTime': formatEventTime(val["start"]),
-                'endTime': formatEventTime(val["end"]),
-                'eventLocation': val["location"],
-                'htmlLink': val["htmlLink"],
-                'isMultiDay': eventDates.length > 1,
-                'recurrence': val["recurrence"] ? true : false,
-                // Adicionando informações sobre primeiro e último dia
-                'isFirstDay': date === eventDates[0],
-                'isLastDay': date === eventDates[eventDates.length - 1]
-            });
-        });
-    });
-
-    var sortedDates = Object.keys(events).sort();
-    renderEvents(sortedDates, events);
-}
 
 function getEventDates(event) {
     let dates = [];
@@ -58,17 +26,26 @@ function getEventDates(event) {
     let end = moment(event.end.dateTime || event.end.date);
     const isAllDay = !event.start.dateTime;
 
-    // Ajuste para eventos all-day (end date é exclusivo)
     if (isAllDay) {
-        end.subtract(1, 'day'); // Converte para data inclusiva
+        end.subtract(1, 'day');
     }
     
-    // Verifica se é o mesmo dia após ajustes
+    // Se é o mesmo dia após ajustes
     if (start.isSame(end, 'day')) {
         dates.push(start.format('YYYY-MM-DD'));
     } else {
-        dates.push(start.format('YYYY-MM-DD'));
-        dates.push(end.format('YYYY-MM-DD'));
+        // Calculamos o número total de dias
+        let totalDays = end.diff(start, 'days');
+        
+        // Se são exatamente dois dias, incluímos ambos
+        if (totalDays === 1) {
+            dates.push(start.format('YYYY-MM-DD'));
+            dates.push(end.format('YYYY-MM-DD'));
+        } else {
+            // Se são mais de dois dias, incluímos apenas o primeiro e o último
+            dates.push(start.format('YYYY-MM-DD'));
+            dates.push(end.format('YYYY-MM-DD'));
+        }
     }
     
     return dates;
@@ -78,6 +55,15 @@ function processEvents(eventItems) {
     var events = {};
     
     eventItems.forEach(function(val) {
+        let start = moment(val.start.dateTime || val.start.date);
+        let end = moment(val.end.dateTime || val.end.date);
+        const isAllDay = !val.start.dateTime;
+        
+        if (isAllDay) {
+            end.subtract(1, 'day');
+        }
+        
+        let totalDays = end.diff(start, 'days');
         let eventDates = getEventDates(val);
         
         eventDates.forEach(date => {
@@ -85,16 +71,11 @@ function processEvents(eventItems) {
                 events[date] = [];
             }
 
-            // Calculamos a duração total do evento
-            let start = moment(val.start.dateTime || val.start.date);
-            let end = moment(val.end.dateTime || val.end.date);
-            let totalDays = end.diff(start, 'days');
-
             events[date].push({
                 'eventTitle': val["summary"],
                 'eventDescr': val["description"] || "<i>Sem descrição do evento</i>",
                 'startDate': formatEventDate(val["start"]),
-                'endDate': formatEventDate(val["end"]),
+                'endDate': formatEventDate({"date": end.format('YYYY-MM-DD')}),
                 'startTime': formatEventTime(val["start"]),
                 'endTime': formatEventTime(val["end"]),
                 'eventLocation': val["location"],
@@ -102,24 +83,14 @@ function processEvents(eventItems) {
                 'isMultiDay': totalDays > 0,
                 'recurrence': val["recurrence"] ? true : false,
                 'isFirstDay': date === eventDates[0],
-                'isLastDay': date === eventDates[eventDates.length - 1]
+                'isLastDay': date === eventDates[eventDates.length - 1],
+                'isTwoDayEvent': totalDays === 1
             });
         });
     });
 
     var sortedDates = Object.keys(events).sort();
     renderEvents(sortedDates, events);
-}
-
-function formatEventDate(d) {
-    if (!d) return '';
-    return moment(d.dateTime || d.date).format('L');
-}
-
-function formatEventTime(d) {
-    if (!d) return '';
-    if (d.date) return "O dia todo";
-    return moment(d.dateTime).format('LT');
 }
 
 function renderEvents(sortedDates, events) {
@@ -133,7 +104,6 @@ function renderEvents(sortedDates, events) {
         markup += "<div class='date-box'>";
         markup += "<span class='date-month'>" + monthName + "</span>";
         markup += "<span class='date-day'>";
-        // Movendo o ícone plus para o dia
         if (events[eventDate].some(event => event.isMultiDay)) {
             markup += "<i class='fa-solid fa-plus plusk'></i> ";
         }
@@ -141,6 +111,10 @@ function renderEvents(sortedDates, events) {
         markup += "</div><div class='events'>";
         
         events[eventDate].forEach(function(event) {
+            if (event.isMultiDay && !event.isTwoDayEvent && !event.isFirstDay && !event.isLastDay) {
+                return; // Pula a renderização de dias intermediários para eventos com mais de 2 dias
+            }
+            
             markup += "<li class='cal'>";
             markup += "<h3 class='calendar-title'>" + event["eventTitle"];
             
@@ -152,9 +126,9 @@ function renderEvents(sortedDates, events) {
             }
             
             markup += "</h3>";
+            // Resto do código de renderização permanece o mesmo...
             markup += "<div class='event-details'>";
             
-            // Período do evento
             markup += "<div class='event-period'>";
             if (event.isMultiDay) {
                 markup += "<i class='fa-regular fa-calendar-days'></i> ";
@@ -206,6 +180,18 @@ function renderEvents(sortedDates, events) {
         $(this).parent().siblings().find(".event-details").slideUp();
     });
 }
+
+function formatEventDate(d) {
+    if (!d) return '';
+    return moment(d.dateTime || d.date).format('L');
+}
+
+function formatEventTime(d) {
+    if (!d) return '';
+    if (d.date) return "O dia todo";
+    return moment(d.dateTime).format('LT');
+}
+
  
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
 if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
