@@ -47,7 +47,7 @@
       </div>
       <div class="quatro">
           <div class="footer-c">
-              <p class="créditos"> 2024 © FAM - Faculdade de Americana. Todos os direitos
+              <p class="créditos"> © 2024 - anoatual  | FAM - Faculdade de Americana. Todos os direitos
                   reservados. </p>
               <span class="créditos_eu">
                   <p style="color: rgb(182, 203, 230);">Feito por </p>
@@ -60,3 +60,12 @@
   </div>
   </div>
 </footer>
+
+<script>
+// Atualiza o ano no elemento com a classe "créditos"
+document.querySelector('.créditos').innerHTML = 
+    document.querySelector('.créditos').innerHTML.replace(
+        'anoatual', 
+        new Date().getFullYear()
+    );
+</script>
