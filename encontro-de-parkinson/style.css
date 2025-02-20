@@ -114,6 +114,40 @@ main {
     font-family: 'Just Sans Bold', sans-serif;
 }
 
+.dataelocal{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-self: center;
+    width: fit-content;
+}
+
+.local{
+    font-size: large;
+}
+
+.local a{
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+    font-family: 'Just Sans Bold', sans-serif;
+}
+
+.local a:hover{
+    color: #033c82;
+}
+
+.local a:hover i{
+    color: white;
+}
+
+.local i{
+    font-size: smaller;
+    color: #033c82;
+    transition: all 0.3s;
+}
+
+
 /* ------------------------------------------------------------------------------------*/
 .starscontainer {
     overflow: hidden;
