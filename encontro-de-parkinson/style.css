@@ -14,7 +14,7 @@
     font-style: normal;
 }
 
-:root{
+:root {
     --corstars: #71e6bb;
 }
 
@@ -85,6 +85,7 @@ main {
 .fraseprincipal p {
     color: white;
     font-size: x-large;
+    padding-bottom: 10px;
 }
 
 .fraseprincipal-bold {
@@ -93,12 +94,35 @@ main {
     font-style: italic;
 }
 
+.data {
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: x-large;
+}
+
+.dataverde {
+    color: #3eb288;
+    font-family: 'Just Sans Bold', sans-serif;
+}
+
+.dataazul {
+    color: #033c82;
+    font-family: 'Just Sans Bold', sans-serif;
+}
+
 /* ------------------------------------------------------------------------------------*/
 .starscontainer {
     overflow: hidden;
-    height: 100dvh; /* Usar dvh em vez de % */
-    width: 100%; /* Garantir largura total */
-    position: fixed; /* Cobrir toda a viewport */
+    height: 100dvh;
+    /* Usar dvh em vez de % */
+    width: 100%;
+    /* Garantir largura total */
+    position: fixed;
+    /* Cobrir toda a viewport */
     top: 0;
     left: 0;
     right: 0;
