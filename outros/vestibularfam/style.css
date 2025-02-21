@@ -400,11 +400,18 @@ button:hover {
         grid-template-columns: 1fr 1fr;
     }
 
-    .botoes button:nth-child(6),
+  /*  .botoes button:nth-child(6),
     .botoes button:last-child,
     .botoes a {
         grid-column: span 2;
-    }
+    } */
+
+    
+   .botoes button:nth-child(6),
+   
+    .botoes a {
+        grid-column: span 2;
+    } 
 }
 
 @media (max-width: 400px) {
