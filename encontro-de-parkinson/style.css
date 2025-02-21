@@ -3,8 +3,8 @@
 @font-face {
     font-family: 'Just Sans Regular';
     src: url('fontes/JUSTSansRegular.woff2') format('woff2'),
-         url('fontes/JUSTSansRegular.woff') format('woff'),
-         url('fontes/JUSTSansRegular.otf') format('opentype');
+        url('fontes/JUSTSansRegular.woff') format('woff'),
+        url('fontes/JUSTSansRegular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -12,11 +12,12 @@
 @font-face {
     font-family: 'Just Sans Bold';
     src: url('fontes/JUSTSansExBold.woff2') format('woff2'),
-         url('fontes/JUSTSansExBold.woff') format('woff'),
-         url('fontes/JUSTSansExBold.otf') format('opentype');
+        url('fontes/JUSTSansExBold.woff') format('woff'),
+        url('fontes/JUSTSansExBold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
+
 :root {
     --corstars: #71e6bb;
 }
@@ -118,7 +119,7 @@ main {
     font-family: 'Just Sans Bold', sans-serif;
 }
 
-.dataelocal{
+.dataelocal {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -127,26 +128,26 @@ main {
     margin: 0 auto;
 }
 
-.local{
+.local {
     font-size: large;
 }
 
-.local a{
+.local a {
     text-decoration: none;
     color: white;
     transition: all 0.3s;
     font-family: 'Just Sans Bold', sans-serif;
 }
 
-.local a:hover{
+.local a:hover {
     color: #033c82;
 }
 
-.local a:hover i{
+.local a:hover i {
     color: white;
 }
 
-.local i{
+.local i {
     font-size: smaller;
     color: #033c82;
     transition: all 0.3s;
@@ -234,23 +235,24 @@ main {
     }
 }
 
-.topicos{
+.topicos {
     display: flex;
     margin-top: 50px;
     margin-bottom: 50px;
     justify-content: space-evenly;
+    align-items: center;
 }
 
-.topicos img{
-max-width: 100px;
+.topicos img {
+    max-width: 100px;
 }
 
-.topicos div{
+.topicos div {
     text-align: center;
     max-width: 200px;
 }
 
-.section-title{
+.section-title {
     text-align: center;
     margin: 0 auto;
     border-bottom: 2px solid #033c82;
@@ -269,19 +271,20 @@ section#body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    
+
     padding: 8em 0;
-  }
-  section#body .content {
+}
+
+section#body .content {
     color: #260645;
     position: relative;
     z-index: 1;
     margin: 0 auto;
-   
+
     text-align: center;
-  }
-  
-  section#body:before {
+}
+
+section#body:before {
     content: "";
     position: absolute;
     top: 0;
@@ -291,11 +294,120 @@ section#body {
     background: white;
     border-radius: 50% 50% 0 0/100% 100% 0 0;
     transform: scaleX(2);
-  }
+}
 
-  .container{
+.container {
     max-width: 960px;
     margin: 0 auto;
-   
+
     margin-top: -200px;
-  }
+    margin-bottom: 50px;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+.events-list {
+    list-style: none;
+    margin: 60px 0 50px 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+}
+
+
+.event-header {
+   padding: 10px;
+    display: flex;
+    background-color: rgb(246, 249, 253);
+    width: 100%;
+    border-radius: 5px;
+}
+
+.event-details {
+    padding-left: 14px;
+}
+
+.cadaumdoshorarios div{
+    width: 100%;
+}
+
+.event-title a {
+    color: #033c82;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 4px;
+    line-height: 1;
+    text-decoration: none;
+    font-family: 'Just Sans Bold', sans-serif;
+
+}
+
+
+.event-date {
+    color: #323232;
+    font-size: 18px;
+}
+
+.event-icon {
+    flex: 0 0 5px;
+    background-color: #3eb288;
+    border-radius: 50px;
+}
+
+.event-content {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.fotopalestrante {
+   max-width: 200px;
+   width: 100%;
+    height: 140px;
+
+}
+
+.fotopalestrante img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+}
+
+.cadaumdoshorarios {
+    display: flex;
+    gap: 20px;
+}
+
+
+@media (max-width: 700px) {
+    .fotopalestrante {
+        max-width: 700px;
+        width: 100%;
+        height: 200px;
+    
+    }
+    .cadaumdoshorarios {
+        flex-direction: column;
+    }
+
+    .dataelocal{
+        flex-direction: column;
+    }
+
+    .fraseprincipal p{
+        font-size: large;
+    }
+
+    .topicos{
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+}
