@@ -2,18 +2,21 @@
 
 @font-face {
     font-family: 'Just Sans Regular';
-    src: url('fontes/JUSTSansRegular.otf') format('opentype');
+    src: url('fontes/JUSTSansRegular.woff2') format('woff2'),
+         url('fontes/JUSTSansRegular.woff') format('woff'),
+         url('fontes/JUSTSansRegular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Just Sans Bold';
-    src: url('fontes/JUSTSansExBold.otf') format('opentype');
+    src: url('fontes/JUSTSansExBold.woff2') format('woff2'),
+         url('fontes/JUSTSansExBold.woff') format('woff'),
+         url('fontes/JUSTSansExBold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
-
 :root {
     --corstars: #71e6bb;
 }
@@ -120,6 +123,7 @@ main {
     align-items: center;
     justify-self: center;
     width: fit-content;
+    margin: 0 auto;
 }
 
 .local{
@@ -227,4 +231,28 @@ main {
     to {
         transform: translateY(-2000px);
     }
+}
+
+.topicos{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-evenly;
+}
+
+.topicos img{
+max-width: 100px;
+}
+
+.topicos div{
+    text-align: center;
+    max-width: 200px;
+}
+
+.section-title{
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: 2px solid #033c82;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    width: fit-content;
 }
