@@ -17,3 +17,14 @@ $(document).ready(function () {
         setupDropdown();
     });
 });
+
+//-------------------------------------------------------------------------------------------------------------------------------
+const floatingBtn = document.querySelector('.floating');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        floatingBtn.classList.add('show'); // Mostra o botão
+    } else {
+        floatingBtn.classList.remove('show'); // Esconde o botão
+    }
+});

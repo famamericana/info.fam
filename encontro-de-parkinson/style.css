@@ -74,6 +74,7 @@ main {
     width: 100%;
     border-radius: 0 0 10px 10px;
     box-sizing: border-box;
+    margin-top: -2px;
 }
 
 .fraseprincipal {
@@ -299,26 +300,25 @@ section#body:before {
 .container {
     max-width: 960px;
     margin: 0 auto;
-
     margin-top: -200px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 /*-----------------------------------------------------------------------------*/
 
 .events-list {
     list-style: none;
-    margin: 60px 0 50px 0;
+    margin: 60px 0 30px 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 40px;
-    
+
 }
 
 
 .event-header {
-   padding: 10px;
+    padding: 10px;
     display: flex;
     background-color: rgb(246, 249, 253);
     width: 100%;
@@ -329,7 +329,7 @@ section#body:before {
     padding-left: 14px;
 }
 
-.cadaumdoshorarios div{
+.cadaumdoshorarios div {
     width: 100%;
 }
 
@@ -366,14 +366,15 @@ section#body:before {
 }
 
 .fotopalestrante {
-   max-width: 200px;
-   width: 100%;
+    max-width: 200px;
+    width: 100%;
     height: 140px;
 
 }
 
 .fotopalestrante img {
     object-fit: cover;
+    object-position: top;
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -385,29 +386,189 @@ section#body:before {
     gap: 20px;
 }
 
+.cadaumdoshorarios div {
+    box-sizing: border-box;
+}
+
+
 
 @media (max-width: 700px) {
     .fotopalestrante {
         max-width: 700px;
         width: 100%;
-        height: 200px;
-    
+        height: 250px;
+
     }
+
     .cadaumdoshorarios {
         flex-direction: column;
     }
 
-    .dataelocal{
+    .dataelocal {
         flex-direction: column;
     }
 
-    .fraseprincipal p{
+    .fraseprincipal p {
         font-size: large;
     }
 
-    .topicos{
+    .topicos {
         flex-direction: column;
         gap: 40px;
     }
-    
+
+    .btn2 {
+        width: calc(100% - 40px);
+
+    }
+
+}
+
+/*-------------------------------------------------------*/
+
+.btn2 {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    background-color: #033c82;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    z-index: 999;
+    box-shadow: inset 0 0 0 2px #033c82;
+}
+
+.floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f9e20f;
+    color: #242527;
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    display: none;
+}
+
+/* Classe para exibir o botão */
+.show {
+    display: flex;
+}
+
+.parado {
+
+    display: flex;
+    justify-self: center;
+    margin-bottom: 50px;
+}
+
+.parado:hover {
+    box-shadow: inset 0 0 0 2px #033c82;
+    background-color: white;
+    color: #242527;
+}
+
+.floating:hover {
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    background-color: white;
+}
+
+
+
+
+/* realização ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.realizacao {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 80px 0;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.titulo_realizacao {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    border-bottom: 1px solid #033c82;
+    width: fit-content;
+}
+
+
+.logo-container {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    padding: 10px 20px;
+}
+
+.logo-item {
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: -6px;
+}
+
+.close-button {
+    background-color: white;
+    color: #9eafc7;
+    border: none;
+    font-size: 20px;
+    padding: 5px 11px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid #9eafc7;
+}
+
+.espacoembranco {
+    margin-top: 80px;
+}
+
+.espacoembrancomenor {
+    margin-top: 40px;
+}
+
+.button-containeremprega {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+
+.logo-item img {
+    border-radius: 5px;
+}
+
+.tema {
+    font-size: large;
+    margin-bottom: 10px;
+    text-decoration: underline;
+
+}
+
+.tematema {
+    font-family: 'Just Sans Bold', sans-serif;
+    font-size: 20px;
+    color: #3eb288;
+}
+
+.curriculo {
+    border-top: 2px solid #3eb288;
+    padding-top: 10px;
 }
