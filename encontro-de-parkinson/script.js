@@ -28,3 +28,39 @@ window.addEventListener('scroll', () => {
         floatingBtn.classList.remove('show'); // Esconde o botão
     }
 });
+
+// Adiciona clique nos botões para scroll até 200px acima do formulário
+document.querySelectorAll('.btn2').forEach(button => {
+    button.addEventListener('click', () => {
+        const formSection = document.querySelector('.inscrever');
+        if (formSection) {
+            const yOffset = -200; // Ajuste de 200px para cima
+            const y = formSection.getBoundingClientRect().top + window.scrollY + yOffset;
+            
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Observer para esconder botão flutuante quando o formulário estiver visível
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const floatingBtn = document.querySelector('.floating');
+        if (entry.isIntersecting) {
+            floatingBtn.classList.add('hide');
+        } else {
+            floatingBtn.classList.remove('hide');
+        }
+    });
+}, {
+    rootMargin: '-200px 0px 0px 0px' // Considera 200px acima da viewport
+});
+
+// Observa a seção do formulário RD
+const rdFormSection = document.querySelector('.inscrever');
+if (rdFormSection) {
+    observer.observe(rdFormSection);
+}
