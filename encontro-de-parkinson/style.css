@@ -57,12 +57,15 @@ header {
     display: flex;
     justify-content: center;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 header img {
     max-width: 500px;
     padding: 80px 20px;
     padding-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 main {
@@ -417,7 +420,7 @@ section#body:before {
         gap: 40px;
     }
 
-    .btn2 {
+    .floating  {
         width: calc(100% - 40px);
 
     }
@@ -459,7 +462,7 @@ section#body:before {
 .floating.hide {
     display: none !important;
 }
-/* Classe para exibir o botão */
+
 .show {
     display: flex;
 }
@@ -468,6 +471,8 @@ section#body:before {
     display: flex;
     justify-self: center;
     margin-bottom: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .parado:hover {
