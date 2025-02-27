@@ -211,9 +211,6 @@ hr {
         gap: 20px;
     }
 
-    .grid-container {
-        grid-template-columns: 1fr !important;
-    }
 
     .logo-description {
         width: 250px !important;
@@ -224,8 +221,10 @@ hr {
 /*Topicos*/
 .grid-container {
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     border-radius: 5px;
