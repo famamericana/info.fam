@@ -489,3 +489,26 @@ section#body:before {
 .inscrever{
     margin-top: 20px;
 }
+
+/* logos --------------------------------------------------------------------------------------------------------------- */
+
+.logo-container-sponsers {
+    background-color: white;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.logo-item {
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: -6px;
+    cursor: pointer;
+}
+
