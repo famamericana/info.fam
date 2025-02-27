@@ -168,12 +168,12 @@ main {
 }
 
 .section-title {
-    text-align: center;
+    text-align: left;
     margin: 0 auto;
     border-bottom: 2px dotted #8D52A1;
     padding-bottom: 10px;
     padding-top: 10px;
-    width: fit-content;
+ 
     margin-bottom: 30px;
 }
 
@@ -249,9 +249,9 @@ section#body:before {
 }
 
 .event-title a {
-    color: #033c82;
+    color: #240035;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 600;
     font-style: italic;
     font-size: 20px;
     margin-bottom: 4px;
@@ -268,7 +268,7 @@ section#body:before {
 
 .event-icon {
     flex: 0 0 5px;
-    background-color: #3eb288;
+    background-color: #8D52A1;
     border-radius: 50px;
 }
 
@@ -345,7 +345,7 @@ section#body:before {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    background-color: #033c82;
+   
     color: white;
     padding: 10px 15px;
     border: none;
@@ -416,14 +416,14 @@ section#body:before {
 .titulo_realizacao {
     text-align: center;
     padding: 10px;
-    color: white;
-    border-bottom: 1px solid #033c82;
+    color: black;
+    border-bottom: 1px solid #240035;
     width: fit-content;
 }
 
 
 .logo-container {
-    background-color: white;
+    background-color: #8D52A1;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -474,20 +474,17 @@ section#body:before {
 
 .tema {
     font-size: large;
-    margin-bottom: 10px;
-    text-decoration: underline;
-
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: black;
 }
 
-.tematema {
-    font-size: 20px;
-    color: #3eb288;
+.tema i{
+    color: #8D52A1;
+    font-size: smaller;
+    margin-right: 3px;
 }
 
-.curriculo {
-    border-top: 2px solid #3eb288;
-    padding-top: 10px;
-}
 
 .inscrever{
     margin-top: 20px;
