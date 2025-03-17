@@ -1,0 +1,64 @@
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f2f3f8;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid #f2f3f8;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #eaf8fa;
+     overflow-x: hidden;
+}
+
+header{
+    background-color: white;
+    width: 100%;
+    border-bottom: 5px solid #eaf8fa;
+}
+
+.header {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 60px 20px  80px 20px;
+    background-color: white;
+}
+
+header img {
+    max-width: 400px;
+}
+
+main{
+    background-color: white;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 5px solid #eaf8fa;
+    border-radius: 10px;
+    margin-top: -20px;
+}
