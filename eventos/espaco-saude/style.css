@@ -25,10 +25,10 @@ body {
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
     background-color: #eaf8fa;
-     overflow-x: hidden;
+    overflow-x: hidden;
 }
 
-header{
+header {
     background-color: white;
     width: 100%;
     border-bottom: 5px solid #eaf8fa;
@@ -43,15 +43,15 @@ header{
     justify-content: center;
     align-items: center;
     gap: 50px;
-    padding: 60px 20px  80px 20px;
+    padding: 60px 20px 80px 20px;
     background-color: white;
 }
 
 header img {
-    max-width: 400px;
+    max-width: 350px;
 }
 
-main{
+main {
     background-color: white;
     margin: 0 auto;
     width: 100%;
@@ -61,4 +61,57 @@ main{
     border: 5px solid #eaf8fa;
     border-radius: 10px;
     margin-top: -20px;
+}
+
+.mes {
+    font-size: xx-large;
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.horarios {
+    font-style: italic;
+    padding: 6px 0 20px 0;
+    color: #34BA90;
+    font-weight: bold;
+    font-size: large;
+}
+
+.local {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    background-color: #eaf8fa;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #eaf8fa;
+    transition: all 0.3s;
+}
+
+.local:hover{
+    border: 2px solid #eaf8fa;
+    background-color: white;
+}
+
+.local i{
+    font-size: medium;
+    color: #6bb9c4;
+    margin-right: 2px;
+}
+
+.direita p {
+    max-width: 300px; 
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+@media (max-width: 850px) {
+
+    .header{
+        flex-direction: column;
+    }
+
+    .mes {
+        margin-top: 0px;
+    }
 }
