@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Saúde FAM</title>
+    <title>Espaço SaúdeFAM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link rel="icon" href="/images-gerais/famlogo.png">
     <link href="/codigos-gerais/likesbotão/likes.css" rel="stylesheet" />
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9MCLKTGL1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q9MCLKTGL1');
+</script>
 
 <body>
     <div id="Navbar"></div>
@@ -17,36 +27,71 @@
         <div class="header">
             <img src="images/Espaço Saúde FAM PC.svg">
             <div class="direita">
-                <div class="mes"><span style="color: #1EA0AC;">Abril</span> a <span style="color: #34BA90;">Junho</span></div>
-                <div class="horarios">Segundas a Quartas-feiras <span style="color: black;">|</span> <span style="color: #1EA0AC;">18h às 21h</span></div>
-                <a class="local" href="https://maps.app.goo.gl/ZiBRjaSJVzY51r9A6"><i class="fa-solid fa-location-dot"></i> Centro Cívico Municipal de Americana</a>  
+                <div class="mes"><span style="color: #1EA0AC;">Abril</span> a <span style="color: #34BA90;">Junho</span>
+                </div>
+                <div class="horarios">Segundas a Quartas-feiras <span style="color: black;">|</span> <span
+                        style="color: #1EA0AC;">18h às 21h</span></div>
+                <a class="local" href="https://maps.app.goo.gl/ZiBRjaSJVzY51r9A6"><i
+                        class="fa-solid fa-location-dot"></i> Centro Cívico Municipal de Americana</a>
                 <p>Atendimento gratuito com serviços de saúde preventiva.</p>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="section">
-            Aberto ao público em geral e aos frequentadores do Centro Cívico de Americana, especialmente para aqueles interessados em melhorar sua saúde e bem-estar.
-        </div>
-      
-        <div class="section">
-            <h2>O que oferecemos?</h2>
-            <ul>
-                <li>Aferição de Pressão Arterial</li>
-                <li>Teste de Glicemia</li>
-                <li>Cálculo de IMC e Circunferência Abdominal</li>
-                <li>Orientações sobre Vacinação</li>
-                <li>Aulas e Exercícios de Alongamento</li>
-                <li>Prescrição de Exercícios Personalizados</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Equipe de Atendimento</h2>
-            <p>Profissionais e alunos dos cursos de Educação Física e Enfermagem da FAM estarão à disposição para auxiliar os participantes.</p>
-        </div>
-    </main>
+        <div class="main">
+            <div class="section">
+                <h2>O que é o Espaço SaúdeFAM?</h2>
+                <p>Profissionais e alunos dos cursos de Educação Física e Enfermagem da FAM estarão à disposição para
+                    auxiliar os participantes. Aberto ao público em geral e aos frequentadores do Centro Cívico de
+                    Americana, especialmente para aqueles interessados em melhorar sua saúde e bem-estar. </p>
+            </div>
+            <div class="section" style=" border-bottom: 2px solid #eaf8fa;margin-bottom: 15px;padding-bottom: 50px;">
+                <h2>O que oferecemos?</h2>
+                <div class="containerdeicones">
+                    <div>
+                        <img src="images/icons/abnomem.svg">
+                        <p>Cálculo de IMC e Circunferência Abdominal</p>
+                    </div>
+                    <div>
+                        <img src="images/icons/alongamento.svg">
+                        <p>Aulas e Exercícios de Alongamento</p>
+                    </div>
+                    <div>
+                        <img src="images/icons/pressao.svg">
+                        <p>Aferição de Pressão Arterial</p>
+                    </div>
+                    <div>
+                        <img src="images/icons/sangue.svg">
+                        <p>Teste de Glicemia</p>
+                    </div>
+                    <div>
+                        <img src="images/icons/vacina.svg">
+                        <p>Orientações sobre Vacinação</p>
+                    </div>
+                    <div>
+                        <img src="images/icons/corda.svg">
+                        <p>Prescrição de Exercícios Personalizados</p>
+                    </div>
+                </div>
 
+            </div>
+            <div class="textooelike">
+                <div class="textoinfofam">
+                    Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+                    </p>
+                </div>
+                <div class="CountLike" id="LikeCountEspaçoSaúde">
+                    <button class="button button1">
+                        <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+    </main>
+   
     <div id="meuFooter"></div>
 
     <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>

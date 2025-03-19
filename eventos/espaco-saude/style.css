@@ -5,14 +5,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #f2f3f8;
+    background: #eaf8fa;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid #f2f3f8;
+    border: 2px solid #eaf8fa;
     border-radius: 10px;
 }
 
@@ -26,6 +26,7 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     background-color: #eaf8fa;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 header {
@@ -52,15 +53,21 @@ header img {
 }
 
 main {
-    background-color: white;
-    margin: 0 auto;
+    display: flex;
+    justify-self: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.main {
     width: 100%;
     max-width: 960px;
     box-sizing: border-box;
+    margin-top: -20px;
     padding: 20px;
+    background-color: white;
     border: 5px solid #eaf8fa;
     border-radius: 10px;
-    margin-top: -20px;
 }
 
 .mes {
@@ -88,30 +95,80 @@ main {
     transition: all 0.3s;
 }
 
-.local:hover{
+.local:hover {
     border: 2px solid #eaf8fa;
     background-color: white;
 }
 
-.local i{
+.local i {
     font-size: medium;
     color: #6bb9c4;
     margin-right: 2px;
 }
 
 .direita p {
-    max-width: 300px; 
+    max-width: 300px;
     padding: 5px 10px;
     border-radius: 10px;
 }
 
+.containerdeicones img {
+    max-width: 100px;
+    width: 100%;
+}
+
+.containerdeicones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+.containerdeicones div {
+    max-width: 180px;
+    width: 100%;
+}
+
+.section {
+    text-align: center;
+    margin-bottom: 40px;
+    
+}
+
+.section h2 {
+    display: flex;
+
+    justify-self: center;
+    border-bottom: 2px solid #eaf8fa;
+    width: fit-content;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
 @media (max-width: 850px) {
 
-    .header{
+    .header {
         flex-direction: column;
     }
 
     .mes {
         margin-top: 0px;
     }
+
+    .main {
+        margin-top: -50px;
+    }
 }
+
+@media (max-width: 450px) {
+    .local {
+     
+        font-size: 0.9rem;
+     
+    }
+  
+}
+
+
+
