@@ -1,0 +1,53 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  color: #333;
+}
+header {
+  background-color: #009688;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+section {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+.cta {
+  background: #ff9800;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+h2 {
+  color: #00796b;
+}
+ul {
+  padding-left: 1.2rem;
+}
+footer {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.btn-inscricao {
+  display: inline-block;
+  background: #00796b;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-inscricao:hover {
+  background: #004d40;
+}
