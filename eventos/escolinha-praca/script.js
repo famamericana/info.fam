@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+    $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
 });
 
 // Carregando o navbar e configurando o dropdown

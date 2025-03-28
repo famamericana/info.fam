@@ -89,6 +89,34 @@ main {
   margin-top: 25px;
 }
 
+.margin-top{
+  margin-top: 70px;
+}
+
+.horarios{
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  min-width: 200px;
+  text-align: center;
+}
+
+.vagas{
+  background-color: #2AC4F3;
+  padding: 20PX;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.horarios img{
+  max-width: 100px;
+}
+
 .subtitulo {
 
   padding: 6px 0 20px 0;
@@ -212,7 +240,7 @@ main {
   text-align: center;
   padding: 10px;
   color: white;
-  border-bottom: 1px solid #033c82;
+  border-bottom: 1px solid #f9e20f;
   width: fit-content;
 }
 
