@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAM nas Escolas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header, section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      background: #0066cc;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .image-placeholder {
+      width: 100%;
+      height: 300px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    form input, form select, form textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #28a745;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    footer {
+      text-align: center;
+      background: #f0f0f0;
+      padding: 30px 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>FAM nas Escolas</h1>
+    <p>Conectando o Ensino Médio ao Futuro Profissional</p>
+    <p>Um projeto que leva conhecimento, inspiração e orientação para os alunos do ensino médio, preparando-os para os desafios do mercado de trabalho e do ensino superior.</p>
+    <a href="#formulario" class="cta-button">Agende uma palestra ou feira de profissões na sua escola</a>
+  </header>
+
+  <section>
+    <h2>O que é o FAM nas Escolas?</h2>
+    <p><strong>Integrando Educação Básica e Superior</strong></p>
+    <p>O projeto FAM nas Escolas leva para dentro das escolas palestras, dinâmicas e feiras de profissões, mostrando como a educação básica e o ensino superior são complementares. Nosso objetivo é inspirar os alunos, tirar dúvidas sobre carreiras, mercado de trabalho e mecanismos de ingresso no ensino superior, como vestibular, Prouni e outros programas.</p>
+    <div class="image-placeholder">[Imagem de alunos em palestra]</div>
+  </section>
+
+  <section>
+    <h2>Temas das Palestras</h2>
+    <p><strong>Conhecimento que Transforma</strong></p>
+    <ul>
+      <li>Educação Financeira: Como planejar o futuro e tomar decisões conscientes sobre finanças pessoais.</li>
+      <li>Curso e Carreira de Medicina Veterinária: Descubra como é a rotina de um médico veterinário e as oportunidades no mercado.</li>
+      <li>Mecanismos de Ingresso no Ensino Superior: Entenda como funciona o vestibular, Prouni, Fies e outros programas.</li>
+      <li>Carreira em Tecnologia: Explore as oportunidades em TI, desenvolvimento de software e inovação.</li>
+      <li>Psicologia e Saúde Mental: A importância do autoconhecimento e da saúde mental na escolha profissional.</li>
+      <li>Engenharias e Sustentabilidade: Como as engenharias estão moldando o futuro sustentável.</li>
+      <li>Comunicação e Marketing: Descubra as carreiras em publicidade, jornalismo e redes sociais.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Faculdade Aberta</h2>
+    <p><strong>Conheça o Projeto Faculdade Aberta</strong></p>
+    <p>Além das palestras nas escolas, a FAM oferece o projeto Faculdade Aberta, onde alunos do ensino médio podem visitar nossa instituição, conhecer a estrutura, assistir a aulas experimentais e interagir com professores e alunos dos cursos de graduação.</p>
+    <a href="/faculdade-aberta" class="cta-button">Conheça o Faculdade Aberta</a>
+  </section>
+
+  <section id="formulario">
+    <h2>Como Participar?</h2>
+    <p><strong>Leve o FAM nas Escolas para sua instituição</strong></p>
+    <p>É fácil participar! Basta preencher o formulário abaixo com os dados da sua escola e as datas disponíveis. Nossa equipe entrará em contato para agendar as atividades.</p>
+
+    <form action="#" method="post">
+      <input type="text" name="escola" placeholder="Nome da Escola" required>
+      <input type="text" name="responsavel" placeholder="Nome do Responsável" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="tel" name="telefone" placeholder="Telefone" required>
+      <input type="text" name="data_horario" placeholder="Data e Horário Preferenciais">
+      <label for="temas">Temas de Interesse:</label>
+      <select name="temas" multiple>
+        <option>Educação Financeira</option>
+        <option>Medicina Veterinária</option>
+        <option>Ingresso no Ensino Superior</option>
+        <option>Carreira em Tecnologia</option>
+        <option>Psicologia e Saúde Mental</option>
+        <option>Engenharias e Sustentabilidade</option>
+        <option>Comunicação e Marketing</option>
+      </select>
+      <textarea name="observacoes" rows="4" placeholder="Observações"></textarea>
+      <button type="submit">Enviar Solicitação</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Por que Participar?</h2>
+    <p><strong>Benefícios para Escolas e Alunos</strong></p>
+    <ul>
+      <li><strong>Para Alunos:</strong> Orientação profissional, motivação para os estudos e clareza sobre o futuro.</li>
+      <li><strong>Para Escolas:</strong> Parceria com uma instituição de ensino superior reconhecida, enriquecimento do currículo escolar e apoio no desenvolvimento dos alunos.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Vamos juntos construir o futuro da educação!
+  </footer>
+
+</body>
+</html>
