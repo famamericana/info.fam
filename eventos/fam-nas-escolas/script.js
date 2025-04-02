@@ -78,6 +78,26 @@ document.addEventListener('DOMContentLoaded', function() {
 // Form submission to Google Sheets
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('participationForm');
+    const modal = document.getElementById('successModal');
+    
+    // Fechar o modal quando clicar no X
+    const closeBtn = document.querySelector('.close-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+            // Permitir rolagem do body novamente
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Fechar o modal quando clicar fora dele
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('show');
+            // Permitir rolagem do body novamente
+            document.body.style.overflow = 'auto';
+        }
+    });
     
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -121,32 +141,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(formObject)
             })
             .then(response => {
-                    console.log('Formulário enviado com sucesso');
+                console.log('Formulário enviado com sucesso');
                 
-                    // Show success message
-                    form.innerHTML = `
-                        <div class="success-message">
-                            <i class="fas fa-check-circle" style="font-size: 3rem; color: #2d559a; margin-bottom: 20px;"></i>
-                            <h3>Solicitação Enviada com Sucesso!</h3>
-                            <p>Agradecemos seu interesse. Nossa equipe entrará em contato em breve.</p>
-                        </div>
-                    `;
-                    
-                    // Scroll to success message
-                    window.scrollTo({
-                        top: form.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao enviar formulário:', error);
-                    alert("Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.");
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = 'Enviar Solicitação';
+                // Resetar o formulário
+                form.reset();
+                
+                // Reabilitar o botão de envio
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Enviar Solicitação';
+                
+                // Mostrar o modal de sucesso
+                if (modal) {
+                    modal.classList.add('show');
+                    // Impedir rolagem do body enquanto o modal estiver aberto
+                    document.body.style.overflow = 'hidden';
+                }
+                
+                // Resetar os checkboxes de tema
+                document.querySelector('.themes-selected').textContent = '0 temas selecionados (máximo 2)';
+                document.querySelector('.themes-selected').classList.remove('max-reached');
+                const themeCheckboxes = document.querySelectorAll('.theme-checkbox');
+                themeCheckboxes.forEach(cb => {
+                    cb.disabled = false;
+                    cb.parentElement.classList.remove('disabled');
                 });
+            })
+            .catch(error => {
+                console.error('Erro ao enviar formulário:', error);
+                alert("Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.");
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Enviar Solicitação';
             });
-        }
-    });
+        });
+    }
+});
     
     // Create a placeholder for images if they don't exist yet
     document.addEventListener('DOMContentLoaded', function() {
