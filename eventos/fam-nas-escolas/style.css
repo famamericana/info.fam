@@ -8,14 +8,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: var(--primary-color);
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid white;
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
 }
 
@@ -36,18 +36,23 @@
 }
 
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
 body {
+    margin: 0;
     font-family: 'Source Sans 3', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: #fff;
+    background-color: var(--primary-color);
     overflow-x: hidden;
+}
+
+button{
+    font-family: 'Source Sans 3', sans-serif;
+
 }
 
 .container {
@@ -58,7 +63,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color), #1a3c6e);
+    background-color: var(--primary-color);   
     color: var(--light-color);
     text-align: center;
     padding: 100px 0;
@@ -112,21 +117,33 @@ body {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 1.4s ease;
 }
 
 .cta-button:hover {
     background-color: #d42d78;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Section Styles */
 section {
     padding: 80px 0;
     position: relative;
+    width: calc(100dvw - 40px);
+    background-color: white;
+    margin: 0 auto;
+
 }
+
+section:first-of-type {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+section:last-of-type {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 
 section:nth-child(even) {
     background-color: var(--gray-color);
@@ -173,7 +190,6 @@ section:nth-child(even) {
     margin: 0 auto;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .responsive-img {
@@ -195,15 +211,13 @@ section:nth-child(even) {
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     position: relative;
     padding-left: 70px;
 }
 
 .theme-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .theme-icon {
@@ -232,7 +246,6 @@ section:nth-child(even) {
     background-color: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo para o calendário */
@@ -259,7 +272,6 @@ input[type="time"] {
   border-radius: 5px;
   font-size: 1rem;
   font-family: var(--font-family);
-  transition: border-color 0.3s, box-shadow 0.3s;
   cursor: pointer;
   background-color: white;
 }
@@ -273,7 +285,6 @@ input[type="date"]:focus,
 input[type="time"]:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(45, 85, 154, 0.2);
 }
 
 /* Estilizando calendários nativos (funciona em navegadores modernos) */
@@ -304,7 +315,6 @@ input[type="time"]::placeholder {
     border-radius: 5px;
     font-size: 1rem;
     font-family: var(--font-family);
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-form input:focus,
@@ -312,7 +322,6 @@ input[type="time"]::placeholder {
 .contact-form select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(45, 85, 154, 0.2);
 }
 
 .contact-form label {
@@ -343,7 +352,6 @@ input[type="time"]::placeholder {
 .submit-button:hover {
     background-color: #1a4085;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Benefits Section */
@@ -361,21 +369,22 @@ input[type="time"]::placeholder {
     background-color: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease ;
+    border: 1px solid var(--secondary-color);
+    text-align: center;
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .benefit-card h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .benefit-card h3 i {
@@ -481,7 +490,6 @@ input:valid:not(:placeholder-shown) {
   margin: 0 auto;
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   width: 90%;
   position: relative;
