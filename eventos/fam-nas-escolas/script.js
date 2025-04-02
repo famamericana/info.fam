@@ -6,9 +6,6 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 // Load components
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
-});
-
-$(document).ready(function () {
     $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
         // Add active class to current nav item
         const currentPage = window.location.pathname;
@@ -68,52 +65,143 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initial check
+    // Initial check and scroll listener
     checkVisibility();
-    
-    // Check on scroll
     window.addEventListener('scroll', checkVisibility);
-});
-
-// Form submission to Google Sheets
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('participationForm');
-    const modal = document.getElementById('successModal');
     
-    // Fechar o modal quando clicar no X
-    const closeBtn = document.querySelector('.close-modal');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-            modal.classList.remove('show');
-            // Permitir rolagem do body novamente
-            document.body.style.overflow = 'auto';
+    // Date picker setup
+    const dataInput = document.getElementById('data');
+    if (dataInput) {
+        // Set min date to today
+        const hoje = new Date().toISOString().split('T')[0];
+        dataInput.min = hoje;
+        
+        // Validate weekdays only
+        dataInput.addEventListener('change', function() {
+            const data = new Date(this.value);
+            const diaSemana = data.getDay();
+            
+            // 0 = domingo, 6 = sábado
+            if (diaSemana === 0 || diaSemana === 6) {
+                alert('Por favor, selecione um dia útil (segunda a sexta-feira).');
+                this.value = '';
+            }
         });
     }
     
-    // Fechar o modal quando clicar fora dele
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.classList.remove('show');
-            // Permitir rolagem do body novamente
-            document.body.style.overflow = 'auto';
-        }
-    });
+    // Time picker validation
+    const horarioInput = document.getElementById('horario');
+    if (horarioInput) {
+        horarioInput.addEventListener('change', function() {
+            const horario = this.value;
+            const [horas, minutos] = horario.split(':').map(Number);
+            
+          
+        });
+    }
+    
+    // Phone mask - CORRECTED VERSION
+    const telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function() {
+            // Get input value and remove non-digits
+            let value = this.value.replace(/\D/g, '');
+            
+            // Limit to max 11 digits
+            if (value.length > 11) {
+                value = value.substring(0, 11);
+            }
+            
+            // Format the phone number
+            let formattedValue = '';
+            
+            if (value.length <= 2) {
+                // Just the area code digits
+                formattedValue = value;
+            } else if (value.length <= 7) {
+                // Format as (XX) XXXXX
+                formattedValue = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+            } else {
+                // Format as (XX) XXXXX-XXXX
+                formattedValue = `(${value.substring(0, 2)}) ${value.substring(2, 7)}-${value.substring(7)}`;
+            }
+            
+            // Update the input value
+            this.value = formattedValue;
+        });
+        
+        // Validate on blur
+        telefoneInput.addEventListener('blur', function() {
+            const regex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
+            
+            if (this.value && !regex.test(this.value)) {
+                this.setCustomValidity('Por favor, digite um telefone completo no formato (xx) xxxxx-xxxx');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    }
+    
+    // Theme checkboxes limit
+    const themeCheckboxes = document.querySelectorAll('.theme-checkbox');
+    const themesSelectedText = document.querySelector('.themes-selected');
+    
+    if (themeCheckboxes.length) {
+        themeCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedBoxes = document.querySelectorAll('.theme-checkbox:checked');
+                const checkedCount = checkedBoxes.length;
+                
+                // Update counter text
+                themesSelectedText.textContent = `${checkedCount} tema${checkedCount !== 1 ? 's' : ''} selecionado${checkedCount !== 1 ? 's' : ''} (máximo 2)`;
+                
+                // Apply or remove max-reached class
+                themesSelectedText.classList.toggle('max-reached', checkedCount >= 2);
+                
+                // Enable/disable checkboxes based on selection count
+                themeCheckboxes.forEach(cb => {
+                    if (checkedCount >= 2) {
+                        if (!cb.checked) {
+                            cb.disabled = true;
+                            cb.parentElement.classList.add('disabled');
+                        }
+                    } else {
+                        cb.disabled = false;
+                        cb.parentElement.classList.remove('disabled');
+                    }
+                });
+            });
+        });
+    }
+    
+    // Form submission
+    const form = document.getElementById('participationForm');
+    const modal = document.getElementById('successModal');
     
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(form);
+            // Collect form data
             const formObject = {};
             
             // Process text inputs
-            const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+            const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], textarea');
             textInputs.forEach(input => {
                 formObject[input.name] = input.value;
             });
             
-            // Process checkboxes for themes (collect checked values)
+            // Format date and time together
+            if (formObject.data && formObject.horario) {
+                // Converter data de yyyy-mm-dd para dd/mm/yyyy
+                const dateParts = formObject.data.split('-');
+                const dataBR = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+                
+                const horarioBR = formObject.horario.replace(/(\d{2}):(\d{2})/, '$1h$2');
+                formObject.data_horario = `${dataBR} às ${horarioBR}`;
+            }
+            
+            // Process theme checkboxes
             const checkedThemes = Array.from(form.querySelectorAll('.theme-checkbox:checked'))
                 .map(checkbox => checkbox.value);
             formObject.temas = checkedThemes.join(', ');
@@ -128,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Substitua pela URL real do seu Google Apps Script Web App
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbzaDcfRXy-Z39Jt9zzjRg3uWXViTBc5HBr_q5-SKDGp_D-vY4zpW9bGoVBwIym5-uqYuQ/exec';
-        
+            
             // Send to Google Sheets
             fetch(scriptUrl, {
                 method: 'POST',
@@ -143,28 +231,24 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => {
                 console.log('Formulário enviado com sucesso');
                 
-                // Resetar o formulário
+                // Reset form
                 form.reset();
-                
-                // Reabilitar o botão de envio
                 submitButton.disabled = false;
                 submitButton.innerHTML = 'Enviar Solicitação';
                 
-                // Mostrar o modal de sucesso
-                if (modal) {
-                    modal.classList.add('show');
-                    // Impedir rolagem do body enquanto o modal estiver aberto
-                    document.body.style.overflow = 'hidden';
-                }
-                
-                // Resetar os checkboxes de tema
-                document.querySelector('.themes-selected').textContent = '0 temas selecionados (máximo 2)';
-                document.querySelector('.themes-selected').classList.remove('max-reached');
-                const themeCheckboxes = document.querySelectorAll('.theme-checkbox');
+                // Reset theme checkboxes state
+                themesSelectedText.textContent = '0 temas selecionados (máximo 2)';
+                themesSelectedText.classList.remove('max-reached');
                 themeCheckboxes.forEach(cb => {
                     cb.disabled = false;
                     cb.parentElement.classList.remove('disabled');
                 });
+                
+                // Show success modal
+                if (modal) {
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
             })
             .catch(error => {
                 console.error('Erro ao enviar formulário:', error);
@@ -173,144 +257,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.innerHTML = 'Enviar Solicitação';
             });
         });
-    }
-});
-    
-    // Create a placeholder for images if they don't exist yet
-    document.addEventListener('DOMContentLoaded', function() {
-        const imagePlaceholders = document.querySelectorAll('.image-placeholder');
         
-        imagePlaceholders.forEach(placeholder => {
-            if (!placeholder.querySelector('img')) {
-                placeholder.innerHTML = `
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
-                        <i class="fas fa-image" style="font-size: 3rem; color: #ccc;"></i>
-                    </div>
-                `;
-            }
-        });
-    });
-    
-    // Limit theme selection to maximum 2
-    document.addEventListener('DOMContentLoaded', function() {
-      const themeCheckboxes = document.querySelectorAll('.theme-checkbox');
-      const themesSelectedText = document.querySelector('.themes-selected');
-      
-      if (themeCheckboxes.length) {
-        themeCheckboxes.forEach(checkbox => {
-          checkbox.addEventListener('change', function() {
-            const checkedBoxes = document.querySelectorAll('.theme-checkbox:checked');
-            const checkedCount = checkedBoxes.length;
-            
-            // Update counter text
-            themesSelectedText.textContent = `${checkedCount} tema${checkedCount !== 1 ? 's' : ''} selecionado${checkedCount !== 1 ? 's' : ''} (máximo 2)`;
-            
-            // Apply or remove max-reached class
-            if (checkedCount >= 2) {
-              themesSelectedText.classList.add('max-reached');
-            } else {
-              themesSelectedText.classList.remove('max-reached');
+        // Modal close handlers
+        if (modal) {
+            // Close button
+            const closeBtn = document.querySelector('.close-modal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                });
             }
             
-            // Disable unchecked checkboxes if max reached
-            if (checkedCount >= 2) {
-              themeCheckboxes.forEach(cb => {
-                if (!cb.checked) {
-                  cb.disabled = true;
-                  cb.parentElement.classList.add('disabled');
+            // Click outside modal
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
                 }
-              });
-            } else {
-              // Enable all checkboxes if under max
-              themeCheckboxes.forEach(cb => {
-                cb.disabled = false;
-                cb.parentElement.classList.remove('disabled');
-              });
-            }
-          });
-        });
-      }
-    });
-    
-    // Máscara para o campo de telefone
-    document.addEventListener('DOMContentLoaded', function() {
-      const telefoneInput = document.getElementById('telefone');
-      
-      if (telefoneInput) {
-        telefoneInput.addEventListener('input', function(e) {
-          let value = e.target.value;
-          
-          // Remove todos os caracteres não numéricos
-          value = value.replace(/\D/g, '');
-          
-          // Aplica a máscara conforme o usuário digita
-          if (value.length <= 11) {
-            // Formata como (xx) xxxxx-xxxx
-            if (value.length > 2) {
-              value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
-            }
-            if (value.length > 10) {
-              value = value.substring(0, 10) + '-' + value.substring(10);
-            }
-          }
-          
-          // Atualiza o valor do campo
-          e.target.value = value;
-        });
-        
-        // Valida quando o usuário sai do campo
-        telefoneInput.addEventListener('blur', function(e) {
-          const value = e.target.value;
-          const regex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
-          
-          if (value && !regex.test(value)) {
-            telefoneInput.setCustomValidity('Por favor, digite um telefone no formato (xx) xxxxx-xxxx');
-          } else {
-            telefoneInput.setCustomValidity('');
-          }
-        });
-      }
-    });
-    
-    // Inicialização do calendário para seleção de data e hora
-    document.addEventListener('DOMContentLoaded', function() {
-      const dataHorarioInput = document.getElementById('data_horario');
-      
-      if (dataHorarioInput && typeof flatpickr === 'function') {
-        // Configuração do Flatpickr
-        flatpickr(dataHorarioInput, {
-          enableTime: true,         // Habilita seleção de hora
-          dateFormat: "d/m/Y H:i",  // Formato brasileiro de data
-          minDate: "today",         // Não permite datas passadas
-          locale: "pt",             // Localização para português
-          time_24hr: true,          // Formato 24h
-          minuteIncrement: 30,      // Incrementos de 30 minutos
-          allowInput: false,        // Não permite digitação direta
-          disableMobile: false,     // Mantém o calendário em dispositivos móveis
-          
-          // Desabilita fins de semana e horários fora do expediente
-          disable: [
-            function(date) {
-              // Desabilita sábados e domingos
-              return (date.getDay() === 0 || date.getDay() === 6);
-            }
-          ],
-          
-          // Limita os horários entre 8h e 18h
-          minTime: "08:00",
-          maxTime: "18:00",
-          
-          // Placeholder personalizado
-          placeholder: "Selecione data e horário preferenciais"
-        });
-        
-        // Abre o calendário quando o ícone é clicado
-        const calendarIcon = document.querySelector('.calendar-icon');
-        if (calendarIcon) {
-          calendarIcon.addEventListener('click', function() {
-            dataHorarioInput._flatpickr.open();
-          });
+            });
         }
-      }
-    });
+    }
     
+    // Create placeholders for missing images
+    const imagePlaceholders = document.querySelectorAll('.image-placeholder');
+    imagePlaceholders.forEach(placeholder => {
+        if (!placeholder.querySelector('img')) {
+            placeholder.innerHTML = `
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
+                    <i class="fas fa-image" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+            `;
+        }
+    });
+});

@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
 :root {
     --primary-color: #2d559a;
     --secondary-color: #e53888;
@@ -6,7 +32,7 @@
     --light-color: #fff;
     --gray-color: #f5f5f5;
     --dark-gray: #666;
-    --font-family: 'Montserrat', Arial, sans-serif;
+  
 }
 
 * {
@@ -15,8 +41,9 @@
     box-sizing: border-box;
 }
 
+
 body {
-    font-family: var(--font-family);
+    font-family: 'Source Sans 3', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: #fff;
@@ -24,7 +51,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -224,23 +251,49 @@ section:nth-child(even) {
     margin-bottom: 20px;
 }
 
-/* Customização do Flatpickr */
-.flatpickr-calendar {
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* Estilos para inputs de data e hora nativos */
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  background-color: white;
 }
 
-.flatpickr-day.selected,
-.flatpickr-day.selected:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
+input[type="date"]:hover,
+input[type="time"]:hover {
+  border-color: #bbb;
 }
 
-.flatpickr-time input:hover,
-.flatpickr-time .flatpickr-am-pm:hover,
-.flatpickr-time input:focus,
-.flatpickr-time .flatpickr-am-pm:focus {
-    background: #f0f0f0;
+input[type="date"]:focus,
+input[type="time"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(45, 85, 154, 0.2);
+}
+
+/* Estilizando calendários nativos (funciona em navegadores modernos) */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  color: var(--primary-color);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Estilizando o placeholder para navegadores que suportam */
+input[type="date"]::placeholder,
+input[type="time"]::placeholder {
+  color: #999;
 }
 
 .contact-form input,
