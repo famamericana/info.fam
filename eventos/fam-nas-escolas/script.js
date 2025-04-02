@@ -38,36 +38,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to check if element is in viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.bottom >= 0
-        );
-    }
-    
-    // Elements to animate
-    const elementsToAnimate = document.querySelectorAll('.section-title, .section-subtitle, .theme-item, .benefit-card');
-    
-    // Add animation class when element is in viewport
-    function checkVisibility() {
-        elementsToAnimate.forEach(element => {
-            if (isInViewport(element) && !element.classList.contains('animated')) {
-                element.classList.add('animated');
-                element.style.animation = 'fadeInUp 0.8s ease forwards';
-                // Add delay for sequential items
-                if (element.classList.contains('theme-item') || element.classList.contains('benefit-card')) {
-                    const index = Array.from(element.parentNode.children).indexOf(element);
-                    element.style.animationDelay = `${0.1 * index}s`;
-                }
-            }
-        });
-    }
-    
-    // Initial check and scroll listener
-    checkVisibility();
-    window.addEventListener('scroll', checkVisibility);
     
     // Date picker setup
     const dataInput = document.getElementById('data');
