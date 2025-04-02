@@ -63,8 +63,7 @@ body {
     text-align: center;
     padding: 100px 0;
     position: relative;
-    margin-top: 80px;
-    /* Espaço para o navbar fixo */
+
 }
 
 .hero-section::before {
