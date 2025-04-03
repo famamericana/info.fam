@@ -6,7 +6,7 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 // Load components
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
-    $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
+    $("#Navbar").load("/codigos-gerais/navbar-invertido/navbar.html", function () {
         // Add active class to current nav item
         const currentPage = window.location.pathname;
         const navLinks = document.querySelectorAll('.nav-link');
