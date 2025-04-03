@@ -48,11 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validate weekdays only
         dataInput.addEventListener('change', function() {
-            const data = new Date(this.value);
+            const valorOriginal = this.value;
+            const data = new Date(this.value + "T12:00:00");
             const diaSemana = data.getDay();
             
-            // 0 = domingo, 6 = sábado
-            if (diaSemana === 5 || diaSemana === 6) {
+
+            // Use a condição correta
+            if (diaSemana === 0 || diaSemana === 6) {
                 alert('Por favor, selecione um dia útil (segunda a sexta-feira).');
                 this.value = '';
             }
