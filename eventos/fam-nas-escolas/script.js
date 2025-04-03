@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const diaSemana = data.getDay();
             
             // 0 = domingo, 6 = sábado
-            if (diaSemana === 0 || diaSemana === 6) {
+            if (diaSemana === 5 || diaSemana === 6) {
                 alert('Por favor, selecione um dia útil (segunda a sexta-feira).');
                 this.value = '';
             }
