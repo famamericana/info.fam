@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #3eb288;
+    --cordoeventoatual: #173e70;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -319,7 +319,7 @@ main {
 }
 
 .doisevento {
-    background-color: #E93F3C;
+    background-color: #3eb288;
 }
 
 .tresevento {
