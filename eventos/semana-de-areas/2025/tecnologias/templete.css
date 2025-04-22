@@ -1,6 +1,6 @@
 /* Aqui determina a cor da semana, mude para a cor correta da semana */
 :root {
-    --cordoeventoatualpag: #6993e0;
+    --cordoeventoatualpag: #0e4a97;
 }
 
 body {
@@ -62,12 +62,13 @@ header {
 }
 
 .containertitulodasemana p {
-    color: var(--amarelo);
     margin-top: -5px;
-    font-weight: 400;
-    font-size: 18px;
+    margin-bottom: 10px;
+    font-size: large;
     padding: 0 20px;
-
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 main {
