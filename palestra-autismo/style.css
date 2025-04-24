@@ -7,14 +7,14 @@
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background:  #d3e0ff;
+    background:  #c7d5ff;
     border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.219);
-    border: 2px solid  #d3e0ff;
+    border: 2px solid  #c7d5ff;
     border-radius: 10px;
 }
 
@@ -89,7 +89,7 @@ main {
     background-color: white;
     border-radius: 10px;
     width: fit-content;
-    margin: 0 auto;
+ 
     text-align: center;
     padding: 10px 20px;
     font-size: x-large;
@@ -110,11 +110,11 @@ main {
     color: #003566;
     font-weight: bold;
     transition: all 0.3s;
-    
 }
 
 .local a:hover {
-    color: #0353a4;
+    color: black;
+    text-decoration: underline;
 }
 
 .local i {
@@ -122,8 +122,6 @@ main {
     color: #0353a4;
     transition: all 0.3s;
 }
-
-
 
 .topicos {
     display: flex;
@@ -282,7 +280,12 @@ section#body:before {
     box-sizing: border-box;
 }
 
-
+.dataelocal {
+    display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
 
 @media (max-width: 700px) {
     .fotopalestrante {
