@@ -1,4 +1,3 @@
-
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
 if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
@@ -9,6 +8,13 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
 $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer-invertido/footer.html");
 });
+
+// Função para configurar o dropdown
+function setupDropdown() {
+    // Se houver um dropdown no navbar, esta função o configurará
+    // Se não houver dropdown específico para implementar, esta função serve para prevenir o erro
+    //console.log("Dropdown setup complete");
+}
 
 // Carregando o navbar e configurando o dropdown
 $(document).ready(function () {
