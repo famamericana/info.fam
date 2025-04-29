@@ -69,4 +69,112 @@ main{
 
 .category-card img{
     max-width: 100px;
- }
+}
+
+/* Estilos para seção de Programação - Formato de cronograma de evento */
+.schedule {
+    max-width: 800px;
+    margin: 40px auto 0;
+    position: relative;
+    padding: 0 20px;
+}
+
+.schedule:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 100%;
+    background: #45b7e5;
+    z-index: 0;
+}
+
+.schedule-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid #1557CD;
+    width: calc(50% - 20px);
+    transition:  border 0.3s ease;
+}
+
+.schedule-item:hover {
+    border: 2px solid #45b7e5;
+}
+
+.schedule-item:nth-child(odd) {
+    float: left;
+    clear: both;
+}
+
+.schedule-item:nth-child(even) {
+    float: right;
+    clear: both;
+}
+
+.schedule-item:nth-child(odd):before {
+    right: -48px;
+}
+
+.schedule-item:nth-child(even):before {
+    left: -48px;
+}
+
+.schedule-date {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #1557CD;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    font-size: 0.9em;
+}
+
+.schedule-item p {
+    margin: 10px 0 0;
+    color: #333;
+    line-height: 1.5;
+    font-size: 1.05em;
+}
+
+.schedule-item p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.schedule-time {
+    display: block;
+    font-weight: 600;
+    color: #e5457d;
+    margin: 10px 0 5px;
+    font-size: 1.1em;
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 767px) {
+    .schedule:before {
+        left: 30px;
+    }
+    
+    .schedule-item {
+        width: calc(100% - 30px);
+        float: right;
+        clear: both;
+    }
+    
+    .schedule-item:nth-child(odd) {
+        float: right;
+    }
+}
+
+/* Limpa o float após os itens da programação */
+.schedule:after {
+    content: "";
+    display: table;
+    clear: both;
+}
