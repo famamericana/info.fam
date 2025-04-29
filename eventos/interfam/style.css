@@ -43,7 +43,10 @@ header{
     justify-content: center;
     align-items: center;
     background-color: #ec8c8c;
-    padding: 40px 0;
+    padding: 80px 0;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 75% 100%, 50% 85%, 25% 100%, 0 85%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 75% 100%, 50% 85%, 25% 100%, 0 85%);
+    overflow: hidden;
 }
 
 main{
