@@ -26,6 +26,10 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Source Sans 3', sans-serif;
     background-color: var(--bg);
