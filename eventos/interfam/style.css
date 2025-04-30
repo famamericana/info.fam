@@ -36,28 +36,79 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    background-image:  radial-gradient(#aad8eb 0.75px, transparent 0.75px), radial-gradient(#aad8eb 0.75px, #ffffff 0.75px);
-    background-size: 30px 30px;
-    background-position: 0 0,15px 15px;
+
+ 
 }
 
 header {
+    
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #333;
     padding: 100px;
-    border-radius: 0 0 10px 10px;
     overflow: hidden;
     padding-top: 120px;
     flex-direction: column;
     position: relative;
-    width: calc(100dvw - 40px);
+    width: 100%;
     height: calc(100dvh - 300px);
     margin: 0 auto;
     box-sizing: border-box;
     z-index: 1;
+    
+    /* Create zigzag border using clip-path */
+    clip-path: 
+        polygon(
+            /* Start at top-left */
+            0 15px,
+            /* Zigzag across the top */
+            20px 0, 40px 15px, 60px 0, 80px 15px, 100px 0, 120px 15px,
+            140px 0, 160px 15px, 180px 0, 200px 15px, 220px 0, 240px 15px,
+            260px 0, 280px 15px, 300px 0, 320px 15px, 340px 0, 360px 15px,
+            380px 0, 400px 15px, 420px 0, 440px 15px, 460px 0, 480px 15px,
+            500px 0, 520px 15px, 540px 0, 560px 15px, 580px 0, 600px 15px,
+            620px 0, 640px 15px, 660px 0, 680px 15px, 700px 0, 720px 15px,
+            740px 0, 760px 15px, 780px 0, 800px 15px, 820px 0, 840px 15px,
+            860px 0, 880px 15px, 900px 0, 920px 15px, 940px 0, 960px 15px,
+            980px 0, 1000px 15px, 1020px 0, 1040px 15px, 1060px 0, 1080px 15px,
+            1100px 0, 1120px 15px, 1140px 0, 1160px 15px, 1180px 0, 1200px 15px,
+            1220px 0, 1240px 15px, 1260px 0, 1280px 15px, 1300px 0, 1320px 15px,
+            1340px 0, 1360px 15px, 1380px 0, 1400px 15px, 1420px 0, 1440px 15px,
+            1460px 0, 1480px 15px, 1500px 0, 1520px 15px, 1540px 0, 1560px 15px,
+            1580px 0, 1600px 15px, 1620px 0, 1640px 15px, 1660px 0, 1680px 15px,
+            1700px 0, 1720px 15px, 1740px 0, 1760px 15px, 1780px 0, 1800px 15px,
+            1820px 0, 1840px 15px, 1860px 0, 1880px 15px, 1900px 0, 1920px 15px,
+            1940px 0, 1960px 15px, 1980px 0, 2000px 15px,
+            /* Right edge */
+            2000px calc(100% - 15px),
+            /* Zigzag across the bottom - going backwards */
+            1980px 100%, 1960px calc(100% - 15px), 1940px 100%, 1920px calc(100% - 15px),
+            1900px 100%, 1880px calc(100% - 15px), 1860px 100%, 1840px calc(100% - 15px),
+            1820px 100%, 1800px calc(100% - 15px), 1780px 100%, 1760px calc(100% - 15px),
+            1740px 100%, 1720px calc(100% - 15px), 1700px 100%, 1680px calc(100% - 15px),
+            1660px 100%, 1640px calc(100% - 15px), 1620px 100%, 1600px calc(100% - 15px),
+            1580px 100%, 1560px calc(100% - 15px), 1540px 100%, 1520px calc(100% - 15px),
+            1500px 100%, 1480px calc(100% - 15px), 1460px 100%, 1440px calc(100% - 15px),
+            1420px 100%, 1400px calc(100% - 15px), 1380px 100%, 1360px calc(100% - 15px),
+            1340px 100%, 1320px calc(100% - 15px), 1300px 100%, 1280px calc(100% - 15px),
+            1260px 100%, 1240px calc(100% - 15px), 1220px 100%, 1200px calc(100% - 15px),
+            1180px 100%, 1160px calc(100% - 15px), 1140px 100%, 1120px calc(100% - 15px),
+            1100px 100%, 1080px calc(100% - 15px), 1060px 100%, 1040px calc(100% - 15px),
+            1020px 100%, 1000px calc(100% - 15px), 980px 100%, 960px calc(100% - 15px),
+            940px 100%, 920px calc(100% - 15px), 900px 100%, 880px calc(100% - 15px),
+            860px 100%, 840px calc(100% - 15px), 820px 100%, 800px calc(100% - 15px),
+            780px 100%, 760px calc(100% - 15px), 740px 100%, 720px calc(100% - 15px),
+            700px 100%, 680px calc(100% - 15px), 660px 100%, 640px calc(100% - 15px),
+            620px 100%, 600px calc(100% - 15px), 580px 100%, 560px calc(100% - 15px),
+            540px 100%, 520px calc(100% - 15px), 500px 100%, 480px calc(100% - 15px),
+            460px 100%, 440px calc(100% - 15px), 420px 100%, 400px calc(100% - 15px),
+            380px 100%, 360px calc(100% - 15px), 340px 100%, 320px calc(100% - 15px),
+            300px 100%, 280px calc(100% - 15px), 260px 100%, 240px calc(100% - 15px),
+            220px 100%, 200px calc(100% - 15px), 180px 100%, 160px calc(100% - 15px),
+            140px 100%, 120px calc(100% - 15px), 100px 100%, 80px calc(100% - 15px),
+            60px 100%, 40px calc(100% - 15px), 20px 100%, 0 calc(100% - 15px)
+        );
 }
 
 header::before {
@@ -82,6 +133,15 @@ header img {
     box-sizing: border-box;
 }
 
+.container-tchan{
+   
+    border-radius: 5px;
+    text-align: center;
+    font-style: italic;
+    font-size: x-large;
+    border: 2px solid #0e4fbe;
+}
+
 .info-interfam {
     background-color: white;
     border-radius: 10px;
@@ -89,6 +149,10 @@ header img {
     margin-bottom: 45px;
     text-align: center;
     font-size: xx-large;
+
+    box-shadow: 3px 2px 29px -5px rgba(255,255,255,0.9);
+    -webkit-box-shadow: 3px 2px 29px -5px rgba(255,255,255,0.9);
+    -moz-box-shadow: 3px 2px 29px -5px rgba(255,255,255,0.9);
 }
 
 .horario-interfam {
@@ -103,8 +167,8 @@ main {
     position: relative;
     z-index: 3;
     background-color: white;
-    margin-top: -20px;
     border-radius: 10px;
+    border: 2px solid white;
 }
 
 .categories {
