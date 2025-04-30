@@ -161,14 +161,17 @@ header img {
 }
 
 main {
-    max-width: 960px;
-    margin: 0 auto;
     padding: 20px;
     position: relative;
     z-index: 3;
     background-color: white;
     border-radius: 10px;
     border: 2px solid white;
+}
+
+.section{
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .categories {
