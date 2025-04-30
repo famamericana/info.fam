@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root{
+:root {
     --bg: #fff;
 }
 
@@ -26,7 +26,7 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -36,9 +36,15 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
+
+    background-image:  radial-gradient(#aad8eb 0.75px, transparent 0.75px), radial-gradient(#aad8eb 0.75px, #ffffff 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0,15px 15px;
+
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,65 +53,96 @@ header{
     border-radius: 0 0 10px 10px;
     overflow: hidden;
     padding-top: 120px;
+    flex-direction: column;
+    position: relative;
+    width: calc(100dvw - 40px);
+    height: calc(100dvh - 300px);
     margin: 0 auto;
-    max-width: 960px;
+    box-sizing: border-box;
+    z-index: 1;
+    /* Ensures content stays above the background image */
 }
 
-header img{
-    width: 100%;
+/* Add background image using ::before pseudo-element */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/InterFAMalunos.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+header img {
+    width: 600px;
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 10px;
     box-sizing: border-box;
 }
 
-.info-interfam{
+.info-interfam {
     background-color: white;
     border-radius: 10px;
     padding: 10px 20px;
     margin-bottom: 45px;
     text-align: center;
+    font-size: xx-large;
 }
 
-main{
+.horario-interfam {
+    font-weight: bold;
+}
+
+main {
     max-width: 960px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 3;
+    background-color: white;
+    margin-top: -20px;
+    border-radius: 10px;
 }
 
-.categories{
+.categories {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
-.category-card{
-   min-width: 200px;
-   max-width: 300px;
-   text-align: center;
+.category-card {
+    min-width: 200px;
+    max-width: 300px;
+    text-align: center;
 }
 
-.category-card h3{
+.category-card h3 {
     font-size: 1.5em;
     padding: 5px;
     background-color: #0e4fbe;
     color: white;
-    border-radius:  10px 0 0  0;
-    border:2px solid #0e4fbe;
+    border-radius: 10px 0 0 0;
+    border: 2px solid #0e4fbe;
     border-bottom: none;
 }
 
-.category-card p{
+.category-card p {
     margin-top: -24px;
     padding: 15px 10px;
-    border-radius: 0  0 10px 0;
-  
-    border:2px solid #aad8eb;
+    border-radius: 0 0 10px 0;
+
+    border: 2px solid #aad8eb;
     border-top: none;
 }
 
-.category-card img{
+.category-card img {
     max-width: 100px;
 }
 
@@ -135,9 +172,9 @@ main{
     padding: 20px;
     background: #fff;
     border-radius: 10px;
-    border:2px solid #0e4fbe;
+    border: 2px solid #0e4fbe;
     width: calc(50% - 20px);
-    transition:  border 0.3s ease;
+    transition: border 0.3s ease;
 }
 
 .schedule-item:last-child {
@@ -145,7 +182,7 @@ main{
 }
 
 .schedule-item:hover {
-    border:2px solid #45b7e5;
+    border: 2px solid #45b7e5;
 }
 
 .schedule-item:nth-child(odd) {
@@ -202,20 +239,18 @@ main{
     .schedule:before {
         left: 30px;
     }
-    
+
     .schedule-item {
         width: calc(100% - 30px);
         float: right;
         clear: both;
     }
-    
+
     .schedule-item:nth-child(odd) {
         float: right;
     }
 
-    header{
-       flex-direction: column;
-    }
+
 }
 
 /* Limpa o float após os itens da programação */
