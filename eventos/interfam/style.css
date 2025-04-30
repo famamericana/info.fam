@@ -85,7 +85,7 @@ main{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 5px;
+    width: 1px;
     height: 100%;
     background: #45b7e5;
     z-index: 0;
@@ -97,13 +97,17 @@ main{
     padding: 20px;
     background: #fff;
     border-radius: 10px;
-    border: 2px solid #1557CD;
+    border:2px solid #1557CD;
     width: calc(50% - 20px);
     transition:  border 0.3s ease;
 }
 
+.schedule-item:last-child {
+    margin-bottom: 0px;
+}
+
 .schedule-item:hover {
-    border: 2px solid #45b7e5;
+    border:2px solid #45b7e5;
 }
 
 .schedule-item:nth-child(odd) {
