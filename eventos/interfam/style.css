@@ -42,10 +42,29 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #45b7e5;
-    height: calc(100dvh - 300px);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 50% 85%, 25% 100%, 0 85%);
+    background-color: #333;
+    padding: 100px;
+    border-radius: 0 0 10px 10px;
     overflow: hidden;
+    padding-top: 120px;
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+header img{
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.info-interfam{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 45px;
+    text-align: center;
 }
 
 main{
@@ -67,6 +86,25 @@ main{
    text-align: center;
 }
 
+.category-card h3{
+    font-size: 1.5em;
+    padding: 5px;
+    background-color: #0e4fbe;
+    color: white;
+    border-radius:  10px 0 0  0;
+    border:2px solid #0e4fbe;
+    border-bottom: none;
+}
+
+.category-card p{
+    margin-top: -24px;
+    padding: 15px 10px;
+    border-radius: 0  0 10px 0;
+  
+    border:2px solid #aad8eb;
+    border-top: none;
+}
+
 .category-card img{
     max-width: 100px;
 }
@@ -85,9 +123,9 @@ main{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 1px;
+    width: 2px;
     height: 100%;
-    background: #45b7e5;
+    background: #aad8eb;
     z-index: 0;
 }
 
@@ -97,7 +135,7 @@ main{
     padding: 20px;
     background: #fff;
     border-radius: 10px;
-    border:2px solid #1557CD;
+    border:2px solid #0e4fbe;
     width: calc(50% - 20px);
     transition:  border 0.3s ease;
 }
@@ -131,7 +169,7 @@ main{
 .schedule-date {
     display: inline-block;
     padding: 5px 15px;
-    background: #1557CD;
+    background: #0e4fbe;
     color: white;
     font-weight: 600;
     border-radius: 5px;
@@ -173,6 +211,10 @@ main{
     
     .schedule-item:nth-child(odd) {
         float: right;
+    }
+
+    header{
+       flex-direction: column;
     }
 }
 
