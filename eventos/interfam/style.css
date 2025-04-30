@@ -37,11 +37,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-
     background-image:  radial-gradient(#aad8eb 0.75px, transparent 0.75px), radial-gradient(#aad8eb 0.75px, #ffffff 0.75px);
     background-size: 30px 30px;
     background-position: 0 0,15px 15px;
-
 }
 
 header {
@@ -60,10 +58,8 @@ header {
     margin: 0 auto;
     box-sizing: border-box;
     z-index: 1;
-    /* Ensures content stays above the background image */
 }
 
-/* Add background image using ::before pseudo-element */
 header::before {
     content: '';
     position: absolute;
@@ -97,6 +93,7 @@ header img {
 
 .horario-interfam {
     font-weight: bold;
+    color: #45b7e5;
 }
 
 main {
