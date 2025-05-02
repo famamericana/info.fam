@@ -122,7 +122,6 @@ header img {
     background-color: white;
     border-radius: 10px;
     padding: 10px 20px;
-  
     text-align: center;
     font-size: x-large;
     box-shadow: 3px 2px 29px -5px rgba(255,255,255,0.9);
@@ -138,17 +137,18 @@ header img {
 }
 
 main {
-    padding: 20px;
+   
     position: relative;
     z-index: 3;
     background-color: white;
     border-radius: 10px;
-    border: 2px solid white;
+  
 }
 
 .section{
     max-width: 960px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .categories {
@@ -179,7 +179,7 @@ main {
     padding: 15px 10px;
     border-radius: 0 0 10px 0;
 
-    border: 2px solid #aad8eb;
+    border: 2px dashed #aad8eb;
     border-top: none;
 }
 
@@ -189,9 +189,8 @@ main {
 
 /* Estilos para seção de Programação - Formato de cronograma de evento */
 .schedule {
-    margin: 40px auto 0;
     position: relative;
-    padding: 0 20px;
+   
 }
 
 .schedule:before {
@@ -222,7 +221,7 @@ main {
 }
 
 .schedule-item:hover {
-    border: 2px solid #45b7e5;
+    border: 2px dashed #45b7e5;
 }
 
 .schedule-item:nth-child(odd) {
@@ -256,9 +255,7 @@ main {
 
 .schedule-item p {
     margin: 10px 0 0;
-    color: #333;
-    line-height: 1.5;
-    font-size: 1.05em;
+
 }
 
 .schedule-item p strong {
@@ -295,6 +292,12 @@ main {
         font-size: large;
       
     }
+
+    .schedule {
+   
+        padding: 0 20px;
+    }
+    
 }
 
 /* Limpa o float após os itens da programação */
@@ -302,4 +305,49 @@ main {
     content: "";
     display: table;
     clear: both;
+}
+
+.highlight-box{
+    background-color: #aad8eb;
+    color: white;
+    width: 100%;
+    padding: 20px 10px;
+    padding-bottom: 30px;
+    font-size: large;
+    text-align: center;
+    box-sizing: border-box;
+    clip-path: 
+        polygon(
+            /* Straight top edge */
+            0 0,
+            100% 0,
+            /* Right edge */
+            100% calc(100% - 15px),
+            /* Zigzag across the bottom only */
+            1980px 100%, 1960px calc(100% - 15px), 1940px 100%, 1920px calc(100% - 15px),
+            1900px 100%, 1880px calc(100% - 15px), 1860px 100%, 1840px calc(100% - 15px),
+            1820px 100%, 1800px calc(100% - 15px), 1780px 100%, 1760px calc(100% - 15px),
+            1740px 100%, 1720px calc(100% - 15px), 1700px 100%, 1680px calc(100% - 15px),
+            1660px 100%, 1640px calc(100% - 15px), 1620px 100%, 1600px calc(100% - 15px),
+            1580px 100%, 1560px calc(100% - 15px), 1540px 100%, 1520px calc(100% - 15px),
+            1500px 100%, 1480px calc(100% - 15px), 1460px 100%, 1440px calc(100% - 15px),
+            1420px 100%, 1400px calc(100% - 15px), 1380px 100%, 1360px calc(100% - 15px),
+            1340px 100%, 1320px calc(100% - 15px), 1300px 100%, 1280px calc(100% - 15px),
+            1260px 100%, 1240px calc(100% - 15px), 1220px 100%, 1200px calc(100% - 15px),
+            1180px 100%, 1160px calc(100% - 15px), 1140px 100%, 1120px calc(100% - 15px),
+            1100px 100%, 1080px calc(100% - 15px), 1060px 100%, 1040px calc(100% - 15px),
+            1020px 100%, 1000px calc(100% - 15px), 980px 100%, 960px calc(100% - 15px),
+            940px 100%, 920px calc(100% - 15px), 900px 100%, 880px calc(100% - 15px),
+            860px 100%, 840px calc(100% - 15px), 820px 100%, 800px calc(100% - 15px),
+            780px 100%, 760px calc(100% - 15px), 740px 100%, 720px calc(100% - 15px),
+            700px 100%, 680px calc(100% - 15px), 660px 100%, 640px calc(100% - 15px),
+            620px 100%, 600px calc(100% - 15px), 580px 100%, 560px calc(100% - 15px),
+            540px 100%, 520px calc(100% - 15px), 500px 100%, 480px calc(100% - 15px),
+            460px 100%, 440px calc(100% - 15px), 420px 100%, 400px calc(100% - 15px),
+            380px 100%, 360px calc(100% - 15px), 340px 100%, 320px calc(100% - 15px),
+            300px 100%, 280px calc(100% - 15px), 260px 100%, 240px calc(100% - 15px),
+            220px 100%, 200px calc(100% - 15px), 180px 100%, 160px calc(100% - 15px),
+            140px 100%, 120px calc(100% - 15px), 100px 100%, 80px calc(100% - 15px),
+            60px 100%, 40px calc(100% - 15px), 20px 100%, 0 calc(100% - 15px)
+        );
 }
