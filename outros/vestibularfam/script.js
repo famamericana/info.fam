@@ -1,7 +1,41 @@
-
 $(document).ready(function () {
     $("#meuFooter").load("footer/footer.html");
+    
+    // Verificar a data para controlar os botões de inscrição
+    checkInscriptionButtons();
 });
+
+// Função para verificar a data e ativar os botões de inscrição quando apropriado
+function checkInscriptionButtons() {
+    const targetDate = new Date("2025-05-05T07:00:00-03:00"); // 5 de maio de 2025, horário de Brasília
+    const currentDate = new Date();
+    
+    // Se a data atual for igual ou posterior à data alvo
+    if (currentDate >= targetDate) {
+        ativarBotoesInscricao();
+    }
+}
+
+// Função para ativar os botões de inscrição
+function ativarBotoesInscricao() {
+    // Vestibular
+    $("#vestibular .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/50"><button class="btn2">Vestibular | Inscreva-se</button></a>');
+    
+    // ENEM
+    $("#enem .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/51"><button class="btn2">Enem | Inscreva-se</button></a>');
+    
+    // 2° Graduação
+    $("#segunda-graduacao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/52"><button class="btn2">2° Graduação | Inscreva-se</button></a>');
+    
+    // Transferência
+    $("#transferencia .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/53"><button class="btn2">Transferência | Inscreva-se</button></a>');
+    
+    // Pós-Graduação
+    $("#pos-graduacao .btn2").replaceWith('<a href="https://fam.inscricao.crmeducacional.com/login/48"><button class="btn2">Pós-Graduação | Inscreva-se</button></a>');
+    
+    // Extensão
+    $("#extensao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/40"><button class="btn2">Extensão | Inscreva-se</button></a>');
+}
 
 /// tabs ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
