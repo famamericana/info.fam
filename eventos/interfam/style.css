@@ -310,7 +310,7 @@ main {
 }
 
 .highlight-box{
-    background-color: #aad8eb;
+    background-color: #d8f1fc;
     width: 100%;
     padding: 20px;
     padding-bottom: 30px;
@@ -372,5 +372,12 @@ main {
     font-weight: bold;
     color: #0e4fbe;
     text-transform: uppercase;
+    text-decoration: none;
 
+}
+
+
+.pracabutao:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
