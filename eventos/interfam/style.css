@@ -290,12 +290,14 @@ main {
     .container-tchan{
         padding: 10px 10px;
         font-size: large;
-      
     }
 
     .schedule {
-   
         padding: 0 20px;
+    }
+
+    .pracabutao{
+        font-size: x-large !important;
     }
     
 }
@@ -309,21 +311,34 @@ main {
 
 .highlight-box{
     background-color: #aad8eb;
-    color: white;
     width: 100%;
-    padding: 20px 10px;
+    padding: 20px;
     padding-bottom: 30px;
     font-size: large;
     text-align: center;
     box-sizing: border-box;
+    margin-top: 20px;
     clip-path: 
         polygon(
-            /* Straight top edge */
-            0 0,
-            100% 0,
+            /* Zigzag across the top */
+            0 15px, 20px 0, 40px 15px, 60px 0, 80px 15px, 100px 0, 120px 15px, 140px 0, 
+            160px 15px, 180px 0, 200px 15px, 220px 0, 240px 15px, 260px 0, 280px 15px, 
+            300px 0, 320px 15px, 340px 0, 360px 15px, 380px 0, 400px 15px, 420px 0, 
+            440px 15px, 460px 0, 480px 15px, 500px 0, 520px 15px, 540px 0, 560px 15px, 
+            580px 0, 600px 15px, 620px 0, 640px 15px, 660px 0, 680px 15px, 700px 0, 
+            720px 15px, 740px 0, 760px 15px, 780px 0, 800px 15px, 820px 0, 840px 15px, 
+            860px 0, 880px 15px, 900px 0, 920px 15px, 940px 0, 960px 15px, 980px 0, 
+            1000px 15px, 1020px 0, 1040px 15px, 1060px 0, 1080px 15px, 1100px 0, 1120px 15px, 
+            1140px 0, 1160px 15px, 1180px 0, 1200px 15px, 1220px 0, 1240px 15px, 1260px 0, 
+            1280px 15px, 1300px 0, 1320px 15px, 1340px 0, 1360px 15px, 1380px 0, 1400px 15px, 
+            1420px 0, 1440px 15px, 1460px 0, 1480px 15px, 1500px 0, 1520px 15px, 1540px 0, 
+            1560px 15px, 1580px 0, 1600px 15px, 1620px 0, 1640px 15px, 1660px 0, 1680px 15px, 
+            1700px 0, 1720px 15px, 1740px 0, 1760px 15px, 1780px 0, 1800px 15px, 1820px 0, 
+            1840px 15px, 1860px 0, 1880px 15px, 1900px 0, 1920px 15px, 1940px 0, 1960px 15px, 1980px 0,
             /* Right edge */
+            100% 0,
             100% calc(100% - 15px),
-            /* Zigzag across the bottom only */
+            /* Zigzag across the bottom */
             1980px 100%, 1960px calc(100% - 15px), 1940px 100%, 1920px calc(100% - 15px),
             1900px 100%, 1880px calc(100% - 15px), 1860px 100%, 1840px calc(100% - 15px),
             1820px 100%, 1800px calc(100% - 15px), 1780px 100%, 1760px calc(100% - 15px),
@@ -350,4 +365,12 @@ main {
             140px 100%, 120px calc(100% - 15px), 100px 100%, 80px calc(100% - 15px),
             60px 100%, 40px calc(100% - 15px), 20px 100%, 0 calc(100% - 15px)
         );
+}
+
+.pracabutao{
+    font-size: xx-large;
+    font-weight: bold;
+    color: #0e4fbe;
+    text-transform: uppercase;
+
 }
