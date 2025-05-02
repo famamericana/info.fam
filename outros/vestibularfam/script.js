@@ -87,17 +87,31 @@ function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("dot");
+    
+    // Check if slides and dots exist before proceeding
+    if (!slides || slides.length === 0 || !dots || dots.length === 0) {
+        return; // Exit the function if elements don't exist
+    }
+    
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
+    
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
+    
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active-dot", "");
     }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active-dot";
-    startProgress();
+    
+    // Check if the current slide exists before accessing
+    if (slides[slideIndex - 1]) {
+        slides[slideIndex - 1].style.display = "block";
+        if (dots[slideIndex - 1]) {
+            dots[slideIndex - 1].className += " active-dot";
+        }
+        startProgress();
+    }
 }
 
 let timeoutId;
@@ -106,16 +120,22 @@ let progressTimer;
 function resetProgress() {
     clearTimeout(progressTimer);
     const progressBar = document.querySelector(".progress-bar");
-    progressBar.innerHTML = "";
+    if (progressBar) {
+        progressBar.innerHTML = "";
+    }
 }
 
 function startProgress() {
     const progressBar = document.querySelector(".progress-bar");
-    progressBar.innerHTML = "<div class='progress'></div>";
-    setTimeout(() => {
-        const progress = document.querySelector(".progress");
-        progress.style.animation = "progressBar 10s linear forwards";
-    }, 100);
+    if (progressBar) {
+        progressBar.innerHTML = "<div class='progress'></div>";
+        setTimeout(() => {
+            const progress = document.querySelector(".progress");
+            if (progress) {
+                progress.style.animation = "progressBar 10s linear forwards";
+            }
+        }, 100);
+    }
 }
 
 function autoSlide() {
@@ -128,20 +148,21 @@ function autoSlide() {
     timeoutId = setTimeout(autoSlide, 10000);
 }
 
-
 timeoutId = setTimeout(autoSlide, 10000);
 
 const slider = document.querySelector(".slider");
-slider.addEventListener("mouseover", () => {
-    clearTimeout(timeoutId);
-    resetProgress();
-});
+if (slider) {
+    slider.addEventListener("mouseover", () => {
+        clearTimeout(timeoutId);
+        resetProgress();
+    });
 
-slider.addEventListener("mouseout", () => {
-    resetProgress(); // Resetar a barra de progresso
-    startProgress(); // Iniciar a animação novamente
-    timeoutId = setTimeout(autoSlide, 10000);
-});
+    slider.addEventListener("mouseout", () => {
+        resetProgress(); // Resetar a barra de progresso
+        startProgress(); // Iniciar a animação novamente
+        timeoutId = setTimeout(autoSlide, 10000);
+    });
+}
 
 let slideClicked = false;
 
@@ -162,12 +183,15 @@ function checkScreenSize() {
     const slide1 = document.getElementById("slide1");
     const slide2 = document.getElementById("slide2");
 
-    if (window.innerWidth < 600) {
-        slide1.src = "images/Vestibular_2025.1_1080x800.png"; // Altere para a imagem desejada
-        slide2.src = "images/Pós_Graduação_2024_1080x800.png";
-    } else {
-        slide1.src = "images/2025960x300.png";
-        slide2.src = "images/Pós_Graduação_2024_960x300.png";
+    // Check if both slides exist before changing their sources
+    if (slide1 && slide2) {
+        if (window.innerWidth < 600) {
+            slide1.src = "images/Vestibular_2025.1_1080x800.png"; // Altere para a imagem desejada
+            slide2.src = "images/Pós_Graduação_2024_1080x800.png";
+        } else {
+            slide1.src = "images/2025960x300.png";
+            slide2.src = "images/Pós_Graduação_2024_960x300.png";
+        }
     }
 }
 
