@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #173e70;
+    --cordoeventoatual: #79a744;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -249,24 +249,29 @@ main {
 .mini-container {
     border-radius: 5px;
     flex: 1;
-    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     text-align: center;
+    padding:  50px 20px;
+    
 }
 
 .mini-container h1 {
     font-size: 30px;
     font-weight: 900;
     text-transform: uppercase;
-    padding: 20px;
+    margin-bottom: 60px;
     color: white;
+    flex: 1;
+    display: flex;
+        align-items: center;
 }
 
 .btn {
+    
     color: var(--bg-dark);
     border: none;
     padding: 8px 16px;
@@ -279,7 +284,7 @@ main {
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
-    position: absolute;
+    
     bottom: 20px;
 }
 
@@ -315,7 +320,7 @@ main {
 }
 
 .umevento {
-    background-color: #5d378d;
+    background-color: #173e70;
 }
 
 .doisevento {
