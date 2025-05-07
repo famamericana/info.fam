@@ -188,7 +188,7 @@ function checkScreenSize() {
             slide1.src = "images/Vestibular_2025.1_1080x800.png"; // Altere para a imagem desejada
             slide2.src = "images/Pós_Graduação_2024_1080x800.png";
         } else {
-            slide1.src = "images/2025960x300.png";
+            slide1.src = "images/Vestibular2025_Inverno_Banner_VestibularFam_960x300.png";
             slide2.src = "images/Pós_Graduação_2024_960x300.png";
         }
     }
