@@ -13,13 +13,22 @@
 
 <body>
     <div id="Navbar"></div>
-
     <header>
         <div class="logo"><img src="images/interfam.svg" alt="Logo InterFAM"></div>
+        <div style="display: flex;gap: 10px;flex-wrap: wrap;justify-content: center;">
         <div class="info-interfam">
-            <span class="data-interfam">De <b>26</b> a <b>30</b> de maio</span>
+            <div class="data-adicional">
+                <span class="dia-especial"><b>26</b> a <b>30</b> de maio </span>
+                <span class="horario-especial"> <i class="fa-regular fa-clock"></i> 19h às 22h</span>
+            </div>
         </div>
-        <span class="horario-interfam">19h às 22h</span>
+        <div class="info-interfam">
+            <div class="data-adicional">
+                <span class="dia-especial"><b>31</b> de maio</span>
+                <span class="horario-especial"> <i class="fa-regular fa-clock"></i> 8h às 13h</span>
+            </div>
+        </div>
+        </div>
     </header>
 
     <main>
@@ -54,13 +63,21 @@
             <p>
                 <a href="#programacao-detalhada" class="pracabutao">Veja a programação</a>
             </p>
-            <div class="separador-highlight"></div>
-            <p>
-                <strong>Entrada Solidária: 1kg de alimento não perecível</strong>
-            </p>
-            <p>Alunos FAM que doarem e prestigiarem o evento ganharão 1 hora de atividade complementar por dia.</p>
-            <p><small>As doações serão revertidas para o Fundo Social de Solidariedade de Americana.</small>
-            </p>
+            <div class="separador-highlight"></div>            <div class="ingressos-info">
+                <div class="tag-container">
+                    <span class="tag tag-free"><i class="fa-solid fa-ticket"></i> ENTRADA GRATUITA</span>
+                    <span class="tag tag-solidary"><i class="fa-solid fa-hand-holding-heart"></i> SOLIDÁRIA</span>
+                </div>
+                <div class="donation-info">
+                    <p class="donation-text"><i class="fa-solid fa-box-open"></i> 1kg de alimento não perecível</p>
+                    <p style="margin-bottom: 5px;">Alunos FAM que doarem e prestigiarem o evento ganharão 1 hora de atividade complementar por dia.</p>
+                    <span class="doacao">As doações serão revertidas para o Fundo Social de Solidariedade de Americana.</span>
+                </div>
+            </div>            <div class="separador-highlight"></div>
+            <div class="food-trucks-info">
+                <span class="food-tag"><i class="fa-solid fa-utensils"></i> FOOD TRUCKS</span>
+                <p>Disponíveis durante todo o evento para sua comodidade</p>
+            </div>
         </div>
 
         <section class="section" id="programacao-detalhada">
@@ -109,7 +126,8 @@
                             <img src="images/natacao.svg" alt="Natação" title="Natação">
                         </div>
                         <p><span class="schedule-time">19h</span> Cerimônia de Abertura com autoridades</p>
-                        <p><strong>Modalidades:</strong> Vôlei (quadra de cima), Futsal (quadra de baixo), Tênis de quadra</p>
+                        <p><strong>Modalidades:</strong> Vôlei (quadra de cima), Futsal (quadra de baixo), Tênis de
+                            quadra</p>
                         <p><strong>Natação:</strong> A partir das 20h</p>
                     </div>
 
@@ -121,8 +139,9 @@
                             <img src="images/futsal.svg" alt="Futsal" title="Futsal">
                             <img src="images/mesa.svg" alt="Tênis de Quadra" title="Tênis de Quadra">
                         </div>
-                        <p><span class="schedule-time">19h</span> Atletismo na pista fechada</p>
-                        <p><strong>Modalidades:</strong> Vôlei (quadra de cima), Futsal (quadra de baixo), Tênis de quadra</p>
+                        <p><span class="schedule-time">19h</span> Atletismo</p>
+                        <p><strong>Modalidades:</strong> Vôlei (quadra de cima), Futsal (quadra de baixo), Tênis de
+                            quadra</p>
                     </div>
 
                     <div class="schedule-item">
@@ -136,48 +155,47 @@
                         <p><span class="schedule-time">19h - Zanaga</span> Basquete 3x3, Futsal, Vôlei</p>
                         <p><span class="schedule-time">19h - Jd. Sta. Sofia</span> Futvôlei</p>
                     </div>
-
                     <div class="schedule-item">
-                        <div class="schedule-date">29 de Maio (Quinta-feira) - Zanaga</div>
+                        <div class="schedule-date">29 de Maio (Quinta-feira) - Múltiplos Locais</div>
                         <div class="schedule-icons">
                             <img src="images/basquete.svg" alt="Basquete 3x3" title="Basquete 3x3">
+                            <img src="images/futsal.svg" alt="Futsal" title="Futsal">
+                            <img src="images/volei.svg" alt="Vôlei" title="Vôlei">
+                            <img src="images/hand.svg" alt="Futvôlei" title="Futvôlei">
                         </div>
-                        <p><span class="schedule-time">19h</span> Basquete 3x3 e FINAIS</p>
+                        <p><span class="schedule-time">19h - Zanaga</span> Basquete 3x3, Futsal, Vôlei</p>
+                        <p><span class="schedule-time">19h - Jd. Sta. Sofia</span> Futvôlei</p>
                     </div>
-
                     <div class="schedule-item">
-                        <div class="schedule-date">30 de Maio (Sexta-feira) - Múltiplos Locais</div>
+                        <div class="schedule-date">30 de Maio (Sexta-feira) - Zanaga</div>
                         <div class="schedule-icons">
                             <img src="images/futsal.svg" alt="Futsal" title="Futsal">
                             <img src="images/basquete.svg" alt="Basquete 3x3" title="Basquete 3x3">
                             <img src="images/volei.svg" alt="Vôlei" title="Vôlei">
-                            <img src="images/hand.svg" alt="Futvôlei" title="Futvôlei">
                         </div>
-                        <p><span class="schedule-time">19h - Zanaga</span> Finais de Futsal, Basquete 3x3, Vôlei</p>
+                        <p><span class="schedule-time">19h</span> Finais de Futsal, Basquete 3x3, Vôlei</p>
                         <p>Cerimônia de Encerramento com premiação</p>
-                        <p><span class="schedule-time">19h - Jd. Sta. Sofia</span> Futvôlei (encerramento)</p>
                     </div>
-                    
                     <div class="schedule-item">
                         <div class="schedule-date">31 de Maio (Sábado) - Zanaga</div>
                         <div class="schedule-icons">
                             <img src="images/futsal.svg" alt="Futsal" title="Futsal">
-                            <img src="images/volei.svg" alt="Vôlei" title="Vôlei">
                         </div>
-                        <p><span class="schedule-time">8h</span> CAMPEONATO INTERCURSOS DA FAM</p>
-                        <p><strong>Modalidades:</strong> Futsal e Vôlei (para todos os cursos da FAM)</p>
+                        <p><span class="schedule-time">8h às 13h</span> CAMPEONATO INTERCURSOS DA FAM</p>
+                        <p><strong>Modalidade:</strong> Futsal (para todos os cursos da FAM)</p>
                         <p>Encerramento do evento</p>
                     </div>
                 </div>
 
                 <div class="local-info">
-                  
+
                     <div class="local-item">
                         <h3><a href="https://maps.app.goo.gl/G1pjAcRWwjuyN7ts6" target="_blank">Centro Cívico</a></h3>
                         <p>R. Sergipe, 230 - Jardim Colina, Americana - SP, 13478-241</p>
                     </div>
                     <div class="local-item">
-                        <h3><a href="https://maps.app.goo.gl/SEhBAtZi1yFrQZEB6" target="_blank">Praça de Esportes do Zanaga</a></h3>
+                        <h3><a href="https://maps.app.goo.gl/SEhBAtZi1yFrQZEB6" target="_blank">Praça de Esportes do
+                                Zanaga</a></h3>
                         <p>Av. Afonso Arinos - Antonio Zanaga I, Americana - SP, 13474-545</p>
                     </div>
                     <div class="local-item">

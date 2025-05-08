@@ -120,19 +120,51 @@ header img {
 .info-interfam {
     background-color: white;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 15px 25px;
     text-align: center;
     font-size: x-large;
     box-shadow: 3px 2px 29px -5px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 3px 2px 29px -5px rgba(255, 255, 255, 0.9);
     -moz-box-shadow: 3px 2px 29px -5px rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.horario-interfam {
+.data-principal {
+
+    font-weight: 600;
+    color: #333;
+}
+
+
+.horario-dias-semana {
     font-weight: bold;
     color: #45b7e5;
-    font-size: x-large;
-    text-shadow: 2px 2px 5px #45b8e5b2;
+    text-shadow: 1px 1px 3px rgba(69, 183, 229, 0.3);
+}
+
+header i {
+ font-size: 20px;
+}
+
+.data-adicional {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    }
+
+.dia-especial {
+    font-weight: 600;
+    color: #333;
+}
+
+.horario-especial {
+    font-weight: bold;
+    color: #45b7e5;
+    text-shadow: 1px 1px 3px rgba(69, 183, 229, 0.3);
 }
 
 main {
@@ -520,6 +552,56 @@ main {
     margin-bottom: 0 !important;
 }
 
+.doacao{
+font-style: italic;
+color: #45b7e5;
+font-size: medium;
+}
+
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.tag, .food-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.tag i {
+    margin-right: 8px;
+}
+
+.tag-free {
+    background-color: #45b7e5;
+}
+
+.tag-solidary {
+    background-color: #e83e8c;
+}
+
+.food-tag {
+    background-color: #0e4fbe;
+}
+
+.donation-info i {
+    margin-right: 5px;
+    color: #0e4fbe;
+}
+
+.food-tag i {
+    margin-right: 8px;
+}
 
 
 @media screen and (max-width: 767px) {
