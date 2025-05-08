@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Personaliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Personaliza a barra de rolagem em si */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border: 3px solid white;
+    border-radius: 10px;
+
+}
+
+/* Personaliza a barra de rolagem quando você passa o mouse sobre ela */
+::-webkit-scrollbar-thumb:hover {
+    background: #1b3556;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+    text-shadow: -2px 1px 133px 0px rgba(255, 255, 255, 0.75);
+    -webkit-text-shadow: -2px 1px 133px 0px rgba(255, 255, 255, 0.75);
+    -moz-text-shadow: -2px 1px 133px 0px rgba(255, 255, 255, 0.75);
+}
+
+main {
+    min-height: 500px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.titulo h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #1b3556;
+}
+
+.titulo h2 {
+    font-size: 1.5rem;
+    color: #0066cc;
+    margin-bottom: 10px;
+}
+
+.titulo p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #444;
+}
+
+.bola-container {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bola {
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.bola-1 {
+    background-color: #e53888;
+    width: 150px;
+    height: 150px;
+    top: 5%;
+    left: 5%;
+    animation: flutuar 8s infinite alternate;
+}
+
+.bola-2 {
+    background-color: #f9e20f;
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    right: 15%;
+    animation: flutuar 10s infinite alternate-reverse;
+}
+
+.bola-3 {
+    background-color: #45b7e5;
+    width: 200px;
+    height: 200px;
+    bottom: 40%;
+    left: 20%;
+    animation: flutuar 12s infinite alternate;
+}
+
+.bola-4 {
+    background-color: #134d99;
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 25%;
+    animation: flutuar 9s infinite alternate-reverse;
+}
+
+.bola-5 {
+    background-color: #e53888;
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: 3%;
+    animation: flutuar 11s infinite alternate;
+}
+
+.bola-6 {
+    background-color: #f9e20f;
+    width: 90px;
+    height: 90px;
+    top: 15%;
+    right: 8%;
+    animation: flutuar 7s infinite alternate-reverse;
+}
+
+.bola-7 {
+    background-color: #45b7e5;
+    width: 250px;
+    height: 250px;
+    bottom: 5%;
+    left: 40%;
+    animation: flutuar 14s infinite alternate;
+}
+
+.bola-8 {
+    background-color: #134d99;
+    width: 130px;
+    height: 130px;
+    top: 70%;
+    right: 40%;
+    animation: flutuar 9.5s infinite alternate-reverse;
+}
+
+@keyframes flutuar {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate(15px, 10px) rotate(5deg) scale(1.02);
+    }
+
+    100% {
+        transform: translate(25px, 20px) rotate(10deg) scale(1);
+    }
+}
+
+.container-button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 12px 25px;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+}
+
+.button:hover {
+    background-color: #004c99;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .titulo h1 {
+        font-size: 2rem;
+    }
+
+    .titulo h2 {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container-button {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .button {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .bola-3,
+    .bola-8 {
+        display: none;
+        /* Esconde mais bolas em telas muito pequenas */
+    }
+}
