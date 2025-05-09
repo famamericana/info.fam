@@ -62,7 +62,7 @@ main {
 
 .titulo h2 {
     font-size: 1.5rem;
-    color: #0066cc;
+    color: #134d99;
     margin-bottom: 10px;
 }
 
@@ -94,7 +94,7 @@ main {
     width: 150px;
     height: 150px;
     top: 5%;
-    left: 5%;
+    left: 0%;
     animation: flutuar 8s infinite alternate;
 }
 
@@ -121,7 +121,7 @@ main {
     width: 120px;
     height: 120px;
     top: 30%;
-    right: 25%;
+    right: 10%;
     animation: flutuar 9s infinite alternate-reverse;
 }
 
@@ -183,14 +183,14 @@ main {
 }
 
 .button {
+    text-transform: uppercase;
     padding: 12px 25px;
-    background-color: #0066cc;
+    background-color: #134d99;
     color: white;
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
 }
 
 .button:hover {
@@ -207,6 +207,46 @@ main {
 
     .titulo h2 {
         font-size: 1.3rem;
+    }
+
+    .bola-1 {
+        top: 0%;
+        left: -20%;
+    }
+
+    .bola-2 {
+        bottom: 20%;
+        right: 15%;
+    }
+
+    .bola-3 {
+        bottom: 40%;
+        left: 20%;
+    }
+
+    .bola-4 {
+        top: 30%;
+        right: 0%;
+    }
+
+    .bola-5 {
+        top: 50%;
+        left: 3%;
+    }
+
+    .bola-6 {
+        top: 0%;
+        right: 8%;
+    }
+
+    .bola-7 {
+        bottom: 5%;
+        left: 40%;
+    }
+
+    .bola-8 {
+        top: 70%;
+        right: 40%;
     }
 
 }
@@ -226,5 +266,14 @@ main {
     .bola-8 {
         display: none;
         /* Esconde mais bolas em telas muito pequenas */
+    }
+
+        .bola-1 {
+        top: 0%;
+        left: -30%;
+    }
+        .bola-4 {
+        top: 45%;
+        right: 0%;
     }
 }
