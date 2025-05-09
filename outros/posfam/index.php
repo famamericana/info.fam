@@ -1,3 +1,8 @@
+<?php 
+include_once "navfoot/navbar.php"
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -25,20 +30,33 @@
 
     <header>
         <div class="titulo">
-            <h2>Matrículas Abertas</h2>
+            <h2>▪ Matrículas Abertas ▪</h2>
             <h1>Pós-Graduação é na FAM</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="container-button">
-            <a href="https://www.fam.br/pos-graduacao/" class="button">Inscreva-se</a>
-            <a href="https://www.fam.br/pos-graduacao/" class="button">Veja os cursos</a>
+            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="button">Inscreva-se</a>
+            <a href="#cursos" class="button">Veja os cursos</a>
         </div>
     </header>
 
     <main>
         <div class="conteudo">
-            <!-- Aqui você pode adicionar o conteúdo da sua página -->
+            <div class="slider">
+                <div class="progress-bar"></div>
+                <div class="slide active">
+                    <img id="slide1">
+                </div>
+                <div class="slide">
+                    <img id="slide2">
+                </div>
+                <div class="navigation">
+                    <span class="dot" onclick="moveSlide(1)"></span>
+                    <span class="dot" onclick="moveSlide(2)"></span>
+                </div>
+            </div>
         </div>
+      
     </main>
 
 </body>
