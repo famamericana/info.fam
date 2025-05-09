@@ -125,10 +125,10 @@ main {
 
 .bola-1 {
     background-color: var(--bolas);
-    width: 150px;
-    height: 150px;
+    width: 50px;
+    height: 50px;
     top: 50px;
-    left: 0px;
+    left: 100px;
     animation: flutuar 8s infinite alternate;
 }
 
@@ -142,20 +142,20 @@ main {
 }
 
 .bola-3 {
-    background-color: var(--bolas);
+    background-color: var(--bolas2);
     width: 200px;
     height: 200px;
-    bottom: 350px;
-    left: 0px;
+    top: 200px;
+    left: -100px;
     animation: flutuar 12s infinite alternate;
 }
 
 .bola-4 {
-    background-color: var(--bolas2);
+    background-color: var(--bolas);
     width: 120px;
     height: 120px;
     top: 250px;
-    right: 100px;
+    right: 150px;
     animation: flutuar 9s infinite alternate-reverse;
 }
 
@@ -164,7 +164,7 @@ main {
     width: 180px;
     height: 180px;
     top: 650px;
-    left: 0px;
+    left: -100px;
     animation: flutuar 11s infinite alternate;
 }
 
@@ -179,19 +179,19 @@ main {
 
 .bola-7 {
     background-color: var(--bolas);
-    width: 250px;
-    height: 250px;
-    bottom: 50px;
-    left: 900px;
+    width: 80px;
+    height: 80px;
+    bottom: 0px;
+    right: 0px;
     animation: flutuar 14s infinite alternate;
 }
 
 .bola-8 {
     background-color: var(--bolas2);
-    width: 130px;
-    height: 130px;
-    top: 650px;
-    right: 0px;
+    width: 50px;
+    height: 50px;
+    top: 400px;
+    right: 50px;
     animation: flutuar 9.5s infinite alternate-reverse;
 }
 
@@ -273,12 +273,11 @@ main {
 .nav-menu.active .nav-link {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 0.2s;
 }
 
 /* Adicionando efeito de entrada escalonada para cada item do menu */
 .nav-menu .nav-link {
-    transform: translateY(8px);
+    transform: translateY(15px);
     opacity: 0;
     transition: all 0.3s ease;
 }
@@ -286,6 +285,7 @@ main {
 /* Efeito de hover mais sutil para menu mobile */
 .nav-link:hover {
     color: #80d9fc;
+    background-color: rgba(0, 119, 182, 0.05);
 }
 
 /* Refinar o efeito do botão hamburger */
@@ -437,8 +437,7 @@ main {
 
 .navbar-scrolled {
     background-color: rgb(19, 77, 153);
- 
-   padding: 14px 0;
+
 }
 
 .navbar-container {
@@ -453,7 +452,6 @@ main {
 
 .logo {
     display: flex;
-    align-items: center;
 
 }
 
@@ -466,9 +464,6 @@ main {
 
 .navbar-scrolled .logo img {
     height: 35px;
-
-
-
     filter: invert(100%) sepia(51%) saturate(2%) hue-rotate(348deg) brightness(105%) contrast(101%);
 }
 
@@ -490,7 +485,7 @@ main {
 }
 
 .navbar-scrolled .nav-link {
-    color: #e53888;
+    color: white;
 
 }
 
@@ -537,7 +532,6 @@ main {
 
     .nav-menu {
         position: fixed;
-        top: 70px;
         left: 0;
         right: 0;
         flex-direction: column;
@@ -549,38 +543,50 @@ main {
         overflow: hidden;
         padding: 0;
         transition: all 0.4s ease-in-out;
-        gap: 0;
+        gap: 0px;
         text-align: center;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         opacity: 0;
         visibility: hidden;
         z-index: 999;
     }
-
+    
     .nav-menu.active {
         height: auto;
         max-height: 100vh;
-        padding: 20px 0;
         opacity: 1;
         visibility: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+    
+    .nav-menu.active li:nth-child(1) .nav-link { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(2) .nav-link { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(3) .nav-link { transition-delay: 0.3s; }
+    .nav-menu.active li:nth-child(4) .nav-link { transition-delay: 0.4s; }
+    .nav-menu.active li:nth-child(5) .nav-link { transition-delay: 0.5s; }
+    .nav-menu.active li:nth-child(6) .nav-link { transition-delay: 0.6s; }
+    .nav-menu.active li:nth-child(7) .nav-link { transition-delay: 0.7s; }
 
-    .nav-menu li {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
+ 
 
     .nav-link {
         display: block;
-        padding: 15px 20px;
+        padding: 15px;
         font-size: 1.1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        width: 100%;
     }
 
     .nav-link:hover::after {
         width: 0;
         /* Remove sublinhado no hover em mobile */
+    }
+
+    .nav-menu li{
+        width: 100%;
     }
 
     .nav-menu li:last-child .nav-link {
@@ -596,7 +602,6 @@ main {
         height: 45px;
         align-items: center;
         justify-content: center;
-        padding: 12px;
         transition: all 0.3s ease;
     }
 
@@ -622,4 +627,53 @@ main {
     .menu-toggle.active span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
     }
+}
+
+/* Hamburger Menu Styles */
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #000;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+
+.ham4 .top {
+  stroke-dasharray: 40 121;
+}
+
+.ham4 .bottom {
+  stroke-dasharray: 40 121;
+}
+
+.ham4.active .top {
+  stroke-dashoffset: -68px;
+}
+
+.ham4.active .bottom {
+  stroke-dashoffset: -68px;
+}
+
+/* Adjust menu toggle size */
+.menu-toggle .ham {
+  width: 50px;  /* Adjust size as needed */
+  height: 50px;
 }
