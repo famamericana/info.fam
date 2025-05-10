@@ -28,11 +28,10 @@ include_once "navfoot/navbar.php"
         <div class="bola bola-8"></div>
     </div>
 
-    <header>
-        <div class="titulo">
-            <h2>▪ Matrículas Abertas ▪</h2>
+    <header>        <div class="titulo">
+            <h2><span style="color: #45b7e5">▪</span> Matrículas Abertas <span style="color: #45b7e5">▪</span></h2>
             <h1>Pós-Graduação é na FAM</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Aprimore sua carreira com professores atuantes no mercado de trabalho e em uma instituição de alta qualidade de ensino com responsabilidade social!</p>
         </div>
         <div class="container-button">
             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="button">Inscreva-se</a>
