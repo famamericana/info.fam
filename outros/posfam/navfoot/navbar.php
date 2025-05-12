@@ -5,7 +5,7 @@
             <a href="/"><img src="./images/logo_fam.svg" alt="FAM Logo"></a>
         </div>
         <div class="menu-toggle" id="menu-toggle" aria-label="Menu de navegação" role="button" tabindex="0">
-<svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
+<svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="80">
   <path
         class="line top"
         d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />

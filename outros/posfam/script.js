@@ -70,15 +70,19 @@ function setupMobileMenu() {
     // Log para diagnóstico
     console.log('Menu toggle element:', menuToggle);
     console.log('Nav menu element:', navMenu);
-    
-    if (menuToggle && navMenu) {
+      if (menuToggle && navMenu) {
         // Garantir que o evento de clique é adicionado corretamente
         menuToggle.addEventListener('click', function(event) {
             event.preventDefault();
             event.stopPropagation(); // Evita que o evento se propague para o documento
             console.log('Menu toggle clicked');
             
+            // Toggle the active state on both the menu toggle and the SVG icon
             menuToggle.classList.toggle('active');
+            const hamburgerIcon = menuToggle.querySelector('.ham');
+            if (hamburgerIcon) {
+                hamburgerIcon.classList.toggle('active');
+            }
             navMenu.classList.toggle('active');
             
             console.log('Menu active state:', navMenu.classList.contains('active'));
@@ -108,33 +112,42 @@ function setupMobileMenu() {
             event.stopPropagation();
         });
     }
-    
-    // Fechar o menu quando clicar fora
+      // Fechar o menu quando clicar fora
     document.addEventListener('click', function(event) {
         if (navMenu && navMenu.classList.contains('active') && 
             !event.target.closest('#menu-toggle') && 
             !event.target.closest('#nav-menu')) {
             menuToggle.classList.remove('active');
+            const hamburgerIcon = menuToggle.querySelector('.ham');
+            if (hamburgerIcon) {
+                hamburgerIcon.classList.remove('active');
+            }
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
-    
-    // Fechar o menu quando clicar em um link
+      // Fechar o menu quando clicar em um link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             menuToggle.classList.remove('active');
+            const hamburgerIcon = menuToggle.querySelector('.ham');
+            if (hamburgerIcon) {
+                hamburgerIcon.classList.remove('active');
+            }
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
     });
-    
-    // Fechar o menu quando redimensionar para desktop
+      // Fechar o menu quando redimensionar para desktop
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             if (navMenu.classList.contains('active')) {
                 menuToggle.classList.remove('active');
+                const hamburgerIcon = menuToggle.querySelector('.ham');
+                if (hamburgerIcon) {
+                    hamburgerIcon.classList.remove('active');
+                }
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
