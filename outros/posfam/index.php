@@ -76,7 +76,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">contábil</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/estrategia-fiscal/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/estrategia-fiscal-e-tributaria/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">gestão</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/mba-financas/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/mba-em-financas-investimentos-e-banking/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">branding</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/marketing-e-negocios/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/marketing-e-negocios/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">reprodução</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/medicina-equina/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/medicina-equina/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">desenvolvimento</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/neuropsicopedagogia/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/neuropsicopedagogia-clinica-e-psicomotricidade/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ include_once "navfoot/navbar.php"
                             <span class="tag">inclusão</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://info.fam.br/cursos/psicologia-escolar/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/psicologia-escolar-e-educacional/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
