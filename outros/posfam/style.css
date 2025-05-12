@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg: white;
     --bolas: #80d9fc;
     --bolas2: #0077b6;
     --noise-opacity: 0.2;
+}
+
+button {
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Personaliza a barra de rolagem inteira */
@@ -218,6 +226,7 @@ main {
 
 .button:first-child {
     background-color: #e53888;
+    border: 2px solid #e53888;
 }
 
 .button:first-child:hover {
@@ -226,10 +235,22 @@ main {
     box-shadow: 0 6px 15px rgba(204, 0, 177, 0.4);
 }
 
+.button:last-child {
+    border: 2px solid #134d99;
+    color: #000;
+}
+
+.button:last-child:hover {
+    color: white;
+    background-color: #004c99;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+}
+
 .button {
     text-transform: uppercase;
     padding: 12px 25px;
-    background-color: #134d99;
+
     color: white;
     text-decoration: none;
     border-radius: 10px;
@@ -237,11 +258,6 @@ main {
     transition: all 0.3s ease;
 }
 
-.button:hover {
-    background-color: #004c99;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
-}
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
@@ -502,7 +518,7 @@ main {
 
 
 .navbar-scrolled .logo img {
-    
+
     filter: invert(100%) sepia(51%) saturate(2%) hue-rotate(348deg) brightness(105%) contrast(101%);
 }
 
@@ -563,15 +579,17 @@ main {
 @media (max-width: 768px) {
     .navbar {
         padding: 12px 0;
-     
+
     }
 
     .navbar-container {
         position: relative;
     }
-.navbar-scrolled .nav-link {
-    color: #e53888;
-}
+
+    .navbar-scrolled .nav-link {
+        color: #e53888;
+    }
+
     .nav-menu {
         position: fixed;
         left: 0;
@@ -586,11 +604,11 @@ main {
         transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         gap: 0px;
         text-align: center;
-       
+
         opacity: 0;
         visibility: hidden;
         z-index: 999;
-  
+
         transform: translateY(-10px);
         isolation: isolate;
         /* Isola o contexto de empilhamento */
@@ -607,7 +625,7 @@ main {
         transform: translateY(0);
         overflow-y: hidden;
         background-color: #ffffff !important;
-       
+
         /* Adiciona um fundo sólido branco sem textura */
         z-index: 999;
     }
@@ -678,7 +696,7 @@ main {
         transform: translateY(10px);
         position: relative;
         overflow: hidden;
-  
+
         font-weight: 600;
         background-color: #ffffff;
     }
@@ -775,7 +793,7 @@ main {
     transform: rotate(180deg);
 }
 
-.navbar-scrolled .line{
+.navbar-scrolled .line {
     stroke: white;
 }
 
@@ -808,4 +826,217 @@ main {
     width: 50px;
     /* Adjust size as needed */
     height: 50px;
+}
+
+
+/* Cursos Section Styling ------------------------------------------------------------------------------------------------- */
+.cursos-section {
+    margin-top: 80px !important;
+    padding: 20px;
+    width: 100%;
+    margin: auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.container-cursos {
+    margin: 0 auto;
+}
+
+.section-title {
+    color: #1b3556;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.section-desc {
+    color: #444;
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.card-curso {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 360px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.card-curso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-curso h3 {
+    color: #1b3556;
+    font-size: 1.4rem;
+    margin: 0 0 15px;
+    line-height: 1.3;
+}
+
+.info-curso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.duracao {
+    font-size: 0.9rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modalidade {
+    background-color: #80d9fc;
+    color: #1b3556;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+}
+
+.descricao {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background-color: #ffecf5 ;
+    color:#e53888 ;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.botoes-curso {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-saiba-mais,
+.btn-inscricao {
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    flex: 1;
+    font-family: 'Source Sans 3', sans-serif;
+    text-transform: uppercase;
+    border: 2px solid #45b7e5;
+}
+
+.btn-saiba-mais {
+    background-color: transparent;
+    color: #000;
+}
+
+.btn-inscricao {
+    background-color: #45b7e5;
+    color: white;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #45b7e5;
+    color: white;
+}
+
+.btn-inscricao:hover {
+    background-color: #134d99;
+    border: 2px solid #134d99;
+}
+
+
+@media (max-width: 1220px) {
+
+    .card-curso {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .card-curso {
+        flex: auto;
+       max-width: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-desc {
+        font-size: 1rem;
+    }
+
+    .card-curso h3 {
+        font-size: 1.2rem;
+    }
+
+
+
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .botoes-curso {
+        flex-direction: column;
+    }
+
+    .btn-saiba-mais,
+    .btn-inscricao {
+        width: 100%;
+    }
 }
