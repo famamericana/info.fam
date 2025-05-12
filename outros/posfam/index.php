@@ -27,6 +27,8 @@ include_once "navfoot/navbar.php"
         <div class="bola bola-6"></div>
         <div class="bola bola-7"></div>
         <div class="bola bola-8"></div>
+        <div class="bola bola-9"></div>
+        <div class="bola bola-10"></div>
     </div>
 
     <header>

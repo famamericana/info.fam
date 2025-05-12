@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../hamburger.css">
+
 <nav class="navbar">
     <div class="navbar-container">
         <div class="logo">
