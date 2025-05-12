@@ -210,7 +210,8 @@
                     <!-- Curso 7 -->                    <div class="card-curso">
                         <span class="modalidade">Presencial</span>                        <h3>Psicologia Escolar e Educacional</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas aos sábados </span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas aos sábados quinzenalmente
+ </span>
                         </div>
                         <p class="descricao">Foco em desenvolvimento educacional e psicológico.</p>
                         <div class="tags">
