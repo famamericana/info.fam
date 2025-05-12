@@ -1,22 +1,22 @@
-<?php 
-include_once "navfoot/navbar.php"
-
-?>
 
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pós-Graduação FAM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="script.js" defer></script>
-    <link rel="icon" href="/images/famlogo.png">
+    <link rel="icon" href="images/famlogo.png" type="image/x-icon">
 </head>
 
 <body>
+
+    <?php include_once "navfoot/navbar.php"; ?>
+
     <div class="bola-container">
         <!-- Bolas decorativas de fundo distribuídas por toda a página -->
         <div class="bola bola-1"></div>
