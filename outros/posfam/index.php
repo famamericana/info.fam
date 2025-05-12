@@ -65,10 +65,10 @@ include_once "navfoot/navbar.php"
                 <div class="cards-container">
                     <!-- Curso 1 -->
                     <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Estratégia Fiscal e Tributária</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas semanais - 18 Meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Especialização em finanças e legislação fiscal.</p>
                         <div class="tags">
@@ -81,12 +81,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 2 -->
-                    <div class="card-curso">
+                    <!-- Curso 2 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>MBA em Finanças, Investiment e Banking</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais - 18 meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Especialização em finanças corporativas e investimentos.</p>
                         <div class="tags">
@@ -99,12 +98,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 3 -->
-                    <div class="card-curso">
+                    <!-- Curso 3 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Marketing e Negócios</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais ou semanais - 18 meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Foco em gestão de marketing e desenvolvimento de negócios.</p>
                         <div class="tags">
@@ -118,12 +116,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 4 -->
-                    <div class="card-curso">
+                    <!-- Curso 4 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Medicina Equina</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> 20 horas de aula/mês - 20 meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Especialização no cuidado e tratamento de equinos.</p>
                         <div class="tags">
@@ -137,12 +134,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 5 -->
-                    <div class="card-curso">
+                    <!-- Curso 5 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Medicina de Animais Silvestres e Exóticos</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Especialização</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Cuidado e estudo de espécies nacionais e exóticas.</p>
                         <div class="tags">
@@ -156,12 +152,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 6 -->
-                    <div class="card-curso">
+                    <!-- Curso 6 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Neuropsicopedagogia Clínica e Psicomotricidade</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais - 24 Meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Foco em aprendizagem e desenvolvimento cognitivo.</p>
                         <div class="tags">
@@ -174,12 +169,11 @@ include_once "navfoot/navbar.php"
                         </div>
                     </div>
                     
-                    <!-- Curso 7 -->
-                    <div class="card-curso">
+                    <!-- Curso 7 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
                         <h3>Psicologia Escolar e Educacional</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas semanais - 18 meses</span>
-                            <span class="modalidade">Presencial</span>
                         </div>
                         <p class="descricao">Foco em desenvolvimento educacional e psicológico.</p>
                         <div class="tags">

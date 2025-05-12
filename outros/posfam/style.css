@@ -910,14 +910,18 @@ main {
     gap: 5px;
 }
 
-.modalidade {
+.modalidade {    
     background-color: #80d9fc;
     color: #1b3556;
     font-weight: 600;
     font-size: 0.8rem;
     padding: 5px 10px;
     border-radius: 20px;
-    margin-left: 8px;
+    margin-bottom: 10px;
+    position: relative;
+
+    width: fit-content;
+   
 }
 
 .descricao {
