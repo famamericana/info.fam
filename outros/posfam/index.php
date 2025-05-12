@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -7,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pós-Graduação FAM</title>
-    <link rel="stylesheet" href="style.css?v=1.12">
+    <link rel="stylesheet" href="style.css?v=1.13">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="script.js" defer></script>
     <link rel="icon" href="images/famlogo.png" type="image/x-icon">
@@ -65,6 +64,7 @@
             </div>
         </div>
 
+
         <!-- Seção de cursos -->
         <section id="cursos" class="cursos-section">
             <div class="container-cursos">
@@ -72,10 +72,13 @@
                 <p class="section-desc">Escolha entre diversos cursos de pós-graduação para impulsionar sua carreira</p>
 
                 <div class="cards-container">
-                    <!-- Curso 8 -->                    <div class="card-curso">
-                        <span class="modalidade">Semipresencial</span>                        <h3>Biologia da Conservação</h3>
+                    <!-- Curso 8 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Biologia da Conservação</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos)</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e
+                                domingos)</span>
                         </div>
                         <p class="descricao">Especialização em preservação e manejo sustentável da biodiversidade.</p>
                         <div class="tags">
@@ -91,7 +94,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 1 
+                    <!-- Curso 1 -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Estratégia Fiscal e Tributária</h3>
@@ -107,15 +110,18 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/estrategia-fiscal-e-tributaria/" class="btn-saiba-mais"
                                 target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
-                                target="_blank">Inscreva-se</a>
+                            <a href="" class="btn-inscricao"
+                                target="_blank">Em breve | 2026</a>
                         </div>
-                    </div>-->
+                    </div>
 
-                    <!-- Curso 2 -->                    <div class="card-curso">
-                        <span class="modalidade">Semipresencial</span>                        <h3>MBA em Finanças, Investimentos e Banking</h3>
+                    <!-- Curso 2 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Semipresencial</span>
+                        <h3>MBA em Finanças, Investimentos e Banking</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais (sextas e sábados)</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais (sextas e
+                                sábados)</span>
                         </div>
                         <p class="descricao">Especialização em finanças corporativas e investimentos.</p>
                         <div class="tags">
@@ -131,10 +137,13 @@
                         </div>
                     </div>
 
-                    <!-- Curso 3 -->                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>                        <h3>Marketing e Negócios</h3>
+                    <!-- Curso 3 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Marketing e Negócios</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana (terças e quintas)</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana
+                                (terças e quintas)</span>
                         </div>
                         <p class="descricao">Foco em gestão de marketing e desenvolvimento de negócios.</p>
                         <div class="tags">
@@ -150,10 +159,13 @@
                         </div>
                     </div>
 
-                    <!-- Curso 4 -->                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>                        <h3>Medicina Equina</h3>
+                    <!-- Curso 4 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Medicina Equina</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos) </span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e
+                                domingos) </span>
                         </div>
                         <p class="descricao">Especialização no cuidado e tratamento de equinos.</p>
                         <div class="tags">
@@ -169,10 +181,13 @@
                         </div>
                     </div>
 
-                    <!-- Curso 5 -->                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>                        <h3>Medicina de Animais Silvestres e Exóticos</h3>
+                    <!-- Curso 5 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Medicina de Animais Silvestres e Exóticos</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos) </span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e
+                                domingos) </span>
                         </div>
                         <p class="descricao">Cuidado e estudo de espécies nacionais e exóticas.</p>
                         <div class="tags">
@@ -183,20 +198,45 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/medicina-de-animais-silvestres-e-exoticos/"
                                 class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="" class="btn-inscricao"
+                                target="_blank">Em breve | 2026</a>
+                        </div>
+                    </div>
+
+                        <!-- Curso 6 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Neuropsicopedagogia Clínica</h3>
+                        <div class="info-curso">
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana
+                                (terças e quintas)</span>
+                        </div>
+                        <p class="descricao">Preparando você para transformar a aprendizagem e superar desafios cognitivos.</p>
+                        <div class="tags">
+                            <span class="tag">saúde</span>
+                            <span class="tag">reabilitação</span>
+                            <span class="tag">desenvolvimento</span>
+                        </div>
+                        <div class="botoes-curso">
+                            <a href="https://www.fam.br/curso/neuropsicopedagogia-clinica"
+                                class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
-                    <!-- Curso 6 -->                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>                        <h3>Neuropsicopedagogia Clínica e Psicomotricidade</h3>
+                    <!-- Curso 6 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Neuropsicopedagogia e Psicomotricidade</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana (terças e quintas)</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana
+                                (terças e quintas)</span>
                         </div>
-                        <p class="descricao">Foco em aprendizagem e desenvolvimento cognitivo.</p>
+                        <p class="descricao">Programa inovador para excelência em Neuropsicopedagogia e Psicomotricidade.</p>
                         <div class="tags">
                             <span class="tag">saúde</span>
-                            <span class="tag">reabilitação</span>
+                            <span class="tag">cuidados</span>
                             <span class="tag">desenvolvimento</span>
                         </div>
                         <div class="botoes-curso">
@@ -207,11 +247,13 @@
                         </div>
                     </div>
 
-                    <!-- Curso 7 -->                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>                        <h3>Psicologia Escolar e Educacional</h3>
+                    <!-- Curso 7 -->
+                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>
+                        <h3>Psicologia Escolar e Educacional</h3>
                         <div class="info-curso">
                             <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas aos sábados quinzenalmente
- </span>
+                            </span>
                         </div>
                         <p class="descricao">Foco em desenvolvimento educacional e psicológico.</p>
                         <div class="tags">
@@ -232,6 +274,11 @@
             </div>
         </section>
 
+        <div class="conteudo" style="margin-top: 50px;">
+            <div class="mecimg">
+                <img src="images/selo-e-mec.png">
+            </div>
+        </div>
     </main>
     <?php 
 include_once "navfoot/footer.php"

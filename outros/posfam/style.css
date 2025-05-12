@@ -521,6 +521,12 @@ main {
     height: 50px;
 }
 
+.mecimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
 /* Cursos Section Styling ------------------------------------------------------------------------------------------------- */
 .cursos-section {
