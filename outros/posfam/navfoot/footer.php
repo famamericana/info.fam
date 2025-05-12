@@ -3,7 +3,7 @@
     <div class="footer">
         <div class="footer_design">
             <div class="primeiro">
-                <img src="../images/logo_fam.svg">
+                <img src="images/logo_fam.svg">
             </div>
             <div class="segundo">
                 <div class="titulos_footer">Links</div>
@@ -53,7 +53,7 @@
                 <span class="créditos_eu">
                     <p style="color: rgb(182, 203, 230);">Feito por </p>
                     <a target="_blank" href="https://www.nikkoin.art">
-                        <img src="footer/Marca_NH.svg">
+                        <img src="images/Marca_NH.svg">
                     </a>
                 </span>
             </div>

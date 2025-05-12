@@ -144,7 +144,7 @@ main {
     background-color: var(--bolas2);
     width: 100px;
     height: 100px;
-    bottom: 180px;
+    bottom: 500px;
     left: 0px;
     animation: flutuar 10s infinite alternate-reverse;
 }
@@ -187,9 +187,9 @@ main {
 
 .bola-7 {
     background-color: var(--bolas);
-    width: 80px;
-    height: 80px;
-    bottom: 0px;
+    width: 200px;
+    height: 200px;
+    bottom: 600px;
     right: 0px;
     animation: flutuar 14s infinite alternate;
 }
@@ -1275,5 +1275,10 @@ main {
       border-top: 1px solid #f9e20f;
       
   }
+
+  }
+
+  footer .primeiro{
+    filter: invert(100%) sepia(51%) saturate(2%) hue-rotate(348deg) brightness(105%) contrast(101%);
 
   }
