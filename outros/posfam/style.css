@@ -1484,3 +1484,32 @@ footer .primeiro {
         width: 100%;
     }
 }
+
+
+/*whatsapp ///////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.whatsapp-float {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    background-color: #25d366;
+    color: #fff;
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    text-decoration: none;
+    z-index: 9999;
+    transition: all 0.3s;
+}
+
+.whatsapp-float i {
+    margin-bottom: 2px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.10);
+}

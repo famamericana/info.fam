@@ -16,6 +16,10 @@
 <body>
 
     <?php include_once "navfoot/navbar.php"; ?>
+    
+    <a href="https://api.whatsapp.com/send?phone=5519996348297" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <div class="bola-container">
         <!-- Bolas decorativas de fundo distribuídas por toda a página -->
