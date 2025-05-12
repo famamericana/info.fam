@@ -20,7 +20,6 @@
         <ul class="nav-menu" id="nav-menu">
             <li><a target="_blank" href="https://www.fam.br/" class="nav-link">FAM.br</a></li>
             <li><a target="_blank" href="https://www.fam.br/cursos" class="nav-link">Todos os cursos</a></li>
-            <li><a target="_blank" href="https://info.fam.br/" class="nav-link">Info.FAM</a></li>
 
         </ul>
     </div>
