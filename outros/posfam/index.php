@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pós-Graduação FAM</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="script.js" defer></script>
     <link rel="icon" href="images/famlogo.png" type="image/x-icon">
@@ -16,7 +16,7 @@
 <body>
 
     <?php include_once "navfoot/navbar.php"; ?>
-    
+
     <a href="https://api.whatsapp.com/send?phone=5519996348297" target="_blank" class="whatsapp-float">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -72,12 +72,10 @@
                 <p class="section-desc">Escolha entre diversos cursos de pós-graduação para impulsionar sua carreira</p>
 
                 <div class="cards-container">
-                    <!-- Curso 8 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Semipresencial</span>
-                        <h3>Biologia da Conservação</h3>
+                    <!-- Curso 8 -->                    <div class="card-curso">
+                        <span class="modalidade">Semipresencial</span>                        <h3>Biologia da Conservação</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> 3 aulas por mês - 24 meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos)</span>
                         </div>
                         <p class="descricao">Especialização em preservação e manejo sustentável da biodiversidade.</p>
                         <div class="tags">
@@ -114,12 +112,10 @@
                         </div>
                     </div>-->
 
-                    <!-- Curso 2 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Semipresencial</span>
-                        <h3>MBA em Finanças, Investimentos e Banking</h3>
+                    <!-- Curso 2 -->                    <div class="card-curso">
+                        <span class="modalidade">Semipresencial</span>                        <h3>MBA em Finanças, Investimentos e Banking</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais - 18 meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais (sextas e sábados)</span>
                         </div>
                         <p class="descricao">Especialização em finanças corporativas e investimentos.</p>
                         <div class="tags">
@@ -135,13 +131,10 @@
                         </div>
                     </div>
 
-                    <!-- Curso 3 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>
-                        <h3>Marketing e Negócios</h3>
+                    <!-- Curso 3 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>                        <h3>Marketing e Negócios</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Duas vezes por semana - 18
-                                meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana (terças e quintas)</span>
                         </div>
                         <p class="descricao">Foco em gestão de marketing e desenvolvimento de negócios.</p>
                         <div class="tags">
@@ -157,12 +150,10 @@
                         </div>
                     </div>
 
-                    <!-- Curso 4 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>
-                        <h3>Medicina Equina</h3>
+                    <!-- Curso 4 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>                        <h3>Medicina Equina</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> 3 aulas por mês - 24 meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos) </span>
                         </div>
                         <p class="descricao">Especialização no cuidado e tratamento de equinos.</p>
                         <div class="tags">
@@ -178,12 +169,10 @@
                         </div>
                     </div>
 
-                    <!-- Curso 5 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>
-                        <h3>Medicina de Animais Silvestres e Exóticos</h3>
+                    <!-- Curso 5 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>                        <h3>Medicina de Animais Silvestres e Exóticos</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> 3 aulas por mês - 24 meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas mensais (sextas, sábados e domingos) </span>
                         </div>
                         <p class="descricao">Cuidado e estudo de espécies nacionais e exóticas.</p>
                         <div class="tags">
@@ -199,12 +188,10 @@
                         </div>
                     </div>
 
-                    <!-- Curso 6 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>
-                        <h3>Neuropsicopedagogia Clínica e Psicomotricidade</h3>
+                    <!-- Curso 6 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>                        <h3>Neuropsicopedagogia Clínica e Psicomotricidade</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais - 24 Meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas duas vezes por semana (terças e quintas)</span>
                         </div>
                         <p class="descricao">Foco em aprendizagem e desenvolvimento cognitivo.</p>
                         <div class="tags">
@@ -220,12 +207,10 @@
                         </div>
                     </div>
 
-                    <!-- Curso 7 -->
-                    <div class="card-curso">
-                        <span class="modalidade">Presencial</span>
-                        <h3>Psicologia Escolar e Educacional</h3>
+                    <!-- Curso 7 -->                    <div class="card-curso">
+                        <span class="modalidade">Presencial</span>                        <h3>Psicologia Escolar e Educacional</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais - 24 Meses</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas aos sábados </span>
                         </div>
                         <p class="descricao">Foco em desenvolvimento educacional e psicológico.</p>
                         <div class="tags">
