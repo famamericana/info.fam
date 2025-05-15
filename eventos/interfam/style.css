@@ -47,7 +47,7 @@ header {
     flex-direction: column;
     position: relative;
     width: 100%;
-    height: calc(100dvh - 300px);
+    height: calc(100dvh - 250px);
     margin: 0 auto;
     box-sizing: border-box;
     z-index: 1;
@@ -93,7 +93,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('images/InterFAMalunos.jpg');
+    background-image: url('images/InterFAMalunos1.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
