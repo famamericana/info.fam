@@ -2,7 +2,7 @@
 
 :root {
     /* Cores */
-    --cordoeventoatual: #79a744;
+    --cordoeventoatual: #e53888;
 
     /* Tipografia */
     --primary-font: 'Source Sans 3', sans-serif;
@@ -320,15 +320,15 @@ main {
 }
 
 .umevento {
-    background-color: #173e70;
+    background-color:#79a744 ;
 }
 
 .doisevento {
-    background-color: #3eb288;
+    background-color: #173e70;
 }
 
 .tresevento {
-    background-color: #e53888;
+    background-color: #3eb288;
 }
 
 #headerCarousel .carousel-item {
