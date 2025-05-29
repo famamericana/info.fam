@@ -4,6 +4,7 @@
     "educacao": "Educação",
     "comunicacao": "Comunicação",
     "gestao": "Gestão",
+    "contabeis": "Contábeis",
 
 };
 
