@@ -22,8 +22,11 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-body {
+*{
     font-family: 'Source Sans 3', sans-serif;
+}
+
+body {
     color: #333;
     overflow-x: hidden;
     margin: 0;
@@ -41,6 +44,9 @@ body {
 }
 
 .logoo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
   max-width: 400px;
 }
@@ -119,7 +125,7 @@ body {
     margin-top: 0;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #45b7e5;
+    color: #f9e20f;
 }
 
 .date-info p {
@@ -286,17 +292,21 @@ body {
 
 .btn {
     display: inline-block;
-    padding: 1rem 2rem;
-    background: #1b3556;
+    padding: 10px 20px;
+    background: #45b7e5;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    transition: transform 0.3s ease;}
+    transition: all 0.3s ease;
+    border:  2px solid #45b7e5;
+text-transform: uppercase;
+}
 
 .btn:hover {
     transform: translateY(-3px);
-    background:  #45b7e5;
+    border:  2px solid #f9e20f;
+    background: transparent;
 
 }
 

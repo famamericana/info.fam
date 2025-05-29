@@ -24,17 +24,17 @@
 
 <body>
     <div id="Navbar"></div>
-
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="logoo">
                     <img src="LUDIFAM.svg" alt="LudiFAM Logo" class="hero-logo">
+                    <a href="#" class="btn">Confirmar Presença</a>
                 </div>
                 <div class="date-info">
                     <h2>31 de Maio</h2>
-                    <p><i class="fa-solid fa-location-dot"></i> <strong>Local:</strong> FAM | Portaria 5</p>
-                    <p><i class="fa-solid fa-clock"></i> <strong>Horário:</strong> 9h às 12h</p>
+                    <p><i class="fa-solid fa-location-dot"></i>  FAM | Portaria 5</p>
+                    <p><i class="fa-solid fa-clock"></i> 9h às 12h</p>
 
                 </div>
             </div>
@@ -142,23 +142,32 @@
                     <p><em>Participação: alunos que apresentaram no primeiro horário</em></p>
                 </div>
             </div>
+
         </div>
+
     </section>
 
 
-    <section class="cta-section">
-        <div class="container">
-
-            <a href="#" class="btn">Confirmar Presença</a>
+    <div class="textooelike">
+        <div class="textoinfofam">
+            Curta se achou a pagina útil e acompanhe <a href="https://info.fam.br"><b>Info.FAM</b></a>
+            </p>
         </div>
-    </section>
+        <div class="CountLike" id="LikeCountLudiFAM">
+            <button class="button button1">
+                <i class="fa fa-heart"></i> <span class="counterStat">...</span>
+            </button>
+        </div>
+    </div>
+
 
     <div id="meuFooter"></div>
     <div id="BotaoTopo"></div>
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="/codigos-gerais/likesbotão/likes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
 
