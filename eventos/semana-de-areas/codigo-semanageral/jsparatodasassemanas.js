@@ -5,6 +5,7 @@
     "comunicacao": "Comunicação",
     "gestao": "Gestão",
     "contabeis": "Contábeis",
+    "financas": "Finanças",
 
 };
 
