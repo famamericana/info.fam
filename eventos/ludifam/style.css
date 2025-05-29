@@ -151,7 +151,7 @@ body {
 
 p{
     font-size: 1.1rem;
-    color: #555;
+    color: #2b2b2b;
     margin-bottom: 1.5rem;
 }
 
@@ -160,7 +160,7 @@ p{
 }
 
 strong {
-    color: #1b3556;
+
     font-weight: 700;
 }
 
