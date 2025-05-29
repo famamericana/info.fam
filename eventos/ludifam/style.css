@@ -145,7 +145,7 @@ body {
     background: white;
     padding: 2.5rem;
     border-radius: 15px;
-    border: 1px solid #45b7e5;
+    border: 1px solid #56C0FF;
     margin-bottom: 2rem;
 }
 
@@ -277,7 +277,7 @@ strong {
 
 
 .timeline-time {
-    background: #45b7e5;
+    background: #56C0FF;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -299,7 +299,7 @@ strong {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #45b7e5;
+    border: 1px solid #56C0FF;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -330,7 +330,7 @@ strong {
 }
 
 .alert-box {
-    border: 1px solid #45b7e5;
+    border: 1px solid #56C0FF;
     padding: 5px 2rem;
     border-radius: 10px;
     width: 100%;
@@ -369,7 +369,7 @@ strong {
 }
 
 .btn:hover {
-    border: 2px solid #45b7e5;
+    border: 2px solid #56C0FF;
     background: transparent;
     color: white;
 
@@ -384,7 +384,7 @@ strong {
 }
 
 .flex-item {
-    background-color: #45b7e5;
+    background-color: #56C0FF;
     padding: 10px;
     margin: 5px;
     color: white;
