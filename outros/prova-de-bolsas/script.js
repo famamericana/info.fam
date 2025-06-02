@@ -113,7 +113,7 @@ $(document).ready(function () {
 });
 
 // Data alvo
-const targetDate = new Date('2025-01-19T14:00:00'); // Dia 30 de junho às 14:00 (2 da tarde)
+const targetDate = new Date('2025-07-09T09:00:00'); // Dia 9 de julho às 9:00
 
 function updateCountdown() {
   const currentDate = new Date();
@@ -130,8 +130,8 @@ function updateCountdown() {
 
   // Condições para exibir mensagens personalizadas
   if (daysLeft === 0) {
-    if (currentDate.getHours() < 14) {
-      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 13h30 e a prova começa às 14:00.";
+    if (currentDate.getHours() < 9) {
+      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 8h30 e a prova começa às 9:00.";
     } else {
       document.getElementById("countdown").textContent = "A prova já começou ou está para terminar!";
     }
