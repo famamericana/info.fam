@@ -635,3 +635,8 @@ input:valid:not(:placeholder-shown) {
 }
 
 
+.botaoparticipar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
