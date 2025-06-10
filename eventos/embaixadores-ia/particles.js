@@ -26,9 +26,9 @@ ParticleApp.setup = function() {
   
   this.stepCount = 0;
   this.particles = [];
-  this.lifespan = 800;
+  this.lifespan = 500;
   this.popPerBirth = 1;
-  this.maxPop = 150; // Reduced for better performance
+  this.maxPop = 10; // Reduced for better performance
   this.birthFreq = 3;
   this.dataToImageRatio = 1;
 
