@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(255,255,255,0.7);
+  
 }
 
 .header-content {
@@ -20,25 +20,25 @@
     padding: 60px 20px;
     min-height: 300px;
     justify-content: center;
+    width: 100%;
 }
 
 .header-content h1 {
-    color: white;
+    color: #000000;
     font-size: 3em;
     font-weight: 700;
     text-align: center;
     margin: 0 0 20px 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     animation: fadeInUp 1s ease-out;
 }
 
 .header-content p {
-    color: white;
+    color: #56C0FF;
     font-size: 1.2em;
     text-align: center;
     margin: 0 0 30px 0;
     max-width: 600px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+   
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
