@@ -23,28 +23,22 @@ ParticleApp.setup = function() {
   
   this.xC = this.width / 2;
   this.yC = this.height / 2;
-  
-  this.stepCount = 0;
+    this.stepCount = 0;
   this.particles = [];
-  this.lifespan = 500;
+  this.lifespan = 400;
   this.popPerBirth = 1;
-  this.maxPop = 10; // Reduced for better performance
-  this.birthFreq = 3;
+  this.maxPop = 80; // Increased for more movement
+  this.birthFreq = 2;
   this.dataToImageRatio = 1;
-
   // Build grid
   this.gridSize = 12;
   this.gridSteps = Math.floor(600 / this.gridSize);
   this.grid = [];
   var i = 0;
-  for (var xx = -300; xx < 300; xx += this.gridSize) {
+  for (var xx = -600; xx < 600; xx += this.gridSize) {
     for (var yy = -300; yy < 300; yy += this.gridSize) {
-      var r = Math.sqrt(xx*xx + yy*yy),
-          r0 = 80,
-          field;
-      
-      if (r < r0) field = 255 / r0 * r;
-      else if (r > r0) field = 255 - Math.min(255, (r - r0)/2);
+      // Random field values for more random movement
+      var field = Math.random() * 255;
       
       this.grid.push({
         x: xx,
@@ -137,31 +131,27 @@ ParticleApp.move = function() {
     var index = p.attractor.gridSpotIndex,
         gridSpot = this.grid[index];
     
-    if (Math.random() < 0.4) {
+    if (Math.random() < 0.6) { // Increased probability for more movement
       if (!gridSpot.isEdge) {
         var topIndex = index - 1,
             bottomIndex = index + 1,
             leftIndex = index - this.gridSteps,
             rightIndex = index + this.gridSteps;
-            
-        var neighbors = [
+              var neighbors = [
           this.grid[topIndex],
           this.grid[bottomIndex],
           this.grid[leftIndex],
           this.grid[rightIndex]
         ].filter(spot => spot);
         
-        var chaos = 30;
-        var maxFieldSpot = neighbors.reduce((max, spot) => {
-          var fieldValue = spot.field + chaos * Math.random();
-          return fieldValue > (max.field + chaos * Math.random()) ? spot : max;
-        }, neighbors[0]);
+        // More random movement - just pick a random neighbor
+        var randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
         
-        if (maxFieldSpot && (maxFieldSpot.busyAge == 0 || maxFieldSpot.busyAge > 12)) {
+        if (randomNeighbor && (randomNeighbor.busyAge == 0 || randomNeighbor.busyAge > 12)) {
           p.ageSinceStuck = 0;
           p.attractor.oldIndex = index;
-          p.attractor.gridSpotIndex = maxFieldSpot.spotIndex;
-          gridSpot = maxFieldSpot;
+          p.attractor.gridSpotIndex = randomNeighbor.spotIndex;
+          gridSpot = randomNeighbor;
           gridSpot.busyAge = 1;
         } else {
           p.ageSinceStuck++;
