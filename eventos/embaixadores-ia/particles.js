@@ -25,7 +25,7 @@ ParticleApp.setup = function() {
   this.yC = this.height / 2;
     this.stepCount = 0;
   this.particles = [];
-  this.lifespan = 100;
+  this.lifespan = 200;
   this.popPerBirth = 1;
   this.maxPop = 80; // Increased for more movement
   this.birthFreq = 2;
@@ -194,7 +194,7 @@ ParticleApp.move = function() {
 ParticleApp.initDraw = function() {
   this.ctx.beginPath();
   this.ctx.rect(0, 0, this.width, this.height);
-  this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  this.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   this.ctx.fill();
   this.ctx.closePath();
 };
@@ -205,7 +205,7 @@ ParticleApp.draw = function() {
   // Clear trails more effectively
   this.ctx.beginPath();
   this.ctx.rect(0, 0, this.width, this.height);
-  this.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'; // Increased opacity to clear trails faster
+  this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // darker clear
   this.ctx.fill();
   this.ctx.closePath();
   
