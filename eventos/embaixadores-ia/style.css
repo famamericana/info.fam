@@ -1,19 +1,70 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Particle animation styles */
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(255,255,255,0.7);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 300px;
+    justify-content: center;
+}
+
+.header-content h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.header-content p {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0 0 30px 0;
+    max-width: 600px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* General styles */
 body {
     margin: 0;
     padding: 0;
-  font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f9e20f;
-    padding: 20px;
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+   
 }
 
 main {
@@ -22,54 +73,87 @@ main {
     margin: 0 auto;
 }
 
-section {
-}
-
-article {
-}
-
-h1 {
-}
-
 h2 {
+    color: #199eae;
+    margin-bottom: 20px;
 }
 
 h3 {
+    color: #333;
+    margin-bottom: 15px;
 }
 
 h4 {
+    color: #199eae;
+    margin-bottom: 10px;
 }
 
 p {
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 a {
+    color: #199eae;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 ul {
+    padding-left: 20px;
 }
 
 li {
+    margin-bottom: 8px;
 }
 
 /* Specific classes */
 .participantes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
 }
 
-.professores {
-}
-
-.alunos {
+.professores, .alunos {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #199eae;
 }
 
 .prazos {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #f9e20f;
 }
 
 .beneficio-exclusivo {
+    background: #d1ecf1;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #199eae;
 }
 
-/* Specific IDs */
-#sessao2 {
+@media (max-width: 768px) {
+    .participantes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .header-content h1 {
+        font-size: 2.2em;
+    }
+    
+    .header-content p {
+        font-size: 1.1em;
+    }
 }
 
 .btn {
