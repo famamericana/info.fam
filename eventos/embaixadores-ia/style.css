@@ -65,6 +65,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
+    
 }
 
 header {
@@ -202,50 +203,23 @@ a {
     position: relative;
 }
 
-
-
 .alunos li::before {
     background: #f9e20f;
     color: #333;
 }
 
-.prazos {
-    background: linear-gradient(135deg, rgba(28, 88, 201, 0.1) 0%, rgba(86, 192, 255, 0.1) 100%);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 25px 0;
-
-}
-
-.prazos p {
-    margin: 10px 0;
-    font-weight: 500;
-    color: #333;
-}
-
-.prazos p:first-child {
-
-    font-weight: 600;
-}
 
 .beneficio-exclusivo {
     background: linear-gradient(135deg, rgba(249, 226, 15, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
     border-radius: 12px;
-    padding: 20px;
+    padding: 4px 5px;
     margin: 25px 0;
-    border-left: 5px solid #f9e20f;
     text-align: center;
-}
-
-.beneficio-exclusivo p {
-    margin: 0;
-    font-size: 1.1em;
-    color: #333;
 }
 
 .beneficio-exclusivo strong {
     color: #e67e00;
-    font-size: 1.2em;
+  
 }
 
 @media (max-width: 768px) {
@@ -262,10 +236,6 @@ a {
         font-size: 1.1em;
     }
 
-    .professores,
-    .alunos {
-        padding: 20px;
-    }
 
     .participantes h4 {
         font-size: 1.2em;
@@ -276,16 +246,7 @@ a {
         font-size: 0.9em;
     }
 
-    .prazos,
-    .beneficio-exclusivo {
-        padding: 15px;
-        margin: 20px 0;
-    }
-
-    .beneficio-exclusivo p {
-        font-size: 1em;
-    }
-
+   
     main {
         padding: 15px;
         margin-top: -30px;

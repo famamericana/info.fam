@@ -49,7 +49,7 @@
 .textooelike {
     display: flex;
     gap: 10px;
-    background-color: white;
+   
     max-width: 500px;
     justify-content: center;
     padding: 5px;
