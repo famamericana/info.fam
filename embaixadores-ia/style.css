@@ -132,7 +132,7 @@ header .logo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-
+margin-bottom: -50px;
     padding: 0;
 }
 
@@ -170,17 +170,20 @@ header .logo {
     color: #333;
 }
 
+.alunos li:last-child {
+   padding: 0;
+}
+
 .beneficio-exclusivo {
     background: linear-gradient(135deg, rgba(249, 226, 15, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
     border-radius: 10px;
-    padding: 4px 5px;
-    margin: 25px 0;
-    margin-bottom: -45px;
-    text-align: center;
+    padding: 20px 20px;
+border: 1px solid #f9e20f;
+
 }
 
 .beneficio-exclusivo strong {
-    color: #e67e00;
+    color: #1c58c9;
 
 }
 
