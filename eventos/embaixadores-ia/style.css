@@ -85,7 +85,7 @@ main {
     margin: 0 auto;
     z-index: 2;
     position: relative;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-top: -40px;
     background: 
         radial-gradient(circle at 20% 30%, rgba(86, 192, 255, 0.1) 0%, transparent 50%),
@@ -125,6 +125,8 @@ main::before {
 h2 {
     color: #1c58c9;
     margin-bottom: 20px;
+    border-bottom: 2px solid #56C0FF;
+    padding-bottom: 10px;
 }
 
 h3 {
@@ -167,13 +169,6 @@ a {
     position: relative;
     overflow: hidden;
 }
-
-.professores:hover,
-.alunos:hover {
-    transform: translateY(-5px);
-
-}
-
 
 
 .participantes h4 {
@@ -303,7 +298,7 @@ a {
     text-transform: uppercase;
     box-sizing: border-box;
   text-decoration: none;
-
+text-align: center;
 }
 
 .btn:hover {
@@ -315,4 +310,11 @@ a {
 
 .btn:hover {
     text-decoration: none !important;
+}
+
+.regulamento {
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    text-align: center;
 }
