@@ -238,10 +238,17 @@ header .logo {
     text-align: center;
 }
 
+
+header .btn:hover {
+    color: white;
+   
+
+}
+
 .btn:hover {
     border: 2px solid #56C0FF;
     background: transparent;
-    color: white;
+   
 
 }
 
@@ -273,4 +280,22 @@ header .logo {
 .regulamento a:hover {
     color: white !important;
     border: 2px solid #f9e20f;
+}
+
+#inscreva-se{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.inscreva-se{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#sessao2 article{
+    margin-bottom: 50px;
 }
