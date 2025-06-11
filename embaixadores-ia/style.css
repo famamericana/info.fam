@@ -299,3 +299,25 @@ header .btn:hover {
 #sessao2 article{
     margin-bottom: 50px;
 }
+
+/* Estilo para substituir bolinhas por ícones de check na seção Benefícios do Programa */
+article h3 + ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+article h3 + ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+}
+
+article h3 + ul li:before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #56C0FF;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
