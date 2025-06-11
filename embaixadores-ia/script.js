@@ -1,6 +1,3 @@
-
-
-
 // Carregando o navbar e configurando o dropdown
 $(document).ready(function () {
   $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
