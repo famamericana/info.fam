@@ -98,59 +98,30 @@ main {
     overflow: hidden;
 }
 
-main::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg at 50% 50%,
-            transparent 0deg,
-            rgba(86, 192, 255, 0.03) 60deg,
-            transparent 120deg,
-            rgba(249, 226, 15, 0.03) 180deg,
-            transparent 240deg,
-            rgba(86, 192, 255, 0.03) 300deg,
-            transparent 360deg);
-    animation: rotate 20s linear infinite;
-    z-index: -1;
-}
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-h2 {
+main h2 {
     color: #1c58c9;
     margin-bottom: 20px;
     border-bottom: 2px solid #56C0FF;
     padding-bottom: 10px;
 }
 
-h3 {
+main h3 {
     color: #333;
     margin-bottom: 15px;
 }
 
-h4 {
+main h4 {
     color: #56C0FF;
     margin-bottom: 10px;
 }
 
-a {
+main a, header a {
     color: #56C0FF;
     text-decoration: none;
 }
 
-.logo {
+header .logo {
     max-width: 500px;
     margin-bottom: 15px;
 }
