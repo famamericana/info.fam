@@ -79,6 +79,9 @@ header {
     z-index: 1;
 }
 
+main h3{
+text-align: center;
+}
 
 main {
     padding: 20px;
@@ -87,28 +90,21 @@ main {
     z-index: 2;
     position: relative;
     border-radius: 15px;
-    margin-top: -40px;
+    margin-top: -20px;
     background:
         radial-gradient(circle at 20% 30%, rgba(86, 192, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(249, 226, 15, 0.1) 0%, transparent 50%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.8) 100%);
     backdrop-filter: blur(20px) saturate(180%);
-    border: 2px solid rgb(255, 255, 255);
-
     overflow: hidden;
 }
 
 
-main h2 {
+main h2, .foradomain h2  {
     color: #1c58c9;
     margin-bottom: 20px;
     border-bottom: 2px solid #56C0FF;
     padding-bottom: 10px;
-}
-
-main h3 {
-    color: #333;
-    margin-bottom: 15px;
 }
 
 main h4 {
@@ -147,16 +143,6 @@ header .logo {
     overflow: hidden;
 }
 
-
-.participantes h4 {
-    color: #333;
-    font-size: 1.4em;
-    font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    text-align: center;
-}
-
 .participantes ul {
     list-style: none;
     padding: 0;
@@ -181,10 +167,10 @@ header .logo {
 
 .beneficio-exclusivo {
     background: linear-gradient(135deg, rgba(249, 226, 15, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 4px 5px;
     margin: 25px 0;
-    margin-bottom: -40px;
+    margin-bottom: -45px;
     text-align: center;
 }
 
@@ -198,9 +184,6 @@ header .logo {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
-  
-   
  
 }
 
@@ -221,15 +204,11 @@ header .logo {
 
 header .btn:hover {
     color: white;
-   
-
 }
 
 .btn:hover {
     border: 2px solid #56C0FF;
     background: transparent;
-   
-
 }
 
 .btn:hover {
@@ -270,6 +249,7 @@ header .btn:hover {
 }
 
 .inscreva-se{
+    margin: 40px 0 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -281,18 +261,18 @@ header .btn:hover {
 }
 
 /* Estilo para substituir bolinhas por ícones de check na seção Benefícios do Programa */
-article h3 + ul {
+.foradomain ul {
     list-style: none;
     padding-left: 0;
 }
 
-article h3 + ul li {
+.foradomain ul li {
     position: relative;
     padding-left: 25px;
     margin-bottom: 8px;
 }
 
-article h3 + ul li:before {
+.foradomain ul li:before {
     content: '\f00c';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -300,4 +280,12 @@ article h3 + ul li:before {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+main p{
+    text-indent: 10px;
+}
+
+.foradomain p{
+    text-indent: 10px;
 }
