@@ -32,28 +32,25 @@ ParticleApp.setup = function() {
   this.dataToImageRatio = 1;
   // Build grid
   this.gridSize = 12;
-  this.gridSteps = Math.floor(600 / this.gridSize);
+  this.gridStepsX = Math.floor(this.width / this.gridSize);
+  this.gridSteps = Math.floor(this.height / this.gridSize);
   this.grid = [];
   var i = 0;
-  for (var xx = -600; xx < 600; xx += this.gridSize) {
-    for (var yy = -300; yy < 300; yy += this.gridSize) {
-      // Random field values for more random movement
+  for (var ix = 0; ix < this.gridStepsX; ix++) {
+    for (var iy = 0; iy < this.gridSteps; iy++) {
+      var xx = -this.width/2 + ix * this.gridSize;
+      var yy = -this.height/2 + iy * this.gridSize;
       var field = Math.random() * 255;
-      
+      var isEdge = (ix === 0 ? 'left' :
+                    ix === this.gridStepsX - 1 ? 'right' :
+                    iy === 0 ? 'top' :
+                    iy === this.gridSteps - 1 ? 'bottom' : false);
       this.grid.push({
         x: xx,
         y: yy,
         busyAge: 0,
         spotIndex: i,
-        isEdge: (xx == -300 ? 'left' : 
-                 (xx == (-300 + this.gridSize * (this.gridSteps-1)) ? 'right' : 
-                  (yy == -300 ? 'top' : 
-                   (yy == (-300 + this.gridSize *(this.gridSteps-1)) ? 'bottom' : 
-                    false
-                   )
-                  )
-                 )
-                ),
+        isEdge: isEdge,
         field: field
       });
       i++;
