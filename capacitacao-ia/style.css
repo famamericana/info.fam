@@ -94,7 +94,7 @@ header {
 }
 
 main {
-    padding: 20px;
+
 
     margin: 0 auto;
     z-index: 2;
@@ -148,8 +148,8 @@ header .logo {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     position: relative;
-    
- 
+
+
 }
 
 .professores li {
@@ -158,16 +158,16 @@ header .logo {
     padding: 15px 20px;
     border-radius: 10px;
     font-size: 0.95em;
-  
+
     transition: all 0.2s ease;
     position: relative;
 
 }
 
 .professores li:hover {
- background: rgba(255, 255, 255, 0.582);
+    background: rgba(255, 255, 255, 0.582);
     transform: translateY(-2px);
-    border: 1px solid rgba(45, 118, 255, 0.2);
+    border: 2px solid rgba(45, 118, 255, 0.2);
 }
 
 .participantes ul {
@@ -200,21 +200,21 @@ header .logo {
     background: linear-gradient(135deg, rgba(249, 226, 15, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
     border-radius: 10px;
     padding: 20px 20px;
-    border: 1px solid #f9e20f;
+    border: 2px solid #f9e20f;
 }
 
 .beneficio-exclusivo strong {
     color: #1c58c9;
-
 }
 
 .programa-info {
-    background-color: rgba(28, 88, 201, 0.05);
+    background-color: rgba(28, 132, 201, 0.048);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 2px solid rgba(86, 192, 255, 0.2);
+    border: 2px solid rgba(86, 192, 255, 0.1);
     padding-top: 5px !important;
+    margin-bottom: 80px;
 }
 
 .programa-info p:last-child {
@@ -232,7 +232,7 @@ header .logo {
     padding: 15px 20px;
     border-radius: 5px;
     font-size: 1em;
- 
+
     transition: all 0.2s ease;
     position: relative;
 
@@ -249,7 +249,7 @@ header .logo {
 .beneficios-lista li:hover {
     background: rgba(255, 255, 255, 0.582);
     transform: translateY(-2px);
-    border: 1px solid rgba(45, 118, 255, 0.2);
+    border: 2px solid rgba(45, 153, 255, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -293,10 +293,9 @@ header .logo {
 
 
 header .btn:hover {
-    background-color: white;
-    color: #1c58c9;
+
+    color: white;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 header .btn i {
@@ -359,9 +358,7 @@ header .btn i {
     width: 100%;
 }
 
-#sessao2 article {
-    margin-bottom: 50px;
-}
+
 
 /* Estilo para substituir bolinhas por ícones de check na seção Benefícios do Programa */
 .foradomain ul {
@@ -373,7 +370,7 @@ header .btn i {
     position: relative;
     padding-left: 25px;
     margin-bottom: 8px;
-    border: 1px solid rgba(86, 192, 255, 0.2);
+    border: 2px solid rgba(86, 192, 255, 0.1);
 }
 
 main p {
