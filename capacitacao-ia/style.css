@@ -148,11 +148,8 @@ header .logo {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(28, 88, 201, 0.05) 0%, rgba(86, 192, 255, 0.05) 100%);
-    border: 2px solid rgba(86, 192, 255, 0.2);
-    padding: 15px;
-    padding-bottom: 10px;
+    
+ 
 }
 
 .professores li {
