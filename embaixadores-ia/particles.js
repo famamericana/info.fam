@@ -97,9 +97,9 @@ ParticleApp.birth = function () {
     x = gridSpot.x, y = gridSpot.y;
   // Use only 3 specific colors instead of random colors
   var colorSet = [
-    { hue: 210, sat: 80, lum: 40 },  // Blue
-    { hue: 54, sat: 95, lum: 51 },  // Yellow
-    { hue: 340, sat: 75, lum: 50 }   // Pink/Red
+    { hue: 210, sat: 80, lum: 40 },  
+    { hue: 197, sat: 75, lum: 58 }, 
+    { hue: 186, sat: 74, lum: 39 }  
   ];
 
   var selectedColor = colorSet[Math.floor(Math.random() * 3)];
