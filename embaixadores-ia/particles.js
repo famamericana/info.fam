@@ -98,8 +98,8 @@ ParticleApp.birth = function () {
   // Use only 3 specific colors instead of random colors
   var colorSet = [
     { hue: 210, sat: 80, lum: 40 },  // Blue
-    { hue: 140, sat: 70, lum: 30 },  // Green
-    { hue: 340, sat: 75, lum: 30 }   // Pink/Red
+    { hue: 54, sat: 95, lum: 51 },  // Yellow
+    { hue: 340, sat: 75, lum: 50 }   // Pink/Red
   ];
 
   var selectedColor = colorSet[Math.floor(Math.random() * 3)];
