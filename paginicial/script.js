@@ -258,3 +258,218 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 1000); // Atraso de 1 segundo para garantir o carregamento completo do DOM
 });
+
+// SEARCH FUNCTIONALITY ---------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearch');
+    const searchResults = document.getElementById('searchResults');
+    let allGridItems = [];
+    let searchTimeout;
+
+    // Função para atualizar a lista de cards
+    function updateGridItemsList() {
+        // Captura todos os grid-items das seções principais, exceto os dos resultados da busca
+        const mainSections = document.querySelectorAll('section .grid-container:not(.search-results .grid-container)');
+        allGridItems = [];
+        
+        mainSections.forEach(container => {
+            const items = container.querySelectorAll('.grid-item');
+            items.forEach(item => {
+                if (!item.closest('.search-results')) {
+                    allGridItems.push(item);
+                }
+            });
+        });
+    }
+
+    // Aguarda um pouco para garantir que todos os cards foram carregados
+    setTimeout(() => {
+        updateGridItemsList();
+        // Atualiza a lista a cada 3 segundos para capturar mudanças dinâmicas
+        setInterval(updateGridItemsList, 3000);
+    }, 2000);
+
+    function performSearch(query) {
+        if (!query.trim()) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        const searchTerm = query.toLowerCase();
+        
+        const filteredItems = allGridItems.filter(item => {
+            const title = item.querySelector('h3')?.textContent?.toLowerCase() || '';
+            const description = item.querySelector('p')?.textContent?.toLowerCase() || '';
+            
+            return title.includes(searchTerm) || description.includes(searchTerm);
+        });
+
+        displaySearchResults(filteredItems, query);
+    }
+
+    function displaySearchResults(items, query) {
+        searchResults.innerHTML = '';
+
+        if (items.length === 0) {
+            searchResults.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <p>Nenhum resultado encontrado para "${query}"</p>
+                </div>
+            `;
+        } else {
+            // Adicionar contador de resultados
+            const resultsHeader = document.createElement('div');
+            resultsHeader.className = 'search-results-header';
+            resultsHeader.innerHTML = `
+                <span class="results-count">${items.length} resultado${items.length !== 1 ? 's' : ''} encontrado${items.length !== 1 ? 's' : ''}</span>
+            `;
+            searchResults.appendChild(resultsHeader);
+
+            const resultsContainer = document.createElement('div');
+            resultsContainer.className = 'grid-container';
+            
+            items.forEach(item => {
+                // Criar um novo elemento ao invés de clonar para evitar duplicação
+                const resultItem = document.createElement('a');
+                resultItem.className = 'grid-item';
+                resultItem.href = item.href || '#';
+                resultItem.target = item.target || '_self';
+                
+                // Extrair dados do item original
+                const img = item.querySelector('img');
+                const title = item.querySelector('h3');
+                const description = item.querySelector('p');
+                const likeButton = item.querySelector('.CountLike');
+                
+                // Construir o HTML do resultado
+                let resultHTML = '';
+                
+                if (img) {
+                    resultHTML += `<img src="${img.src}" alt="${img.alt || ''}" loading="lazy">`;
+                }
+                
+                if (title) {
+                    const highlightedTitle = highlightText(title.textContent, query);
+                    resultHTML += `<h3>${highlightedTitle}</h3>`;
+                }
+                
+                if (description) {
+                    const highlightedDesc = highlightText(description.textContent, query);
+                    resultHTML += `<p>${highlightedDesc}</p>`;
+                }
+                
+                if (likeButton) {
+                    // Criar uma versão simplificada do botão de like para os resultados
+                    const likeCount = likeButton.querySelector('.counterStat')?.textContent || '0';
+                    resultHTML += `
+                        <div class="search-like-display">
+                            <i class="fa fa-heart"></i> ${likeCount}
+                        </div>
+                    `;
+                }
+                
+                resultItem.innerHTML = resultHTML;
+                resultsContainer.appendChild(resultItem);
+            });
+            
+            searchResults.appendChild(resultsContainer);
+        }
+
+        searchResults.style.display = 'block';
+    }
+
+    function highlightText(text, query) {
+        if (!query.trim()) return text;
+        
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark style="background-color: #ffeb3b; padding: 1px 2px; border-radius: 2px;">$1</mark>');
+    }
+
+    function clearSearch() {
+        searchInput.value = '';
+        searchResults.style.display = 'none';
+        clearSearchBtn.style.display = 'none';
+        searchInput.focus();
+    }
+
+    // Variável para controlar se os resultados devem ficar abertos
+    let keepResultsOpen = false;
+
+    // Event listeners
+    searchInput.addEventListener('input', function() {
+        const query = this.value;
+        
+        // Mostra/esconde o botão de limpar
+        clearSearchBtn.style.display = query ? 'block' : 'none';
+        
+        // Debounce para melhor performance
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 300);
+    });
+
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            clearSearch();
+        }
+        if (e.key === 'Enter') {
+            // Se houver resultados, clica no primeiro
+            const firstResult = searchResults.querySelector('.grid-item');
+            if (firstResult && firstResult.href) {
+                window.open(firstResult.href, firstResult.target || '_self');
+                clearSearch();
+            }
+        }
+    });
+
+    clearSearchBtn.addEventListener('click', clearSearch);
+
+    // Controle mais robusto para manter resultados visíveis
+    searchResults.addEventListener('mouseenter', function() {
+        keepResultsOpen = true;
+    });
+
+    searchResults.addEventListener('mouseleave', function() {
+        keepResultsOpen = false;
+    });
+
+    searchInput.addEventListener('focus', function() {
+        keepResultsOpen = true;
+    });
+
+    searchInput.addEventListener('blur', function() {
+        // Só fechar se não estiver com mouse sobre os resultados
+        setTimeout(() => {
+            if (!keepResultsOpen) {
+                searchResults.style.display = 'none';
+            }
+        }, 200);
+    });
+
+    // Fechar resultados quando clicar fora da área de busca
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-container')) {
+            keepResultsOpen = false;
+            searchResults.style.display = 'none';
+        }
+    });
+
+    // Reabrir resultados quando focar no input (se houver texto)
+    searchInput.addEventListener('focus', function() {
+        if (this.value.trim()) {
+            performSearch(this.value);
+        }
+    });
+
+    // Permitir cliques nos resultados
+    searchResults.addEventListener('click', function(e) {
+        const clickedItem = e.target.closest('.grid-item');
+        if (clickedItem && clickedItem.href) {
+            // Permitir navegação normal
+            clearSearch();
+        }
+    });
+});
