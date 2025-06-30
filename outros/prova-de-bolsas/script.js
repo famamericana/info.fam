@@ -113,7 +113,7 @@ $(document).ready(function () {
 });
 
 // Data alvo
-const targetDate = new Date('2025-07-09T09:00:00'); // Dia 9 de julho às 9:00
+const targetDate = new Date('2025-07-06T09:00:00'); // Dia 6 de julho às 9:00
 
 function updateCountdown() {
   const currentDate = new Date();
@@ -126,7 +126,7 @@ function updateCountdown() {
 
   // Calcula o tempo restante
   const timeLeft = targetDate - currentDate;
-  const daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.floor para calcular apenas dias completos
+  const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24)); // Usamos Math.ceil para arredondar para cima
 
   // Condições para exibir mensagens personalizadas
   if (daysLeft === 0) {
