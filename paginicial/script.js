@@ -341,7 +341,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const img = item.querySelector('img');
                 const title = item.querySelector('h3');
                 const description = item.querySelector('p');
-                const likeButton = item.querySelector('.CountLike');
                 
                 // Construir o HTML do resultado
                 let resultHTML = '';
@@ -360,15 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     resultHTML += `<p>${highlightedDesc}</p>`;
                 }
                 
-                if (likeButton) {
-                    // Criar uma versão simplificada do botão de like para os resultados
-                    const likeCount = likeButton.querySelector('.counterStat')?.textContent || '0';
-                    resultHTML += `
-                        <div class="search-like-display">
-                            <i class="fa fa-heart"></i> ${likeCount}
-                        </div>
-                    `;
-                }
+              
                 
                 resultItem.innerHTML = resultHTML;
                 resultsContainer.appendChild(resultItem);
