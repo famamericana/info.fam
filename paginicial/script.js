@@ -3,7 +3,9 @@ $(document).ready(function () {
     $("#meuFooter").load("/codigos-gerais/footer/footer.html");
 });
 
-
+$(document).ready(function () {
+    $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
+});
 
 // Função para criar um cookie
 function createCookie(name, value, days) {
