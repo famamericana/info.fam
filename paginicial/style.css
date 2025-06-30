@@ -53,7 +53,7 @@ section {
     align-items: center;
     background: white;
     border: 1px solid #d5dcf1;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 12px 20px;
     transition: all 0.3s ease;
 }
@@ -63,7 +63,7 @@ section {
 }
 
 .search-icon {
-    color: #999;
+    color: #f9e20f;
     margin-right: 10px;
     font-size: 16px;
 }
