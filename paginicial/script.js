@@ -122,18 +122,36 @@ var dCounters = document.querySelectorAll('.CountLike');
 //MAIS RELEVANTES ----------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    function updateLikesValuesAndSort() {
+    let lastSortState = new Map(); // Armazena o último estado dos likes
+    let sortTimeout = null; // Para debounce
+    let isInitialized = false;
+
+    function updateLikesValuesAndSort(forceUpdate = false) {
         const gridItems = document.querySelectorAll('.grid-item');
         let itemData = [];
+        let hasChanges = forceUpdate;
 
         gridItems.forEach((gridItem, index) => {
             const counterStat = gridItem.querySelector('.counterStat');
             if (counterStat) {
                 const likesCount = parseInt(counterStat.textContent || 0);
                 const isNovidade = gridItem.classList.contains('new');
-                itemData.push({ element: gridItem, likesCount, index, isNovidade });
+                const itemKey = gridItem.querySelector('h3')?.textContent || index;
+                
+                // Verificar se houve mudanças
+                if (!lastSortState.has(itemKey) || lastSortState.get(itemKey) !== likesCount) {
+                    hasChanges = true;
+                    lastSortState.set(itemKey, likesCount);
+                }
+                
+                itemData.push({ element: gridItem, likesCount, index, isNovidade, key: itemKey });
             }
         });
+
+        // Só reordena se houver mudanças reais ou for a primeira execução
+        if (!hasChanges && isInitialized) {
+            return;
+        }
 
         // Classifique os elementos com base na quantidade de likesCount em ordem decrescente
         itemData.sort((a, b) => b.likesCount - a.likesCount);
@@ -163,10 +181,41 @@ document.addEventListener('DOMContentLoaded', function () {
         restItems.forEach((element) => {
             todosContainer.appendChild(element);
         });
+
+        isInitialized = true;
     }
 
-    setInterval(updateLikesValuesAndSort, 1000);
-    updateLikesValuesAndSort();
+    // Função com debounce para evitar atualizações muito frequentes
+    function debouncedSort() {
+        if (sortTimeout) {
+            clearTimeout(sortTimeout);
+        }
+        sortTimeout = setTimeout(() => {
+            updateLikesValuesAndSort();
+        }, 500); // Espera 500ms após a última mudança
+    }
+
+    // Executar uma vez no carregamento
+    updateLikesValuesAndSort(true);
+
+    // Observar mudanças nos contadores de likes (mais eficiente que setInterval)
+    const observer = new MutationObserver(function(mutations) {
+        let shouldUpdate = false;
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && 
+                mutation.target.classList.contains('counterStat')) {
+                shouldUpdate = true;
+            }
+        });
+        if (shouldUpdate) {
+            debouncedSort();
+        }
+    });
+
+    // Observar mudanças nos elementos .counterStat
+    document.querySelectorAll('.counterStat').forEach(counter => {
+        observer.observe(counter, { childList: true, subtree: true });
+    });
 });
 
 
@@ -286,8 +335,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // Aguarda um pouco para garantir que todos os cards foram carregados
     setTimeout(() => {
         updateGridItemsList();
-        // Atualiza a lista a cada 3 segundos para capturar mudanças dinâmicas
-        setInterval(updateGridItemsList, 3000);
+        
+        // Observador para detectar mudanças na DOM ao invés de setInterval
+        const gridObserver = new MutationObserver(function(mutations) {
+            let shouldUpdate = false;
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList' && 
+                    (mutation.target.classList.contains('grid-container') || 
+                     mutation.addedNodes.length > 0 || 
+                     mutation.removedNodes.length > 0)) {
+                    shouldUpdate = true;
+                }
+            });
+            if (shouldUpdate) {
+                setTimeout(updateGridItemsList, 100); // Pequeno delay para permitir renderização
+            }
+        });
+
+        // Observar mudanças nos containers de grid
+        document.querySelectorAll('.grid-container').forEach(container => {
+            gridObserver.observe(container, { childList: true, subtree: true });
+        });
     }, 2000);
 
     function performSearch(query) {
