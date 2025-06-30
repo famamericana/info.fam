@@ -233,6 +233,7 @@ header .overlay {
     width: 100%;
     height: 100%;
     padding: 100px;
+    padding-bottom: 110px;
     color: #FFF;
     background-image: linear-gradient(135deg, #00000044 10%, #00000059 100%);
     box-sizing: border-box;
