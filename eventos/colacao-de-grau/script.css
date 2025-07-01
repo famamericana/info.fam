@@ -38,6 +38,10 @@ body {
   overflow-x: hidden;
 }
 
+section h3{
+  margin-top: 40px;
+}
+
 header {
   max-width: var(--container-width);
   background-image: url('images/fundoamarelo.png');
