@@ -61,7 +61,7 @@ main{
     justify-content: center;
 }
 
-.features div{
+.topicos{
     max-width: 205px;
     background-color: rgb(196, 231, 255);
     border-radius: 5px;
