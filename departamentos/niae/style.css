@@ -106,3 +106,18 @@ header img {
   border-radius: 5px;
   padding: 10px;
 }
+
+.logos-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  align-items: center;
+  gap: 30px;
+}
+
+.logos-grid a{
+  max-width: 300px;
+  width: 100%;
+
+}
