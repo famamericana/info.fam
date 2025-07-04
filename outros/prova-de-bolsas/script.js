@@ -131,7 +131,7 @@ function updateCountdown() {
   // Condições para exibir mensagens personalizadas
   if (daysLeft === 0) {
     if (currentDate.getHours() < 9) {
-      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 8h30 e a prova começa às 9:00.";
+      document.getElementById("countdown").textContent = "Hoje é o grande dia! O portão abre às 8h e a prova começa às 9h.";
     } else {
       document.getElementById("countdown").textContent = "A prova já começou ou está para terminar!";
     }
