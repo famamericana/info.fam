@@ -149,3 +149,7 @@ header img {
   max-width: 400px;
   width: 100%;
 }
+
+.logos-container h2{
+  text-align: center;
+}
