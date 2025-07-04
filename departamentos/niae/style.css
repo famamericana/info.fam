@@ -24,88 +24,85 @@
 
 /* Compatibilidade com Firefox */
 html {
- 
+
   scrollbar-color: rgba(0, 0, 0, 0.219) white;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Source Sans 3', sans-serif;
-    background: #e9f7ff;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans 3', sans-serif;
+  background: #e9f7ff;
+  box-sizing: border-box;
 }
 
-header{
-    margin: 0 auto;
-    
-    display: flex;
-    justify-content: center;
+header {
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
 }
 
 header img {
-    max-width: 100%;
-    height: auto;
-    max-width: 300px;
-    padding: 80px 20px;
+  max-width: 100%;
+  height: auto;
+  max-width: 300px;
+  padding: 80px 20px;
 }
 
-.main{
+.main {
   background: white;
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px 0;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px 0;
+  box-sizing: border-box;
 }
 
-.segundomain{
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 80px 20px;
-    border-radius: 20px;
+.segundomain {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
 }
 
-.centralizando{
-
-    max-width: 960px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
+.centralizando {
+  box-sizing: border-box;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-.tresmain{
-   
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: white;
+.tresmain {
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
 }
 
-
-.features{
-    display: flex;
-    gap: 20px;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: center;
+.features {
+  display: flex;
+  gap: 13px;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .features img {
-    max-width: 150px;
- 
- 
+  max-width: 150px;
 }
 
-.topicos{
-    max-width: 205px;
-    background-color: white;
-    border-radius: 5px;
-   padding: 10px;
+.topicos {
+  max-width: 200px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
