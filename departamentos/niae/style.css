@@ -83,9 +83,38 @@ header img {
 }
 
 .tresmain {
+  box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
   background-color: white;
+  position: relative;
+  padding: 30px 20px;
+}
+
+.tresmain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 15'%3E%3Cpolygon points='0,15 15,0 30,15' fill='white'/%3E%3C/svg%3E");
+  background-size: 30px 15px;
+  background-repeat: repeat-x;
+  background-color: #e9f7ff;
+}
+
+.tresmain::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 15'%3E%3Cpolygon points='0,0 15,15 30,0' fill='white'/%3E%3C/svg%3E");
+  background-size: 30px 15px;
+  background-repeat: repeat-x;
+  background-color: #e9f7ff;
 }
 
 .features {
@@ -97,7 +126,8 @@ header img {
 }
 
 .features img {
-  max-width: 150px;
+  max-width: 200px;
+  margin-bottom: -20px;
 }
 
 .topicos {
