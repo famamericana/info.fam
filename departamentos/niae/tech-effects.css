@@ -14,20 +14,20 @@
 
 .tech-grid {
     position: absolute;
-    top: -50px;
-    left: -50px;
-    width: calc(100% + 100px);
-    height: calc(100% + 100px);
+    top: -25px;
+    left: -25px;
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
     background-image: 
         linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 150, 255, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-size: 25px 25px;
     animation: gridMove 20s linear infinite;
 }
 
 @keyframes gridMove {
     0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+    100% { transform: translate(25px, 25px); }
 }
 
 .tech-circuits {
@@ -58,16 +58,6 @@
 .animate-in {
     opacity: 1 !important;
     transform: translateY(0) !important;
-}
-
-/* Efeito hover nos cards */
-.features > div {
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
 }
 
 /* Chuva binária */

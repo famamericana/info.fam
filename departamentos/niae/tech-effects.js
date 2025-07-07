@@ -50,22 +50,6 @@ function typeWriterEffect(element, text, speed = 100) {
     typeWriter();
 }
 
-// Efeito de hover nos cards de features
-document.addEventListener('DOMContentLoaded', function() {
-    const featureCards = document.querySelectorAll('.features > div');
-    
-    featureCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.05)';
-            this.style.boxShadow = '0 10px 30px rgba(0, 150, 255, 0.3)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = 'none';
-        });
-    });
-});
 
 // Efeito de código binário
 function createBinaryRain() {
