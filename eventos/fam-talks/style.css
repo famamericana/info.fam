@@ -95,7 +95,13 @@ main {
 }
 
 .foto-palestrante img {
-    max-width: 200px;
+    max-width: 300px;
     width: 100%;
     border-radius: 5px;
+}
+
+.palestrante {
+    display: flex;
+    gap: 20px;
+    
 }
