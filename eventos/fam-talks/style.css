@@ -3,39 +3,39 @@
 
 /* Personaliza a barra de rolagem inteira */
 ::-webkit-scrollbar {
-  width: 12px;
+    width: 12px;
 }
 
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
-  background: white;
-  border-radius: 5px;
+    background: white;
+    border-radius: 5px;
 }
 
 /* Personaliza a barra de rolagem em si */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.219);
-  border: 2px solid white;
-  border-radius: 10px;
+    background: rgba(0, 0, 0, 0.219);
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* Compatibilidade com Firefox */
 html {
-  scroll-behavior: smooth;
-  scrollbar-color: rgba(0, 0, 0, 0.219) white;
+    scroll-behavior: smooth;
+    scrollbar-color: rgba(0, 0, 0, 0.219) white;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
-   
+
 }
 
-header{
+header {
     background-color: #1b82b3;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
     background-blend-mode: overlay;
@@ -61,30 +61,41 @@ header::before {
     z-index: 1;
 }
 
-header > * {
+header>* {
     position: relative;
     z-index: 2;
 }
 
-header img{
-   width: 120px;
+header img {
+    width: 120px;
 }
 
-main{
+main {
     width: 960px;
+    font-family: 'Source Sans 3', sans-serif;
+
     margin: 0 auto;
 }
 
-   /*font-family: 'Source Sans 3', sans-serif;*/
-
-.header-content{
+.header-content {
     display: flex;
     max-width: 430px;
-      font-family: "Bebas Neue", sans-serif;
-      gap: 15px;
-      color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    gap: 15px;
+    color: white;
 }
 
-.texto-dourado{
+.header-content h1 {
+    margin-top: 6px;
+}
+
+.texto-dourado {
     color: #e5c585;
+}
+
+.foto-palestrante img {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 5px;
 }
