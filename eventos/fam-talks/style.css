@@ -362,10 +362,10 @@ main p {
 
 /* Seção "Por que estudar Direito na FAM?" */
 .section:nth-child(3) {
-    background: linear-gradient(135deg, #1b82b3 0%, #2a9fd9 100%);
+    background: #1b82b3;
     color: white;
     padding: 30px;
-    border-radius: 15px;
+    
   
     position: relative;
     overflow: hidden;
@@ -395,9 +395,7 @@ main p {
 
 .section:nth-child(3) p {
     text-align: center;
-    font-size: 1.1rem;
     margin-bottom: 30px;
-    line-height: 1.6;
 }
 
 /* Lista de features estilizada */
@@ -405,13 +403,13 @@ main p {
     list-style: none;
     padding: 0;
     display: grid;
-    gap: 15px;
-}
+    gap: 5px;
+} 
 
 .feature-list li {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     border-left: 4px solid #E5C585;
     transition: all 0.3s ease;
     position: relative;
@@ -419,7 +417,7 @@ main p {
 }
 
 .feature-list li:hover {
-    transform: translateX(10px);
+    transform: translateX(5px);
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -466,10 +464,8 @@ main p {
 
 /* Seção "Spoiler Pós-graduação" */
 .section:nth-child(4) {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
+  
     padding: 30px;
-    border-radius: 15px;
     border: 2px solid #E5C585;
     position: relative;
     overflow: hidden;
@@ -501,7 +497,7 @@ main p {
 }
 
 .section:nth-child(4) h2 {
-    color: #E5C585;
+    color: #1b82b3;
     font-family: "Bebas Neue", sans-serif;
     font-size: 2rem;
     text-align: center;
@@ -509,15 +505,6 @@ main p {
     position: relative;
 }
 
-.section:nth-child(4) h2::after {
-    content: '🎯';
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    animation: bounce 2s infinite;
-}
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
