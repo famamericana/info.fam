@@ -365,8 +365,8 @@ main p {
     background: #1b82b3;
     color: white;
     padding: 30px;
-    
-  
+    margin-top: 100px;
+  margin-bottom: 100px;
     position: relative;
     overflow: hidden;
 }
@@ -387,7 +387,7 @@ main p {
 .section:nth-child(3) h2 {
     color: #E5C585;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 2rem;
+   
     text-align: center;
     margin-bottom: 25px;
     margin-top: 10px;
@@ -437,7 +437,7 @@ main p {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.9rem;
+   
 }
 
 /* Destacar números importantes */
@@ -457,7 +457,7 @@ main p {
     transform: translateY(-50%);
     background: white;
     color: #1b82b3;
-    padding: 2px 8px;
+    padding: 3px 12px; 
     border-radius: 12px;
     font-size: 0.7rem;
     font-weight: bold;
@@ -525,8 +525,6 @@ main p {
 }
 
 .section:nth-child(4) p:last-of-type {
-    font-size: 1rem;
-   
     text-align: justify;
     padding: 20px;
     border-radius: 10px;
@@ -566,56 +564,6 @@ main p {
         filter: opacity(0.1);
     }
 
-    /* Seções especiais no mobile */
-    .section:nth-child(3),
-    .section:nth-child(4) {
-        padding: 20px;
-        margin: 15px 0;
-    }
-
-    .section:nth-child(4) {
-        padding-top: 30px;
-    }
-
-    .section:nth-child(3) h2,
-    .section:nth-child(4) h2 {
-        font-size: 1.5rem;
-    }
-
-    .section:nth-child(4) h2::after {
-        right: -30px;
-        font-size: 1.2rem;
-    }
-
-    .feature-list li::before {
-        left: -12px;
-        width: 20px;
-        height: 20px;
-        font-size: 0.8rem;
-    }
-
-    .feature-list li {
-        padding: 12px 15px;
-        margin-left: 10px;
-    }
-
-    .feature-list li:nth-child(6)::after {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        display: block;
-        margin-top: 5px;
-        text-align: center;
-    }
-
-    /* Ajuste da tag NOVIDADE no mobile */
-    .section:nth-child(4)::before {
-        top: 5px;
-        right: 5px;
-        padding: 6px 12px;
-        font-size: 0.7rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -639,23 +587,9 @@ main p {
         padding: 15px;
     }
 
-    /* Ajustes extras para seções especiais */
-    .section:nth-child(3),
-    .section:nth-child(4) {
-        padding: 15px;
-    }
+    .feature-list li:nth-child(6)::after {
+ 
+  
+}
 
-    .section:nth-child(4) {
-        padding-top: 25px;
-    }
-
-    .section:nth-child(3) p,
-    .section:nth-child(4) p {
-        font-size: 0.9rem;
-    }
-
-    .feature-list li {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-    }
 }
