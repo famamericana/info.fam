@@ -652,6 +652,13 @@ main p {
 }
 
 /* ==================== MOBILE ==================== */
+
+@media (max-width: 1200px){
+    .linhas-section {
+        filter: opacity(0.1);
+    }
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -706,9 +713,7 @@ main p {
         flex-direction: column;
     }
 
-    .linhas-section {
-        filter: opacity(0.1);
-    }
+
 
 }
 
