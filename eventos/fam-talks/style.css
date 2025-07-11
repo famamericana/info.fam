@@ -232,7 +232,7 @@ header {
     font-size: medium;
 }
 
-.botao-inscricao {
+.botao-inscricao, .botao-inscricao2  {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -240,25 +240,40 @@ header {
     margin-bottom: 40px;
 }
 
-.botao-inscricao a {
+.botao-inscricao a, .botao-inscricao2 a {
     padding: 8px 10px;
-    color: #E5C585;
     text-transform: uppercase;
     text-decoration: none;
     font-size: medium;
     transition: all 0.3s ease;
-    border: 2px solid white;
     box-sizing: border-box;
     font-weight: bold;
-    margin-top: -10px;
     width: 100%;
     text-align: center;
 }
  
-.botao-inscricao a:hover {
+.botao-inscricao a:hover  {
     color: white !important;
     border: 2px solid #E5C585;
     transform: translateY(-5px);
+}
+ 
+.botao-inscricao a{
+    color: #E5C585;
+    border: 2px solid white;
+    margin-top: -10px;
+}
+
+.botao-inscricao2 a{
+    color: #E5C585;
+    border: 2px solid #1b82b3;
+    margin-bottom: 40px;  
+}
+
+.botao-inscricao2 a:hover{
+    color: #1b82b3;
+    border: 2px solid #E5C585;
+    transform: translateY(-5px);     
 }
 
 
