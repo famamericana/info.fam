@@ -682,6 +682,7 @@ main p {
     .palestrante-info h3 {
         text-align: center;
     }
+
     
     .texto-introducao {
         padding: 40px 20px;
@@ -722,14 +723,20 @@ main p {
     }
 
     .feature-list li:nth-child(6)::after {
-
         position: static;
         display: block;
-
         text-align: center;
         margin-top: 15px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+         
+    .foto-palestrante img {
+        height: 250px;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
 }
