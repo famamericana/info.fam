@@ -63,11 +63,13 @@ main {
 header {
     display: flex;
     justify-content: center;
-
-    gap: 25px;
+    border-bottom: 4px solid #E5C585;
+    gap: 30px;
     background-color: #1b82b3;
     padding: 20px;
     padding-bottom: 0;
+    padding-top: 40px;
+
 
 }
 
@@ -103,25 +105,17 @@ header {
 }
 
 .palestrante-img {
-    max-width: 200px;
+    max-width: 230px;
     width: 100%;
     height: auto;
     object-fit: contain;
-    margin-bottom: -42px;
+    margin-bottom: -16px;
 }
 
 /* Mobile */
-@media (max-width: 768px) {
-    .palestrante-img {
-        width: 150px;
-    }
-}
+@media (max-width: 768px) {}
 
-@media (max-width: 480px) {
-    .palestrante-img {
-        width: 120px;
-    }
-}
+@media (max-width: 480px) {}
 
 .event-details {
     width: 100%;
@@ -144,7 +138,7 @@ header {
     text-transform: uppercase;
     padding: 5px;
     margin-bottom: 10px;
-     font-size: medium;
+    font-size: medium;
 }
 
 
@@ -169,7 +163,7 @@ header {
     justify-content: center;
     margin-top: 10px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 
 }
 
