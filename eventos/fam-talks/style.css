@@ -372,6 +372,10 @@ main p {
     margin-bottom: 15px;
 }
 
+.palestrante-info p{
+    text-align: justify; 
+}
+
 /* ==================== UTILITÁRIOS ==================== */
 .texto-dourado {
     color: #E5C585;
