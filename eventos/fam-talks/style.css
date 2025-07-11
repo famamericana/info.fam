@@ -32,6 +32,7 @@ html {
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .header {
@@ -46,14 +47,14 @@ body {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    max-width: 280px;
+    max-width: 380px;
     color: white;
 }
 
 main {
     max-width: 960px;
     width: 100%;
-    font-family: 'Source Sans 3', sans-serif;
+
     padding: 20px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -63,11 +64,11 @@ header {
     display: flex;
     justify-content: center;
 
-    
+    gap: 25px;
     background-color: #1b82b3;
     padding: 20px;
     padding-bottom: 0;
-    
+
 }
 
 .header img {
@@ -81,13 +82,12 @@ header {
     align-items: center;
     gap: 15px;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .texto-dourado {
     color: #E5C585;
 }
-
-
 
 .foto-palestrante {
     width: 100%;
@@ -100,4 +100,64 @@ header {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.palestrante-img {
+    max-width: 200px;
+    height: auto;
+}
+
+.event-details {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.data {
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+    font-size: xx-large;
+    font-weight: 300;
+    margin-bottom: 5px;
+
+}
+
+.local {
+    background-color: #E5C585;
+    color: #1b82b3;
+    text-transform: uppercase;
+    padding: 5px;
+    margin-bottom: 10px;
+     font-size: medium;
+}
+
+
+.botao-inscricao a {
+    padding: 8px 10px;
+    color: #E5C585;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: medium;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-top: -10px;
+    width: 100%;
+    text-align: center;
+
+}
+
+.botao-inscricao {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.botao-inscricao a:hover {
+    color: white !important;
+    border: 2px solid #E5C585;
 }
