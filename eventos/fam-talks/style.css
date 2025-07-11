@@ -232,7 +232,8 @@ header {
     font-size: medium;
 }
 
-.botao-inscricao, .botao-inscricao2  {
+.botao-inscricao,
+.botao-inscricao2 {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -240,7 +241,8 @@ header {
     margin-bottom: 40px;
 }
 
-.botao-inscricao a, .botao-inscricao2 a {
+.botao-inscricao a,
+.botao-inscricao2 a {
     padding: 8px 10px;
     text-transform: uppercase;
     text-decoration: none;
@@ -251,29 +253,29 @@ header {
     width: 100%;
     text-align: center;
 }
- 
-.botao-inscricao a:hover  {
+
+.botao-inscricao a:hover {
     color: white !important;
     border: 2px solid #E5C585;
     transform: translateY(-5px);
 }
- 
-.botao-inscricao a{
+
+.botao-inscricao a {
     color: #E5C585;
     border: 2px solid white;
     margin-top: -10px;
 }
 
-.botao-inscricao2 a{
+.botao-inscricao2 a {
     color: #E5C585;
     border: 2px solid #1b82b3;
-     margin-bottom: 20px;  
+    margin-bottom: 20px;
 }
 
-.botao-inscricao2 a:hover{
+.botao-inscricao2 a:hover {
     color: #1b82b3;
     border: 2px solid #E5C585;
-    transform: translateY(-5px);     
+    transform: translateY(-5px);
 }
 
 
@@ -372,8 +374,8 @@ main p {
     margin-bottom: 15px;
 }
 
-.palestrante-info p{
-    text-align: justify; 
+.palestrante-info p {
+    text-align: justify;
 }
 
 /* ==================== UTILITÁRIOS ==================== */
@@ -625,12 +627,29 @@ main p {
 }
 
 /* Delays para elementos múltiplos */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-.delay-6 { transition-delay: 0.6s; }
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-5 {
+    transition-delay: 0.5s;
+}
+
+.delay-6 {
+    transition-delay: 0.6s;
+}
 
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
@@ -651,6 +670,35 @@ main p {
     .palestrante-container {
         flex-direction: column;
         text-align: center;
+    }
+
+    .palestrante-info img {
+        border-bottom: 1px solid #1b82b3;
+        margin-bottom: 0px;
+        padding-bottom: 20px;
+    }
+
+    .palestrante-info h2,
+    .palestrante-info h3 {
+        text-align: center;
+    }
+    
+    .texto-introducao {
+        padding: 40px 20px;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-list li {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .section:nth-child(4) {
+        padding: 20px 10px;
+
     }
 
     .section:nth-child(2) .palestrante-container {
