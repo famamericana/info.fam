@@ -390,6 +390,7 @@ main p {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 25px;
+    margin-top: 10px;
    
 }
 
@@ -454,7 +455,7 @@ main p {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: #E5C585;
+    background: white;
     color: #1b82b3;
     padding: 2px 8px;
     border-radius: 12px;
@@ -464,22 +465,12 @@ main p {
 
 /* Seção "Spoiler Pós-graduação" */
 .section:nth-child(4) {
-  
-    padding: 30px;
+    padding: 20px;
     border: 1px solid #E5C585;
     position: relative;
-    overflow: hidden;
-    animation: spoilerGlow 3s ease-in-out infinite alternate;
+    overflow: visible;
 }
 
-@keyframes spoilerGlow {
-    0% {
-        box-shadow: 0 0 30px rgba(229, 197, 133, 0.4);
-    }
-    100% {
-        box-shadow: 0 0 40px rgba(229, 197, 133, 0.6);
-    }
-}
 
 .section:nth-child(4)::before {
     content: 'NOVIDADE';
@@ -503,6 +494,7 @@ main p {
     text-align: center;
     margin-bottom: 20px;
     position: relative;
+    margin-top: 10px;
 }
 
 @keyframes bounce {
@@ -534,9 +526,8 @@ main p {
 
 .section:nth-child(4) p:last-of-type {
     font-size: 1rem;
-    line-height: 1.6;
+   
     text-align: justify;
-    background: rgba(255, 255, 255, 0.05);
     padding: 20px;
     border-radius: 10px;
 }
@@ -580,6 +571,10 @@ main p {
     .section:nth-child(4) {
         padding: 20px;
         margin: 15px 0;
+    }
+
+    .section:nth-child(4) {
+        padding-top: 30px;
     }
 
     .section:nth-child(3) h2,
@@ -648,6 +643,10 @@ main p {
     .section:nth-child(3),
     .section:nth-child(4) {
         padding: 15px;
+    }
+
+    .section:nth-child(4) {
+        padding-top: 25px;
     }
 
     .section:nth-child(3) p,
