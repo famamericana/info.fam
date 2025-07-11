@@ -653,7 +653,7 @@ main p {
 
 /* ==================== MOBILE ==================== */
 
-@media (max-width: 1200px){
+@media (max-width: 1200px) {
     .linhas-section {
         filter: opacity(0.1);
     }
@@ -690,18 +690,9 @@ main p {
         text-align: center;
     }
 
-    
+
     .texto-introducao {
         padding: 40px 20px;
-    }
-
-    .feature-list {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-list li {
-        padding: 15px;
-        font-size: 0.9rem;
     }
 
     .section:nth-child(4) {
@@ -713,6 +704,9 @@ main p {
         flex-direction: column;
     }
 
+    .header h1 {
+        margin-top: 8px;
+    }
 
 
 }
@@ -736,7 +730,7 @@ main p {
         margin-right: auto;
     }
 
-         
+
     .foto-palestrante img {
         height: 250px;
         max-width: 100%;
