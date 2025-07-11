@@ -254,11 +254,13 @@ header {
     width: 100%;
     text-align: center;
 }
-
+ 
 .botao-inscricao a:hover {
     color: white !important;
     border: 2px solid #E5C585;
+    transform: translateY(-5px);
 }
+
 
 /* ==================== LINHAS SECTION ==================== */
 .linhas-section {
@@ -279,7 +281,7 @@ header {
     text-align: justify;
     max-width: 940px;
     margin: 0 auto;
-  
+
 }
 
 /* Primeira letra maior do texto centralizado */
@@ -377,7 +379,7 @@ main p {
     color: white;
     padding: 20px;
     margin-top: 100px;
-  margin-bottom: 100px;
+    margin-bottom: 100px;
     position: relative;
     overflow: hidden;
 }
@@ -397,12 +399,12 @@ main p {
 
 .section:nth-child(3) h2 {
     color: #E5C585;
- font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+
 }
 
 .section:nth-child(3) p {
@@ -416,7 +418,7 @@ main p {
     padding: 0;
     display: grid;
     gap: 5px;
-} 
+}
 
 .feature-list li {
     background: rgba(255, 255, 255, 0.1);
@@ -428,7 +430,7 @@ main p {
 }
 
 .feature-list li:hover {
-    transform: translateX(5px);
+    transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -469,7 +471,7 @@ main p {
     transform: translateY(-50%);
     background: white;
     color: #1b82b3;
-    padding: 3px 12px; 
+    padding: 3px 12px;
     border-radius: 12px;
     font-size: 0.7rem;
     font-weight: bold;
@@ -506,16 +508,23 @@ main p {
     text-align: center;
     margin-bottom: 20px;
     position: relative;
-    
+
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(-50%);
     }
+
     40% {
         transform: translateY(-70%);
     }
+
     60% {
         transform: translateY(-60%);
     }
@@ -528,7 +537,7 @@ main p {
     background-color: #1b82b3;
     color: white;
     text-transform: uppercase;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .section:nth-child(4) p:first-of-type strong {
@@ -584,12 +593,12 @@ main p {
     }
 
     .feature-list li:nth-child(6)::after {
-        
+
         position: static;
         display: block;
-        
+
         text-align: center;
-       margin-top: 15px;
+        margin-top: 15px;
         margin-left: auto;
         margin-right: auto;
     }
