@@ -104,7 +104,23 @@ header {
 
 .palestrante-img {
     max-width: 200px;
+    width: 100%;
     height: auto;
+    object-fit: contain;
+    margin-bottom: -42px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .palestrante-img {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .palestrante-img {
+        width: 120px;
+    }
 }
 
 .event-details {
