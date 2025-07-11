@@ -52,15 +52,24 @@ body {
 }
 
 main {
-    max-width: 960px;
-    width: 100%;
+   
     padding: 20px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    width: 100%;
+    
 }
 
 main p{
     text-indent: 10px;
+}
+
+.linhas-section {
+    width: 100%;
+    height: 200px; 
+    background-image: url('images/linhas.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: absolute;
 }
 
 header {
@@ -191,3 +200,15 @@ header {
     max-width: 500px;
     margin-bottom: -5px;
 }
+ 
+.texto-introducao{
+    background-color: #ffffff;
+    margin-top: 0px; 
+    padding: 60px 20px; 
+}
+
+.texto-centralizado{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
