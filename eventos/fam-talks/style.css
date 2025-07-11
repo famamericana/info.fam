@@ -32,76 +32,72 @@ html {
 body {
     margin: 0;
     padding: 0;
-
 }
 
-header {
-    background-color: #1b82b3;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
-    background-blend-mode: overlay;
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    position: relative;
+
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("images/fundo.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 1;
-}
-
-header>* {
-    position: relative;
-    z-index: 2;
-}
-
-header img {
-    width: 120px;
+.header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    max-width: 280px;
+    color: white;
 }
 
 main {
-    width: 960px;
+    max-width: 960px;
+    width: 100%;
     font-family: 'Source Sans 3', sans-serif;
-
+    padding: 20px;
     margin: 0 auto;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+
+    
+    background-color: #1b82b3;
+    padding: 20px;
+    padding-bottom: 0;
+    
+}
+
+.header img {
+    max-width: 120px;
+    margin-top: 15px;
 }
 
 .header-content {
     display: flex;
-    max-width: 430px;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
-    color: white;
-}
-
-.header-content h1 {
-    margin-top: 6px;
+    width: 100%;
 }
 
 .texto-dourado {
-    color: #e5c585;
+    color: #E5C585;
+}
+
+
+
+.foto-palestrante {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
 }
 
 .foto-palestrante img {
-    max-width: 500px;
     width: 100%;
-    border-radius: 5px;
-}
-
-.palestrante {
-    display: flex;
-    gap: 20px;
-    
+    height: auto;
+    border-radius: 10px;
 }
