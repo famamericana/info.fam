@@ -358,6 +358,204 @@ main p {
     margin-bottom: 8px;
 }
 
+/* ==================== SEÇÕES ESPECIAIS ==================== */
+
+/* Seção "Por que estudar Direito na FAM?" */
+.section:nth-child(3) {
+    background: linear-gradient(135deg, #1b82b3 0%, #2a9fd9 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+  
+    position: relative;
+    overflow: hidden;
+}
+
+.section:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(229,197,133,0.1)"/></svg>');
+    background-size: 50px 50px;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+.section:nth-child(3) h2 {
+    color: #E5C585;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 25px;
+   
+}
+
+.section:nth-child(3) p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Lista de features estilizada */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 15px;
+}
+
+.feature-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #E5C585;
+    transition: all 0.3s ease;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.feature-list li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #E5C585;
+    color: #1b82b3;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Destacar números importantes */
+.feature-list li {
+    position: relative;
+}
+
+.feature-list li:nth-child(4) {
+    background: linear-gradient(45deg, rgba(229, 197, 133, 0.2), rgba(255, 255, 255, 0.1));
+}
+
+.feature-list li:nth-child(6)::after {
+    content: 'DESDE 2007';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #E5C585;
+    color: #1b82b3;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* Seção "Spoiler Pós-graduação" */
+.section:nth-child(4) {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #E5C585;
+    position: relative;
+    overflow: hidden;
+    animation: spoilerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes spoilerGlow {
+    0% {
+        box-shadow: 0 0 30px rgba(229, 197, 133, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(229, 197, 133, 0.6);
+    }
+}
+
+.section:nth-child(4)::before {
+    content: 'NOVIDADE';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #E5C585;
+    color: #2c3e50;
+    padding: 5px 15px;
+    border-radius: 0 0 10px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section:nth-child(4) h2 {
+    color: #E5C585;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section:nth-child(4) h2::after {
+    content: '🎯';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(-50%);
+    }
+    40% {
+        transform: translateY(-70%);
+    }
+    60% {
+        transform: translateY(-60%);
+    }
+}
+
+.section:nth-child(4) p:first-of-type {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #E5C585;
+}
+
+.section:nth-child(4) p:first-of-type strong {
+    color: #E5C585;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section:nth-child(4) p:last-of-type {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+}
+
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
     header {
@@ -391,6 +589,45 @@ main p {
     .linhas-section {
         filter: opacity(0.1);
     }
+
+    /* Seções especiais no mobile */
+    .section:nth-child(3),
+    .section:nth-child(4) {
+        padding: 20px;
+        margin: 15px 0;
+    }
+
+    .section:nth-child(3) h2,
+    .section:nth-child(4) h2 {
+        font-size: 1.5rem;
+    }
+
+    .section:nth-child(4) h2::after {
+        right: -30px;
+        font-size: 1.2rem;
+    }
+
+    .feature-list li::before {
+        left: -12px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+    }
+
+    .feature-list li {
+        padding: 12px 15px;
+        margin-left: 10px;
+    }
+
+    .feature-list li:nth-child(6)::after {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        display: block;
+        margin-top: 5px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -412,5 +649,21 @@ main p {
 
     main {
         padding: 15px;
+    }
+
+    /* Ajustes extras para seções especiais */
+    .section:nth-child(3),
+    .section:nth-child(4) {
+        padding: 15px;
+    }
+
+    .section:nth-child(3) p,
+    .section:nth-child(4) p {
+        font-size: 0.9rem;
+    }
+
+    .feature-list li {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 }
