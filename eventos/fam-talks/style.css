@@ -54,10 +54,13 @@ body {
 main {
     max-width: 960px;
     width: 100%;
-
     padding: 20px;
     margin: 0 auto;
     box-sizing: border-box;
+}
+
+main p{
+    text-indent: 10px;
 }
 
 header {
@@ -103,7 +106,7 @@ header {
 .foto-palestrante img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+ 
 }
 
 .palestrante-img {
@@ -166,10 +169,25 @@ header {
     margin-top: 10px;
     width: 100%;
     margin-bottom: 40px;
-
 }
 
 .botao-inscricao a:hover {
     color: white !important;
     border: 2px solid #E5C585;
+}
+
+.palestrante-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 20px;
+    
+    border: 1px solid #1b82b3;
+    padding: 20px;
+   
+}
+
+.palestrante-container img{
+    max-width: 500px;
+    margin-bottom: -5px;
 }
