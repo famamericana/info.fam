@@ -311,6 +311,10 @@ main p {
     margin-bottom: 30px;
 }
 
+.palestrante-container {
+    flex-direction: row;
+}
+
 .foto-palestrante {
     width: 100%;
     max-width: 300px;
