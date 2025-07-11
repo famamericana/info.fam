@@ -279,9 +279,20 @@ header {
     text-align: justify;
     max-width: 940px;
     margin: 0 auto;
-    text-indent: 10px;
+  
 }
 
+/* Primeira letra maior do texto centralizado */
+.texto-centralizado::first-letter {
+    font-size: 3em;
+    line-height: 1;
+    float: left;
+    margin-right: 8px;
+    margin-top: 2px;
+    color: #1b82b3;
+    font-weight: bold;
+    font-family: "Bebas Neue", sans-serif;
+}
 
 /* ==================== MAIN CONTENT ==================== */
 main {
@@ -411,7 +422,6 @@ main p {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px 20px;
     border-radius: 5px;
-    border-left: 4px solid #E5C585;
     transition: all 0.3s ease;
     position: relative;
     backdrop-filter: blur(10px);
@@ -423,9 +433,11 @@ main p {
 }
 
 .feature-list li::before {
-    content: '✓';
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
     position: absolute;
-    left: -15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     background: #E5C585;
@@ -436,13 +448,13 @@ main p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-   
+    font-size: 0.8rem;
 }
 
 /* Destacar números importantes */
 .feature-list li {
     position: relative;
+    padding-left: 45px;
 }
 
 .feature-list li:nth-child(4) {
@@ -543,7 +555,7 @@ main p {
     }
 
     .palestrante-img {
-        max-width: 180px;
+        display: none;
     }
 
     .palestrante-container {
@@ -555,11 +567,6 @@ main p {
         flex-direction: column;
     }
 
-    .header h1 {
-        font-size: 1.5rem;
-        max-width: 100%;
-    }
-
     .linhas-section {
         filter: opacity(0.1);
     }
@@ -567,17 +574,6 @@ main p {
 }
 
 @media (max-width: 480px) {
-    .palestrante-img {
-        max-width: 150px;
-    }
-
-    .header h1 {
-        font-size: 1.2rem;
-    }
-
-    .data {
-        font-size: x-large;
-    }
 
     .texto-introducao {
         padding: 40px 15px;
