@@ -16,21 +16,3 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
 
-
-    // Simulação de funcionalidade de curtidas
-        document.querySelector('.like-button').addEventListener('click', function() {
-            const countElement = this.querySelector('.like-count');
-            let count = parseInt(countElement.textContent);
-            
-            if(this.classList.contains('liked')) {
-                count--;
-                this.classList.remove('liked');
-                this.querySelector('i').style.color = '';
-            } else {
-                count++;
-                this.classList.add('liked');
-                this.querySelector('i').style.color = '#ff3366';
-            }
-            
-            countElement.textContent = count.toLocaleString();
-        });
