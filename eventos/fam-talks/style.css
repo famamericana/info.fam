@@ -568,7 +568,7 @@ main p {
 
 .section:nth-child(5) p:last-of-type {
     text-align: justify;
-    padding: 20px;
+  
     border-radius: 10px;
 }
 
