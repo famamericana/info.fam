@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 570 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="Artboard1" transform="matrix(1,0,0,0.79096,0,0)">
+<svg width="100%" height="100%" viewBox="0 0 412 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Artboard1" transform="matrix(0.722807,0,0,0.79096,0,0)">
         <rect x="0" y="0" width="570" height="177" style="fill:none;"/>
-        <g transform="matrix(0.161232,0,0,0.203843,-89.9069,-261.005)">
+        <g transform="matrix(0.223063,0,0,0.203843,-124.386,-261.005)">
             <g>
                 <g transform="matrix(300,0,0,300,547,1537)">
                     <path d="M0.041,-0L0.137,-0L0.137,-0.53L0.219,-0L0.311,-0L0.393,-0.53L0.393,-0L0.497,-0L0.497,-0.7L0.342,-0.7L0.269,-0.192L0.196,-0.7L0.041,-0.7L0.041,-0Z" style="fill:rgb(27,130,179);fill-rule:nonzero;"/>
