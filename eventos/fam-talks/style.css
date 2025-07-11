@@ -66,11 +66,13 @@ header {
     border-bottom: 4px solid #E5C585;
     gap: 30px;
     background-color: #1b82b3;
+    background-image: url('images/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
     padding-bottom: 0;
     padding-top: 40px;
-
-
 }
 
 .header img {
