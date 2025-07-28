@@ -42,7 +42,7 @@
                 qualidade de ensino com responsabilidade social!</p>
         </div>
         <div class="container-button">
-            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="button">Inscreva-se</a>
+            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="button">Inscreva-se</a>
             <a href="#cursos" class="button">Veja os cursos</a>
         </div>
     </header>
@@ -89,7 +89,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/biologia-da-conservacao/" class="btn-saiba-mais"
                                 target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/mba-em-financas-investimentos-e-banking/"
                                 class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/marketing-e-negocios/" class="btn-saiba-mais"
                                 target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/medicina-equina/" class="btn-saiba-mais"
                                 target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/neuropsicopedagogia-clinica"
                                 class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/neuropsicopedagogia-clinica-e-psicomotricidade/"
                                 class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/psicologia-escolar-e-educacional/" class="btn-saiba-mais"
                                 target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/48" class="btn-inscricao"
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao"
                                 target="_blank">Inscreva-se</a>
                         </div>
                     </div>
