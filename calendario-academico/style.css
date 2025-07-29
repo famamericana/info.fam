@@ -381,3 +381,18 @@ a:hover {
     color: #e53888; /* Vermelho */
     font-weight: bold;
 }
+
+.segundocalendario{
+    margin-top: 20px;
+    background-color: #f0f4f9;
+}
+
+.calendariogoogle{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f0f4f9;
+    border-radius: 20px;
+    margin-bottom: -15px;
+    
+}
