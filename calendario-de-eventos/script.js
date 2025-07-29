@@ -4,7 +4,7 @@ var startDate = Date.now();
 var items = [];
 
 $.getJSON(
-    "https://www.googleapis.com/calendar/v3/calendars/c_fc9f288bf9f61ff657c6c2d173f7aa952897a465c91d14d941d4d37738c350b8@group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=30&timeMin=" + new Date(startDate).toISOString(),
+    "https://www.googleapis.com/calendar/v3/calendars/c_7bd865266f1af9a4e0de1f062e3f2c7213c8911258f245dd6b144ae233ba69e1@group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=30&timeMin=" + new Date(startDate).toISOString(),
     function (data) {
         if (!data["items"] || data["items"].length === 0) {
             // Se não houver eventos, mostra a mensagem de erro
