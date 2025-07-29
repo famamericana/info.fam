@@ -383,6 +383,7 @@ a:hover {
 
 .segundocalendario{
     margin-top: 20px;
+    background-color: #f0f4f9;
 }
 
 .calendariogoogle{
@@ -391,5 +392,6 @@ a:hover {
     box-sizing: border-box;
     background-color: #f0f4f9;
     border-radius: 20px;
-    margin-bottom: -18px;
+    margin-bottom: -15px;
+    
 }
