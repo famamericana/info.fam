@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Acadêmico</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'MiSans-Regular';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/MiSans-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'MiSans-Medium';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/MiSans-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'MiSans-Bold';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/MiSans-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MiSans-Regular', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            width: 1920px;
+        }
+
+        /* Variáveis de cores */
+        :root {
+            --primary-color: #0052a5;
+            --primary-dark: #003c7d;
+            --primary-light: #e6f0ff;
+            --accent-color: #0078d4;
+            --white: #ffffff;
+            --light-gray: #f0f2f5;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-main {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover:after {
+            width: 100%;
+        }
+
+        .login-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'MiSans-Medium', sans-serif;
+        }
+
+        .login-btn:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E") repeat;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 40px;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'MiSans-Medium', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* News & Events Section */
+        .news-events {
+            padding: 80px 40px;
+            background-color: var(--light-gray);
+        }
+
+        .news-events-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-section, .events-section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-header h2 {
+            font-family: 'MiSans-Bold', sans-serif;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .view-all {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            color: var(--primary-dark);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .news-card {
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .news-img {
+            height: 160px;
+            background-color: #ccd7e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .news-content {
+            padding: 15px;
+        }
+
+        .news-date {
+            color: var(--text-light);
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .news-title {
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .event-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            background-color: var(--primary-light);
+        }
+
+        .event-date {
+            min-width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'MiSans-Bold', sans-serif;
+        }
+
+        .event-day {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-title {
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .event-details {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Quick Access Section */
+        .quick-access {
+            padding: 80px 40px;
+            background-color: var(--white);
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .access-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .access-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+        }
+
+        .access-title {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .access-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .access-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-family: 'MiSans-Medium', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .access-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 40px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            font-size: 32px;
+            margin-right: 10px;
+        }
+
+        .footer-logo-text {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 20px;
+        }
+
+        .footer-about {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-title {
+            font-family: 'MiSans-Bold', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom-link:hover {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="ri-book-open-line logo-icon"></i>
+            <div class="logo-text">Portal Acadêmico</div>
+        </div>
+        
+        <nav class="nav-main">
+            <a href="#" class="nav-item">Início</a>
+            <a href="#" class="nav-item">Cursos</a>
+            <a href="#" class="nav-item">Biblioteca</a>
+            <a href="#" class="nav-item">Calendário</a>
+            <a href="#" class="nav-item">Notícias</a>
+            <a href="#" class="nav-item">Contato</a>
+        </nav>
+        
+        <div class="login-area">
+            <button class="login-btn">Entrar</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo ao Portal Acadêmico</h1>
+            <p>Uma plataforma completa para professores e alunos acessarem recursos educacionais, gerenciarem atividades acadêmicas e se manterem informados sobre eventos e notícias da instituição.</p>
+            <a href="#" class="cta-btn">Saiba mais</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Nossos Recursos</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="ri-graduation-cap-line feature-icon"></i>
+                <h3 class="feature-title">Ambiente de Aprendizagem</h3>
+                <p class="feature-desc">Acesse materiais didáticos, atividades interativas e recursos complementares para enriquecer sua experiência educacional.</p>
+                <a href="#" class="feature-link">Explorar <i class="ri-arrow-right-line"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="ri-user-follow-line feature-icon"></i>
+                <h3 class="feature-title">Acompanhamento Acadêmico</h3>
+                <p class="feature-desc">Monitore notas, frequência e desempenho acadêmico com relatórios detalhados e feedback personalizado.</p>
+                <a href="#" class="feature-link">Verificar <i class="ri-arrow-right-line"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="ri-team-line feature-icon"></i>
+                <h3 class="feature-title">Comunicação Integrada</h3>
+                <p class="feature-desc">Interaja com professores e colegas através de fóruns, mensagens diretas e salas de discussão temáticas.</p>
+                <a href="#" class="feature-link">Conectar <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section class="news-events">
+        <div class="news-events-container">
+            <div class="news-section">
+                <div class="section-header">
+                    <h2>Notícias Acadêmicas</h2>
+                    <a href="#" class="view-all">Ver todas</a>
+                </div>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="ri-award-line"></i>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">15 de Outubro, 2023</span>
+                            <h3 class="news-title">Instituição recebe prêmio de excelência acadêmica</h3>
+                            <p class="news-excerpt">Pelo terceiro ano consecutivo, nossa instituição foi reconhecida pela qualidade do ensino e pesquisa desenvolvidos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="ri-book-mark-line"></i>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">10 de Outubro, 2023</span>
+                            <h3 class="news-title">Novo programa de bolsas de estudo anunciado</h3>
+                            <p class="news-excerpt">Estudantes de graduação e pós-graduação poderão se candidatar ao programa a partir do próximo mês.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="ri-global-line"></i>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">5 de Outubro, 2023</span>
+                            <h3 class="news-title">Intercâmbio internacional abre inscrições</h3>
+                            <p class="news-excerpt">Programa de mobilidade acadêmica oferece oportunidades em universidades parceiras na Europa e América do Norte.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="ri-building-4-line"></i>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">1 de Outubro, 2023</span>
+                            <h3 class="news-title">Nova biblioteca digital disponível para alunos</h3>
+                            <p class="news-excerpt">Acervo com mais de 50 mil títulos acadêmicos pode ser acessado através da plataforma online.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="events-section">
+                <div class="section-header">
+                    <h2>Próximos Eventos</h2>
+                    <a href="#" class="view-all">Ver todos</a>
+                </div>
+                
+                <div class="event-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">20</div>
+                            <div class="event-month">Out</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">Semana Acadêmica de Engenharia</h3>
+                            <div class="event-details">
+                                <i class="ri-time-line"></i> 09:00 - 18:00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">25</div>
+                            <div class="event-month">Out</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">Palestra: Inovação e Tecnologia</h3>
+                            <div class="event-details">
+                                <i class="ri-time-line"></i> 14:00 - 16:30
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">02</div>
+                            <div class="event-month">Nov</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">Workshop de Metodologia Científica</h3>
+                            <div class="event-details">
+                                <i class="ri-time-line"></i> 10:00 - 12:00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">10</div>
+                            <div class="event-month">Nov</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">Feira de Estágios e Carreiras</h3>
+                            <div class="event-details">
+                                <i class="ri-time-line"></i> 09:00 - 17:00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">Nov</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">Simpósio de Pesquisa Científica</h3>
+                            <div class="event-details">
+                                <i class="ri-time-line"></i> 13:00 - 18:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <h2 class="section-title">Acesso Rápido</h2>
+        <div class="access-grid">
+            <div class="access-card">
+                <div class="access-icon">
+                    <i class="ri-user-settings-line"></i>
+                </div>
+                <h3 class="access-title">Área do Professor</h3>
+                <p class="access-desc">Gerencie turmas, notas, materiais didáticos e comunicação com os alunos em um só lugar.</p>
+                <a href="#" class="access-btn">Acessar</a>
+            </div>
+            
+            <div class="access-card">
+                <div class="access-icon">
+                    <i class="ri-user-star-line"></i>
+                </div>
+                <h3 class="access-title">Área do Aluno</h3>
+                <p class="access-desc">Acesse notas, frequência, materiais de estudo e informações sobre seu desempenho acadêmico.</p>
+                <a href="#" class="access-btn">Acessar</a>
+            </div>
+            
+            <div class="access-card">
+                <div class="access-icon">
+                    <i class="ri-book-2-line"></i>
+                </div>
+                <h3 class="access-title">Biblioteca Digital</h3>
+                <p class="access-desc">Explore nosso acervo digital com milhares de livros, artigos e periódicos acadêmicos.</p>
+                <a href="#" class="access-btn">Acessar</a>
+            </div>
+            
+            <div class="access-card">
+                <div class="access-icon">
+                    <i class="ri-calendar-check-line"></i>
+                </div>
+                <h3 class="access-title">Calendário Acadêmico</h3>
+                <p class="access-desc">Consulte datas importantes, prazos, eventos e o cronograma do ano letivo.</p>
+                <a href="#" class="access-btn">Acessar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="ri-book-open-line footer-logo-icon"></i>
+                    <div class="footer-logo-text">Portal Acadêmico</div>
+                </div>
+                <p class="footer-about">
+                    Plataforma educacional completa para integrar professores, alunos e recursos acadêmicos em um ambiente digital colaborativo e eficiente.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="ri-map-pin-line"></i>
+                        <span>Av. Universitária, 1000 - São Paulo, SP</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="ri-phone-line"></i>
+                        <span>(11) 3456-7890</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="ri-mail-line"></i>
+                        <span>contato@portalacademico.edu.br</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3 class="footer-title">Links Rápidos</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Cursos</a>
+                    <a href="#" class="footer-link">Biblioteca</a>
+                    <a href="#" class="footer-link">Calendário</a>
+                    <a href="#" class="footer-link">Notícias</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3 class="footer-title">Serviços</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Área do Professor</a>
+                    <a href="#" class="footer-link">Área do Aluno</a>
+                    <a href="#" class="footer-link">Biblioteca Digital</a>
+                    <a href="#" class="footer-link">Suporte Técnico</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3 class="footer-title">Conecte-se</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Ouvidoria</a>
+                    <a href="#" class="footer-link">Trabalhe Conosco</a>
+                    <a href="#" class="footer-link">Parcerias</a>
+                    <a href="#" class="footer-link">Imprensa</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="social-link"><i class="ri-instagram-line"></i></a>
+                    <a href="#" class="social-link"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" class="social-link"><i class="ri-youtube-line"></i></a>
+                    <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 Portal Acadêmico. Todos os direitos reservados.</div>
+            <div class="footer-bottom-links">
+                <a href="#" class="footer-bottom-link">Termos de Uso</a>
+                <a href="#" class="footer-bottom-link">Política de Privacidade</a>
+                <a href="#" class="footer-bottom-link">Cookies</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
