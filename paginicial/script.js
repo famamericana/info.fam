@@ -632,10 +632,8 @@ function renderizarPreviewEventos(eventos) {
         
         html += `
             <div class="evento-item">
-                <div class="evento-info">
-                    <div class="evento-data-box">${dataFormatada}</div>
-                    <h3 class="evento-titulo">${evento.summary}</h3>
-                </div>
+                <div class="evento-data-box">${dataFormatada}</div>
+                <h3 class="evento-titulo">${evento.summary}</h3>
                 <a href="${googleCalendarUrl}" target="_blank" class="evento-ver-mais"><i class="fas fa-calendar-plus"></i>
                 </a>
             </div>
