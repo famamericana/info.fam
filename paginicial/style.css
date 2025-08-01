@@ -426,9 +426,9 @@ header h2 {
 
 .evento-ver-mais {
     background: transparent;
-    border: 1px solid #dee2e6;
-    color: #6c757d;
-    padding: 6px 12px;
+    border: 2px solid #e53888;
+    color: #e53888;
+    padding: 4px 12px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
@@ -441,16 +441,11 @@ header h2 {
 }
 
 .evento-ver-mais:hover {
-    background: #f8f9fa;
-    border-color: #adb5bd;
-    color: #495057;
+    border-color: #45b7e5;
+color: #45b7e5;
     text-decoration: none;
 }
 
-.evento-ver-mais i {
-    margin-left: 4px;
-    font-size: 10px;
-}
 
 .ver-todos-eventos {
     text-align: center;

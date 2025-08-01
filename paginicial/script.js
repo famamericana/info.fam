@@ -581,15 +581,18 @@ function renderizarPreviewEventos(eventos) {
     
     eventos.slice(0, 3).forEach(evento => {
         const start = evento.start.dateTime || evento.start.date;
+        const end = evento.end.dateTime || evento.end.date;
         
-        let startMoment;
+        let startMoment, endMoment;
         if (typeof moment !== 'undefined') {
             startMoment = moment(start);
+            endMoment = moment(end);
         } else {
             startMoment = new Date(start);
+            endMoment = new Date(end);
         }
         
-        // Formatação da data
+        // Formatação da data para exibição
         let dataFormatada;
         if (typeof moment !== 'undefined') {
             dataFormatada = startMoment.format('DD/MM');
@@ -600,14 +603,32 @@ function renderizarPreviewEventos(eventos) {
             });
         }
         
+        // Criar link para adicionar na agenda do Google
+        const titulo = encodeURIComponent(evento.summary);
+        const descricao = encodeURIComponent(evento.description || '');
+        const local = encodeURIComponent(evento.location || '');
+        
+        // Formatar datas para o Google Calendar (formato: YYYYMMDDTHHMMSSZ)
+        let startFormatted, endFormatted;
+        if (evento.start.dateTime) {
+            // Evento com horário específico
+            startFormatted = startMoment.utc().format('YYYYMMDDTHHmmss') + 'Z';
+            endFormatted = endMoment.utc().format('YYYYMMDDTHHmmss') + 'Z';
+        } else {
+            // Evento de dia inteiro
+            startFormatted = startMoment.format('YYYYMMDD');
+            endFormatted = endMoment.format('YYYYMMDD');
+        }
+        
+        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${startFormatted}/${endFormatted}&details=${descricao}&location=${local}&sf=true&output=xml`;
+        
         html += `
             <div class="evento-item">
                 <div class="evento-info">
                     <div class="evento-data-box">${dataFormatada}</div>
                     <h3 class="evento-titulo">${evento.summary}</h3>
                 </div>
-                <a href="calendario-de-eventos/" class="evento-ver-mais">
-                    Ver mais <i class="fas fa-chevron-right"></i>
+                <a href="${googleCalendarUrl}" target="_blank" class="evento-ver-mais"><i class="fas fa-calendar-plus"></i>
                 </a>
             </div>
         `;
