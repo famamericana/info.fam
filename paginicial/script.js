@@ -532,3 +532,92 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Função para carregar preview dos eventos
+function carregarPreviewEventos() {
+    const eventosLista = document.getElementById('eventos-lista');
+    
+    if (!eventosLista) return;
+    
+    // Configurar Moment.js para português
+    if (typeof moment !== 'undefined') {
+        moment.locale('pt');
+    }
+    
+    const startDate = Date.now();
+    const apiUrl = `https://www.googleapis.com/calendar/v3/calendars/c_fc9f288bf9f61ff657c6c2d173f7aa952897a465c91d14d941d4d37738c350b8@group.calendar.google.com/events?key=AIzaSyCrPzedxOXMEoXd5dzdF9hDOAkjcb3lsL0&singleEvents=true&orderBy=starttime&maxResults=5&timeMin=${new Date(startDate).toISOString()}`;
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.items || data.items.length === 0) {
+                eventosLista.innerHTML = `
+                    <div class="sem-eventos">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Nenhum evento próximo</h3>
+                        <p>Não há eventos programados para os próximos dias.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            renderizarPreviewEventos(data.items);
+        })
+        .catch(error => {
+            console.error('Erro ao carregar eventos:', error);
+            eventosLista.innerHTML = `
+                <div class="sem-eventos">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Erro ao carregar eventos</h3>
+                    <p>Não foi possível carregar os eventos. Tente novamente mais tarde.</p>
+                </div>
+            `;
+        });
+}
+
+function renderizarPreviewEventos(eventos) {
+    const eventosLista = document.getElementById('eventos-lista');
+    let html = '';
+    
+    eventos.slice(0, 3).forEach(evento => {
+        const start = evento.start.dateTime || evento.start.date;
+        
+        let startMoment;
+        if (typeof moment !== 'undefined') {
+            startMoment = moment(start);
+        } else {
+            startMoment = new Date(start);
+        }
+        
+        // Formatação da data
+        let dataFormatada;
+        if (typeof moment !== 'undefined') {
+            dataFormatada = startMoment.format('DD/MM');
+        } else {
+            dataFormatada = startMoment.toLocaleDateString('pt-BR', { 
+                day: '2-digit', 
+                month: '2-digit' 
+            });
+        }
+        
+        html += `
+            <div class="evento-item">
+                <div class="evento-info">
+                    <div class="evento-data-box">${dataFormatada}</div>
+                    <h3 class="evento-titulo">${evento.summary}</h3>
+                </div>
+                <a href="calendario-de-eventos/" class="evento-ver-mais">
+                    Ver mais <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        `;
+    });
+    
+    eventosLista.innerHTML = html;
+}
+
+// Carregar eventos quando a página estiver pronta
+document.addEventListener('DOMContentLoaded', function() {
+    // Aguardar um pouco para garantir que a seção foi renderizada
+    setTimeout(carregarPreviewEventos, 500);
+});
