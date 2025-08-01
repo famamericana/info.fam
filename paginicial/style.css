@@ -436,7 +436,7 @@ header h2 {
     background: #1b3556;
     color: white;
     padding: 6px 10px;
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: 600;
     font-size: 13px;
     min-width: 70px;
@@ -457,7 +457,7 @@ header h2 {
     background: transparent;
     border: 2px solid #e53888;
     color: #e53888;
-    padding: 4px 12px;
+    padding: 5px 12px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
@@ -499,6 +499,7 @@ color: #45b7e5;
         order: 2;
         margin-left: auto;
         flex: 0.2;
+        border-radius: 5px;
     }
     
     .evento-titulo {
