@@ -354,14 +354,16 @@ header h2 {
     max-width: 990px;
     margin: 0 auto;
     padding: 0 15px;
+    
 }
 
 .eventos-container {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 15px;
+    border-radius:   0 0 10px 10px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #45b7e5;
+    border-top: none;
+    
 }
 
 .loading-eventos {
@@ -373,24 +375,26 @@ header h2 {
 
 .loading-eventos i {
     margin-right: 8px;
-    color: #007bff;
+    color: #45b7e5;
 }
 
 .evento-item {
-    background: white;
+    
     border-radius: 8px;
     padding: 16px;
     margin-bottom: 12px;
-    border-left: 3px solid #e53888;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.2s ease;
+    border: 1px solid #d5dcf1;
     display: flex;
     align-items: center;
     justify-content: space-between;
+     cursor: pointer;
+    transition: all 0.2s ease;
+
 }
 
 .evento-item:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-color: #45b7e5;
+    transform: translateY(-2px);
 }
 
 .evento-item:last-child {

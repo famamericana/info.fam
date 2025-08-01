@@ -537,6 +537,15 @@ document.addEventListener('DOMContentLoaded', function () {
 function carregarPreviewEventos() {
     const eventosLista = document.getElementById('eventos-lista');
     
+    // Buscar a seção dos eventos de forma mais robusta
+    let secaoEventos = null;
+    const titulos = document.querySelectorAll('h1.titulo');
+    titulos.forEach(titulo => {
+        if (titulo.textContent.includes('Próximos Eventos')) {
+            secaoEventos = titulo.closest('section');
+        }
+    });
+    
     if (!eventosLista) return;
     
     // Configurar Moment.js para português
@@ -551,27 +560,26 @@ function carregarPreviewEventos() {
         .then(response => response.json())
         .then(data => {
             if (!data.items || data.items.length === 0) {
-                eventosLista.innerHTML = `
-                    <div class="sem-eventos">
-                        <i class="fas fa-calendar-times"></i>
-                        <h3>Nenhum evento próximo</h3>
-                        <p>Não há eventos programados para os próximos dias.</p>
-                    </div>
-                `;
+                // Ocultar a seção inteira quando não há eventos
+                if (secaoEventos) {
+                    secaoEventos.style.display = 'none';
+                }
                 return;
+            }
+            
+            // Mostrar a seção caso ela tenha sido ocultada antes
+            if (secaoEventos) {
+                secaoEventos.style.display = 'block';
             }
             
             renderizarPreviewEventos(data.items);
         })
         .catch(error => {
             console.error('Erro ao carregar eventos:', error);
-            eventosLista.innerHTML = `
-                <div class="sem-eventos">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>Erro ao carregar eventos</h3>
-                    <p>Não foi possível carregar os eventos. Tente novamente mais tarde.</p>
-                </div>
-            `;
+            // Em caso de erro, também ocultar a seção
+            if (secaoEventos) {
+                secaoEventos.style.display = 'none';
+            }
         });
 }
 
