@@ -479,32 +479,12 @@ color: #45b7e5;
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .eventos-container {
-        margin: 0 10px 20px 10px;
-        padding: 15px;
-    }
+
+   
     
-    .evento-item {
-        padding: 12px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+
+ 
     
-    .evento-info {
-        width: 100%;
-        margin-bottom: 12px;
-    }
     
-    .evento-data-box {
-        margin-bottom: 0;
-        margin-right: 12px;
-    }
-    
-    .evento-titulo {
-        font-size: 15px;
-    }
-    
-    .evento-ver-mais {
-        align-self: flex-end;
-    }
+
 }
