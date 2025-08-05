@@ -600,15 +600,63 @@ function renderizarPreviewEventos(eventos) {
             endMoment = new Date(end);
         }
         
+        // Verificar se é evento de múltiplos dias
+        const isAllDay = !evento.start.dateTime;
+        let adjustedEndMoment = endMoment.clone();
+        
+        if (isAllDay) {
+            adjustedEndMoment.subtract(1, 'day');
+        }
+        
         // Formatação da data para exibição
         let dataFormatada;
         if (typeof moment !== 'undefined') {
-            dataFormatada = startMoment.format('DD/MM');
+            // Verificar se o evento dura mais de um dia
+            if (!startMoment.isSame(adjustedEndMoment, 'day')) {
+                // Evento de múltiplos dias - formato "04 a 08/08"
+                const startDay = startMoment.format('DD');
+                const endDay = adjustedEndMoment.format('DD');
+                const endMonth = adjustedEndMoment.format('MM');
+                
+                // Se o evento está no mesmo mês
+                if (startMoment.isSame(adjustedEndMoment, 'month')) {
+                    dataFormatada = `${startDay} a ${endDay}/${endMonth}`;
+                } else {
+                    // Se o evento atravessa meses diferentes
+                    const startMonth = startMoment.format('MM');
+                    dataFormatada = `${startDay}/${startMonth} a ${endDay}/${endMonth}`;
+                }
+            } else {
+                // Evento de um dia só
+                dataFormatada = startMoment.format('DD/MM');
+            }
         } else {
-            dataFormatada = startMoment.toLocaleDateString('pt-BR', { 
-                day: '2-digit', 
-                month: '2-digit' 
-            });
+            // Fallback para quando moment.js não estiver disponível
+            const startDate = new Date(start);
+            const endDate = new Date(end);
+            
+            if (isAllDay) {
+                endDate.setDate(endDate.getDate() - 1);
+            }
+            
+            if (startDate.toDateString() !== endDate.toDateString()) {
+                // Evento de múltiplos dias
+                const startDay = startDate.getDate().toString().padStart(2, '0');
+                const endDay = endDate.getDate().toString().padStart(2, '0');
+                const endMonth = (endDate.getMonth() + 1).toString().padStart(2, '0');
+                
+                if (startDate.getMonth() === endDate.getMonth()) {
+                    dataFormatada = `${startDay} a ${endDay}/${endMonth}`;
+                } else {
+                    const startMonth = (startDate.getMonth() + 1).toString().padStart(2, '0');
+                    dataFormatada = `${startDay}/${startMonth} a ${endDay}/${endMonth}`;
+                }
+            } else {
+                dataFormatada = startDate.toLocaleDateString('pt-BR', { 
+                    day: '2-digit', 
+                    month: '2-digit' 
+                });
+            }
         }
         
         // Criar link para adicionar na agenda do Google

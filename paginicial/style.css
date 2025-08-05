@@ -439,9 +439,10 @@ header h2 {
     border-radius: 5px;
     font-weight: 600;
     font-size: 13px;
-    min-width: 70px;
+    min-width: 85px;
     text-align: center;
     flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .evento-titulo {
