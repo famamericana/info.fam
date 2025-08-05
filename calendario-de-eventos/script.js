@@ -25,23 +25,9 @@ function getEventDates(event) {
         end.subtract(1, 'day');
     }
     
-    // Se é o mesmo dia após ajustes
-    if (start.isSame(end, 'day')) {
-        dates.push(start.format('YYYY-MM-DD'));
-    } else {
-        // Calculamos o número total de dias
-        let totalDays = end.diff(start, 'days');
-        
-        // Se são exatamente dois dias, incluímos ambos
-        if (totalDays === 1) {
-            dates.push(start.format('YYYY-MM-DD'));
-            dates.push(end.format('YYYY-MM-DD'));
-        } else {
-            // Se são mais de dois dias, incluímos apenas o primeiro e o último
-            dates.push(start.format('YYYY-MM-DD'));
-            dates.push(end.format('YYYY-MM-DD'));
-        }
-    }
+    // Para eventos de múltiplos dias, usa apenas a data de início para consolidar
+    // A exibição do período será tratada na renderização
+    dates.push(start.format('YYYY-MM-DD'));
     
     return dates;
 }
@@ -95,46 +81,64 @@ function renderEvents(sortedDates, events) {
         var monthName = moment(eventDate).format("MMMM").toUpperCase();
         var monthDate = moment(eventDate).format("DD");
         
+        // Verifica se há eventos de múltiplos dias nesta data
+        var hasMultiDayEvent = events[eventDate].some(event => event.isMultiDay);
+        var multiDayEvent = events[eventDate].find(event => event.isMultiDay);
+        
         markup += "<ol class='info clearfix'>";
         markup += "<div class='date-box'>";
-        markup += "<span class='date-month'>" + monthName + "</span>";
-        markup += "<span class='date-day'>";
-        if (events[eventDate].some(event => event.isMultiDay)) {
-            markup += "<i class='fa-solid fa-plus plusk'></i> ";
+        
+        if (hasMultiDayEvent && multiDayEvent) {
+            // Para eventos de múltiplos dias, mostra o período
+            var startMoment = moment(multiDayEvent.startDate, 'DD/MM/YYYY');
+            var endMoment = moment(multiDayEvent.endDate, 'DD/MM/YYYY');
+            var startMonth = startMoment.format("MMM").toUpperCase();
+            var endMonth = endMoment.format("MMM").toUpperCase();
+            var startDay = startMoment.format("DD");
+            var endDay = endMoment.format("DD");
+            
+            if (startMonth === endMonth) {
+                // Mesmo mês - usa mês completo
+                markup += "<span class='date-month'>" + startMoment.format("MMMM").toUpperCase() + "</span>";
+                markup += "<span class='date-day multi-day'>" + startDay + " a " + endDay + "</span>";
+            } else {
+                // Meses diferentes
+                markup += "<span class='date-month'>" + startMonth + "/" + endMonth + "</span>";
+                markup += "<span class='date-day multi-day'>" + startDay + " a " + endDay + "</span>";
+            }
+        } else {
+            // Para eventos de um dia só
+            markup += "<span class='date-month'>" + monthName + "</span>";
+            markup += "<span class='date-day'>" + monthDate + "</span>";
         }
-        markup += monthDate + "</span>";
+        
         markup += "</div><div class='events'>";
         
         events[eventDate].forEach(function(event) {
-            if (event.isMultiDay && !event.isTwoDayEvent && !event.isFirstDay && !event.isLastDay) {
-                return; // Pula a renderização de dias intermediários para eventos com mais de 2 dias
-            }
-            
             markup += "<li class='cal'>";
             markup += "<h3 class='calendar-title'>" + event["eventTitle"];
             
-            if (event.isMultiDay) {
-                markup += " <span class='badge multiple-days'>Múltiplos dias</span>";
-            }
             if (event.recurrence) {
                 markup += " <span class='badge recurring'>Recorrente</span>";
             }
             
             markup += "</h3>";
-            // Resto do código de renderização permanece o mesmo...
             markup += "<div class='event-details'>";
             
             markup += "<div class='event-period'>";
             if (event.isMultiDay) {
                 markup += "<i class='fa-regular fa-calendar-days'></i> ";
                 markup += "De <span class='start-time-highlight'>" + event["startDate"] + "</span>";
-
-                if (event.isFirstDay && event["startTime"] !== "O dia todo") {
-                    markup += " às <span class='start-time-highlight'>" + event["startTime"] + "</span>";
-                }
                 markup += " até <span class='end-time-highlight'>" + event["endDate"] + "</span>";
-                if (event.isLastDay && event["endTime"] !== "O dia todo") {
-                    markup += " às <span class='end-time-highlight'>" + event["endTime"] + "</span>";
+                
+                if (event["startTime"] !== "O dia todo" || event["endTime"] !== "O dia todo") {
+                    markup += "<br/><i class='fa-regular fa-clock'></i> ";
+                    if (event["startTime"] !== "O dia todo") {
+                        markup += "Início: <span class='start-time-highlight'>" + event["startTime"] + "</span>";
+                    }
+                    if (event["endTime"] !== "O dia todo") {
+                        markup += " - Fim: <span class='end-time-highlight'>" + event["endTime"] + "</span>";
+                    }
                 }
             } else {
                 markup += "<div class='event-description-horario'>";

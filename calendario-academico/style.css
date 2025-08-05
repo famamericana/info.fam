@@ -63,7 +63,7 @@
 }
 
 .pezinho {
-    font-family: 'ubuntu';
+  
     font-size: 18px;
     color: #000 !important;
     font-weight: 500;
@@ -184,6 +184,11 @@ a:hover {
     color: black;
 }
 
+.date-day.multi-day {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
 #calendar-list ol {
     list-style-type: none;
     margin: 0 0 1.5em 0;
@@ -200,7 +205,7 @@ a:hover {
     display: block;
     font-size: 22px;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 10px;
     background-color: white;
 
     border-radius: 5px;
@@ -260,7 +265,7 @@ a:hover {
     background-color: white;
     border-radius: 5px;
     padding: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
     width: 100%;
     margin-top: 5px;
     border: 1px solid #d5dcf1;
