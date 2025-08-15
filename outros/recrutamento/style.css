@@ -166,7 +166,7 @@ body {
 .checkbox-item input[type="checkbox"]:checked + label::after {
     content: '✓';
     position: absolute;
-    left: 0.125rem;
+    left: 5px;
     top: 50%;
     transform: translateY(-50%);
     color: white;
