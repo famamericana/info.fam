@@ -125,14 +125,10 @@ hr {
 }
 
 
-.botaovagas {
-    background-color: #0089CF;
-
-
-}
 
 .botaoempresas {
     background-color: #00377B;
+    width: 100%;
 }
 
 .botaoempresas,
