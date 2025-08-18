@@ -5,6 +5,7 @@ $(document).ready(function () {
     checkInscriptionButtons();
 });
 
+
 // Função para verificar a data e ativar os botões de inscrição quando apropriado
 function checkInscriptionButtons() {
     const targetDate = new Date("2025-05-05T07:00:00-03:00"); // 5 de maio de 2025, 7h da manhã horário de Brasília
@@ -28,13 +29,15 @@ function ativarBotoesInscricao() {
     $("#segunda-graduacao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/52"><button class="btn2">2° Graduação | Inscreva-se</button></a>');
     
     // Transferência
-    $("#transferencia .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/53"><button class="btn2">Transferência | Inscreva-se</button></a>');
+    $("#transferencia .btn2").replaceWith('<a href=""><button class="btn2">Transferência | Encerradas</button></a>');
     
     // Extensão
     $("#extensao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/40"><button class="btn2">Extensão | Inscreva-se</button></a>');
     
     // Nota: Não modificamos o botão de pós-graduação pois ele já está sempre ativo
 }
+
+
 
 /// tabs ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
