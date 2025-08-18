@@ -221,7 +221,8 @@ hr {
 
     /*Topicos*/
     .grid-container {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 1fr;
     }
 }
 
@@ -229,7 +230,9 @@ hr {
 /*Topicos*/
 .grid-container {
     box-sizing: border-box;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     gap: 20px;
     padding: 20px;
@@ -237,7 +240,6 @@ hr {
     margin-top: 20px;
     margin: 0 auto;
     border: 1px solid #0089CF;
-
 }
 
 .grid-item {
