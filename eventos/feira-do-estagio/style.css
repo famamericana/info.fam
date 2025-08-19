@@ -381,7 +381,7 @@ hr {
 }
 
 .icon {
-    margin-top: 20px;
+    margin-top: 25px;
     width: 70px;
     height: 70px;
     margin-right: 20px;
@@ -635,6 +635,12 @@ hr {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+
+.icon {
+    margin-top: 8px;
+  
 }
 }
 @media (max-width: 374px) {
