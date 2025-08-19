@@ -14,33 +14,40 @@ $(document).ready(function () {
     $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
 });
 
-// Controle da animação do header com padrão de setas
+// Controle da animação do body com padrão de setas
 $(document).ready(function () {
-    const header = $('header')[0];
+    const body = $('body')[0];
     let animationPaused = false;
     
     // Controla a animação baseada na visibilidade da página
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
             // Pausa a animação quando a aba não está ativa
-            header.style.setProperty('--animation-play-state', 'paused');
+            body.style.setProperty('--animation-play-state', 'paused');
         } else {
             // Retoma a animação quando a aba volta a ficar ativa
-            header.style.setProperty('--animation-play-state', 'running');
+            body.style.setProperty('--animation-play-state', 'running');
         }
     });
     
-    // Função para pausar/retomar animação ao passar o mouse (opcional)
-    $('header').hover(
-        function() {
-            // Mouse entra - pode pausar se desejar
-            // $(this)[0].style.setProperty('--animation-play-state', 'paused');
-        },
-        function() {
-            // Mouse sai - retoma
-            // $(this)[0].style.setProperty('--animation-play-state', 'running');
-        }
-    );
+    // Performance: reduz a animação quando usuário não está interagindo
+    let idleTimer;
+    const resetIdleTimer = () => {
+        clearTimeout(idleTimer);
+        body.style.setProperty('--animation-play-state', 'running');
+        
+        // Pausa animação após 30 segundos de inatividade (opcional)
+        idleTimer = setTimeout(() => {
+            // body.style.setProperty('--animation-play-state', 'paused');
+        }, 30000);
+    };
+    
+    // Eventos que indicam atividade do usuário
+    ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+        document.addEventListener(event, resetIdleTimer, { passive: true });
+    });
+    
+    resetIdleTimer(); // Inicia o timer
 });
 
 
