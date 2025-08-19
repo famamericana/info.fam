@@ -153,10 +153,12 @@ header {
 }
 
 .data {
-    background-color: white;
+   
     border-radius: 0 10px 0 10px;
     margin-bottom: 10px;
     padding: 5px 15px;
+     border: 2px solid #e0ebff;
+    background-color: #f3f7ff;
 }
 
 .data h1 {
@@ -170,10 +172,10 @@ header {
 }
 
 .datahorario {
-    margin-top: 10px;
-    border: 2px solid #e0ebff;
+    margin-top: -10px;
+    background-color: white;
     border-radius: 5px;
-    background-color: #f3f7ff;
+   
 }
 
 .data .lugar {
@@ -209,6 +211,7 @@ main {
 .logoesub {
     width: 100%;
     max-width: 500px;
+    margin-bottom: 20px;
 }
 
 .main2 {
@@ -219,6 +222,7 @@ main {
     height: fit-content;
     border-radius: 10px;
     background-color: white;
+    border: 2px solid #e0ebff;
 }
 
 hr {
@@ -256,7 +260,8 @@ hr {
 }
 
 .imagem-personas img {
-    max-width: 280px;
+    max-width: 290px;
+    width: 100%;
 }
 
 .botaoempresas:hover {
@@ -284,6 +289,10 @@ hr {
         flex-basis: auto;
 
     }
+.logoesub {
+   
+    margin-bottom: -50px;
+}
 
     .containerdatasvagas {
         flex-direction: column;
@@ -590,8 +599,13 @@ hr {
     height: 100%;
 }
 
+@media (max-width: 490px) {
+.logoesub {
+   
+    margin-bottom: -20px;
+}
 
-
+}
 @media (max-width: 374px) {
     .logo-item {
         flex: 1 1 calc(50% - 5px);
