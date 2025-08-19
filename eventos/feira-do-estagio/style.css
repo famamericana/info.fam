@@ -343,7 +343,7 @@ hr {
     }
 
     /*Topicos*/
-    .grid-container {
+    main .grid-container {
         grid-template-columns: 1fr !important;
         grid-template-rows: 1fr;
     }
@@ -351,7 +351,7 @@ hr {
 
 
 /*Topicos*/
-.grid-container {
+main .grid-container {
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -365,7 +365,7 @@ hr {
 
 }
 
-.grid-item {
+main .grid-item {
     display: block;
     align-items: flex-start;
     padding: 20px;
@@ -380,7 +380,7 @@ hr {
   text-align: left;
 }
 
-.icon {
+main .icon {
     margin-top: 25px;
     width: 70px;
     height: 70px;
@@ -388,18 +388,18 @@ hr {
     padding: 10px;
 }
 
-.contentdogrid h3 {
+main .contentdogrid h3 {
     margin: 0;
     margin-bottom: 10px;
 
 }
 
-.contentdogrid ul{
+main  .contentdogrid ul{
     text-align: left;
     margin-left: -30px;
 }
 
-.contentdogrid p {
+main .contentdogrid p {
     text-align: left;
     margin: 0;
 }
