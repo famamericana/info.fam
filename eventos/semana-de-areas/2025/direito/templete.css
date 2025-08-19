@@ -465,3 +465,21 @@ iframe {
 }
 
 
+.famtalks{
+    border: 2px solid #E5C585;
+}
+
+/* Sobrepor o logo FAM Talks na imagem do palestrante dentro de .famtalks */
+.famtalks .imagemdopalestrante{
+    position: relative; /* contêiner para posicionamento absoluto do logo */
+}
+
+.famtalks .famtalk-logo{
+    position: absolute;
+    top: 20px;
+   right: 20px;
+    width: 50px;
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+}
