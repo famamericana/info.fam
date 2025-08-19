@@ -40,12 +40,110 @@ body {
 }
 
 header {
+    position: relative;
     background-color: #f3f7ff;
     padding-top: 50px;
     padding-bottom: 50px;
+    overflow: hidden;
+}
+
+/* Padrão de setas animado no header */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            #e8eef7 20px,
+            #e8eef7 40px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 20px,
+            #dde6f0 20px,
+            #dde6f0 40px
+        );
+    animation: chevronMoveRight 20s linear infinite;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            135deg,
+            transparent,
+            transparent 25px,
+            #f0f4f9 25px,
+            #f0f4f9 50px
+        ),
+        repeating-linear-gradient(
+            -135deg,
+            transparent,
+            transparent 25px,
+            #e5ecf5 25px,
+            #e5ecf5 50px
+        );
+    animation: chevronMoveLeft 25s linear infinite;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+@keyframes chevronMoveRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes chevronMoveLeft {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Media query para reduzir animações em dispositivos com preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    header::before,
+    header::after {
+        animation-duration: 60s;
+    }
+}
+
+/* Otimização para dispositivos móveis */
+@media (max-width: 768px) {
+    header::before,
+    header::after {
+        animation-duration: 30s;
+        opacity: 0.4;
+    }
+    
+    header::after {
+        opacity: 0.2;
+    }
 }
 
 .header2 {
+    position: relative;
+    z-index: 1;
     max-width: 960px;
     margin: 0 auto;
     display: flex;

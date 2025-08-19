@@ -14,6 +14,35 @@ $(document).ready(function () {
     $("#BotaoTopo").load("/codigos-gerais/voltartopo/voltartopo.html");
 });
 
+// Controle da animação do header com padrão de setas
+$(document).ready(function () {
+    const header = $('header')[0];
+    let animationPaused = false;
+    
+    // Controla a animação baseada na visibilidade da página
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            // Pausa a animação quando a aba não está ativa
+            header.style.setProperty('--animation-play-state', 'paused');
+        } else {
+            // Retoma a animação quando a aba volta a ficar ativa
+            header.style.setProperty('--animation-play-state', 'running');
+        }
+    });
+    
+    // Função para pausar/retomar animação ao passar o mouse (opcional)
+    $('header').hover(
+        function() {
+            // Mouse entra - pode pausar se desejar
+            // $(this)[0].style.setProperty('--animation-play-state', 'paused');
+        },
+        function() {
+            // Mouse sai - retoma
+            // $(this)[0].style.setProperty('--animation-play-state', 'running');
+        }
+    );
+});
+
 
 //https forçar -------------------------------------------------------------------------------------------------------------------------------
 if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
