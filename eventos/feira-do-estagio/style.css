@@ -172,9 +172,11 @@ header {
 }
 
 .datahorario {
-    margin-top: -10px;
+    margin-top: 10px;
     background-color: white;
     border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
    
 }
 
@@ -341,20 +343,28 @@ hr {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 0px;
     border-radius: 5px;
     margin-top: 20px;
     margin: 0 auto;
-    background-color: #f3f7ff;
-    border: 2px solid #e0ebff;
+
 }
 
 .grid-item {
     display: block;
     align-items: flex-start;
-    padding: 10px;
+    padding: 20px;
     margin: 0 auto;
+        background-color: #f3f7ff;
+    border: 2px solid #e0ebff;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+  
+    align-items: center;
 }
 
 .icon {
@@ -362,13 +372,17 @@ hr {
     height: 50px;
     margin-right: 20px;
     padding: 10px;
-
 }
 
 .contentdogrid h3 {
     margin: 0;
     margin-bottom: 10px;
 
+}
+
+.contentdogrid ul{
+    text-align: left;
+    margin-left: -30px;
 }
 
 .contentdogrid p {
