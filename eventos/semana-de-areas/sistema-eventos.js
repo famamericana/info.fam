@@ -321,43 +321,20 @@ class SemanaDeAreas {
      * Inicializa todo o sistema
      */
     async inicializar() {
-        console.log('🎯 Iniciando Sistema de Semana de Áreas...');
-        
         const sucesso = await this.carregarEventos();
         if (!sucesso) {
-            console.error('❌ Falha ao carregar eventos');
+            console.error('Falha ao carregar eventos');
             return;
         }
 
-        // Checagem rápida: validar parsing das primeiras datas
-        try {
-            if (this.eventos.length) {
-                console.log('🔎 Verificando parse das primeiras datas:');
-                for (let i = 0; i < Math.min(3, this.eventos.length); i++) {
-                    const e = this.eventos[i];
-                    console.log(`  - ${e.nome}: inicio ->`, this.parseDate(e.dataInicio), ' fim ->', this.parseDate(e.dataFim));
-                }
-            }
-        } catch (err) {
-            console.warn('⚠️ Erro durante verificação de datas:', err);
-        }
-
         const eventosOrganizados = this.organizarEventos();
-        
-        console.log('📅 Eventos organizados:', {
-            proximo: eventosOrganizados.proximo?.nome,
-            totalPassados: eventosOrganizados.passados.length,
-            anos: Object.keys(eventosOrganizados.porAno)
-        });
 
         // Atualiza a página
         this.atualizarEventoPrincipal(eventosOrganizados.proximo);
         this.atualizarEventosPassados(eventosOrganizados.passados);
         this.atualizarAccordion(eventosOrganizados.porAno);
 
-        console.log('✅ Sistema inicializado com sucesso!');
-        
-        // Disponibiliza para debugging
+        // Disponibiliza para debugging (opcional)
         window.semanaDeAreas = this;
     }
 
