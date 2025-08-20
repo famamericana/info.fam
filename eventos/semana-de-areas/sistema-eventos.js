@@ -20,6 +20,28 @@ class SemanaDeAreas {
         };
     }
 
+    // Analisa strings de data em vários formatos e retorna um Date
+    parseDate(dateStr) {
+        if (!dateStr) return null;
+        if (dateStr instanceof Date) return dateStr;
+
+        // YYYY-MM-DD (ISO-like) -> cria com timezone local garantindo hora 00:00
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+            return new Date(dateStr + 'T00:00:00');
+        }
+
+        // DD-MM-YYYY -> construir manualmente
+        if (/^\d{2}-\d{2}-\d{4}$/.test(dateStr)) {
+            const parts = dateStr.split('-').map(Number); // [DD, MM, YYYY]
+            return new Date(parts[2], parts[1] - 1, parts[0]);
+        }
+
+        // Tentativa genérica fallback
+        const parsed = new Date(dateStr);
+        if (!isNaN(parsed)) return parsed;
+        return null;
+    }
+
     /**
      * Carrega eventos do JSON
      */
@@ -31,7 +53,8 @@ class SemanaDeAreas {
             
             // Usar data atual do arquivo se especificada (para testes)
             if (data.configuracoes && data.configuracoes.dataAtual) {
-                this.dataAtual = new Date(data.configuracoes.dataAtual);
+                const parsed = this.parseDate(data.configuracoes.dataAtual);
+                if (parsed) this.dataAtual = parsed;
             }
             
             return true;
@@ -47,7 +70,7 @@ class SemanaDeAreas {
     organizarEventos() {
         const hoje = this.dataAtual;
         const eventosOrdenados = [...this.eventos].sort((a, b) => 
-            new Date(a.dataInicio) - new Date(b.dataInicio)
+            this.parseDate(a.dataInicio) - this.parseDate(b.dataInicio)
         );
 
         const resultado = {
@@ -58,8 +81,8 @@ class SemanaDeAreas {
 
         // Encontra o próximo evento (futuro) ou o atual
         for (const evento of eventosOrdenados) {
-            const inicioEvento = new Date(evento.dataInicio);
-            const fimEvento = new Date(evento.dataFim);
+            const inicioEvento = this.parseDate(evento.dataInicio);
+            const fimEvento = this.parseDate(evento.dataFim);
             
             // Se o evento ainda não começou ou está acontecendo agora
             if (inicioEvento >= hoje || (inicioEvento <= hoje && fimEvento >= hoje)) {
@@ -112,8 +135,8 @@ class SemanaDeAreas {
      * Formata período de datas
      */
     formatarPeriodo(dataInicio, dataFim) {
-        const inicio = new Date(dataInicio);
-        const fim = new Date(dataFim);
+    const inicio = this.parseDate(dataInicio);
+    const fim = this.parseDate(dataFim);
         
         const diaInicio = inicio.getDate().toString().padStart(2, '0');
         const diaFim = fim.getDate().toString().padStart(2, '0');
@@ -140,8 +163,8 @@ class SemanaDeAreas {
         const periodo = this.formatarPeriodo(evento.dataInicio, evento.dataFim);
         
         // Determina se é "Próxima Semana" ou "Última Semana"
-        const hoje = this.dataAtual;
-        const inicioEvento = new Date(evento.dataInicio);
+    const hoje = this.dataAtual;
+    const inicioEvento = this.parseDate(evento.dataInicio);
         const titulo = inicioEvento > hoje ? "Próxima Semana" : "Última Semana";
         
         // Atualiza título
@@ -150,11 +173,12 @@ class SemanaDeAreas {
             tituloElemento.textContent = titulo;
         }
 
-        // Atualiza nome do evento
+        // Atualiza nome do evento (não aplicar classe de área no texto para não alterar a cor)
         const nomeElemento = document.querySelector('.qualsemana');
         if (nomeElemento) {
             nomeElemento.textContent = evento.nome;
-            nomeElemento.className = `qualsemana ${evento.classe}`;
+            // garantir que a classe do título seja apenas a base
+            nomeElemento.className = 'qualsemana';
         }
 
         // Atualiza datas
@@ -181,9 +205,13 @@ class SemanaDeAreas {
             linkElemento.href = evento.link;
         }
 
-        // Atualiza cor do tema
+        // Atualiza cor do tema (aplicada ao background do container, não ao texto)
         const corEvento = this.coresClasses[evento.classe] || '#000000';
         document.documentElement.style.setProperty('--cordoeventoatual', corEvento);
+        const containerEvento = document.querySelector('.eventoatual');
+        if (containerEvento) {
+            containerEvento.style.backgroundColor = corEvento;
+        }
     }
 
     /**
@@ -246,8 +274,8 @@ class SemanaDeAreas {
                 <div class="tab__content">
                     <div class="content">
                         ${eventos.map(evento => {
-                            const dataInicio = new Date(evento.dataInicio);
-                            const dataFim = new Date(evento.dataFim);
+                                            const dataInicio = this.parseDate(evento.dataInicio);
+                                            const dataFim = this.parseDate(evento.dataFim);
                             const mes = dataInicio.toLocaleDateString('pt-BR', { month: 'long' });
                             const dia = dataInicio.getDate();
                             const diaFim = dataFim.getDate();
@@ -299,6 +327,19 @@ class SemanaDeAreas {
         if (!sucesso) {
             console.error('❌ Falha ao carregar eventos');
             return;
+        }
+
+        // Checagem rápida: validar parsing das primeiras datas
+        try {
+            if (this.eventos.length) {
+                console.log('🔎 Verificando parse das primeiras datas:');
+                for (let i = 0; i < Math.min(3, this.eventos.length); i++) {
+                    const e = this.eventos[i];
+                    console.log(`  - ${e.nome}: inicio ->`, this.parseDate(e.dataInicio), ' fim ->', this.parseDate(e.dataFim));
+                }
+            }
+        } catch (err) {
+            console.warn('⚠️ Erro durante verificação de datas:', err);
         }
 
         const eventosOrganizados = this.organizarEventos();

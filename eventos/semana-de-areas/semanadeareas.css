@@ -160,6 +160,8 @@ main {
     line-height: 1;
 }
 
+
+
 .descricao {
     background-color: #FFFFFF;
     border-radius: 5px;
@@ -270,6 +272,7 @@ main {
         align-items: center;
 }
 
+
 .btn {
     
     color: var(--bg-dark);
@@ -319,21 +322,6 @@ main {
     text-decoration: none;
 }
 
-/* Classes dinâmicas para eventos passados - mantidas para compatibilidade */
-
-
-/* Classes automáticas geradas pelo sistema */
-.evento-1 {
-    background-color: var(--cor-evento-1, #79a744);
-}
-
-.evento-2 {
-    background-color: var(--cor-evento-2, #205c7e);
-}
-
-.evento-3 {
-    background-color: var(--cor-evento-3, #e53888);
-}
 
 #headerCarousel .carousel-item {
     opacity: 1;
