@@ -361,26 +361,6 @@ class SemanaDeAreas {
         window.semanaDeAreas = this;
     }
 
-    /**
-     * Método para adicionar novo evento facilmente
-     */
-    adicionarEvento({nome, dataInicio, dataFim, descricao, area, ano}) {
-        const novoEvento = {
-            nome,
-            dataInicio,
-            dataFim,
-            descricao,
-            link: `https://info.fam.br/eventos/semana-de-areas/${ano}/${nome.toLowerCase().replace(/\s+/g, '-')}`,
-            ano: parseInt(ano),
-            classe: area
-        };
-
-        console.log('📝 Novo evento criado:');
-        console.log('Copie e cole no eventos-config.json:');
-        console.log(JSON.stringify(novoEvento, null, 2));
-        
-        return novoEvento;
-    }
 }
 
 // Inicialização automática
@@ -388,13 +368,3 @@ document.addEventListener('DOMContentLoaded', async function() {
     const sistema = new SemanaDeAreas();
     await sistema.inicializar();
 });
-
-// Para adicionar novos eventos via console:
-// semanaDeAreas.adicionarEvento({
-//     nome: "Nome do Evento",
-//     dataInicio: "2025-MM-DD", 
-//     dataFim: "2025-MM-DD",
-//     descricao: "Descrição...",
-//     area: "direito", // ou outra área
-//     ano: 2025
-// });
