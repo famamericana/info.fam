@@ -27,6 +27,12 @@
     width: 12px;
 }
 
+/* Garantir tamanho/margem uniformes para h1 dentro de sections (acalma o Lighthouse) */
+section h1, .section h1 {
+    font-size: 28px;
+    margin: 0 0 16px;
+}
+
 /* Personaliza o fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
     background: white;
