@@ -174,11 +174,11 @@ class SemanaDeAreas {
         }
 
         // Atualiza nome do evento (não aplicar classe de área no texto para não alterar a cor)
-        const nomeElemento = document.querySelector('.qualsemana');
+        const nomeElemento = document.querySelector('.qualsemana') || document.querySelector('.div5');
         if (nomeElemento) {
             nomeElemento.textContent = evento.nome;
-            // garantir que a classe do título seja apenas a base
-            nomeElemento.className = 'qualsemana';
+            // garantir que o elemento mantenha a classe de posicionamento 'div5' e a classe base 'qualsemana'
+            nomeElemento.className = 'div5 qualsemana';
         }
 
         // Atualiza datas
