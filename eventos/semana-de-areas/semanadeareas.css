@@ -544,7 +544,7 @@ main {
     .div5 {
         grid-area: 2 / 1 / 3 / 3;
         padding-left: 0;
-        padding-top: 10px;
+        padding-top: 0px;
     }
 
     .qualsemana {
@@ -564,6 +564,11 @@ main {
     .div3 {
         margin-top: 10px;
         justify-self: flex-start;
+    }
+
+        .div5 {
+ 
+        padding-top: 10px;
     }
 }
 
