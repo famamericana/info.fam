@@ -71,21 +71,39 @@ class SemanaDeAreas {
             else if (fimEvento < hoje) {
                 resultado.passados.push(evento);
             }
-
-            // Organiza por ano
-            if (!resultado.porAno[evento.ano]) {
-                resultado.porAno[evento.ano] = [];
-            }
-            resultado.porAno[evento.ano].push(evento);
         }
 
         // Se não há próximo evento, pega o mais recente dos passados
         if (!resultado.proximo && resultado.passados.length > 0) {
-            resultado.proximo = resultado.passados.pop(); // Remove do final e usa como próximo
+            resultado.proximo = resultado.passados.shift(); // Remove do início dos passados
         }
 
         // Inverte passados para ter os mais recentes primeiro
         resultado.passados.reverse();
+
+        // Organiza por ano APENAS os eventos que não estão em "passados" nem como "próximo"
+        const eventosParaAccordion = this.eventos.filter(evento => {
+            // Não inclui o evento próximo
+            if (resultado.proximo && evento.nome === resultado.proximo.nome && 
+                evento.dataInicio === resultado.proximo.dataInicio) {
+                return false;
+            }
+            
+            // Não inclui os 3 eventos mais recentes que estão nos mini-containers
+            const eventosPassadosNomes = resultado.passados.slice(0, 3).map(e => 
+                `${e.nome}-${e.dataInicio}-${e.ano}`);
+            const eventoAtualId = `${evento.nome}-${evento.dataInicio}-${evento.ano}`;
+            
+            return !eventosPassadosNomes.includes(eventoAtualId);
+        });
+
+        // Agora organiza por ano apenas os eventos filtrados
+        eventosParaAccordion.forEach(evento => {
+            if (!resultado.porAno[evento.ano]) {
+                resultado.porAno[evento.ano] = [];
+            }
+            resultado.porAno[evento.ano].push(evento);
+        });
 
         return resultado;
     }
