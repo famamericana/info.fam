@@ -1,0 +1,298 @@
+{
+  "eventos": [
+    {
+      "nome": "Direito",
+      "dataInicio": "2025-09-09",
+      "dataFim": "2025-09-14",
+      "descricao": "Semana de Direito 2025 com mesas-redondas, palestras e oficinas sobre Direito Civil, Penal e Constitucional, prática forense e carreira jurídica. Juristas e professores convidados irão debater temas atuais, preparar os alunos para a atuação profissional e oferecer atividades práticas voltadas para o exercício do Direito.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/direito",
+      "ano": 2025,
+      "classe": "direito"
+    },
+    {
+      "nome": "Finanças",
+      "dataInicio": "2025-08-15",
+      "dataFim": "2025-08-19",
+      "descricao": "Semana de Finanças com palestras sobre mercado financeiro, investimentos e planejamento econômico.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/financas",
+      "ano": 2025,
+      "classe": "gestao"
+    },
+    {
+      "nome": "Estratégia",
+      "dataInicio": "2025-07-20",
+      "dataFim": "2025-07-24",
+      "descricao": "Semana focada em estratégias empresariais e planejamento organizacional.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/estrategia",
+      "ano": 2025,
+      "classe": "comunicacao"
+    },
+    {
+      "nome": "Tecnologias",
+      "dataInicio": "2025-06-10",
+      "dataFim": "2025-06-14",
+      "descricao": "Semana de Tecnologias com workshops sobre programação, IA e inovação digital.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/tecnologias",
+      "ano": 2025,
+      "classe": "tec"
+    },
+    {
+      "nome": "Arquitetura",
+      "dataInicio": "2025-05-22",
+      "dataFim": "2025-05-24",
+      "descricao": "Semana de Arquitetura com palestras sobre design, sustentabilidade e urbanismo.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/arquitetura",
+      "ano": 2025,
+      "classe": "exatas"
+    },
+    {
+      "nome": "Engenharias",
+      "dataInicio": "2025-05-22",
+      "dataFim": "2025-05-24",
+      "descricao": "Semana das Engenharias com workshops técnicos e palestras sobre inovação.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/engenharias",
+      "ano": 2025,
+      "classe": "exatas"
+    },
+    {
+      "nome": "Veterinária",
+      "dataInicio": "2025-03-18",
+      "dataFim": "2025-03-19",
+      "descricao": "Semana de Veterinária com palestras sobre medicina animal e bem-estar.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/veterinaria",
+      "ano": 2025,
+      "classe": "veterinaria"
+    },
+    {
+      "nome": "Comunicação",
+      "dataInicio": "2024-11-11",
+      "dataFim": "2024-11-14",
+      "descricao": "Semana de Comunicação 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/comunicacao",
+      "ano": 2024,
+      "classe": "comunicacao"
+    },
+    {
+      "nome": "Educação",
+      "dataInicio": "2024-10-30",
+      "dataFim": "2024-11-02",
+      "descricao": "Semana de Educação 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/educacao",
+      "ano": 2024,
+      "classe": "educacao"
+    },
+    {
+      "nome": "Direito",
+      "dataInicio": "2024-09-09",
+      "dataFim": "2024-09-14",
+      "descricao": "Semana de Direito 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/direito",
+      "ano": 2024,
+      "classe": "direito"
+    },
+    {
+      "nome": "Saúde II",
+      "dataInicio": "2024-08-19",
+      "dataFim": "2024-08-21",
+      "descricao": "Semana de Saúde II 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/saude-2/",
+      "ano": 2024,
+      "classe": "saudedois"
+    },
+    {
+      "nome": "Gestão",
+      "dataInicio": "2024-05-27",
+      "dataFim": "2024-05-29",
+      "descricao": "Semana de Gestão 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/gestao/",
+      "ano": 2024,
+      "classe": "gestao"
+    },
+    {
+      "nome": "Tecnologias",
+      "dataInicio": "2024-05-06",
+      "dataFim": "2024-05-08",
+      "descricao": "Semana de Tecnologias 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/tecnologias/",
+      "ano": 2024,
+      "classe": "tec"
+    },
+    {
+      "nome": "Exatas",
+      "dataInicio": "2024-04-22",
+      "dataFim": "2024-04-24",
+      "descricao": "Semana de Exatas 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/exatas",
+      "ano": 2024,
+      "classe": "exatas"
+    },
+    {
+      "nome": "Saúde I",
+      "dataInicio": "2024-03-25",
+      "dataFim": "2024-03-27",
+      "descricao": "Semana de Saúde I 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/saude-1",
+      "ano": 2024,
+      "classe": "saudeum"
+    },
+    {
+      "nome": "Veterinária",
+      "dataInicio": "2024-02-26",
+      "dataFim": "2024-02-28",
+      "descricao": "Semana de Veterinária 2024.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2024/veterinaria",
+      "ano": 2024,
+      "classe": "veterinaria"
+    },
+    {
+      "nome": "Comunicação",
+      "dataInicio": "2023-11-01",
+      "dataFim": "2023-11-30",
+      "descricao": "Semana de Comunicação 2023.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2023/comunicacao/",
+      "ano": 2023,
+      "classe": "comunicacao"
+    },
+    {
+      "nome": "Tecnologias",
+      "dataInicio": "2023-10-30",
+      "dataFim": "2023-11-01",
+      "descricao": "Semana de Tecnologias 2023.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2023/tecnologias/",
+      "ano": 2023,
+      "classe": "tec"
+    },
+    {
+      "nome": "Gestão",
+      "dataInicio": "2023-10-09",
+      "dataFim": "2023-10-11",
+      "descricao": "Semana de Gestão 2023.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2023/gestao",
+      "ano": 2023,
+      "classe": "gestao"
+    },
+    {
+      "nome": "Educação e Literatura",
+      "dataInicio": "2023-10-02",
+      "dataFim": "2023-10-04",
+      "descricao": "Semana de Educação e Literatura 2023.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2023/educacao-e-literatura/",
+      "ano": 2023,
+      "classe": "educacao"
+    },
+    {
+      "nome": "Direito",
+      "dataInicio": "2023-09-04",
+      "dataFim": "2023-09-06",
+      "descricao": "Semana de Direito 2023.",
+      "link": "https://www.instagram.com/p/Cr3ietuOsWR/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+      "ano": 2023,
+      "classe": "direito"
+    },
+    {
+      "nome": "Saúde II",
+      "dataInicio": "2023-08-28",
+      "dataFim": "2023-08-30",
+      "descricao": "Semana de Saúde II 2023.",
+      "link": "https://www.instagram.com/p/CwWI6ivML13/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+      "ano": 2023,
+      "classe": "saudedois"
+    },
+    {
+      "nome": "Exatas",
+      "dataInicio": "2023-05-08",
+      "dataFim": "2023-05-10",
+      "descricao": "Semana de Exatas 2023.",
+      "link": "https://www.instagram.com/p/Cr3ietuOsWR/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+      "ano": 2023,
+      "classe": "exatas"
+    },
+    {
+      "nome": "Saúde I",
+      "dataInicio": "2023-04-03",
+      "dataFim": "2023-04-05",
+      "descricao": "Semana de Saúde I 2023.",
+      "link": "https://www.instagram.com/p/CqlqdmYPF_9/?igshid=NzZhOTFlYzFmZQ%3D%3D",
+      "ano": 2023,
+      "classe": "saudeum"
+    },
+    {
+      "nome": "Veterinária",
+      "dataInicio": "2023-03-20",
+      "dataFim": "2023-03-22",
+      "descricao": "Semana de Veterinária 2023.",
+      "link": "https://www.instagram.com/p/Cp0RSe-OfV_/?igshid=NzZhOTFlYzFmZQ==",
+      "ano": 2023,
+      "classe": "veterinaria"
+    },
+    {
+      "nome": "Saúde II",
+      "dataInicio": "2022-11-07",
+      "dataFim": "2022-11-10",
+      "descricao": "Semana de Saúde II 2022.",
+      "link": "https://www.instagram.com/p/CkrPEzQPMJv/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+      "ano": 2022,
+      "classe": "saudedois"
+    },
+    {
+      "nome": "Educação",
+      "dataInicio": "2022-10-04",
+      "dataFim": "2022-10-06",
+      "descricao": "Semana de Educação 2022.",
+      "link": "https://www.instagram.com/p/CjJH6LLv1zD/?igshid=NzZhOTFlYzFmZQ%3D%3D",
+      "ano": 2022,
+      "classe": "educacao"
+    },
+    {
+      "nome": "Engenharias",
+      "dataInicio": "2022-05-24",
+      "dataFim": "2022-05-26",
+      "descricao": "Semana de Engenharias 2022.",
+      "link": "https://www.instagram.com/p/Cd69k2mMFHE/?igshid=NzZhOTFlYzFmZQ%3D%3D",
+      "ano": 2022,
+      "classe": "exatas"
+    },
+    {
+      "nome": "Tecnologias",
+      "dataInicio": "2022-04-26",
+      "dataFim": "2022-04-28",
+      "descricao": "Semana de Tecnologias 2022.",
+      "link": "https://www.instagram.com/p/Ccyomm8M8PY/?igshid=NzZhOTFlYzFmZQ%3D%3D",
+      "ano": 2022,
+      "classe": "tec"
+    },
+    {
+      "nome": "Saúde I",
+      "dataInicio": "2022-04-05",
+      "dataFim": "2022-04-07",
+      "descricao": "Semana de Saúde I 2022.",
+      "link": "https://www.instagram.com/p/Cbx1ErduuOp/?igshid=NzZhOTFlYzFmZQ%3D%3D",
+      "ano": 2022,
+      "classe": "saudeum"
+    },
+    {
+      "nome": "Computação e Informática",
+      "dataInicio": "2022-03-22",
+      "dataFim": "2022-03-24",
+      "descricao": "Semana de Computação e Informática 2022.",
+      "link": "https://www.instagram.com/p/CbarJCYOvnq/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+      "ano": 2022,
+      "classe": "tec"
+    }
+  ],
+  "cores": {
+    "veterinaria": "#3eb288",
+    "saudeum": "#45b7e5",
+    "saudedois": "#199eae",
+    "exatas": "#173e70",
+    "direito": "#E93F3C",
+    "educacao": "#5d378d",
+    "comunicacao": "#e53888",
+    "gestao": "#205c7e",
+    "tec": "#79a744"
+  },
+  "configuracoes": {
+    "dataAtual": "2025-08-20",
+    "diasParaFinalizar": 7
+  }
+}
