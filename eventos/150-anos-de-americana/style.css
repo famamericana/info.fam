@@ -47,13 +47,19 @@ body {
 }
 
 /* Definir Montserrat Black para todos os títulos */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
 }
 
 /* Textos em negrito também usarão Montserrat Black */
-strong, b {
+strong,
+b {
     font-weight: 900;
 }
 
@@ -106,22 +112,22 @@ main {
 }
 
 /* navbar codigo inicial: https://www.codingnepalweb.com/responsive-navigation-menu-bar-html-css/ -------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-.famosanavbar_color{
+.famosanavbar_color {
     background-color: white;
 }
 
-.famosanavbar_color ul li a{
+.famosanavbar_color ul li a {
     color: black;
 }
 
-.famosanavbar_color  a:hover {
+.famosanavbar_color a:hover {
     background: #1AAEDE;
     transition: .5s;
     color: white;
     text-decoration: none;
 }
 
-.checkbtn_color{
+.checkbtn_color {
     background-color: white !important;
     color: #1AAEDE !important;
 }
@@ -286,7 +292,7 @@ nav a:hover {
 }
 
 /*galeria --------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-#galeria{
+#galeria {
     margin-top: 80px;
 }
 
@@ -427,7 +433,7 @@ nav a:hover {
 
 /*programação --------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#programacao{
+#programacao {
     margin-top: 80px;
 }
 
@@ -442,7 +448,8 @@ nav a:hover {
     padding: 0;
     margin-top: 20px;
 }
-.programacaodesign a{
+
+.programacaodesign a {
     text-decoration: none;
 }
 
@@ -483,14 +490,15 @@ nav a:hover {
     grid-row: span 2;
     display: grid;
     grid-template-rows: min-content min-content min-content;
-    border: 1px solid rgb(225, 225, 225);;
+    border: 1px solid rgb(225, 225, 225);
+    ;
     padding-top: 10px;
     border-radius: 5px;
 }
 
 .programacaodesign i {
-   color: #1AAEDE;
-   margin-right: 5px;
+    color: #1AAEDE;
+    margin-right: 5px;
 }
 
 /* date */
@@ -534,8 +542,8 @@ nav a:hover {
 /* title descr */
 .programacaodesign ul li .title,
 .programacaodesign ul li .descr {
-    
-    
+
+
     position: relative;
     padding-inline: 1.5rem;
 }
@@ -576,7 +584,7 @@ nav a:hover {
 @media (min-width: 40rem) {
     .programacaodesign ul {
         grid-template-columns: 1fr var(--line-w) 1fr;
-        
+
     }
 
     .programacaodesign ul::before {
@@ -608,11 +616,11 @@ nav a:hover {
 
 
 /*  footer ----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-footer .segundo ul{
+footer .segundo ul {
     margin-top: revert !important;
 }
 
-footer .quatro .footer-c{
+footer .quatro .footer-c {
     padding-top: 22px;
 }
 
@@ -620,16 +628,16 @@ footer .créditos_eu a {
     margin-top: -26px;
 }
 
-@media (max-width: 900px){
-footer .créditos_eu {
-    margin-top: -5px !important;
-}
+@media (max-width: 900px) {
+    footer .créditos_eu {
+        margin-top: -5px !important;
+    }
 }
 
 
 /* realização ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-.realizacao{
+.realizacao {
     display: flex;
     justify-content: center;
     border-radius: 10px;
@@ -638,7 +646,7 @@ footer .créditos_eu {
     align-items: center;
 }
 
-.titulo_realizacao{
+.titulo_realizacao {
     text-align: center;
     padding: 10px;
     border-bottom: 1px solid #1AAEDE;
@@ -690,10 +698,11 @@ footer .créditos_eu {
 }
 
 
-.logo-item img{
+.logo-item img {
     border-radius: 5px;
 }
-.feature{
+
+.feature {
     margin-top: 40px;
 }
 
@@ -702,8 +711,18 @@ footer .créditos_eu {
     gap: 20px;
     align-items: center;
     margin-bottom: 10px;
-    margin-top: 40px;
+    border: 1px solid #F68B45;
+    padding: 20px;
+    border-radius: 5px;
+    transition: all .1s ease-in-out;
 }
+
+.feature-row:hover{
+        border: 1px solid #1AAEDE;
+    transform: scale(1.025);
+
+}
+
 
 .feature-row .reverse {
     flex-direction: row-reverse;
@@ -727,6 +746,7 @@ footer .créditos_eu {
     .feature-row {
         flex-direction: column;
     }
+
     .feature-row.reverse {
         flex-direction: column-reverse;
     }
