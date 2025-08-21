@@ -384,16 +384,7 @@ nav a:hover {
     padding: 20px 0;
 }
 
-#personalidades h2 {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
 
-#personalidades .pheitor {
-    text-align: center;
-    margin-bottom: 30px;
-}
 
 .personalidades-slider {
     position: relative;
@@ -402,7 +393,6 @@ nav a:hover {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid #F68B45;
 }
 
@@ -412,7 +402,7 @@ nav a:hover {
     height: 400px;
     background: white;
     min-height: 400px;
-    border: 2px solid #1AAEDE;
+    
     border-radius: 10px;
 }
 
@@ -451,7 +441,7 @@ nav a:hover {
     height: 320px;
     border-radius: 10px;
     overflow: hidden;
-    border: 3px solid #1AAEDE;
+    border: 1px solid #1AAEDE;
 }
 
 .slide-image img {
@@ -514,20 +504,28 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(7, 32, 79, 0.3);
 }
 
 .prev-btn:hover, 
 .next-btn:hover {
     background: var(--secondary-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 174, 222, 0.4);
 }
 
 .slide-indicators {
     display: flex;
     gap: 15px;
     align-items: center;
+}
+
+#slide-counter {
+    font-weight: 700;
+    color: var(--primary-color);
+    background: transparent;
+    padding: 6px 10px;
+    border-radius: 6px;
+    min-width: 56px;
+    text-align: center;
 }
 
 .indicator {

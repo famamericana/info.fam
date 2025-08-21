@@ -106,50 +106,93 @@ document.addEventListener("DOMContentLoaded", updateNavbar);
 // Slideshow de Personalidades -------------------------------------------------------------------------------------------------------------------------------
 
 let currentSlideIndex = 0;
-let slides, indicators;
+let slides;
 let autoSlideInterval;
 
 function initializeSlideshow() {
     slides = document.querySelectorAll('.slide');
-    indicators = document.querySelectorAll('.indicator');
     
     if (slides.length > 0) {
-        // Força o primeiro slide a ser visível
-        slides[0].style.opacity = '1';
-        slides[0].style.visibility = 'visible';
-        slides[0].classList.add('active');
-        
-        if (indicators[0]) {
-            indicators[0].classList.add('active');
-        }
-        
-        startAutoSlide();
+        // Sanitize slides: add placeholder image/title if missing, add image onerror handler
+        slides.forEach((slide, i) => {
+            // ensure slide-image wrapper
+            let wrapper = slide.querySelector('.slide-image');
+            if (!wrapper) {
+                wrapper = document.createElement('div');
+                wrapper.className = 'slide-image';
+                slide.querySelector('.slide-content')?.prepend(wrapper);
+            }
+
+            let img = wrapper.querySelector('img');
+            if (!img) {
+                img = document.createElement('img');
+                img.src = 'https://via.placeholder.com/250x320/cccccc/333?text=Sem+imagem';
+                img.alt = 'Imagem não disponível';
+                wrapper.appendChild(img);
+            }
+
+            // fallback when image fails to load
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = 'https://via.placeholder.com/250x320/cccccc/333?text=Sem+imagem';
+                this.alt = 'Imagem não disponível';
+            };
+
+            // ensure there is a title
+            let text = slide.querySelector('.slide-text');
+            if (!text) {
+                text = document.createElement('div');
+                text.className = 'slide-text';
+                slide.appendChild(text);
+            }
+            if (!text.querySelector('h3')) {
+                const h = document.createElement('h3');
+                h.textContent = 'Informação indisponível';
+                text.prepend(h);
+            }
+        });
+
+    // Força o primeiro slide a ser visível
+    slides[0].style.opacity = '1';
+    slides[0].style.visibility = 'visible';
+    slides[0].classList.add('active');
+
+    // update counter
+    const counter = document.getElementById('slide-counter');
+    if (counter) counter.textContent = `1/${slides.length}`;
+
+    startAutoSlide();
     }
 }
 
 function showSlide(index) {
-    if (!slides || !indicators) return;
-    
-    // Remove a classe active de todos os slides e indicadores
+    if (!slides) return;
+
+    // normalize index
+    if (index < 0) index = 0;
+    if (index >= slides.length) index = slides.length - 1;
+
+    // Remove a classe active de todos os slides
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
         slide.style.opacity = '0';
         slide.style.visibility = 'hidden';
-        
-        if (indicators[i]) {
-            indicators[i].classList.remove('active');
-        }
+        slide.style.display = 'none';
+        slide.style.zIndex = '1';
     });
-    
-    // Adiciona a classe active ao slide e indicador atuais
-    if (slides[index]) {
-        slides[index].classList.add('active');
-        slides[index].style.opacity = '1';
-        slides[index].style.visibility = 'visible';
+
+    // Adiciona a classe active ao slide atual
+    const s = slides[index];
+    if (s) {
+        s.classList.add('active');
+        s.style.display = 'block';
+        s.style.opacity = '1';
+        s.style.visibility = 'visible';
+        s.style.zIndex = '2';
     }
-    if (indicators[index]) {
-        indicators[index].classList.add('active');
-    }
+    // update counter
+    const counterEl = document.getElementById('slide-counter');
+    if (counterEl) counterEl.textContent = `${index + 1}/${slides.length}`;
 }
 
 function changeSlide(direction) {
@@ -165,11 +208,7 @@ function changeSlide(direction) {
     restartAutoSlide();
 }
 
-function currentSlide(index) {
-    currentSlideIndex = index - 1;
-    showSlide(currentSlideIndex);
-    restartAutoSlide();
-}
+// indicators removed — navigation via prev/next only
 
 function startAutoSlide() {
     if (autoSlideInterval) clearInterval(autoSlideInterval);
