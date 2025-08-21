@@ -110,17 +110,19 @@ let slides;
 let autoSlideInterval;
 
 function initializeSlideshow() {
-    slides = document.querySelectorAll('.slide');
+    // only target slides inside the personalidades slider to avoid touching other elements
+    const container = document.querySelector('.pers-slider');
+    slides = container ? container.querySelectorAll('.pers-slide') : document.querySelectorAll('.pers-slide');
     
     if (slides.length > 0) {
         // Sanitize slides: add placeholder image/title if missing, add image onerror handler
         slides.forEach((slide, i) => {
             // ensure slide-image wrapper
-            let wrapper = slide.querySelector('.slide-image');
+            let wrapper = slide.querySelector('.pers-slide-image');
             if (!wrapper) {
                 wrapper = document.createElement('div');
-                wrapper.className = 'slide-image';
-                slide.querySelector('.slide-content')?.prepend(wrapper);
+                wrapper.className = 'pers-slide-image';
+                slide.querySelector('.pers-slide-content')?.prepend(wrapper);
             }
 
             let img = wrapper.querySelector('img');
@@ -139,10 +141,10 @@ function initializeSlideshow() {
             };
 
             // ensure there is a title
-            let text = slide.querySelector('.slide-text');
+            let text = slide.querySelector('.pers-slide-text');
             if (!text) {
                 text = document.createElement('div');
-                text.className = 'slide-text';
+                text.className = 'pers-slide-text';
                 slide.appendChild(text);
             }
             if (!text.querySelector('h3')) {

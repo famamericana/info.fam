@@ -374,6 +374,7 @@ nav a:hover {
     z-index: 3;
 }
 
+
 /* Personalidades Slider -------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 #personalidades {
@@ -386,7 +387,7 @@ nav a:hover {
 
 
 
-.personalidades-slider {
+.pers-slider {
     position: relative;
     max-width: 100%;
     margin: 30px auto;
@@ -395,8 +396,7 @@ nav a:hover {
     overflow: hidden;
     border: 1px solid #F68B45;
 }
-
-.slider-container {
+.pers-container {
     position: relative;
     width: 100%;
     height: 400px;
@@ -406,7 +406,7 @@ nav a:hover {
     border-radius: 10px;
 }
 
-.slide {
+.pers-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -418,14 +418,12 @@ nav a:hover {
     background: white;
     z-index: 1;
 }
-
-.slide.active {
+.pers-slide.active {
     opacity: 1 !important;
     visibility: visible !important;
     z-index: 2;
 }
-
-.slide-content {
+.pers-slide-content {
     display: flex;
     align-items: center;
     height: 100%;
@@ -435,35 +433,30 @@ nav a:hover {
     min-height: 320px;
     border-radius: 8px;
 }
-
-.slide-image {
+.pers-slide-image {
     flex: 0 0 250px;
     height: 320px;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid #1AAEDE;
 }
-
-.slide-image img {
+.pers-slide-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
 }
-
-.slide-text {
+.pers-slide-text {
     flex: 1;
 }
-
-.slide-text h3 {
+.pers-slide-text h3 {
     font-size: 2.2rem;
     font-weight: 900;
     color: var(--primary-color);
     margin: 0 0 10px 0;
     line-height: 1.2;
 }
-
-.slide-text .cargo {
+.pers-slide-text .cargo {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--secondary-color);
@@ -471,16 +464,14 @@ nav a:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
-.slide-text .descricao {
+.pers-slide-text .descricao {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-color);
     margin: 0;
     text-align: justify;
 }
-
-.slider-controls {
+.pers-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -488,9 +479,8 @@ nav a:hover {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-top: 1px solid #dee2e6;
 }
-
-.prev-btn, 
-.next-btn {
+.pers-prev, 
+.pers-next {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -504,13 +494,12 @@ nav a:hover {
     justify-content: center;
     transition: all 0.3s ease;
 }
-
-.prev-btn:hover, 
-.next-btn:hover {
+.pers-prev:hover, 
+.pers-next:hover {
     background: var(--secondary-color);
 }
 
-.slide-indicators {
+.pers-slide-indicators {
     display: flex;
     gap: 15px;
     align-items: center;
@@ -526,7 +515,7 @@ nav a:hover {
     text-align: center;
 }
 
-.indicator {
+.pers-indicator {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -536,92 +525,91 @@ nav a:hover {
     border: 2px solid transparent;
 }
 
-.indicator.active {
+.pers-indicator.active {
     background: var(--primary-color);
     transform: scale(1.2);
     border-color: var(--secondary-color);
 }
 
-.indicator:hover {
+.pers-indicator:hover {
     background: var(--secondary-color);
     transform: scale(1.1);
 }
 
 /* Responsividade para Personalidades */
 @media (max-width: 900px) {
-    .slider-container {
+    .pers-container {
         height: auto;
         min-height: 500px;
     }
     
-    .slide-content {
+    .pers-slide-content {
         flex-direction: column;
         padding: 30px 20px;
         text-align: center;
     }
     
-    .slide-image {
+    .pers-slide-image {
         flex: 0 0 200px;
         height: 200px;
         align-self: center;
     }
     
-    .slide-text {
+    .pers-slide-text {
         padding-left: 0;
-     
     }
-    
-    .slide-text h3 {
+
+    .pers-slide-text h3 {
         font-size: 1.8rem;
     }
-    
-    .slide-text .descricao {
+
+    .pers-slide-text .descricao {
         text-align: left;
     }
     
-    .slider-controls {
+    .pers-controls {
         padding: 15px 20px;
     }
 }
 
 @media (max-width: 600px) {
-    .personalidades-slider {
+    .pers-slider {
         margin: 20px 10px;
     }
     
-    .slide-content {
+    .pers-slide-content {
         padding: 20px 15px;
     }
     
-    .slide-image {
+    .pers-slide-image {
         flex: 0 0 150px;
         height: 150px;
     }
     
-    .slide-text h3 {
+    .pers-slide-text h3 {
         font-size: 1.5rem;
     }
-    
-    .slide-text .cargo {
+
+    .pers-slide-text .cargo {
         font-size: 1rem;
     }
-    
-    .slide-text .descricao {
+
+    .pers-slide-text .descricao {
         font-size: 0.9rem;
     }
-    
-    .prev-btn, 
-    .next-btn {
+
+    .pers-prev, 
+    .pers-next {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
-    
-    .slide-indicators {
+
+    .pers-slide-indicators {
         gap: 10px;
     }
-    
-    .indicator {
+
+    .pers-indicator {
         width: 12px;
         height: 12px;
     }
