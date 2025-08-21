@@ -696,33 +696,4 @@ footer .créditos_eu {
 
 
 /*historias ---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-#historias{
-    margin-top: 80px;
-}
-
-.historias {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Ajuste o valor conforme necessário */
-    margin-top: 20px;
-}
-
-.historias iframe {
-    flex: 1; /* Subtrai o gap para manter a proporção correta */
-    border-radius: 5px;
-    width: 100%;
-  aspect-ratio: 16 / 9;
-}
-
-.historias iframe:first-child {
-    flex-basis: 100%;
- 
-}
-
-/* Ajuste para telas menores */
-@media (max-width: 650px) {
-    .historias iframe {
-        flex:  100%;
-    }
-}
+/* vídeos removidos do HTML; regras CSS relacionadas foram excluídas */
