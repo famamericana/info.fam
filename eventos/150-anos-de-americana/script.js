@@ -102,3 +102,88 @@ window.addEventListener('resize', updateNavbar);
 
 // Executar ao carregar a página
 document.addEventListener("DOMContentLoaded", updateNavbar);
+
+// Slideshow de Personalidades -------------------------------------------------------------------------------------------------------------------------------
+
+let currentSlideIndex = 0;
+let slides, indicators;
+let autoSlideInterval;
+
+function initializeSlideshow() {
+    slides = document.querySelectorAll('.slide');
+    indicators = document.querySelectorAll('.indicator');
+    
+    if (slides.length > 0) {
+        // Força o primeiro slide a ser visível
+        slides[0].style.opacity = '1';
+        slides[0].style.visibility = 'visible';
+        slides[0].classList.add('active');
+        
+        if (indicators[0]) {
+            indicators[0].classList.add('active');
+        }
+        
+        startAutoSlide();
+    }
+}
+
+function showSlide(index) {
+    if (!slides || !indicators) return;
+    
+    // Remove a classe active de todos os slides e indicadores
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        slide.style.opacity = '0';
+        slide.style.visibility = 'hidden';
+        
+        if (indicators[i]) {
+            indicators[i].classList.remove('active');
+        }
+    });
+    
+    // Adiciona a classe active ao slide e indicador atuais
+    if (slides[index]) {
+        slides[index].classList.add('active');
+        slides[index].style.opacity = '1';
+        slides[index].style.visibility = 'visible';
+    }
+    if (indicators[index]) {
+        indicators[index].classList.add('active');
+    }
+}
+
+function changeSlide(direction) {
+    currentSlideIndex += direction;
+    
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+    
+    showSlide(currentSlideIndex);
+    restartAutoSlide();
+}
+
+function currentSlide(index) {
+    currentSlideIndex = index - 1;
+    showSlide(currentSlideIndex);
+    restartAutoSlide();
+}
+
+function startAutoSlide() {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+        changeSlide(1);
+    }, 8000);
+}
+
+function restartAutoSlide() {
+    startAutoSlide();
+}
+
+// Inicializar o slideshow quando a página carregar
+document.addEventListener("DOMContentLoaded", () => {
+    // Aguardar um pouco para garantir que o DOM está completamente carregado
+    setTimeout(initializeSlideshow, 100);
+});

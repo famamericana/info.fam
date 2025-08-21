@@ -31,6 +31,7 @@
         <ul>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#galeria">Galeria de Fotos</a></li>
+            <li><a href="#personalidades">Personalidades</a></li>
             <li><a href="#programacao">Programação</a></li>
             <li><a href="#historias">Histórias</a></li>
             <!--<li><a href="#contato">Contato</a></li>-->
@@ -198,6 +199,78 @@
                 </div>
             </div>
 
+        </section>
+
+        <section id="personalidades">
+            <h2>Personalidades de Americana</h2>
+            <p class="pheitor">Conheça figuras importantes que marcaram a história de nossa cidade.</p>
+            
+            <div class="personalidades-slider">
+                <div class="slider-container">
+                    <div class="slide active" style="opacity: 1; visibility: visible;">
+                        <div class="slide-content">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/250x320/1AAEDE/ffffff?text=Personalidade+1" alt="Nome da Personalidade 1">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Nome da Personalidade</h3>
+                                <p class="cargo">Cargo/Profissão</p>
+                                <p class="descricao">
+                                    Descrição da personalidade, suas contribuições para a cidade de Americana e seu legado histórico. 
+                                    Aqui você pode colocar informações sobre sua vida, obra e importância para o desenvolvimento da cidade.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide">
+                        <div class="slide-content">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/250x320/F68B45/ffffff?text=Personalidade+2" alt="Nome da Personalidade 2">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Segunda Personalidade</h3>
+                                <p class="cargo">Profissão/Área de Atuação</p>
+                                <p class="descricao">
+                                    Texto sobre a segunda personalidade importante de Americana. Suas realizações, 
+                                    contribuições para a sociedade local e como ajudou a moldar a identidade da cidade.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide">
+                        <div class="slide-content">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/250x320/07204F/ffffff?text=Personalidade+3" alt="Nome da Personalidade 3">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Terceira Personalidade</h3>
+                                <p class="cargo">Área de Destaque</p>
+                                <p class="descricao">
+                                    Informações sobre a terceira personalidade marcante da história de Americana. 
+                                    Detalhes sobre sua trajetória e impacto na comunidade local.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles do Slider -->
+                <div class="slider-controls">
+                    <button class="prev-btn" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="currentSlide(1)"></span>
+                        <span class="indicator" onclick="currentSlide(2)"></span>
+                        <span class="indicator" onclick="currentSlide(3)"></span>
+                    </div>
+                    <button class="next-btn" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
         </section>
 
         <section id="programacao">
