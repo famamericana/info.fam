@@ -693,19 +693,16 @@ footer .créditos_eu {
 .logo-item img{
     border-radius: 5px;
 }
-
-/* seção feature: linhas com texto e imagem alternados */
-.feature {
-    margin: 60px auto;
- 
-    padding: 0 20px;
+.feature{
+    margin-top: 40px;
 }
 
 .feature-row {
     display: flex;
     gap: 20px;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .feature-row .reverse {
@@ -731,8 +728,10 @@ footer .créditos_eu {
         flex-direction: column;
     }
     .feature-row.reverse {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
+
+
 }
 
 
