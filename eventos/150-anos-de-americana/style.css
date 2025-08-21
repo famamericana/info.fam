@@ -69,7 +69,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff98;
+    background-color: #07204f85;
     margin-bottom: 20px;
 }
 
@@ -101,7 +101,7 @@ main {
 }
 
 .logoheitor {
-    max-width: 600px;
+    max-width: 450px;
     margin: 50px;
 }
 
@@ -134,11 +134,11 @@ nav {
     height: 80px;
     font-weight: 600;
     backdrop-filter: blur(5px);
-    background-color: #0000006b;
     /* Aplica o efeito de desfoque no conteúdo abaixo do navbar */
     -webkit-backdrop-filter: blur(5px);
     /* Necessário para suporte no Safari */
     z-index: 2;
+    border-bottom: 1px solid #F68B45;
 }
 
 nav ul {
