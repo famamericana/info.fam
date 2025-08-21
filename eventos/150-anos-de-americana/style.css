@@ -694,6 +694,47 @@ footer .créditos_eu {
     border-radius: 5px;
 }
 
+/* seção feature: linhas com texto e imagem alternados */
+.feature {
+    margin: 60px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.feature-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.feature-row .reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-img {
+    flex: 1;
+}
+
+.feature-img img {
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+}
+
+@media (max-width: 800px) {
+    .feature-row {
+        flex-direction: column;
+    }
+    .feature-row.reverse {
+        flex-direction: column;
+    }
+}
+
 
 /*historias ---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* vídeos removidos do HTML; regras CSS relacionadas foram excluídas */
