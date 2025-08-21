@@ -453,7 +453,6 @@ nav a:hover {
 
 .slide-text {
     flex: 1;
-    padding-left: 20px;
 }
 
 .slide-text h3 {
@@ -509,7 +508,6 @@ nav a:hover {
 .prev-btn:hover, 
 .next-btn:hover {
     background: var(--secondary-color);
-    transform: translateY(-2px);
 }
 
 .slide-indicators {
@@ -570,7 +568,7 @@ nav a:hover {
     
     .slide-text {
         padding-left: 0;
-        padding-top: 20px;
+     
     }
     
     .slide-text h3 {
