@@ -550,7 +550,7 @@ nav a:hover {
 
 .programacaodesign ul li .title {
     overflow: hidden;
-    padding-block-start: 1.5rem;
+    padding-block-start: 1rem;
     padding-block-end: 1rem;
     font-weight: 900;
 }
