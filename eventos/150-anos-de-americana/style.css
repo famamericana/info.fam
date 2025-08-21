@@ -697,7 +697,7 @@ footer .créditos_eu {
 /* seção feature: linhas com texto e imagem alternados */
 .feature {
     margin: 60px auto;
-    max-width: 1000px;
+ 
     padding: 0 20px;
 }
 
@@ -713,7 +713,7 @@ footer .créditos_eu {
 }
 
 .feature-text {
-    flex: 1;
+    flex: 2;
 }
 
 .feature-img {
