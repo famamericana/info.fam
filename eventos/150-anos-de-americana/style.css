@@ -306,7 +306,7 @@ nav a:hover {
         display: inline-block;
         width: 100%;
         border: solid 1px #1AAEDE;
-        padding: 10px;
+        padding: 20px;
         border-radius: 10px;
         transition: all .1s ease-in-out;
 
@@ -348,7 +348,7 @@ nav a:hover {
 
 #popup-content {
     background: white;
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
     position: relative;
     text-align: center;
@@ -713,12 +713,12 @@ footer .créditos_eu a {
     margin-bottom: 10px;
     border: 1px solid #F68B45;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all .1s ease-in-out;
 }
 
-.feature-row:hover{
-        border: 1px solid #1AAEDE;
+.feature-row:hover {
+    border: 1px solid #1AAEDE;
     transform: scale(1.025);
 
 }
