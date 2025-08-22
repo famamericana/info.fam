@@ -138,8 +138,8 @@ class SemanaDeAreas {
     const inicio = this.parseDate(dataInicio);
     const fim = this.parseDate(dataFim);
         
-        const diaInicio = inicio.getDate().toString().padStart(2, '0');
-        const diaFim = fim.getDate().toString().padStart(2, '0');
+    const diaInicio = inicio.getDate().toString().padStart(2, '0');
+    const diaFim = fim.getDate().toString().padStart(2, '0');
         
         const meses = [
             'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
@@ -148,8 +148,15 @@ class SemanaDeAreas {
         
         const mesNome = meses[inicio.getMonth()];
         
+        // calcula diferença em dias inteiros entre as datas
+        const diffDays = Math.round((fim - inicio) / (1000 * 60 * 60 * 24));
+
+        const diasFormatados = diaInicio === diaFim
+            ? diaInicio
+            : (diffDays === 1 ? `${diaInicio} e ${diaFim}` : `${diaInicio} a ${diaFim}`);
+
         return {
-            dias: diaInicio === diaFim ? diaInicio : `${diaInicio} a ${diaFim}`,
+            dias: diasFormatados,
             mes: `de ${mesNome}`
         };
     }
