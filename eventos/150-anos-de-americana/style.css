@@ -310,13 +310,13 @@ nav a:hover {
         margin-bottom: 10px;
         display: inline-block;
         width: 100%;
-        border: solid 1px #1AAEDE;
+        border: 1px solid rgb(225, 225, 225);
         padding: 20px;
         border-radius: 10px;
         transition: all .1s ease-in-out;
 
         &:hover {
-            border-color: #F68B45;
+            border-color: #1AAEDE;
             transform: scale(1.025);
         }
 
@@ -401,13 +401,14 @@ nav a:hover {
     overflow: hidden;
     border: 1px solid #F68B45;
 }
+
 .pers-container {
     position: relative;
     width: 100%;
     height: 400px;
     background: white;
     min-height: 400px;
-    
+
     border-radius: 10px;
 }
 
@@ -423,11 +424,13 @@ nav a:hover {
     background: white;
     z-index: 1;
 }
+
 .pers-slide.active {
     opacity: 1 !important;
     visibility: visible !important;
     z-index: 2;
 }
+
 .pers-slide-content {
     display: flex;
     align-items: center;
@@ -437,6 +440,7 @@ nav a:hover {
     background: white;
     border-radius: 8px;
 }
+
 .pers-slide-image {
     flex: 0 0 300px;
     height: 100%;
@@ -444,15 +448,18 @@ nav a:hover {
     overflow: hidden;
     border: 1px solid #1AAEDE;
 }
+
 .pers-slide-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
 }
+
 .pers-slide-text {
     flex: 1;
 }
+
 .pers-slide-text h3 {
     font-size: 2.2rem;
     font-weight: 900;
@@ -460,6 +467,7 @@ nav a:hover {
     margin: 0 0 10px 0;
     line-height: 1.2;
 }
+
 .pers-slide-text .cargo {
     font-size: 1.1rem;
     font-weight: 600;
@@ -468,6 +476,7 @@ nav a:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .pers-slide-text .descricao {
     font-size: 1rem;
     line-height: 1.6;
@@ -475,6 +484,7 @@ nav a:hover {
     margin: 0;
     text-align: justify;
 }
+
 .pers-controls {
     display: flex;
     justify-content: space-between;
@@ -483,7 +493,8 @@ nav a:hover {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-top: 1px solid #dee2e6;
 }
-.pers-prev, 
+
+.pers-prev,
 .pers-next {
     background: var(--primary-color);
     color: white;
@@ -498,7 +509,8 @@ nav a:hover {
     justify-content: center;
     transition: all 0.3s ease;
 }
-.pers-prev:hover, 
+
+.pers-prev:hover,
 .pers-next:hover {
     background: var(--secondary-color);
 }
@@ -544,21 +556,22 @@ nav a:hover {
 @media (max-width: 900px) {
     .pers-container {
         height: auto;
-        min-height: 0; /* allow container to grow with content on mobile */
+        min-height: 0;
+        /* allow container to grow with content on mobile */
     }
-    
+
     .pers-slide-content {
         flex-direction: column;
         padding: 30px 20px;
         text-align: center;
     }
-    
+
     .pers-slide-image {
         flex: 0 0 200px;
         height: 200px;
         align-self: center;
     }
-    
+
     .pers-slide-text {
         padding-left: 0;
     }
@@ -570,7 +583,8 @@ nav a:hover {
         top: auto;
         left: auto;
         display: block;
-        opacity: 1; /* JS controls visibility; make slides expand when active */
+        opacity: 1;
+        /* JS controls visibility; make slides expand when active */
     }
 
     .pers-slide-content {
@@ -588,7 +602,7 @@ nav a:hover {
     .pers-slide-text .descricao {
         text-align: left;
     }
-    
+
     .pers-controls {
         padding: 15px 20px;
     }
@@ -598,11 +612,11 @@ nav a:hover {
     .pers-slider {
         margin: 20px 10px;
     }
-    
+
     .pers-slide-content {
         padding: 20px 15px;
     }
-    
+
     .pers-slide-image {
         flex: 0 0 150px;
         height: 150px;
@@ -617,7 +631,7 @@ nav a:hover {
         position: relative;
         height: auto;
     }
-    
+
     .pers-slide-text h3 {
         font-size: 1.5rem;
     }
@@ -630,7 +644,7 @@ nav a:hover {
         font-size: 0.9rem;
     }
 
-    .pers-prev, 
+    .pers-prev,
     .pers-next {
         width: 40px;
         height: 40px;
@@ -981,6 +995,10 @@ footer .créditos_eu a {
     margin-top: 40px;
 }
 
+.feature p {
+    text-indent: 10px;
+}
+
 .feature-row {
     display: flex;
     gap: 20px;
@@ -1015,6 +1033,8 @@ footer .créditos_eu a {
     width: 100%;
     border-radius: 5px;
     display: block;
+    max-height: 250px;
+
 }
 
 @media (max-width: 800px) {
@@ -1026,9 +1046,24 @@ footer .créditos_eu a {
         flex-direction: column-reverse;
     }
 
+    .feature-img img {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+    }
 
 }
 
 
-/*historias ---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/* vídeos removidos do HTML; regras CSS relacionadas foram excluídas */
+.secondary-feature {
+    margin-top: 80px;
+}
+
+.secondary-feature .feature-row {
+    border: 1px solid #1AAEDE;
+}
+
+.secondary-feature .feature-row:hover {
+    border: 1px solid #F68B45;
+
+}
