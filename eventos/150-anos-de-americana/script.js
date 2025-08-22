@@ -164,6 +164,19 @@ function initializeSlideshow() {
     if (counter) counter.textContent = `1/${slides.length}`;
 
     startAutoSlide();
+    // preload next couple images
+    if (slides.length > 1) {
+        const nextImg = slides[1].querySelector('img');
+        if (nextImg && !(nextImg.complete && nextImg.naturalWidth>0)) {
+            const p = new Image(); p.src = nextImg.getAttribute('src') || nextImg.getAttribute('data-src');
+        }
+    }
+    if (slides.length > 2) {
+        const next2Img = slides[2].querySelector('img');
+        if (next2Img && !(next2Img.complete && next2Img.naturalWidth>0)) {
+            const p2 = new Image(); p2.src = next2Img.getAttribute('src') || next2Img.getAttribute('data-src');
+        }
+    }
     }
 }
 
@@ -198,16 +211,51 @@ function showSlide(index) {
 }
 
 function changeSlide(direction) {
-    currentSlideIndex += direction;
-    
-    if (currentSlideIndex >= slides.length) {
-        currentSlideIndex = 0;
-    } else if (currentSlideIndex < 0) {
-        currentSlideIndex = slides.length - 1;
+    // compute next index but preload its image before showing to avoid blank wait
+    let nextIndex = currentSlideIndex + direction;
+    if (nextIndex >= slides.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = slides.length - 1;
+
+    const targetImg = slides[nextIndex]?.querySelector('img');
+    const src = targetImg ? (targetImg.getAttribute('src') || targetImg.getAttribute('data-src')) : null;
+
+    // helper to actually switch
+    const doSwitch = () => {
+        currentSlideIndex = nextIndex;
+        showSlide(currentSlideIndex);
+        restartAutoSlide();
+    };
+
+    if (!src) {
+        // nothing to preload
+        doSwitch();
+        return;
     }
-    
-    showSlide(currentSlideIndex);
-    restartAutoSlide();
+
+    // if already loaded, switch immediately
+    if (targetImg.complete && targetImg.naturalWidth > 0) {
+        doSwitch();
+        return;
+    }
+
+    // preload with a short timeout fallback so navigation isn't blocked too long
+    let done = false;
+    const to = setTimeout(() => {
+        if (!done) { done = true; doSwitch(); }
+    }, 1200);
+
+    const p = new Image();
+    p.onload = p.onerror = function () {
+        if (done) return;
+        clearTimeout(to);
+        // ensure the slide's img element uses this src (in case of data-src patterns)
+        if (targetImg && targetImg.getAttribute('src') !== p.src) {
+            try { targetImg.src = p.src; } catch (e) { /* ignore */ }
+        }
+        done = true;
+        doSwitch();
+    };
+    p.src = src;
 }
 
 // indicators removed — navigation via prev/next only
