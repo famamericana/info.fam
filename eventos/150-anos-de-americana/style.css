@@ -428,9 +428,8 @@ nav a:hover {
     align-items: center;
     height: 100%;
     gap: 30px;
-    padding: 40px;
+    padding: 0 20px;
     background: white;
-    min-height: 320px;
     border-radius: 8px;
 }
 .pers-slide-image {
@@ -540,7 +539,7 @@ nav a:hover {
 @media (max-width: 900px) {
     .pers-container {
         height: auto;
-        min-height: 500px;
+        min-height: 0; /* allow container to grow with content on mobile */
     }
     
     .pers-slide-content {
@@ -557,6 +556,24 @@ nav a:hover {
     
     .pers-slide-text {
         padding-left: 0;
+    }
+
+    /* let each slide take normal flow height on mobile so text doesn't overflow the container */
+    .pers-slide {
+        position: relative;
+        height: auto;
+        top: auto;
+        left: auto;
+        display: block;
+        opacity: 1; /* JS controls visibility; make slides expand when active */
+    }
+
+    .pers-slide-content {
+        align-items: flex-start;
+    }
+
+    .pers-slide-text {
+        overflow: visible;
     }
 
     .pers-slide-text h3 {
@@ -584,6 +601,16 @@ nav a:hover {
     .pers-slide-image {
         flex: 0 0 150px;
         height: 150px;
+    }
+
+    /* same flow fixes for narrower screens */
+    .pers-container {
+        min-height: 0;
+    }
+
+    .pers-slide {
+        position: relative;
+        height: auto;
     }
     
     .pers-slide-text h3 {
