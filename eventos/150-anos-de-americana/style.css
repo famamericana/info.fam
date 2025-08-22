@@ -405,10 +405,11 @@ nav a:hover {
 .pers-container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: auto;
     background: transparent;
-    min-height: 400px;
-
+    min-height: 350px;
+    max-height: 450px;
+    overflow: hidden;
     border-radius: 10px;
 }
 
@@ -420,7 +421,7 @@ nav a:hover {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
     background: transparent;
     z-index: 1;
 }
@@ -556,14 +557,15 @@ nav a:hover {
 @media (max-width: 900px) {
     .pers-container {
         height: auto;
-        min-height: 0;
-        /* allow container to grow with content on mobile */
+        min-height: 300px;
+        max-height: none;
     }
 
     .pers-slide-content {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 20px 15px;
         text-align: center;
+        min-height: 300px;
     }
 
     .pers-slide-image {
@@ -574,17 +576,23 @@ nav a:hover {
 
     .pers-slide-text {
         padding-left: 0;
+        flex: 1;
     }
 
-    /* let each slide take normal flow height on mobile so text doesn't overflow the container */
     .pers-slide {
         position: relative;
         height: auto;
+        min-height: 300px;
         top: auto;
         left: auto;
+    }
+
+    .pers-slide.active {
         display: block;
-        opacity: 1;
-        /* JS controls visibility; make slides expand when active */
+    }
+
+    .pers-slide:not(.active) {
+        display: none;
     }
 
     .pers-slide-content {
@@ -613,8 +621,14 @@ nav a:hover {
         margin: 20px 10px;
     }
 
+    .pers-container {
+        min-height: 280px;
+        max-height: none;
+    }
+
     .pers-slide-content {
-        padding: 20px 15px;
+        padding: 15px 10px;
+        min-height: 280px;
     }
 
     .pers-slide-image {
@@ -622,14 +636,16 @@ nav a:hover {
         height: 150px;
     }
 
-    /* same flow fixes for narrower screens */
-    .pers-container {
-        min-height: 0;
+    .pers-slide {
+        min-height: 280px;
     }
 
-    .pers-slide {
-        position: relative;
-        height: auto;
+    .pers-slide.active {
+        display: block;
+    }
+
+    .pers-slide:not(.active) {
+        display: none;
     }
 
     .pers-slide-text h3 {
@@ -1056,7 +1072,7 @@ footer .créditos_eu a {
 
 
 .secondary-feature {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .secondary-feature .feature-row {

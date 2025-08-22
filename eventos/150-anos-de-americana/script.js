@@ -108,20 +108,45 @@ document.addEventListener("DOMContentLoaded", updateNavbar);
 let currentSlideIndex = 0;
 let slides;
 let autoSlideInterval;
-let sliderInitialized = false; // guard to avoid re-init
+let sliderInitialized = false;
+let imagePreloadQueue = [];
+
+function preloadCriticalImages() {
+    // Preload first 3 personality images immediately
+    const criticalImages = [
+        'images/personalidades/0010---Basílio-Bueno-Rangel-gigapixel-low resolution v2-4x.png',
+        'images/personalidades/0011-O-Exmo.-Snr.-Comendador-Franz-Muller---Inesquecivel-fundador-de-Carioba-gigapixel-low resolution v2-2x.png',
+        'images/personalidades/0012-Snr.-Hermann-Theo.-Muller-Prestigioso-Presidente-do-Directorio-e-Importante-industrial-gigapixel-low resolution v2-2x-faceai v2.png'
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+function preloadNextImages(currentIndex, count = 2) {
+    // Preload next 2 images in sequence
+    for (let i = 1; i <= count; i++) {
+        const nextIndex = (currentIndex + i) % slides.length;
+        const img = slides[nextIndex]?.querySelector('img');
+        if (img && !img.complete) {
+            const preloadImg = new Image();
+            preloadImg.src = img.getAttribute('src') || img.getAttribute('data-src');
+        }
+    }
+}
 
 function initializeSlideshow() {
     if (sliderInitialized) return;
     sliderInitialized = true;
 
-    // only target slides inside the personalidades slider to avoid touching other elements
     const container = document.querySelector('.pers-slider');
     slides = container ? container.querySelectorAll('.pers-slide') : document.querySelectorAll('.pers-slide');
     
     if (slides.length > 0) {
-        // Sanitize slides: add placeholder image/title if missing, add image onerror handler
+        // Setup slides with fallback handling
         slides.forEach((slide, i) => {
-            // ensure slide-image wrapper
             let wrapper = slide.querySelector('.pers-slide-image');
             if (!wrapper) {
                 wrapper = document.createElement('div');
@@ -137,14 +162,13 @@ function initializeSlideshow() {
                 wrapper.appendChild(img);
             }
 
-            // fallback when image fails to load
+            // Improved error handling
             img.onerror = function () {
                 this.onerror = null;
                 this.src = 'https://via.placeholder.com/250x320/cccccc/333?text=Sem+imagem';
                 this.alt = 'Imagem não disponível';
             };
 
-            // ensure there is a title
             let text = slide.querySelector('.pers-slide-text');
             if (!text) {
                 text = document.createElement('div');
@@ -158,111 +182,60 @@ function initializeSlideshow() {
             }
         });
 
-    // Força o primeiro slide a ser visível
-    slides[0].style.opacity = '1';
-    slides[0].style.visibility = 'visible';
-    slides[0].classList.add('active');
-
-    // update counter
-    const counter = document.getElementById('slide-counter');
-    if (counter) counter.textContent = `1/${slides.length}`;
-
-    startAutoSlide();
-    // preload next couple images
-    if (slides.length > 1) {
-        const nextImg = slides[1].querySelector('img');
-        if (nextImg && !(nextImg.complete && nextImg.naturalWidth>0)) {
-            const p = new Image(); p.src = nextImg.getAttribute('src') || nextImg.getAttribute('data-src');
-        }
-    }
-    if (slides.length > 2) {
-        const next2Img = slides[2].querySelector('img');
-        if (next2Img && !(next2Img.complete && next2Img.naturalWidth>0)) {
-            const p2 = new Image(); p2.src = next2Img.getAttribute('src') || next2Img.getAttribute('data-src');
-        }
-    }
+        // Show first slide immediately
+        showSlide(0);
+        
+        // Preload next images
+        preloadNextImages(0, 3);
+        
+        startAutoSlide();
     }
 }
 
 function showSlide(index) {
-    if (!slides) return;
+    if (!slides || slides.length === 0) return;
 
-    // normalize index
+    // Normalize index
     if (index < 0) index = 0;
     if (index >= slides.length) index = slides.length - 1;
 
-    // Remove a classe active de todos os slides
-    slides.forEach((slide, i) => {
+    // Hide all slides efficiently
+    slides.forEach((slide) => {
         slide.classList.remove('active');
         slide.style.opacity = '0';
         slide.style.visibility = 'hidden';
-        slide.style.display = 'none';
         slide.style.zIndex = '1';
     });
 
-    // Adiciona a classe active ao slide atual
-    const s = slides[index];
-    if (s) {
-        s.classList.add('active');
-        s.style.display = 'block';
-        s.style.opacity = '1';
-        s.style.visibility = 'visible';
-        s.style.zIndex = '2';
+    // Show current slide
+    const currentSlide = slides[index];
+    if (currentSlide) {
+        currentSlide.classList.add('active');
+        currentSlide.style.opacity = '1';
+        currentSlide.style.visibility = 'visible';
+        currentSlide.style.zIndex = '2';
     }
-    // update counter
+
+    // Update counter
     const counterEl = document.getElementById('slide-counter');
-    if (counterEl) counterEl.textContent = `${index + 1}/${slides.length}`;
+    if (counterEl) {
+        counterEl.textContent = `${index + 1}/${slides.length}`;
+    }
+
+    // Preload next images
+    preloadNextImages(index, 2);
 }
 
 function changeSlide(direction) {
-    // if not initialized yet (user clicked before we observed), initialize now
     if (!sliderInitialized) initializeSlideshow();
 
-    // compute next index but preload its image before showing to avoid blank wait
     let nextIndex = currentSlideIndex + direction;
     if (nextIndex >= slides.length) nextIndex = 0;
     if (nextIndex < 0) nextIndex = slides.length - 1;
 
-    const targetImg = slides[nextIndex]?.querySelector('img');
-    const src = targetImg ? (targetImg.getAttribute('src') || targetImg.getAttribute('data-src')) : null;
-
-    // helper to actually switch
-    const doSwitch = () => {
-        currentSlideIndex = nextIndex;
-        showSlide(currentSlideIndex);
-        restartAutoSlide();
-    };
-
-    if (!src) {
-        // nothing to preload
-        doSwitch();
-        return;
-    }
-
-    // if already loaded, switch immediately
-    if (targetImg.complete && targetImg.naturalWidth > 0) {
-        doSwitch();
-        return;
-    }
-
-    // preload with a short timeout fallback so navigation isn't blocked too long
-    let done = false;
-    const to = setTimeout(() => {
-        if (!done) { done = true; doSwitch(); }
-    }, 1200);
-
-    const p = new Image();
-    p.onload = p.onerror = function () {
-        if (done) return;
-        clearTimeout(to);
-        // ensure the slide's img element uses this src (in case of data-src patterns)
-        if (targetImg && targetImg.getAttribute('src') !== p.src) {
-            try { targetImg.src = p.src; } catch (e) { /* ignore */ }
-        }
-        done = true;
-        doSwitch();
-    };
-    p.src = src;
+    currentSlideIndex = nextIndex;
+    showSlide(currentSlideIndex);
+    restartAutoSlide();
 }
 
 // indicators removed — navigation via prev/next only
@@ -280,22 +253,25 @@ function restartAutoSlide() {
 
 // Inicializar o slideshow quando a página carregar
 document.addEventListener("DOMContentLoaded", () => {
+    // Preload critical images first
+    preloadCriticalImages();
+    
     const sliderEl = document.querySelector('.pers-slider');
     if (!sliderEl) return;
 
-    // Use IntersectionObserver to start the slideshow only when the slider enters the viewport
+    // Use IntersectionObserver for better performance
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-                    initializeSlideshow();
+                if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+                    setTimeout(initializeSlideshow, 100); // Small delay for smoother loading
                     obs.disconnect();
                 }
             });
-        }, { threshold: [0, 0.2, 0.5] });
+        }, { threshold: [0, 0.1, 0.3] });
         io.observe(sliderEl);
     } else {
-        // fallback for very old browsers
-        setTimeout(initializeSlideshow, 300);
+        // Fallback for older browsers
+        setTimeout(initializeSlideshow, 500);
     }
 });
