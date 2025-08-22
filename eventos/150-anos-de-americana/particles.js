@@ -58,7 +58,7 @@
   let particles = [];
   const area = window.innerWidth * window.innerHeight;
   // density factor: <1 reduces particles slightly, >1 increases
-  const DENSITY_FACTOR = 0.88; // tweak this to change particle count subtly
+  const DENSITY_FACTOR = 0.5; // tweak this to change particle count subtly
   const baseCount = Math.floor(area / 8000);
   const targetCount = Math.max(24, Math.min(160, Math.floor(baseCount * DENSITY_FACTOR)) );
 
