@@ -1,14 +1,5 @@
 {
   "eventos": [
-        {
-      "nome": "Gestão",
-      "dataInicio": "25-08-2025",
-      "dataFim": "26-08-2025",
-      "descricao": "Jornada Acadêmica de Gestão com palestras sobre liderança, competências e tendências para o futuro, além de fórum de discussão com profissionais de RH sobre processos seletivos e fatores de sucesso em gestão de logística e pessoas. Evento presencial com transmissão online no YouTube da FAM, voltado para os cursos de Logística e Recursos Humanos.",
-      "link": "https://info.fam.br/eventos/semana-de-areas/2025/gestao",
-      "ano": 2025,
-      "classe": "gestao"
-    },
     {
       "nome": "Direito",
       "dataInicio": "01-09-2025",
@@ -17,6 +8,15 @@
       "link": "https://info.fam.br/eventos/semana-de-areas/2025/direito",
       "ano": 2025,
       "classe": "direito"
+    },
+    {
+      "nome": "Gestão",
+      "dataInicio": "25-08-2025",
+      "dataFim": "26-08-2025",
+      "descricao": "Jornada Acadêmica de Gestão com palestras sobre liderança, competências e tendências para o futuro, além de fórum de discussão com profissionais de RH sobre processos seletivos e fatores de sucesso em gestão de logística e pessoas. Evento presencial com transmissão online no YouTube da FAM, voltado para os cursos de Logística e Recursos Humanos.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/gestao",
+      "ano": 2025,
+      "classe": "gestao"
     },
     {
       "nome": "Finanças",
