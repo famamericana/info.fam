@@ -108,8 +108,12 @@ document.addEventListener("DOMContentLoaded", updateNavbar);
 let currentSlideIndex = 0;
 let slides;
 let autoSlideInterval;
+let sliderInitialized = false; // guard to avoid re-init
 
 function initializeSlideshow() {
+    if (sliderInitialized) return;
+    sliderInitialized = true;
+
     // only target slides inside the personalidades slider to avoid touching other elements
     const container = document.querySelector('.pers-slider');
     slides = container ? container.querySelectorAll('.pers-slide') : document.querySelectorAll('.pers-slide');
@@ -211,6 +215,9 @@ function showSlide(index) {
 }
 
 function changeSlide(direction) {
+    // if not initialized yet (user clicked before we observed), initialize now
+    if (!sliderInitialized) initializeSlideshow();
+
     // compute next index but preload its image before showing to avoid blank wait
     let nextIndex = currentSlideIndex + direction;
     if (nextIndex >= slides.length) nextIndex = 0;
@@ -273,6 +280,22 @@ function restartAutoSlide() {
 
 // Inicializar o slideshow quando a página carregar
 document.addEventListener("DOMContentLoaded", () => {
-    // Aguardar um pouco para garantir que o DOM está completamente carregado
-    setTimeout(initializeSlideshow, 100);
+    const sliderEl = document.querySelector('.pers-slider');
+    if (!sliderEl) return;
+
+    // Use IntersectionObserver to start the slideshow only when the slider enters the viewport
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+                    initializeSlideshow();
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: [0, 0.2, 0.5] });
+        io.observe(sliderEl);
+    } else {
+        // fallback for very old browsers
+        setTimeout(initializeSlideshow, 300);
+    }
 });
