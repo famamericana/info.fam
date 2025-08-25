@@ -351,7 +351,7 @@ header h2 {
 
 
 
-.btn-ver-todos{
+.btn-ver-todos {
     width: 100%;
     color: black;
     box-shadow: inset 0 0 0 2px #f9e20f;
@@ -381,16 +381,16 @@ header h2 {
     max-width: 990px;
     margin: 0 auto;
     padding: 0 15px;
-    
+
 }
-.eventos-preview
-.eventos-container {
-    border-radius:   0 0 10px 10px;
+
+.eventos-preview .eventos-container {
+    border-radius: 0 0 10px 10px;
     padding: 20px;
     margin-bottom: 30px;
     border: 1px solid #45b7e5;
     border-top: none;
-    
+
 }
 
 .loading-eventos {
@@ -458,7 +458,7 @@ header h2 {
     background: transparent;
     border: 2px solid #e53888;
     color: #e53888;
-    padding: 5px 12px;
+    padding: 2px 12px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
@@ -472,7 +472,7 @@ header h2 {
 
 .evento-ver-mais:hover {
     border-color: #45b7e5;
-color: #45b7e5;
+    color: #45b7e5;
     text-decoration: none;
 }
 
@@ -490,19 +490,18 @@ color: #45b7e5;
         flex-wrap: wrap;
         gap: 12px;
     }
-    
+
     .evento-data-box {
         order: 1;
         flex: 1;
     }
-    
+
     .evento-ver-mais {
         order: 2;
         margin-left: auto;
         flex: 0.2;
-        border-radius: 5px;
     }
-    
+
     .evento-titulo {
         font-size: 15px;
         order: 3;
@@ -510,4 +509,3 @@ color: #45b7e5;
         flex: none;
     }
 }
-
