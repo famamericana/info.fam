@@ -51,8 +51,9 @@ class SemanaDeAreas {
             const data = await response.json();
             this.eventos = data.eventos;
             
-            // Usar data atual do arquivo se especificada (para testes)
-            if (data.configuracoes && data.configuracoes.dataAtual) {
+            // Usar data atual do arquivo somente se explicitamente forçada (útil para testes).
+            // Por padrão usamos a data real do navegador (this.dataAtual já inicializada).
+            if (data.configuracoes && data.configuracoes.dataAtual && data.configuracoes.forcarDataAtual) {
                 const parsed = this.parseDate(data.configuracoes.dataAtual);
                 if (parsed) this.dataAtual = parsed;
             }
@@ -104,19 +105,29 @@ class SemanaDeAreas {
         // Inverte passados para ter os mais recentes primeiro
         resultado.passados.reverse();
 
-        // Organiza por ano APENAS os eventos que não estão em "passados" nem como "próximo"
+        // Organiza por ano APENAS os eventos que já terminaram (passados),
+        // excluindo o próximo evento e os 3 passados mostrados nos mini-containers.
         const eventosParaAccordion = this.eventos.filter(evento => {
-            // Não inclui o evento próximo
-            if (resultado.proximo && evento.nome === resultado.proximo.nome && 
+            // Não inclui o evento próximo (comparação por nome + dataInicio)
+            if (resultado.proximo && evento.nome === resultado.proximo.nome &&
                 evento.dataInicio === resultado.proximo.dataInicio) {
                 return false;
             }
-            
+
+            // Converte datas para comparação segura
+            const inicioEvento = this.parseDate(evento.dataInicio);
+            const fimEvento = this.parseDate(evento.dataFim);
+
+            // Excluir eventos que ainda não terminaram (ou seja, futuros ou em andamento)
+            if (!fimEvento || fimEvento >= hoje) {
+                return false;
+            }
+
             // Não inclui os 3 eventos mais recentes que estão nos mini-containers
-            const eventosPassadosNomes = resultado.passados.slice(0, 3).map(e => 
+            const eventosPassadosNomes = resultado.passados.slice(0, 3).map(e =>
                 `${e.nome}-${e.dataInicio}-${e.ano}`);
             const eventoAtualId = `${evento.nome}-${evento.dataInicio}-${evento.ano}`;
-            
+
             return !eventosPassadosNomes.includes(eventoAtualId);
         });
 
@@ -169,10 +180,19 @@ class SemanaDeAreas {
 
         const periodo = this.formatarPeriodo(evento.dataInicio, evento.dataFim);
         
-        // Determina se é "Próxima Semana" ou "Última Semana"
-    const hoje = this.dataAtual;
-    const inicioEvento = this.parseDate(evento.dataInicio);
-        const titulo = inicioEvento > hoje ? "Próxima Semana" : "Última Semana";
+        // Determina se é "Próxima Semana", "Semana atual" ou "Última Semana"
+        const hoje = this.dataAtual;
+        const inicioEvento = this.parseDate(evento.dataInicio);
+        const fimEvento = this.parseDate(evento.dataFim);
+
+        let titulo = "Última Semana";
+
+        // Se a data atual estiver dentro do período do evento (inclusive)
+        if (inicioEvento && fimEvento && inicioEvento <= hoje && fimEvento >= hoje) {
+            titulo = "Semana atual";
+        } else if (inicioEvento && inicioEvento > hoje) {
+            titulo = "Próxima Semana";
+        }
         
         // Atualiza título
         const tituloElemento = document.querySelector('.eventoatualtitulo2');
