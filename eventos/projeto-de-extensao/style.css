@@ -114,8 +114,7 @@ header .logopdepc {
 }
 
 .textaofamexplicacaomini {
-    display: flex;
- 
+  display: flex;
     justify-self: center;
     color: #bac0d1;
     font-size: small;
@@ -124,7 +123,7 @@ header .logopdepc {
     text-align: center;
     margin-bottom: 5px;
     max-width: 960px;
-    margin: 30px 0;
+    margin: 30px auto;
 }
 
 .galeria:first-child {
