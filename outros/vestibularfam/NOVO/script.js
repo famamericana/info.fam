@@ -289,6 +289,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const select = document.getElementById('tipoInscricaoSelect');
     const detalhe = document.getElementById('inscricaoDetalhe');
 
+    // Resetar select e detalhe ao carregar
+    if (select) {
+        select.selectedIndex = 0;
+    }
+    if (detalhe) {
+        detalhe.style.display = 'none';
+        detalhe.innerHTML = '';
+    }
+
     const opcoes = {
         'vestibular': {
             icon: 'fa-graduation-cap',
