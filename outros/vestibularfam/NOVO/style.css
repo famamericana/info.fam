@@ -70,6 +70,7 @@ header {
     margin: 0 auto;
     text-align: center;
     width: 100%;
+ 
     padding: 70px 20px;
     padding-top: 120px;
     position: relative;
@@ -95,7 +96,9 @@ main {
     border-radius: 10px;
 }
 
-
+.titulo{
+    margin-top: 50px;
+}
 
 .titulo img {
     max-width: 550px;
