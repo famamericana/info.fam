@@ -282,3 +282,86 @@ function checkScreenSize() {
 // Chama a função ao carregar a página e ao redimensionar a tela
 window.addEventListener("load", checkScreenSize);
 window.addEventListener("resize", checkScreenSize);
+
+// Tipos de Inscrição - Funcionalidade de Expansão
+document.addEventListener('DOMContentLoaded', function() {
+    // Nova lógica: select único
+    const select = document.getElementById('tipoInscricaoSelect');
+    const detalhe = document.getElementById('inscricaoDetalhe');
+
+    const opcoes = {
+        'vestibular': {
+            icon: 'fa-graduation-cap',
+            titulo: 'Vestibular',
+            texto: 'Processo seletivo tradicional para ingresso em cursos de graduação. Avaliação através de prova com questões de múltipla escolha e redação.',
+            link: 'https://famamericana.com.br/vestibular',
+            linkText: 'Inscrever-se no Vestibular'
+        },
+        'enem': {
+            icon: 'fa-book-open',
+            titulo: 'ENEM',
+            texto: 'Ingresse utilizando sua nota do ENEM. Uma forma prática e rápida de conquistar sua vaga na graduação.',
+            link: 'https://famamericana.com.br/enem',
+            linkText: 'Inscrever-se com ENEM'
+        },
+        'segunda-graduacao': {
+            icon: 'fa-user-graduate',
+            titulo: '2ª Graduação',
+            texto: 'Já possui diploma de graduação? Amplie seus conhecimentos com uma segunda graduação e potencialize sua carreira.',
+            link: 'https://famamericana.com.br/segunda-graduacao',
+            linkText: 'Inscrever-se 2ª Graduação'
+        },
+        'transferencia': {
+            icon: 'fa-exchange-alt',
+            titulo: 'Transferência',
+            texto: 'Transfira seu curso de outra instituição para a FAM. Aproveite disciplinas já cursadas e continue seus estudos conosco.',
+            link: 'https://famamericana.com.br/transferencia',
+            linkText: 'Solicitar Transferência'
+        },
+        'pos-graduacao': {
+            icon: 'fa-medal',
+            titulo: 'Pós-Graduação',
+            texto: 'Especialize-se com nossos cursos de pós-graduação lato sensu. Amplie seus conhecimentos e destaque-se no mercado.',
+            link: 'https://famamericana.com.br/pos-graduacao',
+            linkText: 'Ver Pós-Graduação'
+        },
+        'extensao': {
+            icon: 'fa-plus-circle',
+            titulo: 'Cursos de Extensão',
+            texto: 'Cursos de curta duração para atualização profissional e aperfeiçoamento. Mantenha-se sempre atualizado em sua área.',
+            link: 'https://famamericana.com.br/extensao',
+            linkText: 'Ver Cursos de Extensão'
+        },
+        'tecnicos': {
+            icon: 'fa-tools',
+            titulo: 'Cursos Técnicos',
+            texto: 'Formação técnica de nível médio com foco na prática profissional. Prepare-se rapidamente para o mercado de trabalho.',
+            link: 'https://famamericana.com.br/tecnicos',
+            linkText: 'Ver Cursos Técnicos'
+        }
+    };
+
+    if (select) {
+        select.addEventListener('change', function() {
+            const val = select.value;
+            if (opcoes[val]) {
+                detalhe.style.display = 'block';
+                detalhe.innerHTML = `
+                    <div class="opcao-item active" style="max-width:500px;margin:30px auto;">
+                        <div class="opcao-header" style="cursor:default;">
+                            <i class="fas ${opcoes[val].icon}"></i>
+                            <h3>${opcoes[val].titulo}</h3>
+                        </div>
+                        <div class="opcao-content" style="max-height:none;padding:25px;">
+                            <p>${opcoes[val].texto}</p>
+                            <a href="${opcoes[val].link}" target="_blank" class="btn-inscricao">${opcoes[val].linkText}</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                detalhe.style.display = 'none';
+                detalhe.innerHTML = '';
+            }
+        });
+    }
+});

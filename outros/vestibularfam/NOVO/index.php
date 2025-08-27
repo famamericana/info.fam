@@ -70,6 +70,26 @@
                 <img src="images/selo-e-mec.png">
             </div>
         </div>
+
+        <div id="tipodeinscricao" class="conteudo">
+            <div class="inscricao-container">
+                <h2 class="inscricao-titulo">Escolha seu Tipo de Inscrição</h2>
+                <p class="inscricao-subtitulo">Selecione a modalidade que melhor se adequa ao seu perfil acadêmico</p>
+                <div style="text-align:center; margin-bottom:30px;">
+                    <select id="tipoInscricaoSelect" class="inscricao-select">
+                        <option value="" selected disabled>Selecione uma opção...</option>
+                        <option value="vestibular">Vestibular</option>
+                        <option value="enem">ENEM</option>
+                        <option value="segunda-graduacao">2ª Graduação</option>
+                        <option value="transferencia">Transferência</option>
+                        <option value="pos-graduacao">Pós-Graduação</option>
+                        <option value="extensao">Cursos de Extensão</option>
+                        <option value="tecnicos">Cursos Técnicos</option>
+                    </select>
+                </div>
+                <div id="inscricaoDetalhe" style="display:none;"></div>
+            </div>
+        </div>
     </main>
     <?php
     include_once "navfoot/footer.php"
