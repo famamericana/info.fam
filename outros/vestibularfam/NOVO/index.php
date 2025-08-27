@@ -65,12 +65,6 @@
             </div>
         </div>
 
-        <div class="conteudo" style="margin-top: 50px;">
-            <div class="mecimg">
-                <img src="images/selo-e-mec.png">
-            </div>
-        </div>
-
         <div id="tipodeinscricao" class="conteudo">
             <div class="inscricao-container">
                 <h2 class="inscricao-titulo">Escolha seu Tipo de Inscrição</h2>
@@ -90,6 +84,14 @@
                 <div id="inscricaoDetalhe" style="display:none;"></div>
             </div>
         </div>
+
+        <div class="conteudo" style="margin-top: 50px;">
+            <div class="mecimg">
+                <img src="images/selo-e-mec.png">
+            </div>
+        </div>
+
+
     </main>
     <?php
     include_once "navfoot/footer.php"
