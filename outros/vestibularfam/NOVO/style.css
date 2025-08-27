@@ -95,16 +95,12 @@ main {
     border-radius: 10px;
 }
 
-.titulo h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #1b3556;
-}
 
-.titulo h2 {
-    font-size: 1.5rem;
-    color: #134d99;
-    margin-bottom: -20px;
+
+.titulo img{
+    max-width: 550px;
+    margin-top: -10px;
+    margin-bottom: 20px;
 
 }
 

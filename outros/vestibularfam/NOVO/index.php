@@ -36,14 +36,15 @@
 
     <header>
         <div class="titulo">
-            <h2><span style="color: #45b7e5">▪</span> Matrículas Abertas <span style="color: #45b7e5">▪</span></h2>
-            <h1>Pós-Graduação é na FAM</h1>
-            <p>Aprimore sua carreira com professores atuantes no mercado de trabalho e em uma instituição de alta
-                qualidade de ensino com responsabilidade social!</p>
+            <h2><span style="color: #45b7e5">▪</span> Vestibular 2026 <span style="color: #45b7e5">▪</span></h2>
+            <img src="images/estudenafam.svg">
+            <p>A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
+
+                Aqui você escolhe a forma de ingresso que mais combina com você. O processo seletivo é 100% online e gratuito. Comece já a construir seu futuro!</p>
         </div>
         <div class="container-button">
-            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="button">Inscreva-se</a>
-            <a href="#cursos" class="button">Veja os cursos</a>
+            <a href="#tipodeinscricao" class="button">Inscreva-se</a>
+            <a target="_blank" href="https://www.fam.br/cursos/" class="button">Veja os cursos</a>
         </div>
     </header>
 
@@ -70,10 +71,10 @@
             </div>
         </div>
     </main>
-    <?php 
-include_once "navfoot/footer.php"
+    <?php
+    include_once "navfoot/footer.php"
 
-?>
+    ?>
 </body>
 
 </html>
