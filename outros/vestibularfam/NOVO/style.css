@@ -1327,7 +1327,6 @@ footer .primeiro {
 .inscricao-container {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 40px 20px;
 }
 
 .inscricao-titulo {
@@ -1357,7 +1356,6 @@ footer .primeiro {
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-
 }
 
 .opcao-item:hover {
@@ -1468,9 +1466,6 @@ footer .primeiro {
 }
 
 @media (max-width: 480px) {
-    .inscricao-container {
-        padding: 30px 15px;
-    }
 
     .opcao-header {
         padding: 12px 15px;
