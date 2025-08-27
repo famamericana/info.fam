@@ -1504,6 +1504,8 @@ footer .primeiro {
     display: block;
     cursor: pointer;
     position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .inscricao-select:focus {

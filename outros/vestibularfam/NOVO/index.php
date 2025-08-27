@@ -71,7 +71,7 @@
                 <p class="inscricao-subtitulo">Selecione a modalidade que melhor se adequa ao seu perfil acadêmico</p>
                 <div style="text-align:center; margin-bottom:30px;">
                     <select id="tipoInscricaoSelect" class="inscricao-select">
-                        <option value="" selected disabled>Selecione uma opção...</option>
+                        <option value="" selected disabled>Clique e selecione uma opção...</option>
                         <option value="vestibular">Vestibular</option>
                         <option value="enem">ENEM</option>
                         <option value="segunda-graduacao">2ª Graduação</option>
