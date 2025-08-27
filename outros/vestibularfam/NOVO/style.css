@@ -97,7 +97,7 @@ main {
 
 
 
-.titulo img{
+.titulo img {
     max-width: 550px;
     margin-top: -10px;
     margin-bottom: 20px;
@@ -517,7 +517,7 @@ main {
     height: 50px;
 }
 
-.mecimg{
+.mecimg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1355,15 +1355,14 @@ footer .primeiro {
 .opcao-item {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
- 
+
 }
 
 .opcao-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .opcao-header {
@@ -1445,23 +1444,23 @@ footer .primeiro {
     .inscricao-titulo {
         font-size: 2rem;
     }
-    
+
     .inscricao-subtitulo {
         font-size: 1rem;
     }
-    
+
     .opcao-header {
         padding: 15px 20px;
     }
-    
+
     .opcao-header h3 {
         font-size: 1.2rem;
     }
-    
+
     .opcao-item.active .opcao-content {
         padding: 20px;
     }
-    
+
     .btn-inscricao {
         padding: 10px 20px;
         font-size: 0.85rem;
@@ -1472,21 +1471,55 @@ footer .primeiro {
     .inscricao-container {
         padding: 30px 15px;
     }
-    
+
     .opcao-header {
         padding: 12px 15px;
     }
-    
+
     .opcao-header i:first-child {
         font-size: 1.3rem;
         margin-right: 12px;
     }
-    
+
     .opcao-header h3 {
         font-size: 1.1rem;
     }
-    
+
     .opcao-item.active .opcao-content {
         padding: 15px;
+    }
+}
+
+/* Select customizado para inscrição */
+.inscricao-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 45px 14px 18px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid #45b7e5;
+    background: transparent;
+    color: #1b3556;
+    font-family: 'Source Sans 3', sans-serif;
+    box-shadow: 0 4px 15px rgba(69, 183, 229, 0.08);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.inscricao-select:focus {
+    border-color: #e53888;
+}
+
+
+@media (max-width: 480px) {
+    .inscricao-select {
+        font-size: 1rem;
+        padding: 12px 40px 12px 12px;
+        max-width: 100%;
     }
 }
