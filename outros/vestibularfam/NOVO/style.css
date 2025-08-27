@@ -1353,18 +1353,17 @@ footer .primeiro {
 }
 
 .opcao-item {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: white;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+ 
 }
 
 .opcao-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    border-color: #45b7e5;
 }
 
 .opcao-header {
@@ -1376,9 +1375,6 @@ footer .primeiro {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 }
 
-.opcao-header:hover {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
 
 .opcao-header i:first-child {
     font-size: 1.5rem;
@@ -1409,7 +1405,6 @@ footer .primeiro {
     max-height: 0;
     overflow: hidden;
     transition: all 0.4s ease;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-top: 1px solid #e9ecef;
 }
 

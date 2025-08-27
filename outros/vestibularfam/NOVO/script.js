@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (opcoes[val]) {
                 detalhe.style.display = 'block';
                 detalhe.innerHTML = `
-                    <div class="opcao-item active" style="max-width:500px;margin:30px auto;">
+                    <div class="opcao-item active" style="margin:30px auto;">
                         <div class="opcao-header" style="cursor:default;">
                             <i class="fas ${opcoes[val].icon}"></i>
                             <h3>${opcoes[val].titulo}</h3>
