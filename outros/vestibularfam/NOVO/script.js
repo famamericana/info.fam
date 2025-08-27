@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll suave com offset para #tipodeinscricao
+    const btnInscreva = document.querySelector('a.button[href="#tipodeinscricao"]');
+    if (btnInscreva) {
+        btnInscreva.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById('tipodeinscricao');
+            if (target) {
+                const offset = 80; // ajuste para mostrar o texto
+                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    }
     // Inicializa as funções da navbar primeiro para garantir que o menu esteja pronto
     handleNavbarScroll();
     setupMobileMenu();
