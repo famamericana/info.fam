@@ -158,6 +158,41 @@
         .action-button:hover {
             background: #3367d6;
         }
+        
+        .input-form {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: var(--border-radius);
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .input-group input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 16px;
+            border-right: none;
+        }
+        
+        .input-group button {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 12px 20px;
+            white-space: nowrap;
+        }
+        
+        .manual-input {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px dashed #ddd;
+            border-radius: var(--border-radius);
+        }
     </style>
 </head>
 <body>
@@ -168,6 +203,20 @@
         </header>
         
         <div class="content">
+            <div id="noId" class="manual-input" style="display: none;">
+                <div class="icon">🔍</div>
+                <h2>Digite o Código de Confirmação</h2>
+                <p>Informe o código do aluno para confirmar a presença</p>
+                
+                <div class="input-form">
+                    <div class="input-group">
+                        <input type="text" id="manualId" placeholder="Digite o código do aluno">
+                        <button class="action-button" onclick="confirmManualId()">Confirmar</button>
+                    </div>
+                    <p>Pressione Enter ou clique em Confirmar</p>
+                </div>
+            </div>
+            
             <div id="loading" class="loading">
                 <div class="spinner"></div>
                 <p>Processando confirmação...</p>
@@ -207,6 +256,7 @@
                 <div class="icon">❌</div>
                 <h2 id="errorTitle">Erro na Confirmação</h2>
                 <p id="errorMessage"></p>
+                <button class="action-button" onclick="resetPage()">Tentar com outro código</button>
             </div>
             
             <div id="alreadyConfirmed" class="status-card pending" style="display: none;">
@@ -225,6 +275,7 @@
                         <span id="existingConfirmationDate"></span>
                     </div>
                 </div>
+                <button class="action-button" onclick="resetPage()">Verificar outro código</button>
             </div>
         </div>
         
@@ -236,7 +287,7 @@
     <script>
         // Obter o ID da URL
         const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
+        let id = urlParams.get('id');
         
         // URL do proxy PHP (mesmo diretório)
         const PROXY_URL = 'proxy.php';
@@ -254,15 +305,45 @@
         }
         
         // Processar confirmação quando a página carregar
-        window.addEventListener('load', async function() {
+        window.addEventListener('load', function() {
             if (!id) {
-                showError('ID não encontrado', 'O código de confirmação não foi fornecido.');
+                // Mostrar formulário para digitar o ID manualmente
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('noId').style.display = 'block';
+                
+                // Adicionar evento para pressionar Enter no campo de input
+                document.getElementById('manualId').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        confirmManualId();
+                    }
+                });
+            } else {
+                // Processar o ID da URL
+                processConfirmation(id);
+            }
+        });
+        
+        // Função para confirmar o ID manualmente digitado
+        function confirmManualId() {
+            const manualId = document.getElementById('manualId').value.trim();
+            if (!manualId) {
+                alert('Por favor, digite um código válido');
                 return;
             }
             
+            // Esconder formulário e mostrar loading
+            document.getElementById('noId').style.display = 'none';
+            document.getElementById('loading').style.display = 'flex';
+            
+            // Processar a confirmação
+            processConfirmation(manualId);
+        }
+        
+        // Função para processar a confirmação
+        async function processConfirmation(confirmationId) {
             try {
                 // Fazer requisição para confirmar o ID via proxy PHP
-                const response = await fetch(`${PROXY_URL}?id=${id}`);
+                const response = await fetch(`${PROXY_URL}?id=${encodeURIComponent(confirmationId)}`);
                 
                 if (!response.ok) {
                     throw new Error(`Erro HTTP: ${response.status}`);
@@ -305,12 +386,26 @@
                 document.getElementById('loading').style.display = 'none';
                 showError('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.');
             }
-        });
+        }
         
         function showError(title, message) {
             document.getElementById('error').style.display = 'block';
             document.getElementById('errorTitle').textContent = title;
             document.getElementById('errorMessage').textContent = message;
+        }
+        
+        // Função para resetar a página e tentar com outro código
+        function resetPage() {
+            // Esconder todas as seções
+            document.getElementById('success').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('alreadyConfirmed').style.display = 'none';
+            document.getElementById('loading').style.display = 'none';
+            
+            // Mostrar o formulário para digitar outro código
+            document.getElementById('noId').style.display = 'block';
+            document.getElementById('manualId').value = '';
+            document.getElementById('manualId').focus();
         }
     </script>
 </body>
