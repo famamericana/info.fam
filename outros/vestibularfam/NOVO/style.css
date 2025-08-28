@@ -70,7 +70,7 @@ header {
     margin: 0 auto;
     text-align: center;
     width: 100%;
- 
+
     padding: 70px 20px;
     padding-top: 120px;
     position: relative;
@@ -96,7 +96,7 @@ main {
     border-radius: 10px;
 }
 
-.titulo{
+.titulo {
     margin-top: 50px;
 }
 
@@ -1523,12 +1523,16 @@ footer .primeiro {
     }
 }
 
-.detalhes{
+.detalhes {
 
     color: #778392 !important;
-       font-style: italic;
+    font-style: italic;
 }
 
-.detalhes a{
+.detalhes a {
+    color: #45b7e5;
+}
+
+.linklegal {
     color: #45b7e5;
 }

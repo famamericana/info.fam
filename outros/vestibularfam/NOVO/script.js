@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'pos-graduacao': {
             icon: 'fa-medal',
             titulo: 'Pós-Graduação',
-            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.</br></br>Visite posfam.com.br para conhecer todas as opções de cursos de pós-graduação e inscrever-se. </br></br>Obs: A seção de Pós-Graduação está destacada separadamente no site posfam.com.br. Para Graduação, continue neste portal.',
+            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira. Visite <a class="linklegal" href="https://posfam.com.br" target="_blank">posfam.com.br</a> para conhecer todas as opções de cursos de pós-graduação.',
             link: 'https://famamericana.com.br/pos-graduacao',
             linkText: 'Ver Pós-Graduação'
         },
