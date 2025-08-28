@@ -77,8 +77,7 @@
                         <option value="segunda-graduacao">2ª Graduação</option>
                         <option value="transferencia">Transferência</option>
                         <option value="pos-graduacao">Pós-Graduação</option>
-                        <option value="extensao">Cursos de Extensão</option>
-                        <option value="tecnicos">Cursos Técnicos</option>
+                        <option value="reabertura">Reabertura de Matrícula</option>
                     </select>
                 </div>
                 <div id="inscricaoDetalhe" style="display:none;"></div>

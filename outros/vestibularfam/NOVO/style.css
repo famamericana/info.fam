@@ -1508,7 +1508,6 @@ footer .primeiro {
     cursor: pointer;
     position: relative;
     font-weight: bold;
-    text-transform: uppercase;
 }
 
 .inscricao-select:focus {
@@ -1522,4 +1521,14 @@ footer .primeiro {
         padding: 12px 40px 12px 12px;
         max-width: 100%;
     }
+}
+
+.detalhes{
+
+    color: #778392 !important;
+       font-style: italic;
+}
+
+.detalhes a{
+    color: #45b7e5;
 }

@@ -314,52 +314,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const opcoes = {
         'vestibular': {
             icon: 'fa-graduation-cap',
-            titulo: 'Vestibular',
-            texto: 'Processo seletivo tradicional para ingresso em cursos de graduação. Avaliação através de prova com questões de múltipla escolha e redação.',
+            titulo: 'Vestibular Online',
+            texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24/7. Resultado em minutos após a conclusão.',
             link: 'https://famamericana.com.br/vestibular',
             linkText: 'Inscrever-se no Vestibular'
         },
         'enem': {
             icon: 'fa-book-open',
-            titulo: 'ENEM',
-            texto: 'Ingresse utilizando sua nota do ENEM. Uma forma prática e rápida de conquistar sua vaga na graduação.',
+            titulo: 'Use sua Nota do ENEM',
+            texto: 'Conquistou 400+ pontos na redação do ENEM (2015 em diante)? Entre direto na FAM sem vestibular tradicional!',
             link: 'https://famamericana.com.br/enem',
             linkText: 'Inscrever-se com ENEM'
         },
         'segunda-graduacao': {
             icon: 'fa-user-graduate',
             titulo: '2ª Graduação',
-            texto: 'Já possui diploma de graduação? Amplie seus conhecimentos com uma segunda graduação e potencialize sua carreira.',
+            texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
             link: 'https://famamericana.com.br/segunda-graduacao',
             linkText: 'Inscrever-se 2ª Graduação'
         },
         'transferencia': {
             icon: 'fa-exchange-alt',
             titulo: 'Transferência',
-            texto: 'Transfira seu curso de outra instituição para a FAM. Aproveite disciplinas já cursadas e continue seus estudos conosco.',
+            texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
             link: 'https://famamericana.com.br/transferencia',
             linkText: 'Solicitar Transferência'
         },
         'pos-graduacao': {
             icon: 'fa-medal',
             titulo: 'Pós-Graduação',
-            texto: 'Especialize-se com nossos cursos de pós-graduação lato sensu. Amplie seus conhecimentos e destaque-se no mercado.',
+            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.</br></br>Visite posfam.com.br para conhecer todas as opções de cursos de pós-graduação e inscrever-se. </br></br>Obs: A seção de Pós-Graduação está destacada separadamente no site posfam.com.br. Para Graduação, continue neste portal.',
             link: 'https://famamericana.com.br/pos-graduacao',
             linkText: 'Ver Pós-Graduação'
         },
-        'extensao': {
-            icon: 'fa-plus-circle',
-            titulo: 'Cursos de Extensão',
-            texto: 'Cursos de curta duração para atualização profissional e aperfeiçoamento. Mantenha-se sempre atualizado em sua área.',
-            link: 'https://famamericana.com.br/extensao',
-            linkText: 'Ver Cursos de Extensão'
-        },
-        'tecnicos': {
+        'reabertura': {
             icon: 'fa-tools',
-            titulo: 'Cursos Técnicos',
-            texto: 'Formação técnica de nível médio com foco na prática profissional. Prepare-se rapidamente para o mercado de trabalho.',
+            titulo: 'Reabertura de Matrícula',
+            texto: 'Ex-aluno FAM? Volte e continue de onde parou. Continue seus estudos com análise curricular facilitada. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
             link: 'https://famamericana.com.br/tecnicos',
-            linkText: 'Ver Cursos Técnicos'
+            linkText: 'Reabrir Matrícula'
         }
     };
 
