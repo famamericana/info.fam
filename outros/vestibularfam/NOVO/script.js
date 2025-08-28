@@ -316,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-graduation-cap',
             titulo: 'Vestibular Online',
             texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24/7. Resultado em minutos após a conclusão.',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/vestibular',
             linkText: 'Inscrever-se no Vestibular'
         },
@@ -323,6 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-book-open',
             titulo: 'Use sua Nota do ENEM',
             texto: 'Conquistou 400+ pontos na redação do ENEM (2015 em diante)? Entre direto na FAM sem vestibular tradicional!',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/enem',
             linkText: 'Inscrever-se com ENEM'
         },
@@ -330,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-user-graduate',
             titulo: '2ª Graduação',
             texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/segunda-graduacao',
             linkText: 'Inscrever-se 2ª Graduação'
         },
@@ -337,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-exchange-alt',
             titulo: 'Transferência',
             texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/transferencia',
             linkText: 'Solicitar Transferência'
         },
@@ -344,6 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-medal',
             titulo: 'Pós-Graduação',
             texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira. Visite <a class="linklegal" href="https://posfam.com.br" target="_blank">posfam.com.br</a> para conhecer todas as opções de cursos de pós-graduação.',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/pos-graduacao',
             linkText: 'Ver Pós-Graduação'
         },
@@ -351,12 +356,33 @@ document.addEventListener('DOMContentLoaded', function() {
             icon: 'fa-tools',
             titulo: 'Reabertura de Matrícula',
             texto: 'Ex-aluno FAM? Volte e continue de onde parou. Continue seus estudos com análise curricular facilitada. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
+            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             link: 'https://famamericana.com.br/tecnicos',
             linkText: 'Reabrir Matrícula'
         }
     };
 
-    if (select) {
+    
+    // Função para alternar a visibilidade do texto completo
+    function toggleSaibaMais(button) {
+        const contentDiv = button.closest('.opcao-content');
+        const textoCompleto = contentDiv.querySelector('.texto-completo');
+        const isExpandido = button.classList.contains('expandido');
+        
+        if (isExpandido) {
+            textoCompleto.style.maxHeight = '0';
+            textoCompleto.style.opacity = '0';
+            button.textContent = 'Saiba Mais';
+            button.classList.remove('expandido');
+        } else {
+            textoCompleto.style.maxHeight = textoCompleto.scrollHeight + 'px';
+            textoCompleto.style.opacity = '1';
+            button.textContent = 'Ver Menos';
+            button.classList.add('expandido');
+        }
+    }
+
+      if (select) {
         select.addEventListener('change', function() {
             const val = select.value;
             if (opcoes[val]) {
@@ -369,7 +395,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="opcao-content" style="max-height:none;padding:25px;">
                             <p>${opcoes[val].texto}</p>
-                            <a href="${opcoes[val].link}" target="_blank" class="btn-inscricao">${opcoes[val].linkText}</a>
+                            <div class="texto-completo" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease;">
+                                <p style="margin-top: 15px; color: #666;">${opcoes[val].textoCompleto}</p>
+                            </div>
+                            <div style="display: flex; gap: 15px; align-items: center; margin-top: 20px;">
+                                <button class="btn-saiba-mais" onclick="toggleSaibaMais(this)">Saiba Mais</button>
+                                <a href="${opcoes[val].link}" target="_blank" class="btn-inscricao">${opcoes[val].linkText}</a>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -379,4 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Adicionar a função toggleSaibaMais ao escopo global
+    window.toggleSaibaMais = toggleSaibaMais;
 });

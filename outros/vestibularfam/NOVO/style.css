@@ -1536,3 +1536,42 @@ footer .primeiro {
 .linklegal {
     color: #45b7e5;
 }
+
+/* Estilos para o botão Saiba Mais */
+.btn-saiba-mais {
+    background-color: transparent;
+    border: 2px solid #0066cc;
+    color: #0066cc;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #0066cc;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+}
+
+.btn-saiba-mais.expandido {
+    background-color: #0066cc;
+    color: white;
+}
+
+.texto-completo {
+    transition: all 0.3s ease;
+}
+
+.texto-completo p {
+    line-height: 1.6;
+}
+
+.opcao-content {
+    transition: all 0.3s ease;
+}
