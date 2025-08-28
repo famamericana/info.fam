@@ -238,8 +238,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
         
-        // URL do Web App do Google Apps Script (substitua pela sua URL)
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxmLKYMQiiadWJ2tmciEyrIvWfH3wJ2Gad62UnHM3G3aqYVOxAy-5beONiUmSI4ajQ9/exec';
+        // URL do proxy PHP (mesmo diretório)
+        const PROXY_URL = 'proxy.php';
         
         // Função para formatar data
         function formatDate(dateString) {
@@ -261,25 +261,45 @@
             }
             
             try {
-                // Fazer requisição para confirmar o ID
-                // Utilizando mode: 'no-cors' para evitar problemas de CORS
-                const response = await fetch(`${WEB_APP_URL}?id=${id}`, {
-                    method: 'GET',
-                    mode: 'no-cors' // Esta é a chave para evitar problemas de CORS
-                });
+                // Fazer requisição para confirmar o ID via proxy PHP
+                const response = await fetch(`${PROXY_URL}?id=${id}`);
                 
-                // Como estamos usando 'no-cors', não podemos ler a resposta diretamente
-                // Mas simulamos uma confirmação bem-sucedida
-                console.log('Confirmação enviada com sucesso (modo no-cors)');
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const result = await response.json();
                 
                 // Esconder loading
                 document.getElementById('loading').style.display = 'none';
                 
-                // Mostrar sucesso (simulado)
-                document.getElementById('success').style.display = 'block';
-                
-                // Em um cenário real, você preencheria os dados com a resposta do servidor
-                // Como estamos em modo no-cors, apenas mostramos uma mensagem genérica
+                if (result.result === 'success') {
+                    // Mostrar sucesso
+                    document.getElementById('success').style.display = 'block';
+                    
+                    // Preencher dados do usuário
+                    if (result.userData) {
+                        document.getElementById('userData').style.display = 'block';
+                        document.getElementById('userName').textContent = result.userData.nomeCompleto || 'N/A';
+                        document.getElementById('userEmail').textContent = result.userData.email || 'N/A';
+                        document.getElementById('userCpf').textContent = result.userData.cpf || 'N/A';
+                        document.getElementById('userCelular').textContent = result.userData.celular || 'N/A';
+                        document.getElementById('confirmationDate').textContent = formatDate(new Date());
+                    }
+                } else if (result.message && result.message.includes('já confirmado')) {
+                    // Mostrar mensagem de já confirmado
+                    document.getElementById('alreadyConfirmed').style.display = 'block';
+                    
+                    // Tentar preencher dados existentes se disponíveis
+                    if (result.userData) {
+                        document.getElementById('existingUserData').style.display = 'block';
+                        document.getElementById('existingUserName').textContent = result.userData.nomeCompleto || 'N/A';
+                        document.getElementById('existingConfirmationDate').textContent = formatDate(result.userData.dataConfirmacao || new Date());
+                    }
+                } else {
+                    // Mostrar erro
+                    showError('Erro na Confirmação', result.message || 'Ocorreu um erro desconhecido.');
+                }
                 
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';

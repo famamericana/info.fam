@@ -227,8 +227,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
     <script>
-        // URL do Web App do Google Apps Script (substitua pela sua URL)
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxmLKYMQiiadWJ2tmciEyrIvWfH3wJ2Gad62UnHM3G3aqYVOxAy-5beONiUmSI4ajQ9/exec';
+        // URL do proxy PHP (mesmo diretório)
+        const PROXY_URL = 'proxy.php';
         
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -246,44 +246,45 @@
             document.getElementById('errorMessage').style.display = 'none';
             
             try {
-                // Enviar dados para o Google Apps Script usando a mesma abordagem do exemplo
-                // Utilizando mode: 'no-cors' para evitar problemas de CORS
-                const response = await fetch(WEB_APP_URL, {
+                // Enviar dados via proxy PHP
+                const response = await fetch(PROXY_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Esta é a chave para evitar problemas de CORS
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
                 
-                // Como estamos usando 'no-cors', não podemos ler a resposta diretamente
-                // Mas assumimos que foi bem-sucedido se a requisição foi feita
-                console.log('Formulário enviado com sucesso (modo no-cors)');
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
                 
-                // Gerar um ID único localmente (já que não podemos obter do servidor)
-                const uniqueId = generateUniqueId();
+                const result = await response.json();
                 
-                // Gerar URL do QR Code com o ID único
-                const qrCodeUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}confirmar.html?id=${uniqueId}`;
-                
-                // Exibir sucesso
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('leadForm').style.display = 'none';
-                
-                // Gerar QR Code
-                document.getElementById('qrCodeContainer').style.display = 'block';
-                document.getElementById('confirmationId').textContent = uniqueId;
-                
-                // Limpar QR Code anterior se existir
-                document.getElementById('qrCode').innerHTML = '';
-                
-                // Gerar novo QR Code
-                new QRCode(document.getElementById('qrCode'), {
-                    text: qrCodeUrl,
-                    width: 200,
-                    height: 200
-                });
+                if (result.result === 'success') {
+                    // Gerar URL do QR Code com o ID retornado
+                    const qrCodeUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}confirmar.html?id=${result.id}`;
+                    
+                    // Exibir sucesso
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('leadForm').style.display = 'none';
+                    
+                    // Gerar QR Code
+                    document.getElementById('qrCodeContainer').style.display = 'block';
+                    document.getElementById('confirmationId').textContent = result.id;
+                    
+                    // Limpar QR Code anterior se existir
+                    document.getElementById('qrCode').innerHTML = '';
+                    
+                    // Gerar novo QR Code
+                    new QRCode(document.getElementById('qrCode'), {
+                        text: qrCodeUrl,
+                        width: 200,
+                        height: 200
+                    });
+                } else {
+                    throw new Error(result.message || 'Erro desconhecido');
+                }
                 
             } catch (error) {
                 // Exibir erro
@@ -294,11 +295,6 @@
                 document.getElementById('loading').style.display = 'none';
             }
         });
-        
-        // Função para gerar um ID único
-        function generateUniqueId() {
-            return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-        }
         
         // Máscaras para os campos
         document.getElementById('cpf').addEventListener('input', function(e) {
