@@ -1,0 +1,458 @@
+// CONFIGURAÇÃO - Substitua pelos seus valores
+const CONFIG = {
+  planilhaNome: 'Sacochila Leads - FA 2025', // Nome da sua planilha no Google Drive
+  urlConfirmacao: 'https://info.fam.br/eventos/faculdade-aberta/sacochila/confirmar.html' // URL da sua página de confirmação
+};
+
+// Cache para IDs
+let cache = {
+  spreadsheetIds: {}
+};
+
+/**
+ * Função para obter o ID de uma planilha pelo nome
+ */
+function getSpreadsheetIdByName(sheetName) {
+  if (cache.spreadsheetIds[sheetName]) {
+    console.log(`[CACHE] Planilha '${sheetName}' encontrada no cache`);
+    return cache.spreadsheetIds[sheetName];
+  }
+
+  try {
+    const files = DriveApp.getFilesByName(sheetName);
+    let fileId = null;
+    
+    while (files.hasNext()) {
+      const file = files.next();
+      if (file.getMimeType() === 'application/vnd.google-apps.spreadsheet') {
+        fileId = file.getId();
+        console.log(`[ENCONTRADO] Planilha '${sheetName}' com ID: ${fileId}`);
+        break;
+      }
+    }
+
+    if (fileId) {
+      cache.spreadsheetIds[sheetName] = fileId;
+      return fileId;
+    } else {
+      console.error(`[ERRO] Planilha '${sheetName}' não encontrada`);
+      return null;
+    }
+  } catch (error) {
+    console.error('[ERRO] Exceção ao buscar planilha:', error.toString());
+    return null;
+  }
+}
+
+/**
+ * Função para garantir que a planilha tenha os cabeçalhos corretos
+ */
+function ensureHeaders(sheet, headers) {
+  const cellA1Value = sheet.getRange('A1').getValue();
+  const hasHeaders = cellA1Value !== '';
+
+  if (!hasHeaders) {
+    console.log(`Inserindo cabeçalhos na planilha`);
+    
+    const headerRange = sheet.getRange(1, 1, 1, headers.length);
+    headerRange.setValues([headers]);
+    
+    // Formatação dos cabeçalhos
+    headerRange.setFontWeight('bold');
+    headerRange.setBackground('#4285f4');
+    headerRange.setFontColor('#ffffff');
+    headerRange.setBorder(true, true, true, true, true, true);
+    
+    SpreadsheetApp.flush();
+    console.log(`Cabeçalhos inseridos com sucesso`);
+  }
+}
+
+/**
+ * Função principal para receber dados do formulário
+ */
+function doPost(e) {
+  console.log('[doPost] Iniciando processamento');
+  
+  try {
+    // Verifica se há dados POST
+    if (!e || !e.postData || !e.postData.contents) {
+      throw new Error('Nenhum dado POST recebido');
+    }
+    
+    const formData = JSON.parse(e.postData.contents);
+    console.log('Dados recebidos:', JSON.stringify(formData, null, 2));
+
+    // Busca ou cria a planilha
+    let spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaNome);
+    
+    if (!spreadsheetId) {
+      // Cria nova planilha se não existir
+      console.log('Criando nova planilha...');
+      const newSpreadsheet = SpreadsheetApp.create(CONFIG.planilhaNome);
+      spreadsheetId = newSpreadsheet.getId();
+      cache.spreadsheetIds[CONFIG.planilhaNome] = spreadsheetId;
+    }
+
+    const ss = SpreadsheetApp.openById(spreadsheetId);
+    let sheet = ss.getActiveSheet();
+
+    // Define os cabeçalhos
+    const headers = ['ID', 'Data/Hora', 'CPF', 'E-mail', 'Nome Completo', 'Celular', 'Status', 'Data Confirmação'];
+    
+    // Garante que os cabeçalhos existam
+    ensureHeaders(sheet, headers);
+
+    // Gera um ID único para este registro
+    const uniqueId = Utilities.getUuid().substring(0, 8);
+    const timestamp = new Date();
+
+    // Prepara os dados para inserir
+    const rowData = [
+      uniqueId,
+      timestamp,
+      formData.cpf || '',
+      formData.email || '',
+      formData.nomeCompleto || '',
+      formData.celular || '',
+      'PENDENTE',
+      ''
+    ];
+
+    // Adiciona os dados à planilha
+    const newRow = sheet.appendRow(rowData);
+    const rowIndex = sheet.getLastRow();
+    
+    // Colore a linha de vermelho (status pendente)
+    const range = sheet.getRange(rowIndex, 1, 1, headers.length);
+    range.setBackground('#ffebee'); // Vermelho claro
+    
+    SpreadsheetApp.flush();
+    console.log('Dados inseridos na planilha');
+
+    // Gera URL do QR Code com o ID único
+    const qrCodeUrl = `${CONFIG.urlConfirmacao}?id=${uniqueId}`;
+    
+    console.log('Processamento concluído com sucesso');
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        'result': 'success', 
+        'message': 'Formulário enviado com sucesso!',
+        'qrCodeUrl': qrCodeUrl,
+        'id': uniqueId
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    console.error('Erro:', error.toString());
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        'result': 'error', 
+        'message': error.toString() 
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Função para lidar com requisições OPTIONS (CORS) - REMOVIDA
+ * O Google Apps Script não suporta setHeaders, então removemos esta função
+ */
+
+/**
+ * Função para confirmar um registro via ID
+ */
+function doGet(e) {
+  console.log('[doGet] Iniciando processamento de confirmação');
+  
+  try {
+    const id = e.parameter.id;
+    
+    if (!id) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ 
+          'result': 'error', 
+          'message': 'ID não fornecido' 
+        }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    console.log(`[doGet] Processando confirmação para ID: ${id}`);
+
+    const spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaNome);
+    
+    if (!spreadsheetId) {
+      throw new Error('Planilha não encontrada');
+    }
+
+    const ss = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = ss.getActiveSheet();
+    
+    // Busca o registro pelo ID
+    const data = sheet.getDataRange().getValues();
+    console.log(`[doGet] Buscando ID '${id}' em ${data.length} linhas`);
+    
+    for (let i = 1; i < data.length; i++) { // Começa do 1 para pular cabeçalho
+      if (data[i][0] === id) { // Coluna A (índice 0) contém o ID
+        const rowIndex = i + 1;
+        console.log(`[doGet] ID encontrado na linha ${rowIndex}`);
+        
+        // Atualiza status e data de confirmação
+        sheet.getRange(rowIndex, 7).setValue('CONFIRMADO'); // Coluna G (Status)
+        sheet.getRange(rowIndex, 8).setValue(new Date());   // Coluna H (Data Confirmação)
+        
+        // Muda cor da linha para verde
+        const range = sheet.getRange(rowIndex, 1, 1, 8);
+        range.setBackground('#e8f5e8'); // Verde claro
+        
+        SpreadsheetApp.flush();
+        console.log('[doGet] Cadastro confirmado com sucesso');
+        
+        // Retorna os dados do usuário
+        const userData = {
+          id: data[i][0],
+          dataHora: data[i][1],
+          cpf: data[i][2],
+          email: data[i][3],
+          nomeCompleto: data[i][4],
+          celular: data[i][5],
+          status: 'CONFIRMADO'
+        };
+        
+        return ContentService
+          .createTextOutput(JSON.stringify({ 
+            'result': 'success', 
+            'message': 'Cadastro confirmado com sucesso!',
+            'userData': userData
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    
+    // Se chegou aqui, não encontrou o ID
+    console.log(`[doGet] ID '${id}' não encontrado`);
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        'result': 'error', 
+        'message': 'Cadastro não encontrado' 
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    console.error('[doGet] Erro ao confirmar:', error.toString());
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        'result': 'error', 
+        'message': error.toString() 
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Função para implantar o Web App
+ */
+function deployAsWebApp() {
+  console.log("INSTRUÇÕES DE IMPLANTAÇÃO:");
+  console.log("1. Vá em 'Implantar' -> 'Nova implantação'");
+  console.log("2. Tipo: Web App");
+  console.log("3. Execute como: Sua conta");
+  console.log("4. Quem tem acesso: Qualquer pessoa");
+  console.log("5. Copie a URL gerada e use no seu formulário HTML");
+}
+
+/**
+ * FUNÇÃO DE TESTE 1: Testar doPost
+ */
+function testeDoPost() {
+  console.log("=== INICIANDO TESTE DO doPost ===");
+  
+  const mockEvent = {
+    postData: {
+      contents: JSON.stringify({
+        cpf: '123.456.789-00',
+        email: 'teste@exemplo.com',
+        nomeCompleto: 'João Silva Teste',
+        celular: '(11) 99999-8888'
+      })
+    }
+  };
+
+  try {
+    const resultado = doPost(mockEvent);
+    const content = resultado.getContent();
+    console.log("✅ doPost executou com sucesso!");
+    console.log("📄 Resposta:", content);
+    
+    // Tenta fazer parse do JSON para verificar se está válido
+    const jsonResult = JSON.parse(content);
+    console.log("✅ JSON válido:", jsonResult);
+    
+    if (jsonResult.result === 'success') {
+      console.log("🎯 ID gerado:", jsonResult.id);
+      console.log("🔗 URL do QR:", jsonResult.qrCodeUrl);
+    }
+    
+  } catch (error) {
+    console.error("❌ Erro no teste doPost:", error.toString());
+    console.error("📍 Stack:", error.stack);
+  }
+  
+  console.log("=== FIM TESTE doPost ===");
+}
+
+/**
+ * FUNÇÃO DE TESTE 2: Testar doGet
+ */
+function testeDoGet() {
+  console.log("=== INICIANDO TESTE DO doGet ===");
+  
+  // Primeiro, vamos criar um registro para testar
+  console.log("1. Criando registro de teste...");
+  testeDoPost();
+  
+  // Aguarda um pouco para o registro ser criado
+  Utilities.sleep(1000);
+  
+  // Pega o último ID da planilha
+  try {
+    const spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaNome);
+    if (!spreadsheetId) {
+      throw new Error("Planilha não encontrada para teste");
+    }
+    
+    const ss = SpreadsheetApp.openById(spreadsheetId);
+    const sheet = ss.getActiveSheet();
+    const lastRow = sheet.getLastRow();
+    
+    if (lastRow <= 1) {
+      throw new Error("Nenhum registro encontrado para testar");
+    }
+    
+    const testId = sheet.getRange(lastRow, 1).getValue(); // Pega o ID da última linha
+    console.log("2. Testando confirmação com ID:", testId);
+    
+    const mockGetEvent = {
+      parameter: {
+        id: testId
+      }
+    };
+    
+    const resultado = doGet(mockGetEvent);
+    const content = resultado.getContent();
+    console.log("✅ doGet executou com sucesso!");
+    console.log("📄 Resposta:", content);
+    
+    // Verifica se o JSON é válido
+    const jsonResult = JSON.parse(content);
+    console.log("✅ JSON válido:", jsonResult);
+    
+    if (jsonResult.result === 'success') {
+      console.log("🎯 Dados do usuário:", jsonResult.userData);
+    }
+    
+  } catch (error) {
+    console.error("❌ Erro no teste doGet:", error.toString());
+    console.error("📍 Stack:", error.stack);
+  }
+  
+  console.log("=== FIM TESTE doGet ===");
+}
+
+/**
+ * FUNÇÃO DE TESTE 3: Verificar configurações
+ */
+function testeConfiguracoes() {
+  console.log("=== VERIFICANDO CONFIGURAÇÕES ===");
+  
+  console.log("📋 CONFIG atual:");
+  console.log("  - planilhaNome:", CONFIG.planilhaNome);
+  console.log("  - urlConfirmacao:", CONFIG.urlConfirmacao);
+  
+  // Testa se consegue encontrar/criar a planilha
+  try {
+    let spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaNome);
+    
+    if (!spreadsheetId) {
+      console.log("📝 Planilha não existe. Tentando criar...");
+      const newSpreadsheet = SpreadsheetApp.create(CONFIG.planilhaNome);
+      spreadsheetId = newSpreadsheet.getId();
+      console.log("✅ Planilha criada com ID:", spreadsheetId);
+    } else {
+      console.log("✅ Planilha encontrada com ID:", spreadsheetId);
+    }
+    
+    const ss = SpreadsheetApp.openById(spreadsheetId);
+    console.log("✅ Planilha aberta:", ss.getName());
+    console.log("📊 URL da planilha:", ss.getUrl());
+    
+  } catch (error) {
+    console.error("❌ Erro ao acessar planilha:", error.toString());
+  }
+  
+  console.log("=== FIM VERIFICAÇÃO ===");
+}
+
+/**
+ * FUNÇÃO DE TESTE 4: Teste completo
+ */
+function testeCompleto() {
+  console.log("🚀 INICIANDO TESTE COMPLETO DO SISTEMA");
+  console.log("=====================================");
+  
+  // Teste 1: Configurações
+  testeConfiguracoes();
+  
+  console.log("\n");
+  
+  // Teste 2: doPost
+  testeDoPost();
+  
+  console.log("\n");
+  
+  // Teste 3: doGet
+  testeDoGet();
+  
+  console.log("\n🎉 TESTE COMPLETO FINALIZADO!");
+  console.log("Verifique os logs acima para identificar problemas.");
+}
+
+/**
+ * FUNÇÃO DE TESTE 5: Simular requisição HTTP
+ */
+function testeHTTP() {
+  console.log("=== TESTE DE REQUISIÇÃO HTTP ===");
+  
+  const url = ScriptApp.getService().getUrl();
+  console.log("📡 URL do Web App:", url);
+  
+  try {
+    // Simula POST
+    const postPayload = JSON.stringify({
+      cpf: '123.456.789-00',
+      email: 'teste@http.com',
+      nomeCompleto: 'Teste HTTP',
+      celular: '(11) 88888-7777'
+    });
+    
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      payload: postPayload
+    };
+    
+    console.log("📤 Enviando POST para:", url);
+    const postResponse = UrlFetchApp.fetch(url, postOptions);
+    console.log("✅ Resposta POST:", postResponse.getContentText());
+    
+  } catch (error) {
+    console.error("❌ Erro no teste HTTP:", error.toString());
+  }
+  
+  console.log("=== FIM TESTE HTTP ===");
+}
