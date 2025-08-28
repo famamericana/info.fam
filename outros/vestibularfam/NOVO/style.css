@@ -1557,6 +1557,15 @@ footer .primeiro {
     color: #000;
 }
 
+.btn-saiba-mais.expandido:hover {
+    border-color:  #45b7e5;
+    color: white;
+    background-color: #45b7e5;
+        box-shadow: 0 6px 15px rgba(84, 168, 252, 0.4);
+
+}
+
+
 .texto-completo {
     transition: all 0.3s ease;
     margin-bottom: 30px;
