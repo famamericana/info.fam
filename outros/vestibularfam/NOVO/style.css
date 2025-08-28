@@ -1430,8 +1430,6 @@ footer .primeiro {
     font-weight: 600;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
 }
 
 .btn-inscricao:hover {
@@ -1462,10 +1460,7 @@ footer .primeiro {
         padding: 20px;
     }
 
-    .btn-inscricao {
-        padding: 10px 20px;
-        font-size: 0.85rem;
-    }
+
 }
 
 @media (max-width: 480px) {
@@ -1537,39 +1532,34 @@ footer .primeiro {
     color: #45b7e5;
 }
 
-/* Estilos para o botão Saiba Mais */
-.btn-saiba-mais {
-    background-color: transparent;
-    border: 2px solid #0066cc;
-    color: #0066cc;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.btn-saiba-mais:hover {
+    color: white;
+    background-color: #004c99;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
 }
 
-.btn-saiba-mais:hover {
-    background-color: #0066cc;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+.btn-saiba-mais {
+    text-transform: uppercase;
+    padding: 12px 25px;
+    border: 2px solid #134d99;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background-color: white;
+    font-size: medium;
 }
 
 .btn-saiba-mais.expandido {
-    background-color: #0066cc;
-    color: white;
+    border-color:  #f9e20f;
+    color: #000;
 }
 
 .texto-completo {
     transition: all 0.3s ease;
-}
-
-.texto-completo p {
-    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 .opcao-content {

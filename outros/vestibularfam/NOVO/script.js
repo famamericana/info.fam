@@ -396,9 +396,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="opcao-content" style="max-height:none;padding:25px;">
                             <p>${opcoes[val].texto}</p>
                             <div class="texto-completo" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease;">
-                                <p style="margin-top: 15px; color: #666;">${opcoes[val].textoCompleto}</p>
+                                <p>${opcoes[val].textoCompleto}</p>
                             </div>
-                            <div style="display: flex; gap: 15px; align-items: center; margin-top: 20px;">
+                            <div style="display: flex; gap: 10px; align-items: center; margin-top: 5px;">
                                 <button class="btn-saiba-mais" onclick="toggleSaibaMais(this)">Saiba Mais</button>
                                 <a href="${opcoes[val].link}" target="_blank" class="btn-inscricao">${opcoes[val].linkText}</a>
                             </div>
