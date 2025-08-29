@@ -921,7 +921,7 @@ footer .footer-info-icons i {
 }
 
 .btn-saiba-mais.expandido {
-    border-color: var(--yellow);
+    border-color: var(--accent);
     color: #000;
 }
 
