@@ -36,11 +36,11 @@
 
     <header>
         <div class="titulo">
-            <h2><span style="color: #45b7e5">▪</span> Vestibular 2026 <span style="color: #45b7e5">▪</span></h2>
+            <h2><span style="color: #f9e20f">○●</span> Vestibular 2026 <span style="color: #f9e20f">●○</span></h2>
             <img src="images/estudenafam.svg">
             <p>A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
-                Aqui você escolhe a forma de ingresso que mais combina com você. O processo seletivo é 100% online e gratuito. Comece já a construir seu futuro!</p>
+                Aqui você escolhe a forma de ingresso que mais combina com você. Comece já a construir seu futuro!</p>
         </div>
         <div class="container-button">
             <a href="#tipodeinscricao" class="button">Inscreva-se</a>
@@ -68,7 +68,6 @@
         <div id="tipodeinscricao" class="conteudo">
             <div class="inscricao-container">
                 <h2 class="inscricao-titulo">Escolha seu Tipo de Inscrição</h2>
-                <p class="inscricao-subtitulo">Selecione a modalidade que melhor se adequa ao seu perfil acadêmico</p>
                 <div style="text-align:center; margin-bottom:30px;">
                     <select id="tipoInscricaoSelect" class="inscricao-select">
                         <option value="" selected disabled>Clique e selecione uma opção...</option>

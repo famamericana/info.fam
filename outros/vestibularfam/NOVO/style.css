@@ -131,12 +131,13 @@ main {
 }
 
 .bola-1 {
-    background-color: var(--bolas);
+    background-color: #e53888;
     width: 50px;
     height: 50px;
     top: 50px;
     left: 100px;
     animation: flutuar 8s infinite alternate;
+    border-radius: 100%;
 }
 
 .bola-2 {
@@ -149,7 +150,9 @@ main {
 }
 
 .bola-3 {
-    background-color: var(--bolas2);
+    border: 5px solid var(--bolas2);
+    background-color: transparent;
+    border-radius: 100%;
     width: 200px;
     height: 200px;
     top: 200px;
@@ -158,7 +161,9 @@ main {
 }
 
 .bola-4 {
-    background-color: var(--bolas);
+    border: 12px double var(--bolas);
+    background-color: transparent;
+    border-radius: 100%;
     width: 120px;
     height: 120px;
     top: 250px;
@@ -176,12 +181,13 @@ main {
 }
 
 .bola-6 {
-    background-color: var(--bolas2);
+    background-color: #f9e20f;
     width: 90px;
     height: 90px;
     top: 120px;
     right: 80px;
     animation: flutuar 7s infinite alternate-reverse;
+
 }
 
 .bola-7 {
@@ -200,6 +206,7 @@ main {
     top: 400px;
     right: 50px;
     animation: flutuar 9.5s infinite alternate-reverse;
+    border-radius: 100%;
 }
 
 .bola-9 {
@@ -267,7 +274,6 @@ main {
 .button {
     text-transform: uppercase;
     padding: 12px 25px;
-
     color: white;
     text-decoration: none;
     border-radius: 10px;
@@ -373,10 +379,6 @@ main {
     z-index: 1000;
     padding: 20px 0;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.301);
-
 }
 
 .navbar-scrolled {
@@ -1336,17 +1338,11 @@ footer .primeiro {
     text-align: center;
     font-size: 2.5rem;
     color: #1b3556;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 700;
 }
 
-.inscricao-subtitulo {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 40px;
-    font-weight: 400;
-}
+
 
 .inscricao-opcoes {
     display: flex;
@@ -1486,7 +1482,6 @@ footer .primeiro {
 /* Select customizado para inscrição */
 .inscricao-select {
     width: 100%;
-    max-width: 400px;
     padding: 14px 45px 14px 18px;
     font-size: 1.1rem;
     border-radius: 10px;
@@ -1497,7 +1492,6 @@ footer .primeiro {
     box-shadow: 0 4px 15px rgba(69, 183, 229, 0.08);
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
-    appearance: none;
     margin: 0 auto;
     display: block;
     cursor: pointer;
@@ -1553,15 +1547,15 @@ footer .primeiro {
 }
 
 .btn-saiba-mais.expandido {
-    border-color:  #f9e20f;
+    border-color: #f9e20f;
     color: #000;
 }
 
 .btn-saiba-mais.expandido:hover {
-    border-color:  #45b7e5;
+    border-color: #45b7e5;
     color: white;
     background-color: #45b7e5;
-        box-shadow: 0 6px 15px rgba(84, 168, 252, 0.4);
+    box-shadow: 0 6px 15px rgba(84, 168, 252, 0.4);
 
 }
 
