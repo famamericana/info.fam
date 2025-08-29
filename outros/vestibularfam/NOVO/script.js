@@ -388,17 +388,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (opcoes[val]) {
                 detalhe.style.display = 'block';
                 detalhe.innerHTML = `
-                    <div class="opcao-item active" style="margin:30px auto;">
+                    <div class="opcao-item active">
                         <div class="opcao-header" style="cursor:default;">
                             <i class="fas ${opcoes[val].icon}"></i>
                             <h3>${opcoes[val].titulo}</h3>
                         </div>
-                        <div class="opcao-content" style="max-height:none;padding:25px;">
+                        <div class="opcao-content" style="max-height:none;">
                             <p>${opcoes[val].texto}</p>
                             <div class="texto-completo" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease;">
                                 <p>${opcoes[val].textoCompleto}</p>
                             </div>
-                            <div style="display: flex; gap: 10px; align-items: center; margin-top: 5px;">
+                            <div class="opcao-botoes" >
                                 <button class="btn-saiba-mais" onclick="toggleSaibaMais(this)">Saiba Mais</button>
                                 <a href="${opcoes[val].link}" target="_blank" class="btn-inscricao">${opcoes[val].linkText}</a>
                             </div>

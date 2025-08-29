@@ -40,7 +40,9 @@
             <img src="images/estudenafam.svg">
             <p>A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
-                Aqui você escolhe a forma de ingresso que mais combina com você. Comece já a construir seu futuro!</p>
+                Aqui você escolhe a forma de ingresso que mais combina com você. </p>
+</br>
+            <div class="titulo-subtitulo">Seu futuro começa agora!</div>
         </div>
         <div class="container-button">
             <a href="#tipodeinscricao" class="button">Inscreva-se</a>
