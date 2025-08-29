@@ -64,6 +64,31 @@ function ensureHeaders(sheet, headers) {
     
     SpreadsheetApp.flush();
     console.log(`Cabeçalhos inseridos com sucesso`);
+  } else {
+    // Verifica se os cabeçalhos existentes estão corretos
+    const existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    console.log('Cabeçalhos existentes:', existingHeaders);
+    
+    // Se os cabeçalhos não correspondem, recria a planilha
+    if (existingHeaders.join('|') !== headers.join('|')) {
+      console.log('Cabeçalhos não correspondem. Recriando planilha...');
+      
+      // Limpa a planilha
+      sheet.clear();
+      
+      // Insere os novos cabeçalhos
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setValues([headers]);
+      
+      // Formatação dos cabeçalhos
+      headerRange.setFontWeight('bold');
+      headerRange.setBackground('#4285f4');
+      headerRange.setFontColor('#ffffff');
+      headerRange.setBorder(true, true, true, true, true, true);
+      
+      SpreadsheetApp.flush();
+      console.log('Cabeçalhos recriados com sucesso');
+    }
   }
 }
 
@@ -96,7 +121,7 @@ function doPost(e) {
     const ss = SpreadsheetApp.openById(spreadsheetId);
     let sheet = ss.getActiveSheet();
 
-    // Define os cabeçalhos (com as novas colunas)
+    // Define os cabeçalhos na ordem CORRETA
     const headers = [
       'ID', 
       'Data/Hora', 
@@ -110,25 +135,25 @@ function doPost(e) {
       'Data Confirmação'
     ];
     
-    // Garante que os cabeçalhos existam
+    // Garante que os cabeçalhos existam e estejam corretos
     ensureHeaders(sheet, headers);
 
     // Gera um ID único para este registro
     const uniqueId = Utilities.getUuid().substring(0, 8);
     const timestamp = new Date();
 
-    // Prepara os dados para inserir (com os novos campos)
+    // Prepara os dados para inserir na ordem CORRETA
     const rowData = [
-      uniqueId,
-      timestamp,
-      formData.cpf || '',
-      formData.email || '',
-      formData.nomeCompleto || '',
-      formData.celular || '',
-      Array.isArray(formData.cursosFavoritos) ? formData.cursosFavoritos.join(', ') : formData.cursosFavoritos || '',
-      formData.modalidade || '',
-      'PENDENTE',
-      ''
+      uniqueId, // ID (coluna A)
+      timestamp, // Data/Hora (coluna B)
+      formData.cpf || '', // CPF (coluna C)
+      formData.email || '', // E-mail (coluna D)
+      formData.nomeCompleto || '', // Nome Completo (coluna E)
+      formData.celular || '', // Celular (coluna F)
+      Array.isArray(formData.cursosFavoritos) ? formData.cursosFavoritos.join(', ') : formData.cursosFavoritos || '', // Cursos Favoritos (coluna G)
+      formData.modalidade || '', // Modalidade Preferida (coluna H)
+      'PENDENTE', // Status (coluna I)
+      '' // Data Confirmação (coluna J)
     ];
 
     // Adiciona os dados à planilha
@@ -140,7 +165,7 @@ function doPost(e) {
     range.setBackground('#ffebee'); // Vermelho claro
     
     SpreadsheetApp.flush();
-    console.log('Dados inseridos na planilha');
+    console.log('Dados inseridos na planilha na linha:', rowIndex);
 
     console.log('Processamento concluído com sucesso');
     
