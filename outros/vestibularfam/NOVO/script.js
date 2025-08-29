@@ -313,7 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const opcoes = {
         'vestibular': {
-            icon: 'fa-graduation-cap',
             titulo: 'Vestibular Online',
             texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24/7. Resultado em minutos após a conclusão.',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -321,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkText: 'Inscrever-se no Vestibular'
         },
         'enem': {
-            icon: 'fa-book-open',
             titulo: 'Use sua Nota do ENEM',
             texto: 'Conquistou 400+ pontos na redação do ENEM (2015 em diante)? Entre direto na FAM sem vestibular tradicional!',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -329,7 +327,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkText: 'Inscrever-se com ENEM'
         },
         'segunda-graduacao': {
-            icon: 'fa-user-graduate',
             titulo: '2ª Graduação',
             texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -337,7 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkText: 'Inscrever-se 2ª Graduação'
         },
         'transferencia': {
-            icon: 'fa-exchange-alt',
             titulo: 'Transferência',
             texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -345,7 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkText: 'Solicitar Transferência'
         },
         'pos-graduacao': {
-            icon: 'fa-medal',
             titulo: 'Pós-Graduação',
             texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira. Visite <a class="linklegal" href="https://posfam.com.br" target="_blank">posfam.com.br</a> para conhecer todas as opções de cursos de pós-graduação.',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -353,7 +348,6 @@ document.addEventListener('DOMContentLoaded', function() {
             linkText: 'Ver Pós-Graduação'
         },
         'reabertura': {
-            icon: 'fa-tools',
             titulo: 'Reabertura de Matrícula',
             texto: 'Ex-aluno FAM? Volte e continue de onde parou. Continue seus estudos com análise curricular facilitada. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
             textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -390,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 detalhe.innerHTML = `
                     <div class="opcao-item active">
                         <div class="opcao-header" style="cursor:default;">
-                            <i class="fas ${opcoes[val].icon}"></i>
+                        
                             <h3>${opcoes[val].titulo}</h3>
                         </div>
                         <div class="opcao-content" style="max-height:none;">

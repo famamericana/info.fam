@@ -70,7 +70,7 @@
         <div id="tipodeinscricao" class="conteudo">
             <div class="inscricao-container">
                 <h2 class="inscricao-titulo">Escolha seu Tipo de Inscrição</h2>
-                <div style="text-align:center; margin-bottom:30px;">
+                <div>
                     <select id="tipoInscricaoSelect" class="inscricao-select">
                         <option value="" selected disabled>Clique e selecione uma opção...</option>
                         <option value="vestibular">Vestibular</option>

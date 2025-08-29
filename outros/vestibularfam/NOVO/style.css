@@ -7,14 +7,13 @@
     --primary: #1b3556;
     --secondary: #e53888;
     --accent: #45b7e5;
-    --accent-light: #80d9fc;
     --accent-dark: #004C99;
     --yellow: #f9e20f;
     --text: #444;
     --text-light: #778392;
 
     /* Cores específicas de elementos */
-    --bolas: var(--accent-light);
+    --bolas: var(--accent);
     --bolas2: var(--accent-dark);
     --noise-opacity: 0.2;
     --scrollbar-bg: var(--bg);
@@ -775,9 +774,11 @@ footer .footer-info-icons i {
 }
 
 .opcao-item {
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
     transition: all var(--animation-duration) var(--animation-timing);
+    background-color: var(--accent);
+    padding: 2px;
 }
 
 .opcao-botoes {
@@ -796,17 +797,11 @@ footer .footer-info-icons i {
     transition: all var(--animation-duration) var(--animation-timing);
 }
 
-.opcao-header i:first-child {
-    font-size: var(--fs-large);
-    color: var(--secondary);
-    margin-right: var(--spacing-md);
-    min-width: 30px;
-}
 
 .opcao-header h3 {
     
     font-size: var(--fs-large);
-    color: var(--primary);
+    color: white;
     margin: 0;
     font-weight: 600;
 }
@@ -879,10 +874,11 @@ footer .footer-info-icons i {
     cursor: pointer;
     position: relative;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .inscricao-select:focus {
-    border-color: var(--secondary);
+    border-color: var(--accent-dark);
 }
 
 .detalhes {
