@@ -863,7 +863,7 @@ footer .footer-info-icons i {
     padding: 14px 45px 14px 18px;
     font-size: var(--fs-medium);
     border-radius: var(--border-radius-lg);
-    border: 2px solid var(--accent);
+    border: 2px solid var(--secondary);
     background: transparent;
     color: var(--primary);
     font-family: var(--font-primary);
