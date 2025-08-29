@@ -96,8 +96,19 @@ function doPost(e) {
     const ss = SpreadsheetApp.openById(spreadsheetId);
     let sheet = ss.getActiveSheet();
 
-    // Define os cabeçalhos
-    const headers = ['ID', 'Data/Hora', 'CPF', 'E-mail', 'Nome Completo', 'Celular', 'Status', 'Data Confirmação'];
+    // Define os cabeçalhos (com as novas colunas)
+    const headers = [
+      'ID', 
+      'Data/Hora', 
+      'CPF', 
+      'E-mail', 
+      'Nome Completo', 
+      'Celular', 
+      'Cursos Favoritos', 
+      'Modalidade Preferida',
+      'Status', 
+      'Data Confirmação'
+    ];
     
     // Garante que os cabeçalhos existam
     ensureHeaders(sheet, headers);
@@ -106,7 +117,7 @@ function doPost(e) {
     const uniqueId = Utilities.getUuid().substring(0, 8);
     const timestamp = new Date();
 
-    // Prepara os dados para inserir
+    // Prepara os dados para inserir (com os novos campos)
     const rowData = [
       uniqueId,
       timestamp,
@@ -114,6 +125,8 @@ function doPost(e) {
       formData.email || '',
       formData.nomeCompleto || '',
       formData.celular || '',
+      Array.isArray(formData.cursosFavoritos) ? formData.cursosFavoritos.join(', ') : formData.cursosFavoritos || '',
+      formData.modalidade || '',
       'PENDENTE',
       ''
     ];
@@ -136,7 +149,7 @@ function doPost(e) {
         'result': 'success', 
         'message': 'Formulário enviado com sucesso!',
         'id': uniqueId,
-        'rowNumber': rowIndex // Adicionando o número da linha
+        'rowNumber': rowIndex
       }))
       .setMimeType(ContentService.MimeType.JSON);
 
@@ -191,8 +204,8 @@ function doGet(e) {
         console.log(`[doGet] ID encontrado na linha ${rowIndex}`);
         
         // Verifica se já está confirmado
-        const currentStatus = data[i][6]; // Coluna G (Status) - índice 6
-        const confirmationDate = data[i][7]; // Coluna H (Data Confirmação) - índice 7
+        const currentStatus = data[i][8]; // Coluna I (Status) - índice 8
+        const confirmationDate = data[i][9]; // Coluna J (Data Confirmação) - índice 9
         
         if (currentStatus === 'CONFIRMADO') {
           console.log('[doGet] Cadastro já confirmado anteriormente');
@@ -205,6 +218,8 @@ function doGet(e) {
             email: data[i][3],
             nomeCompleto: data[i][4],
             celular: data[i][5],
+            cursosFavoritos: data[i][6],
+            modalidade: data[i][7],
             status: 'CONFIRMADO',
             dataConfirmacao: confirmationDate
           };
@@ -215,18 +230,18 @@ function doGet(e) {
               'message': 'Cadastro já confirmado anteriormente',
               'userData': userData,
               'alreadyConfirmed': true,
-              'rowNumber': rowIndex // Adicionando o número da linha
+              'rowNumber': rowIndex
             }))
             .setMimeType(ContentService.MimeType.JSON);
         }
         
         // Atualiza status e data de confirmação apenas se não estiver confirmado
-        sheet.getRange(rowIndex, 7).setValue('CONFIRMADO'); // Coluna G (Status)
+        sheet.getRange(rowIndex, 9).setValue('CONFIRMADO'); // Coluna I (Status)
         const now = new Date();
-        sheet.getRange(rowIndex, 8).setValue(now);   // Coluna H (Data Confirmação)
+        sheet.getRange(rowIndex, 10).setValue(now);   // Coluna J (Data Confirmação)
         
         // Muda cor da linha para verde
-        const range = sheet.getRange(rowIndex, 1, 1, 8);
+        const range = sheet.getRange(rowIndex, 1, 1, 10);
         range.setBackground('#e8f5e8'); // Verde claro
         
         SpreadsheetApp.flush();
@@ -240,6 +255,8 @@ function doGet(e) {
           email: data[i][3],
           nomeCompleto: data[i][4],
           celular: data[i][5],
+          cursosFavoritos: data[i][6],
+          modalidade: data[i][7],
           status: 'CONFIRMADO',
           dataConfirmacao: now
         };
@@ -250,7 +267,7 @@ function doGet(e) {
             'message': 'Cadastro confirmado com sucesso!',
             'userData': userData,
             'alreadyConfirmed': false,
-            'rowNumber': rowIndex // Adicionando o número da linha
+            'rowNumber': rowIndex
           }))
           .setMimeType(ContentService.MimeType.JSON);
       }
@@ -276,7 +293,6 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
-
 
 /**
  * Função para implantar o Web App
