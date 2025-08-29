@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,20 @@
             --primary-color: #4285f4;
             --success-color: #34a853;
             --error-color: #ea4335;
+            --warning-color: #f57c00;
             --text-color: #333;
             --light-gray: #f5f5f5;
             --border-radius: 8px;
             --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f9f9f9;
             color: var(--text-color);
@@ -32,7 +34,7 @@
             align-items: center;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 600px;
             width: 100%;
@@ -42,56 +44,56 @@
             overflow: hidden;
             text-align: center;
         }
-        
+
         header {
             background: var(--primary-color);
             color: white;
             padding: 20px;
         }
-        
+
         header h1 {
             font-size: 24px;
             margin-bottom: 5px;
         }
-        
+
         .content {
             padding: 30px;
         }
-        
+
         .status-card {
             padding: 30px;
             border-radius: var(--border-radius);
             margin-bottom: 20px;
         }
-        
+
         .success {
             background: #e8f5e8;
             color: var(--success-color);
             border: 1px solid #c8e6c9;
         }
-        
+
         .error {
             background: #ffebee;
             color: var(--error-color);
             border: 1px solid #ffcdd2;
         }
-        
-        .pending {
-            background: #fff8e1;
-            color: #ffa000;
-            border: 1px solid #ffecb3;
+
+        .warning {
+            background: #fff3e0;
+            color: var(--warning-color);
+            border: 1px solid #ffe0b2;
         }
-        
+
         .icon {
             font-size: 60px;
             margin-bottom: 15px;
         }
-        
+
         h2 {
             margin-bottom: 15px;
             font-size: 22px;
         }
-        
+
         .user-data {
             text-align: left;
             background: var(--light-gray);
@@ -99,17 +101,17 @@
             border-radius: var(--border-radius);
             margin-top: 20px;
         }
-        
+
         .user-data-item {
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
         }
-        
+
         .user-data-label {
             font-weight: bold;
         }
-        
+
         .loading {
             display: flex;
             flex-direction: column;
@@ -117,7 +119,7 @@
             justify-content: center;
             padding: 40px;
         }
-        
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-left: 4px solid var(--primary-color);
@@ -127,12 +129,17 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -141,7 +148,7 @@
             padding: 20px;
             border-top: 1px solid #eee;
         }
-        
+
         .action-button {
             background: var(--primary-color);
             color: white;
@@ -154,23 +161,23 @@
             margin-top: 20px;
             transition: background 0.3s;
         }
-        
+
         .action-button:hover {
             background: #3367d6;
         }
-        
+
         .input-form {
             margin: 20px 0;
             padding: 20px;
             background: #f9f9f9;
             border-radius: var(--border-radius);
         }
-        
+
         .input-group {
             display: flex;
             margin-bottom: 15px;
         }
-        
+
         .input-group input {
             flex: 1;
             padding: 12px;
@@ -179,13 +186,13 @@
             font-size: 16px;
             border-right: none;
         }
-        
+
         .input-group button {
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             padding: 12px 20px;
             white-space: nowrap;
         }
-        
+
         .manual-input {
             text-align: center;
             margin-top: 30px;
@@ -195,19 +202,20 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Confirmação de Presença</h1>
             <p>Faculdade Aberta 2025</p>
         </header>
-        
+
         <div class="content">
             <div id="noId" class="manual-input" style="display: none;">
                 <div class="icon">🔍</div>
                 <h2>Digite o Código de Confirmação</h2>
                 <p>Informe o código do aluno para confirmar a presença</p>
-                
+
                 <div class="input-form">
                     <div class="input-group">
                         <input type="text" id="manualId" placeholder="Digite o código do aluno">
@@ -216,17 +224,17 @@
                     <p>Pressione Enter ou clique em Confirmar</p>
                 </div>
             </div>
-            
+
             <div id="loading" class="loading">
                 <div class="spinner"></div>
                 <p>Processando confirmação...</p>
             </div>
-            
+
             <div id="success" class="status-card success" style="display: none;">
                 <div class="icon">✅</div>
                 <h2>Presença Confirmada!</h2>
                 <p>Sua presença no evento foi registrada com sucesso.</p>
-                
+
                 <div id="userData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
                     <div class="user-data-item">
@@ -250,20 +258,14 @@
                         <span id="confirmationDate"></span>
                     </div>
                 </div>
+                <button class="action-button" onclick="resetPage()">Verificar outro código</button>
             </div>
-            
-            <div id="error" class="status-card error" style="display: none;">
-                <div class="icon">❌</div>
-                <h2 id="errorTitle">Erro na Confirmação</h2>
-                <p id="errorMessage"></p>
-                <button class="action-button" onclick="resetPage()">Tentar com outro código</button>
-            </div>
-            
-            <div id="alreadyConfirmed" class="status-card pending" style="display: none;">
-                <div class="icon">ℹ️</div>
+
+            <div id="alreadyConfirmed" class="status-card warning" style="display: none;">
+                <div class="icon">⚠️</div>
                 <h2>Presença Já Confirmada</h2>
                 <p>Esta presença já havia sido confirmada anteriormente.</p>
-                
+
                 <div id="existingUserData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
                     <div class="user-data-item">
@@ -271,14 +273,33 @@
                         <span id="existingUserName"></span>
                     </div>
                     <div class="user-data-item">
-                        <span class="user-data-label">Data de Confirmação:</span>
+                        <span class="user-data-label">E-mail:</span>
+                        <span id="existingUserEmail"></span>
+                    </div>
+                    <div class="user-data-item">
+                        <span class="user-data-label">CPF:</span>
+                        <span id="existingUserCpf"></span>
+                    </div>
+                    <div class="user-data-item">
+                        <span class="user-data-label">Celular:</span>
+                        <span id="existingUserCelular"></span>
+                    </div>
+                    <div class="user-data-item">
+                        <span class="user-data-label">Data da Confirmação Anterior:</span>
                         <span id="existingConfirmationDate"></span>
                     </div>
                 </div>
                 <button class="action-button" onclick="resetPage()">Verificar outro código</button>
             </div>
+
+            <div id="error" class="status-card error" style="display: none;">
+                <div class="icon">❌</div>
+                <h2 id="errorTitle">Erro na Confirmação</h2>
+                <p id="errorMessage"></p>
+                <button class="action-button" onclick="resetPage()">Tentar com outro código</button>
+            </div>
         </div>
-        
+
         <footer>
             <p>Sacochila Leads &copy; 2025 - Todos os direitos reservados</p>
         </footer>
@@ -288,41 +309,49 @@
         // Obter o ID da URL
         const urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get('id');
-        
+
         // URL do proxy PHP (mesmo diretório)
         const PROXY_URL = 'proxy.php';
-        
+
         // Função para formatar data
         function formatDate(dateString) {
-            const options = { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric', 
-                hour: '2-digit', 
-                minute: '2-digit' 
+            if (!dateString) return 'N/A';
+
+            const dateObj = new Date(dateString);
+            if (isNaN(dateObj.getTime())) return 'N/A';
+
+            const options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
             };
-            return new Date(dateString).toLocaleString('pt-BR', options);
+            return dateObj.toLocaleString('pt-BR', options);
         }
-        
+
         // Processar confirmação quando a página carregar
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             if (!id) {
                 // Mostrar formulário para digitar o ID manualmente
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('noId').style.display = 'block';
-                
+
                 // Adicionar evento para pressionar Enter no campo de input
-                document.getElementById('manualId').addEventListener('keypress', function(e) {
+                document.getElementById('manualId').addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') {
                         confirmManualId();
                     }
                 });
+
+                // Focar no campo de input
+                document.getElementById('manualId').focus();
             } else {
                 // Processar o ID da URL
                 processConfirmation(id);
             }
         });
-        
+
         // Função para confirmar o ID manualmente digitado
         function confirmManualId() {
             const manualId = document.getElementById('manualId').value.trim();
@@ -330,70 +359,76 @@
                 alert('Por favor, digite um código válido');
                 return;
             }
-            
+
             // Esconder formulário e mostrar loading
             document.getElementById('noId').style.display = 'none';
             document.getElementById('loading').style.display = 'flex';
-            
+
             // Processar a confirmação
             processConfirmation(manualId);
         }
-        
+
         // Função para processar a confirmação
         async function processConfirmation(confirmationId) {
             try {
                 // Fazer requisição para confirmar o ID via proxy PHP
                 const response = await fetch(`${PROXY_URL}?id=${encodeURIComponent(confirmationId)}`);
-                
+
                 if (!response.ok) {
                     throw new Error(`Erro HTTP: ${response.status}`);
                 }
-                
+
                 const result = await response.json();
-                
+
                 // Esconder loading
                 document.getElementById('loading').style.display = 'none';
-                
+
+                // Dentro da função processConfirmation, após obter o resultado:
                 if (result.result === 'success') {
-                    // Mostrar sucesso
-                    document.getElementById('success').style.display = 'block';
-                    
-                    // Preencher dados do usuário
-                    if (result.userData) {
-                        document.getElementById('userData').style.display = 'block';
-                        document.getElementById('userName').textContent = result.userData.nomeCompleto || 'N/A';
-                        document.getElementById('userEmail').textContent = result.userData.email || 'N/A';
-                        document.getElementById('userCpf').textContent = result.userData.cpf || 'N/A';
-                        document.getElementById('userCelular').textContent = result.userData.celular || 'N/A';
-                        document.getElementById('confirmationDate').textContent = formatDate(new Date());
-                    }
-                } else if (result.message && result.message.includes('já confirmado')) {
-                    // Mostrar mensagem de já confirmado
-                    document.getElementById('alreadyConfirmed').style.display = 'block';
-                    
-                    // Tentar preencher dados existentes se disponíveis
-                    if (result.userData) {
-                        document.getElementById('existingUserData').style.display = 'block';
-                        document.getElementById('existingUserName').textContent = result.userData.nomeCompleto || 'N/A';
-                        document.getElementById('existingConfirmationDate').textContent = formatDate(result.userData.dataConfirmacao || new Date());
+                    if (result.alreadyConfirmed) {
+                        // Mostrar aviso de já confirmado
+                        document.getElementById('alreadyConfirmed').style.display = 'block';
+
+                        // Preencher dados do usuário
+                        if (result.userData) {
+                            document.getElementById('existingUserData').style.display = 'block';
+                            document.getElementById('existingUserName').textContent = result.userData.nomeCompleto || 'N/A';
+                            document.getElementById('existingUserEmail').textContent = result.userData.email || 'N/A';
+                            document.getElementById('existingUserCpf').textContent = result.userData.cpf || 'N/A';
+                            document.getElementById('existingUserCelular').textContent = result.userData.celular || 'N/A';
+                            document.getElementById('existingConfirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
+                        }
+                    } else {
+                        // Mostrar sucesso - confirmação realizada agora
+                        document.getElementById('success').style.display = 'block';
+
+                        // Preencher dados do usuário
+                        if (result.userData) {
+                            document.getElementById('userData').style.display = 'block';
+                            document.getElementById('userName').textContent = result.userData.nomeCompleto || 'N/A';
+                            document.getElementById('userEmail').textContent = result.userData.email || 'N/A';
+                            document.getElementById('userCpf').textContent = result.userData.cpf || 'N/A';
+                            document.getElementById('userCelular').textContent = result.userData.celular || 'N/A';
+                            document.getElementById('confirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
+                        }
                     }
                 } else {
                     // Mostrar erro
                     showError('Erro na Confirmação', result.message || 'Ocorreu um erro desconhecido.');
                 }
-                
+
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 showError('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.');
             }
         }
-        
+
         function showError(title, message) {
             document.getElementById('error').style.display = 'block';
             document.getElementById('errorTitle').textContent = title;
             document.getElementById('errorMessage').textContent = message;
         }
-        
+
         // Função para resetar a página e tentar com outro código
         function resetPage() {
             // Esconder todas as seções
@@ -401,7 +436,7 @@
             document.getElementById('error').style.display = 'none';
             document.getElementById('alreadyConfirmed').style.display = 'none';
             document.getElementById('loading').style.display = 'none';
-            
+
             // Mostrar o formulário para digitar outro código
             document.getElementById('noId').style.display = 'block';
             document.getElementById('manualId').value = '';
@@ -409,4 +444,5 @@
         }
     </script>
 </body>
+
 </html>

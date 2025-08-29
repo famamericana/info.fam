@@ -1,7 +1,6 @@
 // CONFIGURAÇÃO - Substitua pelos seus valores
 const CONFIG = {
-  planilhaNome: 'Sacochila Leads - FA 2025', // Nome da sua planilha no Google Drive
-  urlConfirmacao: 'https://info.fam.br/eventos/faculdade-aberta/sacochila/confirmar.html' // URL da sua página de confirmação
+  planilhaNome: 'Sacochila Leads - FA 2025' // Nome da sua planilha no Google Drive
 };
 
 // Cache para IDs
@@ -130,16 +129,12 @@ function doPost(e) {
     SpreadsheetApp.flush();
     console.log('Dados inseridos na planilha');
 
-    // Gera URL do QR Code com o ID único
-    const qrCodeUrl = `${CONFIG.urlConfirmacao}?id=${uniqueId}`;
-    
     console.log('Processamento concluído com sucesso');
     
     return ContentService
       .createTextOutput(JSON.stringify({ 
         'result': 'success', 
         'message': 'Formulário enviado com sucesso!',
-        'qrCodeUrl': qrCodeUrl,
         'id': uniqueId
       }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -155,11 +150,6 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
-
-/**
- * Função para lidar com requisições OPTIONS (CORS) - REMOVIDA
- * O Google Apps Script não suporta setHeaders, então removemos esta função
- */
 
 /**
  * Função para confirmar um registro via ID
@@ -199,9 +189,39 @@ function doGet(e) {
         const rowIndex = i + 1;
         console.log(`[doGet] ID encontrado na linha ${rowIndex}`);
         
-        // Atualiza status e data de confirmação
+        // Verifica se já está confirmado
+        const currentStatus = data[i][6]; // Coluna G (Status) - índice 6
+        const confirmationDate = data[i][7]; // Coluna H (Data Confirmação) - índice 7
+        
+        if (currentStatus === 'CONFIRMADO') {
+          console.log('[doGet] Cadastro já confirmado anteriormente');
+          
+          // Retorna os dados do usuário com status de já confirmado
+          const userData = {
+            id: data[i][0],
+            dataHora: data[i][1],
+            cpf: data[i][2],
+            email: data[i][3],
+            nomeCompleto: data[i][4],
+            celular: data[i][5],
+            status: 'CONFIRMADO',
+            dataConfirmacao: confirmationDate
+          };
+          
+          return ContentService
+            .createTextOutput(JSON.stringify({ 
+              'result': 'success', 
+              'message': 'Cadastro já confirmado anteriormente',
+              'userData': userData,
+              'alreadyConfirmed': true
+            }))
+            .setMimeType(ContentService.MimeType.JSON);
+        }
+        
+        // Atualiza status e data de confirmação apenas se não estiver confirmado
         sheet.getRange(rowIndex, 7).setValue('CONFIRMADO'); // Coluna G (Status)
-        sheet.getRange(rowIndex, 8).setValue(new Date());   // Coluna H (Data Confirmação)
+        const now = new Date();
+        sheet.getRange(rowIndex, 8).setValue(now);   // Coluna H (Data Confirmação)
         
         // Muda cor da linha para verde
         const range = sheet.getRange(rowIndex, 1, 1, 8);
@@ -218,14 +238,16 @@ function doGet(e) {
           email: data[i][3],
           nomeCompleto: data[i][4],
           celular: data[i][5],
-          status: 'CONFIRMADO'
+          status: 'CONFIRMADO',
+          dataConfirmacao: now
         };
         
         return ContentService
           .createTextOutput(JSON.stringify({ 
             'result': 'success', 
             'message': 'Cadastro confirmado com sucesso!',
-            'userData': userData
+            'userData': userData,
+            'alreadyConfirmed': false
           }))
           .setMimeType(ContentService.MimeType.JSON);
       }
@@ -259,7 +281,7 @@ function deployAsWebApp() {
   console.log("INSTRUÇÕES DE IMPLANTAÇÃO:");
   console.log("1. Vá em 'Implantar' -> 'Nova implantação'");
   console.log("2. Tipo: Web App");
-  console.log("3. Execute como: Sua conta");
+  console.log("3. Execute como: Sua cuenta");
   console.log("4. Quem tem acesso: Qualquer pessoa");
   console.log("5. Copie a URL gerada e use no seu formulário HTML");
 }
@@ -293,7 +315,6 @@ function testeDoPost() {
     
     if (jsonResult.result === 'success') {
       console.log("🎯 ID gerado:", jsonResult.id);
-      console.log("🔗 URL do QR:", jsonResult.qrCodeUrl);
     }
     
   } catch (error) {
@@ -370,7 +391,6 @@ function testeConfiguracoes() {
   
   console.log("📋 CONFIG atual:");
   console.log("  - planilhaNome:", CONFIG.planilhaNome);
-  console.log("  - urlConfirmacao:", CONFIG.urlConfirmacao);
   
   // Testa se consegue encontrar/criar a planilha
   try {
