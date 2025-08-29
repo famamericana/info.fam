@@ -46,7 +46,7 @@
         </div>
         <div class="container-button">
             <a href="#tipodeinscricao" class="button">Inscreva-se</a>
-            <a target="_blank" href="https://www.fam.br/cursos/" class="button">Veja os cursos</a>
+            <a target="_blank" href="https://www.fam.br/cursos/" class="button">Veja todos os cursos</a>
         </div>
     </header>
 
