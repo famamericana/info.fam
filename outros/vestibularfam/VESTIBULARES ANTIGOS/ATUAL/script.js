@@ -20,19 +20,19 @@ function checkInscriptionButtons() {
 // Função para ativar os botões de inscrição
 function ativarBotoesInscricao() {
     // Vestibular
-    $("#vestibular .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/50"><button class="btn2">Vestibular | Inscreva-se</button></a>');
+    $("#vestibular .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/50"><button class="btn2">Vestibular | Encerradas - 10/09</button></a>');
     
     // ENEM
-    $("#enem .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/51"><button class="btn2">Enem | Inscreva-se</button></a>');
+    $("#enem .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/51"><button class="btn2">Enem | Encerradas - 10/09</button></a>');
     
     // 2° Graduação
-    $("#segunda-graduacao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/52"><button class="btn2">2° Graduação | Inscreva-se</button></a>');
-    
+    $("#segunda-graduacao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/52"><button class="btn2">2° Graduação | Encerradas - 10/09</button></a>');
+
     // Transferência
-    $("#transferencia .btn2").replaceWith('<a href=""><button class="btn2">Transferência | Encerradas</button></a>');
+    $("#transferencia .btn2").replaceWith('<a href=""><button class="btn2">Transferência | Encerradas - 10/09</button></a>');
     
     // Extensão
-    $("#extensao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/40"><button class="btn2">Extensão | Inscreva-se</button></a>');
+    $("#extensao .btn2").replaceWith('<a href="http://fam.inscricao.crmeducacional.com/login/40"><button class="btn2">Extensão | Encerradas - 10/09</button></a>');
     
     // Nota: Não modificamos o botão de pós-graduação pois ele já está sempre ativo
 }
