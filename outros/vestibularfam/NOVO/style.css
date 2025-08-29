@@ -878,7 +878,7 @@ footer .footer-info-icons i {
 }
 
 .inscricao-select:focus {
-    border-color: var(--accent-dark);
+    border-color: var(--accent);
 }
 
 .detalhes {
