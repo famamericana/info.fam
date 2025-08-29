@@ -135,7 +135,8 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ 
         'result': 'success', 
         'message': 'Formulário enviado com sucesso!',
-        'id': uniqueId
+        'id': uniqueId,
+        'rowNumber': rowIndex // Adicionando o número da linha
       }))
       .setMimeType(ContentService.MimeType.JSON);
 
@@ -213,7 +214,8 @@ function doGet(e) {
               'result': 'success', 
               'message': 'Cadastro já confirmado anteriormente',
               'userData': userData,
-              'alreadyConfirmed': true
+              'alreadyConfirmed': true,
+              'rowNumber': rowIndex // Adicionando o número da linha
             }))
             .setMimeType(ContentService.MimeType.JSON);
         }
@@ -247,7 +249,8 @@ function doGet(e) {
             'result': 'success', 
             'message': 'Cadastro confirmado com sucesso!',
             'userData': userData,
-            'alreadyConfirmed': false
+            'alreadyConfirmed': false,
+            'rowNumber': rowIndex // Adicionando o número da linha
           }))
           .setMimeType(ContentService.MimeType.JSON);
       }
@@ -273,6 +276,7 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
+
 
 /**
  * Função para implantar o Web App
