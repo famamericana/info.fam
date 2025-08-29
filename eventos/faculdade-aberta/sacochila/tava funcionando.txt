@@ -121,7 +121,7 @@ function doPost(e) {
     const ss = SpreadsheetApp.openById(spreadsheetId);
     let sheet = ss.getActiveSheet();
 
-    // Define os cabeçalhos na ordem CORRETA
+    // Define os cabeçalhos na ordem CORRETA (com a nova coluna Escola)
     const headers = [
       'ID', 
       'Data/Hora', 
@@ -129,6 +129,7 @@ function doPost(e) {
       'E-mail', 
       'Nome Completo', 
       'Celular', 
+      'Escola',
       'Cursos Favoritos', 
       'Modalidade Preferida',
       'Status', 
@@ -142,7 +143,7 @@ function doPost(e) {
     const uniqueId = Utilities.getUuid().substring(0, 8);
     const timestamp = new Date();
 
-    // Prepara os dados para inserir na ordem CORRETA
+    // Prepara os dados para inserir na ordem CORRETA (com a nova coluna Escola)
     const rowData = [
       uniqueId, // ID (coluna A)
       timestamp, // Data/Hora (coluna B)
@@ -150,10 +151,11 @@ function doPost(e) {
       formData.email || '', // E-mail (coluna D)
       formData.nomeCompleto || '', // Nome Completo (coluna E)
       formData.celular || '', // Celular (coluna F)
-      Array.isArray(formData.cursosFavoritos) ? formData.cursosFavoritos.join(', ') : formData.cursosFavoritos || '', // Cursos Favoritos (coluna G)
-      formData.modalidade || '', // Modalidade Preferida (coluna H)
-      'PENDENTE', // Status (coluna I)
-      '' // Data Confirmação (coluna J)
+      formData.escola || '', // Escola (coluna G)
+      Array.isArray(formData.cursosFavoritos) ? formData.cursosFavoritos.join(', ') : formData.cursosFavoritos || '', // Cursos Favoritos (coluna H)
+      formData.modalidade || '', // Modalidade Preferida (coluna I)
+      'PENDENTE', // Status (coluna J)
+      '' // Data Confirmação (coluna K)
     ];
 
     // Adiciona os dados à planilha
@@ -229,8 +231,8 @@ function doGet(e) {
         console.log(`[doGet] ID encontrado na linha ${rowIndex}`);
         
         // Verifica se já está confirmado
-        const currentStatus = data[i][8]; // Coluna I (Status) - índice 8
-        const confirmationDate = data[i][9]; // Coluna J (Data Confirmação) - índice 9
+        const currentStatus = data[i][9]; // Coluna J (Status) - índice 9
+        const confirmationDate = data[i][10]; // Coluna K (Data Confirmação) - índice 10
         
         if (currentStatus === 'CONFIRMADO') {
           console.log('[doGet] Cadastro já confirmado anteriormente');
@@ -243,8 +245,9 @@ function doGet(e) {
             email: data[i][3],
             nomeCompleto: data[i][4],
             celular: data[i][5],
-            cursosFavoritos: data[i][6],
-            modalidade: data[i][7],
+            escola: data[i][6], // Nova coluna Escola
+            cursosFavoritos: data[i][7],
+            modalidade: data[i][8],
             status: 'CONFIRMADO',
             dataConfirmacao: confirmationDate
           };
@@ -261,12 +264,12 @@ function doGet(e) {
         }
         
         // Atualiza status e data de confirmação apenas se não estiver confirmado
-        sheet.getRange(rowIndex, 9).setValue('CONFIRMADO'); // Coluna I (Status)
+        sheet.getRange(rowIndex, 10).setValue('CONFIRMADO'); // Coluna J (Status)
         const now = new Date();
-        sheet.getRange(rowIndex, 10).setValue(now);   // Coluna J (Data Confirmação)
+        sheet.getRange(rowIndex, 11).setValue(now);   // Coluna K (Data Confirmação)
         
         // Muda cor da linha para verde
-        const range = sheet.getRange(rowIndex, 1, 1, 10);
+        const range = sheet.getRange(rowIndex, 1, 1, 11);
         range.setBackground('#e8f5e8'); // Verde claro
         
         SpreadsheetApp.flush();
@@ -280,8 +283,9 @@ function doGet(e) {
           email: data[i][3],
           nomeCompleto: data[i][4],
           celular: data[i][5],
-          cursosFavoritos: data[i][6],
-          modalidade: data[i][7],
+          escola: data[i][6], // Nova coluna Escola
+          cursosFavoritos: data[i][7],
+          modalidade: data[i][8],
           status: 'CONFIRMADO',
           dataConfirmacao: now
         };

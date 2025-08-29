@@ -424,6 +424,7 @@
                             document.getElementById('existingUserRowNumber').textContent = result.rowNumber || 'N/A';
                             document.getElementById('existingUserCursosFavoritos').textContent = result.userData.cursosFavoritos || 'N/A';
                             document.getElementById('existingUserModalidade').textContent = result.userData.modalidade || 'N/A';
+                            document.getElementById('existingUserEscola').textContent = result.userData.escola || 'N/A';
                         }
                     } else {
                         // Mostrar sucesso - confirmação realizada agora
@@ -440,7 +441,7 @@
                             document.getElementById('userRowNumber').textContent = result.rowNumber || 'N/A';
                             document.getElementById('userCursosFavoritos').textContent = result.userData.cursosFavoritos || 'N/A';
                             document.getElementById('userModalidade').textContent = result.userData.modalidade || 'N/A';
-
+document.getElementById('userEscola').textContent = result.userData.escola || 'N/A';
                         }
                     }
                 } else {

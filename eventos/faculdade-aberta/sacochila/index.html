@@ -210,6 +210,11 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="escola">Escola</label>
+                    <input type="text" id="escola" name="escola" placeholder="Digite o nome da sua escola" required>
+                </div>
+                
+                <div class="form-group">
                     <label for="cursosFavoritos">Cursos de Interesse</label>
                     <select id="cursosFavoritos" name="cursosFavoritos" required multiple size="5">
                         <option value="Administração">Administração</option>
@@ -248,8 +253,8 @@
                     <label>Modalidade Preferida</label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="graduacao" name="modalidade" value="Graduação" required>
-                            <label for="graduacao">Graduação</label>
+                            <input type="radio" id="presencial" name="modalidade" value="Presencial" required>
+                            <label for="presencial">Presencial</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="ead" name="modalidade" value="EaD">
@@ -304,6 +309,7 @@
                 email: document.getElementById('email').value,
                 nomeCompleto: document.getElementById('nomeCompleto').value,
                 celular: document.getElementById('celular').value,
+                escola: document.getElementById('escola').value,
                 cursosFavoritos: Array.from(document.getElementById('cursosFavoritos').selectedOptions).map(option => option.value),
                 modalidade: document.querySelector('input[name="modalidade"]:checked').value
             };
