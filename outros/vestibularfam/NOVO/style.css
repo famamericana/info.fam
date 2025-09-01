@@ -633,7 +633,7 @@ main {
 /* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 .desconto-section {
     margin-top: var(--spacing-xxxxl);
-    
+
 }
 
 .desconto-container {
@@ -1407,7 +1407,7 @@ footer .footer-info-icons i {
         transform: translateX(3px);
     }
 
-    .nav-menu.active li:last-child{
+    .nav-menu.active li:last-child {
         padding: var(--spacing-lg);
     }
 
@@ -1521,8 +1521,20 @@ footer .footer-info-icons i {
         }
     }
 
+    .navbar-scrolled .inscreva-btn {
+        background-color: var(--secondary);
+        color: white;
+        border-color: var(--secondary);
 
+    }
 
+    
+    .navbar-scrolled .inscreva-btn:hover {
+        background-color: transparent;
+        color: #000;
+        border-color: var(--secondary);
+
+    }
 }
 
 @media (max-width: 800px) {
@@ -1626,18 +1638,21 @@ footer .footer-info-icons i {
     .timeline-linha {
         display: block;
         width: 4px !important;
-        height: 0; /* Inicia com altura 0 para animar de cima para baixo */
+        height: 0;
+        /* Inicia com altura 0 para animar de cima para baixo */
         left: 50%;
         top: 0;
         transform: translateX(-50%);
         opacity: 1;
-        animation: lineGrow 1s ease forwards; /* Animação para crescer de cima para baixo */
+        animation: lineGrow 1s ease forwards;
+        /* Animação para crescer de cima para baixo */
     }
 
     @keyframes lineGrow {
         from {
             height: 0;
         }
+
         to {
             height: 100%;
         }
@@ -1652,7 +1667,7 @@ footer .footer-info-icons i {
     .desconto-card.ativo {
         transform: scale(1.02);
     }
-  
+
 }
 
 @media (max-width: 580px) {
