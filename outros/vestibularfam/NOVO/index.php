@@ -73,7 +73,7 @@
                     Descontos Progressivos na Matrícula
                 </h2>
                 <p class="desconto-subtitulo">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
-                
+                <div class="desconto-todos">Veja todos os descontos</div>
                 <div class="timeline-descontos">
                     <div class="timeline-linha"></div>
                     

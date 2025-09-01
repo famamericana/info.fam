@@ -596,217 +596,222 @@ main {
     height: 50px;
 }
 
-    .mecimg {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+.mecimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
+.desconto-section {
+    margin-top: var(--spacing-xxxl);
+}
+
+.desconto-container {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.desconto-titulo {
+    font-size: var(--fs-xxlarge);
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.desconto-subtitulo {
+    font-size: var(--fs-medium);
+    color: var(--text);
+}
+
+.timeline-descontos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    position: relative;
+    margin: var(--spacing-xxxl) 0;
+}
+
+.timeline-linha {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary), var(--accent), var(--yellow));
+    border-radius: var(--border-radius-sm);
+    z-index: 0;
+    opacity: 0;
+    transition: all 1s var(--animation-timing);
+}
+
+.desconto-card {
+    background: white;
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--animation-duration) var(--animation-timing);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    min-width: 220px;
+    border: 2px solid WHITE;
+    opacity: 0;
+
+}
+
+.desconto-card.ativo {
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(229, 56, 136, 0.3);
+}
+
+.desconto-card.ativo:hover {
+    box-shadow: none;
+}
+
+
+.desconto-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.card-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, var(--secondary), #ff4081);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--fs-small);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
     }
 
-    /* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
-    .desconto-section {
-        margin-top: var(--spacing-xxxl);
+    50% {
+        transform: translateX(-50%) scale(1.05);
     }
+}
 
-    .desconto-container {
-        margin: 0 auto;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
+.card-content {
+    text-align: center;
+}
 
+.desconto-numero {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: -20px;
+}
 
-    .desconto-titulo {
-        font-size: var(--fs-xxlarge);
-        color: var(--primary);
-        margin-bottom: var(--spacing-md);
-        font-weight: 700;
-    }
+.desconto-card[data-desconto="50"] .desconto-numero {
+    background: linear-gradient(45deg, var(--secondary), #ff4081);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-    .desconto-subtitulo {
-        font-size: var(--fs-large);
-        color: var(--text);
-        margin-bottom: var(--spacing-xxxl);
-        font-weight: 500;
-    }
+.desconto-card[data-desconto="40"] .desconto-numero {
+    background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-    .timeline-descontos {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: var(--spacing-md);
-        position: relative;
-        margin: var(--spacing-xxxl) 0;
-    }
-
-    .timeline-linha {
-        position: absolute;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--secondary), var(--accent), var(--yellow));
-        border-radius: var(--border-radius-sm);
-        z-index: 0;
-        opacity: 0;
-        transition: all 1s var(--animation-timing);
-    }
-
-    .desconto-card {
-        background: white;
-        border-radius: var(--border-radius-xl);
-        padding: var(--spacing-xl);
-        box-shadow: var(--shadow-md);
-        transition: all var(--animation-duration) var(--animation-timing);
-        cursor: pointer;
-        position: relative;
-        z-index: 1;
-        min-width: 220px;
-        border: 2px solid WHITE;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .desconto-card.ativo {
-        border-color: var(--secondary);
-        box-shadow: 0 10px 30px rgba(229, 56, 136, 0.3);
-    }
-
-    .desconto-card.ativo:hover {
-        box-shadow: none;
-    }
+.desconto-card[data-desconto="30"] .desconto-numero {
+    background: linear-gradient(45deg, var(--yellow), #f39c12);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
 
-    .desconto-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-    }
 
-    .card-badge {
-        position: absolute;
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(45deg, var(--secondary), #ff4081);
-        color: white;
-        padding: var(--spacing-xs) var(--spacing-md);
-        border-radius: var(--border-radius-lg);
-        font-size: var(--fs-small);
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        animation: pulse 2s infinite;
-    }
+.desconto-titulo-card {
+    font-size: var(--fs-medium);
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: var(--spacing-sm);
+}
 
-    @keyframes pulse {
-        0%, 100% { transform: translateX(-50%) scale(1); }
-        50% { transform: translateX(-50%) scale(1.05); }
-    }
+.desconto-periodo {
+    font-size: var(--fs-normal);
+    color: var(--text);
 
-    .card-content {
-        text-align: center;
-    }
+}
 
-    .desconto-numero {
-        font-size: 3.5rem;
-        font-weight: 900;
+.desconto-cupom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
 
-        background: linear-gradient(45deg, var(--primary), var(--accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-top: -20px;
-    }
+.cupom-label {
+    font-size: var(--fs-small);
+    color: var(--text-light);
+}
 
-    .desconto-card[data-desconto="50"] .desconto-numero {
-        background: linear-gradient(45deg, var(--secondary), #ff4081);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+.desconto-cupom {
+    border: 2px dashed #b8ebff;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-family: "Source Code Pro", monospace;
+    color: var(--primary);
+    font-size: var(--fs-normal);
+    font-weight: 600;
+}
 
-    .desconto-card[data-desconto="40"] .desconto-numero {
-        background: linear-gradient(45deg, var(--accent), var(--accent-dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+.desconto-destaque {
+    font-size: var(--fs-large);
+    color: var(--accent-dark);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+}
 
-    .desconto-card[data-desconto="30"] .desconto-numero {
-        background: linear-gradient(45deg, var(--yellow), #f39c12);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+.countdown-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
 
-   
+.countdown-label {
+    font-size: var(--fs-medium);
+    color: var(--text);
+    font-weight: 500;
+}
 
-    .desconto-titulo-card {
-        font-size: var(--fs-medium);
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: var(--spacing-sm);
-    }
+.countdown-timer {
+    font-size: var(--fs-xlarge);
+    font-weight: bold;
+    color: var(--secondary);
+    background: rgba(229, 56, 136, 0.1);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    font-family: "Source Code Pro", monospace;
 
-    .desconto-periodo {
-        font-size: var(--fs-normal);
-        color: var(--text);
-       
-    }
+}
 
-    .desconto-cupom-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-xs);
-    }
-
-    .cupom-label {
-        font-size: var(--fs-small);
-        color: var(--text-light);
-    }
-
-    .desconto-cupom {
-        border: 2px dashed var(--accent);
-        padding: var(--spacing-xs) var(--spacing-md);
-        border-radius: var(--border-radius-sm);
-          font-family: "Source Code Pro", monospace;
-        color: var(--primary);
-        font-size: var(--fs-normal);
-        font-weight: 600;
-    }
-
-    .desconto-destaque {
-        font-size: var(--fs-large);
-        color: var(--accent-dark);
-        font-weight: 600;
-        margin-bottom: var(--spacing-lg);
-    }
-
-    .countdown-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
-    }
-
-    .countdown-label {
-        font-size: var(--fs-medium);
-        color: var(--text);
-        font-weight: 500;
-    }
-
-    .countdown-timer {
-        font-size: var(--fs-xlarge);
-        font-weight: bold;
-        color: var(--secondary);
-        background: rgba(229, 56, 136, 0.1);
-        padding: var(--spacing-md) var(--spacing-xl);
-        border-radius: var(--border-radius-lg);
-          font-family: "Source Code Pro", monospace;
-      
-    }/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 footer {
     border-radius: var(--spacing-lg) var(--spacing-lg) 0 0;
     width: 100%;
@@ -1005,7 +1010,7 @@ footer .footer-info-icons i {
 
 
 .opcao-header h3 {
-    
+
     font-size: var(--fs-large);
     color: white;
     margin: 0;
@@ -1059,7 +1064,7 @@ footer .footer-info-icons i {
 }
 
 .btn-inscricao:hover {
-    
+
     transform: translateY(-2px);
     box-shadow: var(--shadow-button-yellow);
 }
@@ -1396,7 +1401,7 @@ footer .footer-info-icons i {
     }
 
 
- 
+
 }
 
 @media (max-width: 800px) {
@@ -1486,7 +1491,7 @@ footer .footer-info-icons i {
         border-top: 1px solid var(--yellow);
     }
 
-        .opcao-botoes {
+    .opcao-botoes {
         flex-direction: column;
         width: 100%;
     }
@@ -1559,4 +1564,15 @@ footer .footer-info-icons i {
         flex-direction: column;
         align-items: center;
     }
+}
+
+.desconto-todos {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: var(--accent);
+    color: white;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
 }

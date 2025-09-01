@@ -445,7 +445,7 @@ function setupDescontosRegua() {
         // Hover effects
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('ativo')) {
-                this.style.transform = 'scale(1.02) translateY(-5px)';
+                this.style.transform = 'translateY(-5px)';
             }
         });
         
@@ -497,7 +497,7 @@ function setupDescontosRegua() {
         setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = card.classList.contains('ativo') 
-                ? 'translateY(-5px)' 
+                ? ' translateY(-5px)' 
                 : 'translateY(0)';
         }, index * 300 + 500);
     });
