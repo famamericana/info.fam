@@ -42,6 +42,7 @@
     --spacing-xl: 25px;
     --spacing-xxl: 30px;
     --spacing-xxxl: 40px;
+    --spacing-xxxxl: 70px;
 
     /* Bordas */
     --border-radius-sm: 5px;
@@ -631,8 +632,8 @@ main {
 
 /* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 .desconto-section {
-    margin-top: var(--spacing-xxxl);
-    margin-bottom: var(--spacing-xxxl);
+    margin-top: var(--spacing-xxxxl);
+    
 }
 
 .desconto-container {
@@ -1082,7 +1083,7 @@ footer .footer-info-icons i {
 .inscricao-container {
     max-width: 1080px;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-bottom: 120px;
 }
 
