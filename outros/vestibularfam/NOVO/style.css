@@ -757,6 +757,8 @@ footer .footer-info-icons i {
 .inscricao-container {
     max-width: 1080px;
     margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 120px;
 }
 
 .inscricao-titulo {
