@@ -84,7 +84,11 @@
                             <div class="desconto-periodo">Até 20 de Dezembro</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
-                                <code class="desconto-cupom">FAM50</code>
+                                <code class="desconto-cupom" data-cupom="FAM50">
+                                    <span class="cupom-text">FAM50</span>
+                                    <i class="fas fa-copy copy-icon"></i>
+                                    <i class="fas fa-check check-icon"></i>
+                                </code>
                             </div>
                         </div>
                     </div>
@@ -95,7 +99,11 @@
                             <div class="desconto-periodo">21/12 até 30/01</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
-                                <code class="desconto-cupom">FAM40</code>
+                                <code class="desconto-cupom" data-cupom="FAM40">
+                                    <span class="cupom-text">FAM40</span>
+                                    <i class="fas fa-copy copy-icon"></i>
+                                    <i class="fas fa-check check-icon"></i>
+                                </code>
                             </div>
                         </div>
                     </div>
@@ -106,7 +114,11 @@
                             <div class="desconto-periodo">A partir de 01/02</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
-                                <code class="desconto-cupom">FAM30</code>
+                                <code class="desconto-cupom" data-cupom="FAM30">
+                                    <span class="cupom-text">FAM30</span>
+                                    <i class="fas fa-copy copy-icon"></i>
+                                    <i class="fas fa-check check-icon"></i>
+                                </code>
                             </div>
                         </div>
                     </div>

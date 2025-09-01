@@ -729,6 +729,7 @@ main {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-top: -20px;
+    font-family: var(--font-accent);
 }
 
 .desconto-card[data-desconto="50"] .desconto-numero {
@@ -787,8 +788,60 @@ main {
     color: var(--primary);
     font-size: var(--fs-normal);
     font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: all var(--animation-duration) var(--animation-timing);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    user-select: none; /* Evita seleção do texto */
+    justify-content: center;
+    min-width: 80px;
 }
 
+.desconto-cupom:hover {
+    border-color: var(--accent);
+    background-color: rgba(69, 183, 229, 0.05);
+}
+
+.desconto-cupom.copied {
+    border-color: var(--secondary);
+    background-color: rgba(229, 56, 136, 0.1);
+}
+
+.copy-icon, .check-icon {
+    position: absolute;
+    right: var(--spacing-sm);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    font-size: var(--fs-small);
+    pointer-events: none;
+}
+
+.copy-icon {
+    opacity: 0.4; /* Sempre visível com opacidade baixa */
+}
+
+.desconto-cupom.copied .copy-icon {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.desconto-cupom.copied .check-icon {
+    opacity: 1;
+    transform: scale(1);
+    color: var(--secondary);
+}
+
+.cupom-text {
+    transition: all 0.3s ease;
+    padding-right: 13px;
+}
+
+.desconto-cupom.copied .cupom-text {
+    color: var(--secondary);
+}
 .desconto-destaque {
     font-size: var(--fs-large);
     color: var(--accent-dark);
@@ -1584,4 +1637,8 @@ footer .footer-info-icons i {
     margin: 0 auto;
     padding: 10px 20px;
     border-radius: var(--border-radius-md);
+}
+
+.desconto-cupom:active {
+    transform: scale(0.98);
 }

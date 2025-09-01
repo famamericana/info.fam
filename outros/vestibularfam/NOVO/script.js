@@ -534,3 +534,49 @@ function setupDescontosRegua() {
         observer.observe(descontoSection);
     }
 }
+
+// Funcionalidade de copiar cupom
+    function setupCupomCopy() {
+        const cupons = document.querySelectorAll('.desconto-cupom');
+        
+        cupons.forEach(cupom => {
+            cupom.addEventListener('click', async function() {
+                const cupomText = this.dataset.cupom;
+                
+                try {
+                    // Copiar para a área de transferência
+                    await navigator.clipboard.writeText(cupomText);
+                    
+                    // Adicionar classe copiado
+                    this.classList.add('copied');
+                    
+                    // Remover classe após 1 segundo
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 1000);
+                    
+                    // Feedback visual adicional (opcional)
+                    console.log(`Cupom ${cupomText} copiado com sucesso!`);
+                    
+                } catch (err) {
+                    console.error('Erro ao copiar cupom:', err);
+                    // Fallback para navegadores mais antigos
+                    const textArea = document.createElement('textarea');
+                    textArea.value = cupomText;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Mesmo feedback visual
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 1000);
+                }
+            });
+        });
+    }
+    
+    // Chamar a função de copiar cupons
+    setupCupomCopy();
