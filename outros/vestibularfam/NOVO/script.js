@@ -414,37 +414,65 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleSaibaMais = toggleSaibaMais;
 });
 
-// Função para animar os cards de desconto e contador regressivo
+// Função para animar os cards de desconto e contador regressivo com scroll trigger
 function setupDescontosRegua() {
     const descontoSection = document.querySelector('.desconto-section');
     const descontoCards = document.querySelectorAll('.desconto-card');
     const timelineLinha = document.querySelector('.timeline-linha');
     const countdownElement = document.getElementById('countdown');
+    const countdownLabel = document.querySelector('.countdown-label');
 
-    // Determinar qual desconto está ativo baseado na data atual
-    const hoje = new Date();
-    const dezembro20 = new Date(hoje.getFullYear(), 11, 20, 23, 59, 59); // 20 de dezembro 23:59:59
-    const janeiro30 = new Date(hoje.getFullYear() + 1, 0, 30, 23, 59, 59); // 30 de janeiro do próximo ano
+    // Função para determinar qual desconto está ativo e atualizar interface
+    function atualizarDescontoAtivo() {
+        const hoje = new Date();
+        const dezembro20 = new Date(hoje.getFullYear(), 11, 20, 23, 59, 59); // 20 de dezembro 23:59:59
+        const janeiro30 = new Date(hoje.getFullYear() + 1, 0, 30, 23, 59, 59); // 30 de janeiro do próximo ano
+        const marco30 = new Date(hoje.getFullYear(), 2, 30, 23, 59, 59); // 30 de março 23:59:59
 
-    let descontoAtivo = 30; // padrão
-    let dataLimite = null;
+        let descontoAtivo = 30; // padrão
+        let dataLimite = marco30; // desconto de 30% vai até 30/03
+        let proximoDesconto = null;
 
-    if (hoje <= dezembro20) {
-        descontoAtivo = 50;
-        dataLimite = dezembro20;
-    } else if (hoje <= janeiro30) {
-        descontoAtivo = 40;
-        dataLimite = janeiro30;
-    }
-
-    // Ativar o card correto
-    descontoCards.forEach(card => {
-        card.classList.remove('ativo');
-        if (parseInt(card.dataset.desconto) === descontoAtivo) {
-            card.classList.add('ativo');
+        if (hoje <= dezembro20) {
+            descontoAtivo = 50;
+            dataLimite = dezembro20;
+            proximoDesconto = 40;
+        } else if (hoje <= janeiro30) {
+            descontoAtivo = 40;
+            dataLimite = janeiro30;
+            proximoDesconto = 30;
         }
 
-        // Hover effects
+        // Atualizar cards ativos
+        descontoCards.forEach(card => {
+            card.classList.remove('ativo');
+            if (parseInt(card.dataset.desconto) === descontoAtivo) {
+                card.classList.add('ativo');
+            }
+        });
+
+        // Atualizar cor da timeline
+        if (timelineLinha) {
+            timelineLinha.className = 'timeline-linha desconto-' + descontoAtivo;
+        }
+
+        // Atualizar label do countdown
+        if (countdownLabel) {
+            if (proximoDesconto) {
+                countdownLabel.textContent = `Tempo restante para ${proximoDesconto}% OFF:`;
+            } else {
+                countdownLabel.textContent = 'Desconto de 30% ativo:';
+            }
+        }
+
+        return { descontoAtivo, dataLimite, proximoDesconto };
+    }
+
+    // Estado inicial
+    let estadoAtual = atualizarDescontoAtivo();
+
+    // Hover effects nos cards
+    descontoCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('ativo')) {
                 this.style.transform = 'translateY(-5px)';
@@ -460,10 +488,8 @@ function setupDescontosRegua() {
 
     // Contador regressivo
     function atualizarContador() {
-        if (!dataLimite || !countdownElement) return;
-
         const agora = new Date().getTime();
-        const tempoRestante = dataLimite.getTime() - agora;
+        const tempoRestante = estadoAtual.dataLimite.getTime() - agora;
 
         if (tempoRestante > 0) {
             const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
@@ -473,26 +499,25 @@ function setupDescontosRegua() {
 
             countdownElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
         } else {
-            countdownElement.innerHTML = "Tempo esgotado!";
-            // Ocultar seção de countdown se necessário
-            const countdownInfo = document.querySelector('.countdown-info');
-            if (countdownInfo && descontoAtivo === 30) {
-                countdownInfo.style.display = 'none';
+            // Tempo acabou, atualizar para próximo desconto
+            estadoAtual = atualizarDescontoAtivo();
+
+            // Se ainda há tempo restante, continuar contador
+            if (estadoAtual.dataLimite.getTime() - agora > 0) {
+                atualizarContador();
+            } else {
+                countdownElement.innerHTML = "Tempo esgotado!";
+                const countdownInfo = document.querySelector('.countdown-info');
+                if (countdownInfo) {
+                    countdownInfo.style.display = 'none';
+                }
             }
         }
     }
 
     // Atualizar contador a cada segundo
-    if (dataLimite) {
-        atualizarContador();
-        setInterval(atualizarContador, 1000);
-    } else {
-        // Ocultar countdown se não há data limite ativa
-        const countdownInfo = document.querySelector('.countdown-info');
-        if (countdownInfo) {
-            countdownInfo.style.display = 'none';
-        }
-    }
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
 
     // Intersection Observer para ativar animações no scroll
     const observerOptions = {
@@ -520,6 +545,8 @@ function setupDescontosRegua() {
                     setTimeout(() => {
                         timelineLinha.style.width = '100%';
                         timelineLinha.style.opacity = '1';
+                        // Garantir que a classe de cor está aplicada
+                        timelineLinha.className = 'timeline-linha desconto-' + estadoAtual.descontoAtivo;
                     }, 600);
                 }
 
