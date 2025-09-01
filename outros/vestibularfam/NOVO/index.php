@@ -41,7 +41,7 @@
             <p class="titulo_p">A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
                 Aqui você escolhe a forma de ingresso que mais combina com você. </p>
-</br>
+            </br>
             <div class="titulo-subtitulo">Seu futuro começa agora!</div>
         </div>
         <div class="container-button">
@@ -75,9 +75,9 @@
                 <p class="titulo_p">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 <div class="timeline-descontos">
                     <div class="timeline-linha"></div>
-                    
+
                     <div class="desconto-card ativo" data-desconto="50">
-                     
+
                         <div class="card-content">
                             <div class="desconto-numero">50<span>%</span></div>
                             <div class="desconto-periodo">Até 20 de Dezembro</div>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="desconto-card" data-desconto="40">
                         <div class="card-content">
                             <div class="desconto-numero">40<span>%</span></div>
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="desconto-card" data-desconto="30">
                         <div class="card-content">
                             <div class="desconto-numero">30<span>%</span></div>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="desconto-cta">
                     <p class="desconto-destaque" id="desconto-destaque">Garante já o seu desconto!</p>
                     <div class="countdown-info">
@@ -131,7 +131,7 @@
                 </div>
 
             </div>
-                                            <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/" class="desconto-todos">Veja todas as bolsas e descontos</a>
+            <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/" class="desconto-todos">Veja todas as bolsas e descontos</a>
 
         </div>
 
