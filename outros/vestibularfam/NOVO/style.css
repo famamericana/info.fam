@@ -603,6 +603,7 @@ main {
 /* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 .desconto-section {
     margin-top: var(--spacing-xxxl);
+    margin-bottom: var(--spacing-xxxl);
 }
 
 .desconto-container {
@@ -1667,4 +1668,63 @@ footer .footer-info-icons i {
 
 .desconto-cupom:active {
     transform: scale(0.98);
+}
+
+/* MEC Info Styles */
+.meceinfo {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.informacoes {
+    width: 100%;
+}
+
+.informacoes a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.informacoes a p {
+    padding: 3px 10px;
+    margin: 10px;
+    margin-left: 0;
+    border-bottom: 2px solid var(--yellow);
+    margin-right: 20px;
+}
+
+.mec {
+    margin-top: 20px;
+}
+
+.mec img {
+    width: 100%;
+    height: auto;
+}
+
+/* Media queries para MEC info */
+@media (max-width: 720px) {
+    .meceinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mec {
+        margin: 0 auto;
+        margin: 20px 0;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .informacoes a p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .informacoes {
+        display: block;
+    }
 }

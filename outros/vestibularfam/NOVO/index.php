@@ -154,8 +154,29 @@
         </div>
 
         <div class="conteudo" style="margin-top: 50px;">
-            <div class="mecimg">
-                <img src="images/selo-e-mec.png">
+            <div class="meceinfo">
+                <div class="informacoes">
+                    <a target="_blank" href="https://fam.br">
+                        <p>FAM.br</p>
+                    </a>
+                    <a target="_blank"
+                        href="https://www.fam.br/wp-content/uploads/2025/05/Edital-03-25_VESTIBULARinvernoFAM-2025.pdf">
+                        <p>Edital 2025</p>
+                    </a>
+                    <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/">
+                        <p>Bolsas e descontos</p>
+                    </a>
+                    <a target="_blank" href="https://www.famportal.com.br/fam/">
+                        <p>Portal Acadêmico FAM</p>
+                    </a>
+
+                    <a target="_blank" href="https://info.fam.br">
+                        <p>Centro de Informações para Alunos</p>
+                    </a>
+                </div>
+                <a target="_blank"
+                    href="https://emec.mec.gov.br/emec/consulta-cadastro/detalhamento/d96957f455f6405d14c6542552b0f6eb/MTMxMA=="><img
+                        class="mec" src="images/selo-e-mec.png"></a>
             </div>
         </div>
 
