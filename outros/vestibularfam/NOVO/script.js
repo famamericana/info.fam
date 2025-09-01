@@ -497,7 +497,7 @@ function setupDescontosRegua() {
         setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = card.classList.contains('ativo') 
-                ? 'scale(1.05) translateY(-10px)' 
+                ? 'translateY(-5px)' 
                 : 'translateY(0)';
         }, index * 300 + 500);
     });
@@ -506,7 +506,7 @@ function setupDescontosRegua() {
     const timelineLinha = document.querySelector('.timeline-linha');
     if (timelineLinha) {
         setTimeout(() => {
-            timelineLinha.style.width = '80%';
+            timelineLinha.style.width = '100%';
             timelineLinha.style.opacity = '1';
         }, 800);
     }

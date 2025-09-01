@@ -70,18 +70,17 @@
         <div class="conteudo desconto-section">
             <div class="desconto-container">
                 <h2 class="desconto-titulo">
-                    <span style="color: #f9e20f">🎁</span> Descontos Progressivos na Matrícula
+                    Descontos Progressivos na Matrícula
                 </h2>
-                <p class="desconto-subtitulo">Quanto antes se inscrever, mais você economiza!</p>
+                <p class="desconto-subtitulo">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 
                 <div class="timeline-descontos">
                     <div class="timeline-linha"></div>
                     
                     <div class="desconto-card ativo" data-desconto="50">
-                        <div class="card-badge">MELHOR OFERTA</div>
+                     
                         <div class="card-content">
                             <div class="desconto-numero">50<span>%</span></div>
-                            <div class="desconto-titulo-card">Super Desconto</div>
                             <div class="desconto-periodo">Até 20 de Dezembro</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
@@ -93,7 +92,6 @@
                     <div class="desconto-card" data-desconto="40">
                         <div class="card-content">
                             <div class="desconto-numero">40<span>%</span></div>
-                            <div class="desconto-titulo-card">Ótimo Desconto</div>
                             <div class="desconto-periodo">21/12 até 30/01</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
@@ -105,7 +103,6 @@
                     <div class="desconto-card" data-desconto="30">
                         <div class="card-content">
                             <div class="desconto-numero">30<span>%</span></div>
-                            <div class="desconto-titulo-card">Bom Desconto</div>
                             <div class="desconto-periodo">A partir de 01/02</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
@@ -116,7 +113,7 @@
                 </div>
                 
                 <div class="desconto-cta">
-                    <p class="desconto-destaque">⏰ Não perca tempo! Garante já o seu desconto</p>
+                    <p class="desconto-destaque">Garante já o seu desconto!</p>
                     <div class="countdown-info">
                         <span class="countdown-label">Tempo restante para 50% OFF:</span>
                         <div id="countdown" class="countdown-timer"></div>
