@@ -166,6 +166,8 @@ main {
 
 .titulo {
     margin-top: 50px;
+        max-width: 700px;
+    margin: 0 auto;
 }
 
 .titulo-subtitulo {
@@ -179,12 +181,7 @@ main {
     margin-bottom: var(--spacing-lg);
 }
 
-.titulo p {
-    font-size: var(--fs-medium);
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--text);
-}
+
 
 .bola-container {
     overflow-y: hidden;
@@ -623,9 +620,10 @@ main {
     font-weight: 700;
 }
 
-.desconto-subtitulo {
+.titulo_p {
     font-size: var(--fs-medium);
     color: var(--text);
+    margin: 0;
 }
 
 .timeline-descontos {
@@ -872,7 +870,22 @@ main {
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: var(--border-radius-lg);
     font-family: "Source Code Pro", monospace;
+    transition: all 0.3s ease;
+}
 
+.countdown-timer.countdown-50 {
+    color: var(--secondary);
+    background: rgba(229, 56, 136, 0.1);
+}
+
+.countdown-timer.countdown-40 {
+    color: var(--accent);
+    background: rgba(69, 183, 229, 0.1);
+}
+
+.countdown-timer.countdown-30 {
+    color: var(--yellow);
+    background: rgba(249, 226, 15, 0.1);
 }
 
 /* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/

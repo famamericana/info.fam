@@ -456,6 +456,11 @@ function setupDescontosRegua() {
             timelineLinha.className = 'timeline-linha desconto-' + descontoAtivo;
         }
 
+        // Atualizar cor do countdown
+        if (countdownElement) {
+            countdownElement.className = 'countdown-timer countdown-' + descontoAtivo;
+        }
+
         // Atualizar label do countdown
         if (countdownLabel) {
             if (proximoDesconto) {
@@ -548,6 +553,11 @@ function setupDescontosRegua() {
                         // Garantir que a classe de cor está aplicada
                         timelineLinha.className = 'timeline-linha desconto-' + estadoAtual.descontoAtivo;
                     }, 600);
+                }
+
+                // Garantir que a classe do countdown está aplicada
+                if (countdownElement) {
+                    countdownElement.className = 'countdown-timer countdown-' + estadoAtual.descontoAtivo;
                 }
 
                 // Parar de observar após ativar

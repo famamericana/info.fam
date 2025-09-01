@@ -38,7 +38,7 @@
         <div class="titulo">
             <h2><span style="color: #f9e20f">○●</span> Vestibular 2026 <span style="color: #f9e20f">●○</span></h2>
             <img src="images/estudenafam.svg">
-            <p>A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
+            <p class="titulo_p">A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
                 Aqui você escolhe a forma de ingresso que mais combina com você. </p>
 </br>
@@ -72,7 +72,7 @@
                 <h2 class="desconto-titulo">
                     Descontos Progressivos na Matrícula
                 </h2>
-                <p class="desconto-subtitulo">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
+                <p class="titulo_p">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 <div class="timeline-descontos">
                     <div class="timeline-linha"></div>
                     
