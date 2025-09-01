@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Funcionalidade da régua de descontos
+    setupDescontosRegua();
+    
     // Inicializa as funções da navbar primeiro para garantir que o menu esteja pronto
     handleNavbarScroll();
     setupMobileMenu();
@@ -409,3 +413,101 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adicionar a função toggleSaibaMais ao escopo global
     window.toggleSaibaMais = toggleSaibaMais;
 });
+
+// Função para animar os cards de desconto e contador regressivo
+function setupDescontosRegua() {
+    const descontoCards = document.querySelectorAll('.desconto-card');
+    const countdownElement = document.getElementById('countdown');
+    
+    // Determinar qual desconto está ativo baseado na data atual
+    const hoje = new Date();
+    const dezembro20 = new Date(hoje.getFullYear(), 11, 20, 23, 59, 59); // 20 de dezembro 23:59:59
+    const janeiro30 = new Date(hoje.getFullYear() + 1, 0, 30, 23, 59, 59); // 30 de janeiro do próximo ano
+    
+    let descontoAtivo = 30; // padrão
+    let dataLimite = null;
+    
+    if (hoje <= dezembro20) {
+        descontoAtivo = 50;
+        dataLimite = dezembro20;
+    } else if (hoje <= janeiro30) {
+        descontoAtivo = 40;
+        dataLimite = janeiro30;
+    }
+    
+    // Ativar o card correto
+    descontoCards.forEach(card => {
+        card.classList.remove('ativo');
+        if (parseInt(card.dataset.desconto) === descontoAtivo) {
+            card.classList.add('ativo');
+        }
+        
+        // Hover effects
+        card.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('ativo')) {
+                this.style.transform = 'scale(1.02) translateY(-5px)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('ativo')) {
+                this.style.transform = 'translateY(0)';
+            }
+        });
+    });
+    
+    // Contador regressivo
+    function atualizarContador() {
+        if (!dataLimite || !countdownElement) return;
+        
+        const agora = new Date().getTime();
+        const tempoRestante = dataLimite.getTime() - agora;
+        
+        if (tempoRestante > 0) {
+            const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+            
+            countdownElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        } else {
+            countdownElement.innerHTML = "Tempo esgotado!";
+            // Ocultar seção de countdown se necessário
+            const countdownInfo = document.querySelector('.countdown-info');
+            if (countdownInfo && descontoAtivo === 30) {
+                countdownInfo.style.display = 'none';
+            }
+        }
+    }
+    
+    // Atualizar contador a cada segundo
+    if (dataLimite) {
+        atualizarContador();
+        setInterval(atualizarContador, 1000);
+    } else {
+        // Ocultar countdown se não há data limite ativa
+        const countdownInfo = document.querySelector('.countdown-info');
+        if (countdownInfo) {
+            countdownInfo.style.display = 'none';
+        }
+    }
+    
+    // Animação de entrada escalonada
+    descontoCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = card.classList.contains('ativo') 
+                ? 'scale(1.05) translateY(-10px)' 
+                : 'translateY(0)';
+        }, index * 300 + 500);
+    });
+    
+    // Animação da timeline
+    const timelineLinha = document.querySelector('.timeline-linha');
+    if (timelineLinha) {
+        setTimeout(() => {
+            timelineLinha.style.width = '80%';
+            timelineLinha.style.opacity = '1';
+        }, 800);
+    }
+}

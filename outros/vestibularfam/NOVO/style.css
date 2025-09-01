@@ -595,14 +595,238 @@ main {
     height: 50px;
 }
 
-.mecimg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
+    .mecimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 
-/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    /* Seção de Descontos - Nova versão ///////////////////////////////////////////////////////////////////////////////////////////////////*/
+    .desconto-section {
+        margin-top: var(--spacing-xxxl);
+    }
+
+    .desconto-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        text-align: center;
+        padding: var(--spacing-xl);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 226, 15, 0.05));
+        border-radius: var(--border-radius-xl);
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .desconto-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(229, 56, 136, 0.1) 0%, transparent 70%);
+        z-index: -1;
+    }
+
+    .desconto-titulo {
+        font-size: var(--fs-xxlarge);
+        color: var(--primary);
+        margin-bottom: var(--spacing-md);
+        font-weight: 700;
+    }
+
+    .desconto-subtitulo {
+        font-size: var(--fs-large);
+        color: var(--text);
+        margin-bottom: var(--spacing-xxxl);
+        font-weight: 500;
+    }
+
+    .timeline-descontos {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: var(--spacing-xl);
+        position: relative;
+        margin: var(--spacing-xxxl) 0;
+    }
+
+    .timeline-linha {
+        position: absolute;
+        top: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--secondary), var(--accent), var(--yellow));
+        border-radius: var(--border-radius-sm);
+        z-index: 0;
+        opacity: 0;
+        transition: all 1s var(--animation-timing);
+    }
+
+    .desconto-card {
+        background: white;
+        border-radius: var(--border-radius-xl);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-md);
+        transition: all var(--animation-duration) var(--animation-timing);
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        min-width: 220px;
+        border: 3px solid transparent;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .desconto-card.ativo {
+        transform: scale(1.05) translateY(-10px);
+        border-color: var(--secondary);
+        box-shadow: 0 10px 30px rgba(229, 56, 136, 0.3);
+    }
+
+    .desconto-card:hover {
+        transform: scale(1.02) translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .card-badge {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, var(--secondary), #ff4081);
+        color: white;
+        padding: var(--spacing-xs) var(--spacing-md);
+        border-radius: var(--border-radius-lg);
+        font-size: var(--fs-small);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.05); }
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    .desconto-numero {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: var(--spacing-sm);
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .desconto-card[data-desconto="50"] .desconto-numero {
+        background: linear-gradient(45deg, var(--secondary), #ff4081);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .desconto-card[data-desconto="40"] .desconto-numero {
+        background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .desconto-card[data-desconto="30"] .desconto-numero {
+        background: linear-gradient(45deg, #f39c12, var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .desconto-numero span {
+        font-size: 2rem;
+        vertical-align: top;
+    }
+
+    .desconto-titulo-card {
+        font-size: var(--fs-medium);
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .desconto-periodo {
+        font-size: var(--fs-normal);
+        color: var(--text);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .desconto-cupom-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
+
+    .cupom-label {
+        font-size: var(--fs-small);
+        color: var(--text-light);
+    }
+
+    .desconto-cupom {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px dashed var(--accent);
+        padding: var(--spacing-xs) var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        color: var(--primary);
+        font-size: var(--fs-normal);
+        letter-spacing: 1px;
+    }
+
+    .desconto-cta {
+        margin-top: var(--spacing-xxxl);
+        padding-top: var(--spacing-xl);
+        border-top: 2px solid rgba(69, 183, 229, 0.2);
+    }
+
+    .desconto-destaque {
+        font-size: var(--fs-large);
+        color: var(--accent-dark);
+        font-weight: 600;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .countdown-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .countdown-label {
+        font-size: var(--fs-medium);
+        color: var(--text);
+        font-weight: 500;
+    }
+
+    .countdown-timer {
+        font-size: var(--fs-xlarge);
+        font-weight: bold;
+        color: var(--secondary);
+        background: rgba(229, 56, 136, 0.1);
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--border-radius-lg);
+        font-family: 'Courier New', monospace;
+        letter-spacing: 2px;
+    }/* footer ------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 footer {
     border-radius: var(--spacing-lg) var(--spacing-lg) 0 0;
     width: 100%;
@@ -1285,6 +1509,40 @@ footer .footer-info-icons i {
         .opcao-botoes {
         flex-direction: column;
         width: 100%;
+    }
+
+    /* Responsividade para descontos */
+    .timeline-descontos {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+        align-items: center;
+    }
+
+    .timeline-linha {
+        display: none;
+    }
+
+    .desconto-card {
+        width: 100%;
+        max-width: 320px;
+        min-width: auto;
+    }
+
+    .desconto-card.ativo {
+        transform: scale(1.02);
+    }
+
+    .desconto-numero {
+        font-size: 2.8rem;
+    }
+
+    .countdown-info {
+        flex-direction: column;
+    }
+
+    .countdown-timer {
+        font-size: var(--fs-large);
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 }
 
