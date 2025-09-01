@@ -524,6 +524,35 @@ main {
     width: 100%;
 }
 
+.inscreva-btn {
+    background-color: var(--secondary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all var(--animation-duration) var(--animation-timing);
+    border: 2px solid var(--secondary);
+    text-decoration: none;
+}
+
+.inscreva-btn:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+.navbar-scrolled .inscreva-btn {
+    background-color: white;
+    color: var(--secondary);
+    border-color: white;
+}
+
+.navbar-scrolled .inscreva-btn:hover {
+    background-color: var(--secondary);
+    color: white;
+    border-color: var(--secondary);
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;

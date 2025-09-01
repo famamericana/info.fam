@@ -19,7 +19,7 @@
         <ul class="nav-menu" id="nav-menu">
             <li><a target="_blank" href="https://www.fam.br/" class="nav-link">FAM.br</a></li>
             <li><a target="_blank" href="https://www.fam.br/cursos" class="nav-link">Todos os cursos</a></li>
-            <li><a href="#tipodeinscricao" class="nav-link">Inscreva-se</a></li>
+            <li><a href="#tipodeinscricao" class="inscreva-btn">Inscreva-se</a></li>
         </ul>
     </div>
 </nav>
