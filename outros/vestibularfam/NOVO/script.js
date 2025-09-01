@@ -420,19 +420,18 @@ function setupDescontosRegua() {
     const descontoCards = document.querySelectorAll('.desconto-card');
     const timelineLinha = document.querySelector('.timeline-linha');
     const countdownElement = document.getElementById('countdown');
-    const countdownLabel = document.querySelector('.countdown-label');
 
     // Função para determinar qual desconto está ativo e atualizar interface
     function atualizarDescontoAtivo() {
         const hoje = new Date();
-        const dezembro20 = new Date(hoje.getFullYear(), 11, 20, 23, 59, 59); // 20 de dezembro 23:59:59
-        const janeiro30 = new Date(hoje.getFullYear() + 1, 0, 30, 23, 59, 59); // 30 de janeiro do próximo ano
-        const marco30 = new Date(hoje.getFullYear(), 2, 30, 23, 59, 59); // 30 de março 23:59:59
-
+        const dezembro20 = new Date(2025, 11, 20, 23, 59, 59); // 20 de dezembro de 2025
+        const janeiro30 = new Date(2026, 0, 30, 23, 59, 59); // 30 de janeiro de 2026
+        const marco30 = new Date(2026, 2, 30, 23, 59, 59); // 30 de março de 2026
+        
         let descontoAtivo = 30; // padrão
-        let dataLimite = marco30; // desconto de 30% vai até 30/03
+        let dataLimite = marco30; // desconto de 30% vai até 30/03/2026
         let proximoDesconto = null;
-
+        
         if (hoje <= dezembro20) {
             descontoAtivo = 50;
             dataLimite = dezembro20;
@@ -461,13 +460,10 @@ function setupDescontosRegua() {
             countdownElement.className = 'countdown-timer countdown-' + descontoAtivo;
         }
 
-        // Atualizar label do countdown
-        if (countdownLabel) {
-            if (proximoDesconto) {
-                countdownLabel.textContent = `Tempo restante para ${proximoDesconto}% OFF:`;
-            } else {
-                countdownLabel.textContent = 'Desconto de 30% ativo:';
-            }
+        // Atualizar texto do destaque
+        const descontoDestaque = document.getElementById('desconto-destaque');
+        if (descontoDestaque) {
+            descontoDestaque.textContent = `Garante já o seu desconto de ${descontoAtivo}%!`;
         }
 
         return { descontoAtivo, dataLimite, proximoDesconto };
@@ -591,9 +587,6 @@ function setupDescontosRegua() {
                     setTimeout(() => {
                         this.classList.remove('copied');
                     }, 1000);
-                    
-                    // Feedback visual adicional (opcional)
-                    console.log(`Cupom ${cupomText} copiado com sucesso!`);
                     
                 } catch (err) {
                     console.error('Erro ao copiar cupom:', err);

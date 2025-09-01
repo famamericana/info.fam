@@ -70,7 +70,7 @@
         <div class="conteudo desconto-section">
             <div class="desconto-container">
                 <h2 class="desconto-titulo">
-                    Descontos Progressivos na Matrícula
+                    Descontos especiais na Matrícula
                 </h2>
                 <p class="titulo_p">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 <div class="timeline-descontos">
@@ -124,9 +124,8 @@
                 </div>
                 
                 <div class="desconto-cta">
-                    <p class="desconto-destaque">Garante já o seu desconto!</p>
+                    <p class="desconto-destaque" id="desconto-destaque">Garante já o seu desconto!</p>
                     <div class="countdown-info">
-                        <span class="countdown-label">Tempo restante para 50% OFF:</span>
                         <div id="countdown" class="countdown-timer"></div>
                     </div>
                 </div>

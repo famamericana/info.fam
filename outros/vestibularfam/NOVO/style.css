@@ -649,15 +649,15 @@ main {
 }
 
 .timeline-linha.desconto-50 {
-    background: linear-gradient(90deg, var(--secondary), #ff4081);
+    background: var(--secondary);
 }
 
 .timeline-linha.desconto-40 {
-    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    background: var(--accent);
 }
 
 .timeline-linha.desconto-30 {
-    background: linear-gradient(90deg, var(--yellow), #f39c12);
+    background: var(--yellow);
 }
 
 .desconto-card {
@@ -679,6 +679,21 @@ main {
 .desconto-card.ativo {
     border-color: var(--secondary);
     box-shadow: 0 10px 30px rgba(229, 56, 136, 0.3);
+}
+
+.desconto-card.ativo[data-desconto="50"] {
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(229, 56, 136, 0.3);
+}
+
+.desconto-card.ativo[data-desconto="40"] {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(69, 183, 229, 0.3);
+}
+
+.desconto-card.ativo[data-desconto="30"] {
+    border-color: var(--yellow);
+    box-shadow: 0 10px 30px rgba(249, 226, 15, 0.3);
 }
 
 .desconto-card.ativo:hover {
@@ -844,9 +859,9 @@ main {
 
 .desconto-destaque {
     font-size: var(--fs-large);
-    color: var(--accent-dark);
+    
     font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    
 }
 
 .countdown-info {
@@ -854,12 +869,6 @@ main {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-sm);
-}
-
-.countdown-label {
-    font-size: var(--fs-medium);
-    color: var(--text);
-    font-weight: 500;
 }
 
 .countdown-timer {
