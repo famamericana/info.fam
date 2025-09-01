@@ -416,17 +416,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função para animar os cards de desconto e contador regressivo
 function setupDescontosRegua() {
+    const descontoSection = document.querySelector('.desconto-section');
     const descontoCards = document.querySelectorAll('.desconto-card');
+    const timelineLinha = document.querySelector('.timeline-linha');
     const countdownElement = document.getElementById('countdown');
-    
+
     // Determinar qual desconto está ativo baseado na data atual
     const hoje = new Date();
     const dezembro20 = new Date(hoje.getFullYear(), 11, 20, 23, 59, 59); // 20 de dezembro 23:59:59
     const janeiro30 = new Date(hoje.getFullYear() + 1, 0, 30, 23, 59, 59); // 30 de janeiro do próximo ano
-    
+
     let descontoAtivo = 30; // padrão
     let dataLimite = null;
-    
+
     if (hoje <= dezembro20) {
         descontoAtivo = 50;
         dataLimite = dezembro20;
@@ -434,41 +436,41 @@ function setupDescontosRegua() {
         descontoAtivo = 40;
         dataLimite = janeiro30;
     }
-    
+
     // Ativar o card correto
     descontoCards.forEach(card => {
         card.classList.remove('ativo');
         if (parseInt(card.dataset.desconto) === descontoAtivo) {
             card.classList.add('ativo');
         }
-        
+
         // Hover effects
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('ativo')) {
                 this.style.transform = 'translateY(-5px)';
             }
         });
-        
+
         card.addEventListener('mouseleave', function() {
             if (!this.classList.contains('ativo')) {
                 this.style.transform = 'translateY(0)';
             }
         });
     });
-    
+
     // Contador regressivo
     function atualizarContador() {
         if (!dataLimite || !countdownElement) return;
-        
+
         const agora = new Date().getTime();
         const tempoRestante = dataLimite.getTime() - agora;
-        
+
         if (tempoRestante > 0) {
             const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
             const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
-            
+
             countdownElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
         } else {
             countdownElement.innerHTML = "Tempo esgotado!";
@@ -479,7 +481,7 @@ function setupDescontosRegua() {
             }
         }
     }
-    
+
     // Atualizar contador a cada segundo
     if (dataLimite) {
         atualizarContador();
@@ -491,23 +493,44 @@ function setupDescontosRegua() {
             countdownInfo.style.display = 'none';
         }
     }
-    
-    // Animação de entrada escalonada
-    descontoCards.forEach((card, index) => {
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = card.classList.contains('ativo') 
-                ? ' translateY(-5px)' 
-                : 'translateY(0)';
-        }, index * 300 + 500);
-    });
-    
-    // Animação da timeline
-    const timelineLinha = document.querySelector('.timeline-linha');
-    if (timelineLinha) {
-        setTimeout(() => {
-            timelineLinha.style.width = '100%';
-            timelineLinha.style.opacity = '1';
-        }, 800);
+
+    // Intersection Observer para ativar animações no scroll
+    const observerOptions = {
+        threshold: 0.3, // 30% do elemento visível
+        rootMargin: '0px 0px -50px 0px' // Ativar 50px antes de entrar completamente na viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Ativar animações quando a seção entra na viewport
+
+                // Animação dos cards com stagger
+                descontoCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                        if (card.classList.contains('ativo')) {
+                            card.style.transform = 'translateY(-5px)';
+                        }
+                    }, index * 200);
+                });
+
+                // Animação da timeline
+                if (timelineLinha) {
+                    setTimeout(() => {
+                        timelineLinha.style.width = '100%';
+                        timelineLinha.style.opacity = '1';
+                    }, 600);
+                }
+
+                // Parar de observar após ativar
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Começar a observar a seção de descontos
+    if (descontoSection) {
+        observer.observe(descontoSection);
     }
 }
