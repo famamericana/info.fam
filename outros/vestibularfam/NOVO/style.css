@@ -1624,7 +1624,23 @@ footer .footer-info-icons i {
     }
 
     .timeline-linha {
-        display: none;
+        display: block;
+        width: 4px !important;
+        height: 0; /* Inicia com altura 0 para animar de cima para baixo */
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        opacity: 1;
+        animation: lineGrow 1s ease forwards; /* Animação para crescer de cima para baixo */
+    }
+
+    @keyframes lineGrow {
+        from {
+            height: 0;
+        }
+        to {
+            height: 100%;
+        }
     }
 
     .desconto-card {
