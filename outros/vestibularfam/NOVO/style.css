@@ -179,7 +179,6 @@ main {
 /* Efeito de digitação para o subtítulo */
 .typewriter {
     overflow: hidden;
-    white-space: nowrap;
     position: relative;
 }
 
@@ -719,7 +718,6 @@ main {
     margin: 0 auto;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
 
@@ -1782,7 +1780,9 @@ footer .footer-info-icons i {
         top: 50% !important;
     
     }
-
+    .bola-1 {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
