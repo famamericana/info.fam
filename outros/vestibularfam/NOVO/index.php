@@ -139,7 +139,7 @@
         <div class="conteudo provadebolsas espaco">
             <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
             <div>
-                <div>Fique ligado:</div>
+                <div class="badge"><i class="fa-solid fa-bullhorn"></i> Fique ligado!</div>
                 <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
                 <div> 7 de dezembro</div>
 

@@ -1775,10 +1775,25 @@ footer .footer-info-icons i {
     gap: var(--spacing-xl);
 }
 .provadebolsas p{
-   
+   background-color: white;
     max-width: 350px;
     text-align: justify;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
 }
+
+.provadebolsas .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+   border-radius: var(--border-radius-lg);
+}
+
+.provadebolsas .badge i { font-size: 0.95rem; }
+
 
 .espaco{
     margin-bottom: 150px;
