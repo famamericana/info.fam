@@ -74,7 +74,7 @@ $versao = "1.0.0";
         <div class="conteudo desconto-section espaco">
             <div class="desconto-container">
                 <h2 class="desconto-titulo">
-                    Descontos especiais na matrícula
+                    Antecipe sua matrícula
                 </h2>
                 <p class="titulo_p">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 <div class="timeline-descontos">
@@ -144,7 +144,7 @@ $versao = "1.0.0";
             <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
             <div>
                 <div class="badge">  <i class="fa-solid fa-eye"></i> Fique de olho! </div>
-                <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
+                <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas de conhecimento gerais e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
                 <div class="botao-prova-de-bolsas"> 7 de dezembro</div>
 
             </div>
