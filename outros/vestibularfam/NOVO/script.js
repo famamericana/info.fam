@@ -449,6 +449,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 `;
+                // On mobile, scroll the select into view so the generated details are visible
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        const navbar = document.querySelector('.navbar');
+                        const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+                        const extraOffset = 16;
+                        const top = select.getBoundingClientRect().top + window.pageYOffset - navbarHeight - extraOffset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }, 120); // small delay to allow DOM insertion
+                }
             } else {
                 detalhe.style.display = 'none';
                 detalhe.innerHTML = '';
