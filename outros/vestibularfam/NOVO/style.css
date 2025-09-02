@@ -204,7 +204,7 @@ main {
     background-color: var(--secondary);
     width: 50px;
     height: 50px;
-    top: 50px;
+    top: 12%;
     left: 100px;
     animation: var(--animation-flutuar);
     animation-duration: 8s;
@@ -212,7 +212,6 @@ main {
 }
 
 .bola-2 {
-    background-color: var(--bolas2);
     width: 100px;
     height: 100px;
     bottom: 30%;
@@ -220,15 +219,17 @@ main {
     animation: var(--animation-flutuar);
     animation-duration: 10s;
     animation-direction: alternate-reverse;
+    border-radius: 100%;
+    border: 4px dashed var(--bolas2);
 }
 
 .bola-3 {
-    border: 5px solid var(--bolas2);
+    border: 4px dashed var(--bolas2);
     background-color: transparent;
     border-radius: var(--border-radius-circle);
     width: 200px;
     height: 200px;
-    top: 200px;
+    top: 100px;
     left: -100px;
     animation: var(--animation-flutuar);
     animation-duration: 12s;
@@ -251,7 +252,7 @@ main {
     background-color: var(--bolas);
     width: 180px;
     height: 180px;
-    top: 650px;
+    top: 35%;
     left: -100px;
     animation: var(--animation-flutuar);
     animation-duration: 11s;
@@ -276,22 +277,32 @@ main {
     right: -70px;
     animation: var(--animation-flutuar);
     animation-duration: 14s;
+
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-radius: 0;
+    /* ensure no rounding */
 }
 
 .bola-8 {
-    background-color: var(--bolas2);
     width: 50px;
-    height: 50px;
+    height: 40px;
     top: 400px;
     right: 50px;
     animation: var(--animation-flutuar);
     animation-duration: 9.5s;
     animation-direction: alternate-reverse;
-    border-radius: var(--border-radius-circle);
+    /* Triangle using clip-path for a distinct shape */
+    background-color: var(--accent-dark);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-radius: 0;
+    /* ensure no rounding */
 }
 
+
+
+
 .bola-9 {
-    background-color: var(--bolas);
+    background-color: var(--secondary);
     width: 50px;
     height: 50px;
     bottom: 40%;
@@ -1069,9 +1080,9 @@ footer .footer-info-icons i {
 
 /* Tipos de Inscrição ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 .inscricao-container {
- 
+
     margin: 0 auto;
- 
+
 }
 
 .inscricao-titulo {
@@ -1254,11 +1265,32 @@ footer .footer-info-icons i {
 
 /* Media Queries */
 @media (max-width: 768px) {
+
+        .bola-4 {
+        top: 400px;
+    }
+
+    .bola-1 {
+        top: -20px !important;
+        left: 50% !important;
+    }
+    .bola-6 {
+        top: -30px;
+        right: -10px;
+    }
+
+    .provadebolsas {
+        flex-direction: column;
+    }
+
+    .provadebolsas .badge{
+        width: 100%;
+        text-align: center;
+    }
+
     .navbar {
         padding: var(--spacing-sm) 0;
     }
-
-
 
     .navbar-container {
         position: relative;
@@ -1515,7 +1547,7 @@ footer .footer-info-icons i {
 
     }
 
-    
+
     .navbar-scrolled .inscreva-btn:hover {
         background-color: transparent;
         color: #000;
@@ -1525,14 +1557,16 @@ footer .footer-info-icons i {
 }
 
 @media (max-width: 800px) {
+
+
+
     .bola-2 {
-        background-color: var(--bolas);
-        bottom: 30%;
+        bottom: 45%;
     }
 
     .bola-7 {
-        background-color: var(--bolas2);
         bottom: 20%;
+        right: -100px !important;
     }
 
     .bola-10 {
@@ -1569,19 +1603,23 @@ footer .footer-info-icons i {
 }
 
 @media (max-width: 700px) {
+
+    .bola-9 {
+   right: 50px !important;
+    bottom: 52%;
+    left: auto;
+  
+}
+
     .bola-10 {
         bottom: 10%;
     }
 
     .bola-8 {
-        top: 600px;
+        top: 13%;
         left: 50%;
     }
 
-    .bola-6 {
-        top: 20px;
-        right: -50px;
-    }
 
     footer .footer_design {
         grid-template-rows: auto;
@@ -1662,27 +1700,30 @@ footer .footer-info-icons i {
         font-size: var(--fs-xlarge);
     }
 
+    .container-button {
+        flex-direction: column;
+    }
+
+       .bola-5 {
+        top: 50% !important;
+    
+    }
+
 }
 
 @media (max-width: 900px) {
-    .bola-3 {
-        top: 30%;
-        left: -180px;
-    }
+
 
     .bola-5 {
-        top: 50%;
-        right: -100px;
-        left: auto;
+        top: 30%;
+        left: -150px;
+    
     }
 
     .bola-6 {
         right: 0px;
     }
 
-    .bola-4 {
-        right: -80px;
-    }
 
     footer .footer-c {
         justify-content: center;
@@ -1738,6 +1779,29 @@ footer .footer-info-icons i {
     height: auto;
 }
 
+@media (max-width:1050px) {
+    .bola-4 {
+        right: -60px;
+    }
+
+    .bola-3 {
+        top: -100px;
+        left: -50px;
+    }
+
+    .bola-1 {
+        top: 50px;
+        left: 20%;
+    }
+
+    .bola-8 {
+        top: 13%;
+        left: 50px;
+    }
+
+
+}
+
 /* Media queries para MEC info */
 @media (max-width: 720px) {
     .meceinfo {
@@ -1764,36 +1828,37 @@ footer .footer-info-icons i {
     }
 }
 
-.provadebolsas img{
+.provadebolsas img {
     max-width: 300px;
 }
 
-.provadebolsas{
+.provadebolsas {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--spacing-xl);
 }
-.provadebolsas p{
-   background-color: white;
+
+.provadebolsas p {
+    background-color: white;
     max-width: 400px;
     text-align: justify;
-    padding:  var(--spacing-lg) var(--spacing-xl);
+    padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--border-radius-xl);
 }
 
 .provadebolsas .badge {
-display: inline-block;
+    display: inline-block;
     color: black;
     padding: var(--spacing-xs) var(--spacing-sm);
-   border-bottom: 2px solid var(--yellow);
-   border-right: 2px solid var(--accent);
-     border-top: 2px solid var(--accent-dark);
-   border-left: 2px solid var(--secondary);
-   border-radius: var(--border-radius-sm);
-   text-transform: uppercase;
-   font-weight: bold;
-   font-size: var(--fs-medium);
+    border-bottom: 2px solid var(--yellow);
+    border-right: 2px solid var(--accent);
+    border-top: 2px solid var(--accent-dark);
+    border-left: 2px solid var(--secondary);
+    border-radius: var(--border-radius-sm);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--fs-medium);
 }
 
 .provadebolsas .badge i {
@@ -1822,11 +1887,12 @@ display: inline-block;
     transform: translateY(-3px);
     box-shadow: var(--shadow-button-yellow);
 }
-.espaco{
+
+.espaco {
     margin-bottom: 150px;
     margin-top: 100px;
 }
 
-.espaco-bottom{
+.espaco-bottom {
     margin-bottom: 100px;
 }
