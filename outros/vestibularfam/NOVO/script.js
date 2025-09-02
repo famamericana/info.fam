@@ -441,6 +441,7 @@ function setupDescontosRegua() {
     const descontoCards = document.querySelectorAll('.desconto-card');
     const timelineLinha = document.querySelector('.timeline-linha');
     const countdownElement = document.getElementById('countdown');
+    const provaDeBolsas = document.querySelector('.provadebolsas');
 
     // Função para determinar qual desconto está ativo e atualizar interface
     function atualizarDescontoAtivo() {
@@ -578,6 +579,7 @@ function setupDescontosRegua() {
                 }
 
                 // Parar de observar após ativar
+                // If we're observing the desconto section, unobserve it after activation.
                 observer.unobserve(entry.target);
             }
         });
@@ -586,6 +588,19 @@ function setupDescontosRegua() {
     // Começar a observar a seção de descontos
     if (descontoSection) {
         observer.observe(descontoSection);
+    }
+    // Observar a seção da prova de bolsas para aplicar fade-in
+    if (provaDeBolsas) {
+        const provaObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    provaDeBolsas.classList.add('visible');
+                    provaObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25, rootMargin: '0px 0px -50px 0px' });
+
+        provaObserver.observe(provaDeBolsas);
     }
 }
 
