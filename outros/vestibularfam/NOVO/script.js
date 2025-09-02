@@ -1,15 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Scroll suave com offset para #tipodeinscricao
-    const btnInscreva = document.querySelector('a.button[href="#tipodeinscricao"]');
-    if (btnInscreva) {
-        btnInscreva.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.getElementById('tipodeinscricao');
-            if (target) {
-                const offset = 80; // ajuste para mostrar o texto
-                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
+    // Scroll suave e consistente para #tipodeinscricao em todos os links
+    const inscrevaLinks = document.querySelectorAll('a[href="#tipodeinscricao"]');
+    if (inscrevaLinks && inscrevaLinks.length) {
+        inscrevaLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const target = document.getElementById('tipodeinscricao');
+                const navbar = document.querySelector('.navbar');
+                const menuToggle = document.getElementById('menu-toggle');
+                const navMenu = document.getElementById('nav-menu');
+
+                if (!target) return;
+
+                function doScroll() {
+                    const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+                    const extraOffset = 20; // margem extra para dar espaço abaixo do navbar (aumentado)
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - extraOffset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    // update URL hash without jumping
+                    history.replaceState(null, '', '#tipodeinscricao');
+                }
+
+                // If mobile menu is open, close it first so the target position is consistent
+                if (navMenu && navMenu.classList.contains('active')) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    const hamburgerIcon = menuToggle ? menuToggle.querySelector('.ham') : null;
+                    if (hamburgerIcon) hamburgerIcon.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // small delay to allow layout to update after closing menu
+                    setTimeout(doScroll, 160);
+                } else {
+                    doScroll();
+                }
+            });
         });
     }
 
