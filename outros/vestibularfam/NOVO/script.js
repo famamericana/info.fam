@@ -690,117 +690,124 @@ function setupDescontosRegua() {
 // Efeito de digitação (typewriter) para elementos com classe .typewriter
 function setupTypewriterEffect() {
     const typewriterElements = document.querySelectorAll('.typewriter');
-    
-    function typeWriter(element, text, speed = 100) {
-        return new Promise((resolve) => {
-            element.classList.add('typing');
-            let i = 0;
-            element.textContent = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    element.classList.remove('typing');
-                    resolve();
-                }
-            }
-            
-            type();
-        });
+
+    // Per-element controller to support pause/resume when visibility changes
+    const controllers = new WeakMap();
+
+    function clearControllerTimers(ctrl) {
+        if (!ctrl) return;
+        if (ctrl.timeoutId) { clearTimeout(ctrl.timeoutId); ctrl.timeoutId = null; }
+        if (ctrl.waitingTimeout) { clearTimeout(ctrl.waitingTimeout); ctrl.waitingTimeout = null; }
     }
-    
-    function eraseWriter(element, speed = 50) {
-        return new Promise((resolve) => {
-            element.classList.add('erasing');
-            const text = element.textContent;
-            let i = text.length;
-            
-            function erase() {
-                if (i > 0) {
-                    element.textContent = text.substring(0, i - 1);
-                    i--;
-                    setTimeout(erase, speed);
-                } else {
-                    element.classList.remove('erasing');
-                    resolve();
-                }
+
+    function startController(element, texts) {
+        if (controllers.has(element)) return; // already created
+
+        const ctrl = {
+            texts: texts.slice(),
+            currentIndex: 0,
+            charIndex: 0,
+            isVisible: false,
+            timeoutId: null,
+            waitingTimeout: null,
+            speedType: 80,
+            speedErase: 40,
+            running: false
+        };
+
+        controllers.set(element, ctrl);
+
+        // typing step
+        function stepType() {
+            if (!ctrl.isVisible) {
+                // pause
+                ctrl.running = false;
+                return;
             }
-            
-            erase();
-        });
-    }
-    
-    async function startTypewriterLoop(element, texts) {
-        let currentIndex = 0;
-        
-        async function cycle() {
-            // Digitar o texto atual
-            await typeWriter(element, texts[currentIndex], 80);
-            
-            // Aguardar 5 segundos (ou 3 segundos para o segundo texto)
-            element.classList.add('waiting');
-            const waitTime = currentIndex === 0 ? 5000 : 3000; // 5s para primeira frase, 3s para segunda
-            await new Promise(resolve => setTimeout(resolve, waitTime));
-            element.classList.remove('waiting');
-            
-            // Apagar o texto
-            await eraseWriter(element, 40);
-            
-            // Aguardar um pouco antes do próximo texto
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            // Ir para o próximo texto
-            currentIndex = (currentIndex + 1) % texts.length;
-            
-            // Repetir o ciclo
-            cycle();
+            const text = ctrl.texts[ctrl.currentIndex];
+            if (ctrl.charIndex < text.length) {
+                element.textContent += text.charAt(ctrl.charIndex);
+                ctrl.charIndex++;
+                ctrl.timeoutId = setTimeout(stepType, ctrl.speedType);
+            } else {
+                // finished typing
+                ctrl.charIndex = text.length;
+                ctrl.waitingTimeout = setTimeout(() => {
+                    // ensure still visible
+                    if (!ctrl.isVisible) { ctrl.running = false; return; }
+                    // start erasing
+                    stepErase();
+                }, ctrl.currentIndex === 0 ? 5000 : 3000);
+            }
         }
-        
-        // Iniciar o ciclo
-        cycle();
+
+        // erasing step
+        function stepErase() {
+            if (!ctrl.isVisible) { ctrl.running = false; return; }
+            const currentText = element.textContent || '';
+            if (currentText.length > 0) {
+                element.textContent = currentText.substring(0, currentText.length - 1);
+                ctrl.timeoutId = setTimeout(stepErase, ctrl.speedErase);
+            } else {
+                // move to next text after short pause
+                ctrl.currentIndex = (ctrl.currentIndex + 1) % ctrl.texts.length;
+                ctrl.charIndex = 0;
+                ctrl.waitingTimeout = setTimeout(() => {
+                    if (!ctrl.isVisible) { ctrl.running = false; return; }
+                    stepType();
+                }, 500);
+            }
+        }
+
+        // start cycle when visible
+        function startCycleIfNeeded() {
+            if (ctrl.running) return;
+            ctrl.running = true;
+            // ensure empty before typing first time
+            if (!element.textContent) {
+                ctrl.charIndex = 0;
+            }
+            stepType();
+        }
+
+        // expose control actions
+        ctrl.start = function() { ctrl.isVisible = true; startCycleIfNeeded(); };
+        ctrl.pause = function() { ctrl.isVisible = false; clearControllerTimers(ctrl); ctrl.running = false; };
+
+        return ctrl;
     }
-    
-    // Intersection Observer para ativar o efeito quando o elemento fica visível
+
     const observerOptions = {
-        threshold: 0.5, // 50% do elemento precisa estar visível
-        rootMargin: '0px 0px -50px 0px' // Ativar um pouco antes de entrar completamente
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting && !entry.target.classList.contains('typewriter-started')) {
-                const element = entry.target;
+        entries.forEach(entry => {
+            const element = entry.target;
+            let ctrl = controllers.get(element);
+            if (!ctrl && element.dataset.text) {
+                // parse texts (accept JSON array or single string)
                 let texts;
-                
-                try {
-                    // Tentar parsear como JSON (array de strings)
-                    texts = JSON.parse(element.dataset.text);
-                } catch {
-                    // Se falhar, tratar como string única
-                    texts = [element.dataset.text];
-                }
-                
-                if (texts && texts.length > 0) {
-                    element.classList.add('typewriter-started');
-                    
-                    // Delay inicial antes de começar
-                    setTimeout(() => {
-                        startTypewriterLoop(element, texts);
-                    }, 500);
-                    
-                    observer.unobserve(element); // Para de observar após iniciar
-                }
+                try { texts = JSON.parse(element.dataset.text); }
+                catch (e) { texts = [element.dataset.text]; }
+                ctrl = startController(element, texts);
+            }
+
+            if (!ctrl) return;
+
+            if (entry.isIntersecting) {
+                // resume/start
+                element.classList.add('typewriter-started');
+                ctrl.start();
+            } else {
+                // pause
+                ctrl.pause();
             }
         });
     }, observerOptions);
-    
-    // Observar todos os elementos typewriter
+
     typewriterElements.forEach(element => {
-        if (element.dataset.text) {
-            observer.observe(element);
-        }
+        if (element.dataset.text) observer.observe(element);
     });
 }
