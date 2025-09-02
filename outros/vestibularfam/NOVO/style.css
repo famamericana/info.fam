@@ -2007,3 +2007,15 @@ footer .footer-info-icons i {
 .espaco-bottom {
     margin-bottom: 100px;
 }
+
+/* Fade-in for the tipo de inscricao section */
+#tipodeinscricao {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1), transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#tipodeinscricao.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

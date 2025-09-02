@@ -602,6 +602,21 @@ function setupDescontosRegua() {
 
         provaObserver.observe(provaDeBolsas);
     }
+
+    // Observe #tipodeinscricao to add fade-in class when visible
+    const tipoDeInscricao = document.getElementById('tipodeinscricao');
+    if (tipoDeInscricao) {
+        const tipoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    tipoDeInscricao.classList.add('visible');
+                    tipoObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+        tipoObserver.observe(tipoDeInscricao);
+    }
 }
 
 // Funcionalidade de copiar cupom
