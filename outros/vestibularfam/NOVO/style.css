@@ -1274,6 +1274,7 @@ footer .footer-info-icons i {
     position: relative;
     font-weight: bold;
     margin-bottom: 10px;
+    appearance: none;
 }
 
 .inscricao-select:focus {
