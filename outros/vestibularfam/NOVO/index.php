@@ -135,9 +135,15 @@
 
         </div>
 
-        
+
         <div class="conteudo provadebolsas espaco">
             <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
+            <div>
+                <div>Fique ligado:</div>
+                <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
+                <div> 7 de dezembro</div>
+
+            </div>
         </div>
 
 
@@ -162,7 +168,7 @@
         <div class="conteudo">
             <div class="meceinfo">
                 <div class="informacoes">
-                
+
                     <a target="_blank"
                         href="https://www.fam.br/wp-content/uploads/2025/05/Edital-03-25_VESTIBULARinvernoFAM-2025.pdf">
                         <p>Edital 2025</p>

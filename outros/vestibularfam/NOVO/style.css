@@ -1766,13 +1766,18 @@ footer .footer-info-icons i {
 
 .provadebolsas img{
     max-width: 300px;
-
 }
 
 .provadebolsas{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: var(--spacing-xl);
+}
+.provadebolsas p{
+   
+    max-width: 350px;
+    text-align: justify;
 }
 
 .espaco{
