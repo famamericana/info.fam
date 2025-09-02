@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funcionalidade da régua de descontos
     setupDescontosRegua();
     
+    // Efeito de digitação
+    setupTypewriterEffect();
+    
     // Inicializa as funções da navbar primeiro para garantir que o menu esteja pronto
     handleNavbarScroll();
     setupMobileMenu();
@@ -628,3 +631,121 @@ function setupDescontosRegua() {
     
     // Chamar a função de copiar cupons
     setupCupomCopy();
+
+// Efeito de digitação (typewriter) para elementos com classe .typewriter
+function setupTypewriterEffect() {
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    
+    function typeWriter(element, text, speed = 100) {
+        return new Promise((resolve) => {
+            element.classList.add('typing');
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typing');
+                    resolve();
+                }
+            }
+            
+            type();
+        });
+    }
+    
+    function eraseWriter(element, speed = 50) {
+        return new Promise((resolve) => {
+            element.classList.add('erasing');
+            const text = element.textContent;
+            let i = text.length;
+            
+            function erase() {
+                if (i > 0) {
+                    element.textContent = text.substring(0, i - 1);
+                    i--;
+                    setTimeout(erase, speed);
+                } else {
+                    element.classList.remove('erasing');
+                    resolve();
+                }
+            }
+            
+            erase();
+        });
+    }
+    
+    async function startTypewriterLoop(element, texts) {
+        let currentIndex = 0;
+        
+        async function cycle() {
+            // Digitar o texto atual
+            await typeWriter(element, texts[currentIndex], 80);
+            
+            // Aguardar 5 segundos (ou 3 segundos para o segundo texto)
+            element.classList.add('waiting');
+            const waitTime = currentIndex === 0 ? 5000 : 3000; // 5s para primeira frase, 3s para segunda
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+            element.classList.remove('waiting');
+            
+            // Apagar o texto
+            await eraseWriter(element, 40);
+            
+            // Aguardar um pouco antes do próximo texto
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Ir para o próximo texto
+            currentIndex = (currentIndex + 1) % texts.length;
+            
+            // Repetir o ciclo
+            cycle();
+        }
+        
+        // Iniciar o ciclo
+        cycle();
+    }
+    
+    // Intersection Observer para ativar o efeito quando o elemento fica visível
+    const observerOptions = {
+        threshold: 0.5, // 50% do elemento precisa estar visível
+        rootMargin: '0px 0px -50px 0px' // Ativar um pouco antes de entrar completamente
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.classList.contains('typewriter-started')) {
+                const element = entry.target;
+                let texts;
+                
+                try {
+                    // Tentar parsear como JSON (array de strings)
+                    texts = JSON.parse(element.dataset.text);
+                } catch {
+                    // Se falhar, tratar como string única
+                    texts = [element.dataset.text];
+                }
+                
+                if (texts && texts.length > 0) {
+                    element.classList.add('typewriter-started');
+                    
+                    // Delay inicial antes de começar
+                    setTimeout(() => {
+                        startTypewriterLoop(element, texts);
+                    }, 500);
+                    
+                    observer.unobserve(element); // Para de observar após iniciar
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observar todos os elementos typewriter
+    typewriterElements.forEach(element => {
+        if (element.dataset.text) {
+            observer.observe(element);
+        }
+    });
+}

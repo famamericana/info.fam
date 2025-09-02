@@ -42,7 +42,7 @@
 
                 Aqui você escolhe a forma de ingresso que mais combina com você. </p>
             </br>
-            <div class="titulo-subtitulo">Seu futuro começa agora!</div>
+            <div class="titulo-subtitulo typewriter" data-text='["Seu futuro começa agora!", "Faculdade é FAM"]'></div>
         </div>
         <div class="container-button">
             <a href="#tipodeinscricao" class="button">Inscreva-se</a>

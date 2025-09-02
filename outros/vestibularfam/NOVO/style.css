@@ -176,6 +176,63 @@ main {
     font-family: var(--font-accent);
 }
 
+/* Efeito de digitação para o subtítulo */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.typewriter::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--secondary);
+    margin-left: 2px;
+}
+
+.typewriter.typing::after {
+    animation: blink 0.5s infinite;
+}
+
+.typewriter.erasing::after {
+    animation: blink 0.3s infinite;
+}
+
+.typewriter.waiting::after {
+    animation: blink 1.5s infinite;
+}
+
+.typewriter.finished::after {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes erasing {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
 .titulo img {
     max-width: 550px;
     margin-top: -10px;
