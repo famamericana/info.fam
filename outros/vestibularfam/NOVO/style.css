@@ -848,8 +848,8 @@ main {
 }
 
 .desconto-cupom.copied {
-    border-color: var(--secondary);
-    background-color: rgba(229, 56, 136, 0.1);
+    border-color: var(--yellow);
+    background-color: rgba(249, 226, 15, 0.05);
 }
 
 .copy-icon,
@@ -876,7 +876,7 @@ main {
 .desconto-cupom.copied .check-icon {
     opacity: 1;
     transform: scale(1);
-    color: var(--secondary);
+    color: var(--yellow);
 }
 
 .cupom-text {
@@ -884,15 +884,9 @@ main {
     padding-right: 13px;
 }
 
-.desconto-cupom.copied .cupom-text {
-    color: var(--secondary);
-}
-
 .desconto-destaque {
     font-size: var(--fs-large);
-
     font-weight: 600;
-
 }
 
 .countdown-info {
@@ -1717,9 +1711,6 @@ footer .footer-info-icons i {
     text-align: center;
 }
 
-.desconto-cupom:active {
-    transform: scale(0.98);
-}
 
 /* MEC Info Styles */
 .meceinfo {

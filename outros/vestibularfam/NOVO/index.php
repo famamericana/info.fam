@@ -156,9 +156,7 @@
         <div class="conteudo" style="margin-top: 50px;">
             <div class="meceinfo">
                 <div class="informacoes">
-                    <a target="_blank" href="https://fam.br">
-                        <p>FAM.br</p>
-                    </a>
+                
                     <a target="_blank"
                         href="https://www.fam.br/wp-content/uploads/2025/05/Edital-03-25_VESTIBULARinvernoFAM-2025.pdf">
                         <p>Edital 2025</p>
