@@ -141,7 +141,7 @@
             <div>
                 <div class="badge"><i class="fa-solid fa-bullhorn"></i> Fique ligado!</div>
                 <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
-                <div> 7 de dezembro</div>
+                <div class="botao-prova-de-bolsas"> 7 de dezembro</div>
 
             </div>
         </div>
