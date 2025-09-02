@@ -70,11 +70,29 @@ document.addEventListener('DOMContentLoaded', function() {
 // Navbar scroll effect function
 function handleNavbarScroll() {
     const navbar = document.querySelector('.navbar');
+    const scrollIndicator = document.querySelector('.navbar-scroll-indicator');
+    
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollProgress = (scrollTop / docHeight) * 100;
+        
+        if (scrollTop > 50) {
             navbar.classList.add('navbar-scrolled');
         } else {
             navbar.classList.remove('navbar-scrolled');
+        }
+        
+        // Atualizar a largura da barra de progresso baseada no scroll
+        if (scrollIndicator) {
+            scrollIndicator.style.width = scrollProgress + '%';
+            
+            // Mostrar/ocultar a linha baseado no scroll
+            if (scrollTop > 50) {
+                scrollIndicator.style.opacity = '1';
+            } else {
+                scrollIndicator.style.opacity = '0';
+            }
         }
     });
 }

@@ -1,4 +1,5 @@
 <nav class="navbar">
+    <div class="navbar-scroll-indicator"></div>
     <div class="navbar-container">
         <div class="logo">
             <a href="/"><img src="./images/logo_fam.svg" alt="FAM Logo"></a>

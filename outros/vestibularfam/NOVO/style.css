@@ -477,6 +477,22 @@ main {
     background-color: var(--primary);
 }
 
+.navbar-scroll-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--accent);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    width: 0;
+    z-index: 1000;
+}
+
+.navbar-scrolled .navbar-scroll-indicator {
+    opacity: 1;
+}
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
