@@ -51,7 +51,7 @@
     </header>
 
     <main>
-        <div class="conteudo">
+        <div class="conteudo espaco-bottom">
             <div class="slider">
                 <div class="progress-bar"></div>
                 <div class="slide active">
@@ -67,10 +67,10 @@
             </div>
         </div>
 
-        <div class="conteudo desconto-section">
+        <div class="conteudo desconto-section espaco">
             <div class="desconto-container">
                 <h2 class="desconto-titulo">
-                    Descontos especiais na Matrícula
+                    Descontos especiais na matrícula
                 </h2>
                 <p class="titulo_p">Quanto antes se inscrever, mais você economiza na sua primeira parcela de janeiro!</p>
                 <div class="timeline-descontos">
@@ -135,6 +135,12 @@
 
         </div>
 
+        
+        <div class="conteudo provadebolsas espaco">
+            <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
+        </div>
+
+
         <div id="tipodeinscricao" class="conteudo">
             <div class="inscricao-container">
                 <h2 class="inscricao-titulo">Escolha seu Tipo de Inscrição</h2>
@@ -153,7 +159,7 @@
             </div>
         </div>
 
-        <div class="conteudo" style="margin-top: 50px;">
+        <div class="conteudo">
             <div class="meceinfo">
                 <div class="informacoes">
                 
@@ -169,7 +175,7 @@
                     </a>
 
                     <a target="_blank" href="https://info.fam.br">
-                        <p>Centro de Informações para Alunos</p>
+                        <p>Centro de Informações para Alunos </p>
                     </a>
                 </div>
                 <a target="_blank"
