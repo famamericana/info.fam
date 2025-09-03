@@ -114,6 +114,16 @@ function suggestionsByPair(string $a, string $b): array
   ];
   return $map[$a . $b] ?? [];
 }
+function careersByDim(): array
+{
+  // Mapeamento para carreiras/profissões por dimensão
+  return [
+    'D' => ['Gestor/Líder', 'Empreendedor', 'Diretor Executivo', 'Consultor Estratégico', 'Coordenador de Projetos'],
+    'I' => ['Publicitário', 'Vendedor', 'Apresentador', 'Relações Públicas', 'Coach/Palestrante', 'Marketing Digital'],
+    'S' => ['Psicólogo', 'Enfermeiro', 'Professor', 'Assistente Social', 'Terapeuta', 'Fonoaudiólogo'],
+    'C' => ['Engenheiro', 'Analista de Sistemas', 'Contador', 'Advogado', 'Cientista de Dados', 'Auditor']
+  ];
+}
 function dimDescriptions(): array
 {
   return [
@@ -479,6 +489,7 @@ function dimDescriptions(): array
         [$top1, $top2] = topTwoDims($scores);
         $pairSugs = suggestionsByPair($top1, $top2);
         $dimSugs = suggestionsByDim();
+        $careerSugs = careersByDim();
         ?>
 
         <div class="result">
@@ -500,16 +511,20 @@ function dimDescriptions(): array
             <div>
               <canvas id="radarChart" height="220"></canvas>
               <div style="margin-top:12px;">
-                <div style="font-weight:700;margin-bottom:6px;">Sugestões de áreas e carreiras</div>
-                <?php if (!empty($pairSugs)): ?>
-                  <div class="muted" style="margin:6px 0 4px;">Com base na combinação <strong><?php echo $top1 . $top2; ?></strong>:</div>
-                  <?php foreach ($pairSugs as $s): ?><span class="tag"><?php echo htmlspecialchars($s); ?></span><?php endforeach; ?>
-                <?php else: ?>
-                  <div class="muted" style="margin:6px 0 4px;">Com base no fator dominante <strong><?php echo $top1; ?></strong>:</div>
-                  <?php foreach ($dimSugs[$top1] as $s): ?><span class="tag"><?php echo htmlspecialchars($s); ?></span><?php endforeach; ?>
-                <?php endif; ?>
-                <div class="muted" style="margin:10px 0 4px;">Outras possibilidades pelo segundo fator <strong><?php echo $top2; ?></strong>:</div>
-                <?php foreach (($dimSugs[$top2] ?? []) as $s): ?><span class="tag"><?php echo htmlspecialchars($s); ?></span><?php endforeach; ?>
+                <div style="font-weight:700;margin-bottom:6px;">Sugestões de carreiras</div>
+                <div class="muted" style="margin:6px 0 4px;">Perfis profissionais baseados em seus fatores principais:</div>
+                
+                <!-- Carreiras do fator 1 -->
+                <div style="margin-bottom:8px;">
+                  <div style="font-weight:600;font-size:14px;margin-bottom:4px;"><?php echo $top1; ?> - <?php echo explode(':', $descriptions[$top1])[0]; ?></div>
+                  <?php foreach ($careerSugs[$top1] as $career): ?><span class="tag"><?php echo htmlspecialchars($career); ?></span><?php endforeach; ?>
+                </div>
+                
+                <!-- Carreiras do fator 2 -->
+                <div style="margin-bottom:8px;">
+                  <div style="font-weight:600;font-size:14px;margin-bottom:4px;"><?php echo $top2; ?> - <?php echo explode(':', $descriptions[$top2])[0]; ?></div>
+                  <?php foreach ($careerSugs[$top2] as $career): ?><span class="tag"><?php echo htmlspecialchars($career); ?></span><?php endforeach; ?>
+                </div>
               </div>
             </div>
           </div>
@@ -518,15 +533,24 @@ function dimDescriptions(): array
             <div class="muted">Este teste é um ponto de partida. Combine o resultado com conversas, trilhas de estudo e experiências reais (estágio, projetos, voluntariado).</div>
             <div style="margin-top:8px;">
               <div style="font-weight:700;">Cursos FAM recomendados</div>
+              
+              <!-- Cursos combinados se houver par específico -->
               <?php if (!empty($pairSugs)): ?>
                 <div class="muted" style="margin:6px 0 4px;">Combinando seus dois principais fatores (<strong><?php echo $top1 . $top2; ?></strong>), observe estes cursos:</div>
                 <?php foreach ($pairSugs as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
-              <?php else: ?>
-                <div class="muted" style="margin:6px 0 4px;">Com base no fator dominante (<strong><?php echo $top1; ?></strong>), considere:</div>
-                <?php foreach ($dimSugs[$top1] as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+                <br><br>
               <?php endif; ?>
-              <div class="muted" style="margin-top:8px;">E outras opções relacionadas ao segundo fator (<strong><?php echo $top2; ?></strong>):</div>
-              <?php foreach (($dimSugs[$top2] ?? []) as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+              
+              <!-- Cursos por fator individual -->
+              <div style="margin-bottom:8px;">
+                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Cursos relacionados ao fator <?php echo $top1; ?>:</div>
+                <?php foreach ($dimSugs[$top1] as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+              </div>
+              
+              <div style="margin-bottom:8px;">
+                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Cursos relacionados ao fator <?php echo $top2; ?>:</div>
+                <?php foreach (($dimSugs[$top2] ?? []) as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+              </div>
             </div>
           </div>
           <div class="actions">
@@ -605,7 +629,7 @@ function dimDescriptions(): array
         </script>
       <?php endif; ?>
 
-      <div class="foot">© <?php echo date('Y'); ?> • Teste vocacional baseado no modelo DISC (uso educacional). Chart.js via CDN. | Tema claro/escuro com preferência salva no navegador.</div>
+      <div class="foot">© <?php echo date('Y'); ?> • Teste vocacional baseado no modelo DISC (uso educacional) | FAM 2025</div>
     </div>
   </div>
 
@@ -662,6 +686,97 @@ function dimDescriptions(): array
       const qs = document.querySelectorAll('details.q');
       if (!qs.length) return;
       qs.forEach((d, i) => d.open = (i === 0));
+
+      // UX: desabilitar submit até responder todas as perguntas
+      const form = document.getElementById('quizForm');
+      const submit = form?.querySelector('button[type="submit"]');
+      const totalQs = qs.length;
+      const statusMsg = document.createElement('div');
+      statusMsg.className = 'inline-help';
+      statusMsg.style.marginTop = '10px';
+      statusMsg.textContent = `Responda todas as ${totalQs} perguntas para habilitar o envio`;
+      form?.insertBefore(statusMsg, form.querySelector('.actions'));
+
+      const radioSelector = 'input[type="radio"]';
+      function countAnswered() {
+        const answered = new Set();
+        form.querySelectorAll(radioSelector).forEach(r => {
+          if (r.checked) {
+            // name like q1, q2
+            answered.add(r.name);
+          }
+        });
+        return answered.size;
+      }
+
+      function updateSubmitState() {
+        const answered = countAnswered();
+        if (submit) submit.disabled = (answered < totalQs);
+        if (answered < totalQs) {
+          statusMsg.textContent = `Responda todas as ${totalQs} perguntas para habilitar o envio (${answered}/${totalQs})`;
+          statusMsg.style.color = 'var(--muted)';
+        } else {
+          statusMsg.textContent = 'Pronto — todas as perguntas respondidas. Você pode enviar agora.';
+          statusMsg.style.color = 'var(--text)';
+        }
+      }
+
+      // inicialmente desabilita
+      if (submit) submit.disabled = true;
+
+      // acompanhar mudanças
+      form.querySelectorAll(radioSelector).forEach(r => r.addEventListener('change', (e) => {
+        updateSubmitState();
+        // auto-avança: abre próxima pergunta
+        const currentDetails = e.target.closest('details.q');
+        if (currentDetails) {
+          const list = Array.from(qs);
+          const idx = list.indexOf(currentDetails);
+          setTimeout(() => {
+            currentDetails.open = false;
+            const next = list[idx + 1];
+            if (next) {
+              next.open = true;
+              next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 80);
+        }
+      }));
+
+      // impedir envio por enter se não preenchido
+      form.addEventListener('submit', (ev) => {
+        if (countAnswered() < totalQs) {
+          ev.preventDefault();
+          statusMsg.textContent = `Por favor responda todas as ${totalQs} perguntas antes de enviar.`;
+          statusMsg.style.color = '#f59e0b';
+          // abrir a primeira pergunta não respondida
+          const answered = new Set();
+          form.querySelectorAll(radioSelector).forEach(r => { if (r.checked) answered.add(r.name); });
+          for (let i = 0; i < totalQs; i++) {
+            const name = 'q' + (i + 1);
+            if (!answered.has(name)) {
+              const det = document.getElementById(name);
+              if (det) {
+                document.querySelectorAll('details.q').forEach(d => d.open = false);
+                det.open = true;
+                det.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+              break;
+            }
+          }
+        }
+      });
+
+      // reset: restaura estado inicial
+      const resetBtn = document.getElementById('resetBtn');
+      resetBtn?.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          document.querySelectorAll('details.q').forEach((d, i) => d.open = (i === 0));
+          if (submit) submit.disabled = true;
+          updateSubmitState();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
     })();
   </script>
 </body>
