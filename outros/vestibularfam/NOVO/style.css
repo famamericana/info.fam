@@ -1009,6 +1009,8 @@ footer {
     height: fit-content;
     font-family: var(--font-primary);
     color: white;
+    position: relative;
+    z-index: 2;
 }
 
 footer a {
