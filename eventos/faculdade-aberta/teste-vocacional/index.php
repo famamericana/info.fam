@@ -226,7 +226,11 @@ function dimDescriptions(): array
             </div>
             <div>
               <canvas id="radarChart" height="220"></canvas>
-              <div style="margin-top:12px;">
+             
+            </div>
+      
+          </div>
+                 <div style="margin-top:12px;">
                 <div style="font-weight:700;margin-bottom:6px;">Sugestões de carreiras</div>
                 <div class="muted" style="margin:6px 0 4px;">Perfis profissionais baseados em seus fatores principais:</div>
                 
@@ -242,8 +246,6 @@ function dimDescriptions(): array
                   <?php foreach ($careerSugs[$top2] as $career): ?><span class="tag"><?php echo htmlspecialchars($career); ?></span><?php endforeach; ?>
                 </div>
               </div>
-            </div>
-          </div>
           <div class="callout">
             <div style="font-weight:700;margin-bottom:6px;">Como interpretar</div>
             <div class="muted">Este teste é um ponto de partida. Combine o resultado com conversas, trilhas de estudo e experiências reais (estágio, projetos, voluntariado).</div>

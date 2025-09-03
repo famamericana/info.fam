@@ -197,7 +197,7 @@
     .actions {
       display: flex;
       gap: 12px;
-      margin: 20px 24px 18px
+      margin: 0;
     }
 
     .btn {
@@ -205,12 +205,13 @@
       border: 0;
       color: #fff;
       font-weight: 700;
-      letter-spacing: .02em;
+      font-size: medium;
       padding: 14px 18px;
       border-radius: 12px;
       cursor: pointer;
       transition: transform .05s ease;
-      background: linear-gradient(180deg, var(--primary), #3b82f6)
+      background:  #3b82f6;
+      text-decoration: none;
     }
 
     .btn:hover {
@@ -218,7 +219,7 @@
     }
 
     .btn.secondary {
-      background: linear-gradient(180deg, #06b6d4, var(--accent))
+      background: #06b6d4;
     }
 
     .result {
