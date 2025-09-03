@@ -99,7 +99,9 @@ class SemanaDeAreas {
 
         // Se não há próximo evento, pega o mais recente dos passados
         if (!resultado.proximo && resultado.passados.length > 0) {
-            resultado.proximo = resultado.passados.shift(); // Remove do início dos passados
+            // eventos.passados está em ordem ascendente (mais antigo -> mais recente),
+            // então usamos pop() para obter o mais recente.
+            resultado.proximo = resultado.passados.pop(); // Remove o final (mais recente)
         }
 
         // Inverte passados para ter os mais recentes primeiro
