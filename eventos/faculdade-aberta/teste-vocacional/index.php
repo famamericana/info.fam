@@ -1,4 +1,3 @@
-
 <?php
 // Vocational Test based on DISC (D, I, S, C)
 // One-file PHP app with Chart.js visualizations
@@ -65,28 +64,53 @@ function topTwoDims(array $scores): array
 }
 function suggestionsByDim(): array
 {
+  // Mapeamento para cursos da FAM (Graduação e Tecnólogos)
   return [
-    'D' => ['Gestão e Liderança', 'Empreendedorismo', 'Comercial/Vendas', 'Gestão de Projetos', 'Operações'],
-    'I' => ['Comunicação Social', 'Publicidade e Propaganda', 'Relações Públicas', 'Eventos', 'Vendas Consultivas'],
-    'S' => ['Psicologia', 'Serviço Social', 'Pedagogia', 'Enfermagem', 'Fonoaudiologia', 'Recursos Humanos'],
-    'C' => ['Engenharia', 'Tecnologia da Informação', 'Ciência de Dados', 'Finanças/Contabilidade', 'Direito/Compliance'],
+    'D' => [
+      'Administração',
+      'Gestão de Recursos Humanos',
+      'Gestão Financeira',
+      'Engenharia de Produção'
+    ],
+    'I' => [
+      'Comunicação Social – Publicidade e Propaganda',
+      'Marketing',
+      'Relações Públicas (áreas de comunicação)'
+    ],
+    'S' => [
+      'Pedagogia',
+      'Psicologia',
+      'Enfermagem',
+      'Fisioterapia',
+      'Nutrição',
+      'Fonoaudiologia'
+    ],
+    'C' => [
+      'Engenharia Civil',
+      'Engenharia Elétrica',
+      'Engenharia Mecânica',
+      'Ciência da Computação',
+      'Sistemas de Informação',
+      'Direito'
+    ],
   ];
 }
 function suggestionsByPair(string $a, string $b): array
 {
+  // Combinações direcionadas para cursos FAM relacionados
   $map = [
-    'DI' => ['Gestão Comercial', 'Marketing Estratégico', 'Empreendedorismo', 'Produto/Growth'],
-    'ID' => ['Marketing & Vendas', 'Business Development', 'Relações Comerciais'],
-    'DS' => ['Coordenação de Operações', 'Logística', 'Gestão de Times de Campo'],
-    'SD' => ['Supervisão de Atendimento', 'Suporte Operacional', 'Customer Success'],
-    'DC' => ['Gestão de Projetos', 'Engenharia de Produção', 'Consultoria Estratégica', 'Operações & Qualidade'],
-    'CD' => ['PMO', 'Processos/Qualidade', 'Análise de Negócios'],
-    'IS' => ['Recursos Humanos', 'Treinamento e Desenvolvimento', 'Atendimento/Experiência do Cliente', 'Fonoaudiologia Educacional/Clínica'],
-    'SI' => ['Educação', 'Saúde/Atenção Primária', 'Ouvidoria/Relacionamento'],
-    'IC' => ['Marketing de Performance', 'Pesquisa de Mercado', 'Product Marketing', 'Data Storytelling'],
-    'CI' => ['UX Research', 'Comunicação baseada em Dados', 'Planejamento e BI'],
-    'SC' => ['Qualidade', 'Compliance', 'Supply Chain', 'Processos/Documentação'],
-    'CS' => ['Controladoria', 'Auditoria', 'Suporte de TI/Infraestrutura']
+    'DI' => ['Administração', '  Gestão de Recursos Humanos', '  Marketing'],
+    'ID' => ['Comunicação Social – Publicidade e Propaganda', '  Marketing', 'Administração'],
+    'DS' => ['Pedagogia', 'Psicologia', 'Serviço na área de Saúde (Enfermagem)'],
+    'SD' => ['Enfermagem', 'Fisioterapia', 'Nutrição'],
+    'DC' => ['Engenharia de Produção', 'Engenharia Civil', 'Ciência da Computação'],
+    'CD' => ['Engenharia (diversas habilitações)', 'Sistemas de Informação', 'Ciência da Computação'],
+    'IS' => ['Recursos Humanos (Tecnólogo)', 'Pedagogia', 'Psicologia', 'Fonoaudiologia'],
+    'SI' => ['Pedagogia', 'Educação Física – Licenciatura', 'Psicologia'],
+    'IC' => ['Ciência da Computação', 'Sistemas de Informação', '  Design Gráfico'],
+    'CI' => ['Comunicação Social – Publicidade e Propaganda', '  Design Gráfico', 'Marketing'],
+    'SC' => ['Engenharia Civil', 'Engenharia de Produção', '  Logística'],
+    'CS' => ['Contábeis (Ciências Contábeis)', 'Administração', '  Gestão Financeira']
   ];
   return $map[$a . $b] ?? [];
 }
@@ -492,6 +516,18 @@ function dimDescriptions(): array
           <div class="callout">
             <div style="font-weight:700;margin-bottom:6px;">Como interpretar</div>
             <div class="muted">Este teste é um ponto de partida. Combine o resultado com conversas, trilhas de estudo e experiências reais (estágio, projetos, voluntariado).</div>
+            <div style="margin-top:8px;">
+              <div style="font-weight:700;">Cursos FAM recomendados</div>
+              <?php if (!empty($pairSugs)): ?>
+                <div class="muted" style="margin:6px 0 4px;">Combinando seus dois principais fatores (<strong><?php echo $top1 . $top2; ?></strong>), observe estes cursos:</div>
+                <?php foreach ($pairSugs as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+              <?php else: ?>
+                <div class="muted" style="margin:6px 0 4px;">Com base no fator dominante (<strong><?php echo $top1; ?></strong>), considere:</div>
+                <?php foreach ($dimSugs[$top1] as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+              <?php endif; ?>
+              <div class="muted" style="margin-top:8px;">E outras opções relacionadas ao segundo fator (<strong><?php echo $top2; ?></strong>):</div>
+              <?php foreach (($dimSugs[$top2] ?? []) as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
+            </div>
           </div>
           <div class="actions">
             <a class="btn" href="?">Refazer</a>
