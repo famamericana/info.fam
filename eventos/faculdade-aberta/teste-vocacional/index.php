@@ -70,7 +70,8 @@ function suggestionsByDim(): array
       'Administração',
       'Gestão de Recursos Humanos',
       'Gestão Financeira',
-      'Engenharia de Produção'
+      'Engenharia de Produção',
+      'Arquitetura e Urbanismo'
     ],
     'I' => [
       'Comunicação Social – Publicidade e Propaganda',
@@ -91,7 +92,8 @@ function suggestionsByDim(): array
       'Engenharia Mecânica',
       'Ciência da Computação',
       'Sistemas de Informação',
-      'Direito'
+      'Direito',
+      'Arquitetura e Urbanismo'
     ],
   ];
 }
@@ -103,8 +105,8 @@ function suggestionsByPair(string $a, string $b): array
     'ID' => ['Comunicação Social – Publicidade e Propaganda', '  Marketing', 'Administração'],
     'DS' => ['Pedagogia', 'Psicologia', 'Serviço na área de Saúde (Enfermagem)'],
     'SD' => ['Enfermagem', 'Fisioterapia', 'Nutrição'],
-    'DC' => ['Engenharia de Produção', 'Engenharia Civil', 'Ciência da Computação'],
-    'CD' => ['Engenharia (diversas habilitações)', 'Sistemas de Informação', 'Ciência da Computação'],
+    'DC' => ['Engenharia de Produção', 'Engenharia Civil', 'Ciência da Computação', 'Arquitetura e Urbanismo'],
+    'CD' => ['Engenharia (diversas habilitações)', 'Sistemas de Informação', 'Ciência da Computação', 'Arquitetura e Urbanismo'],
     'IS' => ['Recursos Humanos (Tecnólogo)', 'Pedagogia', 'Psicologia', 'Fonoaudiologia'],
     'SI' => ['Pedagogia', 'Educação Física – Licenciatura', 'Psicologia'],
     'IC' => ['Ciência da Computação', 'Sistemas de Informação', '  Design Gráfico'],
@@ -118,10 +120,10 @@ function careersByDim(): array
 {
   // Mapeamento para carreiras/profissões por dimensão
   return [
-    'D' => ['Gestor/Líder', 'Empreendedor', 'Diretor Executivo', 'Consultor Estratégico', 'Coordenador de Projetos'],
+    'D' => ['Gestor/Líder', 'Empreendedor', 'Diretor Executivo', 'Consultor Estratégico', 'Coordenador de Projetos', 'Arquiteto'],
     'I' => ['Publicitário', 'Vendedor', 'Apresentador', 'Relações Públicas', 'Coach/Palestrante', 'Marketing Digital'],
     'S' => ['Psicólogo', 'Enfermeiro', 'Professor', 'Assistente Social', 'Terapeuta', 'Fonoaudiólogo'],
-    'C' => ['Engenheiro', 'Analista de Sistemas', 'Contador', 'Advogado', 'Cientista de Dados', 'Auditor']
+    'C' => ['Engenheiro', 'Analista de Sistemas', 'Contador', 'Advogado', 'Cientista de Dados', 'Auditor', 'Arquiteto/Urbanista']
   ];
 }
 function dimDescriptions(): array
