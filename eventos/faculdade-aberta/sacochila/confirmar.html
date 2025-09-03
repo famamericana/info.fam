@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmação de Presença - Faculdade Aberta</title>
+    <title>Retirar Sacochila - Faculdade Aberta FAM</title>
     <style>
         :root {
             --primary-color: #4285f4;
@@ -206,34 +206,34 @@
 <body>
     <div class="container">
         <header>
-            <h1>Confirmação de Presença</h1>
+            <h1>Retirada de Sacochila</h1>
             <p>Faculdade Aberta 2025</p>
         </header>
 
         <div class="content">
             <div id="noId" class="manual-input" style="display: none;">
                 <div class="icon">🔍</div>
-                <h2>Digite o Código de Confirmação</h2>
-                <p>Informe o código do aluno para confirmar a presença</p>
+                <h2>Digite o Código para Retirar Sacochila</h2>
+                <p>Informe o código do aluno para liberar a retirada da sacochila</p>
 
                 <div class="input-form">
                     <div class="input-group">
                         <input type="text" id="manualId" placeholder="Digite o código do aluno">
-                        <button class="action-button" onclick="confirmManualId()">Confirmar</button>
+                        <button class="action-button" onclick="confirmManualId()">Liberar Sacochila</button>
                     </div>
-                    <p>Pressione Enter ou clique em Confirmar</p>
+                    <p>Pressione Enter ou clique em Liberar Sacochila</p>
                 </div>
             </div>
 
             <div id="loading" class="loading">
                 <div class="spinner"></div>
-                <p>Processando confirmação...</p>
+                <p>Processando retirada da sacochila...</p>
             </div>
 
             <div id="success" class="status-card success" style="display: none;">
                 <div class="icon">✅</div>
-                <h2>Presença Confirmada!</h2>
-                <p>Sua presença no evento foi registrada com sucesso.</p>
+                <h2>Sacochila Liberada!</h2>
+                <p>A sacochila foi liberada para retirada com sucesso.</p>
 
                 <div id="userData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
@@ -262,7 +262,7 @@
                         <span id="userModalidade"></span>
                     </div>
                     <div class="user-data-item">
-                        <span class="user-data-label">Data de Confirmação:</span>
+                        <span class="user-data-label">Data de Retirada:</span>
                         <span id="confirmationDate"></span>
                     </div>
                     <div class="user-data-item">
@@ -276,8 +276,8 @@
 
             <div id="alreadyConfirmed" class="status-card warning" style="display: none;">
                 <div class="icon">⚠️</div>
-                <h2>Presença Já Confirmada</h2>
-                <p>Esta presença já havia sido confirmada anteriormente.</p>
+                <h2>Sacochila Já Retirada</h2>
+                <p>Esta sacochila já foi retirada anteriormente.</p>
 
                 <div id="existingUserData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
@@ -319,7 +319,7 @@
 
             <div id="error" class="status-card error" style="display: none;">
                 <div class="icon">❌</div>
-                <h2 id="errorTitle">Erro na Confirmação</h2>
+                <h2 id="errorTitle">Erro na Liberação da Sacochila</h2>
                 <p id="errorMessage"></p>
                 <button class="action-button" onclick="resetPage()">Tentar com outro código</button>
             </div>
