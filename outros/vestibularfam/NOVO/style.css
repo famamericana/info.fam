@@ -1783,6 +1783,26 @@ footer .footer-info-icons i {
     .bola-1 {
         display: none;
     }
+
+    .bola-9{
+        bottom: 38% !important;
+    }
+
+    #countdown{
+        font-size: var(--fs-large) ;
+    }
+
+    .bola-5{
+        top: 32% !important;
+    }
+
+    .bola-2{
+        left: -50px !important;
+    }
+
+    .bola-7{
+        bottom: 17%;
+    }
 }
 
 @media (max-width: 900px) {
