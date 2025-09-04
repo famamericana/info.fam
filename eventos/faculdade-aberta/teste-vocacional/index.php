@@ -1,12 +1,9 @@
 <?php
 /* ============================================================
-   DISC – 1 página (24 grupos embutidos) + 3 gráficos Chart.js
-   - Marque 1 "MAIS" e 1 "MENOS" por grupo.
-   - Auto-scroll para o próximo grupo quando completar um grupo.
-   - Resultados só aparecem ao clicar "Ver resultados".
+   DISC – 1 página, auto-scroll, 24 grupos (textos exatos)
+   Gráficos: 3 painéis em Chart.js (-12..+12), Roda DISC (canvas),
+   Tabela de valores DISC + Tabela de Comportamento na Função.
    ============================================================ */
-
-// >>> TEXTO EXATO DOS 24 GRUPOS (extraído do seu CSV) <<<
 $groups = [
   ['numero' => 1,  'opcoes' => [
     'Facilidade em Relacionamento, Simpático, Agradável',
@@ -159,7 +156,7 @@ $groups = [
 
 <head>
   <meta charset="utf-8">
-  <title>DISC – Inventário (24 grupos, uma página)</title>
+  <title>DISC – Inventário</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -198,7 +195,7 @@ $groups = [
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 24px
     }
@@ -208,7 +205,7 @@ $groups = [
       gap: 12px;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px
+      margin-bottom: 10px
     }
 
     h1 {
@@ -302,13 +299,6 @@ $groups = [
       width: 0%
     }
 
-    .controls {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      margin: 10px 0
-    }
-
     button {
       background: var(--accent);
       color: white;
@@ -324,21 +314,91 @@ $groups = [
       cursor: not-allowed
     }
 
-    .warning {
-      color: var(--warn)
+    .canvasWrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px
+    }
+
+    .canvasBox {
+      background: #fff;
+      border: 1px solid #000;
+      border-radius: 4px;
+      padding: 8px;
+      height: 260px;
+    }
+
+    /* altura fixa */
+    .canvasBox canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    /* preenche a caixa */
+
+
+    .canvasTitle {
+      color: #c00;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 6px
+    }
+
+    @media (max-width:980px) {
+      .canvasWrap {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .table-mini {
+      border-collapse: collapse;
+      margin-right: 16px
+    }
+
+    .table-mini th,
+    .table-mini td {
+      border: 1px solid #888;
+      padding: 4px 8px;
+      background: #eee;
+      color: #a00;
+      font-weight: 700
+    }
+
+    .table-mini td {
+      color: #000;
+      text-align: center;
+      background: #f3f3f3
+    }
+
+    .flex {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap
     }
 
     .table-like {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr 1fr;
-      gap: 8px;
-      margin-top: 10px
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px
     }
 
-    .table-like div {
-      padding: 6px 8px;
+    .table-like th,
+    .table-like td {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px
+      padding: 10px;
+      border-radius: 10px;
+      color: var(--fg)
+    }
+
+    .table-like th {
+      font-weight: 700
+    }
+
+    .warning {
+      color: var(--warn)
     }
 
     .anchor {
@@ -352,68 +412,85 @@ $groups = [
     <div class="header">
       <div>
         <h1>Inventário DISC</h1>
-        <small>Marque <b>1</b> em <span class="kbd">MAIS</span> e <b>1</b> em <span class="kbd">MENOS</span> por grupo. Ao completar um grupo, a página rola para o próximo automaticamente.</small>
+        <small>Marque <b>1</b> em <span class="kbd">MAIS</span> e <b>1</b> em <span class="kbd">MENOS</span> por grupo. Ao completar um grupo, rola para o próximo automaticamente.</small>
       </div>
-      <label title="Alternar tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
+      <label title="Tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
     </div>
 
     <div class="progress"><span id="progressBar"></span></div>
     <small id="progressText">0/24 grupos concluídos</small>
     <small class="warning" id="validationMsg" style="display:none;margin-left:12px">Preencha 1 MAIS e 1 MENOS em cada grupo.</small>
 
+    <!-- Questionário -->
     <div id="groups"></div>
-
-    <div class="controls">
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin:8px 0 16px">
       <button id="btnFinish" disabled>Ver resultados ✅</button>
     </div>
 
-    <div id="results" style="display:none; margin-top:20px">
+    <!-- Resultados -->
+    <div id="results" style="display:none">
+      <!-- 1) Três painéis (Chart.js) -->
       <div class="card">
-        <h3 style="margin:0 0 10px">Gráfico I – Ambiente (MAIS)</h3>
-        <canvas id="chartAmbiente" height="220"></canvas>
-      </div>
-      <div class="card">
-        <h3 style="margin:0 0 10px">Gráfico II – Diferença (MAIS − MENOS)</h3>
-        <canvas id="chartDiferenca" height="220"></canvas>
-      </div>
-      <div class="card">
-        <h3 style="margin:0 0 10px">Gráfico III – Natural (aprox.)</h3>
-        <canvas id="chartNatural" height="220"></canvas>
+        <div class="canvasWrap">
+          <div class="canvasBox">
+            <canvas id="cvSelf" height="220"></canvas>
+            <div class="canvasTitle">SELF</div>
+          </div>
+          <div class="canvasBox">
+            <canvas id="cvPersona" height="220"></canvas>
+            <div class="canvasTitle">PERSONA</div>
+          </div>
+          <div class="canvasBox">
+            <canvas id="cvStress" height="220"></canvas>
+            <div class="canvasTitle">STRESS</div>
+          </div>
+        </div>
       </div>
 
+      <!-- 2) Roda + tabela mini -->
       <div class="card">
-        <h3 style="margin:0 0 10px">Resumo numérico</h3>
-        <div class="table-like">
-          <div class="badge">Fator</div>
-          <div class="badge">MAIS (Ambiente)</div>
-          <div class="badge">MENOS</div>
-          <div class="badge">Natural (24 − MENOS)</div>
-          <div><b>D</b></div>
-          <div id="tD1">0</div>
-          <div id="tD2">0</div>
-          <div id="tD3">0</div>
-          <div><b>I</b></div>
-          <div id="tI1">0</div>
-          <div id="tI2">0</div>
-          <div id="tI3">0</div>
-          <div><b>S</b></div>
-          <div id="tS1">0</div>
-          <div id="tS2">0</div>
-          <div id="tS3">0</div>
-          <div><b>C</b></div>
-          <div id="tC1">0</div>
-          <div id="tC2">0</div>
-          <div id="tC3">0</div>
+        <div class="flex">
+          <table class="table-mini" id="miniTable">
+            <thead>
+              <tr>
+                <th>D</th>
+                <th>I</th>
+                <th>S</th>
+                <th>C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="miniD">0</td>
+                <td id="miniI">0</td>
+                <td id="miniS">0</td>
+                <td id="miniC">0</td>
+              </tr>
+            </tbody>
+          </table>
+          <canvas id="cvWheel" width="520" height="520" style="background:#fff;border:1px solid #ddd;border-radius:8px"></canvas>
         </div>
+      </div>
+
+      <!-- 3) Análise de Comportamento na Função -->
+      <div class="card">
+        <h3 style="margin:0 0 10px">ANÁLISE DE COMPORTAMENTO NA FUNÇÃO</h3>
+        <table class="table-like" id="behTable">
+          <thead>
+            <tr>
+              <th style="width:60%">Comportamento</th>
+              <th>ÍNDICE</th>
+              <th>FORÇA DO COMPORTAMENTO</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
   </div>
 
   <script>
-    // ===== Dados do PHP =====
-    const GROUPS = <?php echo json_encode($groups, JSON_UNESCAPED_UNICODE); ?>;
-
-    // ===== Tema claro/escuro =====
+    // ===== Tema =====
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('disc-theme') || 'dark';
@@ -426,7 +503,8 @@ $groups = [
       localStorage.setItem('disc-theme', themeToggle.checked ? 'light' : 'dark');
     });
 
-    // ===== Renderização (uma página) =====
+    // ===== Dados =====
+    const GROUPS = <?php echo json_encode($groups, JSON_UNESCAPED_UNICODE); ?>;
     const groupsWrap = document.getElementById('groups');
     let selections = GROUPS.map(() => ({
       mais: null,
@@ -448,7 +526,7 @@ $groups = [
         card.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
         <h3 style="margin:0">Grupo ${g.numero}</h3>
-        <div class="badge">Marque <b>1</b> em MAIS e <b>1</b> em MENOS</div>
+        <div class="badge">1 em MAIS e 1 em MENOS</div>
       </div>
       <div class="row" style="font-weight:600">
         <div></div><div style="text-align:center">MAIS</div><div style="text-align:center">MENOS</div>
@@ -464,19 +542,11 @@ $groups = [
         groupsWrap.appendChild(card);
       });
 
-      // Restaura marcações
       selections.forEach((sel, gi) => {
-        if (sel.mais !== null) {
-          const r = document.querySelector(`input[name="mais[${gi}]"][value="${sel.mais}"]`);
-          if (r) r.checked = true;
-        }
-        if (sel.menos !== null) {
-          const r = document.querySelector(`input[name="menos[${gi}]"][value="${sel.menos}"]`);
-          if (r) r.checked = true;
-        }
+        if (sel.mais !== null) document.querySelector(`input[name="mais[${gi}]"][value="${sel.mais}"]`)?.setAttribute('checked', true);
+        if (sel.menos !== null) document.querySelector(`input[name="menos[${gi}]"][value="${sel.menos}"]`)?.setAttribute('checked', true);
       });
 
-      // Listeners
       groupsWrap.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener('change', onSelect));
       updateProgress();
     }
@@ -488,24 +558,19 @@ $groups = [
       const type = input.dataset.type;
       const itemIdx = parseInt(input.dataset.item, 10);
 
-      // Impede MAIS e MENOS na mesma opção
       if (type === 'mais' && selections[gi].menos === itemIdx) {
         selections[gi].menos = null;
-        const rm = document.querySelector(`input[name="menos[${gi}]"][value="${itemIdx}"]`);
-        if (rm) rm.checked = false;
+        document.querySelector(`input[name="menos[${gi}]"][value="${itemIdx}"]`)?.removeAttribute('checked');
       } else if (type === 'menos' && selections[gi].mais === itemIdx) {
         selections[gi].mais = null;
-        const rp = document.querySelector(`input[name="mais[${gi}]"][value="${itemIdx}"]`);
-        if (rp) rp.checked = false;
+        document.querySelector(`input[name="mais[${gi}]"][value="${itemIdx}"]`)?.removeAttribute('checked');
       }
 
       selections[gi][type] = itemIdx;
       updateProgress();
 
-      // Se completou (tem MAIS e MENOS), rola para o próximo grupo
       if (selections[gi].mais !== null && selections[gi].menos !== null) {
-        const next = document.getElementById(`group-${gi+1}`);
-        if (next) next.scrollIntoView({
+        document.getElementById(`group-${gi+1}`)?.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
@@ -520,141 +585,308 @@ $groups = [
       document.getElementById('btnFinish').disabled = (done !== GROUPS.length);
     }
 
-    // ===== Lógica de pontuação =====
-    // Se tiver gabarito, preencha por grupo/opção (A,B,C,D) para MAIS:
-    const customMapping = {
-      // "1": { "MAIS": ["I","D","S","C"] },
-      // "2": { "MAIS": ["S","D","I","C"] },
-      // ...
-    };
+    // ===== Heurística para mapear textos → D/I/S/C (troque por gabarito se tiver) =====
     const KEYWORDS = {
-      D: ['resultado', 'resultados', 'rápido', 'lider', 'liderar', 'decidir', 'risco', 'coraj', 'lutar', 'meta', 'objetivo', 'compet', 'dinâmico', 'determinado', 'assumir', 'dirigir', 'controle', 'questiona'],
-      I: ['relacion', 'simpát', 'agrad', 'fala', 'falante', 'anim', 'incentiv', 'entusias', 'otimista', 'popular', 'amig', 'amigo', 'convers', 'persuas', 'carism', 'apresentar', 'público', 'engaja', 'anima'],
-      S: ['tranquil', 'calm', 'pacient', 'escuta', 'respeit', 'tolerant', 'apoia', 'constante', 'cooper', 'harmonia', 'estável', 'rotina', 'previs', 'equilíbrio', 'apaziguar', 'consist'],
-      C: ['organiza', 'detalh', 'técnic', 'tecnic', 'precis', 'analít', 'regras', 'padr', 'prazo', 'controle', 'perfeccion', 'qualidad', 'conform', 'processo', 'critéri', 'planejo', 'exigente']
+      D: ['resultado', 'dinam', 'decid', 'lider', 'lutar', 'risco', 'objetivo', 'desafi', 'control', 'enfrent'],
+      I: ['relacion', 'simp', 'agrad', 'fala', 'falant', 'anim', 'entusias', 'otimist', 'carism', 'engaj', 'social', 'apresent'],
+      S: ['tranquil', 'calm', 'pacient', 'harmon', 'constante', 'equilibr', 'apaz', 'rotina', 'previs', 'sereno'],
+      C: ['qualid', 'regras', 'padr', 'perfeccion', 'detalh', 'anal', 'técnic', 'tecnic', 'precis', 'process', 'critéri', 'exigent']
     };
 
     function norm(s) {
       return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     }
 
-    function mapToFactor(grupoNumero, itemIndex, text) {
-      const g = String(grupoNumero);
-      if (customMapping[g]?.MAIS?.[itemIndex]) return customMapping[g].MAIS[itemIndex].toUpperCase();
+    function mapToFactor(text, fallbackIndex) {
       const t = norm(text);
       const has = (arr) => arr.some(k => t.includes(norm(k)));
       if (has(KEYWORDS.D)) return 'D';
       if (has(KEYWORDS.I)) return 'I';
       if (has(KEYWORDS.S)) return 'S';
       if (has(KEYWORDS.C)) return 'C';
-      // fallback por índice A,B,C,D -> D,I,S,C
-      return ['D', 'I', 'S', 'C'][itemIndex] || 'D';
+      return ['D', 'I', 'S', 'C'][fallbackIndex] || 'D';
     }
 
-    function computeScores() {
+    // ===== Perfis =====
+    function computeProfiles() {
       const idx = {
         D: 0,
         I: 1,
         S: 2,
         C: 3
       };
-      const mais = [0, 0, 0, 0];
-      const menos = [0, 0, 0, 0];
-
+      const mais = [0, 0, 0, 0],
+        menos = [0, 0, 0, 0];
       selections.forEach((sel, gi) => {
-        const g = GROUPS[gi];
-        const fMais = mapToFactor(g.numero, sel.mais, g.opcoes[sel.mais]);
-        const fMenos = mapToFactor(g.numero, sel.menos, g.opcoes[sel.menos]);
+        const texts = GROUPS[gi].opcoes;
+        const fMais = mapToFactor(texts[sel.mais], sel.mais);
+        const fMenos = mapToFactor(texts[sel.menos], sel.menos);
         mais[idx[fMais]] += 1;
         menos[idx[fMenos]] += 1;
       });
 
-      const ambiente = mais.slice(); // Graf. I
-      const diferenca = mais.map((v, i) => v - menos[i]); // Graf. II
-      const natural = menos.map(v => (24 - v)); // Graf. III (aprox.)
+      // SELF, PERSONA, STRESS em -12..+12
+      const SELF = menos.map(v => (24 - v) - 12);
+      const PERSONA = mais.map(v => (v - 6));
+      const STRESS = mais.map((v, i) => (v - menos[i]) / 2);
 
       return {
-        ambiente,
-        diferenca,
-        natural,
+        SELF,
+        PERSONA,
+        STRESS,
         mais,
         menos
       };
     }
 
-    // ===== Gráficos =====
-    let ch1, ch2, ch3;
-
-    function buildBar(ctx, label, data) {
+    // ===== Gráficos (Chart.js) =====
+    function buildLineChart(ctx, data) {
       return new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: ['D', 'I', 'S', 'C'],
           datasets: [{
-            label,
             data,
-            borderWidth: 1
+            borderWidth: 2,
+            pointRadius: 3,
+            pointHoverRadius: 4,
+            fill: false,
+            tension: 0,
+            borderColor: '#113cfc'
           }]
         },
         options: {
           responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          },
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               display: false
+            },
+            tooltip: {
+              enabled: false
+            }
+          },
+          elements: {
+            line: {
+              borderJoinStyle: 'round'
+            }
+          },
+          layout: {
+            padding: {
+              left: 6,
+              right: 6,
+              top: 6,
+              bottom: 2
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false,
+                drawBorder: true,
+                color: '#000'
+              },
+              ticks: {
+                color: '#000'
+              }
+            },
+            y: {
+              min: -12,
+              max: 12,
+              ticks: {
+                stepSize: 2,
+                color: '#000'
+              },
+              grid: {
+                color: '#777',
+                drawTicks: false
+              },
+              border: {
+                display: true,
+                color: '#000'
+              }
             }
           }
         }
       });
     }
 
+    // ===== Roda (canvas custom com “diamantes”) =====
+    function drawWheel(canvas, values) { // values = [D,I,S,C] em -12..+12
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width,
+        H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+      const cx = W / 2,
+        cy = H / 2,
+        R = Math.min(W, H) / 2 - 26;
+
+      // fundo
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, W, H);
+
+      // círculo externo
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // “diamantes” concêntricos
+      ctx.strokeStyle = '#5aa9fa55';
+      ctx.lineWidth = 2;
+      for (let t = R / 6; t <= R; t += R / 6) {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - t);
+        ctx.lineTo(cx + t, cy);
+        ctx.lineTo(cx, cy + t);
+        ctx.lineTo(cx - t, cy);
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      // letras grandes
+      ctx.fillStyle = '#000';
+      ctx.font = 'bold 36px Arial';
+      ctx.fillText('D', cx - 12, cy - R + 42);
+      ctx.fillText('I', cx - 6, cy + R - 18);
+      ctx.fillText('S', cx + R - 26, cy + 6);
+      ctx.fillText('C', cx - R + 10, cy + 6);
+
+      // polígono (valores SELF)
+      const toR = (v) => ((v + 12) / 24) * R;
+      const pts = [{
+          x: cx,
+          y: cy - toR(values[0])
+        }, // D
+        {
+          x: cx,
+          y: cy + toR(values[1])
+        }, // I
+        {
+          x: cx + toR(values[2]),
+          y: cy
+        }, // S
+        {
+          x: cx - toR(values[3]),
+          y: cy
+        }, // C
+      ];
+      ctx.strokeStyle = '#113cfc';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fillStyle = '#113cfc';
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // ===== Tabela de Comportamento =====
+    const BEHAVIORS = [
+      // D
+      ['Assumir riscos maiores baseados em resultados potenciais', 'D'],
+      ['Reagir aos problemas com rapidez', 'D'],
+      ['Usar o poder e a autoridade para obter resultados', 'D'],
+      ['Direcionar os esforços dos outros', 'D'],
+      ['Assumir riscos com ideias não testadas', 'D'],
+      ['Delegar responsabilidades a outros e fazer follow-up', 'D'],
+      ['Agir com energia mesmo magoando outras pessoas', 'D'],
+      ['Exigir resultados imediatos', 'D'],
+      // I
+      ['Influenciar pessoas transmitindo otimismo', 'I'],
+      ['Influenciar ou inspirar outros verbalmente', 'I'],
+      ['Usar o carisma e o entusiasmo pessoal', 'I'],
+      ['Facilitar a interação entre as pessoas', 'I'],
+      ['Verbalizar os pensamentos e sentimentos dos outros', 'I'],
+      ['Reduzir a tensão no grupo por meio de interação verbal', 'I'],
+      ['Resolver conflitos iniciando e promovendo análise e debate', 'I'],
+      ['Encorajar verbalmente os esforços dos outros', 'I'],
+      // S
+      ['Manter métodos que se mostraram eficazes no passado', 'S'],
+      ['Promover mudança através de processos cuidadosamente planejados', 'S'],
+      ['Utilizar processos metódicos para fazer as tarefas', 'S'],
+      ['Cooperar com outros para concluir as tarefas', 'S'],
+      ['Solucionar problemas por meio de estudo e cooperação', 'S'],
+      ['Responsabilizar-se pelo acompanhamento de detalhes', 'S'],
+      ['Levar em conta os diferentes pontos de vista', 'S'],
+      ['Elaborar rotinas funcionais', 'S'],
+      // C
+      ['Ouvir com reserva a opinião de outros', 'C'],
+      ['Conferir a exatidão, especialmente do seu próprio trabalho', 'C'],
+      ['Seguir cuidadosamente procedimentos e processos-chave', 'C'],
+      ['Demonstrar autodisciplina trabalhando sozinho', 'C'],
+      ['Analisar muitas variáveis para tomar decisão', 'C'],
+      ['Conter-se quando estiver impaciente ou ansioso', 'C'],
+      ['Manter-se neutro quando surgirem conflitos', 'C'],
+      ['Avaliar cuidadosamente métodos e ações alternativas', 'C'],
+    ];
+
+    function buildBehaviorTable(selfScores) {
+      const idx = {
+        D: 0,
+        I: 1,
+        S: 2,
+        C: 3
+      };
+      const tbody = document.querySelector('#behTable tbody');
+      tbody.innerHTML = '';
+      const txtForça = (v) => {
+        const a = Math.abs(v);
+        if (a >= 10) return 'Muito Alto';
+        if (a >= 8) return 'Alto';
+        if (a >= 4) return 'Médio';
+        if (a >= 1) return 'Baixo';
+        return 'Muito Baixo';
+      };
+      BEHAVIORS.forEach(([text, f]) => {
+        const score = Math.round(selfScores[idx[f]]);
+        const força = txtForça(score);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${text}</td><td style="text-align:center;font-weight:700">${score}</td><td style="text-align:center">${força}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ===== Botão de resultados =====
+    let chSelf, chPersona, chStress;
     document.getElementById('btnFinish').addEventListener('click', () => {
-      const allDone = selections.every(g => g.mais !== null && g.menos !== null);
-      if (!allDone) {
+      if (selections.some(g => g.mais === null || g.menos === null)) {
         document.getElementById('validationMsg').style.display = 'inline';
         return;
       }
       document.getElementById('validationMsg').style.display = 'none';
+      const P = computeProfiles();
 
-      const {
-        ambiente,
-        diferenca,
-        natural,
-        mais,
-        menos
-      } = computeScores();
+      // Atualiza mini tabela
+      document.getElementById('miniD').textContent = Math.round(P.SELF[0]);
+      document.getElementById('miniI').textContent = Math.round(P.SELF[1]);
+      document.getElementById('miniS').textContent = Math.round(P.SELF[2]);
+      document.getElementById('miniC').textContent = Math.round(P.SELF[3]);
+
+      // Line charts (Chart.js)
+      const ctxSelf = document.getElementById('cvSelf').getContext('2d');
+      const ctxPersona = document.getElementById('cvPersona').getContext('2d');
+      const ctxStress = document.getElementById('cvStress').getContext('2d');
+      if (chSelf) chSelf.destroy();
+      if (chPersona) chPersona.destroy();
+      if (chStress) chStress.destroy();
+      chSelf = buildLineChart(ctxSelf, P.SELF);
+      chPersona = buildLineChart(ctxPersona, P.PERSONA);
+      chStress = buildLineChart(ctxStress, P.STRESS);
+
+      // Roda (usa SELF)
+      drawWheel(document.getElementById('cvWheel'), P.SELF);
+
+      // Tabela de comportamento
+      buildBehaviorTable(P.SELF);
+
       document.getElementById('results').style.display = '';
-
-      const ctx1 = document.getElementById('chartAmbiente').getContext('2d');
-      const ctx2 = document.getElementById('chartDiferenca').getContext('2d');
-      const ctx3 = document.getElementById('chartNatural').getContext('2d');
-      if (ch1) ch1.destroy();
-      if (ch2) ch2.destroy();
-      if (ch3) ch3.destroy();
-      ch1 = buildBar(ctx1, 'Ambiente (MAIS)', ambiente);
-      ch2 = buildBar(ctx2, 'Diferença (MAIS − MENOS)', diferenca);
-      ch3 = buildBar(ctx3, 'Natural (24 − MENOS)', natural);
-
-      // Tabela
-      const put = (id, val) => document.getElementById(id).textContent = String(val);
-      put('tD1', mais[0]);
-      put('tI1', mais[1]);
-      put('tS1', mais[2]);
-      put('tC1', mais[3]);
-      put('tD2', menos[0]);
-      put('tI2', menos[1]);
-      put('tS2', menos[2]);
-      put('tC2', menos[3]);
-      put('tD3', natural[0]);
-      put('tI3', natural[1]);
-      put('tS3', natural[2]);
-      put('tC3', natural[3]);
-
-      // rola até os resultados
       document.getElementById('results').scrollIntoView({
         behavior: 'smooth',
         block: 'start'
