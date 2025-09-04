@@ -576,59 +576,70 @@ $discKey = [
     const RECO = {
       D: {
         cursos: [
-          'Administração', 'Engenharia de Produção', 'Engenharia Civil',
-          'Sistemas de Informação / Ciência da Computação', 'Direito', 'Gestão Comercial'
+          'Administração', 'Engenharia de Produção', 'Engenharia Civil', 'Engenharia Elétrica',
+          'Engenharia Mecânica', 'Engenharia Química', 'Sistemas de Informação', 'Ciência da Computação',
+          'Direito', 'Gestão Financeira', 'Marketing', 'Arquitetura e Urbanismo'
         ],
         profs: [
-          'Gestão/Coordenação', 'Empreendedor(a)', 'Liderança de Operações/Projetos',
-          'Vendas/Negócios (Hunter/Key Account)', 'Consultoria Estratégica', 'Product Manager'
+          'CEO/Diretor Executivo', 'Gerente de Projetos', 'Empreendedor(a)', 'Consultor Empresarial',
+          'Engenheiro de Projetos', 'Advogado Empresarial', 'Coordenador de Operações', 'Gestor Comercial',
+          'Product Manager', 'Líder de Equipe', 'Diretor de Vendas', 'Analista de Negócios Sênior',
+          'Gerente de Desenvolvimento', 'Coordenador de Engenharia', 'Gestor de Marketing Estratégico'
         ],
         frases: [
-          'Foco em resultados, rapidez na decisão, gosto por desafios e metas agressivas.',
-          'Ambientes competitivos e com autonomia tendem a potencializar a performance.'
+          'Perfil orientado para resultados, com rapidez na tomada de decisões e gosto por desafios complexos.',
+          'Ambientes competitivos e dinâmicos, com autonomia para liderar e inovar, potencializam a performance.'
         ]
       },
       I: {
         cursos: [
-          'Publicidade e Propaganda', 'Marketing', 'Relações Públicas',
-          'Administração', 'Design/UX', 'Eventos'
+          'Comunicação Social – Publicidade e Propaganda', 'Marketing', 'Administração',
+          'Design Gráfico', 'Gestão de Recursos Humanos', 'Psicologia',
+          'Letras – Português e Inglês', 'Pedagogia (com ênfase em Educação Infantil)', 'Educação Física – Licenciatura'
         ],
         profs: [
-          'Marketing Digital/Social Media', 'Vendas e Atendimento',
-          'Comunicação/Branding', 'RH/Employer Branding', 'Apresentador(a)/Conteúdo',
-          'Desenvolvimento de Negócios (BDR/SDR)'
+          'Publicitário(a)', 'Social Media Manager', 'Coordenador de Marketing', 'Designer Gráfico',
+          'Analista de RH', 'Relações Públicas', 'Apresentador(a)/Locutor(a)', 'Professor(a)',
+          'Vendedor Consultivo', 'Coordenador de Eventos', 'Jornalista', 'Instrutor de Treinamentos',
+          'Analista de Comunicação', 'Community Manager', 'Coordenador Pedagógico', 'Coach/Mentor'
         ],
         frases: [
-          'Comunicação persuasiva, energia social e facilidade de networking.',
-          'Ambientes colaborativos e criativos favorecem a entrega.'
+          'Comunicação persuasiva, carisma natural e facilidade para networking e relacionamentos.',
+          'Ambientes colaborativos, criativos e sociais favorecem o desenvolvimento e entrega de resultados.'
         ]
       },
       S: {
         cursos: [
-          'Psicologia', 'Fisioterapia', 'Enfermagem', 'Nutrição',
-          'Contábeis', 'Logística'
+          'Enfermagem', 'Fisioterapia', 'Fonoaudiologia', 'Nutrição', 'Psicologia',
+          'Medicina Veterinária', 'Farmácia', 'Estética e Cosmética', 'Pedagogia (com ênfase em Educação Infantil)',
+          'Ciências Contábeis', 'Logística', 'Gestão de Recursos Humanos', 'Educação Física – Bacharelado'
         ],
         profs: [
-          'Suporte/Customer Success', 'Operações/Backoffice', 'Recursos Humanos',
-          'Educação/Docência', 'Qualidade de Atendimento', 'Gestão de Rotinas/PMO'
+          'Enfermeiro(a)', 'Fisioterapeuta', 'Fonoaudiólogo(a)', 'Nutricionista', 'Psicólogo(a) Clínico',
+          'Veterinário(a)', 'Farmacêutico(a)', 'Esteticista', 'Professor(a) de Educação Infantil',
+          'Contador(a)', 'Analista de Logística', 'Analista de RH', 'Personal Trainer',
+          'Terapeuta Ocupacional', 'Cuidador(a)', 'Assistente Social', 'Coordenador de Equipe de Saúde'
         ],
         frases: [
-          'Constância, escuta ativa e construção de relações de confiança.',
-          'Ambientes estáveis e com processos claros maximizam resultados.'
+          'Perfil voltado ao cuidado, escuta ativa e construção de relações de confiança duradouras.',
+          'Ambientes estáveis, com processos bem definidos e foco no bem-estar das pessoas maximizam resultados.'
         ]
       },
       C: {
         cursos: [
-          'Engenharia (Elétrica/Civil/Mecânica)', 'Ciência da Computação',
-          'Sistemas de Informação', 'Direito', 'Arquitetura e Urbanismo'
+          'Engenharia Civil', 'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Química',
+          'Ciência da Computação', 'Sistemas de Informação', 'Arquitetura e Urbanismo', 'Biomedicina (Bacharelado)',
+          'Farmácia', 'Ciências Contábeis', 'Direito', 'Gestão Financeira', 'Logística'
         ],
         profs: [
-          'Qualidade/Compliance', 'Dados/BI', 'Desenvolvimento de Software',
-          'Engenharia/Projetos', 'Jurídico/Perícia', 'Arquitetura/Planejamento'
+          'Engenheiro(a) de Projetos', 'Arquiteto(a)', 'Analista de Sistemas', 'Desenvolvedor(a) de Software',
+          'Biomédico(a)', 'Farmacêutico(a) Industrial', 'Contador(a)', 'Auditor(a)', 'Advogado(a) Especialista',
+          'Analista Financeiro', 'Coordenador de Qualidade', 'Analista de Logística', 'Perito Técnico',
+          'Consultor em Compliance', 'Especialista em Dados/BI', 'Analista de Processos', 'Gerente de Qualidade'
         ],
         frases: [
-          'Atenção a detalhes, padrão elevado e tomada de decisão baseada em evidências.',
-          'Ambientes com normas, métricas e precisão sustentam a performance.'
+          'Atenção meticulosa aos detalhes, padrão elevado de qualidade e decisões baseadas em dados concretos.',
+          'Ambientes estruturados, com normas claras, métricas precisas e foco na excelência técnica sustentam a performance.'
         ]
       }
     };
