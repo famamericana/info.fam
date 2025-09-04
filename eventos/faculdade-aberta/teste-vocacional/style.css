@@ -1,4 +1,6 @@
-    :root {
+   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+   :root {
         --bg: #0e0f12;
         --card: #16181d;
         --text: #e7e9ee;
@@ -14,7 +16,7 @@
 
     body {
         margin: 0;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Inter, sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
         background: var(--bg);
         color: var(--text)
     }
@@ -95,7 +97,12 @@
     }
 
     .warning {
-        color: #f59e0b
+        font-size: 12px;
+        border: 1px solid #ffa55b;
+        border-radius: 999px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 600;
     }
 
     .card {
@@ -113,10 +120,12 @@
 
     .badge {
         font-size: 12px;
-        color: var(--muted);
+      
         border: 1px solid var(--accent);
-        padding: 4px 8px;
-        border-radius: 999px
+        border-radius: 999px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 600;
     }
 
     .row {
@@ -246,38 +255,82 @@
     body.light small {
         color: var(--mutedL)
     }
- /* sticky header that contains title, theme toggle, progress and badge */
+
+    /* sticky header that contains title, theme toggle, progress and badge */
     #stickyHeader {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      backdrop-filter: blur(4px);
-      background: rgba(255,255,255,0.92);
-      color: #333;
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        backdrop-filter: blur(4px);
+        background: rgba(255, 255, 255, 0.92);
+        color: #333;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
-    body.dark #stickyHeader { 
-      background: rgba(18,18,18,0.88); 
-      color: #eee; 
-      border-bottom-color: rgba(255,255,255,0.04); 
+
+    body.dark #stickyHeader {
+        background: rgba(18, 18, 18, 0.88);
+        color: #eee;
+        border-bottom-color: rgba(255, 255, 255, 0.04);
     }
-    body.light #stickyHeader { 
-      background: rgba(255,255,255,0.92); 
-      color: #333; 
-      border-bottom-color: rgba(0,0,0,0.06); 
+
+    body.light #stickyHeader {
+        background: rgba(255, 255, 255, 0.92);
+        color: #333;
+        border-bottom-color: rgba(0, 0, 0, 0.06);
     }
-    #stickyHeader .topRow { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-    #stickyHeader .metaRow { display:flex; align-items:center; gap:12px; margin-top:8px; flex-wrap:wrap }
-    .badge { background:#f3f4f6; color:#111; padding:6px 10px; border-radius:999px; font-weight:600; }
-    body.dark .badge { background:#2b2b2b; color:#fff; }
-    body.light .badge { background:#f3f4f6; color:#111; }
-    .progress { flex:1; min-width:180px; }
-    .progress span { display:block; height:10px; background:#e5e7eb; border-radius:999px; overflow:hidden; }
-    body.dark .progress span { background:#333; }
-    body.light .progress span { background:#e5e7eb; }
-    #progressBar { display:block; height:10px; background:linear-gradient(90deg,#3b82f6,#60a5fa); width:0%; }
-    
+
+    #stickyHeader .topRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    #stickyHeader .metaRow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap
+    }
+
+
+ 
+
+    .progress {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .progress span {
+        display: block;
+        height: 10px;
+        background: #e5e7eb;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    body.dark .progress span {
+        background: #333;
+    }
+
+    body.light .progress span {
+        background: #e5e7eb;
+    }
+
+    #progressBar {
+        display: block;
+        height: 10px;
+        background: var(--accent);
+        width: 0%;
+    }
+
     /* Fix scroll position to avoid navbar covering content */
-    #groups { padding-top: 20px; }
-    .card.anchor { scroll-margin-top: 112px; }
+    #groups {
+        padding-top: 20px;
+    }
+
+    .card.anchor {
+        scroll-margin-top: 112px;
+    }
