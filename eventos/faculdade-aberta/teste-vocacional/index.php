@@ -194,7 +194,7 @@ $discKey = [
 <body class="dark">
   <div class="container">
     <div class="header">
-      <h1>Inventário DISC</h1>
+      <h1> DISC</h1>
       <label title="Tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
     </div>
 
@@ -337,14 +337,21 @@ $discKey = [
       const gi = parseInt(input.dataset.g, 10);
       const type = input.dataset.type;
       const itemIdx = parseInt(input.dataset.item, 10);
-
-      if (type === 'mais' && selections[gi].menos === itemIdx) {
-        selections[gi].menos = null;
-        document.querySelector(`input[name="menos[${gi}]"][value="${itemIdx}"]`)?.removeAttribute('checked');
-      } else if (type === 'menos' && selections[gi].mais === itemIdx) {
-        selections[gi].mais = null;
-        document.querySelector(`input[name="mais[${gi}]"][value="${itemIdx}"]`)?.removeAttribute('checked');
+      // Prevent selecting same option for MAIS and MENOS in the same group
+      const currently = selections[gi];
+      if (type === 'mais' && currently.menos === itemIdx) {
+        // invalid: same as 'menos'
+        // revert radio change and show validation
+        input.checked = false;
+        showValidation(`Escolha uma opção diferente para MAIS no Grupo ${gi + 1}.`);
+        return;
       }
+      if (type === 'menos' && currently.mais === itemIdx) {
+        input.checked = false;
+        showValidation(`Escolha uma opção diferente para MENOS no Grupo ${gi + 1}.`);
+        return;
+      }
+
       selections[gi][type] = itemIdx;
       updateProgress();
 
@@ -354,6 +361,18 @@ $discKey = [
           block: 'start'
         });
       }
+    }
+
+    // Small validation message helper (shows temporary message)
+    function showValidation(msg) {
+      const el = document.getElementById('validationMsg');
+      el.textContent = msg;
+      el.style.display = 'inline';
+      clearTimeout(showValidation._t);
+      showValidation._t = setTimeout(() => {
+        el.style.display = 'none';
+        el.textContent = 'Preencha 1 MAIS e 1 MENOS em cada grupo.';
+      }, 2500);
     }
 
     function updateProgress() {
