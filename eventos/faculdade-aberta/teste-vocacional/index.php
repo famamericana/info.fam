@@ -6,181 +6,177 @@
    Predominante + Cursos & Profissões recomendados.
    ============================================================ */
 $groups = [
-  ['numero' => 1,  'opcoes' => [
-    'Facilidade em Relacionamento, Simpático, Agradável',     // I
-    'Acredita, confia nos outros',                            // S
-    'Não tem medo de correr riscos',                          // D
-    'Tolerante, Respeitoso',                                  // C
-  ]],
-  ['numero' => 2,  'opcoes' => [
-    'Tanqüilo, fala devagar, reservado',                      // S
-    'Desbravador, Otimista, Visionário',                      // D
-    'Centro das atenções, sociável',                          // I
-    'Pacificador, Harmonioso',                                // C (poderia ser S; aqui mantemos C=concilia/regras)
-  ]],
-  ['numero' => 3,  'opcoes' => [
-    'Tem facilidade em escutar os outros',                    // S
-    'Perfeccionista',                                         // C
-    'Faz parte da equipe',                                    // I
-    'Gosta de estabelecer metas',                             // D
-  ]],
-  ['numero' => 4,  'opcoes' => [
-    'Se as coisas dão errado, fica triste',                   // S
-    'Se estou triste, guardo meus sentimentos comigo',        // C
-    'Em conflitos, digo meu lado da história',                // D
-    'Se ninguém concorda e apoia, enfrento a oposição',       // I (influencia/apoio) 
-  ]],
-  ['numero' => 5,  'opcoes' => [
-    'Bricalhão, Animado, Falante',                            // I
-    'Decidido, Dinâmico, Determinado',                        // D
-    'Tenta manter o equilíbrio no ambiente',                  // S
-    'Busca qualidade e é exigente consigo',                   // C
-  ]],
-  ['numero' => 6,  'opcoes' => [
-    'Gosta de liderança e de dirigir',                        // D
-    'Gosta de análise e coisas técnicas',                     // C
-    'Gosta de estar com as pessoas',                          // I
-    'Gosta demais de rotina e estabilidade',                  // S
-  ]],
-  ['numero' => 7,  'opcoes' => [
-    'Não gosta de mudanças de última hora',                   // S
-    'Costuma fazer promessas',                                // I
-    'Em conflitos, prefere argumentar tecnicamente',          // C
-    'Se for o caso, não tem medo de lutar',                   // D
-  ]],
-  ['numero' => 8,  'opcoes' => [
-    'Gosto de estar com meus amigos, prefiro andar em grupo', // I
-    'Gosto de ter o controle e de dirigir',                   // D
-    'Gosto de aprender em silêncio para não me desconcentrar', // C
-    'Gosto de estar de acordo com as regras',                 // S
-  ]],
-  ['numero' => 9,  'opcoes' => [
-    'Se alguém muda a rota do trabalho, aceito e me ajusto',  // S
-    'Se alguém muda a rota do trabalho, confronto e questiono', // D
-    'Se alguém muda a rota do trabalho, perco a confiança',   // I
-    'Se alguém muda a rota do trabalho, analiso e me adequo', // C
-  ]],
-  ['numero' => 10, 'opcoes' => [
-    'Em um time, sou o que questiona prazos e padrões',       // C
-    'Em um time, sou o que anima e engaja o grupo',           // I
-    'Em um time, sou o que mantém o ritmo e o clima',         // S
-    'Em um time, sou o que define metas e resultados',        // D
-  ]],
-  ['numero' => 11, 'opcoes' => [
-    'Se alguém me pressiona, fico na defensiva',              // S
-    'Se alguém me pressiona, sou mais objetivo e direto',     // D
-    'Se alguém me pressiona, tento apaziguar o conflito',     // I
-    'Se alguém me pressiona, falo e escuto para chegar a um acordo', // C
-  ]],
-  ['numero' => 12, 'opcoes' => [
-    'Quando recebo um novo projeto, planejo e defino o padrão de qualidade', // C
-    'Quando recebo um novo projeto, penso nas pessoas e no ambiente',        // I
-    'Quando recebo um novo projeto, penso no cronograma e no resultado',     // D
-    'Quando recebo um novo projeto, penso em manter a consistência',         // S
-  ]],
-  ['numero' => 13, 'opcoes' => [
-    'Tenho facilidade em me apresentar e falar em público',   // I
-    'Tenho prazer em atingir objetivos e metas',              // D
-    'Tenho facilidade em trabalhar em rotina',                // S
-    'Tenho preocupação com detalhes e padrões',               // C
-  ]],
-  ['numero' => 14, 'opcoes' => [
-    'Se algo dá errado, tento animar as pessoas',             // I
-    'Se algo dá errado, assumo o controle e proponho solução', // D
-    'Se algo dá errado, mantenho a calma e sigo o plano',     // S
-    'Se algo dá errado, reviso o processo e os critérios',    // C
-  ]],
-  ['numero' => 15, 'opcoes' => [
-    'Sou visto como alguém carismático e encorajador',        // I
-    'Sou visto como alguém assertivo e competitivo',          // D
-    'Sou visto como alguém leal e constante',                 // S
-    'Sou visto como alguém minucioso e metódico',             // C
-  ]],
-  ['numero' => 16, 'opcoes' => [
-    'Prefiro trabalhar onde tenha networking e visibilidade', // I
-    'Prefiro trabalhar com desafios e mudanças frequentes',   // D
-    'Prefiro trabalhar com segurança e ritmo linear',         // S
-    'Prefiro trabalhar com normas e medições claras',         // C
-  ]],
-  ['numero' => 17, 'opcoes' => [
-    'Dizem que sou persuasivo e agregador',                   // I
-    'Dizem que sou direto e objetivo',                        // D
-    'Dizem que sou calmo e tolerante',                        // S
-    'Dizem que sou analítico e formal',                       // C
-  ]],
-  ['numero' => 18, 'opcoes' => [
-    'Costumo empolgar e mobilizar as pessoas',                // I
-    'Costumo tomar a frente e assumir riscos',                // D
-    'Costumo manter estabilidade emocional',                  // S
-    'Costumo conferir a qualidade e a conformidade',          // C
-  ]],
-  ['numero' => 19, 'opcoes' => [
-    'Aproximo pessoas e crio conexões',                       // I
-    'Resolvo rápido e enfrento barreiras',                    // D
-    'Evito conflitos e mantenho o ritmo',                     // S
-    'Sigo padrões e confiro detalhes',                        // C
-  ]],
-  ['numero' => 20, 'opcoes' => [
-    'Falo bem em público e gosto de apresentar',              // I
-    'Sou focado em metas e performance',                      // D
-    'Sou sereno e previsível',                                // S
-    'Sou estruturado e cuidadoso',                            // C
-  ]],
-  ['numero' => 21, 'opcoes' => [
-    'Sou estimulante e positivo',                             // I
-    'Sou firme e decidido',                                   // D
-    'Sou constante e colaborativo',                           // S
-    'Sou rigoroso e preciso',                                 // C
-  ]],
-  ['numero' => 22, 'opcoes' => [
-    'Agrada os outros, amigável',                             // I
-    'Ri alto, animado',                                       // I (mantemos I para coerência de sociabilidade)
-    'Corajoso, ousado',                                       // D
-    'Quieto, reservado',                                      // S/C (optamos S pela tranquilidade)
-  ]],
-  ['numero' => 23, 'opcoes' => [
-    'Quer mais autoridade',                                   // D
-    'Quer ter seus argumentos ouvidos',                       // I
-    'Quer evitar conflitos pessoais',                         // S
-    'Quer orientações claras',                                // C
-  ]],
-  ['numero' => 24, 'opcoes' => [
-    'Apoiador, confiável',                                    // S
-    'Criativo, inovador',                                     // I
-    'Voltado para resultados',                                 // D
-    'Mantém alto padrão de precisão',                         // C
-  ]],
+    ['numero' => 1,  'opcoes' => [
+        'Facilidade em Relacionamento, Simpático, Agradável',     // I
+        'Acredita, confia nos outros',                            // S
+        'Não tem medo de correr riscos',                          // D
+        'Tolerante, Respeitoso',                                  // C
+    ]],
+    ['numero' => 2,  'opcoes' => [
+        'Tanqüilo, fala devagar, reservado',                      // S
+        'Desbravador, Otimista, Visionário',                      // D
+        'Centro das atenções, sociável',                          // I
+        'Pacificador, Harmonioso',                                // C
+    ]],
+    ['numero' => 3,  'opcoes' => [
+        'Tem facilidade em escutar os outros',                    // S
+        'Perfeccionista',                                         // C
+        'Faz parte da equipe',                                    // I
+        'Gosta de estabelecer metas',                             // D
+    ]],
+    ['numero' => 4,  'opcoes' => [
+        'Se as coisas dão errado, fica triste',                   // S
+        'Se estou triste, guardo meus sentimentos comigo',        // C
+        'Em conflitos, digo meu lado da história',                // D
+        'Se ninguém concorda e apoia, enfrento a oposição',       // I
+    ]],
+    ['numero' => 5,  'opcoes' => [
+        'Bricalhão, Animado, Falante',                            // I
+        'Decidido, Dinâmico, Determinado',                        // D
+        'Tenta manter o equilíbrio no ambiente',                  // S
+        'Tenta sempre seguir as regras',                          // C
+    ]],
+    ['numero' => 6,  'opcoes' => [
+        'Administra o tempo com eficiência',                      // C
+        'Sempre apressado, sente-se pressionado',                 // D
+        'Eventos Sociais e coletivos são necessários',            // I
+        'Gosta de terminar o que começou',                        // S
+    ]],
+    ['numero' => 7,  'opcoes' => [
+        'Não gosta de mudanças de última hora',                   // S
+        'Costuma fazer promessas',                                // I
+        'Em conflitos, prefere argumentar tecnicamente',          // C
+        'Se for o caso, não tem medo de lutar',                   // D
+    ]],
+    ['numero' => 8,  'opcoes' => [
+        'Incentivador',                                           // I
+        'Ouvinte',                                                // S
+        'Analisa os fatos',                                       // C
+        'Delegador',                                              // D
+    ]],
+    ['numero' => 9,  'opcoes' => [
+        'Os resultados são o mais importante',                    // D
+        'Fazer do jeito certo, exatidão e perfeição',             // C
+        'Faz com que fique sempre organizado',                    // S
+        'É melhor se um ajudar o outro',                          // I
+    ]],
+    ['numero' => 10, 'opcoes' => [
+        'Não me faz falta, tenho autocontrole',                   // S
+        'As vezes compra por impulso',                            // I
+        'Irá aguardar tranquilamente, sem pressão',               // C
+        'Gastarei naquilo que desejo, sem problemas',             // D
+    ]],
+    ['numero' => 11, 'opcoes' => [
+        'Amigo, agradável, gosta de conversar',                   // I
+        'Independente, não gosta de rotina',                      // D
+        'Prefere amigos estáveis',                                // S
+        'Quer exatidão das pessoas',                              // C
+    ]],
+    ['numero' => 12, 'opcoes' => [
+        'Não bate de frente, flexível',                           // S
+        'Detalhista',                                             // C
+        'Se for necessário, muda o ponto de vista',               // I
+        'Exigente, direto',                                       // D
+    ]],
+    ['numero' => 13, 'opcoes' => [
+        'Deseja crescer rapidamente',                             // D
+        'Satisfeito, contente com as coisas',                     // S
+        'Expressa seus sentimentos abertamente',                  // I
+        'Humilde, modesto',                                       // C
+    ]],
+    ['numero' => 14, 'opcoes' => [
+        'Calmo, reservado',                                       // S
+        'Feliz, tranqüilo',                                       // I
+        'Amável, gentil',                                         // S
+        'Ousado, audacioso',                                      // D
+    ]],
+    ['numero' => 15, 'opcoes' => [
+        'Dedica tempo às outras pessoas',                         // I
+        'Planeja o futuro, prepara-se',                           // C
+        'Vai em busca de novas aventuras',                        // D
+        'Reconhecido pela sua precisão',                          // C
+    ]],
+    ['numero' => 16, 'opcoes' => [
+        'As regras devem ser desafiadas',                         // D
+        'As regras deve ser justas',                              // C
+        'As regras são chatas',                                   // I
+        'As regras trazem segurança',                             // S
+    ]],
+    ['numero' => 17, 'opcoes' => [
+        'Educação, cultura',                                      // C
+        'Conquista, prêmios',                                     // D
+        'Proteção, segurança',                                    // S
+        'Reuniões sociais, grupo',                                // I
+    ]],
+    ['numero' => 18, 'opcoes' => [
+        'Assume o comando de forma direta',                       // D
+        'Sociável, alegre',                                       // I
+        'Previsível, consistente',                                // S
+        'Atencioso, cuidadoso',                                   // C
+    ]],
+    ['numero' => 19, 'opcoes' => [
+        'Não é derrotado facilmente',                             // D
+        'Fará como foi dito, tem facilidade em seguir o líder',   // S
+        'Animado, divertido',                                     // I
+        'Quer as coisas organizadas, ordeiro',                    // C
+    ]],
+    ['numero' => 20, 'opcoes' => [
+        'Eu serei o líder',                                       // D
+        'Eu serei organizado',                                    // C
+        'Eu os influenciarei e convencerei',                      // I
+        'Eu analisarei os fatos',                                 // C
+    ]],
+    ['numero' => 21, 'opcoes' => [
+        'Penso nas outras pessoas primeiro',                      // S
+        'Competitivo, gosto de desafios',                         // D
+        'Otimista, positivo',                                     // I
+        'Lógico, sistemático',                                    // C
+    ]],
+    ['numero' => 22, 'opcoes' => [
+        'Agrada os outros, amigável',                             // I
+        'Ri alto, animado',                                       // I
+        'Corajoso, ousado',                                       // D
+        'Quieto, reservado',                                      // S
+    ]],
+    ['numero' => 23, 'opcoes' => [
+        'Quer mais autoridade',                                   // D
+        'Quer ter seus argumentos ouvidos',                       // I
+        'Quer evitar conflitos pessoais',                         // S
+        'Quer orientações claras',                                // C
+    ]],
+    ['numero' => 24, 'opcoes' => [
+        'Apoiador, confiável',                                    // S
+        'Criativo, inovador',                                     // I
+        'Voltado para resultados',                                // D
+        'Mantém alto padrão de precisão',                         // C
+    ]],
 ];
 
-/* MAPA DISC por índice de opção (0..3) de cada grupo:
-   Para cada grupo, um array de 4 letras correspondendo às opções.
-*/
 $discKey = [
-  // 1..24 (cada subarray: [opção 0,1,2,3] => 'D'/'I'/'S'/'C')
-  ['I', 'S', 'D', 'C'],
-  ['S', 'D', 'I', 'C'],
-  ['S', 'C', 'I', 'D'],
-  ['S', 'C', 'D', 'I'],
-  ['I', 'D', 'S', 'C'],
-  ['D', 'C', 'I', 'S'],
-  ['S', 'I', 'C', 'D'],
-  ['I', 'D', 'C', 'S'],
-  ['S', 'D', 'I', 'C'],
-  ['C', 'I', 'S', 'D'],
-  ['S', 'D', 'I', 'C'],
-  ['C', 'I', 'D', 'S'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'D', 'S', 'C'],
-  ['I', 'I', 'D', 'S'],
-  ['D', 'I', 'S', 'C'],
-  ['S', 'I', 'D', 'C'],
+    ['I', 'S', 'D', 'C'], // Grupo 1
+    ['S', 'D', 'I', 'C'], // Grupo 2
+    ['S', 'C', 'I', 'D'], // Grupo 3
+    ['S', 'C', 'D', 'I'], // Grupo 4
+    ['I', 'D', 'S', 'C'], // Grupo 5
+    ['C', 'D', 'I', 'S'], // Grupo 6
+    ['S', 'I', 'C', 'D'], // Grupo 7
+    ['I', 'S', 'C', 'D'], // Grupo 8
+    ['D', 'C', 'S', 'I'], // Grupo 9
+    ['S', 'I', 'C', 'D'], // Grupo 10
+    ['I', 'D', 'S', 'C'], // Grupo 11
+    ['S', 'C', 'I', 'D'], // Grupo 12
+    ['D', 'S', 'I', 'C'], // Grupo 13
+    ['S', 'I', 'S', 'D'], // Grupo 14 (Nota: 2 opções S)
+    ['I', 'C', 'D', 'C'], // Grupo 15 (Nota: 2 opções C)
+    ['D', 'C', 'I', 'S'], // Grupo 16
+    ['C', 'D', 'S', 'I'], // Grupo 17
+    ['D', 'I', 'S', 'C'], // Grupo 18
+    ['D', 'S', 'I', 'C'], // Grupo 19
+    ['D', 'C', 'I', 'C'], // Grupo 20 (Nota: 2 opções C)
+    ['S', 'D', 'I', 'C'], // Grupo 21
+    ['I', 'I', 'D', 'S'], // Grupo 22 (Nota: 2 opções I)
+    ['D', 'I', 'S', 'C'], // Grupo 23
+    ['S', 'I', 'D', 'C'], // Grupo 24
 ];
 ?>
 <!doctype html>
