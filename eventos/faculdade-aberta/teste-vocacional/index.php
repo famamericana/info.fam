@@ -1,503 +1,665 @@
 <?php
-// Vocational Test based on DISC (D, I, S, C)
-// One-file PHP app with Chart.js visualizations
-// Now with: accordion (pergunta abre ao clicar), auto-avança, e tema claro/escuro.
+/* ============================================================
+   DISC – 1 página (24 grupos embutidos) + 3 gráficos Chart.js
+   - Marque 1 "MAIS" e 1 "MENOS" por grupo.
+   - Auto-scroll para o próximo grupo quando completar um grupo.
+   - Resultados só aparecem ao clicar "Ver resultados".
+   ============================================================ */
 
-$questions = [
-  // Dominância (D)
-  ["text" => "Gosto de assumir o comando em projetos.", "dim" => "D"],
-  ["text" => "Tomo decisões rapidamente, mesmo sob pressão.", "dim" => "D"],
-  ["text" => "Busco resultados ambiciosos e metas desafiadoras.", "dim" => "D"],
-  ["text" => "Sinto-me confortável em ambientes competitivos.", "dim" => "D"],
-  ["text" => "Prefiro resolver conflitos de forma direta.", "dim" => "D"],
-  ["text" => "Tenho iniciativa para começar coisas novas.", "dim" => "D"],
-
-  // Influência (I)
-  ["text" => "Faço amizades e crio conexões com facilidade.", "dim" => "I"],
-  ["text" => "Gosto de apresentar ideias para públicos.", "dim" => "I"],
-  ["text" => "Sou otimista e motivo o time naturalmente.", "dim" => "I"],
-  ["text" => "Prefiro trabalhos que envolvam pessoas e networking.", "dim" => "I"],
-  ["text" => "Sinto-me à vontade improvisando quando necessário.", "dim" => "I"],
-  ["text" => "Gosto de persuadir e influenciar decisões.", "dim" => "I"],
-
-  // Estabilidade (S)
-  ["text" => "Valorizo estabilidade e rotina no dia a dia.", "dim" => "S"],
-  ["text" => "Tenho paciência para ouvir e apoiar colegas.", "dim" => "S"],
-  ["text" => "Prefiro colaborar do que competir.", "dim" => "S"],
-  ["text" => "Mantenho a calma em situações tensas.", "dim" => "S"],
-  ["text" => "Preocupo-me com o bem-estar do grupo.", "dim" => "S"],
-  ["text" => "Gosto de tarefas que exigem constância e acompanhamento.", "dim" => "S"],
-
-  // Cautela / Conformidade (C)
-  ["text" => "Sou detalhista e atento à qualidade.", "dim" => "C"],
-  ["text" => "Gosto de seguir normas e processos bem definidos.", "dim" => "C"],
-  ["text" => "Baseio minhas decisões em dados e análise.", "dim" => "C"],
-  ["text" => "Revisar e checar informações é natural para mim.", "dim" => "C"],
-  ["text" => "Prefiro planejar antes de agir.", "dim" => "C"],
-  ["text" => "Tenho facilidade com números, lógica ou sistemas.", "dim" => "C"],
+// >>> TEXTO EXATO DOS 24 GRUPOS (extraído do seu CSV) <<<
+$groups = [
+  ['numero' => 1,  'opcoes' => [
+    'Facilidade em Relacionamento, Simpático, Agradável',
+    'Acredita, confia nos outros',
+    'Não tem medo de correr riscos',
+    'Tolerante, Respeitoso',
+  ]],
+  ['numero' => 2,  'opcoes' => [
+    'Tanqüilo, fala devagar, reservado',
+    'Desbravador, Otimista, Visionário',
+    'Centro das atenções, sociável',
+    'Pacificador, Harmonioso',
+  ]],
+  ['numero' => 3,  'opcoes' => [
+    'Tem facilidade em escutar os outros',
+    'Perfeccionista',
+    'Faz parte da equipe',
+    'Gosta de estabelecer metas',
+  ]],
+  ['numero' => 4,  'opcoes' => [
+    'Se as coisas dão errado, fica triste',
+    'Se estou triste, guardo meus sentimentos comigo',
+    'Em conflitos, digo meu lado da história',
+    'Se ninguém concorda e apoia, enfrento a oposição',
+  ]],
+  ['numero' => 5,  'opcoes' => [
+    'Bricalhão, Animado, Falante',
+    'Decidido, Dinâmico, Determinado',
+    'Tenta manter o equilíbrio no ambiente',
+    'Busca qualidade e é exigente consigo',
+  ]],
+  ['numero' => 6,  'opcoes' => [
+    'Gosta de liderança e de dirigir',
+    'Gosta de análise e coisas técnicas',
+    'Gosta de estar com as pessoas',
+    'Gosta demais de rotina e estabilidade',
+  ]],
+  ['numero' => 7,  'opcoes' => [
+    'Não gosta de mudanças de última hora',
+    'Costuma fazer promessas',
+    'Em conflitos, prefere argumentar tecnicamente',
+    'Se for o caso, não tem medo de lutar',
+  ]],
+  ['numero' => 8,  'opcoes' => [
+    'Gosto de estar com meus amigos, prefiro andar em grupo',
+    'Gosto de ter o controle e de dirigir',
+    'Gosto de aprender em silêncio para não me desconcentrar',
+    'Gosto de estar de acordo com as regras',
+  ]],
+  ['numero' => 9,  'opcoes' => [
+    'Se alguém muda a rota do trabalho, aceito e me ajusto',
+    'Se alguém muda a rota do trabalho, confronto e questiono',
+    'Se alguém muda a rota do trabalho, perco a confiança',
+    'Se alguém muda a rota do trabalho, analiso e me adequo',
+  ]],
+  ['numero' => 10, 'opcoes' => [
+    'Em um time, sou o que questiona prazos e padrões',
+    'Em um time, sou o que anima e engaja o grupo',
+    'Em um time, sou o que mantém o ritmo e o clima',
+    'Em um time, sou o que define metas e resultados',
+  ]],
+  ['numero' => 11, 'opcoes' => [
+    'Se alguém me pressiona, fico na defensiva',
+    'Se alguém me pressiona, sou mais objetivo e direto',
+    'Se alguém me pressiona, tento apaziguar o conflito',
+    'Se alguém me pressiona, falo e escuto para chegar a um acordo',
+  ]],
+  ['numero' => 12, 'opcoes' => [
+    'Quando recebo um novo projeto, planejo e defino o padrão de qualidade',
+    'Quando recebo um novo projeto, penso nas pessoas e no ambiente',
+    'Quando recebo um novo projeto, penso no cronograma e no resultado',
+    'Quando recebo um novo projeto, penso em manter a consistência',
+  ]],
+  ['numero' => 13, 'opcoes' => [
+    'Tenho facilidade em me apresentar e falar em público',
+    'Tenho prazer em atingir objetivos e metas',
+    'Tenho facilidade em trabalhar em rotina',
+    'Tenho preocupação com detalhes e padrões',
+  ]],
+  ['numero' => 14, 'opcoes' => [
+    'Se algo dá errado, tento animar as pessoas',
+    'Se algo dá errado, assumo o controle e proponho solução',
+    'Se algo dá errado, mantenho a calma e sigo o plano',
+    'Se algo dá errado, reviso o processo e os critérios',
+  ]],
+  ['numero' => 15, 'opcoes' => [
+    'Sou visto como alguém carismático e encorajador',
+    'Sou visto como alguém assertivo e competitivo',
+    'Sou visto como alguém leal e constante',
+    'Sou visto como alguém minucioso e metódico',
+  ]],
+  ['numero' => 16, 'opcoes' => [
+    'Prefiro trabalhar onde tenha networking e visibilidade',
+    'Prefiro trabalhar com desafios e mudanças frequentes',
+    'Prefiro trabalhar com segurança e ritmo linear',
+    'Prefiro trabalhar com normas e medições claras',
+  ]],
+  ['numero' => 17, 'opcoes' => [
+    'Dizem que sou persuasivo e agregador',
+    'Dizem que sou direto e objetivo',
+    'Dizem que sou calmo e tolerante',
+    'Dizem que sou analítico e formal',
+  ]],
+  ['numero' => 18, 'opcoes' => [
+    'Costumo empolgar e mobilizar as pessoas',
+    'Costumo tomar a frente e assumir riscos',
+    'Costumo manter estabilidade emocional',
+    'Costumo conferir a qualidade e a conformidade',
+  ]],
+  ['numero' => 19, 'opcoes' => [
+    'Aproximo pessoas e crio conexões',
+    'Resolvo rápido e enfrento barreiras',
+    'Evito conflitos e mantenho o ritmo',
+    'Sigo padrões e confiro detalhes',
+  ]],
+  ['numero' => 20, 'opcoes' => [
+    'Falo bem em público e gosto de apresentar',
+    'Sou focado em metas e performance',
+    'Sou sereno e previsível',
+    'Sou estruturado e cuidadoso',
+  ]],
+  ['numero' => 21, 'opcoes' => [
+    'Sou estimulante e positivo',
+    'Sou firme e decidido',
+    'Sou constante e colaborativo',
+    'Sou rigoroso e preciso',
+  ]],
+  ['numero' => 22, 'opcoes' => [
+    'Agrada os outros, amigável',
+    'Ri alto, animado',
+    'Corajoso, ousado',
+    'Quieto, reservado',
+  ]],
+  ['numero' => 23, 'opcoes' => [
+    'Quer mais autoridade',
+    'Quer ter seus argumentos ouvidos',
+    'Quer evitar conflitos pessoais',
+    'Quer orientações claras',
+  ]],
+  ['numero' => 24, 'opcoes' => [
+    'Apoiador, confiável',
+    'Criativo, inovador',
+    'Voltado para resultados',
+    'Mantém alto padrão de precisão',
+  ]],
 ];
-
-$totalPerDim = ["D" => 6, "I" => 6, "S" => 6, "C" => 6];
-
-$isResult = ($_SERVER['REQUEST_METHOD'] === 'POST');
-$scores = ["D" => 0, "I" => 0, "S" => 0, "C" => 0];
-$answers = [];
-
-if ($isResult) {
-  foreach ($questions as $idx => $q) {
-    $name = 'q' . ($idx + 1);
-    if (!isset($_POST[$name])) {
-      $isResult = false;
-      break;
-    }
-    $val = (int) $_POST[$name];
-    $answers[$name] = $val;
-    $scores[$q['dim']] += $val;
-  }
-}
-
-function topTwoDims(array $scores): array
-{
-  arsort($scores);
-  $k = array_keys($scores);
-  return [$k[0], $k[1]];
-}
-function suggestionsByDim(): array
-{
-  // Mapeamento para cursos da FAM (Graduação e Tecnólogos)
-  return [
-    'D' => [
-      'Administração',
-      'Gestão de Recursos Humanos',
-      'Gestão Financeira',
-      'Engenharia de Produção',
-      'Arquitetura e Urbanismo'
-    ],
-    'I' => [
-      'Comunicação Social – Publicidade e Propaganda',
-      'Marketing',
-      'Relações Públicas (áreas de comunicação)'
-    ],
-    'S' => [
-      'Pedagogia',
-      'Psicologia',
-      'Enfermagem',
-      'Fisioterapia',
-      'Nutrição',
-      'Fonoaudiologia'
-    ],
-    'C' => [
-      'Engenharia Civil',
-      'Engenharia Elétrica',
-      'Engenharia Mecânica',
-      'Ciência da Computação',
-      'Sistemas de Informação',
-      'Direito',
-      'Arquitetura e Urbanismo'
-    ],
-  ];
-}
-function suggestionsByPair(string $a, string $b): array
-{
-  // Combinações direcionadas para cursos FAM relacionados
-  $map = [
-    'DI' => ['Administração', '  Gestão de Recursos Humanos', '  Marketing'],
-    'ID' => ['Comunicação Social – Publicidade e Propaganda', '  Marketing', 'Administração'],
-    'DS' => ['Pedagogia', 'Psicologia', 'Serviço na área de Saúde (Enfermagem)'],
-    'SD' => ['Enfermagem', 'Fisioterapia', 'Nutrição'],
-    'DC' => ['Engenharia de Produção', 'Engenharia Civil', 'Ciência da Computação', 'Arquitetura e Urbanismo'],
-    'CD' => ['Engenharia (diversas habilitações)', 'Sistemas de Informação', 'Ciência da Computação', 'Arquitetura e Urbanismo'],
-    'IS' => ['Recursos Humanos (Tecnólogo)', 'Pedagogia', 'Psicologia', 'Fonoaudiologia'],
-    'SI' => ['Pedagogia', 'Educação Física – Licenciatura', 'Psicologia'],
-    'IC' => ['Ciência da Computação', 'Sistemas de Informação', '  Design Gráfico'],
-    'CI' => ['Comunicação Social – Publicidade e Propaganda', '  Design Gráfico', 'Marketing'],
-    'SC' => ['Engenharia Civil', 'Engenharia de Produção', '  Logística'],
-    'CS' => ['Contábeis (Ciências Contábeis)', 'Administração', '  Gestão Financeira']
-  ];
-  return $map[$a . $b] ?? [];
-}
-function careersByDim(): array
-{
-  // Mapeamento para carreiras/profissões por dimensão
-  return [
-    'D' => ['Gestor/Líder', 'Empreendedor', 'Diretor Executivo', 'Consultor Estratégico', 'Coordenador de Projetos', 'Arquiteto'],
-    'I' => ['Publicitário', 'Vendedor', 'Apresentador', 'Relações Públicas', 'Coach/Palestrante', 'Marketing Digital'],
-    'S' => ['Psicólogo', 'Enfermeiro', 'Professor', 'Assistente Social', 'Terapeuta', 'Fonoaudiólogo'],
-    'C' => ['Engenheiro', 'Analista de Sistemas', 'Contador', 'Advogado', 'Cientista de Dados', 'Auditor', 'Arquiteto/Urbanista']
-  ];
-}
-function dimDescriptions(): array
-{
-  return [
-    'D' => 'Dominância (D): foco em resultados, decisão e assertividade.',
-    'I' => 'Influência (I): foco em comunicação, persuasão e relacionamento.',
-    'S' => 'Estabilidade (S): foco em cooperação, harmonia e constância.',
-    'C' => 'Cautela/Conformidade (C): foco em qualidade, análise e precisão.'
-  ];
-}
 ?>
 <!doctype html>
-<html lang="pt-br" data-theme="dark">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <title>DISC – Inventário (24 grupos, uma página)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teste Vocacional – DISC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --fg: #e8ecf1;
+      --muted: #9aa7b1;
+      --card: #121a34;
+      --accent: #5aa9fa;
+      --ok: #22c55e;
+      --warn: #fbbf24;
+      --border: #243056;
+    }
+
+    .light {
+      --bg: #f7f9fc;
+      --fg: #0d1323;
+      --muted: #4b5563;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --ok: #16a34a;
+      --warn: #d97706;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px
+    }
+
+    .header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px
+    }
+
+    small {
+      color: var(--muted)
+    }
+
+    .toggle {
+      appearance: none;
+      width: 46px;
+      height: 28px;
+      border-radius: 20px;
+      background: var(--border);
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--border)
+    }
+
+    .toggle:checked {
+      background: var(--accent)
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      transition: .2s
+    }
+
+    .toggle:checked::after {
+      left: 21px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 30px #00000018;
+      margin-bottom: 14px
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 90px 90px;
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      margin: 10px 0
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .kbd {
+      font: 12px/1.2 ui-monospace;
+      background: var(--border);
+      padding: 2px 6px;
+      border-radius: 6px
+    }
+
+    .progress {
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0 14px
+    }
+
+    .progress>span {
+      display: block;
+      height: 100%;
+      background: var(--ok);
+      width: 0%
+    }
+
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: 10px 0
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed
+    }
+
+    .warning {
+      color: var(--warn)
+    }
+
+    .table-like {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px
+    }
+
+    .table-like div {
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px
+    }
+
+    .anchor {
+      scroll-margin-top: 16px
+    }
+  </style>
 </head>
 
-<body>
-  <div class="wrap">
-    <div class="card">
-      <header class="hero">
-        <div>
-          <div class="title">Teste Vocacional – Perfil DISC</div>
-          <div class="subtitle">Todas as perguntas aparecem na página. Clique em cada uma para <strong>ver as respostas</strong> e, ao responder, a próxima abre automaticamente.</div>
+<body class="dark">
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Inventário DISC</h1>
+        <small>Marque <b>1</b> em <span class="kbd">MAIS</span> e <b>1</b> em <span class="kbd">MENOS</span> por grupo. Ao completar um grupo, a página rola para o próximo automaticamente.</small>
+      </div>
+      <label title="Alternar tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
+    </div>
+
+    <div class="progress"><span id="progressBar"></span></div>
+    <small id="progressText">0/24 grupos concluídos</small>
+    <small class="warning" id="validationMsg" style="display:none;margin-left:12px">Preencha 1 MAIS e 1 MENOS em cada grupo.</small>
+
+    <div id="groups"></div>
+
+    <div class="controls">
+      <button id="btnFinish" disabled>Ver resultados ✅</button>
+    </div>
+
+    <div id="results" style="display:none; margin-top:20px">
+      <div class="card">
+        <h3 style="margin:0 0 10px">Gráfico I – Ambiente (MAIS)</h3>
+        <canvas id="chartAmbiente" height="220"></canvas>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px">Gráfico II – Diferença (MAIS − MENOS)</h3>
+        <canvas id="chartDiferenca" height="220"></canvas>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px">Gráfico III – Natural (aprox.)</h3>
+        <canvas id="chartNatural" height="220"></canvas>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 10px">Resumo numérico</h3>
+        <div class="table-like">
+          <div class="badge">Fator</div>
+          <div class="badge">MAIS (Ambiente)</div>
+          <div class="badge">MENOS</div>
+          <div class="badge">Natural (24 − MENOS)</div>
+          <div><b>D</b></div>
+          <div id="tD1">0</div>
+          <div id="tD2">0</div>
+          <div id="tD3">0</div>
+          <div><b>I</b></div>
+          <div id="tI1">0</div>
+          <div id="tI2">0</div>
+          <div id="tI3">0</div>
+          <div><b>S</b></div>
+          <div id="tS1">0</div>
+          <div id="tS2">0</div>
+          <div id="tS3">0</div>
+          <div><b>C</b></div>
+          <div id="tC1">0</div>
+          <div id="tC2">0</div>
+          <div id="tC3">0</div>
         </div>
-        <div class="toolbar">
-          <button class="toggle" id="themeToggle" type="button" aria-pressed="false">🌗 Tema</button>
-        </div>
-      </header>
-
-      <?php if (!$isResult): ?>
-        <form method="post" autocomplete="off" novalidate id="quizForm">
-          <div class="inline-help">Escala: 1 (Discordo totalmente) • 5 (Concordo totalmente)</div>
-          <?php foreach ($questions as $i => $q): $n = $i + 1; ?>
-            <details class="q" id="q<?php echo $n; ?>">
-              <summary>
-                <span class="q-num"><?php echo $n; ?></span>
-                <span class="q-text"><?php echo htmlspecialchars($q['text']); ?></span>
-                <span class="q-dim">Fator: <?php echo htmlspecialchars($q['dim']); ?></span>
-              </summary>
-              <div class="q-body">
-                <div class="likert">
-                  <label class="muted">1</label>
-                  <div class="opts">
-                    <?php for ($val = 1; $val <= 5; $val++): ?>
-                      <label>
-                        <input type="radio" name="q<?php echo $n; ?>" value="<?php echo $val; ?>" required>
-                        <div class="opt"><?php echo $val; ?></div>
-                      </label>
-                    <?php endfor; ?>
-                  </div>
-                  <label class="muted">5</label>
-                </div>
-              </div>
-            </details>
-          <?php endforeach; ?>
-          <div class="actions">
-            <button class="btn" type="submit">Ver meu perfil</button>
-            <button class="btn secondary" type="reset" id="resetBtn">Limpar respostas</button>
-          </div>
-        </form>
-      <?php else: ?>
-        <?php
-        $maxPerDim = $totalPerDim['D'] * 5; // 30
-        $percent = [
-          'D' => round(($scores['D'] / $maxPerDim) * 100),
-          'I' => round(($scores['I'] / $maxPerDim) * 100),
-          'S' => round(($scores['S'] / $maxPerDim) * 100),
-          'C' => round(($scores['C'] / $maxPerDim) * 100)
-        ];
-        $descriptions = dimDescriptions();
-        [$top1, $top2] = topTwoDims($scores);
-        $pairSugs = suggestionsByPair($top1, $top2);
-        $dimSugs = suggestionsByDim();
-        $careerSugs = careersByDim();
-        ?>
-
-        <div class="result">
-          <div class="grid">
-            <div>
-              <div class="callout" style="margin-bottom:12px;">
-                <span class="pill">Seu destaque</span>
-                <div style="margin-top:8px;font-weight:700;font-size:20px;letter-spacing:-.01em;">
-                  <?php echo $top1; ?> + <?php echo $top2; ?>
-                </div>
-                <div class="muted" style="margin-top:6px;">
-                  <?php echo htmlspecialchars($descriptions[$top1]); ?><br>
-                  <?php echo htmlspecialchars($descriptions[$top2]); ?>
-                </div>
-              </div>
-              <canvas id="barChart" height="210"></canvas>
-              <div class="muted" style="margin-top:10px;font-size:12px;">Pontuações por fator (0–<?php echo $maxPerDim; ?>) e percentual.</div>
-            </div>
-            <div>
-              <canvas id="radarChart" height="220"></canvas>
-             
-            </div>
-      
-          </div>
-                 <div style="margin-top:12px;">
-                <div style="font-weight:700;margin-bottom:6px;">Sugestões de carreiras</div>
-                <div class="muted" style="margin:6px 0 4px;">Perfis profissionais baseados em seus fatores principais:</div>
-                
-                <!-- Carreiras do fator 1 -->
-                <div style="margin-bottom:8px;">
-                  <div style="font-weight:600;font-size:14px;margin-bottom:4px;"><?php echo $top1; ?> - <?php echo explode(':', $descriptions[$top1])[0]; ?></div>
-                  <?php foreach ($careerSugs[$top1] as $career): ?><span class="tag"><?php echo htmlspecialchars($career); ?></span><?php endforeach; ?>
-                </div>
-                
-                <!-- Carreiras do fator 2 -->
-                <div style="margin-bottom:8px;">
-                  <div style="font-weight:600;font-size:14px;margin-bottom:4px;"><?php echo $top2; ?> - <?php echo explode(':', $descriptions[$top2])[0]; ?></div>
-                  <?php foreach ($careerSugs[$top2] as $career): ?><span class="tag"><?php echo htmlspecialchars($career); ?></span><?php endforeach; ?>
-                </div>
-              </div>
-          <div class="callout">
-            <div style="font-weight:700;margin-bottom:6px;">Como interpretar</div>
-            <div class="muted">Este teste é um ponto de partida. Combine o resultado com conversas, trilhas de estudo e experiências reais (estágio, projetos, voluntariado).</div>
-            <div style="margin-top:8px;">
-              <div style="font-weight:700;">Cursos FAM recomendados</div>
-              
-              <!-- Cursos combinados se houver par específico -->
-              <?php if (!empty($pairSugs)): ?>
-                <div class="muted" style="margin:6px 0 4px;">Combinando seus dois principais fatores (<strong><?php echo $top1 . $top2; ?></strong>), observe estes cursos:</div>
-                <?php foreach ($pairSugs as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
-                <br><br>
-              <?php endif; ?>
-              
-              <!-- Cursos por fator individual -->
-              <div style="margin-bottom:8px;">
-                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Cursos relacionados ao fator <?php echo $top1; ?>:</div>
-                <?php foreach ($dimSugs[$top1] as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
-              </div>
-              
-              <div style="margin-bottom:8px;">
-                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Cursos relacionados ao fator <?php echo $top2; ?>:</div>
-                <?php foreach (($dimSugs[$top2] ?? []) as $c): ?><span class="tag"><?php echo htmlspecialchars($c); ?></span><?php endforeach; ?>
-              </div>
-            </div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="?">Refazer</a>
-            <button class="btn secondary" onclick="window.print()" type="button">Salvar/Imprimir</button>
-          </div>
-        </div>
-
-        <script>
-          const rawScores = <?php echo json_encode($scores); ?>;
-          const perc = <?php echo json_encode($percent); ?>;
-          const labels = ['D', 'I', 'S', 'C'];
-          const dataScores = labels.map(k => rawScores[k]);
-          const dataPerc = labels.map(k => perc[k]);
-          const ctxBar = document.getElementById('barChart').getContext('2d');
-          new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-              labels,
-              datasets: [{
-                label: 'Pontuação',
-                data: dataScores,
-                borderWidth: 1
-              }]
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (item) => {
-                      const k = labels[item.dataIndex];
-                      return `Pontuação: ${item.raw} ( ${perc[k]}% )`;
-                    }
-                  }
-                },
-                legend: {
-                  display: false
-                }
-              },
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-          const ctxRadar = document.getElementById('radarChart').getContext('2d');
-          new Chart(ctxRadar, {
-            type: 'radar',
-            data: {
-              labels,
-              datasets: [{
-                label: 'Percentual por fator',
-                data: dataPerc,
-                pointRadius: 3,
-                borderWidth: 2,
-                fill: true
-              }]
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: {
-                  display: false
-                }
-              },
-              scales: {
-                r: {
-                  beginAtZero: true,
-                  max: 100
-                }
-              }
-            }
-          });
-        </script>
-      <?php endif; ?>
-
-      <div class="foot">© <?php echo date('Y'); ?> • Teste vocacional baseado no modelo DISC (uso educacional) | FAM 2025</div>
+      </div>
     </div>
   </div>
 
   <script>
-    // Preferência de Tema (light/dark)
-    const html = document.documentElement;
+    // ===== Dados do PHP =====
+    const GROUPS = <?php echo json_encode($groups, JSON_UNESCAPED_UNICODE); ?>;
+
+    // ===== Tema claro/escuro =====
+    const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('disc_theme');
-    if (saved) {
-      html.setAttribute('data-theme', saved);
-      if (themeToggle) themeToggle.setAttribute('aria-pressed', saved === 'dark' ? 'false' : 'true');
+    const savedTheme = localStorage.getItem('disc-theme') || 'dark';
+    if (savedTheme === 'light') {
+      body.classList.add('light');
+      themeToggle.checked = true;
     }
-    themeToggle?.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('disc_theme', next);
-      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'false' : 'true');
+    themeToggle.addEventListener('change', () => {
+      body.classList.toggle('light', themeToggle.checked);
+      localStorage.setItem('disc-theme', themeToggle.checked ? 'light' : 'dark');
     });
 
-    // UX: abre próxima pergunta automaticamente após marcar uma opção
-    document.querySelectorAll('details.q').forEach((det, idx, arr) => {
-      det.addEventListener('change', (e) => {
-        if (e.target.matches('input[type="radio"]')) {
-          // fecha a atual e abre a próxima
-          setTimeout(() => {
-            det.open = false;
-            const next = arr[idx + 1];
-            if (next) {
-              next.open = true;
-              next.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }
-          }, 80);
+    // ===== Renderização (uma página) =====
+    const groupsWrap = document.getElementById('groups');
+    let selections = GROUPS.map(() => ({
+      mais: null,
+      menos: null
+    }));
+
+    function makeRadio(name, value, groupIndex, type, itemIndex) {
+      const id = `${name}_${groupIndex}_${itemIndex}`;
+      return `<input type="radio" id="${id}" name="${name}[${groupIndex}]" value="${value}"
+    data-g="${groupIndex}" data-type="${type}" data-item="${itemIndex}" />`;
+    }
+
+    function render() {
+      groupsWrap.innerHTML = '';
+      GROUPS.forEach((g, i) => {
+        const card = document.createElement('div');
+        card.className = 'card anchor';
+        card.id = `group-${i}`;
+        card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+        <h3 style="margin:0">Grupo ${g.numero}</h3>
+        <div class="badge">Marque <b>1</b> em MAIS e <b>1</b> em MENOS</div>
+      </div>
+      <div class="row" style="font-weight:600">
+        <div></div><div style="text-align:center">MAIS</div><div style="text-align:center">MENOS</div>
+      </div>
+      ${g.opcoes.map((txt, idx) => `
+        <div class="row">
+          <div><strong>${['A','B','C','D'][idx]}.</strong> ${txt}</div>
+          <div style="text-align:center">${makeRadio('mais', idx, i, 'mais', idx)}</div>
+          <div style="text-align:center">${makeRadio('menos', idx, i, 'menos', idx)}</div>
+        </div>
+      `).join('')}
+    `;
+        groupsWrap.appendChild(card);
+      });
+
+      // Restaura marcações
+      selections.forEach((sel, gi) => {
+        if (sel.mais !== null) {
+          const r = document.querySelector(`input[name="mais[${gi}]"][value="${sel.mais}"]`);
+          if (r) r.checked = true;
+        }
+        if (sel.menos !== null) {
+          const r = document.querySelector(`input[name="menos[${gi}]"][value="${sel.menos}"]`);
+          if (r) r.checked = true;
         }
       });
-    });
 
-    // Reset: recolhe todas e abre a primeira
-    const resetBtn = document.getElementById('resetBtn');
-    resetBtn?.addEventListener('click', () => {
-      requestAnimationFrame(() => {
-        document.querySelectorAll('details.q').forEach((d, i) => d.open = (i === 0));
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    });
+      // Listeners
+      groupsWrap.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener('change', onSelect));
+      updateProgress();
+    }
+    render();
 
-    // Ao carregar (modo quiz), inicia só a primeira aberta
-    (function initAccordions() {
-      const qs = document.querySelectorAll('details.q');
-      if (!qs.length) return;
-      qs.forEach((d, i) => d.open = (i === 0));
+    function onSelect(e) {
+      const input = e.target;
+      const gi = parseInt(input.dataset.g, 10);
+      const type = input.dataset.type;
+      const itemIdx = parseInt(input.dataset.item, 10);
 
-      // UX: desabilitar submit até responder todas as perguntas
-      const form = document.getElementById('quizForm');
-      const submit = form?.querySelector('button[type="submit"]');
-      const totalQs = qs.length;
-      const statusMsg = document.createElement('div');
-      statusMsg.className = 'inline-help';
-      statusMsg.style.marginTop = '10px';
-      statusMsg.textContent = `Responda todas as ${totalQs} perguntas para habilitar o envio`;
-      form?.insertBefore(statusMsg, form.querySelector('.actions'));
-
-      const radioSelector = 'input[type="radio"]';
-      function countAnswered() {
-        const answered = new Set();
-        form.querySelectorAll(radioSelector).forEach(r => {
-          if (r.checked) {
-            // name like q1, q2
-            answered.add(r.name);
-          }
-        });
-        return answered.size;
+      // Impede MAIS e MENOS na mesma opção
+      if (type === 'mais' && selections[gi].menos === itemIdx) {
+        selections[gi].menos = null;
+        const rm = document.querySelector(`input[name="menos[${gi}]"][value="${itemIdx}"]`);
+        if (rm) rm.checked = false;
+      } else if (type === 'menos' && selections[gi].mais === itemIdx) {
+        selections[gi].mais = null;
+        const rp = document.querySelector(`input[name="mais[${gi}]"][value="${itemIdx}"]`);
+        if (rp) rp.checked = false;
       }
 
-      function updateSubmitState() {
-        const answered = countAnswered();
-        if (submit) submit.disabled = (answered < totalQs);
-        if (answered < totalQs) {
-          statusMsg.textContent = `Responda todas as ${totalQs} perguntas para habilitar o envio (${answered}/${totalQs})`;
-          statusMsg.style.color = 'var(--muted)';
-        } else {
-          statusMsg.textContent = 'Pronto — todas as perguntas respondidas. Você pode enviar agora.';
-          statusMsg.style.color = 'var(--text)';
-        }
+      selections[gi][type] = itemIdx;
+      updateProgress();
+
+      // Se completou (tem MAIS e MENOS), rola para o próximo grupo
+      if (selections[gi].mais !== null && selections[gi].menos !== null) {
+        const next = document.getElementById(`group-${gi+1}`);
+        if (next) next.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
+    }
 
-      // inicialmente desabilita
-      if (submit) submit.disabled = true;
+    function updateProgress() {
+      const done = selections.filter(g => g.mais !== null && g.menos !== null).length;
+      const pct = Math.round((done / GROUPS.length) * 100);
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressText').textContent = `${done}/${GROUPS.length} grupos concluídos`;
+      document.getElementById('btnFinish').disabled = (done !== GROUPS.length);
+    }
 
-      // acompanhar mudanças
-      form.querySelectorAll(radioSelector).forEach(r => r.addEventListener('change', (e) => {
-        updateSubmitState();
-        // auto-avança: abre próxima pergunta
-        const currentDetails = e.target.closest('details.q');
-        if (currentDetails) {
-          const list = Array.from(qs);
-          const idx = list.indexOf(currentDetails);
-          setTimeout(() => {
-            currentDetails.open = false;
-            const next = list[idx + 1];
-            if (next) {
-              next.open = true;
-              next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // ===== Lógica de pontuação =====
+    // Se tiver gabarito, preencha por grupo/opção (A,B,C,D) para MAIS:
+    const customMapping = {
+      // "1": { "MAIS": ["I","D","S","C"] },
+      // "2": { "MAIS": ["S","D","I","C"] },
+      // ...
+    };
+    const KEYWORDS = {
+      D: ['resultado', 'resultados', 'rápido', 'lider', 'liderar', 'decidir', 'risco', 'coraj', 'lutar', 'meta', 'objetivo', 'compet', 'dinâmico', 'determinado', 'assumir', 'dirigir', 'controle', 'questiona'],
+      I: ['relacion', 'simpát', 'agrad', 'fala', 'falante', 'anim', 'incentiv', 'entusias', 'otimista', 'popular', 'amig', 'amigo', 'convers', 'persuas', 'carism', 'apresentar', 'público', 'engaja', 'anima'],
+      S: ['tranquil', 'calm', 'pacient', 'escuta', 'respeit', 'tolerant', 'apoia', 'constante', 'cooper', 'harmonia', 'estável', 'rotina', 'previs', 'equilíbrio', 'apaziguar', 'consist'],
+      C: ['organiza', 'detalh', 'técnic', 'tecnic', 'precis', 'analít', 'regras', 'padr', 'prazo', 'controle', 'perfeccion', 'qualidad', 'conform', 'processo', 'critéri', 'planejo', 'exigente']
+    };
+
+    function norm(s) {
+      return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function mapToFactor(grupoNumero, itemIndex, text) {
+      const g = String(grupoNumero);
+      if (customMapping[g]?.MAIS?.[itemIndex]) return customMapping[g].MAIS[itemIndex].toUpperCase();
+      const t = norm(text);
+      const has = (arr) => arr.some(k => t.includes(norm(k)));
+      if (has(KEYWORDS.D)) return 'D';
+      if (has(KEYWORDS.I)) return 'I';
+      if (has(KEYWORDS.S)) return 'S';
+      if (has(KEYWORDS.C)) return 'C';
+      // fallback por índice A,B,C,D -> D,I,S,C
+      return ['D', 'I', 'S', 'C'][itemIndex] || 'D';
+    }
+
+    function computeScores() {
+      const idx = {
+        D: 0,
+        I: 1,
+        S: 2,
+        C: 3
+      };
+      const mais = [0, 0, 0, 0];
+      const menos = [0, 0, 0, 0];
+
+      selections.forEach((sel, gi) => {
+        const g = GROUPS[gi];
+        const fMais = mapToFactor(g.numero, sel.mais, g.opcoes[sel.mais]);
+        const fMenos = mapToFactor(g.numero, sel.menos, g.opcoes[sel.menos]);
+        mais[idx[fMais]] += 1;
+        menos[idx[fMenos]] += 1;
+      });
+
+      const ambiente = mais.slice(); // Graf. I
+      const diferenca = mais.map((v, i) => v - menos[i]); // Graf. II
+      const natural = menos.map(v => (24 - v)); // Graf. III (aprox.)
+
+      return {
+        ambiente,
+        diferenca,
+        natural,
+        mais,
+        menos
+      };
+    }
+
+    // ===== Gráficos =====
+    let ch1, ch2, ch3;
+
+    function buildBar(ctx, label, data) {
+      return new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['D', 'I', 'S', 'C'],
+          datasets: [{
+            label,
+            data,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
             }
-          }, 80);
-        }
-      }));
-
-      // impedir envio por enter se não preenchido
-      form.addEventListener('submit', (ev) => {
-        if (countAnswered() < totalQs) {
-          ev.preventDefault();
-          statusMsg.textContent = `Por favor responda todas as ${totalQs} perguntas antes de enviar.`;
-          statusMsg.style.color = '#f59e0b';
-          // abrir a primeira pergunta não respondida
-          const answered = new Set();
-          form.querySelectorAll(radioSelector).forEach(r => { if (r.checked) answered.add(r.name); });
-          for (let i = 0; i < totalQs; i++) {
-            const name = 'q' + (i + 1);
-            if (!answered.has(name)) {
-              const det = document.getElementById(name);
-              if (det) {
-                document.querySelectorAll('details.q').forEach(d => d.open = false);
-                det.open = true;
-                det.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-              break;
+          },
+          plugins: {
+            legend: {
+              display: false
             }
           }
         }
       });
+    }
 
-      // reset: restaura estado inicial
-      const resetBtn = document.getElementById('resetBtn');
-      resetBtn?.addEventListener('click', () => {
-        requestAnimationFrame(() => {
-          document.querySelectorAll('details.q').forEach((d, i) => d.open = (i === 0));
-          if (submit) submit.disabled = true;
-          updateSubmitState();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    document.getElementById('btnFinish').addEventListener('click', () => {
+      const allDone = selections.every(g => g.mais !== null && g.menos !== null);
+      if (!allDone) {
+        document.getElementById('validationMsg').style.display = 'inline';
+        return;
+      }
+      document.getElementById('validationMsg').style.display = 'none';
+
+      const {
+        ambiente,
+        diferenca,
+        natural,
+        mais,
+        menos
+      } = computeScores();
+      document.getElementById('results').style.display = '';
+
+      const ctx1 = document.getElementById('chartAmbiente').getContext('2d');
+      const ctx2 = document.getElementById('chartDiferenca').getContext('2d');
+      const ctx3 = document.getElementById('chartNatural').getContext('2d');
+      if (ch1) ch1.destroy();
+      if (ch2) ch2.destroy();
+      if (ch3) ch3.destroy();
+      ch1 = buildBar(ctx1, 'Ambiente (MAIS)', ambiente);
+      ch2 = buildBar(ctx2, 'Diferença (MAIS − MENOS)', diferenca);
+      ch3 = buildBar(ctx3, 'Natural (24 − MENOS)', natural);
+
+      // Tabela
+      const put = (id, val) => document.getElementById(id).textContent = String(val);
+      put('tD1', mais[0]);
+      put('tI1', mais[1]);
+      put('tS1', mais[2]);
+      put('tC1', mais[3]);
+      put('tD2', menos[0]);
+      put('tI2', menos[1]);
+      put('tS2', menos[2]);
+      put('tC2', menos[3]);
+      put('tD3', natural[0]);
+      put('tI3', natural[1]);
+      put('tS3', natural[2]);
+      put('tC3', natural[3]);
+
+      // rola até os resultados
+      document.getElementById('results').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
-    })();
+    });
   </script>
 </body>
 
