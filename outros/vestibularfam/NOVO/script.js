@@ -379,14 +379,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'segunda-graduacao': {
             titulo: '2ª Graduação',
             texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
-            textoCompleto: 'Mediante a apresentação do diploma de Ensino Superior, você garante a dispensa do vestibular e ainda pode solicitar o aproveitamento de disciplinas equivalentes, após a matrícula. Para isso, basta encaminhar o Histórico Acadêmico e o Conteúdo Programático das disciplinas para o e-mail do Departamento de Matrículas.',
+            textoCompleto: 'Mediante a apresentação do diploma de Ensino Superior, você garante a dispensa do vestibular e ainda pode solicitar o aproveitamento de disciplinas equivalentes, após a matrícula. Para isso, basta encaminhar o Histórico Acadêmico e o Conteúdo Programático das disciplinas para o e-mail do Departamento de Matrículas: <a class="linklegal" href="mailto:matricula@fam.br"> matricula@fam.br</a>.',
             link: 'https://famamericana.com.br/segunda-graduacao',
             linkText: 'Inscrever-se 2ª Graduação'
         },
         'transferencia': {
             titulo: 'Transferência',
             texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
-            textoCompleto: 'Você sabe o que é o Conteúdo Programático e qual a sua importância? Também chamado de Ementa ou Plano de Ensino, o Conteúdo Programático é um documento específico de cada disciplina, que descreve detalhadamente todo o conteúdo abordado, contendo a carga horária e informando as referências bibliográficas. É um documento fundamental para a Análise da Grade Curricular, pois auxiliará o(a) coordenador(a) a identificar em qual semestre você melhor se encaixa, sem que haja qualquer tipo de prejuízo.',
+            textoCompleto: 'Para garantir o melhor aproveitamento das suas disciplinas já cursadas, é essencial que você prepare a documentação adequada. Você sabe o que é o Conteúdo Programático e qual a sua importância? Também chamado de Ementa ou Plano de Ensino, o Conteúdo Programático é um documento específico de cada disciplina, que descreve detalhadamente todo o conteúdo abordado, contendo a carga horária e informando as referências bibliográficas. É um documento fundamental para a Análise da Grade Curricular, pois auxiliará o(a) coordenador(a) a identificar em qual semestre você melhor se encaixa, sem que haja qualquer tipo de prejuízo.',
             link: 'https://famamericana.com.br/transferencia',
             linkText: 'Solicitar Transferência'
         },
