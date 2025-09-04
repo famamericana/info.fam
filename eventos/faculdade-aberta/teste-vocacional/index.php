@@ -283,15 +283,15 @@ $discKey = [
 
   <script>
     // ===== Tema =====
-    const body = document.body;
+    const root = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('disc-theme') || 'dark';
     if (savedTheme === 'light') {
-      body.classList.add('light');
+      root.classList.add('light');
       themeToggle.checked = true;
     }
     themeToggle.addEventListener('change', () => {
-      body.classList.toggle('light', themeToggle.checked);
+      root.classList.toggle('light', themeToggle.checked);
       localStorage.setItem('disc-theme', themeToggle.checked ? 'light' : 'dark');
     });
 
@@ -352,7 +352,7 @@ $discKey = [
       }
       if (type === 'menos' && currently.mais === itemIdx) {
         input.checked = false;
-        showValidation(`Escolha uma opção diferente para MENOS no Grupo ${gi + 1}.`);
+        showValidation(`Escolha uma opção diferente para MENOS no Grupo ${gi + 1}`);
         return;
       }
 

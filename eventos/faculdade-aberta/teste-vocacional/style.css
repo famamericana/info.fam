@@ -1,17 +1,28 @@
    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-   :root {
+    /* Theme variables: default = dark. Add class 'light' on <html> to switch */
+    :root {
         --bg: #0e0f12;
         --card: #16181d;
         --text: #e7e9ee;
         --muted: #9aa3b2;
         --accent: #45b7e5;
         --line: #262a33;
-        --bgL: #ffffff;
-        --cardL: #f7f8fa;
-        --textL: #0e0f12;
-        --mutedL: #475069;
-        --lineL: #e5e7eb;
+        --header-bg: rgba(18,18,18,0.88);
+        --header-text: #eee;
+        --progress-bg: #333;
+    }
+
+    :root.light {
+        --bg: #ffffff;
+        --card: #f7f8fa;
+        --text: #0e0f12;
+        --muted: #475069;
+        --accent: #45b7e5;
+        --line: #e5e7eb;
+        --header-bg: rgba(255,255,255,0.92);
+        --header-text: #333;
+        --progress-bg: #e5e7eb;
     }
 
     body {
@@ -21,10 +32,7 @@
         color: var(--text)
     }
 
-    body.light {
-        background: var(--bgL);
-        color: var(--textL)
-    }
+    /* theme controlled via :root and :root.light variables */
 
     .container {
         max-width: 980px;
@@ -85,9 +93,7 @@
         margin: 6px 0
     }
 
-    body.light .progress {
-        background: var(--lineL)
-    }
+    
 
     .progress span {
         display: block;
@@ -113,10 +119,7 @@
         margin: 14px 0
     }
 
-    body.light .card {
-        background: var(--cardL);
-        border-color: var(--lineL)
-    }
+    
 
     .badge {
         font-size: 12px;
@@ -134,10 +137,6 @@
         gap: 10px;
         padding: 8px 0;
         border-bottom: 1px dashed var(--line)
-    }
-
-    body.light .row {
-        border-color: var(--lineL)
     }
 
     body .card .row:last-child {
@@ -191,10 +190,7 @@
         text-align: center
     }
 
-    body.light .table-mini th,
-    body.light .table-mini td {
-        border-color: var(--lineL)
-    }
+    
 
     .table-like {
         border-collapse: collapse;
@@ -207,10 +203,7 @@
         padding: 10px
     }
 
-    body.light .table-like th,
-    body.light .table-like td {
-        border-color: var(--lineL)
-    }
+    
 
     .pill {
         display: inline-block;
@@ -252,9 +245,7 @@
         color: var(--muted)
     }
 
-    body.light small {
-        color: var(--mutedL)
-    }
+    
 
     /* sticky header that contains title, theme toggle, progress and badge */
     #stickyHeader {
@@ -262,22 +253,10 @@
         top: 0;
         z-index: 60;
         backdrop-filter: blur(4px);
-        background: rgba(255, 255, 255, 0.92);
-        color: #333;
+        background: var(--header-bg);
+        color: var(--header-text);
         padding: 10px 12px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    }
-
-    body.dark #stickyHeader {
-        background: rgba(18, 18, 18, 0.88);
-        color: #eee;
-        border-bottom-color: rgba(255, 255, 255, 0.04);
-    }
-
-    body.light #stickyHeader {
-        background: rgba(255, 255, 255, 0.92);
-        color: #333;
-        border-bottom-color: rgba(0, 0, 0, 0.06);
     }
 
     #stickyHeader .topRow {
@@ -303,21 +282,8 @@
         min-width: 180px;
     }
 
-    .progress span {
-        display: block;
-        height: 10px;
-        background: #e5e7eb;
-        border-radius: 999px;
-        overflow: hidden;
-    }
-
-    body.dark .progress span {
-        background: #333;
-    }
-
-    body.light .progress span {
-        background: #e5e7eb;
-    }
+    /* keep single .progress span definition earlier in file (uses var(--accent) for fill)
+       this later duplicate is removed to rely on variables */
 
     #progressBar {
         display: block;
