@@ -189,18 +189,26 @@ $discKey = [
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body class="dark">
   <div class="container">
-    <div class="header">
-      <h1> DISC</h1>
-      <label title="Tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
+    <div id="stickyHeader">
+      <div class="topRow">
+        <div class="header"><h1 style="margin:0">DISC</h1></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <label title="Tema claro/escuro"><input id="themeToggle" class="toggle" type="checkbox" /></label>
+        </div>
+      </div>
+      <div class="metaRow">
+        <div class="progress"><span id="progressBar"></span></div>
+        <small id="progressText">0/24</small>
+        <div id="badgeInfo" class="badge">1 em MAIS e 1 em MENOS</div>
+        
+        <small class="warning" id="validationMsg" style="display:none;margin-left:12px">Preencha 1 MAIS e 1 MENOS em cada grupo.</small>
+      </div>
     </div>
-
-    <div class="progress"><span id="progressBar"></span></div>
-    <small id="progressText">0/24 grupos concluídos</small>
-    <small class="warning" id="validationMsg" style="display:none;margin-left:12px">Preencha 1 MAIS e 1 MENOS em cada grupo.</small>
 
     <!-- Questionário -->
     <div id="groups"></div>
@@ -309,12 +317,8 @@ $discKey = [
         card.className = 'card anchor';
         card.id = `group-${i}`;
         card.innerHTML = `
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <h3 style="margin:0">Grupo ${g.numero}</h3>
-            <div class="badge">1 em MAIS e 1 em MENOS</div>
-          </div>
           <div class="row" style="font-weight:600">
-            <div></div><div style="text-align:center">MAIS</div><div style="text-align:center">MENOS</div>
+            <div><h3 style="margin:0">Grupo ${g.numero}</h3></div><div style="text-align:center">MAIS</div><div style="text-align:center">MENOS</div>
           </div>
           ${g.opcoes.map((txt, idx) => `
             <div class="row">
@@ -379,7 +383,7 @@ $discKey = [
       const done = selections.filter(g => g.mais !== null && g.menos !== null).length;
       const pct = Math.round((done / GROUPS.length) * 100);
       document.getElementById('progressBar').style.width = pct + '%';
-      document.getElementById('progressText').textContent = `${done}/${GROUPS.length} grupos concluídos`;
+      document.getElementById('progressText').textContent = `${done}/${GROUPS.length}`;
       document.getElementById('btnFinish').disabled = (done !== GROUPS.length);
     }
 

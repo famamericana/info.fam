@@ -131,8 +131,8 @@
         border-color: var(--lineL)
     }
 
-    body .card .row:last-child{
-border-bottom: none;
+    body .card .row:last-child {
+        border-bottom: none;
     }
 
     .row>div:first-child {
@@ -245,4 +245,89 @@ border-bottom: none;
 
     body.light small {
         color: var(--mutedL)
+    }
+
+    /* sticky header that contains title, theme toggle, progress and badge */
+    #stickyHeader {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        backdrop-filter: blur(4px);
+        background: rgba(255, 255, 255, 0.92);
+        color: #333;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark #stickyHeader {
+        background: rgba(18, 18, 18, 0.88);
+        color: #eee;
+        border-bottom-color: rgba(255, 255, 255, 0.04);
+    }
+
+    body.light #stickyHeader {
+        background: rgba(255, 255, 255, 0.92);
+        color: #333;
+        border-bottom-color: rgba(0, 0, 0, 0.06);
+    }
+
+    #stickyHeader .topRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    #stickyHeader .metaRow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap
+    }
+
+    .badge {
+        background: #f3f4f6;
+        color: #111;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    body.dark .badge {
+        background: #2b2b2b;
+        color: #fff;
+    }
+
+    body.light .badge {
+        background: #f3f4f6;
+        color: #111;
+    }
+
+    .progress {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .progress span {
+        display: block;
+        height: 10px;
+        background: #e5e7eb;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    body.dark .progress span {
+        background: #333;
+    }
+
+    body.light .progress span {
+        background: #e5e7eb;
+    }
+
+    #progressBar {
+        display: block;
+        height: 10px;
+        background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        width: 0%;
     }
