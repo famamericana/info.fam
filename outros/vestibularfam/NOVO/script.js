@@ -392,8 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'pos-graduacao': {
             titulo: 'Pós-Graduação',
-            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira. Visite <a class="linklegal" href="https://posfam.com.br" target="_blank">posfam.com.br</a> para conhecer todas as opções de cursos de pós-graduação.',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.',
             link: 'https://famamericana.com.br/pos-graduacao',
             linkText: 'Ver Pós-Graduação'
         },
@@ -410,6 +409,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para alternar a visibilidade do texto completo
     function toggleSaibaMais(button) {
         const contentDiv = button.closest('.opcao-content');
+        const opcaoItem = button.closest('.opcao-item');
+        const titulo = opcaoItem.querySelector('h3').textContent;
+        
+        // Se for pós-graduação, redirecionar para posfam.com.br
+        if (titulo === 'Pós-Graduação') {
+            window.open('https://posfam.com.br', '_blank');
+            return;
+        }
+        
         const textoCompleto = contentDiv.querySelector('.texto-completo');
         const isExpandido = button.classList.contains('expandido');
         
