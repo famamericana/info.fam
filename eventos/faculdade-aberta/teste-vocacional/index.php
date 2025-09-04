@@ -209,7 +209,7 @@ $discKey = [
     <!-- Questionário -->
     <div id="groups"></div>
     <div style="display:flex;justify-content:flex-end;gap:8px;margin:8px 0 16px">
-      <button id="btnFinish" disabled>Ver resultados ✅</button>
+      <button id="btnFinish" disabled>Ver resultados</button>
     </div>
 
     <!-- Resultados -->

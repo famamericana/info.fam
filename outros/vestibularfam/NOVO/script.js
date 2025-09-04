@@ -365,28 +365,28 @@ document.addEventListener('DOMContentLoaded', function() {
         'vestibular': {
             titulo: 'Vestibular Online',
             texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24/7. Resultado em minutos após a conclusão.',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            textoCompleto: 'Após a entrega da redação, os dados complementares serão disponibilizados e deverão ser preenchidos para que seja possível avançar para a próxima etapa. Somente após esse procedimento, o boleto da parcela da matrícula será liberado para pagamento. É importante lembrar que esse boleto já diz respeito a sua primeira mensalidade, referente ao mês de janeiro, portanto o próximo será apenas para fevereiro.',
             link: 'https://famamericana.com.br/vestibular',
             linkText: 'Inscrever-se no Vestibular'
         },
         'enem': {
             titulo: 'Use sua Nota do ENEM',
             texto: 'Conquistou 400+ pontos na redação do ENEM (2015 em diante)? Entre direto na FAM sem vestibular tradicional!',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            textoCompleto: 'O ENEM é uma prova aplicada anualmente para avaliar o desempenho dos estudantes que estão concluindo o Ensino Médio e é utilizado como uma das principais formas de ingresso e desconto nos cursos de modalidade presencial. Mas para que o ENEM seja válido, ele não pode ter sido realizado na condição de treineiro e a redação precisa de um mínimo de 400 pontos. É muito importante lembrar que a pontuação se dá por casas centesimais, portanto, não se esqueça de sempre aplicar dois zeros após a vírgula, para que a nota seja computada corretamente.',
             link: 'https://famamericana.com.br/enem',
             linkText: 'Inscrever-se com ENEM'
         },
         'segunda-graduacao': {
             titulo: '2ª Graduação',
             texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            textoCompleto: 'Mediante a apresentação do diploma de Ensino Superior, você garante a dispensa do vestibular e ainda pode solicitar o aproveitamento de disciplinas equivalentes, após a matrícula. Para isso, basta encaminhar o Histórico Acadêmico e o Conteúdo Programático das disciplinas para o e-mail do Departamento de Matrículas.',
             link: 'https://famamericana.com.br/segunda-graduacao',
             linkText: 'Inscrever-se 2ª Graduação'
         },
         'transferencia': {
             titulo: 'Transferência',
             texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            textoCompleto: 'Você sabe o que é o Conteúdo Programático e qual a sua importância? Também chamado de Ementa ou Plano de Ensino, o Conteúdo Programático é um documento específico de cada disciplina, que descreve detalhadamente todo o conteúdo abordado, contendo a carga horária e informando as referências bibliográficas. É um documento fundamental para a Análise da Grade Curricular, pois auxiliará o(a) coordenador(a) a identificar em qual semestre você melhor se encaixa, sem que haja qualquer tipo de prejuízo.',
             link: 'https://famamericana.com.br/transferencia',
             linkText: 'Solicitar Transferência'
         },
