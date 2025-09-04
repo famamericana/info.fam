@@ -189,7 +189,7 @@ $discKey = [
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="style.css">
-
+ 
 </head>
 
 <body class="dark">
