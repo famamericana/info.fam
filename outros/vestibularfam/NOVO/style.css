@@ -587,7 +587,7 @@ main {
 }
 
 .nav-link {
-    color: var(--secondary);
+    color: black;
     text-decoration: none;
     font-weight: 500;
     position: relative;
