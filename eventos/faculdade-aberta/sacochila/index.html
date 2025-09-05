@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ganhe Sua Sacochila - Faculdade Aberta FAM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
     <div class="container">
@@ -91,9 +92,9 @@
                     </div>
                 </div>
                 
-                <button type="submit">Cadastrar e Ganhar Sacochila</button>
+                <button type="submit" id="submitBtn">Cadastrar e Ganhar Sacochila</button>
                 
-                <div class="error-message" id="errorMessage"></div>
+                <div class="error-message hidden" id="errorMessage"></div>
             </form>
             
             <div class="loading hidden" id="loading">
@@ -101,7 +102,7 @@
                 <p>Enviando dados...</p>
             </div>
             
-            <div class="success-message" id="successMessage">
+            <div class="success-message hidden" id="successMessage">
                 <h2>Parabéns! Você ganhou sua sacochila!</h2>
                 <p>Mostre o QR Code abaixo no evento para retirar sua sacochila exclusiva</p>
                 
@@ -129,6 +130,13 @@
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            // Validar formulário antes de enviar
+            const form = e.target;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
             // Obter valores do formulário
             const formData = {
                 cpf: document.getElementById('cpf').value,
@@ -140,9 +148,20 @@
                 modalidade: document.querySelector('input[name="modalidade"]:checked').value
             };
             
-            // Mostrar loading
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
+            // Validar se pelo menos um curso foi selecionado
+            if (formData.cursosFavoritos.length === 0) {
+                showError('Por favor, selecione pelo menos um curso de interesse.');
+                return;
+            }
+            
+            // Desabilitar botão e mostrar loading
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('errorMessage').classList.add('hidden');
             
             try {
                 // Enviar dados via proxy PHP
@@ -165,11 +184,11 @@
                     const qrCodeUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}confirmar.html?id=${result.id}`;
                     
                     // Exibir sucesso
-                    document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('leadForm').style.display = 'none';
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    document.getElementById('leadForm').classList.add('hidden');
                     
                     // Gerar QR Code
-                    document.getElementById('qrCodeContainer').style.display = 'block';
+                    document.getElementById('qrCodeContainer').style.display = 'flex';
                     document.getElementById('confirmationId').textContent = result.id;
                     
                     // Limpar QR Code anterior se existir
@@ -187,13 +206,24 @@
                 
             } catch (error) {
                 // Exibir erro
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('errorMessage').textContent = 'Erro ao enviar formulário: ' + error.message;
+                showError('Erro ao enviar formulário: ' + error.message);
             } finally {
-                // Esconder loading
-                document.getElementById('loading').style.display = 'none';
+                // Esconder loading e reabilitar botão
+                document.getElementById('loading').classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
         });
+        
+        // Função para mostrar erros
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            
+            // Scroll para o erro
+            errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
         
         // Máscaras para os campos
         document.getElementById('cpf').addEventListener('input', function(e) {
@@ -224,6 +254,52 @@
             }
             
             e.target.value = value;
+        });
+        
+        // Validação de CPF
+        function isValidCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            
+            if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+                return false;
+            }
+            
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf[i]) * (10 - i);
+            }
+            let remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf[9])) return false;
+            
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf[i]) * (11 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            return remainder === parseInt(cpf[10]);
+        }
+        
+        // Validação em tempo real
+        document.getElementById('cpf').addEventListener('blur', function(e) {
+            const cpf = e.target.value;
+            if (cpf && !isValidCPF(cpf)) {
+                e.target.setCustomValidity('CPF inválido');
+            } else {
+                e.target.setCustomValidity('');
+            }
+        });
+        
+        // Validação de email
+        document.getElementById('email').addEventListener('blur', function(e) {
+            const email = e.target.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailRegex.test(email)) {
+                e.target.setCustomValidity('Email inválido');
+            } else {
+                e.target.setCustomValidity('');
+            }
         });
     </script>
 </body>

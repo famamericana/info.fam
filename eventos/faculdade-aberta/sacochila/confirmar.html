@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retirar Sacochila - Faculdade Aberta FAM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 
 <body>
@@ -23,8 +23,8 @@
 
                 <div class="input-form">
                     <div class="input-group">
-                        <input type="text" id="manualId" placeholder="Digite o código do aluno">
-                        <button class="action-button small-btn" onclick="confirmManualId()">Liberar</button>
+                        <input type="text" id="manualId" placeholder="Digite o código do aluno" maxlength="50">
+                        <button class="action-button small-btn" onclick="confirmManualId()" id="confirmBtn">Liberar</button>
                     </div>
                     <p>Pressione Enter ou clique em Liberar Sacochila</p>
                 </div>
@@ -102,9 +102,6 @@
             </div>
         </div>
 
-        <footer>
-            <p>Sacochila Leads &copy; 2025 - Todos os direitos reservados</p>
-        </footer>
     </div>
 
     <script>
@@ -136,7 +133,7 @@
         window.addEventListener('load', function () {
             if (!id) {
                 // Mostrar formulário para digitar o ID manualmente
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('loading').classList.add('hidden');
                 document.getElementById('noId').style.display = 'block';
 
                 // Adicionar evento para pressionar Enter no campo de input
@@ -149,7 +146,8 @@
                 // Focar no campo de input
                 document.getElementById('manualId').focus();
             } else {
-                // Processar o ID da URL
+                // Mostrar loading e processar o ID da URL
+                document.getElementById('loading').classList.remove('hidden');
                 processConfirmation(id);
             }
         });
@@ -162,9 +160,14 @@
                 return;
             }
 
+            // Desabilitar botão e mostrar feedback
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = 'Verificando...';
+
             // Esconder formulário e mostrar loading
             document.getElementById('noId').style.display = 'none';
-            document.getElementById('loading').style.display = 'flex';
+            document.getElementById('loading').classList.remove('hidden');
 
             // Processar a confirmação
             processConfirmation(manualId);
@@ -183,7 +186,7 @@
                 const result = await response.json();
 
                 // Esconder loading
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('loading').classList.add('hidden');
 
                 if (result.result === 'success') {
                     if (result.alreadyConfirmed) {
@@ -227,7 +230,7 @@
                 }
 
             } catch (error) {
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('loading').classList.add('hidden');
                 showError('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.');
             }
         }
@@ -244,11 +247,17 @@
             document.getElementById('success').style.display = 'none';
             document.getElementById('error').style.display = 'none';
             document.getElementById('alreadyConfirmed').style.display = 'none';
-            document.getElementById('loading').style.display = 'none';
+            document.getElementById('loading').classList.add('hidden');
 
             // Mostrar o formulário para digitar outro código
             document.getElementById('noId').style.display = 'block';
             document.getElementById('manualId').value = '';
+            
+            // Reabilitar botão
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = 'Liberar';
+            
             document.getElementById('manualId').focus();
         }
     </script>
