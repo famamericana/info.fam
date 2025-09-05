@@ -47,7 +47,9 @@ class SemanaDeAreas {
      */
     async carregarEventos() {
         try {
-            const response = await fetch('eventos-config.json');
+            // Adiciona timestamp para forçar recarregamento do JSON
+            const timestamp = Date.now();
+            const response = await fetch(`eventos-config.json?v=${timestamp}`);
             const data = await response.json();
             this.eventos = data.eventos;
             
@@ -357,6 +359,7 @@ class SemanaDeAreas {
 
         const eventosOrganizados = this.organizarEventos();
 
+  
         // Atualiza a página
         this.atualizarEventoPrincipal(eventosOrganizados.proximo);
         this.atualizarEventosPassados(eventosOrganizados.passados);
