@@ -184,7 +184,10 @@ class SemanaDeAreas {
         const periodo = this.formatarPeriodo(evento.dataInicio, evento.dataFim);
         
         // Determina se é "Próxima Semana", "Semana atual" ou "Última Semana"
-        const hoje = this.dataAtual;
+        // Normaliza a data atual para 00:00 para comparação justa
+        const hoje = new Date(this.dataAtual);
+        hoje.setHours(0, 0, 0, 0);
+        
         const inicioEvento = this.parseDate(evento.dataInicio);
         const fimEvento = this.parseDate(evento.dataFim);
 
@@ -196,6 +199,7 @@ class SemanaDeAreas {
         } else if (inicioEvento && inicioEvento > hoje) {
             titulo = "Próxima Semana";
         }
+      
         
         // Atualiza título
         const tituloElemento = document.querySelector('.eventoatualtitulo2');
