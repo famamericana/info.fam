@@ -1,0 +1,309 @@
+   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+   /* Shared modern minimal stylesheet for Sacochila pages */
+   :root {
+       --primary: #004C99;
+       /* modern blue */
+       --primary-600: #45b7e5;
+       --success: #16a34a;
+       --error: #dc2626;
+       --warning: #d97706;
+       --text: #111827;
+       --muted: #6b7280;
+       --bg: #f8fafc;
+       --card: #ffffff;
+       --border: #e5e7eb;
+       --radius: 14px;
+       --shadow: 0 10px 30px rgba(17, 24, 39, .08);
+   }
+
+   * {
+       box-sizing: border-box;
+       font-family: 'Source Sans 3', sans-serif;
+   }
+
+
+
+   body {
+       margin: 0;
+       color: var(--text);
+       background: var(--bg);
+       line-height: 1.6;
+       padding: 24px;
+       font-family: 'Source Sans 3', sans-serif;
+       display: flex;
+         justify-content: center;
+   }
+
+   .container {
+       width: min(960px, 100%);
+       background: var(--card);
+       border-radius: var(--radius);
+       overflow: hidden;
+   }
+
+   /* Header */
+   header {
+       position: relative;
+       padding: 28px 24px;
+       background: var(--primary);
+       color: #fff;
+   }
+
+   header h1 {
+       margin: 0 0 6px;
+       font-size: clamp(20px, 3vw, 26px);
+       font-weight: 700
+   }
+
+   header p {
+       margin: 0;
+       opacity: .95
+   }
+
+   /* Content */
+   .content {
+       padding: 28px
+   }
+
+   /* Form basics */
+   .form-group {
+       margin-bottom: 18px
+   }
+
+   label {
+       display: block;
+    
+       font-weight: 600;
+       color: #111827
+   }
+
+   input,
+   select {
+       width: 100%;
+       padding: 12px 14px;
+       border: 1px solid var(--border);
+       border-radius: 12px;
+       background: #fff;
+       font-size: 16px;
+       transition: border-color .2s, box-shadow .2s;
+   }
+
+   input:focus,
+   select:focus {
+       outline: none;
+       border-color: var(--primary);
+       box-shadow: 0 0 0 4px rgba(37, 99, 235, .15);
+   }
+
+   button,
+   .action-button {
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       gap: 8px;
+       background: var(--primary);
+       color: #fff;
+       border: none;
+       padding: 12px 18px;
+       border-radius: 12px;
+       font-weight: 700;
+       font-size: 16px;
+       cursor: pointer;
+       transition: transform .06s ease, background .2s;
+       width: 100%;
+   }
+
+   button:hover,
+   .action-button:hover {
+       background: var(--primary-600)
+   }
+
+   button:active,
+   .action-button:active {
+       transform: translateY(1px)
+   }
+
+   .small-btn {
+       padding: 10px 14px;
+       width: auto
+   }
+
+   /* Messages / Cards */
+   .status-card {
+       padding: 26px;
+       border-radius: 14px;
+       border: 1px solid var(--border);
+       background: linear-gradient(180deg, #fff, #fbfdff);
+   }
+
+   .success {
+       border-color: #bbf7d0;
+       background: linear-gradient(180deg, #fff, #f0fdf4);
+       color: var(--success)
+   }
+
+   .error {
+       border-color: #fecaca;
+       background: linear-gradient(180deg, #fff, #fef2f2);
+       color: var(--error)
+   }
+
+   .warning {
+       border-color: #fde68a;
+       background: linear-gradient(180deg, #fff, #fffbeb);
+       color: var(--warning)
+   }
+
+   .icon {
+       font-size: 52px;
+       margin-bottom: 10px
+   }
+
+   .success-message {
+       display: none
+   }
+
+   .error-message {
+       display: none;
+       background: #fef2f2;
+       color: var(--error);
+       padding: 12px 14px;
+       border: 1px solid #fecaca;
+       border-radius: 12px;
+       margin-top: 14px
+   }
+
+   .qr-code-container {
+       display: none;
+       text-align: center;
+       margin-top: 20px;
+       padding: 18px;
+       border: 1px dashed var(--border);
+       border-radius: 12px
+   }
+
+   .qr-code {
+       margin: 12px 0
+   }
+
+   .instructions {
+       margin-top: 16px;
+       font-size: 14px;
+       color: var(--muted);
+       text-align: center
+   }
+
+   .loading {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 12px;
+       margin-top: 12px
+   }
+
+   .spinner {
+       width: 36px;
+       height: 36px;
+       border-radius: 999px;
+       border: 4px solid rgba(0, 0, 0, .08);
+       border-left-color: var(--primary);
+       animation: spin 1s linear infinite
+   }
+
+   @keyframes spin {
+       to {
+           transform: rotate(360deg)
+       }
+   }
+
+   .user-data {
+       margin-top: 18px;
+       padding: 14px;
+       border-radius: 12px;
+       background: #f9fafb
+   }
+
+   .user-data h3 {
+       margin: 0 0 10px
+   }
+
+   .user-data-item {
+       display: flex;
+       justify-content: space-between;
+       gap: 12px;
+       margin-bottom: 8px
+   }
+
+   .user-data-label {
+       font-weight: 700;
+       color: #111827
+   }
+
+   .input-form {
+       margin: 18px 0;
+       padding: 18px;
+       background: #f9fafb;
+       border-radius: 12px;
+       border: 1px dashed var(--border)
+   }
+
+   .input-group {
+       display: flex;
+       gap: 8px
+   }
+
+   .input-group input {
+       flex: 1
+   }
+
+   .manual-input {
+       text-align: center;
+       margin-top: 12px;
+       padding: 18px;
+       border: 1px dashed var(--border);
+       border-radius: 12px;
+       background: #fff
+   }
+
+   /* Footer */
+   footer {
+       padding: 18px;
+       text-align: center;
+       color: var(--muted);
+       font-size: 14px
+   }
+
+   /* Layout helpers */
+   .center {
+       display: flex;
+       align-items: center;
+       justify-content: center
+   }
+
+   /* Radio group styles (index.html) */
+   .radio-group {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 12px
+   }
+
+   .radio-option {
+       display: flex;
+       align-items: center;
+       gap: 8px;
+       padding: 8px 12px;
+       border: 1px solid var(--border);
+       border-radius: 999px;
+       padding-right: 15px;
+   }
+
+   .radio-option input {
+       width: auto;
+       margin-bottom: 2px;
+   }
+
+   /* Utilities */
+   .hidden {
+       display: none !important
+   }

@@ -5,202 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retirar Sacochila - Faculdade Aberta FAM</title>
-    <style>
-        :root {
-            --primary-color: #4285f4;
-            --success-color: #34a853;
-            --error-color: #ea4335;
-            --warning-color: #f57c00;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --border-radius: 8px;
-            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            text-align: center;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 20px;
-        }
-
-        header h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .content {
-            padding: 30px;
-        }
-
-        .status-card {
-            padding: 30px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-        }
-
-        .success {
-            background: #e8f5e8;
-            color: var(--success-color);
-            border: 1px solid #c8e6c9;
-        }
-
-        .error {
-            background: #ffebee;
-            color: var(--error-color);
-            border: 1px solid #ffcdd2;
-        }
-
-        .warning {
-            background: #fff3e0;
-            color: var(--warning-color);
-            border: 1px solid #ffe0b2;
-        }
-
-        .icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .user-data {
-            text-align: left;
-            background: var(--light-gray);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            margin-top: 20px;
-        }
-
-        .user-data-item {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .user-data-label {
-            font-weight: bold;
-        }
-
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #666;
-            font-size: 14px;
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .action-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-
-        .action-button:hover {
-            background: #3367d6;
-        }
-
-        .input-form {
-            margin: 20px 0;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: var(--border-radius);
-        }
-
-        .input-group {
-            display: flex;
-            margin-bottom: 15px;
-        }
-
-        .input-group input {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
-            font-size: 16px;
-            border-right: none;
-        }
-
-        .input-group button {
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            padding: 12px 20px;
-            white-space: nowrap;
-        }
-
-        .manual-input {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px dashed #ddd;
-            border-radius: var(--border-radius);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -219,13 +24,13 @@
                 <div class="input-form">
                     <div class="input-group">
                         <input type="text" id="manualId" placeholder="Digite o código do aluno">
-                        <button class="action-button" onclick="confirmManualId()">Liberar Sacochila</button>
+                        <button class="action-button small-btn" onclick="confirmManualId()">Liberar</button>
                     </div>
                     <p>Pressione Enter ou clique em Liberar Sacochila</p>
                 </div>
             </div>
 
-            <div id="loading" class="loading">
+            <div id="loading" class="loading hidden">
                 <div class="spinner"></div>
                 <p>Processando retirada da sacochila...</p>
             </div>
@@ -237,37 +42,23 @@
 
                 <div id="userData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Nome:</span>
-                        <span id="userName"></span>
+                    <div class="user-data-item"><span class="user-data-label">Nome:</span> <span id="userName"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">E-mail:</span>
-                        <span id="userEmail"></span>
+                    <div class="user-data-item"><span class="user-data-label">E-mail:</span> <span id="userEmail"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">CPF:</span>
-                        <span id="userCpf"></span>
+                    <div class="user-data-item"><span class="user-data-label">CPF:</span> <span id="userCpf"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Celular:</span>
-                        <span id="userCelular"></span>
+                    <div class="user-data-item"><span class="user-data-label">Celular:</span> <span id="userCelular"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Cursos de Interesse:</span>
-                        <span id="userCursosFavoritos"></span>
+                    <div class="user-data-item"><span class="user-data-label">Escola:</span> <span id="userEscola"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Modalidade Preferida:</span>
-                        <span id="userModalidade"></span>
+                    <div class="user-data-item"><span class="user-data-label">Cursos de Interesse:</span> <span id="userCursosFavoritos"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Data de Retirada:</span>
-                        <span id="confirmationDate"></span>
+                    <div class="user-data-item"><span class="user-data-label">Modalidade Preferida:</span> <span id="userModalidade"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Número do Registro:</span>
-                        <span id="userRowNumber"></span>
+                    <div class="user-data-item"><span class="user-data-label">Data de Retirada:</span> <span id="confirmationDate"></span>
+                    </div>
+                    <div class="user-data-item"><span class="user-data-label">Nº de Registro:</span> <span id="userRowNumber"></span>
                     </div>
 
                 </div>
@@ -281,37 +72,23 @@
 
                 <div id="existingUserData" class="user-data" style="display: none;">
                     <h3>Dados do Participante:</h3>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Nome:</span>
-                        <span id="existingUserName"></span>
+                    <div class="user-data-item"><span class="user-data-label">Nome:</span> <span id="existingUserName"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">E-mail:</span>
-                        <span id="existingUserEmail"></span>
+                    <div class="user-data-item"><span class="user-data-label">E-mail:</span> <span id="existingUserEmail"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">CPF:</span>
-                        <span id="existingUserCpf"></span>
+                    <div class="user-data-item"><span class="user-data-label">CPF:</span> <span id="existingUserCpf"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Celular:</span>
-                        <span id="existingUserCelular"></span>
+                    <div class="user-data-item"><span class="user-data-label">Celular:</span> <span id="existingUserCelular"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Cursos de Interesse:</span>
-                        <span id="userCursosFavoritos"></span>
+                    <div class="user-data-item"><span class="user-data-label">Escola:</span> <span id="existingUserEscola"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Modalidade Preferida:</span>
-                        <span id="userModalidade"></span>
+                    <div class="user-data-item"><span class="user-data-label">Cursos de Interesse:</span> <span id="existingUserCursosFavoritos"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Data da Confirmação Anterior:</span>
-                        <span id="existingConfirmationDate"></span>
+                    <div class="user-data-item"><span class="user-data-label">Modalidade Preferida:</span> <span id="existingUserModalidade"></span>
                     </div>
-                    <div class="user-data-item">
-                        <span class="user-data-label">Número do Registro:</span>
-                        <span id="existingUserRowNumber"></span>
+                    <div class="user-data-item"><span class="user-data-label">Data da Confirmação Anterior:</span> <span id="existingConfirmationDate"></span>
+                    </div>
+                    <div class="user-data-item"><span class="user-data-label">Nº de Registro:</span> <span id="existingUserRowNumber"></span>
                     </div>
                 </div>
                 <button class="action-button" onclick="resetPage()">Verificar outro código</button>
@@ -420,11 +197,11 @@
                             document.getElementById('existingUserEmail').textContent = result.userData.email || 'N/A';
                             document.getElementById('existingUserCpf').textContent = result.userData.cpf || 'N/A';
                             document.getElementById('existingUserCelular').textContent = result.userData.celular || 'N/A';
-                            document.getElementById('existingConfirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
-                            document.getElementById('existingUserRowNumber').textContent = result.rowNumber || 'N/A';
                             document.getElementById('existingUserCursosFavoritos').textContent = result.userData.cursosFavoritos || 'N/A';
                             document.getElementById('existingUserModalidade').textContent = result.userData.modalidade || 'N/A';
                             document.getElementById('existingUserEscola').textContent = result.userData.escola || 'N/A';
+                            document.getElementById('existingConfirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
+                            document.getElementById('existingUserRowNumber').textContent = result.rowNumber || 'N/A';
                         }
                     } else {
                         // Mostrar sucesso - confirmação realizada agora
@@ -437,11 +214,11 @@
                             document.getElementById('userEmail').textContent = result.userData.email || 'N/A';
                             document.getElementById('userCpf').textContent = result.userData.cpf || 'N/A';
                             document.getElementById('userCelular').textContent = result.userData.celular || 'N/A';
-                            document.getElementById('confirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
-                            document.getElementById('userRowNumber').textContent = result.rowNumber || 'N/A';
                             document.getElementById('userCursosFavoritos').textContent = result.userData.cursosFavoritos || 'N/A';
                             document.getElementById('userModalidade').textContent = result.userData.modalidade || 'N/A';
-document.getElementById('userEscola').textContent = result.userData.escola || 'N/A';
+                            document.getElementById('userEscola').textContent = result.userData.escola || 'N/A';
+                            document.getElementById('confirmationDate').textContent = formatDate(result.userData.dataConfirmacao);
+                            document.getElementById('userRowNumber').textContent = result.rowNumber || 'N/A';
                         }
                     }
                 } else {
