@@ -366,28 +366,28 @@ document.addEventListener('DOMContentLoaded', function() {
             titulo: 'Vestibular Online',
             texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24 horas por dia. Resultado em minutos após a conclusão.',
             textoCompleto: 'Após a entrega da redação, os dados complementares serão disponibilizados e deverão ser preenchidos para que seja possível avançar para a próxima etapa. Somente após esse procedimento, o boleto da parcela da matrícula será liberado para pagamento. É importante lembrar que esse boleto já diz respeito a sua primeira mensalidade, referente ao mês de janeiro, portanto o próximo será apenas para fevereiro.',
-            link: 'https://famamericana.com.br/vestibular',
+            link: 'http://fam.inscricao.crmeducacional.com/Login/60',
             linkText: 'Inscrever-se no Vestibular'
         },
         'enem': {
             titulo: 'Use sua Nota do ENEM',
             texto: 'Conquistou 400+ pontos na redação do ENEM (2015 em diante)? Entre direto na FAM sem vestibular tradicional!',
             textoCompleto: 'O ENEM é uma prova aplicada anualmente para avaliar o desempenho dos estudantes que estão concluindo o Ensino Médio e é utilizado como uma das principais formas de ingresso e desconto nos cursos de modalidade presencial. Mas para que o ENEM seja válido, ele não pode ter sido realizado na condição de treineiro e a redação precisa de um mínimo de 400 pontos. É muito importante lembrar que a pontuação se dá por casas centesimais, portanto, não se esqueça de sempre aplicar dois zeros após a vírgula, para que a nota seja computada corretamente.',
-            link: 'https://famamericana.com.br/enem',
+            link: 'http://fam.inscricao.crmeducacional.com/Login/61',
             linkText: 'Inscrever-se com ENEM'
         },
         'segunda-graduacao': {
             titulo: '2ª Graduação',
             texto: 'Já é graduado? Processo simplificado sem vestibular.',
             textoCompleto: 'Mediante a apresentação do diploma de Ensino Superior, você garante a dispensa do vestibular e ainda pode solicitar o aproveitamento de disciplinas equivalentes, após a matrícula. Para isso, basta encaminhar o Histórico Acadêmico e o Conteúdo Programático das disciplinas para o e-mail do Departamento de Matrículas: <a class="linklegal" href="mailto:matricula@fam.br"> matricula@fam.br</a>.',
-            link: 'https://famamericana.com.br/segunda-graduacao',
+            link: 'http://fam.inscricao.crmeducacional.com/Login/62',
             linkText: 'Inscrever-se 2ª Graduação'
         },
         'transferencia': {
             titulo: 'Transferência',
             texto: 'Venha ser FAM! Transferência simples com aproveitamento de disciplinas. Análise curricular por apenas R$50,00.',
             textoCompleto: 'Para garantir o melhor aproveitamento das suas disciplinas já cursadas, é essencial que você prepare a documentação adequada. Você sabe o que é o Conteúdo Programático e qual a sua importância? Também chamado de Ementa ou Plano de Ensino, o Conteúdo Programático é um documento específico de cada disciplina, que descreve detalhadamente todo o conteúdo abordado, contendo a carga horária e informando as referências bibliográficas. É um documento fundamental para a Análise da Grade Curricular, pois auxiliará o(a) coordenador(a) a identificar em qual semestre você melhor se encaixa, sem que haja qualquer tipo de prejuízo.',
-            link: 'https://famamericana.com.br/transferencia',
+            link: 'http://fam.inscricao.crmeducacional.com/Login/63',
             linkText: 'Solicitar Transferência'
         },
         'pos-graduacao': {
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
             titulo: 'Reabertura de Matrícula',
             texto: 'Já foi aluno da FAM, precisou trancar o curso e agora quer voltar? A Reabertura de Matrícula (RA) é a sua solução para retomar os estudos. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
             textoCompleto: 'Para alunos que cursaram pelo menos um semestre completo na FAM e interrompeu sua graduação, pode solicitar a reabertura do seu registro acadêmico e continuar de onde parou. O processo é simples: A FAM avaliará sua grade e informará em qual semestre você continuará e quais matérias serão aproveitadas. Taxa: há uma taxa administrativa de R$50,00 para solicitar a análise curricular.',
-            link: 'https://famamericana.com.br/tecnicos',
+            link: 'http://fam.inscricao.crmeducacional.com/Login/64',
             linkText: 'Reabrir Matrícula'
         }
     };
