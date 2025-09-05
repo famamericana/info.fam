@@ -206,10 +206,14 @@ main {
 }
 
 @keyframes blink {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+
+    51%,
+    100% {
         opacity: 0;
     }
 }
@@ -218,6 +222,7 @@ main {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
@@ -227,6 +232,7 @@ main {
     from {
         width: 100%;
     }
+
     to {
         width: 0;
     }
@@ -1339,8 +1345,11 @@ footer .footer-info-icons i {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    .logo {
+        margin-top: 5px;
+    }
 
-        .bola-4 {
+    .bola-4 {
         top: 400px;
     }
 
@@ -1348,6 +1357,7 @@ footer .footer-info-icons i {
         top: -20px !important;
         left: 50% !important;
     }
+
     .bola-6 {
         top: -30px;
         right: -10px;
@@ -1357,7 +1367,7 @@ footer .footer-info-icons i {
         flex-direction: column;
     }
 
-    .provadebolsas .badge{
+    .provadebolsas .badge {
         width: 100%;
         text-align: center;
     }
@@ -1679,11 +1689,11 @@ footer .footer-info-icons i {
 @media (max-width: 700px) {
 
     .bola-9 {
-   right: 50px !important;
-    bottom: 52%;
-    left: auto;
-  
-}
+        right: 50px !important;
+        bottom: 52%;
+        left: auto;
+
+    }
 
     .bola-10 {
         bottom: 10%;
@@ -1778,31 +1788,32 @@ footer .footer-info-icons i {
         flex-direction: column;
     }
 
-       .bola-5 {
+    .bola-5 {
         top: 50% !important;
-    
+
     }
+
     .bola-1 {
         display: none;
     }
 
-    .bola-9{
+    .bola-9 {
         bottom: 38% !important;
     }
 
-    #countdown{
-        font-size: var(--fs-large) ;
+    #countdown {
+        font-size: var(--fs-large);
     }
 
-    .bola-5{
+    .bola-5 {
         top: 32% !important;
     }
 
-    .bola-2{
+    .bola-2 {
         left: -50px !important;
     }
 
-    .bola-7{
+    .bola-7 {
         bottom: 17%;
     }
 }
@@ -1813,7 +1824,7 @@ footer .footer-info-icons i {
     .bola-5 {
         top: 30%;
         left: -150px;
-    
+
     }
 
     .bola-6 {
@@ -1962,12 +1973,15 @@ footer .footer-info-icons i {
     transform: translateY(0);
     transition-delay: 0ms;
 }
+
 .provadebolsas.visible .badge {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 180ms;
 }
-.provadebolsas.visible p, .provadebolsas.visible .botao-prova-de-bolsas {
+
+.provadebolsas.visible p,
+.provadebolsas.visible .botao-prova-de-bolsas {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 360ms;
