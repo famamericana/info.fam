@@ -308,9 +308,6 @@
     "comunicacao": "#e53888",
     "gestao": "#205c7e",
     "tec": "#79a744"
-  },
-  "configuracoes": {
-    "dataAtual": "20-08-2025",
-    "diasParaFinalizar": 7
   }
+
 }

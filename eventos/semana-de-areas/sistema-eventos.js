@@ -51,12 +51,8 @@ class SemanaDeAreas {
             const data = await response.json();
             this.eventos = data.eventos;
             
-            // Usar data atual do arquivo somente se explicitamente forçada (útil para testes).
-            // Por padrão usamos a data real do navegador (this.dataAtual já inicializada).
-            if (data.configuracoes && data.configuracoes.dataAtual && data.configuracoes.forcarDataAtual) {
-                const parsed = this.parseDate(data.configuracoes.dataAtual);
-                if (parsed) this.dataAtual = parsed;
-            }
+            // Sempre usa a data real do navegador
+            this.dataAtual = new Date();
             
             return true;
         } catch (error) {
