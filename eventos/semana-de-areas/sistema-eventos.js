@@ -65,7 +65,10 @@ class SemanaDeAreas {
      * Organiza eventos: próximo, passados, por ano
      */
     organizarEventos() {
-        const hoje = this.dataAtual;
+        // Normaliza a data atual para 00:00 para comparação justa
+        const hoje = new Date(this.dataAtual);
+        hoje.setHours(0, 0, 0, 0);
+        
         const eventosOrdenados = [...this.eventos].sort((a, b) => 
             this.parseDate(a.dataInicio) - this.parseDate(b.dataInicio)
         );
