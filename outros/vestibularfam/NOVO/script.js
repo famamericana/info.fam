@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const opcoes = {
         'vestibular': {
             titulo: 'Vestibular Online',
-            texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24/7. Resultado em minutos após a conclusão.',
+            texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24 horas por dia. Resultado em minutos após a conclusão.',
             textoCompleto: 'Após a entrega da redação, os dados complementares serão disponibilizados e deverão ser preenchidos para que seja possível avançar para a próxima etapa. Somente após esse procedimento, o boleto da parcela da matrícula será liberado para pagamento. É importante lembrar que esse boleto já diz respeito a sua primeira mensalidade, referente ao mês de janeiro, portanto o próximo será apenas para fevereiro.',
             link: 'https://famamericana.com.br/vestibular',
             linkText: 'Inscrever-se no Vestibular'
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'segunda-graduacao': {
             titulo: '2ª Graduação',
-            texto: 'Já é graduado? Processo simplificado sem vestibular. Elimine matérias já cursadas e foque no que é novo para você.',
+            texto: 'Já é graduado? Processo simplificado sem vestibular.',
             textoCompleto: 'Mediante a apresentação do diploma de Ensino Superior, você garante a dispensa do vestibular e ainda pode solicitar o aproveitamento de disciplinas equivalentes, após a matrícula. Para isso, basta encaminhar o Histórico Acadêmico e o Conteúdo Programático das disciplinas para o e-mail do Departamento de Matrículas: <a class="linklegal" href="mailto:matricula@fam.br"> matricula@fam.br</a>.',
             link: 'https://famamericana.com.br/segunda-graduacao',
             linkText: 'Inscrever-se 2ª Graduação'
@@ -398,8 +398,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'reabertura': {
             titulo: 'Reabertura de Matrícula',
-            texto: 'Ex-aluno FAM? Volte e continue de onde parou. Continue seus estudos com análise curricular facilitada. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
-            textoCompleto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            texto: 'Já foi aluno da FAM, precisou trancar o curso e agora quer voltar? A Reabertura de Matrícula (RA) é a sua solução para retomar os estudos. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
+            textoCompleto: 'Para alunos que cursaram pelo menos um semestre completo na FAM e interrompeu sua graduação, pode solicitar a reabertura do seu registro acadêmico e continuar de onde parou. O processo é simples: A FAM avaliará sua grade e informará em qual semestre você continuará e quais matérias serão aproveitadas. Taxa: há uma taxa administrativa de R$50,00 para solicitar a análise curricular.',
             link: 'https://famamericana.com.br/tecnicos',
             linkText: 'Reabrir Matrícula'
         }
