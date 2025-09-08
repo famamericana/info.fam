@@ -86,7 +86,7 @@ $groups = [
     ]],
     ['numero' => 14, 'opcoes' => [
         'Calmo, reservado',                                       // S
-        'Feliz, tranqüilo',                                       // I
+        'Feliz, tranquilo',                                       // I
         'Amável, gentil',                                         // S
         'Ousado, audacioso',                                      // D
     ]],
