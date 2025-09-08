@@ -66,12 +66,22 @@ try {
     // Preparar anexos embutidos (gráficos como imagens)
     $cids = [];
     if (isset($resultados['images']) && is_array($resultados['images'])) {
+        error_log("DEBUG: Imagens recebidas: " . json_encode(array_keys($resultados['images'])));
         foreach (['self','persona','stress','wheel'] as $key) {
             if (!empty($resultados['images'][$key]) && is_string($resultados['images'][$key])) {
                 $cid = anexarImagemBase64($mail, $resultados['images'][$key], "chart_{$key}.png");
-                if ($cid) { $cids[$key] = $cid; }
+                if ($cid) { 
+                    $cids[$key] = $cid; 
+                    error_log("DEBUG: Imagem {$key} anexada com CID: {$cid}");
+                } else {
+                    error_log("DEBUG: Falha ao anexar imagem {$key}");
+                }
+            } else {
+                error_log("DEBUG: Imagem {$key} não encontrada ou inválida");
             }
         }
+    } else {
+        error_log("DEBUG: Nenhuma imagem encontrada nos resultados");
     }
 
     // Gerar HTML do email (com CIDs)
@@ -220,19 +230,44 @@ function gerarEmailHTML($resultados, $cids = []) {
  * Anexa imagem base64 (dataURL) ao email e retorna o CID para uso no HTML.
  */
 function anexarImagemBase64(PHPMailer $mail, string $dataUrl, string $filename = 'image.png') {
-    if (strpos($dataUrl, 'data:image') !== 0) return null;
-    [$meta, $content] = explode(',', $dataUrl, 2);
-    if (!$content) return null;
+    if (strpos($dataUrl, 'data:image') !== 0) {
+        error_log("DEBUG: DataURL inválida para {$filename}");
+        return null;
+    }
+    
+    $parts = explode(',', $dataUrl, 2);
+    if (count($parts) !== 2) {
+        error_log("DEBUG: Formato de dataURL inválido para {$filename}");
+        return null;
+    }
+    
+    [$meta, $content] = $parts;
+    if (!$content) {
+        error_log("DEBUG: Conteúdo base64 vazio para {$filename}");
+        return null;
+    }
+    
     // Detectar mime
     $mime = 'image/png';
     if (preg_match('#data:(.*?);base64#', $meta, $m)) {
         $mime = $m[1];
     }
+    
     $binary = base64_decode($content);
-    if ($binary === false) return null;
+    if ($binary === false || strlen($binary) < 100) {
+        error_log("DEBUG: Falha na decodificação base64 ou imagem muito pequena para {$filename}");
+        return null;
+    }
+    
     $cid = uniqid('img_', true) . '@disc';
-    $mail->addStringEmbeddedImage($binary, $cid, $filename, 'base64', $mime);
-    return $cid;
+    try {
+        $mail->addStringEmbeddedImage($binary, $cid, $filename, 'base64', $mime);
+        error_log("DEBUG: Imagem {$filename} anexada com sucesso. Tamanho: " . strlen($binary) . " bytes");
+        return $cid;
+    } catch (Exception $e) {
+        error_log("DEBUG: Erro ao anexar imagem {$filename}: " . $e->getMessage());
+        return null;
+    }
 }
 
 function gerarEmailTexto($resultados) {

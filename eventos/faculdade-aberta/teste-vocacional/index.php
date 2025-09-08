@@ -751,16 +751,29 @@ $discKey = [
       const cvStressEl = document.getElementById('cvStress');
       const cvWheelEl = document.getElementById('cvWheel');
       let images = {};
-      try {
-        images = {
-          self: cvSelfEl.toDataURL('image/png'),
-          persona: cvPersonaEl.toDataURL('image/png'),
-          stress: cvStressEl.toDataURL('image/png'),
-          wheel: cvWheelEl.toDataURL('image/png')
-        };
-      } catch (err) {
-        console.warn('Falha ao capturar gráficos:', err);
-      }
+      
+      // Aguardar um pouco para garantir que os gráficos Chart.js foram renderizados
+      setTimeout(() => {
+        try {
+          images = {
+            self: cvSelfEl.toDataURL('image/png'),
+            persona: cvPersonaEl.toDataURL('image/png'),
+            stress: cvStressEl.toDataURL('image/png'),
+            wheel: cvWheelEl.toDataURL('image/png')
+          };
+          console.log('Gráficos capturados:', Object.keys(images));
+          console.log('SELF image length:', images.self.length);
+          console.log('PERSONA image length:', images.persona.length);
+          console.log('STRESS image length:', images.stress.length);
+          console.log('WHEEL image length:', images.wheel.length);
+          
+          // Atualizar resultados com as imagens
+          window.resultadosDisc.images = images;
+        } catch (err) {
+          console.error('Falha ao capturar gráficos:', err);
+          window.resultadosDisc.images = {};
+        }
+      }, 500);
 
       // Armazenar resultados globalmente para envio por email
       window.resultadosDisc = {
@@ -771,7 +784,7 @@ $discKey = [
         cursos: RECO[pred].cursos,
         profissoes: RECO[pred].profs,
         frases: RECO[pred].frases,
-        images
+        images: {} // Será preenchido pelo setTimeout acima
       };
 
       document.getElementById('results').style.display = '';
@@ -809,36 +822,58 @@ $discKey = [
       // Estado de carregamento
       btnEnviar.disabled = true;
       btnEnviar.textContent = 'Enviando...';
-      mostrarStatus('📤 Enviando resultados...', 'loading');
+      mostrarStatus('📤 Preparando gráficos e enviando...', 'loading');
       
-      try {
-        const response = await fetch('enviar_resultado.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: email,
-            resultados: window.resultadosDisc
-          })
-        });
-        
-        const data = await response.json();
-        
-        if (response.ok && data.success) {
-          mostrarStatus('✅ ' + data.message, 'success');
-          emailInput.value = '';
-        } else {
-          mostrarStatus('❌ ' + (data.error || 'Erro ao enviar email'), 'error');
+      // Aguardar um pouco mais para garantir que as imagens foram capturadas
+      setTimeout(async () => {
+        try {
+          // Verificar se as imagens foram capturadas
+          if (!window.resultadosDisc.images || Object.keys(window.resultadosDisc.images).length === 0) {
+            console.warn('Imagens não capturadas, tentando novamente...');
+            // Tentar capturar novamente
+            const cvSelfEl = document.getElementById('cvSelf');
+            const cvPersonaEl = document.getElementById('cvPersona');
+            const cvStressEl = document.getElementById('cvStress');
+            const cvWheelEl = document.getElementById('cvWheel');
+            
+            window.resultadosDisc.images = {
+              self: cvSelfEl.toDataURL('image/png'),
+              persona: cvPersonaEl.toDataURL('image/png'),
+              stress: cvStressEl.toDataURL('image/png'),
+              wheel: cvWheelEl.toDataURL('image/png')
+            };
+          }
+          
+          console.log('Enviando dados:', window.resultadosDisc);
+          
+          const response = await fetch('enviar_resultado.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: email,
+              resultados: window.resultadosDisc
+            })
+          });
+          
+          const data = await response.json();
+          
+          if (response.ok && data.success) {
+            mostrarStatus('✅ ' + data.message, 'success');
+            emailInput.value = '';
+          } else {
+            mostrarStatus('❌ ' + (data.error || 'Erro ao enviar email'), 'error');
+          }
+          
+        } catch (error) {
+          console.error('Erro:', error);
+          mostrarStatus('❌ Erro de conexão. Tente novamente.', 'error');
+        } finally {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = 'Enviar Resultados';
         }
-        
-      } catch (error) {
-        console.error('Erro:', error);
-        mostrarStatus('❌ Erro de conexão. Tente novamente.', 'error');
-      } finally {
-        btnEnviar.disabled = false;
-        btnEnviar.textContent = 'Enviar Resultados';
-      }
+      }, 100);
     });
 
     function validarEmail(email) {
