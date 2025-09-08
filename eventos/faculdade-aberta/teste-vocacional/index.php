@@ -745,6 +745,23 @@ $discKey = [
       // Recomendações
       renderRecommendations(pred);
 
+      // Capturar imagens (Chart.js e Roda) para envio por email
+      const cvSelfEl = document.getElementById('cvSelf');
+      const cvPersonaEl = document.getElementById('cvPersona');
+      const cvStressEl = document.getElementById('cvStress');
+      const cvWheelEl = document.getElementById('cvWheel');
+      let images = {};
+      try {
+        images = {
+          self: cvSelfEl.toDataURL('image/png'),
+          persona: cvPersonaEl.toDataURL('image/png'),
+          stress: cvStressEl.toDataURL('image/png'),
+          wheel: cvWheelEl.toDataURL('image/png')
+        };
+      } catch (err) {
+        console.warn('Falha ao capturar gráficos:', err);
+      }
+
       // Armazenar resultados globalmente para envio por email
       window.resultadosDisc = {
         predominante: pred,
@@ -752,7 +769,9 @@ $discKey = [
         persona: P.PERSONA.map(v => Math.round(v)),
         stress: P.STRESS.map(v => Math.round(v)),
         cursos: RECO[pred].cursos,
-        profissoes: RECO[pred].profs
+        profissoes: RECO[pred].profs,
+        frases: RECO[pred].frases,
+        images
       };
 
       document.getElementById('results').style.display = '';

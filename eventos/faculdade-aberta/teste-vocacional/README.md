@@ -53,16 +53,19 @@ teste-vocacional/
 2. **Sistema** calcula os resultados (D/I/S/C)
 3. **Usuário** opcionalmente insere email
 4. **Frontend** envia dados via AJAX para `enviar_resultado.php`
-5. **Backend** gera email HTML personalizado e envia via PHPMailer
+5. **Backend** gera email HTML personalizado (com gráficos embutidos) e envia via PHPMailer
 
 ## 📧 Exemplo de Email Enviado
 
 O email contém:
 - 🎯 Perfil predominante (D/I/S/C)
 - 📊 Pontuações detalhadas (SELF/PERSONA/STRESS)
+- 🖼️ Gráficos do Chart.js (SELF, PERSONA, STRESS) e a Roda DISC como imagens
 - 🎓 Cursos recomendados pela FAM
 - 💼 Profissões alinhadas ao perfil
 - ✨ Design responsivo e profissional
+
+Observação: alguns clientes de email bloqueiam imagens por padrão. Peça ao usuário para permitir exibição de imagens para ver os gráficos.
 
 ## 🐛 Resolução de Problemas
 

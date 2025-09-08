@@ -63,8 +63,19 @@ try {
     $mail->isHTML(true);
     $mail->Subject = 'Seus Resultados do Teste DISC - FAM';
     
-    // Gerar HTML do email
-    $html_email = gerarEmailHTML($resultados);
+    // Preparar anexos embutidos (gráficos como imagens)
+    $cids = [];
+    if (isset($resultados['images']) && is_array($resultados['images'])) {
+        foreach (['self','persona','stress','wheel'] as $key) {
+            if (!empty($resultados['images'][$key]) && is_string($resultados['images'][$key])) {
+                $cid = anexarImagemBase64($mail, $resultados['images'][$key], "chart_{$key}.png");
+                if ($cid) { $cids[$key] = $cid; }
+            }
+        }
+    }
+
+    // Gerar HTML do email (com CIDs)
+    $html_email = gerarEmailHTML($resultados, $cids);
     $mail->Body = $html_email;
     
     // Versão texto alternativa
@@ -87,13 +98,14 @@ try {
     ]);
 }
 
-function gerarEmailHTML($resultados) {
+function gerarEmailHTML($resultados, $cids = []) {
     $predominante = $resultados['predominante'];
     $self = $resultados['self'];
     $persona = $resultados['persona'];
     $stress = $resultados['stress'];
     $cursos = $resultados['cursos'] ?? [];
     $profissoes = $resultados['profissoes'] ?? [];
+    $frases = $resultados['frases'] ?? [];
     
     $html = '
     <!DOCTYPE html>
@@ -102,41 +114,63 @@ function gerarEmailHTML($resultados) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Resultados DISC</title>
-        <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
-            .content { background: #f8fafc; padding: 20px; border-radius: 0 0 8px 8px; }
-            .result-box { background: white; margin: 15px 0; padding: 15px; border-radius: 6px; border-left: 4px solid #2563eb; }
-            .predominante { font-size: 24px; font-weight: bold; color: #2563eb; }
-            .scores { display: flex; gap: 10px; margin: 10px 0; }
-            .score-item { background: #e2e8f0; padding: 8px 12px; border-radius: 4px; text-align: center; flex: 1; }
-            .lista { margin: 10px 0; }
-            .lista li { margin: 5px 0; }
-            .footer { margin-top: 20px; padding: 15px; background: #e2e8f0; text-align: center; font-size: 12px; color: #64748b; }
-        </style>
+                <style>
+                        /* Identidade próxima ao teste (accent #45b7e5, cards escuros em bg claro para compatibilidade) */
+                        :root { --accent:#45b7e5; --text:#0f172a; --muted:#475569; --card:#ffffff; --line:#e5e7eb; }
+                        body { font-family: Arial, "Segoe UI", Tahoma, sans-serif; line-height:1.6; color:var(--text); max-width: 760px; margin:0 auto; padding:0; background:#f5f7fb; }
+                        .wrap { padding: 24px; }
+                        .header { background: linear-gradient(135deg, var(--accent), #3b82f6); color:#fff; padding:22px; text-align:center; border-radius: 12px 12px 0 0; }
+                        .content { background:#fff; padding: 18px; border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; }
+                        .h1 { margin:0; font-size:22px; }
+                        .sub { margin:6px 0 0; font-size:13px; opacity:.9 }
+                        .section { background: var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:10px; padding:14px; margin:14px 0; }
+                        .predominante { font-size:24px; font-weight:700; color:#0b5fa8; }
+                        .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:12px; margin: 4px 6px 0 0; }
+                        .grid { display:flex; flex-wrap:wrap; gap:10px; }
+                        .chart { width: calc(50% - 10px); min-width:260px; border:1px solid var(--line); border-radius:8px; padding:8px; background:#fff; text-align:center }
+                        .chart img { width:100%; height:auto; border-radius:6px; }
+                        .list { margin:8px 0; padding-left:16px; }
+                        .list li { margin:4px 0; }
+                        .footer { margin-top:16px; padding:12px; background:#eef2f7; text-align:center; font-size:12px; color:#334155; border-radius:8px; }
+                        .muted { color:#64748b; font-size:13px; }
+                </style>
     </head>
     <body>
-        <div class="header">
-            <h1>🎯 Seus Resultados do Teste DISC</h1>
-            <p>Faculdade de Americana - FAM</p>
-        </div>
-        
-        <div class="content">
+                <div class="wrap">
+                    <div class="header">
+                            <h1 class="h1">🎯 Seus Resultados do Teste DISC</h1>
+                            <p class="sub">Faculdade de Americana - FAM</p>
+                    </div>
+                    <div class="content">
             <div class="result-box">
                 <h2>📊 Perfil Predominante</h2>
                 <div class="predominante">' . $predominante . '</div>
             </div>
+                        <div class="section">
+                                <strong>Por que ' . htmlspecialchars($predominante) . '?</strong>
+                                <p class="muted">' . htmlspecialchars(implode(' ', $frases)) . '</p>
+                                <div>
+                                    <span class="pill">Estilo: <b>' . htmlspecialchars($predominante) . '</b></span>
+                                    <span class="pill">SELF: ' . implode(' / ', $self) . '</span>
+                                    <span class="pill">PERSONA: ' . implode(' / ', $persona) . '</span>
+                                    <span class="pill">STRESS: ' . implode(' / ', $stress) . '</span>
+                                </div>
+                        </div>
             
-            <div class="result-box">
-                <h3>📈 Pontuações</h3>
-                <p><strong>SELF (D/I/S/C):</strong> ' . implode(' / ', $self) . '</p>
-                <p><strong>PERSONA (D/I/S/C):</strong> ' . implode(' / ', $persona) . '</p>
-                <p><strong>STRESS (D/I/S/C):</strong> ' . implode(' / ', $stress) . '</p>
-            </div>';
+                        <div class="section">
+                                <h3>📊 Visualizações</h3>
+                                <div class="grid">
+                                    ' . (isset($cids['self']) ? '<div class="chart"><div>SELF</div><img src="cid:' . $cids['self'] . '" alt="Gráfico SELF"></div>' : '') . '
+                                    ' . (isset($cids['persona']) ? '<div class="chart"><div>PERSONA</div><img src="cid:' . $cids['persona'] . '" alt="Gráfico PERSONA"></div>' : '') . '
+                                    ' . (isset($cids['stress']) ? '<div class="chart"><div>STRESS</div><img src="cid:' . $cids['stress'] . '" alt="Gráfico STRESS"></div>' : '') . '
+                                    ' . (isset($cids['wheel']) ? '<div class="chart" style="width:100%"><div>Roda DISC (SELF)</div><img src="cid:' . $cids['wheel'] . '" alt="Roda DISC"></div>' : '') . '
+                                </div>
+                                <p class="muted">As imagens acima representam: SELF (tendência natural), PERSONA (como você se apresenta) e STRESS (pressões percebidas). A Roda DISC mostra a distribuição relativa do seu SELF em cada eixo D/I/S/C.</p>
+                        </div>';
     
     if (!empty($cursos)) {
         $html .= '
-            <div class="result-box">
+            <div class="section">
                 <h3>🎓 Cursos Recomendados</h3>
                 <ul class="lista">';
         foreach ($cursos as $curso) {
@@ -148,7 +182,7 @@ function gerarEmailHTML($resultados) {
     
     if (!empty($profissoes)) {
         $html .= '
-            <div class="result-box">
+            <div class="section">
                 <h3>💼 Profissões Alinhadas</h3>
                 <ul class="lista">';
         foreach ($profissoes as $profissao) {
@@ -159,20 +193,39 @@ function gerarEmailHTML($resultados) {
     }
     
     $html .= '
-            <div class="result-box">
+                        <div class="section">
                 <p><strong>⚠️ Importante:</strong> O DISC não determina talento nem limita escolhas; serve como <em>insight</em> para alinhar ambiente e estilo de trabalho.</p>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</p>
-            <p>Para mais informações, visite: <a href="https://fam.br">fam.br</a></p>
-            <p>Data: ' . date('d/m/Y H:i') . '</p>
-        </div>
+                    </div>
+                    <div class="footer">
+                            <p>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</p>
+                            <p>Para mais informações, visite: <a href="https://fam.br">fam.br</a></p>
+                            <p>Data: ' . date('d/m/Y H:i') . '</p>
+                    </div>
+                </div>
     </body>
     </html>';
     
     return $html;
+}
+
+/**
+ * Anexa imagem base64 (dataURL) ao email e retorna o CID para uso no HTML.
+ */
+function anexarImagemBase64(PHPMailer $mail, string $dataUrl, string $filename = 'image.png') {
+    if (strpos($dataUrl, 'data:image') !== 0) return null;
+    [$meta, $content] = explode(',', $dataUrl, 2);
+    if (!$content) return null;
+    // Detectar mime
+    $mime = 'image/png';
+    if (preg_match('#data:(.*?);base64#', $meta, $m)) {
+        $mime = $m[1];
+    }
+    $binary = base64_decode($content);
+    if ($binary === false) return null;
+    $cid = uniqid('img_', true) . '@disc';
+    $mail->addStringEmbeddedImage($binary, $cid, $filename, 'base64', $mime);
+    return $cid;
 }
 
 function gerarEmailTexto($resultados) {
