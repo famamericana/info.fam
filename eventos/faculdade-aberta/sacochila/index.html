@@ -92,6 +92,15 @@
                     </div>
                 </div>
                 
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consentimento" name="consentimento" required>
+                        <label for="consentimento">
+                            Declaro que tenho ciência de que os dados fornecidos poderão ser utilizados para fins de marketing educacional, incluindo envio de informações sobre cursos, eventos e oportunidades da FAM.
+                        </label>
+                    </div>
+                </div>
+                
                 <button type="submit" id="submitBtn">Cadastrar e Ganhar Sacochila</button>
                 
                 <div class="error-message hidden" id="errorMessage"></div>
@@ -145,12 +154,20 @@
                 celular: document.getElementById('celular').value,
                 escola: document.getElementById('escola').value,
                 cursosFavoritos: Array.from(document.getElementById('cursosFavoritos').selectedOptions).map(option => option.value),
-                modalidade: document.querySelector('input[name="modalidade"]:checked').value
+                modalidade: document.querySelector('input[name="modalidade"]:checked').value,
+                consentimentoMarketing: true
             };
             
             // Validar se pelo menos um curso foi selecionado
             if (formData.cursosFavoritos.length === 0) {
                 showError('Por favor, selecione pelo menos um curso de interesse.');
+                return;
+            }
+            
+            // Validar se o consentimento foi marcado
+            const consentimento = document.getElementById('consentimento').checked;
+            if (!consentimento) {
+                showError('É necessário aceitar o uso dos dados para marketing para prosseguir.');
                 return;
             }
             
