@@ -278,6 +278,22 @@ $discKey = [
         <div class="recommend" id="recommendBox"></div>
         <small style="display:block;margin-top:8px">⚠️ O DISC não determina talento nem limita escolhas; serve como <i>insight</i> para alinhar ambiente e estilo de trabalho.</small>
       </div>
+
+      <!-- 4) Envio por Email -->
+      <div class="card">
+        <h3 style="margin:0 0 15px">📧 Receber resultados por email</h3>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <input type="email" id="emailInput" placeholder="seu-email@exemplo.com" 
+                 style="flex:1;min-width:250px;padding:8px 12px;border:1px solid #d1d5db;border-radius:4px;font-size:14px">
+          <button id="btnEnviarEmail" style="padding:8px 16px;background:#16a34a;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px">
+            Enviar Resultados
+          </button>
+        </div>
+        <div id="emailStatus" style="margin-top:10px;font-size:14px;display:none"></div>
+        <small style="display:block;margin-top:8px;color:#64748b">
+          📋 Opcional: Digite seu email para receber um resumo completo dos seus resultados
+        </small>
+      </div>
     </div>
   </div>
 
@@ -729,12 +745,101 @@ $discKey = [
       // Recomendações
       renderRecommendations(pred);
 
+      // Armazenar resultados globalmente para envio por email
+      window.resultadosDisc = {
+        predominante: pred,
+        self: [d, i, s, c],
+        persona: P.PERSONA.map(v => Math.round(v)),
+        stress: P.STRESS.map(v => Math.round(v)),
+        cursos: RECO[pred].cursos,
+        profissoes: RECO[pred].profs
+      };
+
       document.getElementById('results').style.display = '';
       document.getElementById('results').scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
     });
+
+    // ===== Envio por Email =====
+    document.getElementById('btnEnviarEmail').addEventListener('click', async () => {
+      const emailInput = document.getElementById('emailInput');
+      const btnEnviar = document.getElementById('btnEnviarEmail');
+      const status = document.getElementById('emailStatus');
+      
+      const email = emailInput.value.trim();
+      
+      // Validar email
+      if (!email) {
+        mostrarStatus('Por favor, digite um email válido', 'error');
+        return;
+      }
+      
+      if (!validarEmail(email)) {
+        mostrarStatus('Formato de email inválido', 'error');
+        return;
+      }
+      
+      // Verificar se temos resultados
+      if (!window.resultadosDisc) {
+        mostrarStatus('Nenhum resultado disponível para envio', 'error');
+        return;
+      }
+      
+      // Estado de carregamento
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = 'Enviando...';
+      mostrarStatus('📤 Enviando resultados...', 'loading');
+      
+      try {
+        const response = await fetch('enviar_resultado.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            resultados: window.resultadosDisc
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+          mostrarStatus('✅ ' + data.message, 'success');
+          emailInput.value = '';
+        } else {
+          mostrarStatus('❌ ' + (data.error || 'Erro ao enviar email'), 'error');
+        }
+        
+      } catch (error) {
+        console.error('Erro:', error);
+        mostrarStatus('❌ Erro de conexão. Tente novamente.', 'error');
+      } finally {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = 'Enviar Resultados';
+      }
+    });
+
+    function validarEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function mostrarStatus(mensagem, tipo) {
+      const status = document.getElementById('emailStatus');
+      status.textContent = mensagem;
+      status.className = tipo;
+      status.style.display = 'block';
+      
+      // Auto-ocultar mensagens de sucesso após 5 segundos
+      if (tipo === 'success') {
+        setTimeout(() => {
+          status.style.display = 'none';
+        }, 5000);
+      }
+    }
   </script>
 </body>
 

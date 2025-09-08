@@ -1,0 +1,13 @@
+# Dependências do Composer
+vendor/
+composer.lock
+
+# Configurações sensíveis (não versionar)
+config_email.php
+
+# Logs de erro
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp

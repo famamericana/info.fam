@@ -301,3 +301,45 @@
    .card.anchor {
        scroll-margin-top: 112px;
    }
+
+   /* Email input styling */
+   #emailInput {
+       background: var(--bg);
+       color: var(--text);
+       border: 1px solid var(--line);
+   }
+
+   #emailInput:focus {
+       outline: none;
+       border-color: var(--accent);
+       box-shadow: 0 0 0 2px rgba(69, 183, 229, 0.2);
+   }
+
+   #btnEnviarEmail {
+       background: #16a34a;
+       transition: background 0.2s;
+   }
+
+   #btnEnviarEmail:hover:not(:disabled) {
+       background: #15803d;
+   }
+
+   #btnEnviarEmail:disabled {
+       background: #9ca3af;
+       cursor: not-allowed;
+   }
+
+   #emailStatus.success {
+       color: #16a34a;
+       display: block !important;
+   }
+
+   #emailStatus.error {
+       color: #dc2626;
+       display: block !important;
+   }
+
+   #emailStatus.loading {
+       color: var(--accent);
+       display: block !important;
+   }
