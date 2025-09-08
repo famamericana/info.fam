@@ -107,104 +107,111 @@ function gerarEmailHTML($resultados, $cids = []) {
     $profissoes = $resultados['profissoes'] ?? [];
     $frases = $resultados['frases'] ?? [];
     
-    $html = '
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Resultados DISC</title>
-                <style>
-                        /* Identidade próxima ao teste (accent #45b7e5, cards escuros em bg claro para compatibilidade) */
-                        :root { --accent:#45b7e5; --text:#0f172a; --muted:#475569; --card:#ffffff; --line:#e5e7eb; }
-                        body { font-family: Arial, "Segoe UI", Tahoma, sans-serif; line-height:1.6; color:var(--text); max-width: 760px; margin:0 auto; padding:0; background:#f5f7fb; }
-                        .wrap { padding: 24px; }
-                        .header { background: linear-gradient(135deg, var(--accent), #3b82f6); color:#fff; padding:22px; text-align:center; border-radius: 12px 12px 0 0; }
-                        .content { background:#fff; padding: 18px; border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; }
-                        .h1 { margin:0; font-size:22px; }
-                        .sub { margin:6px 0 0; font-size:13px; opacity:.9 }
-                        .section { background: var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:10px; padding:14px; margin:14px 0; }
-                        .predominante { font-size:24px; font-weight:700; color:#0b5fa8; }
-                        .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:12px; margin: 4px 6px 0 0; }
-                        .grid { display:flex; flex-wrap:wrap; gap:10px; }
-                        .chart { width: calc(50% - 10px); min-width:260px; border:1px solid var(--line); border-radius:8px; padding:8px; background:#fff; text-align:center }
-                        .chart img { width:100%; height:auto; border-radius:6px; }
-                        .list { margin:8px 0; padding-left:16px; }
-                        .list li { margin:4px 0; }
-                        .footer { margin-top:16px; padding:12px; background:#eef2f7; text-align:center; font-size:12px; color:#334155; border-radius:8px; }
-                        .muted { color:#64748b; font-size:13px; }
-                </style>
-    </head>
-    <body>
-                <div class="wrap">
-                    <div class="header">
-                            <h1 class="h1">🎯 Seus Resultados do Teste DISC</h1>
-                            <p class="sub">Faculdade de Americana - FAM</p>
-                    </div>
-                    <div class="content">
-            <div class="result-box">
-                <h2>📊 Perfil Predominante</h2>
-                <div class="predominante">' . $predominante . '</div>
-            </div>
-                        <div class="section">
-                                <strong>Por que ' . htmlspecialchars($predominante) . '?</strong>
-                                <p class="muted">' . htmlspecialchars(implode(' ', $frases)) . '</p>
-                                <div>
-                                    <span class="pill">Estilo: <b>' . htmlspecialchars($predominante) . '</b></span>
-                                    <span class="pill">SELF: ' . implode(' / ', $self) . '</span>
-                                    <span class="pill">PERSONA: ' . implode(' / ', $persona) . '</span>
-                                    <span class="pill">STRESS: ' . implode(' / ', $stress) . '</span>
-                                </div>
-                        </div>
-            
-                        <div class="section">
-                                <h3>📊 Visualizações</h3>
-                                <div class="grid">
-                                    ' . (isset($cids['self']) ? '<div class="chart"><div>SELF</div><img src="cid:' . $cids['self'] . '" alt="Gráfico SELF"></div>' : '') . '
-                                    ' . (isset($cids['persona']) ? '<div class="chart"><div>PERSONA</div><img src="cid:' . $cids['persona'] . '" alt="Gráfico PERSONA"></div>' : '') . '
-                                    ' . (isset($cids['stress']) ? '<div class="chart"><div>STRESS</div><img src="cid:' . $cids['stress'] . '" alt="Gráfico STRESS"></div>' : '') . '
-                                    ' . (isset($cids['wheel']) ? '<div class="chart" style="width:100%"><div>Roda DISC (SELF)</div><img src="cid:' . $cids['wheel'] . '" alt="Roda DISC"></div>' : '') . '
-                                </div>
-                                <p class="muted">As imagens acima representam: SELF (tendência natural), PERSONA (como você se apresenta) e STRESS (pressões percebidas). A Roda DISC mostra a distribuição relativa do seu SELF em cada eixo D/I/S/C.</p>
-                        </div>';
-    
-    if (!empty($cursos)) {
-        $html .= '
-            <div class="section">
-                <h3>🎓 Cursos Recomendados</h3>
-                <ul class="lista">';
-        foreach ($cursos as $curso) {
-            $html .= '<li>' . htmlspecialchars($curso) . '</li>';
+        $accent = '#45b7e5';
+        $bg = '#f5f7fb';
+        $text = '#0f172a';
+        $muted = '#64748b';
+        $line = '#e5e7eb';
+        $card = '#ffffff';
+
+        $chartsHtml = '';
+        if (isset($cids['self'])) {
+                $chartsHtml .= '<div style="margin:12px 0; border:1px solid ' . $line . '; border-radius:8px; padding:10px; background:' . $card . '; text-align:center;">'
+                        . '<div style="font-size:13px; color:' . $muted . '; margin-bottom:6px;">SELF</div>'
+                        . '<img src="cid:' . $cids['self'] . '" alt="Gráfico SELF" style="display:block; width:100%; height:auto; border-radius:6px;">'
+                        . '</div>';
         }
-        $html .= '</ul>
-            </div>';
-    }
-    
-    if (!empty($profissoes)) {
-        $html .= '
-            <div class="section">
-                <h3>💼 Profissões Alinhadas</h3>
-                <ul class="lista">';
-        foreach ($profissoes as $profissao) {
-            $html .= '<li>' . htmlspecialchars($profissao) . '</li>';
+        if (isset($cids['persona'])) {
+                $chartsHtml .= '<div style="margin:12px 0; border:1px solid ' . $line . '; border-radius:8px; padding:10px; background:' . $card . '; text-align:center;">'
+                        . '<div style="font-size:13px; color:' . $muted . '; margin-bottom:6px;">PERSONA</div>'
+                        . '<img src="cid:' . $cids['persona'] . '" alt="Gráfico PERSONA" style="display:block; width:100%; height:auto; border-radius:6px;">'
+                        . '</div>';
         }
-        $html .= '</ul>
-            </div>';
-    }
-    
-    $html .= '
-                        <div class="section">
-                <p><strong>⚠️ Importante:</strong> O DISC não determina talento nem limita escolhas; serve como <em>insight</em> para alinhar ambiente e estilo de trabalho.</p>
-            </div>
-                    </div>
-                    <div class="footer">
-                            <p>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</p>
-                            <p>Para mais informações, visite: <a href="https://fam.br">fam.br</a></p>
-                            <p>Data: ' . date('d/m/Y H:i') . '</p>
-                    </div>
-                </div>
-    </body>
-    </html>';
+        if (isset($cids['stress'])) {
+                $chartsHtml .= '<div style="margin:12px 0; border:1px solid ' . $line . '; border-radius:8px; padding:10px; background:' . $card . '; text-align:center;">'
+                        . '<div style="font-size:13px; color:' . $muted . '; margin-bottom:6px;">STRESS</div>'
+                        . '<img src="cid:' . $cids['stress'] . '" alt="Gráfico STRESS" style="display:block; width:100%; height:auto; border-radius:6px;">'
+                        . '</div>';
+        }
+        if (isset($cids['wheel'])) {
+                $chartsHtml .= '<div style="margin:12px 0; border:1px solid ' . $line . '; border-radius:8px; padding:10px; background:' . $card . '; text-align:center;">'
+                        . '<div style="font-size:13px; color:' . $muted . '; margin-bottom:6px;">Roda DISC (SELF)</div>'
+                        . '<img src="cid:' . $cids['wheel'] . '" alt="Roda DISC" style="display:block; width:100%; height:auto; border-radius:6px;">'
+                        . '</div>';
+        }
+
+        $pills = '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">Estilo: <b>' . htmlspecialchars($predominante) . '</b></span>'
+                     . '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">SELF: ' . implode(' / ', $self) . '</span>'
+                     . '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">PERSONA: ' . implode(' / ', $persona) . '</span>'
+                     . '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">STRESS: ' . implode(' / ', $stress) . '</span>';
+
+        $html = '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Resultados DISC</title></head><body style="margin:0; padding:0; background:' . $bg . '; color:' . $text . '; font-family: Arial, Tahoma, Verdana, sans-serif; line-height:1.6;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                <tr>
+                    <td align="center" style="padding:24px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="760" style="max-width:760px; width:100%; border-collapse:collapse;">
+                            <tr>
+                                <td style="background:' . $accent . '; color:#ffffff; padding:22px; text-align:center; border-radius:12px 12px 0 0;">
+                                    <div style="font-size:22px; margin:0; font-weight:700;">🎯 Seus Resultados do Teste DISC</div>
+                                    <div style="margin-top:6px; font-size:13px; opacity:0.95;">Faculdade de Americana - FAM</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="background:' . $card . '; padding:18px; border:1px solid ' . $line . '; border-top:none; border-radius:0 0 12px 12px;">
+                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:0 0 12px;">
+                                        <div style="font-size:18px; margin:0 0 6px;">📊 Perfil Predominante</div>
+                                        <div style="font-size:24px; font-weight:700; color:#0b5fa8;">' . htmlspecialchars($predominante) . '</div>
+                                    </div>
+                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                                        <div style="font-weight:600; margin-bottom:6px;">Por que ' . htmlspecialchars($predominante) . '?</div>
+                                        <div style="color:' . $muted . '; font-size:13px; margin:0 0 8px;">' . htmlspecialchars(implode(' ', $frases)) . '</div>
+                                        <div>' . $pills . '</div>
+                                    </div>
+                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                                        <div style="font-weight:600; margin-bottom:8px;">📊 Visualizações</div>
+                                        ' . $chartsHtml . '
+                                        <div style="color:' . $muted . '; font-size:13px; margin-top:6px;">As imagens mostram: SELF (tendência natural), PERSONA (como você se apresenta) e STRESS (pressões percebidas). A Roda DISC representa a distribuição do SELF nos eixos D/I/S/C.</div>
+                                    </div>';
+
+        if (!empty($cursos)) {
+                $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                                        <div style="font-weight:600; margin-bottom:6px;">🎓 Cursos Recomendados</div>
+                                        <ul style="margin:8px 0; padding-left:18px;">';
+                foreach ($cursos as $curso) {
+                        $html .= '<li style="margin:4px 0;">' . htmlspecialchars($curso) . '</li>';
+                }
+                $html .= '</ul></div>';
+        }
+
+        if (!empty($profissoes)) {
+                $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                                        <div style="font-weight:600; margin-bottom:6px;">💼 Profissões Alinhadas</div>
+                                        <ul style="margin:8px 0; padding-left:18px;">';
+                foreach ($profissoes as $profissao) {
+                        $html .= '<li style="margin:4px 0;">' . htmlspecialchars($profissao) . '</li>';
+                }
+                $html .= '</ul></div>';
+        }
+
+        $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                                <div><strong>⚠️ Importante:</strong> O DISC não determina talento nem limita escolhas; serve como <em>insight</em> para alinhar ambiente e estilo de trabalho.</div>
+                            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:12px;">
+                                    <div style="margin-top:0; padding:12px; background:#eef2f7; text-align:center; font-size:12px; color:#334155; border-radius:8px;">
+                                        <div>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</div>
+                                        <div>Para mais informações, visite: <a href="https://fam.br" style="color:' . $accent . '; text-decoration:none;">fam.br</a></div>
+                                        <div>Data: ' . date('d/m/Y H:i') . '</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body></html>';
     
     return $html;
 }
