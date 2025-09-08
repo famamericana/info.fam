@@ -291,7 +291,7 @@ $discKey = [
         </div>
         <div id="emailStatus" style="margin-top:10px;font-size:14px;display:none"></div>
         <small style="display:block;margin-top:8px;color:#64748b">
-           Opcional: Digite seu email para receber um resumo completo dos seus resultados (e-mail não é salvo)
+           Opcional: Digite seu email para receber um resumo completo dos seus resultados (seu e-mail não é salvo em nenhum local)
         </small>
       </div>
     </div>
