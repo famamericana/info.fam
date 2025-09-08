@@ -61,7 +61,7 @@ try {
     
     // Conteúdo do email
     $mail->isHTML(true);
-    $mail->Subject = 'Seus Resultados do Teste DISC - FAM';
+    $mail->Subject = 'Seus Resultados do DISC - FAM';
     
     // Preparar anexos embutidos (gráficos como imagens)
     $cids = [];
@@ -162,7 +162,7 @@ function gerarEmailHTML($resultados, $cids = []) {
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="760" style="max-width:760px; width:100%; border-collapse:collapse;">
               <tr>
                 <td style="background:' . $accent . '; color:#ffffff; padding:22px; text-align:center; border-radius:12px 12px 0 0;">
-                  <div style="font-size:22px; margin:0; font-weight:700;">Seus Resultados do Teste DISC</div>
+                  <div style="font-size:22px; margin:0; font-weight:700;">Seus Resultados do DISC</div>
                   <div style="margin-top:6px; font-size:13px; opacity:0.95;">Faculdade de Americana - FAM</div>
                 </td>
               </tr>
@@ -209,7 +209,7 @@ function gerarEmailHTML($resultados, $cids = []) {
                             <tr>
                                 <td style="padding-top:12px;">
                                     <div style="margin-top:0; padding:12px; background:#eef2f7; text-align:center; font-size:12px; color:#334155; border-radius:8px;">
-                                        <div>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</div>
+                                        <div>Este resultado foi gerado pelo DISC da FAM</div>
                                         <div>Data: ' . date('d/m/Y H:i') . '</div>
                                     </div>
                                 </td>
@@ -275,7 +275,7 @@ function gerarEmailTexto($resultados) {
     $cursos = $resultados['cursos'] ?? [];
     $profissoes = $resultados['profissoes'] ?? [];
     
-    $texto = "SEUS RESULTADOS DO TESTE DISC - FAM\n";
+    $texto = "SEUS RESULTADOS DO DISC - FAM\n";
     $texto .= "=====================================\n\n";
     $texto .= "PERFIL PREDOMINANTE: " . $predominante . "\n\n";
     $texto .= "PONTUAÇÕES:\n";
@@ -300,7 +300,7 @@ function gerarEmailTexto($resultados) {
     }
     
     $texto .= "IMPORTANTE: O DISC não determina talento nem limita escolhas; serve como insight para alinhar ambiente e estilo de trabalho.\n\n";
-    $texto .= "Teste realizado em: " . date('d/m/Y H:i') . "\n";
+    $texto .= "Realizado em: " . date('d/m/Y H:i') . "\n";
     $texto .= "FAM - Faculdade de Americana\n";
     $texto .= "Site: https://fam.br";
     
