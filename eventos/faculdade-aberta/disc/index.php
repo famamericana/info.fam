@@ -454,10 +454,13 @@ $discKey = [
           datasets: [{
             label: 'SELF',
             data,
-            borderWidth: 1
+            borderWidth: 1,
+            backgroundColor: 'rgba(69,183,229,0.8)',
+            borderColor: '#45b7e5'
           }]
         },
         options: {
+          animation: false,
           indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
@@ -492,11 +495,17 @@ $discKey = [
           datasets: [{
             label: 'PERSONA',
             data,
-            borderWidth: 1,
-            fill: true
+            borderWidth: 2,
+            fill: true,
+            backgroundColor: 'rgba(69,183,229,0.25)',
+            borderColor: '#45b7e5',
+            pointBackgroundColor: '#45b7e5',
+            pointBorderColor: '#ffffff',
+            pointRadius: 3
           }]
         },
         options: {
+          animation: false,
           responsive: true,
           maintainAspectRatio: false,
           scales: {
@@ -527,10 +536,15 @@ $discKey = [
             data,
             borderWidth: 2,
             tension: .3,
-            fill: false
+            fill: false,
+            borderColor: '#45b7e5',
+            pointBackgroundColor: '#45b7e5',
+            pointBorderColor: '#ffffff',
+            pointRadius: 3
           }]
         },
         options: {
+          animation: false,
           responsive: true,
           maintainAspectRatio: false,
           scales: {
@@ -735,9 +749,13 @@ $discKey = [
       if (chSelf) chSelf.destroy();
       if (chPersona) chPersona.destroy();
       if (chStress) chStress.destroy();
-      chSelf = buildBarH(ctxSelf, P.SELF);
-      chPersona = buildRadar(ctxPersona, P.PERSONA);
-      chStress = buildLine(ctxStress, P.STRESS);
+  chSelf = buildBarH(ctxSelf, P.SELF);
+  chPersona = buildRadar(ctxPersona, P.PERSONA);
+  chStress = buildLine(ctxStress, P.STRESS);
+  // Garantir render imediato sem animação antes da captura
+  chSelf.update('none');
+  chPersona.update('none');
+  chStress.update('none');
 
       // Roda (usa SELF)
       drawWheel(document.getElementById('cvWheel'), P.SELF);
@@ -773,7 +791,7 @@ $discKey = [
           console.error('Falha ao capturar gráficos:', err);
           window.resultadosDisc.images = {};
         }
-      }, 500);
+  }, 800);
 
       // Armazenar resultados globalmente para envio por email
       window.resultadosDisc = {
