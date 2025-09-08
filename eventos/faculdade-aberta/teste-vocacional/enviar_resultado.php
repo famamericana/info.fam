@@ -155,37 +155,35 @@ function gerarEmailHTML($resultados, $cids = []) {
                      . '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">PERSONA: ' . implode(' / ', $persona) . '</span>'
                      . '<span style="display:inline-block; border:1px solid ' . $line . '; border-radius:999px; padding:4px 10px; font-size:12px; margin:4px 6px 0 0;">STRESS: ' . implode(' / ', $stress) . '</span>';
 
-        $html = '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Resultados DISC</title></head><body style="margin:0; padding:0; background:' . $bg . '; color:' . $text . '; font-family: Arial, Tahoma, Verdana, sans-serif; line-height:1.6;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
-                <tr>
-                    <td align="center" style="padding:24px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="760" style="max-width:760px; width:100%; border-collapse:collapse;">
-                            <tr>
-                                <td style="background:' . $accent . '; color:#ffffff; padding:22px; text-align:center; border-radius:12px 12px 0 0;">
-                                    <div style="font-size:22px; margin:0; font-weight:700;">🎯 Seus Resultados do Teste DISC</div>
-                                    <div style="margin-top:6px; font-size:13px; opacity:0.95;">Faculdade de Americana - FAM</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="background:' . $card . '; padding:18px; border:1px solid ' . $line . '; border-top:none; border-radius:0 0 12px 12px;">
-                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:0 0 12px;">
-                                        <div style="font-size:18px; margin:0 0 6px;">📊 Perfil Predominante</div>
-                                        <div style="font-size:24px; font-weight:700; color:#0b5fa8;">' . htmlspecialchars($predominante) . '</div>
-                                    </div>
-                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
-                                        <div style="font-weight:600; margin-bottom:6px;">Por que ' . htmlspecialchars($predominante) . '?</div>
-                                        <div style="color:' . $muted . '; font-size:13px; margin:0 0 8px;">' . htmlspecialchars(implode(' ', $frases)) . '</div>
-                                        <div>' . $pills . '</div>
-                                    </div>
-                                    <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
-                                        <div style="font-weight:600; margin-bottom:8px;">📊 Visualizações</div>
-                                        ' . $chartsHtml . '
-                                        <div style="color:' . $muted . '; font-size:13px; margin-top:6px;">As imagens mostram: SELF (tendência natural), PERSONA (como você se apresenta) e STRESS (pressões percebidas). A Roda DISC representa a distribuição do SELF nos eixos D/I/S/C.</div>
-                                    </div>';
-
-        if (!empty($cursos)) {
+    $html = '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Resultados DISC</title></head><body style="margin:0; padding:0; color:' . $text . '; font-family: Arial, Tahoma, Verdana, sans-serif; line-height:1.6;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+        <tr>
+          <td align="center" style="padding:24px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="760" style="max-width:760px; width:100%; border-collapse:collapse;">
+              <tr>
+                <td style="background:' . $accent . '; color:#ffffff; padding:22px; text-align:center; border-radius:12px 12px 0 0;">
+                  <div style="font-size:22px; margin:0; font-weight:700;">Seus Resultados do Teste DISC</div>
+                  <div style="margin-top:6px; font-size:13px; opacity:0.95;">Faculdade de Americana - FAM</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="background:' . $card . '; padding:18px; border:1px solid ' . $line . '; border-top:none; border-radius:0 0 12px 12px;">
+                  <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:0 0 12px;">
+                    <div style="font-size:18px; margin:0 0 6px;">Perfil Predominante</div>
+                    <div style="font-size:24px; font-weight:700; color:#0b5fa8;">' . htmlspecialchars($predominante) . '</div>
+                  </div>
+                  <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                    <div style="font-weight:600; margin-bottom:6px;">Por que ' . htmlspecialchars($predominante) . '?</div>
+                    <div style="color:' . $muted . '; font-size:13px; margin:0 0 8px;">' . htmlspecialchars(implode(' ', $frases)) . '</div>
+                    <div>' . $pills . '</div>
+                  </div>
+                  <div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
+                    <div style="font-weight:600; margin-bottom:8px;">Visualizações</div>
+                    ' . $chartsHtml . '
+                    <div style="color:' . $muted . '; font-size:13px; margin-top:6px;">As imagens mostram: SELF (tendência natural), PERSONA (como você se apresenta) e STRESS (pressões percebidas). A Roda DISC representa a distribuição do SELF nos eixos D/I/S/C.</div>
+                  </div>';        if (!empty($cursos)) {
                 $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
-                                        <div style="font-weight:600; margin-bottom:6px;">🎓 Cursos Recomendados</div>
+                                        <div style="font-weight:600; margin-bottom:6px;">Cursos Recomendados</div>
                                         <ul style="margin:8px 0; padding-left:18px;">';
                 foreach ($cursos as $curso) {
                         $html .= '<li style="margin:4px 0;">' . htmlspecialchars($curso) . '</li>';
@@ -195,7 +193,7 @@ function gerarEmailHTML($resultados, $cids = []) {
 
         if (!empty($profissoes)) {
                 $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
-                                        <div style="font-weight:600; margin-bottom:6px;">💼 Profissões Alinhadas</div>
+                                        <div style="font-weight:600; margin-bottom:6px;">Profissões Alinhadas</div>
                                         <ul style="margin:8px 0; padding-left:18px;">';
                 foreach ($profissoes as $profissao) {
                         $html .= '<li style="margin:4px 0;">' . htmlspecialchars($profissao) . '</li>';
@@ -204,7 +202,7 @@ function gerarEmailHTML($resultados, $cids = []) {
         }
 
         $html .= '<div style="background:' . $card . '; border:1px solid ' . $line . '; border-left:4px solid ' . $accent . '; border-radius:10px; padding:14px; margin:12px 0;">
-                                <div><strong>⚠️ Importante:</strong> O DISC não determina talento nem limita escolhas; serve como <em>insight</em> para alinhar ambiente e estilo de trabalho.</div>
+                                <div><strong>Importante:</strong> O DISC não determina talento nem limita escolhas; serve como <em>insight</em> para alinhar ambiente e estilo de trabalho.</div>
                             </div>
                                 </td>
                             </tr>
@@ -212,7 +210,6 @@ function gerarEmailHTML($resultados, $cids = []) {
                                 <td style="padding-top:12px;">
                                     <div style="margin-top:0; padding:12px; background:#eef2f7; text-align:center; font-size:12px; color:#334155; border-radius:8px;">
                                         <div>Este resultado foi gerado pelo Teste Vocacional DISC da FAM</div>
-                                        <div>Para mais informações, visite: <a href="https://fam.br" style="color:' . $accent . '; text-decoration:none;">fam.br</a></div>
                                         <div>Data: ' . date('d/m/Y H:i') . '</div>
                                     </div>
                                 </td>

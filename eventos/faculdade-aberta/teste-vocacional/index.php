@@ -281,7 +281,7 @@ $discKey = [
 
       <!-- 4) Envio por Email -->
       <div class="card">
-        <h3 style="margin:0 0 15px">📧 Receber resultados por email</h3>
+        <h3 style="margin:0 0 15px">Receber resultados por email</h3>
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <input type="email" id="emailInput" placeholder="seu-email@exemplo.com" 
                  style="flex:1;min-width:250px;padding:8px 12px;border:1px solid #d1d5db;border-radius:4px;font-size:14px">
@@ -291,7 +291,7 @@ $discKey = [
         </div>
         <div id="emailStatus" style="margin-top:10px;font-size:14px;display:none"></div>
         <small style="display:block;margin-top:8px;color:#64748b">
-          📋 Opcional: Digite seu email para receber um resumo completo dos seus resultados
+           Opcional: Digite seu email para receber um resumo completo dos seus resultados (e-mail não é salvo)
         </small>
       </div>
     </div>
