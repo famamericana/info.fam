@@ -13,7 +13,7 @@ $groups = [
         'Tolerante, Respeitoso',                                  // C
     ]],
     ['numero' => 2,  'opcoes' => [
-        'Tanqüilo, fala devagar, reservado',                      // S
+        'Tranquilo, fala devagar, reservado',                      // S
         'Desbravador, Otimista, Visionário',                      // D
         'Centro das atenções, sociável',                          // I
         'Pacificador, Harmonioso',                                // C
