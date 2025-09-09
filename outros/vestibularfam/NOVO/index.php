@@ -174,8 +174,8 @@ $versao = "1.3.7";
                 <div class="informacoes">
 
                     <a target="_blank"
-                        href="https://www.fam.br/wp-content/uploads/2025/05/Edital-03-25_VESTIBULARinvernoFAM-2025.pdf">
-                        <p>Edital 2025</p>
+                        href="https://www.fam.br/wp-content/uploads/2025/09/Edital-05-25_VESTIBULAR-FAM-2026.pdf">
+                        <p>Edital 2026</p>
                     </a>
                     <a target="_blank" href="https://www.fam.br/bolsas-e-descontos/">
                         <p>Bolsas e descontos</p>
