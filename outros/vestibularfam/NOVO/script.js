@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'pos-graduacao': {
             titulo: 'Pós-Graduação',
             texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.',
-            link: 'https://famamericana.com.br/pos-graduacao',
+            link: 'https://fam.inscricao.crmeducacional.com/login/57',
             linkText: 'Ver Pós-Graduação'
         },
         'reabertura': {
