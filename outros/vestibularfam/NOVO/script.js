@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'vestibular': {
             titulo: 'Vestibular Online',
             texto: 'Faça sua prova de casa, quando quiser! Nossa redação dissertativa-argumentativa está disponível 24 horas por dia. Resultado em minutos após a conclusão.',
-            textoCompleto: 'Após a entrega da redação, os dados complementares serão disponibilizados e deverão ser preenchidos para que seja possível avançar para a próxima etapa. Somente após esse procedimento, o boleto da parcela da matrícula será liberado para pagamento. É importante lembrar que esse boleto já diz respeito a sua primeira mensalidade, referente ao mês de janeiro, portanto o próximo será apenas para fevereiro.',
+            textoCompleto: 'Após a entrega da redação, os dados complementares serão disponibilizados e deverão ser preenchidos para que seja possível avançar para a próxima etapa. Somente após esse procedimento, o boleto da mensalidade da matrícula será liberado para pagamento. É importante lembrar que esse boleto já diz respeito a sua primeira mensalidade, referente ao mês de janeiro, portanto o próximo será apenas para fevereiro.',
             link: 'http://fam.inscricao.crmeducacional.com/Login/60',
             linkText: 'Inscrever-se no Vestibular'
         },
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'reabertura': {
             titulo: 'Reabertura de Matrícula',
             texto: 'Já foi aluno da FAM, precisou trancar o curso e agora quer voltar? A Reabertura de Matrícula (RA) é a sua solução para retomar os estudos. <p class="detalhes">Pendências financeiras? Entre em contato: <a href="mailto:cfa@fam.br">cfa@fam.br</a></p>',
-            textoCompleto: 'Para alunos que cursaram pelo menos um semestre completo na FAM e interrompeu sua graduação, pode solicitar a reabertura do seu registro acadêmico e continuar de onde parou. O processo é simples: A FAM avaliará sua grade e informará em qual semestre você continuará e quais matérias serão aproveitadas. Taxa: há uma taxa administrativa de R$50,00 para solicitar a análise curricular.',
+            textoCompleto: 'Para alunos que já cursaram pelo menos um semestre completo na FAM e interromperam a graduação, é possível solicitar a reabertura do curso. O processo é simples: inclui a realização de uma prova online, além da análise da grade curricular pela FAM, que informará em qual semestre o aluno poderá continuar e quais disciplinas serão aproveitadas. Taxa: A reabertura de matrícula tem o custo de R$ 50,00.',
             link: 'http://fam.inscricao.crmeducacional.com/Login/64',
             linkText: 'Reabrir Matrícula'
         }
@@ -490,7 +490,7 @@ function setupDescontosRegua() {
     function atualizarDescontoAtivo() {
         const hoje = new Date();
         const dezembro20 = new Date(2025, 11, 20, 23, 59, 59); // 20 de dezembro de 2025
-        const janeiro30 = new Date(2026, 0, 30, 23, 59, 59); // 30 de janeiro de 2026
+    const janeiro31 = new Date(2026, 0, 31, 23, 59, 59); // 31 de janeiro de 2026
         const marco30 = new Date(2026, 2, 30, 23, 59, 59); // 30 de março de 2026
         
         let descontoAtivo = 30; // padrão
@@ -501,9 +501,9 @@ function setupDescontosRegua() {
             descontoAtivo = 50;
             dataLimite = dezembro20;
             proximoDesconto = 40;
-        } else if (hoje <= janeiro30) {
+        } else if (hoje <= janeiro31) {
             descontoAtivo = 40;
-            dataLimite = janeiro30;
+            dataLimite = janeiro31;
             proximoDesconto = 30;
         }
 

@@ -1,5 +1,5 @@
 <?php
-$versao = "1.3.10";
+$versao = "1.3.11";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $versao = "1.3.10";
     <header>
         <div class="titulo">
             <h2><span style="color: #f9e20f">○●</span> Vestibular 2026 <span style="color: #f9e20f">●○</span></h2>
-            <img src="images/estudenafam.svg?v=<?php echo $versao; ?>" alt="Estude na FAM" class="estude-na-fam" />
+            <img src="images/estudenafam.svg?v=1.3.10" alt="Estude na FAM" class="estude-na-fam" />
             <p class="titulo_p">A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
                 Aqui você escolhe a forma de ingresso que mais combina com você. </p>
@@ -99,7 +99,7 @@ $versao = "1.3.10";
                     <div class="desconto-card" data-desconto="40">
                         <div class="card-content">
                             <div class="desconto-numero">40<span>%</span></div>
-                            <div class="desconto-periodo">21/12 até 30/01</div>
+                            <div class="desconto-periodo">21/12 até 31/01</div>
                             <div class="desconto-cupom-container">
                                 <span class="cupom-label">Use o cupom:</span>
                                 <code class="desconto-cupom" data-cupom="FAM40">
