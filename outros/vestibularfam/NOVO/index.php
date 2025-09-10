@@ -1,5 +1,5 @@
 <?php
-$versao = "1.3.8";
+$versao = "1.3.9";
 ?>
 
 <!DOCTYPE html>

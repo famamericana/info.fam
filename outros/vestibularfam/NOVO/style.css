@@ -185,7 +185,7 @@ main {
 .typewriter::after {
     content: '|';
     animation: blink 1s infinite;
-    color: var(--secondary);
+    color: var(--accent);
     margin-left: 2px;
 }
 
