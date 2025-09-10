@@ -1,5 +1,5 @@
 <?php
-$versao = "1.3.9";
+$versao = "1.3.10";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $versao = "1.3.9";
     <header>
         <div class="titulo">
             <h2><span style="color: #f9e20f">○●</span> Vestibular 2026 <span style="color: #f9e20f">●○</span></h2>
-            <img src="images/estudenafam.svg">
+            <img src="images/estudenafam.svg?v=<?php echo $versao; ?>" alt="Estude na FAM" class="estude-na-fam" />
             <p class="titulo_p">A FAM – Faculdade de Americana tem a melhor estrutura da região para impulsionar sua carreira.
 
                 Aqui você escolhe a forma de ingresso que mais combina com você. </p>
