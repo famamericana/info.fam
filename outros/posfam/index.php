@@ -164,7 +164,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-medicina-equina-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
                     </div>
 
@@ -202,7 +202,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-neuropsicopedagogia-clinica-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
                     </div>
 
@@ -221,7 +221,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-neuropsicopedagogia-e-psicomotricidade-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
                     </div>
 
@@ -240,7 +240,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-psicologia-escolar-e-educacional-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
                     </div>
 
