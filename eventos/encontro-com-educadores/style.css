@@ -49,7 +49,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #006b69;
+    background: #481f7c;
 }
 
 body {
@@ -80,13 +80,13 @@ main li {
 main h1 {
     text-align: center;
     font-family: 'Salmond Bold', sans-serif;
-    color: #006b69;
+    color: #481f7c;
 }
 
 main h3 {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-   
+
 }
 
 section {
@@ -142,7 +142,7 @@ header {
 
 .div3 {
     grid-area: 2 / 1 / 3 / 2;
-    background-color: #3eb288;
+    background-color: #7947B4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,9 +152,10 @@ header {
 
 .div3 p {
     font-family: "Roboto", sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     color: white;
-    padding-left: 20px;
+
+      text-align: center;
 }
 
 .div3 h1 {
@@ -162,6 +163,7 @@ header {
     font-family: 'Salmond Bold', sans-serif;
     font-size: 40px;
     color: white;
+    text-align: center;
 }
 
 .div4 {
@@ -199,12 +201,12 @@ header {
     font-family: "Roboto", sans-serif;
     margin-top: 0;
     font-size: 20px;
-    color: #006b69;
+    color: #481f7c;
 }
 
 .div6 {
     grid-area: 3 / 2 / 4 / 3;
-    background-color: #006b69;
+    background-color: #481f7c;
     display: flex;
     align-items: flex-end;
     /* Alinha o conteúdo ao fundo */
@@ -229,7 +231,7 @@ header {
     /* Centraliza horizontalmente a imagem */
     height: 40px;
     width: 100%;
-    background: linear-gradient(90deg, #006b69 49.8%, #c5e0d7 50%);
+    background: linear-gradient(90deg, #481f7c 49.8%, #f5a6ff 50%);
 }
 
 .data {
@@ -238,7 +240,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(157deg, #3eb288 49.8%, #45be92 50%);
+    background: linear-gradient(157deg, #7947B4 49.8%, rgb(104, 47, 158) 50%);
     font-family: 'Salmond Regular', sans-serif;
 }
 
@@ -251,7 +253,7 @@ header {
     text-decoration: none;
     padding: 20px;
     font-size: 20px;
-    background-color: #006b69;
+    background-color: #7947B4;
     text-align: center;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
@@ -266,11 +268,11 @@ header {
 
 .agenda {
 
-    color: #3eb288;
+    color: #f5a6ff;
     text-decoration: none;
     padding: 10px;
     font-size: 15px;
-    border: 2px solid #3eb288;
+    border: 2px solid #f5a6ff;
     text-align: center;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
@@ -284,21 +286,21 @@ header {
 
 
 .trianguloum {
-    background: linear-gradient(136deg, white 49.8%, #3eb288 50%);
+    background: linear-gradient(136deg, white 49.8%, #7947B4 50%);
     height: 50px;
     width: 50px;
 }
 
 .inovacoes {
     font-weight: 900;
-    color: #343232;
+    color: #f5a6ff;
 }
 
 .triangle-container {
     width: 50px;
     height: 50px;
     position: relative;
-    background-color: #3eb288;
+    background-color: #7947B4;
     transform: rotate(270deg);
     /* Rotaciona o container em 45 graus */
 
@@ -327,7 +329,7 @@ header {
 
 .triangle-container div {
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    background-color: #3eb288;
+    background-color: #7947B4;
 }
 
 .div7 {
@@ -378,7 +380,7 @@ header {
 /* convidado --------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .convidado {
-    border: 2px solid #3eb288;
+    border: 2px solid #7947B4;
     padding: 20px;
     display: flex;
     gap: 20px;
@@ -390,10 +392,11 @@ header {
     margin-bottom: 20px;
 }
 
-.convidado .container-convidado{
+.convidado .container-convidado {
     width: 700px;
 }
-.convidado img{
+
+.convidado img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -432,17 +435,17 @@ header {
     text-align: left;
 }
 
-.slide p{
+.slide p {
     font-size: 18px;
     font-style: italic;
     text-align: center;
 }
 
-.slider a{
-    color: #3eb288;
+.slider a {
+    color: #7947B4;
 }
 
-.slider .fonte{
+.slider .fonte {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
 
@@ -453,7 +456,7 @@ header {
 }
 
 .slide h2 {
-    color: #006b69;
+    color: #481f7c;
     margin-bottom: 5px;
     font-size: 20px;
     font-family: 'Salmond Bold', sans-serif;
@@ -470,7 +473,7 @@ header {
     height: 10px;
     width: 10px;
     margin: 0 5px;
-    background-color: #006b69;
+    background-color: #481f7c;
     border-radius: 50%;
     display: inline-block;
 }
@@ -591,11 +594,11 @@ header {
 @media (max-width: 930px) {
 
     .convidado {
-       flex-direction: column;
-    align-items: center;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .convidado .container-convidado{
+    .convidado .container-convidado {
         width: 100%;
         height: 300px;
     }
@@ -615,23 +618,14 @@ header {
 
     .div3 {
         grid-area: 3 / 1 / 4 / 2;
-        background-color: #006b69;
-    }
-
-    .div3 h1 {
-        text-align: center;
+        background-color: #481f7c;
     }
 
     .div3 p {
-        text-align: center;
-        padding-left: 0;
+     padding-bottom: 20px;
     }
 
-    .inovacoes {
-        font-weight: 900;
-        color: #3eb288;
-    }
-
+ 
     .div5 {
         grid-area: 4 / 1 / 5 / 2;
     }
@@ -657,7 +651,7 @@ header {
     }
 
     .trianguloum {
-        background: linear-gradient(136deg, #45be92 49.8%, #006b69 50%);
+        background: linear-gradient(136deg, rgb(104, 47, 158) 49.8%, #481f7c 50%);
         height: 50px;
         width: 50px;
     }
