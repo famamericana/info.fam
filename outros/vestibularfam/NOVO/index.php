@@ -7,6 +7,39 @@ $versao = "1.3.11";
 <html lang="pt-BR">
 
 <head>
+
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLSCSLRW');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ3PT7C9XJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HQ3PT7C9XJ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vestibular FAM</title>
@@ -14,9 +47,84 @@ $versao = "1.3.11";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="script.js?<?php echo $versao; ?>" defer></script>
     <link rel="icon" href="images/famlogo.png" type="image/x-icon">
+
+
+    <!-- HTTP Preconnect -->
+    <link rel="preconnect" href="https://pageview-notify.rdstation.com.br" />
+    <link rel="preconnect" href="https://w-cdn.pzw.io" />
+    <link rel="preconnect" href="https://rec.smartlook.com" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+    <link rel="preconnect" href="https://staticxx.facebook.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="preconnect" href="https://www.googleadservices.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- Tags Header -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '851996656923172');
+        fbq('track', 'PageView');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '851996656923172');
+        fbq('track', 'PageView');
+    </script>
+
 </head>
 
 <body>
+
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=851996656923172&ev=PageView
+    &noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLSCSLRW" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <?php include_once "navfoot/navbar.php"; ?>
 
@@ -143,7 +251,7 @@ $versao = "1.3.11";
         <div class="conteudo provadebolsas espaco">
             <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
             <div>
-                <div class="badge">  <i class="fa-solid fa-eye"></i> Fique de olho! </div>
+                <div class="badge"> <i class="fa-solid fa-eye"></i> Fique de olho! </div>
                 <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas de conhecimento gerais e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
                 <div class="botao-prova-de-bolsas"> 7 de dezembro</div>
 
@@ -200,6 +308,30 @@ $versao = "1.3.11";
     include_once "navfoot/footer.php"
 
     ?>
+
+    <!-- Facebook Connect -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '1395394967220729',
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
 </body>
 
 </html>
