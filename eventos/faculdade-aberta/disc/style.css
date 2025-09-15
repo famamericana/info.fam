@@ -343,3 +343,106 @@
        color: var(--accent);
        display: block !important;
    }
+
+   /* ==========================
+      RESPONSIVE ADJUSTMENTS
+      - Improve usability on phones
+      - Collapse grids and widen touch targets
+   ========================== */
+
+   /* Medium screens: reduce chart columns to 2 */
+   @media (max-width: 960px) {
+       .canvasWrap {
+           grid-template-columns: repeat(2, minmax(220px, 1fr));
+       }
+       .container {
+           margin: 16px auto;
+           padding: 0 12px;
+       }
+   }
+
+   /* Small screens: phone-friendly layout */
+   @media (max-width: 640px) {
+       html, body {
+           -webkit-text-size-adjust: 100%;
+       }
+
+       h1 {
+           font-size: 18px;
+       }
+
+       .container {
+           margin: 12px auto;
+           padding: 0 10px;
+       }
+
+       /* Question row: text spans full width; controls side-by-side below */
+       .row {
+           grid-template-columns: 1fr 1fr;
+           grid-template-areas:
+               "text text"
+               "more less";
+           align-items: center;
+           gap: 8px;
+           padding: 10px 0;
+       }
+       .row > div:nth-child(1) { grid-area: text; }
+       .row > div:nth-child(2) { grid-area: more; }
+       .row > div:nth-child(3) { grid-area: less; }
+       .row > div:nth-child(2),
+       .row > div:nth-child(3) {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+
+        /* Larger touch targets for radios */
+       input[type="radio"] {
+           width: 20px;
+           height: 20px;
+       }
+
+       /* Charts: single column stack and smaller min-height */
+       .canvasWrap {
+           grid-template-columns: 1fr;
+       }
+       .canvasBox {
+           min-height: 220px;
+       }
+
+       /* Tables: enable horizontal scroll if needed */
+       .table-like,
+       .table-mini {
+           display: block;
+           width: 100%;
+           overflow-x: auto;
+           -webkit-overflow-scrolling: touch;
+           white-space: nowrap;
+       }
+
+       /* Email input and actions: full width */
+       #emailInput {
+           width: 100%;
+           box-sizing: border-box;
+       }
+
+       /* The action bar before results uses inline styles.
+          This selector helps wrap buttons on small screens. */
+       div[style*="display:flex"][style*="justify-content:flex-end"] {
+           flex-wrap: wrap;
+           justify-content: flex-start;
+           gap: 8px;
+       }
+       div[style*="display:flex"][style*="justify-content:flex-end"] > button,
+       div[style*="display:flex"][style*="justify-content:flex-end"] > * button {
+           flex: 1 1 100%;
+       }
+
+       /* Sticky header: compact padding */
+       #stickyHeader {
+           padding: 8px 10px;
+       }
+       .card.anchor {
+           scroll-margin-top: 96px;
+       }
+   }
