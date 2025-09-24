@@ -1,6 +1,6 @@
 /* Aqui determina a cor da semana, mude para a cor correta da semana */
 :root {
-    --cordoeventoatualpag: #205c7e;
+    --cordoeventoatualpag: #5d378d;
 }
 
 body {
@@ -466,3 +466,41 @@ iframe {
 }
 
 
+
+
+.talksbutton {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+
+    border: none;
+    padding: 8px 16px;
+    background-color: #f9e20f;
+    border-radius: var(--border-5);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--primary-font);
+    text-transform: var(--caixatexto);
+    font-weight: 500;
+    font-size: 16px;
+   margin-bottom: 7px;
+    width: 100%;
+    text-align: center;
+     color: black !important;
+     text-decoration: none;
+}
+
+.talksbutton a{
+   
+}
+
+.talksbutton:hover {
+    color: var(--bg-dark);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #f9e20f;
+    text-decoration: none;
+}
+
+.famencontro{
+    border: 2px solid #5d378d;
+}
