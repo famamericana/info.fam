@@ -1,14 +1,23 @@
 {
   "eventos": [
       {
-      "nome": "Farmácia",
-      "dataInicio": "04-09-2025",
-      "dataFim": "05-09-2025",
-  "descricao": "Dois dias de palestras para capacitar estudantes em segurança de medicamentos, farmácia clínica, dermocosméticos e vigilância sanitária.",
-      "link": "https://info.fam.br/eventos/semana-de-areas/2025/farmacia",
-      "ano": 2025,
-      "classe": "saudeum"
-    },
+        "nome": "Educação",
+        "dataInicio": "30-10-2025",
+        "dataFim": "02-11-2025",
+        "descricao": "Jornada Acadêmica de Educação com palestras sobre práticas docentes, metodologias ativas, comunicação alternativa e inclusão, neurociência na aprendizagem e o impacto da Inteligência Artificial no ensino. Voltado para estudantes de Pedagogia e Letras.",
+        "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao",
+        "ano": 2025,
+        "classe": "educacao"
+      },
+      {
+        "nome": "Farmácia",
+        "dataInicio": "04-09-2025",
+        "dataFim": "05-09-2025",
+        "descricao": "Dois dias de palestras para capacitar estudantes em segurança de medicamentos, farmácia clínica, dermocosméticos e vigilância sanitária.",
+        "link": "https://info.fam.br/eventos/semana-de-areas/2025/farmacia",
+        "ano": 2025,
+        "classe": "saudeum"
+      },
     {
       "nome": "Direito",
       "dataInicio": "01-09-2025",
