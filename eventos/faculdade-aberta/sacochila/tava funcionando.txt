@@ -69,25 +69,24 @@ function ensureHeaders(sheet, headers) {
     const existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     console.log('Cabeçalhos existentes:', existingHeaders);
     
-    // Se os cabeçalhos não correspondem, recria a planilha
+    // Se os cabeçalhos não correspondem, atualiza APENAS a primeira linha de cabeçalhos
+    // NÃO limpar a planilha inteira — isso evita perder todos os dados (problema em linhas > 3000)
     if (existingHeaders.join('|') !== headers.join('|')) {
-      console.log('Cabeçalhos não correspondem. Recriando planilha...');
-      
-      // Limpa a planilha
-      sheet.clear();
-      
-      // Insere os novos cabeçalhos
+      console.log('Cabeçalhos não correspondem. Atualizando apenas a primeira linha de cabeçalhos (sem limpar dados)...');
+
+      // Sobrescreve somente a primeira linha com os novos cabeçalhos.
+      // Isso preserva todos os registros já existentes na planilha.
       const headerRange = sheet.getRange(1, 1, 1, headers.length);
       headerRange.setValues([headers]);
-      
-      // Formatação dos cabeçalhos
+
+      // Formatação dos cabeçalhos (mesma formatação anterior)
       headerRange.setFontWeight('bold');
       headerRange.setBackground('#4285f4');
       headerRange.setFontColor('#ffffff');
       headerRange.setBorder(true, true, true, true, true, true);
-      
+
       SpreadsheetApp.flush();
-      console.log('Cabeçalhos recriados com sucesso');
+      console.log('Cabeçalhos atualizados com sucesso (sem limpar dados)');
     }
   }
 }
