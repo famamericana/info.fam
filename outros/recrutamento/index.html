@@ -11,164 +11,189 @@
 <body>
 
   <div id="Navbar"></div>
-  <section class="form-section">
-    <div class="container">
-      <div class="form-header">
-        <h2 class="section-title">Formulário de Candidatura</h2>
-        <p class="section-subtitle">Escolha o tipo de vaga e preencha os dados necessários</p>
-      </div>
 
-      <form id="candidaturaForm" class="contact-form">
-        <div class="form-group">
-          <label for="tipoVaga">Tipo de Vaga:</label>
-          <select name="tipoVaga" id="tipoVaga" required>
-            <option value="">Selecione o tipo de vaga...</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="docente">Docente</option>
-          </select>
+  <header>
+    Quero Trabalhar na FAM
+  </header>
+
+  <main>
+    <section>
+      <h2>Introdução</h2>
+      <p>Na FAM – Faculdade de Americana acreditamos que a educação transforma o futuro. Somos uma instituição que une alta
+      qualidade de ensino com responsabilidade social, comprometida com pessoas que compartilham nosso propósito de
+      construir um futuro melhor por meio do saber.</p>
+      <p>Valores que nos guiam:</p>
+      <ul>
+        <li><strong>Excelência acadêmica:</strong> buscamos sempre oferecer ensino relevante, atualizado, com infraestrutura adequada para
+        teoria e prática.</li>
+        <li><strong>Ética e transparência:</strong> em todos os processos, internos ou com a comunidade, como avaliações institucionais e
+        prestação de contas.</li>
+        <li><strong>Compromisso social:</strong> não apenas formar profissionais, mas cidadãos, atuando com ações para a comunidade, extensão
+        universitária, e avaliando nosso impacto institucional.</li>
+      </ul>
+    </section>
+
+    <section class="form-section">
+      <div class="container">
+        <div class="form-header">
+          <h2 class="section-title">Formulário de Candidatura</h2>
+          <p class="section-subtitle">Escolha o tipo de vaga e preencha os dados necessários</p>
         </div>
 
-        <!-- Campos Comuns -->
-        <div id="camposComuns" style="display:none;">
+        <form id="candidaturaForm" class="contact-form">
           <div class="form-group">
-            <label for="nomeCompleto">Nome Completo:</label>
-            <input type="text" name="nomeCompleto" id="nomeCompleto" placeholder="Digite seu nome completo" required>
+            <label for="tipoVaga">Tipo de Vaga:</label>
+            <select name="tipoVaga" id="tipoVaga" required>
+              <option value="">Selecione o tipo de vaga...</option>
+              <option value="administrativo">Administrativo</option>
+              <option value="docente">Docente</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
-          </div>
-          <div class="form-group">
-            <label for="telefoneCandidatura">Telefone:</label>
-            <input type="tel" name="telefone" id="telefoneCandidatura" placeholder="(00) 00000-0000" required>
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" placeholder="seu@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <input type="text" name="endereco" id="endereco" placeholder="Rua, bairro, cidade - UF" required>
-          </div>
-        </div>
 
-        <!-- Campos Administrativo -->
-        <div id="camposAdministrativo" style="display:none;">
-          <div class="form-group">
-            <label>Áreas de Interesse:</label>
-            <div class="theme-checkboxes">
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="biblioteca" value="Biblioteca"
-                  class="area-checkbox">
-                <label for="biblioteca">Biblioteca</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="recepcao" value="Recepção" class="area-checkbox">
-                <label for="recepcao">Recepção</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="secretaria" value="Secretaria"
-                  class="area-checkbox">
-                <label for="secretaria">Secretaria</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="financeiro" value="Financeiro"
-                  class="area-checkbox">
-                <label for="financeiro">Financeiro</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="rh" value="RH" class="area-checkbox">
-                <label for="rh">Recursos Humanos</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseAdmin" id="ti" value="TI" class="area-checkbox">
-                <label for="ti">Tecnologia da Informação</label>
-              </div>
+          <!-- Campos Comuns -->
+          <div id="camposComuns" style="display:none;">
+            <div class="form-group">
+              <label for="nomeCompleto">Nome Completo:</label>
+              <input type="text" name="nomeCompleto" id="nomeCompleto" placeholder="Digite seu nome completo" required>
             </div>
-            <p class="areas-selected">0 áreas selecionadas</p>
-          </div>
-          <div class="form-group">
-            <label for="arquivoAdmin">Currículo (PDF/DOC/DOCX):</label>
-            <input type="file" name="arquivo" id="arquivoAdmin" accept=".pdf,.doc,.docx">
-            <small class="form-text">Obrigatório para vagas administrativas</small>
-          </div>
-          <div class="form-group">
-            <label for="observacoesAdmin">Observações:</label>
-            <textarea name="observacoesAdmin" id="observacoesAdmin" rows="4"
-              placeholder="Conte-nos mais sobre sua experiência e motivação para esta vaga..."></textarea>
-          </div>
-        </div>
-
-        <!-- Campos Docente -->
-        <div id="camposDocente" style="display:none;">
-          <div class="form-group">
-            <label>Áreas de Interesse:</label>
-            <div class="theme-checkboxes">
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="medveterinaria" value="Medicina Veterinária"
-                  class="area-checkbox">
-                <label for="medveterinaria">Medicina Veterinária</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="engenharia" value="Engenharia"
-                  class="area-checkbox">
-                <label for="engenharia">Engenharia</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="tecnologia" value="Tecnologia"
-                  class="area-checkbox">
-                <label for="tecnologia">Tecnologia</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="psicologia" value="Psicologia"
-                  class="area-checkbox">
-                <label for="psicologia">Psicologia</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="administracao" value="Administração"
-                  class="area-checkbox">
-                <label for="administracao">Administração</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" name="areaInteresseDocente" id="educacao" value="Educação" class="area-checkbox">
-                <label for="educacao">Educação</label>
-              </div>
+            <div class="form-group">
+              <label for="cpf">CPF:</label>
+              <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
             </div>
-            <p class="areas-selected">0 áreas selecionadas</p>
+            <div class="form-group">
+              <label for="telefoneCandidatura">Telefone:</label>
+              <input type="tel" name="telefone" id="telefoneCandidatura" placeholder="(00) 00000-0000" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" name="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="endereco">Endereço:</label>
+              <input type="text" name="endereco" id="endereco" placeholder="Rua, bairro, cidade - UF" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="linkLattes">Link do Currículo Lattes:</label>
-            <input type="url" name="linkLattes" id="linkLattes" placeholder="http://lattes.cnpq.br/...">
+
+          <!-- Campos Administrativo -->
+          <div id="camposAdministrativo" style="display:none;">
+            <div class="form-group">
+              <label>Áreas de Interesse:</label>
+              <div class="theme-checkboxes">
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="biblioteca" value="Biblioteca"
+                    class="area-checkbox">
+                  <label for="biblioteca">Biblioteca</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="recepcao" value="Recepção" class="area-checkbox">
+                  <label for="recepcao">Recepção</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="secretaria" value="Secretaria"
+                    class="area-checkbox">
+                  <label for="secretaria">Secretaria</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="financeiro" value="Financeiro"
+                    class="area-checkbox">
+                  <label for="financeiro">Financeiro</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="rh" value="RH" class="area-checkbox">
+                  <label for="rh">Recursos Humanos</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseAdmin" id="ti" value="TI" class="area-checkbox">
+                  <label for="ti">Tecnologia da Informação</label>
+                </div>
+              </div>
+              <p class="areas-selected">0 áreas selecionadas</p>
+            </div>
+            <div class="form-group">
+              <label for="arquivoAdmin">Currículo (PDF/DOC/DOCX):</label>
+              <input type="file" name="arquivo" id="arquivoAdmin" accept=".pdf,.doc,.docx">
+              <small class="form-text">Obrigatório para vagas administrativas</small>
+            </div>
+            <div class="form-group">
+              <label for="observacoesAdmin">Observações:</label>
+              <textarea name="observacoesAdmin" id="observacoesAdmin" rows="4"
+                placeholder="Conte-nos mais sobre sua experiência e motivação para esta vaga..."></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="arquivoDocente">Currículo (PDF/DOC/DOCX) *:</label>
-            <input type="file" name="arquivo" id="arquivoDocente" accept=".pdf,.doc,.docx">
-            <small class="form-text">Opcional para vagas docentes</small>
+
+          <!-- Campos Docente -->
+          <div id="camposDocente" style="display:none;">
+            <div class="form-group">
+              <label>Áreas de Interesse:</label>
+              <div class="theme-checkboxes">
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="medveterinaria" value="Medicina Veterinária"
+                    class="area-checkbox">
+                  <label for="medveterinaria">Medicina Veterinária</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="engenharia" value="Engenharia"
+                    class="area-checkbox">
+                  <label for="engenharia">Engenharia</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="tecnologia" value="Tecnologia"
+                    class="area-checkbox">
+                  <label for="tecnologia">Tecnologia</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="psicologia" value="Psicologia"
+                    class="area-checkbox">
+                  <label for="psicologia">Psicologia</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="administracao" value="Administração"
+                    class="area-checkbox">
+                  <label for="administracao">Administração</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="areaInteresseDocente" id="educacao" value="Educação"
+                    class="area-checkbox">
+                  <label for="educacao">Educação</label>
+                </div>
+              </div>
+              <p class="areas-selected">0 áreas selecionadas</p>
+            </div>
+            <div class="form-group">
+              <label for="linkLattes">Link do Currículo Lattes:</label>
+              <input type="url" name="linkLattes" id="linkLattes" placeholder="http://lattes.cnpq.br/...">
+            </div>
+            <div class="form-group">
+              <label for="arquivoDocente">Currículo (PDF/DOC/DOCX) *:</label>
+              <input type="file" name="arquivo" id="arquivoDocente" accept=".pdf,.doc,.docx">
+              <small class="form-text">Opcional para vagas docentes</small>
+            </div>
+            <div class="form-group">
+              <label for="observacoesDocente">Observações:</label>
+              <textarea name="observacoesDocente" id="observacoesDocente" rows="4"
+                placeholder="Conte-nos sobre sua experiência acadêmica, áreas de pesquisa e motivação..."></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="observacoesDocente">Observações:</label>
-            <textarea name="observacoesDocente" id="observacoesDocente" rows="4"
-              placeholder="Conte-nos sobre sua experiência acadêmica, áreas de pesquisa e motivação..."></textarea>
-          </div>
+
+          <button type="submit" class="submit-button">
+            Enviar Candidatura
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Modal de Sucesso -->
+    <div id="successModalCandidatura" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="success-message">
+          <h3>Candidatura Enviada!</h3>
+          <p>Agradecemos seu interesse. Entraremos em contato em breve.</p>
         </div>
-
-        <button type="submit" class="submit-button">
-          Enviar Candidatura
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Modal de Sucesso -->
-  <div id="successModalCandidatura" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class="success-message">
-        <h3>Candidatura Enviada!</h3>
-        <p>Agradecemos seu interesse. Entraremos em contato em breve.</p>
       </div>
     </div>
-  </div>
+
+  </main>
 
   <div id="meuFooter"></div>
   <!-- Load jQuery from CDN so legacy jQuery code (e.g. $(...).ready and .load) works -->
