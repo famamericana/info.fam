@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 1 -->
+                    <!-- Curso 1 
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Estratégia Fiscal e Tributária</h3>
@@ -109,7 +109,7 @@
                             <a href="https://www.fam.br/curso/curso-estrategia-fiscal-e-tributaria-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
-                    </div>
+                    </div>-->
 
                     <!-- Curso 2 -->
                     <div class="card-curso">
