@@ -30,10 +30,14 @@ html{
     background: rgba(0, 0, 0, 0.5);
 }
 
+*{
+        font-family: 'Source Sans 3', sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans 3', sans-serif;
+
     background-color: #f2f3f8;
     overflow-x: hidden;
 }
@@ -144,10 +148,10 @@ header {
     font-size: x-large;
   }
   
-.inscrevase {
+.inscrevase, #inscricao-btn {
     background-color: #f9e20f;
     border: none;
-    padding: 5px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     transition: all 0.3s;
     margin-right: 20px;
@@ -159,24 +163,48 @@ header {
     margin: 0 auto;
     color: #1b3556;
 }
+ #inscricao-btn{
+    width: 100%;
+    padding: 12px 15px;
+ }
 
-.inscrevase a {
-    text-decoration: none;
-    transition: all 0.3s;
+#inscricao-btn:disabled{
+    background-color: rgb(235, 235, 235);
+    cursor: not-allowed;
+    color: #b6b6b6;
+}
+
+#inscricao-btn:disabled:hover{
+    cursor: not-allowed;
+       background-color: rgb(235, 235, 235);
+    color: #b6b6b6;
+        box-shadow: inset 0 0 0 2px rgb(235, 235, 235);
 
 }
+
+
+.inscrevase a, #inscricao-btn a {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#inscricao-btn:hover {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #f9e20f;
+   
+}
+
 
 .inscrevase:hover {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px white;
     color: white;
-
 }
 
 .inscrevase2 {
     box-shadow: inset 0 0 0 2px white;
     border: none;
-    padding: 5px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     transition: all 0.3s;
     margin-right: 20px;
@@ -909,3 +937,59 @@ tr:nth-child(5) {
     padding: 0 5px;
     border-radius: 2px;
  }
+
+#bolsa-info {
+    scroll-margin-top: 80px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.bolsa-info{
+    
+    padding: 20px;
+    background-color: #fff5fa;
+    border: 1px solid #e53888;
+    border-radius: 10px;
+}
+
+/* Minimal, modern checkbox-group to match other forms */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 5px;
+    background: #fbfbfc;
+    margin-top: 12px;
+    justify-content: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    min-width: 18px;
+    height: 18px;
+    margin: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    accent-color: var(--cor-principal);
+}
+
+.checkbox-group label {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #0f172a;
+    cursor: pointer;
+    margin: 0;
+}
+
+.checkbox-group:hover {
+    border-color: rgba(35,58,126,0.12);
+    background: #f7f8fb;
+}
+
+.checkbox-group input[type="checkbox"]:focus {
+    outline: 3px solid rgba(35,58,126,0.12);
+    outline-offset: 2px;
+}
