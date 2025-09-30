@@ -958,9 +958,9 @@ tr:nth-child(5) {
     align-items: flex-start;
     gap: 12px;
     padding: 12px;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid #e53888;
     border-radius: 5px;
-    background: #fbfbfc;
+    background: white;
     margin-top: 12px;
     justify-content: center;
 }
@@ -984,12 +984,5 @@ tr:nth-child(5) {
     margin: 0;
 }
 
-.checkbox-group:hover {
-    border-color: rgba(35,58,126,0.12);
-    background: #f7f8fb;
-}
 
-.checkbox-group input[type="checkbox"]:focus {
-    outline: 3px solid rgba(35,58,126,0.12);
-    outline-offset: 2px;
-}
+
