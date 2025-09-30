@@ -113,7 +113,7 @@ $(document).ready(function () {
 });
 
 // Data alvo
-const targetDate = new Date('2025-07-06T09:00:00'); // Dia 6 de julho às 9:00
+const targetDate = new Date('2025-12-07T09:00:00'); 
 
 function updateCountdown() {
   const currentDate = new Date();
