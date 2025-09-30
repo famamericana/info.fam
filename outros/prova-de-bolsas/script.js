@@ -150,3 +150,17 @@ if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:')
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
 
+// Checkbox e botão de inscrição
+document.addEventListener('DOMContentLoaded', function() {
+    const checkbox = document.getElementById('confirm-leitura');
+    const btn = document.getElementById('inscricao-btn');
+
+    checkbox.addEventListener('change', function() {
+        btn.disabled = !this.checked;
+    });
+
+    btn.addEventListener('click', function() {
+        window.location.href = 'https://fam.inscricao.crmeducacional.com/login/54';
+    });
+});
+
