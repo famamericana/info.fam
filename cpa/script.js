@@ -154,10 +154,24 @@ function updateTimelineLine() {
 
   // Defina as datas das pesquisas
   const pesquisas = [
-    { inicio: new Date('2024-09-02'), fim: new Date('2024-09-21'), texto: '02 a 21 de Setembro' },
-    { inicio: new Date('2024-10-07'), fim: new Date('2024-10-23'), texto: '07 a 23 de Outubro' },
-    { inicio: new Date('2024-11-06'), fim: new Date('2024-11-20'), texto: '06 a 20 de Novembro' },
-    // Adicione mais períodos conforme necessário
+    { 
+        inicio: new Date('2025-09-01'), 
+        fim: new Date('2025-09-30'), 
+        texto: '01 a 30 de Setembro',
+        mesano: '09/2025',
+        titulo: 'Autoavaliação CPA',
+        descricao: 'Planejamento, avaliação e desenvolvimento institucional, políticas acadêmicas e de gestão, infraestrutura'
+    },
+  
+    { 
+        inicio: new Date('2025-11-03'), 
+        fim: new Date('2025-11-24'), 
+        texto: '03 a 24 de Novembro',
+        mesano: '11/2025',
+        titulo: 'Autoavaliação CPA',
+        descricao: 'Avaliação das disciplinas e turmas'
+    },
+
 ];
 
 // Obter a data atual
@@ -195,3 +209,60 @@ function atualizarPesquisa() {
 
 // Chame a função para atualizar o conteúdo
 atualizarPesquisa();
+
+// Função para popular timeline automaticamente
+function popularTimeline() {
+    const timeline = document.querySelector('.timeline');
+    const textDisplay = document.querySelector('#text-display');
+    
+    if (!timeline || !textDisplay) return;
+    
+    // Limpar conteúdo existente (exceto as linhas)
+    const existingEvents = timeline.querySelectorAll('.event');
+    existingEvents.forEach(event => event.remove());
+    
+    const existingTexts = textDisplay.querySelectorAll('.text-content');
+    existingTexts.forEach(text => text.remove());
+    
+    // Adicionar eventos da timeline
+    pesquisas.forEach((pesquisa, index) => {
+        // Criar evento da timeline
+        const event = document.createElement('div');
+        event.className = 'event';
+        if (index === 0) event.classList.add('activetimeline');
+        event.onclick = () => showText(`text${index + 1}`, event);
+        
+        const circle = document.createElement('div');
+        circle.className = 'circle';
+        
+        const mesano = document.createElement('div');
+        mesano.className = 'mesano';
+        mesano.textContent = pesquisa.mesano;
+        
+        event.appendChild(circle);
+        event.appendChild(mesano);
+        timeline.appendChild(event);
+        
+        // Criar conteúdo de texto
+        const textContent = document.createElement('div');
+        textContent.id = `text${index + 1}`;
+        textContent.className = 'text-content';
+        if (index === 0) textContent.classList.add('activetimeline');
+        
+        textContent.innerHTML = `
+            <h3><i><i class="fa-regular fa-calendar"></i> ${pesquisa.texto} </i>- ${pesquisa.titulo}</h3>
+            <h4>${pesquisa.descricao}</h4>
+            <p>Esta pesquisa é fundamental para o desenvolvimento contínuo da nossa instituição. Sua participação é muito importante para identificarmos oportunidades de melhoria e continuarmos oferecendo a melhor experiência educacional possível.</p>
+        `;
+        
+        textDisplay.appendChild(textContent);
+    });
+    
+    // Atualizar linha da timeline
+    updateTimelineLine();
+}
+
+// Executar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+    popularTimeline();
+});
