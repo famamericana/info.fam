@@ -225,12 +225,15 @@ function popularTimeline() {
     const existingTexts = textDisplay.querySelectorAll('.text-content');
     existingTexts.forEach(text => text.remove());
     
+    // Decide qual índice deve ser ativado
+    const activeIndex = getActiveIndex();
+
     // Adicionar eventos da timeline
     pesquisas.forEach((pesquisa, index) => {
         // Criar evento da timeline
         const event = document.createElement('div');
         event.className = 'event';
-        if (index === 0) event.classList.add('activetimeline');
+        if (index === activeIndex) event.classList.add('activetimeline');
         event.onclick = () => showText(`text${index + 1}`, event);
         
         const circle = document.createElement('div');
@@ -247,8 +250,8 @@ function popularTimeline() {
         // Criar conteúdo de texto
         const textContent = document.createElement('div');
         textContent.id = `text${index + 1}`;
-        textContent.className = 'text-content';
-        if (index === 0) textContent.classList.add('activetimeline');
+    textContent.className = 'text-content';
+    if (index === activeIndex) textContent.classList.add('activetimeline');
         
         textContent.innerHTML = `
             <h3><i><i class="fa-regular fa-calendar"></i> ${pesquisa.texto} </i>- ${pesquisa.titulo}</h3>
@@ -267,3 +270,35 @@ function popularTimeline() {
 document.addEventListener('DOMContentLoaded', () => {
     popularTimeline();
 });
+
+// Retorna o índice da pesquisa que deve ser ativada:
+// 1) Se houver uma pesquisa em andamento (hoje entre inicio e fim) -> retorna esse índice
+// 2) Caso contrário, retorna o índice da pesquisa com a data de início mais próxima no futuro
+// 3) Se nenhuma for futura, retorna o índice da última pesquisa (mais recente)
+function getActiveIndex() {
+    if (!Array.isArray(pesquisas) || pesquisas.length === 0) return 0;
+
+    // Verifica se alguma está em andamento
+    for (let i = 0; i < pesquisas.length; i++) {
+        const p = pesquisas[i];
+        if (hoje >= p.inicio && hoje <= p.fim) {
+            return i;
+        }
+    }
+
+    // Procura a próxima pesquisa (início mais próximo no futuro)
+    let nextIndex = -1;
+    let minDiff = Infinity;
+    for (let i = 0; i < pesquisas.length; i++) {
+        const p = pesquisas[i];
+        const diff = p.inicio - hoje;
+        if (diff > 0 && diff < minDiff) {
+            minDiff = diff;
+            nextIndex = i;
+        }
+    }
+    if (nextIndex !== -1) return nextIndex;
+
+    // Se nenhuma futura, retorna a última
+    return pesquisas.length - 1;
+}
