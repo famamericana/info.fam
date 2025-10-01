@@ -160,18 +160,19 @@ function updateTimelineLine() {
         texto: '01 a 30 de Setembro',
         mesano: '09/2025',
         titulo: 'Autoavaliação CPA',
-        descricao: 'Planejamento, avaliação e desenvolvimento institucional, políticas acadêmicas e de gestão, infraestrutura'
+        descricao: 'Planejamento, avaliação e desenvolvimento institucional, políticas acadêmicas e de gestão, infraestrutura',
+        texto_conteudo: 'A Autoavaliação CPA é fundamental para o planejamento e desenvolvimento de nossa instituição. De 01 a 30 de setembro, convidamos todos a participarem da análise dos processos estratégicos, alinhando missão, visão e políticas de qualidade. Sua contribuição é crucial para identificar melhorias e fortalecer nossas metas institucionais. Participe e ajude-nos a promover a excelência em todas as áreas!'
     },
-  
+
     { 
         inicio: new Date('2025-11-03'), 
         fim: new Date('2025-11-24'), 
         texto: '03 a 24 de Novembro',
         mesano: '11/2025',
         titulo: 'Autoavaliação CPA',
-        descricao: 'Avaliação das disciplinas e turmas'
+        descricao: 'Avaliação das disciplinas e turmas',
+        texto_conteudo: 'De 03 a 24 de novembro, realizaremos a avaliação das disciplinas e turmas. Esta é uma oportunidade para alunos e professores fornecerem feedback sobre o ensino, conteúdo e metodologia. Suas opiniões são fundamentais para aprimorar o currículo e as práticas pedagógicas. Participe e ajude-nos a preparar nossos alunos para os desafios do futuro!'
     },
-
 ];
 
 // Obter a data atual
@@ -252,7 +253,7 @@ function popularTimeline() {
         textContent.innerHTML = `
             <h3><i><i class="fa-regular fa-calendar"></i> ${pesquisa.texto} </i>- ${pesquisa.titulo}</h3>
             <h4>${pesquisa.descricao}</h4>
-            <p>Esta pesquisa é fundamental para o desenvolvimento contínuo da nossa instituição. Sua participação é muito importante para identificarmos oportunidades de melhoria e continuarmos oferecendo a melhor experiência educacional possível.</p>
+            <p>${pesquisa.texto_conteudo || 'Esta pesquisa é fundamental para o desenvolvimento contínuo da nossa instituição. Sua participação é muito importante para identificarmos oportunidades de melhoria e continuarmos oferecendo a melhor experiência educacional possível.'}</p>
         `;
         
         textDisplay.appendChild(textContent);
