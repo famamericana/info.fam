@@ -5,6 +5,10 @@
 
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 /* Reset e Base */
 * {
     margin: 0;
@@ -54,30 +58,11 @@ main ul {
 }
 
 .container {
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     border: 1px solid #e5e7eb;
 }
 
-/* Header do Formulário */
-.form-header {
-    background: var(--cor-primaria);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-
-}
-
-.section-subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
-    font-weight: 400;
-}
 
 /* Formulário */
 .contact-form {
@@ -418,4 +403,12 @@ main ul {
     display: flex;
 
     gap: 20px;
+}
+
+.benefits-section div {
+    flex: 1;
+    margin-bottom: 60px;
+    border: 1px solid #e5e7eb;
+    padding: 20px ;
+    border-radius: 10px;
 }
