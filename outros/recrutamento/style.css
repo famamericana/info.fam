@@ -454,29 +454,22 @@ main ul {
 }
 
 
-
-.intro-section ul {
+.intro-section ul, .benefits-section ul {
     list-style: none;
     padding: 0;
     margin: 30px auto 0;
     text-align: left;
 }
 
-.intro-section li {
-    padding: 12px 0;
-    border-bottom: 1px solid #f3f4f6;
+.intro-section li, .benefits-section li {
+    padding: 5px 0;
     position: relative;
     padding-left: 25px;
     transition: all 0.2s ease;
 }
 
-.intro-section li:hover {
-    background: rgba(69, 183, 229, 0.02);
-    border-radius: 6px;
-    padding-left: 30px;
-}
 
-.intro-section li::before {
+.intro-section li::before, .benefits-section li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -494,35 +487,7 @@ main ul {
     font-weight: 500;
 }
 
-
-.benefits-section h3 {
-    margin-bottom: 25px;
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.benefits-section h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--cor-primaria);
-    border-radius: 1px;
-}
-
-.benefits-section li {
-    padding: 8px 0;
-    color: var(--cor-texto-claro);
-   
-    position: relative;
-    padding-left: 10px;
-    transition: color 0.2s ease;
-}
-
-
-
-.benefits-section li:hover {
-    color: var(--cor-texto);
+.benefits-section h3{
+    margin-bottom: -20px;
+    text-align: center;
 }
