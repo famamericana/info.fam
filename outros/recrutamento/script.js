@@ -9,6 +9,152 @@ const SCRIPT_URL_CANDIDATURA = 'https://script.google.com/macros/s/AKfycbweYRuLt
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    // --- CANVAS PARTICLE BACKGROUND ---
+    // Creates a lightweight particle system on a canvas placed behind the body content.
+    (function initParticleBackground() {
+        // Respect reduced motion
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (mediaQuery && mediaQuery.matches) return;
+
+        // Create canvas and insert as first child of body
+        const canvas = document.createElement('canvas');
+        canvas.id = 'bg-particles-canvas';
+        canvas.style.position = 'fixed';
+        canvas.style.left = '0';
+        canvas.style.top = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+    // keep canvas behind content
+    canvas.style.zIndex = '-1';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.opacity = '0.28';
+        // place behind content but inside stacking context of body
+        document.body.insertBefore(canvas, document.body.firstChild);
+
+        const ctx = canvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let particles = [];
+        const maxParticles = 80; // modest number for performance
+
+        function cssVar(name, fallback) {
+            try {
+                return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+            } catch (e) {
+                return fallback;
+            }
+        }
+
+        // use the theme primary color with slight variation
+        const primary = cssVar('#f9e20f', '#f9e20f') || '#f9e20f';
+
+        function resize() {
+            const dpr = window.devicePixelRatio || 1;
+            width = canvas.clientWidth || window.innerWidth;
+            height = canvas.clientHeight || window.innerHeight;
+            canvas.width = Math.round(width * dpr);
+            canvas.height = Math.round(height * dpr);
+            // Use setTransform to avoid accumulating scales on repeated resizes
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function rand(min, max) { return Math.random() * (max - min) + min; }
+
+        function createParticle() {
+            return {
+                x: rand(0, width),
+                y: rand(0, height),
+                vx: rand(-0.2, 0.2),
+                vy: rand(-0.15, 0.15),
+                r: rand(1, 3.2),
+                alpha: rand(0.12, 0.9),
+                tw: rand(0.002, 0.008),
+                t: rand(0, Math.PI * 2)
+            };
+        }
+
+        function initParticles() {
+            particles = new Array(maxParticles).fill(0).map(() => createParticle());
+        }
+
+        let mouse = { x: -9999, y: -9999 };
+        window.addEventListener('mousemove', function (e) {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+
+        function update(dt) {
+            for (let p of particles) {
+                // gentle drift
+                p.x += p.vx * dt;
+                p.y += p.vy * dt;
+
+                // small sinusoidal motion
+                p.t += p.tw * dt;
+                p.x += Math.sin(p.t) * 0.12;
+
+                // bounce edges
+                if (p.x < -10) p.x = width + 10;
+                if (p.x > width + 10) p.x = -10;
+                if (p.y < -10) p.y = height + 10;
+                if (p.y > height + 10) p.y = -10;
+
+                // mouse repulsion
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    const force = (120 - dist) / 120;
+                    p.x += (dx / (dist || 1)) * force * 8;
+                    p.y += (dy / (dist || 1)) * force * 8;
+                }
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            // subtle glow background circles
+            for (let p of particles) {
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${hexToRgb(primary)}, ${p.alpha})`;
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function hexToRgb(hex) {
+            const h = hex.replace('#', '').trim();
+            const bigint = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `${r}, ${g}, ${b}`;
+        }
+
+        let last = performance.now();
+        function frame(now) {
+            const dt = Math.min(60, now - last) / 16.67; // normalized to ~60fps
+            last = now;
+            update(dt);
+            draw();
+            requestAnimationFrame(frame);
+        }
+
+        // initialize
+        resize();
+        initParticles();
+        window.addEventListener('resize', function () {
+            // debounce small resizes
+            clearTimeout(window._bgResizeTimeout);
+            window._bgResizeTimeout = setTimeout(resize, 120);
+        });
+
+        // start loop
+        requestAnimationFrame(frame);
+    })();
+
+
     // --- Elementos do Formulário de Candidatura ---
     const formCandidatura = document.getElementById('candidaturaForm');
     const tipoVagaSelect = document.getElementById('tipoVaga');
