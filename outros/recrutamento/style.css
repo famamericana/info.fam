@@ -25,7 +25,7 @@ header {
     align-items: center;
     padding: 50px 20px;
     background: #f8fafc;
-    border-radius:  0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
     width: calc(100% - 20px);
     box-sizing: border-box;
     margin: 0 auto;
@@ -42,7 +42,7 @@ main {
     padding: 20px;
 }
 
-main ul{
+main ul {
     margin-left: 20px;
     margin-top: 10px;
 }
@@ -412,4 +412,10 @@ main ul{
 
 .intro-section {
     margin: 50px auto;
+}
+
+.benefits-section {
+    display: flex;
+
+    gap: 20px;
 }
