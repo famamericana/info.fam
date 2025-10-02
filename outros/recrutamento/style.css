@@ -23,6 +23,12 @@ header {
     justify-content: center;
     align-items: center;
     padding: 50px 20px;
+    background-color: white;
+}
+
+header img {
+    max-width: 300px;
+    height: auto;
 }
 
 main {
@@ -354,9 +360,6 @@ main {
 
 /* Responsivo */
 @media (max-width: 768px) {
-    body {
-        padding: 1rem 0.5rem;
-    }
 
     .form-header {
         padding: 1.5rem;
