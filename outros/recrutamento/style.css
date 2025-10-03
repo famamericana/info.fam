@@ -263,6 +263,7 @@ color: black !important;
 .submit-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* Animações de Entrada */

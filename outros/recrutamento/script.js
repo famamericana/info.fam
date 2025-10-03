@@ -269,6 +269,56 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
+     * Valida o formulário e habilita/desabilita o botão de submit
+     */
+    function validateForm() {
+        const submitButton = formCandidatura.querySelector('.submit-button');
+        if (!submitButton) return;
+
+        const tipoVaga = tipoVagaSelect.value;
+        if (!tipoVaga) {
+            submitButton.disabled = true;
+            return;
+        }
+
+        // Campos comuns
+        const nome = document.getElementById('nomeCompleto').value.trim();
+        const cpf = document.getElementById('cpf').value;
+        const telefone = document.getElementById('telefoneCandidatura').value;
+        const email = document.getElementById('email').value.trim();
+        const endereco = document.getElementById('endereco').value.trim();
+
+        const cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
+        const telefoneRegex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!nome || !cpfRegex.test(cpf) || !telefoneRegex.test(telefone) || !emailRegex.test(email) || !endereco) {
+            submitButton.disabled = true;
+            return;
+        }
+
+        // Áreas de interesse
+        let areasSelecionadas = 0;
+        if (tipoVaga === 'administrativo') {
+            areasSelecionadas = document.querySelectorAll('#camposAdministrativo .area-checkbox:checked').length;
+            const fileInput = document.getElementById('arquivoAdmin');
+            if (areasSelecionadas === 0 || !fileInput.files[0]) {
+                submitButton.disabled = true;
+                return;
+            }
+        } else if (tipoVaga === 'docente') {
+            areasSelecionadas = document.querySelectorAll('#camposDocente .area-checkbox:checked').length;
+            const fileInput = document.getElementById('arquivoDocente');
+            if (areasSelecionadas === 0 || !fileInput.files[0]) {
+                submitButton.disabled = true;
+                return;
+            }
+        }
+
+        submitButton.disabled = false;
+    }
+
+    /**
      * Mostra/esconde campos com base no tipo de vaga selecionado
      */
     function atualizarVisibilidadeCampos() {
@@ -287,6 +337,8 @@ document.addEventListener('DOMContentLoaded', function () {
             cb.disabled = false;
             cb.parentElement.classList.remove('disabled');
         });
+
+        validateForm();
     }
 
     /**
@@ -320,6 +372,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializa os limites de seleção para ambas as seções
     setupAreaSelection('camposAdministrativo', 5); // Limite de 5 áreas para admin
     setupAreaSelection('camposDocente', 5);       // Limite de 5 áreas para docente
+
+    // Validação inicial
+    validateForm();
+
+    // Adiciona listeners para validação
+    tipoVagaSelect.addEventListener('change', validateForm);
+    document.getElementById('nomeCompleto').addEventListener('input', validateForm);
+    document.getElementById('cpf').addEventListener('input', validateForm);
+    document.getElementById('telefoneCandidatura').addEventListener('input', validateForm);
+    document.getElementById('email').addEventListener('input', validateForm);
+    document.getElementById('endereco').addEventListener('input', validateForm);
+    document.querySelectorAll('.area-checkbox').forEach(cb => cb.addEventListener('change', validateForm));
+    document.getElementById('arquivoAdmin').addEventListener('change', validateForm);
+    document.getElementById('arquivoDocente').addEventListener('change', validateForm);
 
     // --- Envio do Formulário ---
 
