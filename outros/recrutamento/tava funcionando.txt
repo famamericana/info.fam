@@ -1,827 +1,489 @@
-## code.gs #####################################################################################
-
-// Configurações globais
+// CONFIGURAÇÃO - Substitua pelos seus valores EXATOS
 const CONFIG = {
+  pastaPrincipal: 'Quero Trabalhar na FAM',
   pastaDriveAdmin: 'Currículos Administrativos',
   pastaDriveDocentes: 'Currículos Docentes',
-  emailNotificacao: 'nicole@fam.br',
-  emailTeste: 'nicole@fam.br',
+  emailNotificacaoAdmin: 'recrutamento@fam.br',
+  emailNotificacaoDocentes: 'recrutamento@fam.br',
   planilhaAdmin: 'Candidatos_Administrativos',
   planilhaDocentes: 'Candidatos_Docentes'
 };
 
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('formulario');
-}
+// Variáveis globais para armazenar IDs e objetos (cache)
+let cache = {
+  folderIds: {},
+  spreadsheetIds: {},
+  mainFolderId: null
+};
 
-function processarVagaAdministrativa(dados) {
+/**
+ * Função para obter o ID da pasta principal, criando se não existir.
+ * @return {string} ID da pasta principal.
+ */
+function getMainFolderId() {
+  if (cache.mainFolderId) {
+    console.log(`[CACHE] Pasta principal encontrada no cache: ${cache.mainFolderId}`);
+    return cache.mainFolderId;
+  }
+
   try {
-    console.log('Processando vaga administrativa:', dados.nome);
+    const folders = DriveApp.getFoldersByName(CONFIG.pastaPrincipal);
     
-    const pasta = criarPastaSeNaoExistir(CONFIG.pastaDriveAdmin);
-    let linkArquivo = '';
-    
-    // Upload do arquivo (se houver)
-    if (dados.arquivo && dados.arquivo.data) {
-      try {
-        const blob = Utilities.newBlob(
-          Utilities.base64Decode(dados.arquivo.data),
-          dados.arquivo.mimeType,
-          dados.arquivo.name
-        );
-        
-        const nomeArquivo = dados.nome + '_' + new Date().getTime() + '_' + dados.arquivo.name;
-        const arquivoDrive = pasta.createFile(blob.setName(nomeArquivo));
-        linkArquivo = arquivoDrive.getUrl();
-        console.log('Arquivo salvo:', nomeArquivo);
-      } catch (error) {
-        console.error('Erro ao salvar arquivo:', error);
-      }
+    if (folders.hasNext()) {
+      const folder = folders.next();
+      cache.mainFolderId = folder.getId();
+      console.log(`[ENCONTRADO] Pasta principal '${CONFIG.pastaPrincipal}' com ID: ${cache.mainFolderId}`);
+      return cache.mainFolderId;
+    } else {
+      // Cria a pasta principal se não existir
+      console.log(`[CRIANDO] Criando pasta principal: ${CONFIG.pastaPrincipal}`);
+      const mainFolder = DriveApp.createFolder(CONFIG.pastaPrincipal);
+      cache.mainFolderId = mainFolder.getId();
+      console.log(`[CRIADA] Pasta principal criada com ID: ${cache.mainFolderId}`);
+      return cache.mainFolderId;
     }
-    
-    // Salvar na planilha
-    const planilha = criarPlanilhaSeNaoExistir(CONFIG.planilhaAdmin, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Currículo'
-    ]);
-    
-    const sheet = planilha.getSheets()[0];
-    const dataCadastro = new Date();
-    
-    sheet.appendRow([
-      dataCadastro,
-      dados.nome || '',
-      dados.cpf || '',
-      dados.telefone || '',
-      dados.email || '',
-      dados.endereco || '',
-      dados.areaInteresse || '',
-      linkArquivo
-    ]);
-    
-    console.log('Dados salvos na planilha para:', dados.nome);
-    
-    // Enviar notificação
-    enviarEmailNotificacao({
-      tipo: 'Administrativa',
-      nome: dados.nome || '',
-      email: dados.email || '',
-      telefone: dados.telefone || '',
-      area: dados.areaInteresse || '',
-      linkArquivo: linkArquivo,
-      destinatario: CONFIG.emailNotificacao
-    });
-    
-    return { success: true, message: 'Candidatura enviada com sucesso!' };
-    
   } catch (error) {
-    console.error('Erro ao processar vaga administrativa:', error);
-    return { success: false, message: 'Erro ao processar formulário: ' + error.message };
+    console.error('[ERRO] Exceção ao buscar/criar pasta principal:', error.toString());
+    return null;
   }
 }
 
-function processarVagaDocente(dados) {
+/**
+ * Função para obter o ID de uma pasta pelo nome DENTRO da pasta principal, criando se não existir.
+ * @param {string} folderName - Nome da pasta.
+ * @return {string} ID da pasta.
+ */
+function getFolderIdByName(folderName) {
+  if (cache.folderIds[folderName]) {
+    console.log(`[CACHE] Pasta '${folderName}' encontrada no cache: ${cache.folderIds[folderName]}`);
+    return cache.folderIds[folderName];
+  }
+
   try {
-    console.log('Processando vaga docente:', dados.nome);
-    
-    const pasta = criarPastaSeNaoExistir(CONFIG.pastaDriveDocentes);
-    let linkArquivo = '';
-    
-    // Upload do arquivo (se houver)
-    if (dados.arquivo && dados.arquivo.data) {
-      try {
-        const blob = Utilities.newBlob(
-          Utilities.base64Decode(dados.arquivo.data),
-          dados.arquivo.mimeType,
-          dados.arquivo.name
-        );
-        
-        const nomeArquivo = dados.nome + '_' + new Date().getTime() + '_' + dados.arquivo.name;
-        const arquivoDrive = pasta.createFile(blob.setName(nomeArquivo));
-        linkArquivo = arquivoDrive.getUrl();
-        console.log('Arquivo salvo:', nomeArquivo);
-      } catch (error) {
-        console.error('Erro ao salvar arquivo:', error);
-      }
+    const mainFolderId = getMainFolderId();
+    if (!mainFolderId) {
+      throw new Error('Não foi possível acessar ou criar a pasta principal');
     }
+
+    const mainFolder = DriveApp.getFolderById(mainFolderId);
+    const folders = mainFolder.getFoldersByName(folderName);
     
-    // Salvar na planilha
-    const planilha = criarPlanilhaSeNaoExistir(CONFIG.planilhaDocentes, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Lattes', 'Link Currículo'
-    ]);
-    
-    const sheet = planilha.getSheets()[0];
-    const dataCadastro = new Date();
-    
-    sheet.appendRow([
-      dataCadastro,
-      dados.nome || '',
-      dados.cpf || '',
-      dados.telefone || '',
-      dados.email || '',
-      dados.endereco || '',
-      dados.areaInteresse || '',
-      dados.lattes || '',
-      linkArquivo
-    ]);
-    
-    console.log('Dados salvos na planilha para:', dados.nome);
-    
-    // Enviar notificação
-    enviarEmailNotificacao({
-      tipo: 'Docente',
-      nome: dados.nome || '',
-      email: dados.email || '',
-      telefone: dados.telefone || '',
-      area: dados.areaInteresse || '',
-      linkLattes: dados.lattes || '',
-      linkArquivo: linkArquivo,
-      destinatario: CONFIG.emailNotificacao
-    });
-    
-    return { success: true, message: 'Candidatura enviada com sucesso!' };
-    
+    if (folders.hasNext()) {
+      const folder = folders.next();
+      cache.folderIds[folderName] = folder.getId();
+      console.log(`[ENCONTRADO] Pasta '${folderName}' com ID: ${cache.folderIds[folderName]}`);
+      return cache.folderIds[folderName];
+    } else {
+      // Cria a pasta se não existir
+      console.log(`[CRIANDO] Criando pasta: ${folderName}`);
+      const newFolder = mainFolder.createFolder(folderName);
+      cache.folderIds[folderName] = newFolder.getId();
+      console.log(`[CRIADA] Pasta '${folderName}' criada com ID: ${cache.folderIds[folderName]}`);
+      return cache.folderIds[folderName];
+    }
   } catch (error) {
-    console.error('Erro ao processar vaga docente:', error);
-    return { success: false, message: 'Erro ao processar formulário: ' + error.message };
+    console.error('[ERRO] Exceção ao buscar/criar pasta:', error.toString());
+    return null;
   }
 }
 
-function criarPastaSeNaoExistir(nomePasta) {
-  const pastas = DriveApp.getFoldersByName(nomePasta);
-  if (pastas.hasNext()) {
-    return pastas.next();
+/**
+ * Função para obter o ID de uma planilha pelo nome DENTRO da pasta principal, criando se não existir.
+ * @param {string} sheetName - Nome da planilha.
+ * @return {string} ID da planilha.
+ */
+function getSpreadsheetIdByName(sheetName) {
+  if (cache.spreadsheetIds[sheetName]) {
+    console.log(`[CACHE] Planilha '${sheetName}' encontrada no cache: ${cache.spreadsheetIds[sheetName]}`);
+    return cache.spreadsheetIds[sheetName];
+  }
+
+  try {
+    const mainFolderId = getMainFolderId();
+    if (!mainFolderId) {
+      throw new Error('Não foi possível acessar ou criar a pasta principal');
+    }
+
+    const mainFolder = DriveApp.getFolderById(mainFolderId);
+    const files = mainFolder.getFilesByName(sheetName);
+    
+    let fileId = null;
+    
+    while (files.hasNext()) {
+      const file = files.next();
+      if (file.getMimeType() === 'application/vnd.google-apps.spreadsheet') {
+        fileId = file.getId();
+        console.log(`[ENCONTRADO] Planilha '${sheetName}' com ID: ${fileId}`);
+        break;
+      }
+    }
+
+    if (fileId) {
+      cache.spreadsheetIds[sheetName] = fileId;
+      return fileId;
+    } else {
+      // Cria a planilha se não existir
+      console.log(`[CRIANDO] Criando planilha: ${sheetName}`);
+      const newSpreadsheet = SpreadsheetApp.create(sheetName);
+      const file = DriveApp.getFileById(newSpreadsheet.getId());
+      
+      // Move a planilha para a pasta principal
+      file.moveTo(mainFolder);
+      
+      cache.spreadsheetIds[sheetName] = file.getId();
+      console.log(`[CRIADA] Planilha '${sheetName}' criada com ID: ${cache.spreadsheetIds[sheetName]}`);
+      return cache.spreadsheetIds[sheetName];
+    }
+  } catch (error) {
+    console.error('[ERRO] Exceção ao buscar/criar planilha:', error.toString());
+    return null;
+  }
+}
+
+/**
+ * Função para garantir que a planilha tenha os cabeçalhos corretos e formatados.
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - Objeto da aba da planilha.
+ * @param {Array<string>} headers - Array com os cabeçalhos esperados.
+ */
+function ensureHeaders(sheet, headers) {
+  const cellA1Value = sheet.getRange('A1').getValue();
+  const hasHeaders = cellA1Value !== '';
+
+  console.log(`[ensureHeaders] Verificando cabeçalhos na aba '${sheet.getName()}'. Tem cabeçalhos? ${hasHeaders} (Baseado no valor de A1: '${cellA1Value}')`);
+  console.log(`[ensureHeaders] Cabeçalhos esperados: ${JSON.stringify(headers)}`);
+
+  if (!hasHeaders) {
+    console.log(`[ensureHeaders] Inserindo cabeçalhos na aba '${sheet.getName()}'.`);
+    
+    // Insere os cabeçalhos
+    const headerRange = sheet.getRange(1, 1, 1, headers.length);
+    headerRange.setValues([headers]);
+    
+    // Formatação dos Cabeçalhos
+    const headerRowRange = sheet.getRange(1, 1, 1, headers.length);
+    
+    // Define estilo
+    headerRowRange.setFontWeight('bold');
+    headerRowRange.setBackground('#4285f4');
+    headerRowRange.setFontColor('#ffffff');
+    headerRowRange.setBorder(true, true, true, true, true, true);
+    
+    // Ajusta a largura das colunas para melhor visualização
+    sheet.autoResizeColumns(1, headers.length);
+    
+    SpreadsheetApp.flush();
+    console.log(`[ensureHeaders] Cabeçalhos inseridos e formatados com sucesso.`);
   } else {
-    return DriveApp.createFolder(nomePasta);
+    console.log(`[ensureHeaders] Cabeçalhos já existem na aba '${sheet.getName()}'. Nenhuma ação necessária.`);
   }
 }
 
-function criarPlanilhaSeNaoExistir(nomePlanilha, cabecalhos) {
-  const arquivos = DriveApp.getFilesByName(nomePlanilha);
-  let planilha;
+/**
+ * Função principal que recebe os dados do formulário via POST.
+ * @param {GoogleAppsScript.Events.DoPost} e - Evento doPost.
+ * @return {GoogleAppsScript.Content.TextOutput} Resposta HTTP.
+ */
+function doPost(e) {
+  console.log('[doPost] Função doPost iniciada.');
+  let lock;
+  try {
+    lock = LockService.getScriptLock();
+    console.log('[doPost] Tentando adquirir lock...');
+    const hasLock = lock.tryLock(30000);
+    if (!hasLock) {
+      throw new Error('Não foi possível adquirir o lock. Outra execução está em andamento.');
+    }
+    console.log('[doPost] Lock adquirido com sucesso.');
+
+    console.log('[doPost] Conteúdo recebido:', e.postData.contents);
+    const formData = JSON.parse(e.postData.contents);
+    console.log('[doPost] Dados do formulário parseados:', JSON.stringify(formData, null, 2));
+
+    const tipoVaga = formData.tipoVaga;
+    console.log(`[doPost] Tipo de vaga determinado: ${tipoVaga}`);
+
+    let folderId, spreadsheetId, sheetBaseName, emailNotificacao, headers, fileNamePrefix;
+
+    if (tipoVaga === 'administrativo') {
+      folderId = getFolderIdByName(CONFIG.pastaDriveAdmin);
+      spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaAdmin);
+      sheetBaseName = CONFIG.planilhaAdmin;
+      emailNotificacao = CONFIG.emailNotificacaoAdmin;
+      headers = [
+        'Data/Hora Envio', 
+        'Nome Completo', 
+        'CPF', 
+        'Telefone', 
+        'Email', 
+        'Endereço', 
+        'Área de Interesse', 
+        'Link do Currículo', 
+        'Observações'
+      ];
+      fileNamePrefix = 'Curriculo_Admin_';
+    } else if (tipoVaga === 'docente') {
+      folderId = getFolderIdByName(CONFIG.pastaDriveDocentes);
+      spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaDocentes);
+      sheetBaseName = CONFIG.planilhaDocentes;
+      emailNotificacao = CONFIG.emailNotificacaoDocentes;
+      headers = [
+        'Data/Hora Envio', 
+        'Nome Completo', 
+        'CPF', 
+        'Telefone', 
+        'Email', 
+        'Endereço', 
+        'Área de Interesse', 
+        'Link do Lattes', 
+        'Link do Currículo', 
+        'Observações'
+      ];
+      fileNamePrefix = 'Curriculo_Docente_';
+    } else {
+      throw new Error(`Tipo de vaga inválido recebido: '${tipoVaga}'`);
+    }
+
+    if (!folderId) {
+      throw new Error(`Não foi possível criar ou acessar a pasta para o tipo de vaga: ${tipoVaga}`);
+    }
+    if (!spreadsheetId) {
+      throw new Error(`Não foi possível criar ou acessar a planilha para o tipo de vaga: ${tipoVaga}`);
+    }
+
+    console.log(`[doPost] IDs obtidos - Pasta: ${folderId}, Planilha: ${spreadsheetId}`);
+
+    const ss = SpreadsheetApp.openById(spreadsheetId);
+    console.log(`[doPost] Planilha aberta: ${ss.getName()}`);
+
+    // Cria nome da aba com base APENAS NO ANO
+    const currentYear = new Date().getFullYear().toString();
+    const sheetName = currentYear;
+    console.log(`[doPost] Nome da aba a ser usada/criada: ${sheetName}`);
+
+    let sheet = ss.getSheetByName(sheetName);
+
+    if (!sheet) {
+      console.log(`[doPost] Aba '${sheetName}' não encontrada. Criando nova aba.`);
+      sheet = ss.insertSheet(sheetName);
+      console.log(`[doPost] Nova aba '${sheetName}' criada.`);
+      SpreadsheetApp.flush();
+    } else {
+      console.log(`[doPost] Aba '${sheetName}' encontrada.`);
+    }
+
+    // Garante que os cabeçalhos estejam presentes e formatados
+    ensureHeaders(sheet, headers);
+
+    // Trata o upload do arquivo
+    let fileUrl = '';
+    if (formData.arquivo && formData.arquivo.name && formData.arquivo.type && formData.arquivo.data) {
+      console.log(`[doPost] Arquivo recebido: ${formData.arquivo.name}`);
+      const folder = DriveApp.getFolderById(folderId);
+      const base64Match = formData.arquivo.data.match(/base64,(.*)$/);
+      
+      if (!base64Match || !base64Match[1]) {
+        throw new Error('Dados do arquivo em formato Base64 inválidos.');
+      }
+      
+      const base64Data = base64Match[1];
+      const decodedData = Utilities.base64Decode(base64Data);
+      const blob = Utilities.newBlob(decodedData, formData.arquivo.type, formData.arquivo.name);
+
+      const timestamp = new Date().getTime();
+      const safeNome = (formData.nomeCompleto || 'Desconhecido').replace(/[^a-zA-Z0-9-_ ]/g, '_');
+      const uniqueFileName = `${fileNamePrefix}${safeNome}_${timestamp}_${formData.arquivo.name}`;
+
+      console.log(`[doPost] Criando arquivo no Drive com nome: ${uniqueFileName}`);
+      const file = folder.createFile(blob);
+      file.setName(uniqueFileName);
+      fileUrl = file.getUrl();
+      console.log(`[doPost] Arquivo criado com sucesso. URL: ${fileUrl}`);
+    } else if (tipoVaga === 'administrativo') {
+      // Para administrativo, o arquivo é obrigatório
+      console.error('[doPost] Erro: O upload do currículo é obrigatório para vagas administrativas, mas nenhum arquivo foi recebido.');
+      throw new Error('O upload do currículo é obrigatório para vagas administrativas.');
+    } else {
+      console.log('[doPost] Nenhum arquivo recebido (não obrigatório para docentes).');
+    }
+
+    // Prepara os dados para a planilha
+    const timestamp = new Date();
+    let rowData;
+    
+    if (tipoVaga === 'administrativo') {
+      rowData = [
+        timestamp,
+        formData.nomeCompleto || '',
+        formData.cpf || '',
+        formData.telefone || '',
+        formData.email || '',
+        formData.endereco || '',
+        (formData.areaInteresseAdmin || []).join(', '),
+        fileUrl,
+        formData.observacoesAdmin || ''
+      ];
+    } else if (tipoVaga === 'docente') {
+      rowData = [
+        timestamp,
+        formData.nomeCompleto || '',
+        formData.cpf || '',
+        formData.telefone || '',
+        formData.email || '',
+        formData.endereco || '',
+        (formData.areaInteresseDocente || []).join(', '),
+        formData.linkLattes || '',
+        fileUrl,
+        formData.observacoesDocente || ''
+      ];
+    }
+    
+    console.log(`[doPost] Dados preparados para inserção na planilha: ${JSON.stringify(rowData)}`);
+
+    // Adiciona os dados à planilha
+    sheet.appendRow(rowData);
+    
+    // Formata a linha recém-adicionada
+    const lastRow = sheet.getLastRow();
+    const dataRange = sheet.getRange(lastRow, 1, 1, headers.length);
+    dataRange.setBorder(false, false, true, false, false, false); // Borda inferior
+    
+    SpreadsheetApp.flush();
+    console.log('[doPost] Dados adicionados à planilha com sucesso.');
+
+    // Envia email de notificação
+    if (emailNotificacao) {
+      const subject = `Nova Candidatura Recebida - ${tipoVaga.charAt(0).toUpperCase() + tipoVaga.slice(1)}`;
+      let body = `Uma nova candidatura foi recebida para a vaga de ${tipoVaga}.\n\n`;
+      body += `Nome: ${formData.nomeCompleto}\n`;
+      body += `Email: ${formData.email}\n`;
+      body += `CPF: ${formData.cpf}\n`;
+      body += `Telefone: ${formData.telefone}\n`;
+      body += `Endereço: ${formData.endereco}\n`;
+      
+      if (tipoVaga === 'administrativo') {
+        body += `Áreas de Interesse: ${(formData.areaInteresseAdmin || []).join(', ')}\n`;
+        if (formData.observacoesAdmin) {
+          body += `Observações: ${formData.observacoesAdmin}\n`;
+        }
+      } else if (tipoVaga === 'docente') {
+        body += `Áreas de Interesse: ${(formData.areaInteresseDocente || []).join(', ')}\n`;
+        if (formData.linkLattes) {
+          body += `Link Lattes: ${formData.linkLattes}\n`;
+        }
+        if (formData.observacoesDocente) {
+          body += `Observações: ${formData.observacoesDocente}\n`;
+        }
+      }
+      
+      if (fileUrl) {
+        body += `Currículo: ${fileUrl}\n`;
+      }
+      
+      body += `\nVerifique a aba "${sheetName}" da planilha "${ss.getName()}" para mais detalhes.`;
+
+      console.log(`[doPost] Enviando email de notificação para ${emailNotificacao}`);
+      MailApp.sendEmail(emailNotificacao, subject, body);
+      console.log('[doPost] Email de notificação enviado com sucesso.');
+    }
+
+    lock.releaseLock();
+    console.log('[doPost] Lock liberado.');
+
+    console.log('[doPost] Processo concluído com sucesso. Retornando resposta.');
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'message': 'Formulário enviado com sucesso!' }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    console.error('[doPost] Erro durante a execução:', error.toString());
+    console.error('[doPost] Stack trace:', error.stack);
+
+    if (lock && lock.hasLock()) {
+      try {
+        lock.releaseLock();
+        console.log('[doPost] Lock liberado após erro.');
+      } catch (releaseError) {
+        console.error('[doPost] Erro ao liberar o lock após falha principal:', releaseError.toString());
+      }
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'message': error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Função para implantar o Web App.
+ */
+function deployAsWebApp() {
+  console.log("Lembre-se de implantar este script como um Web App!");
+  console.log("Vá em 'Implantar' -> 'Novo implantação' -> 'Tipo de implantação: Web App'");
+  console.log("Execute como: 'Eu'");
+  console.log("Quem tem acesso: 'Qualquer um'");
+}
+
+/**
+ * Função para inicializar a estrutura (criar pastas e planilhas)
+ */
+function inicializarEstrutura() {
+  console.log("--- INICIALIZANDO ESTRUTURA ---");
   
-  if (arquivos.hasNext()) {
-    planilha = SpreadsheetApp.open(arquivos.next());
-  } else {
-    planilha = SpreadsheetApp.create(nomePlanilha);
-    const sheet = planilha.getSheets()[0];
-    sheet.appendRow(cabecalhos);
-    
-    // Formatar cabeçalhos
-    const range = sheet.getRange(1, 1, 1, cabecalhos.length);
-    range.setBackground('#4285f4').setFontColor('white').setFontWeight('bold');
-    
-    // Ajustar larguras das colunas
-    for (let i = 1; i <= cabecalhos.length; i++) {
-      sheet.autoResizeColumn(i);
-    }
-  }
+  // Cria todas as pastas e planilhas
+  const adminFolderId = getFolderIdByName(CONFIG.pastaDriveAdmin);
+  const docentesFolderId = getFolderIdByName(CONFIG.pastaDriveDocentes);
+  const adminSpreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaAdmin);
+  const docentesSpreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaDocentes);
   
-  return planilha;
+  console.log("--- ESTRUTURA INICIALIZADA COM SUCESSO ---");
+  console.log(`Pasta Admin: ${adminFolderId}`);
+  console.log(`Pasta Docentes: ${docentesFolderId}`);
+  console.log(`Planilha Admin: ${adminSpreadsheetId}`);
+  console.log(`Planilha Docentes: ${docentesSpreadsheetId}`);
 }
 
-function enviarEmailNotificacao(dados) {
-  try {
-    const assunto = 'Novo candidato para vaga ' + dados.tipo + ' - ' + dados.nome;
-    
-    let corpo = '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">';
-    corpo += '<h2 style="color: #4285f4; border-bottom: 2px solid #4285f4; padding-bottom: 10px;">Novo candidato cadastrado</h2>';
-    corpo += '<div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">';
-    corpo += '<p><strong>Tipo de vaga:</strong> ' + dados.tipo + '</p>';
-    corpo += '<p><strong>Nome:</strong> ' + dados.nome + '</p>';
-    corpo += '<p><strong>Email:</strong> ' + dados.email + '</p>';
-    corpo += '<p><strong>Telefone:</strong> ' + dados.telefone + '</p>';
-    corpo += '<p><strong>Área de interesse:</strong> ' + (dados.area || 'Não informado') + '</p>';
-    corpo += '</div>';
-    
-    if (dados.tipo === 'Docente' && dados.linkLattes) {
-      corpo += '<div style="background-color: #e8f4fd; padding: 15px; border-radius: 5px; margin: 20px 0;">';
-      corpo += '<p><strong>🎓 Link Lattes:</strong> <a href="' + dados.linkLattes + '" target="_blank">' + dados.linkLattes + '</a></p>';
-      corpo += '</div>';
+/**
+ * Função de teste para simular uma chamada ao doPost.
+ */
+function testFunction() {
+  console.log("--- INICIANDO TESTE MANUAL ---");
+  const mockEvent = {
+    postData: {
+      contents: JSON.stringify({
+        tipoVaga: 'docente',
+        nomeCompleto: 'Professor Teste da Silva',
+        cpf: '123.456.789-00',
+        telefone: '(11) 99999-8888',
+        email: 'professor@exemplo.com',
+        endereco: 'Rua Exemplo, 123 - São Paulo/SP',
+        areaInteresseDocente: ['Administração', 'Direito'],
+        linkLattes: 'http://lattes.cnpq.br/123456789',
+        observacoesDocente: 'Professor com 10 anos de experiência.',
+        arquivo: {
+          name: "curriculo_professor.pdf",
+          type: "application/pdf",
+          data: "data:application/pdf;base64,dGVzdGU="
+        }
+      })
     }
-    
-    if (dados.linkArquivo) {
-      corpo += '<div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">';
-      corpo += '<p><strong>📄 Currículo:</strong> <a href="' + dados.linkArquivo + '" target="_blank" style="color: #856404; font-weight: bold;">Acessar arquivo</a></p>';
-      corpo += '</div>';
-    }
-    
-    const dataHora = new Date().toLocaleString('pt-BR');
-    corpo += '<div style="border-top: 1px solid #ddd; padding-top: 15px; margin-top: 30px; color: #666;">';
-    corpo += '<p><strong>Data do cadastro:</strong> ' + dataHora + '</p>';
-    corpo += '<p><em>Este email foi gerado automaticamente pelo sistema de vagas.</em></p>';
-    corpo += '</div>';
-    corpo += '</div>';
-    
-    GmailApp.sendEmail(dados.destinatario, assunto, '', {
-      htmlBody: corpo
-    });
-    
-    console.log('Email enviado com sucesso para:', dados.destinatario);
-  } catch (error) {
-    console.error('Erro ao enviar email:', error);
-  }
-}
+  };
 
-function getAreasAdministrativas() {
-  return [
-    'Biblioteca',
-    'Recepção',
-    'Secretaria',
-    'Financeiro',
-    'RH',
-    'TI',
-    'Manutenção',
-    'Limpeza',
-    'Segurança',
-    'Marketing',
-    'Coordenação'
-  ];
-}
-
-function getAreasDocentes() {
-  return [
-    'Administração',
-    'Direito',
-    'Pedagogia',
-    'Psicologia',
-    'Enfermagem',
-    'Medicina',
-    'Odontologia',
-    'Nutrição',
-    'Fisioterapia',
-    'Educação Física',
-    'Engenharia',
-    'Ciências Contábeis'
-  ];
-}
-
-function testarSistema() {
   try {
-    console.log('Iniciando teste do sistema...');
-    
-    console.log('Testando criação de pastas...');
-    const pastaAdmin = criarPastaSeNaoExistir(CONFIG.pastaDriveAdmin);
-    const pastaDocente = criarPastaSeNaoExistir(CONFIG.pastaDriveDocentes);
-    
-    console.log('Testando criação de planilhas...');
-    const planilhaAdmin = criarPlanilhaSeNaoExistir(CONFIG.planilhaAdmin, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Currículo'
-    ]);
-    
-    const planilhaDocente = criarPlanilhaSeNaoExistir(CONFIG.planilhaDocentes, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Lattes', 'Link Currículo'
-    ]);
-    
-    console.log('Teste concluído com sucesso!');
-    console.log('Pasta Admin ID:', pastaAdmin.getId());
-    console.log('Pasta Docente ID:', pastaDocente.getId());
-    console.log('Planilha Admin ID:', planilhaAdmin.getId());
-    console.log('Planilha Docente ID:', planilhaDocente.getId());
-    
-    const areasAdmin = getAreasAdministrativas();
-    const areasDocente = getAreasDocentes();
-    console.log('Áreas administrativas carregadas:', areasAdmin.length);
-    console.log('Áreas docentes carregadas:', areasDocente.length);
-    
-    return {
-      success: true,
-      message: 'Sistema testado com sucesso!',
-      detalhes: {
-        pastaAdminId: pastaAdmin.getId(),
-        pastaDocenteId: pastaDocente.getId(),
-        planilhaAdminId: planilhaAdmin.getId(),
-        planilhaDocenteId: planilhaDocente.getId(),
-        areasAdmin: areasAdmin.length,
-        areasDocente: areasDocente.length
-      }
-    };
-  } catch (error) {
-    console.error('Erro no teste:', error);
-    return {
-      success: false,
-      message: 'Erro no teste: ' + error.message,
-      erro: error.toString()
-    };
+    const result = doPost(mockEvent);
+    console.log("--- TESTE MANUAL CONCLUÍDO ---");
+    console.log("Resultado:", result.getContent());
+  } catch (e) {
+    console.error("--- ERRO NO TESTE MANUAL ---", e.toString(), e.stack);
   }
 }
 
-function adicionarDadosTeste() {
-  try {
-    console.log('Adicionando dados de teste...');
-    
-    const planilhaAdmin = criarPlanilhaSeNaoExistir(CONFIG.planilhaAdmin, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Currículo'
-    ]);
-    
-    const planilhaDocente = criarPlanilhaSeNaoExistir(CONFIG.planilhaDocentes, [
-      'Data Cadastro', 'Nome Completo', 'CPF', 'Telefone', 'Email', 'Endereço', 
-      'Área de Interesse', 'Link Lattes', 'Link Currículo'
-    ]);
-    
-    const sheet1 = planilhaAdmin.getSheets()[0];
-    const sheet2 = planilhaDocente.getSheets()[0];
-    
-    const agora = new Date();
-    sheet1.appendRow([
-      agora,
-      'Teste Administrativo',
-      '000.000.000-00',
-      '(00) 00000-0000',
-      'teste@admin.com',
-      'Endereço Teste',
-      'TI',
-      'Link teste'
-    ]);
-    
-    sheet2.appendRow([
-      agora,
-      'Teste Docente',
-      '111.111.111-11',
-      '(11) 11111-1111',
-      'teste@docente.com',
-      'Endereço Teste Docente',
-      'Administração',
-      'https://lattes.cnpq.br/teste',
-      'Link curriculo teste'
-    ]);
-    
-    console.log('Dados de teste adicionados com sucesso!');
-    return { success: true, message: 'Dados de teste adicionados!' };
-    
-  } catch (error) {
-    console.error('Erro ao adicionar dados de teste:', error);
-    return { success: false, message: 'Erro: ' + error.message };
-  }
+/**
+ * Função GET para testar se o script está funcionando
+ */
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({
+    status: 'online',
+    message: 'Web App do formulário de candidaturas está funcionando',
+    timestamp: new Date()
+  })).setMimeType(ContentService.MimeType.JSON);
 }
-
-## formulario.html #####################################################################################
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Vagas</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f5f5f5;
-      }
-      
-      .container {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      }
-      
-      h1 {
-        color: #333;
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      
-      .tabs {
-        display: flex;
-        margin-bottom: 30px;
-        border-bottom: 2px solid #ddd;
-      }
-      
-      .tab {
-        padding: 15px 25px;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        border: none;
-        font-size: 16px;
-        font-weight: bold;
-        transition: all 0.3s;
-      }
-      
-      .tab.active {
-        background-color: #4285f4;
-        color: white;
-      }
-      
-      .form-section {
-        display: none;
-      }
-      
-      .form-section.active {
-        display: block;
-      }
-      
-      .form-group {
-        margin-bottom: 20px;
-      }
-      
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #555;
-      }
-      
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      input[type="url"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-      }
-      
-      input[type="file"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-      }
-      
-      .checkbox-group {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 15px;
-      }
-      
-      .checkbox-item {
-        margin-bottom: 10px;
-      }
-      
-      .checkbox-item input[type="checkbox"] {
-        width: auto;
-        margin-right: 10px;
-      }
-      
-      .submit-btn {
-        background-color: #4285f4;
-        color: white;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px;
-        cursor: pointer;
-        width: 100%;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-      
-      .submit-btn:hover:not(:disabled) {
-        background-color: #3367d6;
-      }
-      
-      .submit-btn:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
-      
-      .message {
-        padding: 15px;
-        margin: 20px 0;
-        border-radius: 5px;
-        text-align: center;
-        display: none;
-      }
-      
-      .success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-      }
-      
-      .error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-      }
-      
-      .required {
-        color: red;
-      }
-      
-      .file-info {
-        margin-top: 5px;
-        font-size: 14px;
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Formulário de Vagas</h1>
-      
-      <div class="tabs">
-        <button class="tab active" onclick="mostrarFormulario('administrativo')">Vagas Administrativas</button>
-        <button class="tab" onclick="mostrarFormulario('docente')">Vagas Docentes</button>
-      </div>
-      
-      <!-- Formulário Administrativo -->
-      <div id="form-administrativo" class="form-section active">
-        <form id="formAdmin">
-          <input type="hidden" name="tipoVaga" value="administrativo">
-          
-          <div class="form-group">
-            <label for="nomeAdmin">Nome completo <span class="required">*</span></label>
-            <input type="text" id="nomeAdmin" name="nome" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="cpfAdmin">CPF <span class="required">*</span></label>
-            <input type="text" id="cpfAdmin" name="cpf" required placeholder="000.000.000-00">
-          </div>
-          
-          <div class="form-group">
-            <label for="telefoneAdmin">Telefone <span class="required">*</span></label>
-            <input type="tel" id="telefoneAdmin" name="telefone" required placeholder="(00) 00000-0000">
-          </div>
-          
-          <div class="form-group">
-            <label for="emailAdmin">Email <span class="required">*</span></label>
-            <input type="email" id="emailAdmin" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="enderecoAdmin">Endereço <span class="required">*</span></label>
-            <input type="text" id="enderecoAdmin" name="endereco" required>
-          </div>
-          
-          <div class="form-group">
-            <label>Área de interesse <span class="required">*</span></label>
-            <div class="checkbox-group" id="areasAdministrativas">
-              <!-- Áreas serão carregadas dinamicamente -->
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="arquivoAdmin">Envie seu currículo <span class="required">*</span></label>
-            <input type="file" id="arquivoAdmin" name="arquivo" accept=".pdf,.doc,.docx" required>
-            <div class="file-info">Formatos aceitos: PDF, DOC, DOCX (máx. 10MB)</div>
-          </div>
-          
-          <button type="submit" class="submit-btn">Enviar Candidatura</button>
-        </form>
-      </div>
-      
-      <!-- Formulário Docente -->
-      <div id="form-docente" class="form-section">
-        <form id="formDocente">
-          <input type="hidden" name="tipoVaga" value="docente">
-          
-          <div class="form-group">
-            <label for="nomeDocente">Nome completo <span class="required">*</span></label>
-            <input type="text" id="nomeDocente" name="nome" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="cpfDocente">CPF <span class="required">*</span></label>
-            <input type="text" id="cpfDocente" name="cpf" required placeholder="000.000.000-00">
-          </div>
-          
-          <div class="form-group">
-            <label for="telefoneDocente">Telefone <span class="required">*</span></label>
-            <input type="tel" id="telefoneDocente" name="telefone" required placeholder="(00) 00000-0000">
-          </div>
-          
-          <div class="form-group">
-            <label for="emailDocente">Email <span class="required">*</span></label>
-            <input type="email" id="emailDocente" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="enderecoDocente">Endereço <span class="required">*</span></label>
-            <input type="text" id="enderecoDocente" name="endereco" required>
-          </div>
-          
-          <div class="form-group">
-            <label>Área de interesse <span class="required">*</span></label>
-            <div class="checkbox-group" id="areasDocentes">
-              <!-- Áreas serão carregadas dinamicamente -->
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="lattesDocente">Link do Lattes</label>
-            <input type="url" id="lattesDocente" name="lattes" placeholder="https://lattes.cnpq.br/...">
-          </div>
-          
-          <div class="form-group">
-            <label for="arquivoDocente">Envie seu currículo <span class="required">*</span></label>
-            <input type="file" id="arquivoDocente" name="arquivo" accept=".pdf,.doc,.docx" required>
-            <div class="file-info">Formatos aceitos: PDF, DOC, DOCX (máx. 10MB)</div>
-          </div>
-          
-          <button type="submit" class="submit-btn">Enviar Candidatura</button>
-        </form>
-      </div>
-      
-      <div id="message" class="message"></div>
-    </div>
-
-    <script>
-      // Carregar áreas quando a página carregar
-      google.script.run.withSuccessHandler(carregarAreas).getAreasAdministrativas();
-      google.script.run.withSuccessHandler(carregarAreasDocentes).getAreasDocentes();
-      
-      function carregarAreas(areas) {
-        const container = document.getElementById('areasAdministrativas');
-        container.innerHTML = '';
-        areas.forEach(area => {
-          const div = document.createElement('div');
-          div.className = 'checkbox-item';
-          div.innerHTML = `
-            <input type="checkbox" name="areaInteresse" value="${area}" id="area_${area.replace(/\s+/g, '_')}">
-            <label for="area_${area.replace(/\s+/g, '_')}">${area}</label>
-          `;
-          container.appendChild(div);
-        });
-      }
-      
-      function carregarAreasDocentes(areas) {
-        const container = document.getElementById('areasDocentes');
-        container.innerHTML = '';
-        areas.forEach(area => {
-          const div = document.createElement('div');
-          div.className = 'checkbox-item';
-          div.innerHTML = `
-            <input type="checkbox" name="areaInteresse" value="${area}" id="doc_area_${area.replace(/\s+/g, '_')}">
-            <label for="doc_area_${area.replace(/\s+/g, '_')}">${area}</label>
-          `;
-          container.appendChild(div);
-        });
-      }
-      
-      function mostrarFormulario(tipo) {
-        // Atualizar tabs
-        document.querySelectorAll('.tab').forEach(tab => {
-          tab.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        
-        // Mostrar formulário correto
-        document.querySelectorAll('.form-section').forEach(section => {
-          section.classList.remove('active');
-        });
-        document.getElementById(`form-${tipo}`).classList.add('active');
-      }
-      
-      // Manipular envio dos formulários
-      document.getElementById('formAdmin').addEventListener('submit', function(e) {
-        e.preventDefault();
-        enviarFormulario(this);
-      });
-      
-      document.getElementById('formDocente').addEventListener('submit', function(e) {
-        e.preventDefault();
-        enviarFormulario(this);
-      });
-      
-      function enviarFormulario(form) {
-        // Prevenir múltiplos envios
-        const submitBtn = form.querySelector('.submit-btn');
-        if (submitBtn.disabled) return;
-        
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
-        
-        mostrarMensagem('Enviando formulário...', 'info');
-        
-        // Validar áreas selecionadas
-        const areasSelecionadas = [];
-        form.querySelectorAll('input[name="areaInteresse"]:checked').forEach(checkbox => {
-          areasSelecionadas.push(checkbox.value);
-        });
-        
-        if (areasSelecionadas.length === 0) {
-          mostrarMensagem('Por favor, selecione pelo menos uma área de interesse.', 'error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Enviar Candidatura';
-          return;
-        }
-        
-        // Validar arquivo
-        const arquivoInput = form.querySelector('input[type="file"]');
-        if (!arquivoInput.files || arquivoInput.files.length === 0) {
-          mostrarMensagem('Por favor, selecione um arquivo de currículo.', 'error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Enviar Candidatura';
-          return;
-        }
-        
-        const arquivo = arquivoInput.files[0];
-        
-        // Validar tamanho do arquivo (10MB)
-        if (arquivo.size > 10 * 1024 * 1024) {
-          mostrarMensagem('O arquivo deve ter no máximo 10MB.', 'error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Enviar Candidatura';
-          return;
-        }
-        
-        // Converter arquivo para base64
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const dados = {
-            tipoVaga: form.querySelector('input[name="tipoVaga"]').value,
-            nome: form.querySelector('input[name="nome"]').value,
-            cpf: form.querySelector('input[name="cpf"]').value,
-            telefone: form.querySelector('input[name="telefone"]').value,
-            email: form.querySelector('input[name="email"]').value,
-            endereco: form.querySelector('input[name="endereco"]').value,
-            areaInteresse: areasSelecionadas.join(', '),
-            arquivo: {
-              name: arquivo.name,
-              data: e.target.result.split(',')[1], // Remove o prefixo data:...;base64,
-              mimeType: arquivo.type
-            }
-          };
-          
-          // Adicionar lattes se for docente
-          const lattesInput = form.querySelector('input[name="lattes"]');
-          if (lattesInput) {
-            dados.lattes = lattesInput.value;
-          }
-          
-          // Determinar qual função chamar
-          const funcaoProcessar = dados.tipoVaga === 'administrativo' ? 
-            'processarVagaAdministrativa' : 'processarVagaDocente';
-          
-          google.script.run
-            .withSuccessHandler(function(result) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Enviar Candidatura';
-              
-              if (result && result.success) {
-                mostrarMensagem(result.message, 'success');
-                form.reset();
-                // Limpar checkboxes
-                form.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-              } else {
-                mostrarMensagem(result?.message || 'Erro ao enviar formulário', 'error');
-              }
-            })
-            .withFailureHandler(function(error) {
-              console.error('Erro:', error);
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Enviar Candidatura';
-              mostrarMensagem('Erro ao enviar formulário. Tente novamente.', 'error');
-            })
-            [funcaoProcessar](dados);
-        };
-        
-        reader.onerror = function() {
-          mostrarMensagem('Erro ao ler o arquivo. Tente novamente.', 'error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Enviar Candidatura';
-        };
-        
-        reader.readAsDataURL(arquivo);
-      }
-      
-      function mostrarMensagem(texto, tipo) {
-        const messageDiv = document.getElementById('message');
-        messageDiv.textContent = texto;
-        
-        // Limpar classes anteriores
-        messageDiv.className = 'message';
-        
-        // Adicionar classe do tipo
-        if (tipo === 'success') {
-          messageDiv.classList.add('success');
-        } else if (tipo === 'error') {
-          messageDiv.classList.add('error');
-        } else {
-          // Para 'info' ou outros tipos
-          messageDiv.style.backgroundColor = '#d1ecf1';
-          messageDiv.style.color = '#0c5460';
-          messageDiv.style.border = '1px solid #bee5eb';
-        }
-        
-        messageDiv.style.display = 'block';
-        
-        // Auto-esconder mensagens de sucesso após 5 segundos
-        if (tipo === 'success') {
-          setTimeout(() => {
-            messageDiv.style.display = 'none';
-          }, 5000);
-        }
-        
-        // Rolar para a mensagem
-        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    </script>
-  </body>
-</html>

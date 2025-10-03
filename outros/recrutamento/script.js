@@ -3,7 +3,7 @@
 
 // --- CONFIGURAÇÃO ---
 // Substitua pela URL real do seu Web App do Google Apps Script
-const SCRIPT_URL_CANDIDATURA = 'https://script.google.com/macros/s/AKfycbweYRuLtrQXx9Y31GZOoqpf5GdLJf8VDwly85D4Ek7-RUhBDQV6PP8CnvJCwRQAZdGXgQ/exec';
+const SCRIPT_URL_CANDIDATURA = 'https://script.google.com/macros/s/AKfycbxk6NUXtEVht1_ZEbGztKPGl0tYRO1-DkXgiEwaUSNn2SDU_ogGPIJ36pXHt3gqE-ASBA/exec';
 
 // --- LÓGICA DE INTERFACE E ENVIO ---
 
@@ -288,11 +288,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const email = document.getElementById('email').value.trim();
         const endereco = document.getElementById('endereco').value.trim();
 
-        const cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
-        const telefoneRegex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!nome || !cpfRegex.test(cpf) || !telefoneRegex.test(telefone) || !emailRegex.test(email) || !endereco) {
+        // Basic presence checks (masks provide format guidance)
+        if (!nome || !cpf || !telefone || !email || !endereco) {
             submitButton.disabled = true;
             return;
         }
@@ -301,15 +298,16 @@ document.addEventListener('DOMContentLoaded', function () {
         let areasSelecionadas = 0;
         if (tipoVaga === 'administrativo') {
             areasSelecionadas = document.querySelectorAll('#camposAdministrativo .area-checkbox:checked').length;
+            // arquivo obrigatório para administrativo
             const fileInput = document.getElementById('arquivoAdmin');
-            if (areasSelecionadas === 0 || !fileInput.files[0]) {
+            if (areasSelecionadas === 0 || !fileInput || !fileInput.files[0]) {
                 submitButton.disabled = true;
                 return;
             }
         } else if (tipoVaga === 'docente') {
             areasSelecionadas = document.querySelectorAll('#camposDocente .area-checkbox:checked').length;
-            const fileInput = document.getElementById('arquivoDocente');
-            if (areasSelecionadas === 0 || !fileInput.files[0]) {
+            // Para docente o arquivo é opcional — apenas precisa ter pelo menos uma área selecionada
+            if (areasSelecionadas === 0) {
                 submitButton.disabled = true;
                 return;
             }
@@ -464,15 +462,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
                 reader.readAsDataURL(file); // Lê como Data URL (Base64)
             } else {
-                // Se não houver arquivo
-                if (tipoVaga === 'docente') {
-                    // O arquivo é obrigatório para docentes
-                    alert('O upload do currículo é obrigatório para vagas docentes.');
+                // Se não houver arquivo: tornamos o arquivo obrigatório apenas para Administrativo
+                if (tipoVaga === 'administrativo') {
+                    alert('O upload do currículo é obrigatório para vagas administrativas.');
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
                     return;
                 }
-                // Para administrativo, envia sem arquivo
+                // Para docente, envio sem arquivo é permitido
                 enviarDados(formObject, submitButton, originalButtonText);
             }
         });
