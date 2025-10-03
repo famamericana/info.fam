@@ -13,7 +13,7 @@ html{
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+  
     font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -55,8 +55,8 @@ main ul {
 
 /* Container Principal */
 .form-section {
-
     margin: 0 auto;
+    scroll-margin-top: 200px; /* Compensa a altura do navbar fixo */
 }
 
 .container {
