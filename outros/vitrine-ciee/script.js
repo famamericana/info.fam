@@ -19,12 +19,35 @@ let paginaAtual = 0;
 let cidadeSelecionada = null;
 let timeoutBusca = null;
 
+const CIDADES_RMC = [
+  { cityName: 'Campinas', cityCode: 3509502, state: { initials: 'SP' } },
+  { cityName: 'Americana', cityCode: 3501608, state: { initials: 'SP' } },
+  { cityName: 'Artur Nogueira', cityCode: 3503604, state: { initials: 'SP' } },
+  { cityName: 'Cosmópolis', cityCode: 3512803, state: { initials: 'SP' } },
+  { cityName: 'Engenheiro Coelho', cityCode: 3515152, state: { initials: 'SP' } },
+  { cityName: 'Holambra', cityCode: 3519055, state: { initials: 'SP' } },
+  { cityName: 'Hortolândia', cityCode: 3519071, state: { initials: 'SP' } },
+  { cityName: 'Indaiatuba', cityCode: 3520509, state: { initials: 'SP' } },
+  { cityName: 'Itatiba', cityCode: 3523404, state: { initials: 'SP' } },
+  { cityName: 'Jaguariúna', cityCode: 3524709, state: { initials: 'SP' } },
+  { cityName: 'Monte Mor', cityCode: 3531802, state: { initials: 'SP' } },
+  { cityName: 'Morungaba', cityCode: 3532008, state: { initials: 'SP' } },
+  { cityName: 'Nova Odessa', cityCode: 3533402, state: { initials: 'SP' } },
+  { cityName: 'Paulínia', cityCode: 3536504, state: { initials: 'SP' } },
+  { cityName: 'Pedreira', cityCode: 3537106, state: { initials: 'SP' } },
+  { cityName: 'Santa Bárbara d\'Oeste', cityCode: 3545803, state: { initials: 'SP' } },
+  { cityName: 'Santo Antônio de Posse', cityCode: 3548005, state: { initials: 'SP' } },
+  { cityName: 'Sumaré', cityCode: 3552403, state: { initials: 'SP' } },
+  { cityName: 'Valinhos', cityCode: 3556206, state: { initials: 'SP' } },
+  { cityName: 'Vinhedo', cityCode: 3556701, state: { initials: 'SP' } },
+  { cityName: 'Elias Fausto', cityCode: 3514809, state: { initials: 'SP' } }
+];
+
 // URLs da API
 const API_BASE = 'https://api.ciee.org.br';
 const ENDPOINTS = {
   vagas: `${API_BASE}/vagas/vitrine-vaga/publicadas`,
-  areas: `${API_BASE}/core/professional-area`,
-  cidades: `${API_BASE}/core/city/search`
+  areas: `${API_BASE}/core/professional-area`
 };
 
 // URL de redirecionamento (produção)
@@ -59,22 +82,21 @@ async function carregarAreasProfissionais() {
 }
 
 // ========== BUSCAR CIDADES ==========
-async function buscarCidades(termo) {
-  if (termo.length < 3) {
-    sugestoesCidade.innerHTML = '';
-    sugestoesCidade.style.display = 'none';
-    return;
-  }
+function normalizarTexto(texto = '') {
+  return texto
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
 
-  try {
-    const response = await fetch(`${ENDPOINTS.cidades}?filter=${encodeURIComponent(termo)}`);
-    if (!response.ok) throw new Error('Erro ao buscar cidades');
-    
-    const data = await response.json();
-    mostrarSugestoesCidades(data.content);
-  } catch (error) {
-    console.error('Erro ao buscar cidades:', error);
-  }
+function buscarCidades(termo = '') {
+  const termoNormalizado = normalizarTexto(termo);
+  const resultado = termoNormalizado
+    ? CIDADES_RMC.filter(cidade => normalizarTexto(cidade.cityName).includes(termoNormalizado))
+    : CIDADES_RMC;
+
+  mostrarSugestoesCidades(resultado);
 }
 
 function mostrarSugestoesCidades(cidades) {
@@ -84,7 +106,7 @@ function mostrarSugestoesCidades(cidades) {
   }
 
   sugestoesCidade.innerHTML = '';
-  cidades.slice(0, 10).forEach(cidade => {
+  cidades.forEach(cidade => {
     const item = document.createElement('div');
     item.className = 'sugestao-item';
     item.textContent = `${cidade.cityName} - ${cidade.state.initials}`;
@@ -102,21 +124,63 @@ function selecionarCidade(cidade) {
   sugestoesCidade.style.display = 'none';
 }
 
+function encontrarCidadePorTexto(texto) {
+  const textoNormalizado = normalizarTexto(texto);
+  
+  // Procurar pelo nome completo "Cidade - UF"
+  const cidadeComUF = CIDADES_RMC.find(cidade => {
+    const nomeCompleto = `${cidade.cityName} - ${cidade.state.initials}`;
+    return normalizarTexto(nomeCompleto) === textoNormalizado;
+  });
+  
+  if (cidadeComUF) return cidadeComUF;
+  
+  // Se não encontrar, procurar só pelo nome da cidade
+  return CIDADES_RMC.find(cidade => normalizarTexto(cidade.cityName) === textoNormalizado);
+}
+
+function garantirCidadeSelecionada() {
+  const textoDigitado = filtroCidade.value.trim();
+  
+  if (textoDigitado) {
+    const cidadeEncontrada = encontrarCidadePorTexto(textoDigitado);
+    if (cidadeEncontrada) {
+      cidadeSelecionada = cidadeEncontrada;
+    } else {
+      // Se digitou algo inválido, limpa
+      cidadeSelecionada = null;
+      filtroCidade.value = '';
+    }
+  } else {
+    // Campo vazio = sem filtro de cidade (todas as cidades da RMC)
+    cidadeSelecionada = null;
+  }
+}
+
 // ========== CARREGAR VAGAS ==========
 async function carregarVagas(pagina = 0) {
   mostrarLoading(true);
+  garantirCidadeSelecionada();
   
   try {
-    const params = construirParametros(pagina);
-    const url = `${ENDPOINTS.vagas}?${params}`;
+    let data;
     
-    const response = await fetch(url, {
-      headers: { 'Accept-Encoding': 'gzip, deflate, br' }
-    });
-    
-    if (!response.ok) throw new Error('Erro ao buscar vagas');
+    if (!cidadeSelecionada) {
+      // Buscar vagas de todas as cidades da RMC
+      data = await buscarVagasTodasCidadesRMC(pagina);
+    } else {
+      // Buscar vagas de uma cidade específica
+      const params = construirParametros(pagina);
+      const url = `${ENDPOINTS.vagas}?${params}`;
+      
+      const response = await fetch(url, {
+        headers: { 'Accept-Encoding': 'gzip, deflate, br' }
+      });
+      
+      if (!response.ok) throw new Error('Erro ao buscar vagas');
+      data = await response.json();
+    }
 
-    const data = await response.json();
     mostrarVagas(data.content);
     mostrarInformacaoResultado(data);
     criarPaginacao(data);
@@ -134,6 +198,71 @@ async function carregarVagas(pagina = 0) {
   } finally {
     mostrarLoading(false);
   }
+}
+
+async function buscarVagasTodasCidadesRMC(pagina) {
+  // Buscar vagas de TODAS as cidades da RMC
+  const codigosCidades = CIDADES_RMC.map(c => c.cityCode);
+  
+  const params = new URLSearchParams({
+    page: 0, // Sempre página 0 para cada cidade
+    size: 100, // Pegar até 100 vagas por cidade
+    sort: 'codigoVaga,desc'
+  });
+  
+  if (filtroTipo.value) params.append('tipoVaga', filtroTipo.value);
+  if (filtroNivel.value) params.append('nivelEnsino', filtroNivel.value);
+  if (filtroArea.value) params.append('idAreaProfissional', filtroArea.value);
+  if (filtroCodigo.value) params.append('codigoVaga', filtroCodigo.value);
+  
+  // Fazer requisições em paralelo para TODAS as cidades da RMC
+  const promises = codigosCidades.map(async (codigoCidade) => {
+    const cidadeParams = new URLSearchParams(params);
+    cidadeParams.set('codigoMunicipio', codigoCidade);
+    
+    try {
+      const response = await fetch(`${ENDPOINTS.vagas}?${cidadeParams}`, {
+        headers: { 'Accept-Encoding': 'gzip, deflate, br' }
+      });
+      
+      if (!response.ok) return { content: [] };
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(`Erro ao buscar vagas da cidade ${codigoCidade}:`, error);
+      return { content: [] };
+    }
+  });
+  
+  const resultados = await Promise.all(promises);
+  
+  // Combinar TODAS as vagas de todas as cidades
+  const todasVagas = resultados.flatMap(r => r.content || []);
+  
+  // Remover duplicatas por código de vaga
+  const vagasUnicas = Array.from(
+    new Map(todasVagas.map(vaga => [vaga.codigoVaga, vaga])).values()
+  );
+  
+  // Ordenar por código decrescente
+  vagasUnicas.sort((a, b) => b.codigoVaga - a.codigoVaga);
+  
+  // Implementar paginação manual
+  const size = 12;
+  const inicio = pagina * size;
+  const fim = inicio + size;
+  const vagasPaginadas = vagasUnicas.slice(inicio, fim);
+  const totalPages = Math.ceil(vagasUnicas.length / size);
+  
+  return {
+    content: vagasPaginadas,
+    totalElements: vagasUnicas.length,
+    totalPages: totalPages,
+    number: pagina,
+    size: size,
+    first: pagina === 0,
+    last: pagina >= totalPages - 1
+  };
 }
 
 function construirParametros(pagina) {
@@ -371,6 +500,10 @@ function configurarEventos() {
     timeoutBusca = setTimeout(() => {
       buscarCidades(e.target.value);
     }, 300);
+  });
+
+  filtroCidade.addEventListener('focus', () => {
+    buscarCidades(filtroCidade.value);
   });
 
   // Fechar sugestões ao clicar fora
