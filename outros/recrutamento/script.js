@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * @param {string} sectionId - ID da seção que contém os checkboxes
      * @param {number} maxSelecoes - Número máximo de seleções permitidas
      */
-    function setupAreaSelection(sectionId, maxSelecoes = 5) {
+    function setupAreaSelection(sectionId) {
         const section = document.getElementById(sectionId);
         if (!section) return;
 
@@ -248,21 +248,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     const checkedBoxes = section.querySelectorAll('.area-checkbox:checked');
                     const checkedCount = checkedBoxes.length;
 
+                    // Mostrar contador atual — sem limite e sem desabilitar checkboxes
                     counterText.textContent = `${checkedCount} área${checkedCount !== 1 ? 's' : ''} selecionada${checkedCount !== 1 ? 's' : ''}`;
-
-                    counterText.classList.toggle('max-reached', checkedCount >= maxSelecoes);
-
-                    checkboxes.forEach(cb => {
-                        if (checkedCount >= maxSelecoes) {
-                            if (!cb.checked) {
-                                cb.disabled = true;
-                                cb.parentElement.classList.add('disabled');
-                            }
-                        } else {
-                            cb.disabled = false;
-                            cb.parentElement.classList.remove('disabled');
-                        }
-                    });
+                    counterText.classList.remove('max-reached');
                 });
             });
         }
@@ -367,9 +355,9 @@ document.addEventListener('DOMContentLoaded', function () {
         tipoVagaSelect.addEventListener('change', atualizarVisibilidadeCampos);
     }
 
-    // Inicializa os limites de seleção para ambas as seções
-    setupAreaSelection('camposAdministrativo', 5); // Limite de 5 áreas para admin
-    setupAreaSelection('camposDocente', 5);       // Limite de 5 áreas para docente
+    // Inicializa seleção de áreas (agora sem limite)
+    setupAreaSelection('camposAdministrativo');
+    setupAreaSelection('camposDocente');
 
     // Validação inicial
     validateForm();
