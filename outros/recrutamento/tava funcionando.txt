@@ -3,8 +3,6 @@ const CONFIG = {
   pastaPrincipal: 'Quero Trabalhar na FAM',
   pastaDriveAdmin: 'Currículos Administrativos',
   pastaDriveDocentes: 'Currículos Docentes',
-  emailNotificacaoAdmin: 'recrutamento@fam.br',
-  emailNotificacaoDocentes: 'recrutamento@fam.br',
   planilhaAdmin: 'Candidatos_Administrativos',
   planilhaDocentes: 'Candidatos_Docentes'
 };
@@ -202,13 +200,12 @@ function doPost(e) {
     const tipoVaga = formData.tipoVaga;
     console.log(`[doPost] Tipo de vaga determinado: ${tipoVaga}`);
 
-    let folderId, spreadsheetId, sheetBaseName, emailNotificacao, headers, fileNamePrefix;
+    let folderId, spreadsheetId, sheetBaseName, headers, fileNamePrefix;
 
     if (tipoVaga === 'administrativo') {
       folderId = getFolderIdByName(CONFIG.pastaDriveAdmin);
       spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaAdmin);
       sheetBaseName = CONFIG.planilhaAdmin;
-      emailNotificacao = CONFIG.emailNotificacaoAdmin;
       headers = [
         'Data/Hora Envio', 
         'Nome Completo', 
@@ -225,7 +222,6 @@ function doPost(e) {
       folderId = getFolderIdByName(CONFIG.pastaDriveDocentes);
       spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaDocentes);
       sheetBaseName = CONFIG.planilhaDocentes;
-      emailNotificacao = CONFIG.emailNotificacaoDocentes;
       headers = [
         'Data/Hora Envio', 
         'Nome Completo', 
@@ -349,42 +345,6 @@ function doPost(e) {
     
     SpreadsheetApp.flush();
     console.log('[doPost] Dados adicionados à planilha com sucesso.');
-
-    // Envia email de notificação
-    if (emailNotificacao) {
-      const subject = `Nova Candidatura Recebida - ${tipoVaga.charAt(0).toUpperCase() + tipoVaga.slice(1)}`;
-      let body = `Uma nova candidatura foi recebida para a vaga de ${tipoVaga}.\n\n`;
-      body += `Nome: ${formData.nomeCompleto}\n`;
-      body += `Email: ${formData.email}\n`;
-      body += `CPF: ${formData.cpf}\n`;
-      body += `Telefone: ${formData.telefone}\n`;
-      body += `Endereço: ${formData.endereco}\n`;
-      
-      if (tipoVaga === 'administrativo') {
-        body += `Áreas de Interesse: ${(formData.areaInteresseAdmin || []).join(', ')}\n`;
-        if (formData.observacoesAdmin) {
-          body += `Observações: ${formData.observacoesAdmin}\n`;
-        }
-      } else if (tipoVaga === 'docente') {
-        body += `Áreas de Interesse: ${(formData.areaInteresseDocente || []).join(', ')}\n`;
-        if (formData.linkLattes) {
-          body += `Link Lattes: ${formData.linkLattes}\n`;
-        }
-        if (formData.observacoesDocente) {
-          body += `Observações: ${formData.observacoesDocente}\n`;
-        }
-      }
-      
-      if (fileUrl) {
-        body += `Currículo: ${fileUrl}\n`;
-      }
-      
-      body += `\nVerifique a aba "${sheetName}" da planilha "${ss.getName()}" para mais detalhes.`;
-
-      console.log(`[doPost] Enviando email de notificação para ${emailNotificacao}`);
-      MailApp.sendEmail(emailNotificacao, subject, body);
-      console.log('[doPost] Email de notificação enviado com sucesso.');
-    }
 
     lock.releaseLock();
     console.log('[doPost] Lock liberado.');
