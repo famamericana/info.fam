@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitrine de Vagas CIEE - FAM</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-briefcase"></i> Vitrine de Vagas CIEE</h1>
+      <p class="subtitle">Encontre oportunidades de estágio e aprendizagem</p>
+    </header>
+
+    <!-- Filtros -->
+    <div class="filtros-container">
+      <h2><i class="fas fa-filter"></i> Filtrar Vagas</h2>
+      
+      <div class="filtros-grid">
+        <div class="filtro-grupo">
+          <label for="filtro-tipo">
+            <i class="fas fa-tag"></i> Tipo de Vaga
+          </label>
+          <select id="filtro-tipo">
+            <option value="">Todas</option>
+            <option value="ESTAGIO">Estágio</option>
+            <option value="APRENDIZ">Aprendiz</option>
+          </select>
+        </div>
+
+        <div class="filtro-grupo">
+          <label for="filtro-nivel">
+            <i class="fas fa-graduation-cap"></i> Nível de Ensino
+          </label>
+          <select id="filtro-nivel">
+            <option value="">Todos</option>
+            <option value="SU">Superior</option>
+            <option value="TE">Técnico</option>
+            <option value="EM">Ensino Médio</option>
+            <option value="EF">Ensino Fundamental</option>
+          </select>
+        </div>
+
+        <div class="filtro-grupo">
+          <label for="filtro-area">
+            <i class="fas fa-industry"></i> Área Profissional
+          </label>
+          <select id="filtro-area">
+            <option value="">Todas as áreas</option>
+          </select>
+        </div>
+
+        <div class="filtro-grupo">
+          <label for="filtro-cidade">
+            <i class="fas fa-map-marker-alt"></i> Cidade
+          </label>
+          <input 
+            type="text" 
+            id="filtro-cidade" 
+            placeholder="Digite o nome da cidade"
+            autocomplete="off"
+          />
+          <div id="sugestoes-cidade" class="sugestoes-lista"></div>
+        </div>
+
+        <div class="filtro-grupo">
+          <label for="filtro-codigo">
+            <i class="fas fa-hashtag"></i> Código da Vaga
+          </label>
+          <input 
+            type="number" 
+            id="filtro-codigo" 
+            placeholder="Ex: 5047123"
+          />
+        </div>
+
+        <div class="filtro-acoes">
+          <button id="btn-buscar" class="btn btn-primary">
+            <i class="fas fa-search"></i> Buscar Vagas
+          </button>
+          <button id="btn-limpar" class="btn btn-secondary">
+            <i class="fas fa-eraser"></i> Limpar Filtros
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações de resultado -->
+    <div id="info-resultado" class="info-resultado"></div>
+
+    <!-- Loading -->
+    <div id="loading" class="loading" style="display: none;">
+      <i class="fas fa-spinner fa-spin"></i> Carregando vagas...
+    </div>
+
+    <!-- Container de vagas -->
+    <div id="vagas-container" class="vagas"></div>
+
+    <!-- Paginação -->
+    <div id="paginacao" class="paginacao"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
