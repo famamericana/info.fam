@@ -9,32 +9,6 @@ const CONFIG = {
   planilhaDocentes: 'Candidatos_Docentes'
 };
 
-const HEADERS = {
-  administrativo: [
-    'Data/Hora Envio',
-    'Nome Completo',
-    'CPF',
-    'Telefone',
-    'Email',
-    'Endereço',
-    'Área de Interesse',
-    'Link do Currículo',
-    'Observações'
-  ],
-  docente: [
-    'Data/Hora Envio',
-    'Nome Completo',
-    'CPF',
-    'Telefone',
-    'Email',
-    'Endereço',
-    'Área de Interesse',
-    'Link do Lattes',
-    'Link do Currículo',
-    'Observações'
-  ]
-};
-
 // Variáveis globais para armazenar IDs e objetos (cache)
 let cache = {
   folderIds: {},
@@ -167,40 +141,6 @@ function getSpreadsheetIdByName(sheetName) {
 }
 
 /**
- * Função para obter o ID de uma planilha, sem criar caso não exista.
- * @param {string} sheetName - Nome da planilha.
- * @return {string|null} ID da planilha ou null se não encontrada.
- */
-function getSpreadsheetIdIfExists(sheetName) {
-  if (cache.spreadsheetIds[sheetName]) {
-    return cache.spreadsheetIds[sheetName];
-  }
-
-  try {
-    const mainFolderId = getMainFolderId();
-    if (!mainFolderId) {
-      return null;
-    }
-
-    const mainFolder = DriveApp.getFolderById(mainFolderId);
-    const files = mainFolder.getFilesByName(sheetName);
-
-    while (files.hasNext()) {
-      const file = files.next();
-      if (file.getMimeType() === 'application/vnd.google-apps.spreadsheet') {
-        const fileId = file.getId();
-        cache.spreadsheetIds[sheetName] = fileId;
-        return fileId;
-      }
-    }
-  } catch (error) {
-    console.error('[ERRO] Exceção ao buscar planilha existente:', error.toString());
-  }
-
-  return null;
-}
-
-/**
  * Função para garantir que a planilha tenha os cabeçalhos corretos e formatados.
  * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - Objeto da aba da planilha.
  * @param {Array<string>} headers - Array com os cabeçalhos esperados.
@@ -262,17 +202,42 @@ function doPost(e) {
     const tipoVaga = formData.tipoVaga;
     console.log(`[doPost] Tipo de vaga determinado: ${tipoVaga}`);
 
-    let folderId, spreadsheetId, headers, fileNamePrefix;
+    let folderId, spreadsheetId, sheetBaseName, emailNotificacao, headers, fileNamePrefix;
 
     if (tipoVaga === 'administrativo') {
       folderId = getFolderIdByName(CONFIG.pastaDriveAdmin);
       spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaAdmin);
-      headers = HEADERS.administrativo;
+      sheetBaseName = CONFIG.planilhaAdmin;
+      emailNotificacao = CONFIG.emailNotificacaoAdmin;
+      headers = [
+        'Data/Hora Envio', 
+        'Nome Completo', 
+        'CPF', 
+        'Telefone', 
+        'Email', 
+        'Endereço', 
+        'Área de Interesse', 
+        'Link do Currículo', 
+        'Observações'
+      ];
       fileNamePrefix = 'Curriculo_Admin_';
     } else if (tipoVaga === 'docente') {
       folderId = getFolderIdByName(CONFIG.pastaDriveDocentes);
       spreadsheetId = getSpreadsheetIdByName(CONFIG.planilhaDocentes);
-      headers = HEADERS.docente;
+      sheetBaseName = CONFIG.planilhaDocentes;
+      emailNotificacao = CONFIG.emailNotificacaoDocentes;
+      headers = [
+        'Data/Hora Envio', 
+        'Nome Completo', 
+        'CPF', 
+        'Telefone', 
+        'Email', 
+        'Endereço', 
+        'Área de Interesse', 
+        'Link do Lattes', 
+        'Link do Currículo', 
+        'Observações'
+      ];
       fileNamePrefix = 'Curriculo_Docente_';
     } else {
       throw new Error(`Tipo de vaga inválido recebido: '${tipoVaga}'`);
@@ -385,6 +350,42 @@ function doPost(e) {
     SpreadsheetApp.flush();
     console.log('[doPost] Dados adicionados à planilha com sucesso.');
 
+    // Envia email de notificação
+    if (emailNotificacao) {
+      const subject = `Nova Candidatura Recebida - ${tipoVaga.charAt(0).toUpperCase() + tipoVaga.slice(1)}`;
+      let body = `Uma nova candidatura foi recebida para a vaga de ${tipoVaga}.\n\n`;
+      body += `Nome: ${formData.nomeCompleto}\n`;
+      body += `Email: ${formData.email}\n`;
+      body += `CPF: ${formData.cpf}\n`;
+      body += `Telefone: ${formData.telefone}\n`;
+      body += `Endereço: ${formData.endereco}\n`;
+      
+      if (tipoVaga === 'administrativo') {
+        body += `Áreas de Interesse: ${(formData.areaInteresseAdmin || []).join(', ')}\n`;
+        if (formData.observacoesAdmin) {
+          body += `Observações: ${formData.observacoesAdmin}\n`;
+        }
+      } else if (tipoVaga === 'docente') {
+        body += `Áreas de Interesse: ${(formData.areaInteresseDocente || []).join(', ')}\n`;
+        if (formData.linkLattes) {
+          body += `Link Lattes: ${formData.linkLattes}\n`;
+        }
+        if (formData.observacoesDocente) {
+          body += `Observações: ${formData.observacoesDocente}\n`;
+        }
+      }
+      
+      if (fileUrl) {
+        body += `Currículo: ${fileUrl}\n`;
+      }
+      
+      body += `\nVerifique a aba "${sheetName}" da planilha "${ss.getName()}" para mais detalhes.`;
+
+      console.log(`[doPost] Enviando email de notificação para ${emailNotificacao}`);
+      MailApp.sendEmail(emailNotificacao, subject, body);
+      console.log('[doPost] Email de notificação enviado com sucesso.');
+    }
+
     lock.releaseLock();
     console.log('[doPost] Lock liberado.');
 
@@ -474,111 +475,6 @@ function testFunction() {
   } catch (e) {
     console.error("--- ERRO NO TESTE MANUAL ---", e.toString(), e.stack);
   }
-}
-
-/**
- * Função diária para enviar um resumo das candidaturas recebidas no dia.
- */
-function enviarResumoDiario() {
-  const timezone = Session.getScriptTimeZone() || 'America/Sao_Paulo';
-  const hoje = new Date();
-  const inicioDoDia = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
-  const fimDoDia = new Date(inicioDoDia);
-  fimDoDia.setDate(fimDoDia.getDate() + 1);
-
-  const tipos = [
-    {
-      nome: 'administrativo',
-      sheetName: CONFIG.planilhaAdmin,
-      email: CONFIG.emailNotificacaoAdmin,
-      headers: HEADERS.administrativo
-    },
-    {
-      nome: 'docente',
-      sheetName: CONFIG.planilhaDocentes,
-      email: CONFIG.emailNotificacaoDocentes,
-      headers: HEADERS.docente
-    }
-  ];
-
-  tipos.forEach(tipo => {
-    try {
-      if (!tipo.email) {
-        console.log(`[enviarResumoDiario] Pulando tipo '${tipo.nome}' por falta de e-mail configurado.`);
-        return;
-      }
-
-      const planilhaId = getSpreadsheetIdIfExists(tipo.sheetName);
-      if (!planilhaId) {
-        console.log(`[enviarResumoDiario] Nenhuma planilha encontrada para '${tipo.nome}'.`);
-        return;
-      }
-
-      const ss = SpreadsheetApp.openById(planilhaId);
-      const sheet = ss.getSheetByName(hoje.getFullYear().toString());
-
-      if (!sheet) {
-        console.log(`[enviarResumoDiario] Nenhuma aba para o ano atual em '${tipo.nome}'.`);
-        return;
-      }
-
-      const data = sheet.getDataRange().getValues();
-      if (!data || data.length <= 1) {
-        console.log(`[enviarResumoDiario] Nenhum dado registrado em '${tipo.nome}'.`);
-        return;
-      }
-
-      const linhasDoDia = data.slice(1).filter(linha => {
-        const timestamp = linha[0] instanceof Date ? linha[0] : new Date(linha[0]);
-        if (!(timestamp instanceof Date) || isNaN(timestamp.getTime())) {
-          return false;
-        }
-        return timestamp >= inicioDoDia && timestamp < fimDoDia;
-      });
-
-      if (linhasDoDia.length === 0) {
-        console.log(`[enviarResumoDiario] Nenhuma candidatura hoje para '${tipo.nome}'.`);
-        return;
-      }
-
-      const linhasFormatadas = linhasDoDia.map(linha => {
-        const campos = linha.map((valor, idx) => {
-          if (idx === 0 && valor) {
-            const dataValor = valor instanceof Date ? valor : new Date(valor);
-            if (dataValor instanceof Date && !isNaN(dataValor.getTime())) {
-              return `${tipo.headers[idx]}: ${Utilities.formatDate(dataValor, timezone, 'dd/MM/yyyy HH:mm')}`;
-            }
-            return `${tipo.headers[idx]}: ${valor}`;
-          }
-          return `${tipo.headers[idx]}: ${valor || ''}`;
-        });
-        return campos.join('\n');
-      }).join('\n\n');
-
-      const subject = `Resumo diário de candidaturas (${Utilities.formatDate(inicioDoDia, timezone, 'dd/MM/yyyy')}) - ${tipo.nome}`;
-      const body = `Foram recebidas ${linhasDoDia.length} candidatura(s) para vagas ${tipo.nome} hoje.\n\n${linhasFormatadas}\n\nConsulte a planilha "${ss.getName()}" (aba ${sheet.getName()}) para mais detalhes.`;
-
-      MailApp.sendEmail(tipo.email, subject, body);
-      console.log(`[enviarResumoDiario] Resumo enviado para ${tipo.email} com ${linhasDoDia.length} registro(s).`);
-    } catch (error) {
-      console.error(`[enviarResumoDiario] Erro ao processar '${tipo.nome}':`, error.toString());
-    }
-  });
-}
-
-/**
- * Função utilitária para criar um gatilho diário automático.
- * Ajuste o horário conforme necessário antes de executar.
- */
-function criarGatilhoResumoDiario() {
-  const horaEnvio = 18; // Define a hora (0-23) em que o resumo será enviado diariamente
-  ScriptApp.newTrigger('enviarResumoDiario')
-    .timeBased()
-    .atHour(horaEnvio)
-    .everyDays(1)
-    .inTimezone(Session.getScriptTimeZone())
-    .create();
-  console.log(`[criarGatilhoResumoDiario] Gatilho criado para envio diário às ${horaEnvio}h.`);
 }
 
 /**
