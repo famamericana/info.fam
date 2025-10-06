@@ -166,12 +166,16 @@ async function carregarVagas(pagina = 0) {
     let data;
     
     if (!cidadeSelecionada) {
+      console.log('🌍 Modo: TODAS AS CIDADES DA RMC');
       // Buscar vagas de todas as cidades da RMC
       data = await buscarVagasTodasCidadesRMC(pagina);
     } else {
+      console.log(`📍 Modo: Cidade específica - ${cidadeSelecionada.cityName}`);
       // Buscar vagas de uma cidade específica
       const params = construirParametros(pagina);
       const url = `${ENDPOINTS.vagas}?${params}`;
+      
+      console.log(`🔗 URL: ${url}`);
       
       const response = await fetch(url, {
         headers: { 'Accept-Encoding': 'gzip, deflate, br' }
@@ -179,6 +183,8 @@ async function carregarVagas(pagina = 0) {
       
       if (!response.ok) throw new Error('Erro ao buscar vagas');
       data = await response.json();
+      
+      console.log(`✅ Vagas encontradas em ${cidadeSelecionada.cityName}: ${data.totalElements || data.content?.length || 0}`);
     }
 
     mostrarVagas(data.content);
@@ -186,6 +192,7 @@ async function carregarVagas(pagina = 0) {
     criarPaginacao(data);
     paginaAtual = pagina;
   } catch (error) {
+    console.error('❌ Erro ao carregar vagas:', error);
     container.innerHTML = `
       <div class="erro">
         <i class="fas fa-exclamation-triangle"></i>
@@ -201,12 +208,15 @@ async function carregarVagas(pagina = 0) {
 }
 
 async function buscarVagasTodasCidadesRMC(pagina) {
+  console.log('🔍 Buscando vagas em TODAS as cidades da RMC...');
+  console.log('═══════════════════════════════════════════════════');
+  
   // Buscar vagas de TODAS as cidades da RMC
   const codigosCidades = CIDADES_RMC.map(c => c.cityCode);
   
   const params = new URLSearchParams({
     page: 0, // Sempre página 0 para cada cidade
-    size: 100, // Pegar até 100 vagas por cidade
+    size: 600, // Aumentar para pegar TODAS as vagas (limite máximo razoável)
     sort: 'codigoVaga,desc'
   });
   
@@ -216,21 +226,39 @@ async function buscarVagasTodasCidadesRMC(pagina) {
   if (filtroCodigo.value) params.append('codigoVaga', filtroCodigo.value);
   
   // Fazer requisições em paralelo para TODAS as cidades da RMC
-  const promises = codigosCidades.map(async (codigoCidade) => {
+  const promises = CIDADES_RMC.map(async (cidade) => {
     const cidadeParams = new URLSearchParams(params);
-    cidadeParams.set('codigoMunicipio', codigoCidade);
+    cidadeParams.set('codigoMunicipio', cidade.cityCode);
     
     try {
       const response = await fetch(`${ENDPOINTS.vagas}?${cidadeParams}`, {
         headers: { 'Accept-Encoding': 'gzip, deflate, br' }
       });
       
-      if (!response.ok) return { content: [] };
+      if (!response.ok) {
+        console.log(`❌ ${cidade.cityName}: Erro na requisição`);
+        return { cidade: cidade.cityName, content: [], total: 0 };
+      }
+      
       const data = await response.json();
-      return data;
+      const totalVagas = data.content?.length || 0;
+      const totalReal = data.totalElements || totalVagas;
+      
+      if (totalVagas > 0) {
+        // Alertar se houver mais vagas do que conseguimos pegar
+        if (totalReal > totalVagas) {
+          console.log(`⚠️  ${cidade.cityName}: ${totalVagas} vaga(s) encontrada(s) (ATENÇÃO: total real é ${totalReal}, aumentar limit!)`);
+        } else {
+          console.log(`✅ ${cidade.cityName}: ${totalVagas} vaga(s) encontrada(s)`);
+        }
+      } else {
+        console.log(`⚪ ${cidade.cityName}: Nenhuma vaga encontrada`);
+      }
+      
+      return { cidade: cidade.cityName, content: data.content || [], total: totalVagas, totalReal: totalReal };
     } catch (error) {
-      console.error(`Erro ao buscar vagas da cidade ${codigoCidade}:`, error);
-      return { content: [] };
+      console.error(`❌ ${cidade.cityName}: Erro -`, error.message);
+      return { cidade: cidade.cityName, content: [], total: 0, totalReal: 0 };
     }
   });
   
@@ -239,10 +267,17 @@ async function buscarVagasTodasCidadesRMC(pagina) {
   // Combinar TODAS as vagas de todas as cidades
   const todasVagas = resultados.flatMap(r => r.content || []);
   
+  console.log('═══════════════════════════════════════════════════');
+  console.log(`📊 RESUMO:`);
+  console.log(`   Total de cidades consultadas: ${CIDADES_RMC.length}`);
+  console.log(`   Total de vagas encontradas (com duplicatas): ${todasVagas.length}`);
+  
   // Remover duplicatas por código de vaga
   const vagasUnicas = Array.from(
     new Map(todasVagas.map(vaga => [vaga.codigoVaga, vaga])).values()
   );
+  
+  console.log(`   Total de vagas únicas: ${vagasUnicas.length}`);
   
   // Ordenar por código decrescente
   vagasUnicas.sort((a, b) => b.codigoVaga - a.codigoVaga);
@@ -253,6 +288,10 @@ async function buscarVagasTodasCidadesRMC(pagina) {
   const fim = inicio + size;
   const vagasPaginadas = vagasUnicas.slice(inicio, fim);
   const totalPages = Math.ceil(vagasUnicas.length / size);
+  
+  console.log(`   Página atual: ${pagina + 1} de ${totalPages}`);
+  console.log(`   Mostrando vagas: ${inicio + 1} a ${Math.min(fim, vagasUnicas.length)}`);
+  console.log('═══════════════════════════════════════════════════');
   
   return {
     content: vagasPaginadas,
