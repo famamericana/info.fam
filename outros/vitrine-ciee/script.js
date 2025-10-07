@@ -5,11 +5,10 @@ const infoResultado = document.getElementById('info-resultado');
 const paginacaoDiv = document.getElementById('paginacao');
 
 // Filtros
-const filtroTipo = document.getElementById('filtro-tipo');
 const filtroNivel = document.getElementById('filtro-nivel');
 const filtroArea = document.getElementById('filtro-area');
 const filtroCidade = document.getElementById('filtro-cidade');
-const filtroCodigo = document.getElementById('filtro-codigo');
+// filtroCodigo removed - not used anymore
 const btnBuscar = document.getElementById('btn-buscar');
 const btnLimpar = document.getElementById('btn-limpar');
 const sugestoesCidade = document.getElementById('sugestoes-cidade');
@@ -226,10 +225,11 @@ async function buscarVagasTodasCidadesRMC(pagina) {
     sort: 'codigoVaga,desc'
   });
   
-  if (filtroTipo.value) params.append('tipoVaga', filtroTipo.value);
+  // Forçar apenas ESTÁGIO
+  params.append('tipoVaga', 'ESTAGIO');
   if (filtroNivel.value) params.append('nivelEnsino', filtroNivel.value);
   if (filtroArea.value) params.append('idAreaProfissional', filtroArea.value);
-  if (filtroCodigo.value) params.append('codigoVaga', filtroCodigo.value);
+  // codigoVaga filter removed
   
   // Fazer requisições em paralelo para TODAS as cidades da RMC
   const promises = CIDADES_RMC.map(async (cidade) => {
@@ -317,11 +317,12 @@ function construirParametros(pagina) {
     sort: 'codigoVaga,desc'
   });
 
-  if (filtroTipo.value) params.append('tipoVaga', filtroTipo.value);
+  // Forçar apenas ESTÁGIO
+  params.append('tipoVaga', 'ESTAGIO');
   if (filtroNivel.value) params.append('nivelEnsino', filtroNivel.value);
   if (filtroArea.value) params.append('idAreaProfissional', filtroArea.value);
   if (cidadeSelecionada) params.append('codigoMunicipio', cidadeSelecionada.cityCode);
-  if (filtroCodigo.value) params.append('codigoVaga', filtroCodigo.value);
+  // codigoVaga filter removed
 
   return params.toString();
 }
@@ -530,10 +531,9 @@ function configurarEventos() {
 
   // Limpar filtros
   btnLimpar.addEventListener('click', () => {
-    filtroTipo.value = '';
     filtroNivel.value = '';
     filtroArea.value = '';
-    filtroCodigo.value = '';
+  // filtroCodigo removed
     filtroCidade.value = '';
     cidadeSelecionada = null;
     sugestoesCidade.innerHTML = '';
@@ -561,7 +561,7 @@ function configurarEventos() {
   });
 
   // Enter nos campos de filtro
-  [filtroTipo, filtroNivel, filtroArea, filtroCidade, filtroCodigo].forEach(input => {
+  [filtroNivel, filtroArea, filtroCidade].forEach(input => {
     input.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         carregarVagas(0);

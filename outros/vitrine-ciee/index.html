@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vitrine de Vagas CIEE - FAM</title>
   <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-   <div id="Navbar"></div>
+  <div id="Navbar"></div>
   <div class="container">
     <header>
       <h1><i class="fas fa-briefcase"></i> Vitrine de Vagas CIEE</h1>
@@ -18,18 +20,9 @@
     <!-- Filtros -->
     <div class="filtros-container">
       <h2><i class="fas fa-filter"></i> Filtrar Vagas</h2>
-      
+
       <div class="filtros-grid">
-        <div class="filtro-grupo">
-          <label for="filtro-tipo">
-            <i class="fas fa-tag"></i> Tipo de Vaga
-          </label>
-          <select id="filtro-tipo">
-            <option value="">Todas</option>
-            <option value="ESTAGIO">Estágio</option>
-            <option value="APRENDIZ">Aprendiz</option>
-          </select>
-        </div>
+        <!-- Tipo de vaga removido: apenas ESTÁGIO será consultado -->
 
         <div class="filtro-grupo">
           <label for="filtro-nivel">
@@ -57,25 +50,11 @@
           <label for="filtro-cidade">
             <i class="fas fa-map-marker-alt"></i> Cidade (RMC)
           </label>
-          <input 
-            type="text" 
-            id="filtro-cidade" 
-            placeholder="Digite o nome da cidade"
-            autocomplete="off"
-          />
+          <input type="text" id="filtro-cidade" placeholder="Digite o nome da cidade" autocomplete="off" />
           <div id="sugestoes-cidade" class="sugestoes-lista"></div>
         </div>
 
-        <div class="filtro-grupo">
-          <label for="filtro-codigo">
-            <i class="fas fa-hashtag"></i> Código da Vaga
-          </label>
-          <input 
-            type="number" 
-            id="filtro-codigo" 
-            placeholder="Ex: 5047123"
-          />
-        </div>
+        <!-- Código da Vaga removido (não será usado) -->
 
         <div class="filtro-acoes">
           <button id="btn-buscar" class="btn btn-primary">
@@ -103,10 +82,12 @@
     <div id="paginacao" class="paginacao"></div>
   </div>
 
-    <div id="meuFooter"></div>
-        <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-    <script src="/codigos-gerais/likesbotão/likes.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <div id="meuFooter"></div>
+  
+  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+  <script src="/codigos-gerais/likesbotão/likes.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
