@@ -50,6 +50,11 @@ const ENDPOINTS = {
   areas: `${API_BASE}/core/professional-area`
 };
 
+// Evita que o navegador restaure automaticamente a posição de scroll ao recarregar (F5)
+if ('scrollRestoration' in history) {
+  try { history.scrollRestoration = 'manual'; } catch (e) { /* ignorar se não suportado */ }
+}
+
 // URL de redirecionamento (produção)
 const URL_INSCRICAO = 'https://ciee.app/login';
 const CODIGO_ACESSO = 'FAM_13732';
@@ -57,7 +62,8 @@ const CODIGO_ACESSO = 'FAM_13732';
 // ========== INICIALIZAÇÃO ==========
 async function inicializar() {
   await carregarAreasProfissionais();
-  await carregarVagas();
+  // Ao carregar a página (F5), não forçar scroll para o container
+  await carregarVagas(0, false);
   configurarEventos();
 }
 
@@ -158,7 +164,7 @@ function garantirCidadeSelecionada() {
 }
 
 // ========== CARREGAR VAGAS ==========
-async function carregarVagas(pagina = 0) {
+async function carregarVagas(pagina = 0, shouldScroll = true) {
   mostrarLoading(true);
   garantirCidadeSelecionada();
   
@@ -187,7 +193,7 @@ async function carregarVagas(pagina = 0) {
       console.log(`✅ Vagas encontradas em ${cidadeSelecionada.cityName}: ${data.totalElements || data.content?.length || 0}`);
     }
 
-    mostrarVagas(data.content);
+  mostrarVagas(data.content, shouldScroll);
     mostrarInformacaoResultado(data);
     criarPaginacao(data);
     paginaAtual = pagina;
@@ -197,7 +203,7 @@ async function carregarVagas(pagina = 0) {
       <div class="erro">
         <i class="fas fa-exclamation-triangle"></i>
         <p>Erro ao carregar vagas: ${error.message}</p>
-        <button onclick="carregarVagas()" class="btn btn-primary">
+        <button onclick="carregarVagas(0, true)" class="btn btn-primary">
           Tentar novamente
         </button>
       </div>
@@ -321,7 +327,7 @@ function construirParametros(pagina) {
 }
 
 // ========== MOSTRAR VAGAS ==========
-function mostrarVagas(vagas) {
+function mostrarVagas(vagas, shouldScroll = true) {
   if (!vagas || vagas.length === 0) {
     container.innerHTML = `
       <div class="sem-resultados">
@@ -339,8 +345,10 @@ function mostrarVagas(vagas) {
     container.appendChild(card);
   });
 
-  // Scroll suave para o topo dos resultados
-  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Scroll suave para o topo dos resultados, quando permitido
+  if (shouldScroll) {
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function criarCardVaga(vaga) {
@@ -457,7 +465,7 @@ function criarPaginacao(data) {
   
   // Botão anterior
   if (!data.first) {
-    html += `<button onclick="carregarVagas(${data.number - 1})" class="btn-pagina">
+    html += `<button onclick="carregarVagas(${data.number - 1}, true)" class="btn-pagina">
       <i class="fas fa-chevron-left"></i>
     </button>`;
   }
@@ -467,27 +475,27 @@ function criarPaginacao(data) {
   const fim = Math.min(data.totalPages, data.number + 3);
 
   if (inicio > 0) {
-    html += `<button onclick="carregarVagas(0)" class="btn-pagina">1</button>`;
+    html += `<button onclick="carregarVagas(0, true)" class="btn-pagina">1</button>`;
     if (inicio > 1) html += '<span class="pagina-ellipsis">...</span>';
   }
 
   for (let i = inicio; i < fim; i++) {
     const ativo = i === data.number ? 'ativo' : '';
-    html += `<button onclick="carregarVagas(${i})" class="btn-pagina ${ativo}">
+    html += `<button onclick="carregarVagas(${i}, true)" class="btn-pagina ${ativo}">
       ${i + 1}
     </button>`;
   }
 
   if (fim < data.totalPages) {
     if (fim < data.totalPages - 1) html += '<span class="pagina-ellipsis">...</span>';
-    html += `<button onclick="carregarVagas(${data.totalPages - 1})" class="btn-pagina">
+    html += `<button onclick="carregarVagas(${data.totalPages - 1}, true)" class="btn-pagina">
       ${data.totalPages}
     </button>`;
   }
 
   // Botão próximo
   if (!data.last) {
-    html += `<button onclick="carregarVagas(${data.number + 1})" class="btn-pagina">
+    html += `<button onclick="carregarVagas(${data.number + 1}, true)" class="btn-pagina">
       <i class="fas fa-chevron-right"></i>
     </button>`;
   }
@@ -518,7 +526,7 @@ function mostrarLoading(mostrar) {
 // ========== EVENTOS ==========
 function configurarEventos() {
   // Buscar vagas
-  btnBuscar.addEventListener('click', () => carregarVagas(0));
+  btnBuscar.addEventListener('click', () => carregarVagas(0, true));
 
   // Limpar filtros
   btnLimpar.addEventListener('click', () => {
@@ -530,7 +538,7 @@ function configurarEventos() {
     cidadeSelecionada = null;
     sugestoesCidade.innerHTML = '';
     sugestoesCidade.style.display = 'none';
-    carregarVagas(0);
+    carregarVagas(0, true);
   });
 
   // Busca de cidades com debounce
@@ -564,3 +572,26 @@ function configurarEventos() {
 
 // Inicializar aplicação
 inicializar();
+
+
+
+
+
+//https forçar -------------------------------------------------------------------------------------------------------------------------------
+if (!location.href.startsWith("http://127.0") && location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+$(document).ready(function () {
+    $("#meuFooter").load("/codigos-gerais/footer/footer.html");
+});
+
+// Carregando o navbar e configurando o dropdown
+$(document).ready(function () {
+    $("#Navbar").load("/codigos-gerais/navbar-fam/navbar.html", function () {
+        // Chama a função setupDropdown após o conteúdo ser carregado
+        setupDropdown();
+    });
+});
