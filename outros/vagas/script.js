@@ -367,16 +367,18 @@ function criarCardVaga(vaga) {
   const imagemVaga = obterImagemVaga(vaga);
 
   div.innerHTML = `
-    ${imagemVaga ? `
-      <div class="vaga-banner">
-        <img src="${imagemVaga}" alt="Logo da empresa ${vaga.nomeEmpresa || ''}" loading="lazy" />
-      </div>
-    ` : ''}
+   
 
     <div class="vaga-header">
       <span class="vaga-codigo">#${vaga.codigoVaga}</span>
       <span class="vaga-tipo ${vaga.tipoVaga.toLowerCase()}">${tipoVaga}</span>
     </div>
+
+     ${imagemVaga ? `
+      <div class="vaga-banner">
+        <img src="${imagemVaga}" alt="Logo da empresa ${vaga.nomeEmpresa || ''}" loading="lazy" />
+      </div>
+    ` : ''}
     
     <h3>${vaga.areaProfissional || 'Área não informada'}</h3>
     
@@ -420,7 +422,7 @@ function criarCardVaga(vaga) {
     
     ${vaga.quantidadeBeneficios > 0 ? `
       <p class="beneficios">
-        <i class="fas fa-gift"></i>
+       
         ${vaga.quantidadeBeneficios} benefício(s) disponível(is)
       </p>
     ` : ''}
