@@ -386,9 +386,9 @@ function criarCardVaga(vaga) {
         <img src="${imagemVaga}" alt="Logo da empresa ${vaga.nomeEmpresa || ''}" loading="lazy" />
       </div>
     ` : ''}
-    
-    <h3>${vaga.areaProfissional || 'Área não informada'}</h3>
-    
+
+    <h2>${vaga.areaProfissional || 'Área não informada'}</h2>
+
     <div class="vaga-info">
       <p class="empresa">
         <i class="fas fa-building"></i>
