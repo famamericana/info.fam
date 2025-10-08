@@ -363,8 +363,16 @@ function criarCardVaga(vaga) {
   const atividades = vaga.atividades && vaga.atividades.length > 0 
     ? vaga.atividades.slice(0, 3).map(a => `<li>${a}</li>`).join('')
     : '<li>Não informado</li>';
+  const horario = formatarHorario(vaga);
+  const imagemVaga = obterImagemVaga(vaga);
 
   div.innerHTML = `
+    ${imagemVaga ? `
+      <div class="vaga-banner">
+        <img src="${imagemVaga}" alt="Logo da empresa ${vaga.nomeEmpresa || ''}" loading="lazy" />
+      </div>
+    ` : ''}
+
     <div class="vaga-header">
       <span class="vaga-codigo">#${vaga.codigoVaga}</span>
       <span class="vaga-tipo ${vaga.tipoVaga.toLowerCase()}">${tipoVaga}</span>
@@ -388,6 +396,13 @@ function criarCardVaga(vaga) {
         ${formatarNivelEscolar(vaga.nivelEscolar)}
       </p>
       
+      ${horario ? `
+        <p class="horario">
+          <i class="fas fa-clock"></i>
+          ${horario}
+        </p>
+      ` : ''}
+
       <p class="bolsa">
         <i class="fas fa-money-bill-wave"></i>
         <strong>${valorBolsa}</strong>
@@ -405,7 +420,7 @@ function criarCardVaga(vaga) {
     
     ${vaga.quantidadeBeneficios > 0 ? `
       <p class="beneficios">
-       
+        <i class="fas fa-gift"></i>
         ${vaga.quantidadeBeneficios} benefício(s) disponível(is)
       </p>
     ` : ''}
@@ -422,23 +437,186 @@ function criarCardVaga(vaga) {
   return div;
 }
 
+function normalizarValorMonetario(valor) {
+  if (valor === null || valor === undefined) {
+    return null;
+  }
+
+  if (typeof valor === 'number') {
+    return Number.isFinite(valor) && valor > 0 ? valor : null;
+  }
+
+  if (typeof valor === 'string') {
+    let texto = valor
+      .replace(/[^0-9.,-]/g, '')
+      .replace(/\u0000/g, '')
+      .trim();
+
+    if (!texto) return null;
+
+    const qtdPontos = (texto.match(/\./g) || []).length;
+    const qtdVirgulas = (texto.match(/,/g) || []).length;
+
+    if (qtdVirgulas > 0) {
+      texto = texto.replace(/\./g, '').replace(',', '.');
+    } else if (qtdPontos > 1) {
+      texto = texto.replace(/\./g, '');
+    } else if (qtdPontos === 1) {
+      const [inteira, decimal] = texto.split('.');
+      if (decimal && decimal.length === 3) {
+        texto = `${inteira}${decimal}`;
+      }
+    }
+
+    const numero = Number(texto);
+    return Number.isFinite(numero) && numero > 0 ? numero : null;
+  }
+
+  return null;
+}
+
+function formatarValorBR(valor) {
+  return valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
 function formatarBolsa(vaga) {
-  if (vaga.tipoValorBolsa === 'A_COMBINAR') {
+  const minimo = normalizarValorMonetario(
+    vaga.bolsaAuxilioDe ?? vaga.valorBolsaDe ?? vaga.bolsaDe ?? vaga.bolsaInicio
+  );
+  const maximo = normalizarValorMonetario(
+    vaga.bolsaAuxilioAte ?? vaga.valorBolsaAte ?? vaga.bolsaAte ?? vaga.bolsaFim
+  );
+  const unico = normalizarValorMonetario(
+    vaga.bolsaAuxilio ?? vaga.valorBolsa ?? vaga.bolsa
+  );
+
+  if (minimo && maximo) {
+    if (Math.abs(minimo - maximo) < 0.01) {
+      return formatarValorBR(minimo);
+    }
+    return `${formatarValorBR(minimo)} - ${formatarValorBR(maximo)}`;
+  }
+
+  if (minimo) {
+    return `A partir de ${formatarValorBR(minimo)}`;
+  }
+
+  if (maximo) {
+    return `Até ${formatarValorBR(maximo)}`;
+  }
+
+  if (unico) {
+    return formatarValorBR(unico);
+  }
+
+  if (vaga.tipoValorBolsa && vaga.tipoValorBolsa.toUpperCase().includes('COMBINAR')) {
     return 'A combinar';
   }
-  
-  if (vaga.bolsaAuxilioDe && vaga.bolsaAuxilioAte) {
-    if (vaga.bolsaAuxilioDe === vaga.bolsaAuxilioAte) {
-      return `R$ ${vaga.bolsaAuxilioDe.toFixed(2)}`;
+
+  return 'Não informado';
+}
+
+function formatarHora(raw) {
+  if (!raw) return null;
+
+  let texto = String(raw).trim();
+
+  if (/^\d{1,2}:\d{2}$/.test(texto)) {
+    return texto;
+  }
+
+  if (/^\d{1,2}h\d{0,2}$/i.test(texto)) {
+    texto = texto.toLowerCase().replace('h', ':');
+    if (/^\d{1,2}:\d{1,2}$/.test(texto)) {
+      const [h, m] = texto.split(':');
+      return `${h.padStart(2, '0')}:${m.padEnd(2, '0').slice(0, 2)}`;
     }
-    return `R$ ${vaga.bolsaAuxilioDe.toFixed(2)} - R$ ${vaga.bolsaAuxilioAte.toFixed(2)}`;
   }
-  
-  if (vaga.bolsaAuxilioDe) {
-    return `A partir de R$ ${vaga.bolsaAuxilioDe.toFixed(2)}`;
+
+  if (/^\d{3,4}$/.test(texto)) {
+    const padded = texto.padStart(4, '0');
+    return `${padded.slice(0, 2)}:${padded.slice(2)}`;
   }
-  
-  return 'A combinar';
+
+  const match = texto.match(/(\d{1,2})[:hH]?(\d{2})?/);
+  if (match) {
+    const horas = match[1].padStart(2, '0');
+    const minutos = (match[2] || '00').padEnd(2, '0').slice(0, 2);
+    return `${horas}:${minutos}`;
+  }
+
+  return texto;
+}
+
+function formatarHorario(vaga) {
+  const inicio = formatarHora(
+    vaga.horarioInicio ?? vaga.horaInicio ?? vaga.horaEntrada ?? vaga.horarioEntrada
+  );
+  const fim = formatarHora(
+    vaga.horarioFim ?? vaga.horaFim ?? vaga.horaSaida ?? vaga.horarioSaida
+  );
+  const turno = vaga.turno ?? vaga.turnoTrabalho ?? vaga.periodo ?? vaga.turnoAtuacao;
+  const cargaHorariaRaw = vaga.cargaHoraria ?? vaga.cargaHorariaSemanal ?? vaga.cargaHorariaDiaria ?? vaga.horasSemanais ?? vaga.horasDiarias ?? vaga.jornada ?? vaga.jornadaSemanal ?? vaga.jornadaDiaria;
+  const diasSemana = Array.isArray(vaga.diasSemana)
+    ? vaga.diasSemana.join(', ')
+    : vaga.diaSemana || vaga.dias;
+
+  const partes = [];
+
+  if (inicio || fim) {
+    if (inicio && fim) {
+      partes.push(`${inicio} - ${fim}`);
+    } else if (inicio) {
+      partes.push(`Início: ${inicio}`);
+    } else {
+      partes.push(`Término: ${fim}`);
+    }
+  }
+
+  if (turno) {
+    partes.push(turno);
+  }
+
+  if (cargaHorariaRaw) {
+    const cargaTexto = typeof cargaHorariaRaw === 'number'
+      ? `${cargaHorariaRaw}h`
+      : String(cargaHorariaRaw);
+    partes.push(cargaTexto);
+  }
+
+  if (diasSemana) {
+    partes.push(diasSemana);
+  }
+
+  const campoLivre = vaga.horario ?? vaga.horarioTrabalho ?? vaga.descricaoHorario ?? vaga.descricaoJornada;
+  if (!partes.length && campoLivre) {
+    partes.push(campoLivre);
+  }
+
+  return partes.length ? partes.join(' | ') : null;
+}
+
+function obterImagemVaga(vaga) {
+  const possiveis = [
+    vaga.urlImagemEmpresa,
+    vaga.urlLogoEmpresa,
+    vaga.logoEmpresa,
+    vaga.logoUrl,
+    vaga.logo,
+    vaga.imagemEmpresa,
+    vaga.imagem,
+    vaga.urlImagem,
+    vaga.bannerUrl,
+    vaga.banner
+  ];
+
+  const encontrada = possiveis.find(url => typeof url === 'string' && url.trim());
+  return encontrada || null;
 }
 
 function formatarNivelEscolar(nivel) {

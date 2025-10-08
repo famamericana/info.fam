@@ -208,6 +208,16 @@ body {
   margin-bottom: 15px;
 }
 
+.vaga-banner {
+  width: 100%;
+}
+
+.vaga-banner img {
+
+  display: block;
+  object-fit: cover;
+}
+
 .vaga-codigo {
   font-size: 0.85rem;
   color: #999;
@@ -266,6 +276,15 @@ body {
 .vaga-info .bolsa {
   color: #27ae60;
   font-size: 1rem;
+}
+
+.vaga-info .horario i {
+  color: #f39c12;
+}
+
+.vaga-info .horario {
+  color: #555;
+  font-style: italic;
 }
 
 .descricao {
