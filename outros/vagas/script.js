@@ -717,7 +717,7 @@ function mostrarLoading(mostrar) {
 // ========== EVENTOS ==========
 function configurarEventos() {
   // Buscar vagas
-  btnBuscar.addEventListener('click', () => carregarVagas(0, true));
+  btnBuscar.addEventListener('click', () => carregarVagas(0, false));
 
   // Limpar filtros
   btnLimpar.addEventListener('click', () => {
