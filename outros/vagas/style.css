@@ -456,6 +456,10 @@ body {
     flex-direction: column;
     gap: 15px;
   }
+
+  .filtros-grid {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
