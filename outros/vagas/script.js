@@ -350,10 +350,14 @@ function mostrarVagas(vagas, shouldScroll = true) {
 
   // Scroll suave para o topo dos filtros, quando permitido
   if (shouldScroll) {
-    const filtrosContainer = document.querySelector('.filtros-container');
-    if (filtrosContainer) {
-      filtrosContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    requestAnimationFrame(() => {
+      const filtrosContainer = document.querySelector('.filtros-container');
+      if (filtrosContainer) {
+        filtrosContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
   }
 }
 
