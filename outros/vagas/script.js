@@ -398,14 +398,14 @@ function criarCardVaga(vaga) {
     
     ${vaga.atividades && vaga.atividades.length > 0 ? `
       <div class="atividades">
-        <strong><i class="fas fa-tasks"></i> Atividades:</strong>
+        <strong> Atividades:</strong>
         <ul>${atividades}</ul>
       </div>
     ` : ''}
     
     ${vaga.quantidadeBeneficios > 0 ? `
       <p class="beneficios">
-        <i class="fas fa-gift"></i>
+       
         ${vaga.quantidadeBeneficios} benefício(s) disponível(is)
       </p>
     ` : ''}

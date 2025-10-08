@@ -254,7 +254,7 @@ body {
 
 .vaga-info i {
   color: #3498db;
-  margin-top: 2px;
+  margin-top: 4px;
   min-width: 16px;
 }
 
@@ -278,14 +278,12 @@ body {
 }
 
 .atividades {
-  background-color: #fff3cd;
   padding: 12px;
-
   border-left: 3px solid #ffc107;
 }
 
 .atividades strong {
-  color: #856404;
+
   display: block;
   margin-bottom: 8px;
 }
@@ -302,10 +300,9 @@ body {
 }
 
 .beneficios {
-  background-color: #d4edda;
+
   padding: 10px 12px;
   margin: 15px 0;
-  color: #155724;
   font-weight: 500;
   border-left: 3px solid #28a745;
 }
