@@ -12,11 +12,6 @@
 <body>
   <div id="Navbar"></div>
   <div class="container">
-    <header>
-      <h1><i class="fas fa-briefcase"></i> Vitrine de Vagas CIEE</h1>
-      <p class="subtitle">Encontre oportunidades de estágio e aprendizagem</p>
-    </header>
-
     <div class="filtros-container">
       <div class="filtros-grid">
         <div class="filtro-grupo">
@@ -61,8 +56,10 @@
     </div>
 
     <!-- Info e Paginação - TOPO -->
-    <div id="info-resultado-topo" class="info-resultado"></div>
-    <div id="paginacao-topo" class="paginacao"></div>
+    <div class="paginacao-container">
+      <div id="info-resultado-topo" class="info-resultado"></div>
+      <div id="paginacao-topo" class="paginacao"></div>
+    </div>
 
     <div id="loading" class="loading" style="display: none;">
       <i class="fas fa-spinner fa-spin"></i> Carregando vagas...
@@ -71,12 +68,14 @@
     <div id="vagas-container" class="vagas"></div>
 
     <!-- Info e Paginação - RODAPÉ -->
-    <div id="info-resultado" class="info-resultado"></div>
-    <div id="paginacao" class="paginacao"></div>
+    <div class="paginacao-container">
+      <div id="info-resultado" class="info-resultado"></div>
+      <div id="paginacao" class="paginacao"></div>
+    </div>
   </div>
 
   <div id="meuFooter"></div>
-  
+
   <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
   <script src="/codigos-gerais/likesbotão/likes.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

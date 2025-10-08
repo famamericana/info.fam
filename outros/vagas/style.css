@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -14,7 +14,7 @@ body {
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
-    margin: 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -25,29 +25,8 @@ body {
 }
 
 /* ========== HEADER ========== */
-header {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #fff;
-  border-bottom: 2px solid #e0e0e0;
-}
 
-header h1 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
 
-header h1 i {
-  margin-right: 10px;
-  color: #3498db;
-}
-
-.subtitle {
-  color: #7f8c8d;
-  font-size: 1rem;
-}
 
 /* ========== FILTROS ========== */
 .filtros-container {
@@ -180,12 +159,6 @@ header h1 i {
 }
 
 /* ========== INFO RESULTADO ========== */
-.info-resultado {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #e0e0e0;
-}
 
 .info-resultado p {
   color: #555;
@@ -298,7 +271,6 @@ header h1 i {
 .descricao {
   background-color: #f8f9fa;
   padding: 12px;
-  margin: 15px 0;
   font-size: 0.85rem;
   color: #666;
   line-height: 1.5;
@@ -308,7 +280,7 @@ header h1 i {
 .atividades {
   background-color: #fff3cd;
   padding: 12px;
-  margin: 15px 0;
+
   border-left: 3px solid #ffc107;
 }
 
@@ -319,7 +291,7 @@ header h1 i {
 }
 
 .atividades ul {
-  margin-left: 15px;
+  margin-left: -28px;
   color: #666;
 }
 
@@ -360,19 +332,24 @@ header h1 i {
 }
 
 /* ========== PAGINAÇÃO ========== */
+
+.paginacao-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  background-color: white;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+}
+
 .paginacao {
   display: flex;
-  justify-content: center;
-  margin: 30px 0;
 }
 
 .paginas {
   display: flex;
   gap: 5px;
-  background-color: #fff;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  align-items: center;
 }
 
 .btn-pagina {
@@ -447,10 +424,6 @@ header h1 i {
     font-size: 1.5rem;
   }
 
-  .filtros-grid {
-    grid-template-columns: 1fr;
-  }
-
   .filtro-acoes {
     flex-direction: column;
   }
@@ -461,6 +434,11 @@ header h1 i {
 
   .paginas {
     flex-wrap: wrap;
+  }
+
+  .paginacao-container{
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
