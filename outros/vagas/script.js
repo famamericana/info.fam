@@ -2,7 +2,9 @@
 const container = document.getElementById('vagas-container');
 const loading = document.getElementById('loading');
 const infoResultado = document.getElementById('info-resultado');
+const infoResultadoTopo = document.getElementById('info-resultado-topo');
 const paginacaoDiv = document.getElementById('paginacao');
+const paginacaoDivTopo = document.getElementById('paginacao-topo');
 
 // Filtros
 const filtroNivel = document.getElementById('filtro-nivel');
@@ -459,6 +461,7 @@ function candidatarVaga(codigoVaga) {
 function criarPaginacao(data) {
   if (data.totalPages <= 1) {
     paginacaoDiv.innerHTML = '';
+    paginacaoDivTopo.innerHTML = '';
     return;
   }
 
@@ -502,7 +505,10 @@ function criarPaginacao(data) {
   }
 
   html += '</div>';
+  
+  // Aplicar HTML em ambos (topo e rodapé)
   paginacaoDiv.innerHTML = html;
+  paginacaoDivTopo.innerHTML = html;
 }
 
 // ========== INFORMAÇÃO DE RESULTADO ==========
@@ -510,12 +516,16 @@ function mostrarInformacaoResultado(data) {
   const inicio = data.number * data.size + 1;
   const fim = Math.min((data.number + 1) * data.size, data.totalElements);
   
-  infoResultado.innerHTML = `
+  const html = `
     <p>
       <i class="fas fa-info-circle"></i>
       Mostrando <strong>${inicio}-${fim}</strong> de <strong>${data.totalElements}</strong> vagas
     </p>
   `;
+  
+  // Aplicar HTML em ambos (topo e rodapé)
+  infoResultado.innerHTML = html;
+  infoResultadoTopo.innerHTML = html;
 }
 
 // ========== LOADING ==========
