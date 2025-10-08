@@ -11,7 +11,6 @@ const filtroNivel = document.getElementById('filtro-nivel');
 const filtroArea = document.getElementById('filtro-area');
 const filtroCidade = document.getElementById('filtro-cidade');
 // filtroCodigo removed - not used anymore
-const btnBuscar = document.getElementById('btn-buscar');
 const btnLimpar = document.getElementById('btn-limpar');
 const sugestoesCidade = document.getElementById('sugestoes-cidade');
 
@@ -129,6 +128,7 @@ function selecionarCidade(cidade) {
   filtroCidade.value = `${cidade.cityName} - ${cidade.state.initials}`;
   sugestoesCidade.innerHTML = '';
   sugestoesCidade.style.display = 'none';
+  carregarVagas(0, false);
 }
 
 function encontrarCidadePorTexto(texto) {
@@ -648,50 +648,50 @@ function criarPaginacao(data) {
     return;
   }
 
-  let html = '<div class="paginas">';
-  
-  // Botão anterior
-  if (!data.first) {
-    html += `<button onclick="carregarVagas(${data.number - 1}, true)" class="btn-pagina">
-      <i class="fas fa-chevron-left"></i>
-    </button>`;
-  }
+  const montarPaginacao = (shouldScroll) => {
+    const scrollParam = shouldScroll ? 'true' : 'false';
+    let html = '<div class="paginas">';
 
-  // Páginas
-  const inicio = Math.max(0, data.number - 2);
-  const fim = Math.min(data.totalPages, data.number + 3);
+    if (!data.first) {
+      html += `<button onclick="carregarVagas(${data.number - 1}, ${scrollParam})" class="btn-pagina">
+        <i class="fas fa-chevron-left"></i>
+      </button>`;
+    }
 
-  if (inicio > 0) {
-    html += `<button onclick="carregarVagas(0, true)" class="btn-pagina">1</button>`;
-    if (inicio > 1) html += '<span class="pagina-ellipsis">...</span>';
-  }
+    const inicio = Math.max(0, data.number - 2);
+    const fim = Math.min(data.totalPages, data.number + 3);
 
-  for (let i = inicio; i < fim; i++) {
-    const ativo = i === data.number ? 'ativo' : '';
-    html += `<button onclick="carregarVagas(${i}, true)" class="btn-pagina ${ativo}">
-      ${i + 1}
-    </button>`;
-  }
+    if (inicio > 0) {
+      html += `<button onclick="carregarVagas(0, ${scrollParam})" class="btn-pagina">1</button>`;
+      if (inicio > 1) html += '<span class="pagina-ellipsis">...</span>';
+    }
 
-  if (fim < data.totalPages) {
-    if (fim < data.totalPages - 1) html += '<span class="pagina-ellipsis">...</span>';
-    html += `<button onclick="carregarVagas(${data.totalPages - 1}, true)" class="btn-pagina">
-      ${data.totalPages}
-    </button>`;
-  }
+    for (let i = inicio; i < fim; i++) {
+      const ativo = i === data.number ? 'ativo' : '';
+      html += `<button onclick="carregarVagas(${i}, ${scrollParam})" class="btn-pagina ${ativo}">
+        ${i + 1}
+      </button>`;
+    }
 
-  // Botão próximo
-  if (!data.last) {
-    html += `<button onclick="carregarVagas(${data.number + 1}, true)" class="btn-pagina">
-      <i class="fas fa-chevron-right"></i>
-    </button>`;
-  }
+    if (fim < data.totalPages) {
+      if (fim < data.totalPages - 1) html += '<span class="pagina-ellipsis">...</span>';
+      html += `<button onclick="carregarVagas(${data.totalPages - 1}, ${scrollParam})" class="btn-pagina">
+        ${data.totalPages}
+      </button>`;
+    }
 
-  html += '</div>';
-  
-  // Aplicar HTML em ambos (topo e rodapé)
-  paginacaoDiv.innerHTML = html;
-  paginacaoDivTopo.innerHTML = html;
+    if (!data.last) {
+      html += `<button onclick="carregarVagas(${data.number + 1}, ${scrollParam})" class="btn-pagina">
+        <i class="fas fa-chevron-right"></i>
+      </button>`;
+    }
+
+    html += '</div>';
+    return html;
+  };
+
+  paginacaoDivTopo.innerHTML = montarPaginacao(false);
+  paginacaoDiv.innerHTML = montarPaginacao(true);
 }
 
 // ========== INFORMAÇÃO DE RESULTADO ==========
@@ -719,9 +719,6 @@ function mostrarLoading(mostrar) {
 
 // ========== EVENTOS ==========
 function configurarEventos() {
-  // Buscar vagas
-  btnBuscar.addEventListener('click', () => carregarVagas(0, false));
-
   // Limpar filtros
   btnLimpar.addEventListener('click', () => {
     filtroNivel.value = '';
@@ -739,8 +736,18 @@ function configurarEventos() {
     clearTimeout(timeoutBusca);
     timeoutBusca = setTimeout(() => {
       buscarCidades(e.target.value);
+      if (!e.target.value.trim()) {
+        carregarVagas(0, false);
+      }
     }, 300);
   });
+
+  filtroCidade.addEventListener('change', () => {
+    carregarVagas(0, false);
+  });
+
+  filtroNivel.addEventListener('change', () => carregarVagas(0, false));
+  filtroArea.addEventListener('change', () => carregarVagas(0, false));
 
   filtroCidade.addEventListener('focus', () => {
     buscarCidades(filtroCidade.value);
