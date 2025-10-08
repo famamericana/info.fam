@@ -348,9 +348,12 @@ function mostrarVagas(vagas, shouldScroll = true) {
     container.appendChild(card);
   });
 
-  // Scroll suave para o topo dos resultados, quando permitido
+  // Scroll suave para o topo dos filtros, quando permitido
   if (shouldScroll) {
-    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const filtrosContainer = document.querySelector('.filtros-container');
+    if (filtrosContainer) {
+      filtrosContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
 
@@ -431,7 +434,7 @@ function criarCardVaga(vaga) {
       onclick="candidatarVaga(${vaga.codigoVaga})" 
       class="btn-candidatar"
     >
-      <i class="fas fa-paper-plane"></i>
+     
       Candidatar-se
     </button>
   `;
