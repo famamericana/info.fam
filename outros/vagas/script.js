@@ -794,7 +794,7 @@ $(document).ready(function () {
 
 // Carregando o navbar e configurando o dropdown
 $(document).ready(function () {
-    $("#Navbar").load("/codigos-gerais/navbar-fam/navbar.html", function () {
+    $("#Navbar").load("/codigos-gerais/navbar/navbar.html", function () {
         // Chama a função setupDropdown após o conteúdo ser carregado
         setupDropdown();
     });

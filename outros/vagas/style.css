@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root{
+  --FONTE_PEQUENA: 0.8rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -216,6 +220,7 @@ body {
 .vaga-codigo {
   color: #999;
   font-weight: 500;
+  font-size: var(--FONTE_PEQUENA);
 }
 
 .vaga-tipo {
@@ -223,6 +228,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 5px;
+  font-size: var(--FONTE_PEQUENA);
 }
 
 .vaga-tipo.estagio {
@@ -297,11 +303,12 @@ body {
 .atividades ul {
   margin-left: -28px;
   color: #666;
+  
 }
 
 .atividades li {
   margin: 4px 0;
-
+font-size: var(--FONTE_PEQUENA);
 }
 
 .beneficios {
