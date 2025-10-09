@@ -436,7 +436,7 @@ function criarCardVaga(vaga) {
     
     <button 
       onclick="candidatarVaga(${vaga.codigoVaga})" 
-      class="btn-candidatar"
+      class="btn btn-candidatar"
     >
      
       Candidatar-se
