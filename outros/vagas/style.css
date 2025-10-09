@@ -4,10 +4,10 @@
   --FONTE_PADRAO: 'Source Sans 3', sans-serif;
   --FONTE_PEQUENA: 0.8rem;
 
-  --COR_BACKGROUND: #f5f5f5;
+  --COR_BACKGROUND: #f2f3f8;
   --COR_TEXTO: #333;
   --COR_BRANCO: #fff;
-  --COR_BORDA: #e0e0e0;
+  --COR_BORDA: #d5dcf1;
   --COR_TITULO: #2c3e50;
   --COR_PRIMARIA: #3498db;
   --COR_PRIMARIA_HOVER: #2980b9;
@@ -235,10 +235,11 @@ body {
 
 .vaga-banner {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .vaga-banner img {
-
   display: block;
   object-fit: cover;
 }
