@@ -4,6 +4,12 @@ html{
     scroll-behavior: smooth;
 }
 
+/* Ensure in-page anchor scrolling accounts for fixed header height */
+html {
+    /* adjust this value if your fixed header height changes */
+    scroll-padding-top: 80px;
+}
+
 :root{
     --cor-principal: #233a7e;
 }
@@ -939,7 +945,6 @@ tr:nth-child(5) {
  }
 
 #bolsa-info {
-    scroll-margin-top: 80px;
     margin-top: 40px;
     margin-bottom: 100px;
 }
