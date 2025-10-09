@@ -18,13 +18,13 @@
   --COR_NEUTRO_SUAVE: #f8f9fa;
   --COR_NEUTRO_FORTE: #999;
   --COR_NEUTRO_TEXTO: #666;
-  --COR_ALERTA: #e74c3c;
-  --COR_SUCESSO: #28a745;
-  --COR_SUCESSO_CLARO: #27ae60;
-  --COR_AVISO: #f39c12;
-  --COR_ATIVIDADES: #ffc107;
+  --COR_ALERTA: #e53888;
+  --COR_SUCESSO: #3eb288;
+
+  --COR_AVISO: #e53888;
+  --COR_ATIVIDADES: #f9e20f;
   --COR_ESTAGIO_BG: #e8f4fd;
-  --COR_ESTAGIO_TEXTO: #1976d2;
+  --COR_ESTAGIO_TEXTO: #45b7e5;
   --COR_APRENDIZ_BG: #f3e5f5;
   --COR_APRENDIZ_TEXTO: #7b1fa2;
   --COR_BOTAO_DESTAQUE: #f9e20f;
@@ -48,7 +48,6 @@ html {
 body {
   background-color: var(--COR_BACKGROUND);
   color: var(--COR_TEXTO);
-
   margin: 0;
   padding: 0;
 }
@@ -57,10 +56,26 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  margin-top: 30px;
 }
 
 /* ========== HEADER ========== */
 
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  padding-bottom: 50px;
+  flex-direction: column;
+  border-bottom: 1px solid var(--COR_BORDA);
+  text-align: center;
+}
+
+header img{
+  max-width: 500px;
+  width: 100%;
+}
 
 
 /* ========== FILTROS ========== */
@@ -306,11 +321,15 @@ body {
 }
 
 .vaga-info .bolsa {
-  color: var(--COR_SUCESSO_CLARO);
+  color: var(--COR_SUCESSO);
+}
+
+.vaga-info .bolsa i {
+  color: var(--COR_SUCESSO);
 }
 
 .vaga-info .horario i {
-  color: var(--COR_AVISO);
+  color: var(--COR_ATIVIDADES);
 }
 
 .vaga-info .horario {
@@ -474,4 +493,8 @@ font-size: var(--FONTE_PEQUENA);
   .filtros-grid {
     flex-direction: column;
   }
+}
+
+.textooelike {
+  margin-top: 20px !important;
 }
