@@ -1,7 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
+  --FONTE_PADRAO: 'Source Sans 3', sans-serif;
   --FONTE_PEQUENA: 0.8rem;
+
+  --COR_BACKGROUND: #f5f5f5;
+  --COR_TEXTO: #333;
+  --COR_BRANCO: #fff;
+  --COR_BORDA: #e0e0e0;
+  --COR_TITULO: #2c3e50;
+  --COR_PRIMARIA: #3498db;
+  --COR_PRIMARIA_HOVER: #2980b9;
+  --COR_SECUNDARIA: #95a5a6;
+  --COR_SECUNDARIA_HOVER: #7f8c8d;
+  --COR_NEUTRO_MEDIO: #555;
+  --COR_NEUTRO_CLARO: #ddd;
+  --COR_NEUTRO_SUAVE: #f8f9fa;
+  --COR_NEUTRO_FORTE: #999;
+  --COR_NEUTRO_TEXTO: #666;
+  --COR_ALERTA: #e74c3c;
+  --COR_SUCESSO: #28a745;
+  --COR_SUCESSO_CLARO: #27ae60;
+  --COR_AVISO: #f39c12;
+  --COR_ATIVIDADES: #ffc107;
+  --COR_ESTAGIO_BG: #e8f4fd;
+  --COR_ESTAGIO_TEXTO: #1976d2;
+  --COR_APRENDIZ_BG: #f3e5f5;
+  --COR_APRENDIZ_TEXTO: #7b1fa2;
+
+  --RAIO_PADRAO: 10px;
+  --RAIO_PEQUENO: 5px;
+  --TRANSICAO_PADRAO: 0.2s ease;
 }
 
 html {
@@ -11,12 +40,12 @@ html {
 * {
 
   box-sizing: border-box;
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: var(--FONTE_PADRAO);
 }
 
 body {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--COR_BACKGROUND);
+  color: var(--COR_TEXTO);
 
   margin: 0;
   padding: 0;
@@ -34,22 +63,22 @@ body {
 
 /* ========== FILTROS ========== */
 .filtros-container {
-  background-color: #fff;
+  background-color: var(--COR_BRANCO);
   padding: 25px;
   margin-bottom: 25px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+  border: 1px solid var(--COR_BORDA);
+  border-radius: var(--RAIO_PADRAO);
 }
 
 .filtros-container h2 {
-  color: #2c3e50;
+  color: var(--COR_TITULO);
   margin-bottom: 20px;
 
 }
 
 .filtros-container h2 i {
   margin-right: 8px;
-  color: #3498db;
+  color: var(--COR_PRIMARIA);
 }
 
 .filtro-acoes {
@@ -72,27 +101,28 @@ body {
 .filtro-grupo label {
   font-weight: 600;
   margin-bottom: 5px;
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
 }
 
 .filtro-grupo label i {
   margin-right: 5px;
-  color: #3498db;
+  color: var(--COR_PRIMARIA);
 }
 
 .filtro-grupo select,
 .filtro-grupo input {
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 
-  background-color: #fff;
+  border: 1px solid var(--COR_NEUTRO_CLARO);
+  border-radius: var(--RAIO_PEQUENO);
+
+  background-color: var(--COR_BRANCO);
 }
 
 .filtro-grupo select:focus,
 .filtro-grupo input:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--COR_PRIMARIA);
 }
 
 /* Sugestões de cidade */
@@ -101,9 +131,9 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #fff;
-  border: 1px solid #3498db;
-  border-top: none;
+  background-color: var(--COR_BRANCO);
+ 
+ 
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
@@ -112,56 +142,52 @@ body {
 .sugestao-item {
   padding: 10px;
   cursor: pointer;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--COR_BORDA);
 }
 
 .sugestao-item:hover {
-  background-color: #f8f9fa;
+  background-color: var(--COR_NEUTRO_SUAVE);
 }
 
 .sugestao-item:last-child {
   border-bottom: none;
 }
 
-
-
 .btn {
   padding: 11px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--RAIO_PEQUENO);
   font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.2s;
+  transition: background-color var(--TRANSICAO_PADRAO);
 }
 
-
-
 .btn-primary {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--COR_PRIMARIA);
+  color: var(--COR_BRANCO);
   flex: 1;
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: var(--COR_PRIMARIA_HOVER);
 }
 
 .btn-secondary {
-  background-color: #95a5a6;
-  color: white;
+  background-color: var(--COR_SECUNDARIA);
+  color: var(--COR_BRANCO);
 }
 
 .btn-secondary:hover {
-  background-color: #7f8c8d;
+  background-color: var(--COR_SECUNDARIA_HOVER);
 }
 
 /* ========== INFO RESULTADO ========== */
 
 .info-resultado p {
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
   margin: 0;
   display: flex;
   align-items: center;
@@ -169,14 +195,14 @@ body {
 }
 
 .info-resultado i {
-  color: #3498db;
+  color: var(--COR_PRIMARIA);
 }
 
 /* ========== LOADING ========== */
 .loading {
   text-align: center;
   padding: 40px;
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
 }
 
 .loading i {
@@ -192,12 +218,12 @@ body {
 }
 
 .vaga {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--COR_BRANCO);
+  border: 1px solid var(--COR_BORDA);
   padding: 20px;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: var(--RAIO_PADRAO);
 }
 
 .vaga-header {
@@ -218,7 +244,7 @@ body {
 }
 
 .vaga-codigo {
-  color: #999;
+  color: var(--COR_NEUTRO_FORTE);
   font-weight: 500;
   font-size: var(--FONTE_PEQUENA);
 }
@@ -227,22 +253,22 @@ body {
   padding: 4px 8px;
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: var(--RAIO_PEQUENO);
   font-size: var(--FONTE_PEQUENA);
 }
 
 .vaga-tipo.estagio {
-  background-color: #e8f4fd;
-  color: #1976d2;
+  background-color: var(--COR_ESTAGIO_BG);
+  color: var(--COR_ESTAGIO_TEXTO);
 }
 
 .vaga-tipo.aprendiz {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
+  background-color: var(--COR_APRENDIZ_BG);
+  color: var(--COR_APRENDIZ_TEXTO);
 }
 
 .vaga h3 {
-  color: #2c3e50;
+  color: var(--COR_TITULO);
   margin-bottom: 15px;
 
 }
@@ -253,45 +279,45 @@ body {
 
 .vaga-info p {
   margin: 8px 0;
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 
 .vaga-info i {
-  color: #3498db;
+  color: var(--COR_PRIMARIA);
   margin-top: 4px;
   min-width: 16px;
 }
 
 .vaga-info .empresa {
-  color: #2c3e50;
+  color: var(--COR_TITULO);
 }
 
 .vaga-info .bolsa {
-  color: #27ae60;
+  color: var(--COR_SUCESSO_CLARO);
 }
 
 .vaga-info .horario i {
-  color: #f39c12;
+  color: var(--COR_AVISO);
 }
 
 .vaga-info .horario {
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
   font-style: italic;
 }
 
 .descricao {
-  background-color: #f8f9fa;
+  background-color: var(--COR_NEUTRO_SUAVE);
   padding: 12px;
-  color: #666;
-  border-left: 3px solid #3498db;
+  color: var(--COR_NEUTRO_TEXTO);
+  border-left: 3px solid var(--COR_PRIMARIA);
 }
 
 .atividades {
   padding: 12px;
-  border-left: 3px solid #ffc107;
+  border-left: 3px solid var(--COR_ATIVIDADES);
 }
 
 .atividades strong {
@@ -302,7 +328,7 @@ body {
 
 .atividades ul {
   margin-left: -28px;
-  color: #666;
+  color: var(--COR_NEUTRO_TEXTO);
   
 }
 
@@ -316,27 +342,27 @@ font-size: var(--FONTE_PEQUENA);
   padding: 10px 12px;
   margin: 15px 0;
   font-weight: 500;
-  border-left: 3px solid #28a745;
+  border-left: 3px solid var(--COR_SUCESSO);
 }
 
 .btn-candidatar {
   margin-top: auto;
   padding: 12px 16px;
-  background-color: #3498db;
-  color: white;
+  background-color: var(--COR_PRIMARIA);
+  color: var(--COR_BRANCO);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--RAIO_PEQUENO);
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.2s;
+  transition: background-color var(--TRANSICAO_PADRAO);
 }
 
 .btn-candidatar:hover {
-  background-color: #2980b9;
+  background-color: var(--COR_PRIMARIA_HOVER);
 }
 
 /* ========== PAGINAÇÃO ========== */
@@ -361,59 +387,60 @@ font-size: var(--FONTE_PEQUENA);
 
 .btn-pagina {
   padding: 8px 12px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border: 1px solid var(--COR_NEUTRO_CLARO);
+  background-color: var(--COR_BRANCO);
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: all var(--TRANSICAO_PADRAO);
   min-width: 40px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: var(--RAIO_PEQUENO);
 }
 
 .btn-pagina:hover {
-  border-color: #3498db;
-  color: #3498db;
+  border-color: var(--COR_PRIMARIA);
+  color: var(--COR_PRIMARIA);
 }
 
 .btn-pagina.ativo {
-  background-color: #3498db;
-  color: white;
-  border-color: #3498db;
+  background-color: var(--COR_PRIMARIA);
+  color: var(--COR_BRANCO);
+  border-color: var(--COR_PRIMARIA);
 }
 
 .pagina-ellipsis {
   padding: 0 5px;
-  color: #999;
+  color: var(--COR_NEUTRO_FORTE);
 }
 
 /* ========== ESTADOS ESPECIAIS ========== */
+
 .sem-resultados,
 .erro {
   text-align: center;
   padding: 60px 20px;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--COR_BRANCO);
+  border: 1px solid var(--COR_BORDA);
 }
 
 .sem-resultados i,
 .erro i {
-  color: #ddd;
+  color: var(--COR_NEUTRO_CLARO);
   margin-bottom: 20px;
 }
 
 .sem-resultados h3 {
-  color: #555;
+  color: var(--COR_NEUTRO_MEDIO);
   margin-bottom: 10px;
 }
 
 .sem-resultados p,
 .erro p {
-  color: #999;
+  color: var(--COR_NEUTRO_FORTE);
 }
 
 .erro i {
-  color: #e74c3c;
+  color: var(--COR_ALERTA);
 }
 
 .erro .btn {
