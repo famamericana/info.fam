@@ -113,7 +113,7 @@ body {
 .filtro-grupo input {
   padding: 10px;
 
-  border: 1px solid var(--COR_NEUTRO_CLARO);
+  border: 1px solid var(--COR_BORDA);
   border-radius: var(--RAIO_PEQUENO);
 
   background-color: var(--COR_BRANCO);
@@ -388,7 +388,7 @@ font-size: var(--FONTE_PEQUENA);
 
 .btn-pagina {
   padding: 8px 12px;
-  border: 1px solid var(--COR_NEUTRO_CLARO);
+  border: 1px solid var(--COR_BORDA);
   background-color: var(--COR_BRANCO);
   cursor: pointer;
   font-weight: 500;
@@ -422,6 +422,7 @@ font-size: var(--FONTE_PEQUENA);
   padding: 60px 20px;
   background-color: var(--COR_BRANCO);
   border: 1px solid var(--COR_BORDA);
+  border-radius: 10px;
 }
 
 .sem-resultados i,
