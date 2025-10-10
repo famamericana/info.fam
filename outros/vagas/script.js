@@ -58,6 +58,8 @@ if ('scrollRestoration' in history) {
 // URL de redirecionamento (produção)
 const URL_INSCRICAO = 'https://ciee.app/login';
 const CODIGO_ACESSO = 'FAM_13732';
+const NIVEIS_PERMITIDOS = ['SU', 'TE'];
+const NIVEIS_PERMITIDOS_SET = new Set(NIVEIS_PERMITIDOS);
 
 // ========== INICIALIZAÇÃO ==========
 async function inicializar() {
@@ -164,6 +166,111 @@ function garantirCidadeSelecionada() {
   }
 }
 
+function aplicarFiltroNivelParams(params) {
+  if (filtroNivel.value) {
+    params.append('nivelEnsino', filtroNivel.value);
+  }
+}
+
+function extrairCodigoNivel(valor) {
+  if (valor === null || valor === undefined) {
+    return null;
+  }
+
+  if (Array.isArray(valor)) {
+    for (const item of valor) {
+      const codigo = extrairCodigoNivel(item);
+      if (codigo) return codigo;
+    }
+    return null;
+  }
+
+  if (typeof valor === 'string') {
+    const textoOriginal = valor.trim();
+    if (!textoOriginal) return null;
+
+    const textoNormalizado = normalizarTexto(textoOriginal);
+    if (textoNormalizado === 'superior' || textoNormalizado.startsWith('superior')) return 'SU';
+    if (textoNormalizado === 'su') return 'SU';
+    if (textoNormalizado === 'tecnico' || textoNormalizado.startsWith('tecnico')) return 'TE';
+    if (textoNormalizado === 'te') return 'TE';
+    if (textoNormalizado === 'ensino medio' || textoNormalizado === 'medio') return 'EM';
+    if (textoNormalizado === 'ensino fundamental' || textoNormalizado === 'fundamental') return 'EF';
+
+    return textoOriginal.toUpperCase();
+  }
+
+  if (typeof valor === 'number') {
+    return String(valor).trim().toUpperCase();
+  }
+
+  if (typeof valor === 'object') {
+    const camposPossiveis = [
+      valor.codigo,
+      valor.sigla,
+      valor.id,
+      valor.idNivelEnsino,
+      valor.nivel,
+      valor.nome,
+      valor.descricao
+    ];
+
+    for (const campo of camposPossiveis) {
+      const codigo = extrairCodigoNivel(campo);
+      if (codigo) return codigo;
+    }
+  }
+
+  return null;
+}
+
+function obterCodigoNivelDaVaga(vaga) {
+  if (!vaga) return null;
+
+  const campos = [
+    vaga.nivelEscolar,
+    vaga.nivelEnsino,
+    vaga.codigoNivelEnsino,
+    vaga.nivel,
+    vaga.nivelEnsinoCodigo
+  ];
+
+  for (const campo of campos) {
+    const codigo = extrairCodigoNivel(campo);
+    if (codigo) return codigo;
+  }
+
+  return null;
+}
+
+function vagaNivelPermitida(vaga) {
+  const codigo = obterCodigoNivelDaVaga(vaga);
+  if (!codigo) return true;
+  return NIVEIS_PERMITIDOS_SET.has(codigo);
+}
+
+function filtrarVagasPermitidas(vagas = []) {
+  return vagas.filter(vagaNivelPermitida);
+}
+
+function paginarVagas(vagas, pagina, size = 12) {
+  const totalElements = vagas.length;
+  const totalPages = totalElements === 0 ? 0 : Math.ceil(totalElements / size);
+  const inicio = pagina * size;
+  const fim = inicio + size;
+  const content = vagas.slice(inicio, fim);
+
+  return {
+    content,
+    totalElements,
+    totalPages,
+    number: pagina,
+    size,
+    first: pagina === 0,
+    last: totalPages === 0 ? true : pagina >= totalPages - 1
+  };
+}
+
 // ========== CARREGAR VAGAS ==========
 async function carregarVagas(pagina = 0, shouldScroll = true) {
   mostrarLoading(true);
@@ -177,24 +284,10 @@ async function carregarVagas(pagina = 0, shouldScroll = true) {
       // Buscar vagas de todas as cidades da RMC
       data = await buscarVagasTodasCidadesRMC(pagina);
     } else {
-      console.log(`📍 Modo: Cidade específica - ${cidadeSelecionada.cityName}`);
-      // Buscar vagas de uma cidade específica
-      const params = construirParametros(pagina);
-      const url = `${ENDPOINTS.vagas}?${params}`;
-      
-      console.log(`🔗 URL: ${url}`);
-      
-      const response = await fetch(url, {
-        headers: { 'Accept-Encoding': 'gzip, deflate, br' }
-      });
-      
-      if (!response.ok) throw new Error('Erro ao buscar vagas');
-      data = await response.json();
-      
-      console.log(`✅ Vagas encontradas em ${cidadeSelecionada.cityName}: ${data.totalElements || data.content?.length || 0}`);
+      data = await buscarVagasCidadeEspecifica(cidadeSelecionada, pagina);
     }
 
-  mostrarVagas(data.content, shouldScroll);
+    mostrarVagas(data.content, shouldScroll);
     mostrarInformacaoResultado(data);
     criarPaginacao(data);
     paginaAtual = pagina;
@@ -218,9 +311,6 @@ async function buscarVagasTodasCidadesRMC(pagina) {
   console.log('🔍 Buscando vagas em TODAS as cidades da RMC...');
   console.log('═══════════════════════════════════════════════════');
   
-  // Buscar vagas de TODAS as cidades da RMC
-  const codigosCidades = CIDADES_RMC.map(c => c.cityCode);
-  
   const params = new URLSearchParams({
     page: 0, // Sempre página 0 para cada cidade
     size: 600, // Aumentar para pegar TODAS as vagas (limite máximo razoável)
@@ -229,7 +319,7 @@ async function buscarVagasTodasCidadesRMC(pagina) {
   
   // Forçar apenas ESTÁGIO
   params.append('tipoVaga', 'ESTAGIO');
-  if (filtroNivel.value) params.append('nivelEnsino', filtroNivel.value);
+  aplicarFiltroNivelParams(params);
   if (filtroArea.value) params.append('idAreaProfissional', filtroArea.value);
   // codigoVaga filter removed
   
@@ -249,21 +339,21 @@ async function buscarVagasTodasCidadesRMC(pagina) {
       }
       
       const data = await response.json();
-      const totalVagas = data.content?.length || 0;
-      const totalReal = data.totalElements || totalVagas;
+      const vagasCidade = filtrarVagasPermitidas(data.content || []);
+      const totalPermitidas = vagasCidade.length;
+      const totalReal = data.totalElements || vagasCidade.length;
       
-      if (totalVagas > 0) {
-        // Alertar se houver mais vagas do que conseguimos pegar
-        if (totalReal > totalVagas) {
-          console.log(`⚠️  ${cidade.cityName}: ${totalVagas} vaga(s) encontrada(s) (ATENÇÃO: total real é ${totalReal}, aumentar limit!)`);
+      if (totalPermitidas > 0) {
+        if (totalReal > vagasCidade.length) {
+          console.log(`⚠️  ${cidade.cityName}: ${totalPermitidas} vaga(s) dentro dos níveis permitidos (total bruto ${totalReal})`);
         } else {
-          console.log(`✅ ${cidade.cityName}: ${totalVagas} vaga(s) encontrada(s)`);
+          console.log(`✅ ${cidade.cityName}: ${totalPermitidas} vaga(s) dentro dos níveis permitidos`);
         }
       } else {
         console.log(`⚪ ${cidade.cityName}: Nenhuma vaga encontrada`);
       }
       
-      return { cidade: cidade.cityName, content: data.content || [], total: totalVagas, totalReal: totalReal };
+      return { cidade: cidade.cityName, content: vagasCidade, total: totalPermitidas, totalReal };
     } catch (error) {
       console.error(`❌ ${cidade.cityName}: Erro -`, error.message);
       return { cidade: cidade.cityName, content: [], total: 0, totalReal: 0 };
@@ -285,48 +375,63 @@ async function buscarVagasTodasCidadesRMC(pagina) {
     new Map(todasVagas.map(vaga => [vaga.codigoVaga, vaga])).values()
   );
   
-  console.log(`   Total de vagas únicas: ${vagasUnicas.length}`);
+  console.log(`   Total de vagas únicas dentro dos níveis permitidos: ${vagasUnicas.length}`);
   
   // Ordenar por código decrescente
   vagasUnicas.sort((a, b) => b.codigoVaga - a.codigoVaga);
   
-  // Implementar paginação manual
-  const size = 12;
-  const inicio = pagina * size;
-  const fim = inicio + size;
-  const vagasPaginadas = vagasUnicas.slice(inicio, fim);
-  const totalPages = Math.ceil(vagasUnicas.length / size);
+  const paginado = paginarVagas(vagasUnicas, pagina);
   
-  console.log(`   Página atual: ${pagina + 1} de ${totalPages}`);
-  console.log(`   Mostrando vagas: ${inicio + 1} a ${Math.min(fim, vagasUnicas.length)}`);
+  if (paginado.totalElements > 0) {
+    const inicio = pagina * paginado.size;
+    const fim = inicio + paginado.content.length;
+    console.log(`   Página atual: ${pagina + 1} de ${paginado.totalPages || 1}`);
+    console.log(`   Mostrando vagas: ${inicio + 1} a ${fim}`);
+  }
   console.log('═══════════════════════════════════════════════════');
   
-  return {
-    content: vagasPaginadas,
-    totalElements: vagasUnicas.length,
-    totalPages: totalPages,
-    number: pagina,
-    size: size,
-    first: pagina === 0,
-    last: pagina >= totalPages - 1
-  };
+  return paginado;
 }
 
-function construirParametros(pagina) {
+async function buscarVagasCidadeEspecifica(cidade, pagina) {
+  console.log(`📍 Modo: Cidade específica - ${cidade.cityName}`);
+
   const params = new URLSearchParams({
-    page: pagina,
-    size: 12,
-    sort: 'codigoVaga,desc'
+    page: 0, // captura completa para paginação manual
+    size: 600,
+    sort: 'codigoVaga,desc',
+    codigoMunicipio: cidade.cityCode
   });
 
-  // Forçar apenas ESTÁGIO
   params.append('tipoVaga', 'ESTAGIO');
-  if (filtroNivel.value) params.append('nivelEnsino', filtroNivel.value);
+  aplicarFiltroNivelParams(params);
   if (filtroArea.value) params.append('idAreaProfissional', filtroArea.value);
-  if (cidadeSelecionada) params.append('codigoMunicipio', cidadeSelecionada.cityCode);
-  // codigoVaga filter removed
 
-  return params.toString();
+  const url = `${ENDPOINTS.vagas}?${params}`;
+  console.log(`🔗 URL: ${url}`);
+
+  const response = await fetch(url, {
+    headers: { 'Accept-Encoding': 'gzip, deflate, br' }
+  });
+
+  if (!response.ok) throw new Error('Erro ao buscar vagas');
+
+  const data = await response.json();
+  const vagasRecebidas = Array.isArray(data.content) ? data.content : [];
+  const vagasPermitidas = filtrarVagasPermitidas(vagasRecebidas);
+
+  console.log(`✅ ${cidade.cityName}: ${vagasPermitidas.length} vaga(s) dentro dos níveis permitidos`);
+
+  const paginado = paginarVagas(vagasPermitidas, pagina);
+
+  if (paginado.totalElements > 0) {
+    const inicio = pagina * paginado.size;
+    const fim = inicio + paginado.content.length;
+    console.log(`   Página atual: ${pagina + 1} de ${paginado.totalPages || 1}`);
+    console.log(`   Mostrando vagas: ${inicio + 1} a ${fim}`);
+  }
+
+  return paginado;
 }
 
 // ========== MOSTRAR VAGAS ==========
@@ -629,13 +734,25 @@ function obterImagemVaga(vaga) {
 }
 
 function formatarNivelEscolar(nivel) {
+  const codigo = extrairCodigoNivel(nivel);
   const niveis = {
     'SU': 'Superior',
-    'TE': 'Técnico',
-    'EM': 'Ensino Médio',
-    'EF': 'Ensino Fundamental'
+    'TE': 'Técnico'
   };
-  return niveis[nivel] || nivel;
+
+  if (codigo && niveis[codigo]) {
+    return niveis[codigo];
+  }
+
+  if (typeof nivel === 'string' && nivel.trim()) {
+    return nivel;
+  }
+
+  if (nivel && typeof nivel === 'object' && typeof nivel.descricao === 'string') {
+    return nivel.descricao;
+  }
+
+  return 'Nível não informado';
 }
 
 // ========== CANDIDATAR VAGA ==========
@@ -700,13 +817,18 @@ function criarPaginacao(data) {
 
 // ========== INFORMAÇÃO DE RESULTADO ==========
 function mostrarInformacaoResultado(data) {
-  const inicio = data.number * data.size + 1;
-  const fim = Math.min((data.number + 1) * data.size, data.totalElements);
-  
+  let inicio = data.number * data.size + 1;
+  let fim = Math.min((data.number + 1) * data.size, data.totalElements);
+
+  if (!data.totalElements) {
+    inicio = 0;
+    fim = 0;
+  }
+
   const html = `
     <p>
       <i class="fas fa-info-circle"></i>
-      Mostrando <strong>${inicio}-${fim}</strong> de <strong>${data.totalElements}</strong> vagas
+      Mostrando <strong>${inicio}${fim ? `-${fim}` : ''}</strong> de <strong>${data.totalElements || 0}</strong> vagas
     </p>
   `;
   
