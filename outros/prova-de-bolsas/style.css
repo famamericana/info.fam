@@ -851,7 +851,7 @@ tr:nth-child(5) {
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
-
+    cursor: not-allowed;
 }
 
 .margendaora {
