@@ -1,6 +1,15 @@
 {
   "eventos": [
       {
+        "nome": "Educação Física",
+        "dataInicio": "20-10-2025",
+        "dataFim": "22-10-2025",
+        "descricao": "Jornada Acadêmica do Bem-Estar com palestras sobre treino de força, performance, saúde e qualidade de vida, preparação física, recovery, ciclismo excêntrico, tecnologia vestível para pessoas com deficiência, natação infantil e desenvolvimento humano. ",
+        "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao-fisica",
+        "ano": 2025,
+        "classe": "saudedois"
+      },
+      {
         "nome": "Educação",
         "dataInicio": "30-10-2025",
         "dataFim": "02-11-2025",
