@@ -6,6 +6,7 @@
     "gestao": "Gestão",
     "contabeis": "Contábeis",
     "financas": "Finanças",
+    "fisica": "Física",
 
 };
 
