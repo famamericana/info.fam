@@ -516,9 +516,10 @@ main p {
 /* Schedule styles */
 .schedule {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 8px;
     margin-top: 20px;
+   
 }
 
 .day {
@@ -536,7 +537,7 @@ main p {
 }
 
 .day h3 {
-    color: #1c58c9;
+   
     margin-bottom: 15px;
     text-align: center;
     font-size: 1.2em;
@@ -555,14 +556,16 @@ main p {
     border-radius: 5px;
     font-size: 0.9em;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     transition: all 0.2s ease;
 }
 
 .time-list li i {
     color: #56C0FF;
-    margin-right: 10px;
+    margin-right: 2px;
     font-size: 1em;
+    width: 15px;
+    text-align: center;
 }
 
 .time-list li:hover {
