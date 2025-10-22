@@ -1,32 +1,41 @@
-{
+﻿{
   "eventos": [
-      {
-        "nome": "Educação Física",
-        "dataInicio": "20-10-2025",
-        "dataFim": "22-10-2025",
-        "descricao": "Jornada Acadêmica do Bem-Estar com palestras sobre treino de força, performance, saúde e qualidade de vida, preparação física, recovery, ciclismo excêntrico, tecnologia vestível para pessoas com deficiência, natação infantil e desenvolvimento humano. ",
-        "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao-fisica",
-        "ano": 2025,
-        "classe": "saudedois"
-      },
-      {
-        "nome": "Educação",
-        "dataInicio": "30-10-2025",
-        "dataFim": "02-11-2025",
-        "descricao": "Jornada Acadêmica de Educação com palestras sobre práticas docentes, metodologias ativas, comunicação alternativa e inclusão, neurociência na aprendizagem e o impacto da Inteligência Artificial no ensino. Voltado para estudantes de Pedagogia e Letras.",
-        "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao",
-        "ano": 2025,
-        "classe": "educacao"
-      },
-      {
-        "nome": "Farmácia",
-        "dataInicio": "04-09-2025",
-        "dataFim": "05-09-2025",
-        "descricao": "Dois dias de palestras para capacitar estudantes em segurança de medicamentos, farmácia clínica, dermocosméticos e vigilância sanitária.",
-        "link": "https://info.fam.br/eventos/semana-de-areas/2025/farmacia",
-        "ano": 2025,
-        "classe": "saudeum"
-      },
+    {
+      "nome": "Educação",
+      "dataInicio": "30-10-2025",
+      "dataFim": "02-11-2025",
+      "descricao": "Jornada Acadêmica de Educação com palestras sobre práticas docentes, metodologias ativas, comunicação alternativa e inclusão, neurociência na aprendizagem e o impacto da Inteligência Artificial no ensino. Voltado para estudantes de Pedagogia e Letras.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao",
+      "ano": 2025,
+      "classe": "educacao"
+    },
+    {
+      "nome": "Saúde Integral",
+      "dataInicio": "27-10-2025",
+      "dataFim": "28-10-2025",
+      "descricao": "Jornada Acadêmica de Fisioterapia e Nutrição com palestras sobre pilates, nutrição clínica, fisioterapia em terapia intensiva e reabilitação.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/saude-integral",
+      "ano": 2025,
+      "classe": "saudedois"
+    },
+    {
+      "nome": "Educação Física",
+      "dataInicio": "20-10-2025",
+      "dataFim": "22-10-2025",
+      "descricao": "Jornada Acadêmica do Bem-Estar com palestras sobre treino de força, performance, saúde e qualidade de vida, preparação física, recovery, ciclismo excêntrico, tecnologia vestível para pessoas com deficiência, natação infantil e desenvolvimento humano. ",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/educacao-fisica",
+      "ano": 2025,
+      "classe": "saudedois"
+    },
+    {
+      "nome": "Farmácia",
+      "dataInicio": "04-09-2025",
+      "dataFim": "05-09-2025",
+      "descricao": "Dois dias de palestras para capacitar estudantes em segurança de medicamentos, farmácia clínica, dermocosméticos e vigilância sanitária.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/farmacia",
+      "ano": 2025,
+      "classe": "saudeum"
+    },
     {
       "nome": "Direito",
       "dataInicio": "01-09-2025",
@@ -327,5 +336,4 @@
     "gestao": "#205c7e",
     "tec": "#79a744"
   }
-
 }

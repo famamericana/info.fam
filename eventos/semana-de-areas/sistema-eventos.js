@@ -49,7 +49,7 @@ class SemanaDeAreas {
         try {
             // Adiciona timestamp para forçar recarregamento do JSON
             const timestamp = Date.now();
-            const response = await fetch(`eventos-config.json?v=6.2`);
+            const response = await fetch(`eventos-config.json?v=6.3`);
             const data = await response.json();
             this.eventos = data.eventos;
             
