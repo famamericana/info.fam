@@ -2025,9 +2025,11 @@ footer .footer-info-icons i {
     transition: all var(--animation-duration) var(--animation-timing);
     background-color: var(--yellow);
     border: 2px solid var(--yellow);
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
     width: 100%;
-    text-align: center;
+
+    display: flex;
+    justify-content: center;
 }
 
 .botao-prova-de-bolsas:hover {

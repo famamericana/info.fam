@@ -1,5 +1,5 @@
 <?php
-$versao = "1.3.11";
+$versao = "1.3.12";
 ?>
 
 <!DOCTYPE html>
@@ -253,7 +253,8 @@ $versao = "1.3.11";
             <div>
                 <div class="badge"> <i class="fa-solid fa-eye"></i> Fique de olho! </div>
                 <p> A FAM realizará a Prova de Bolsas, uma avaliação com 20 perguntas de conhecimento gerais e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
-                <div class="botao-prova-de-bolsas"> 7 de dezembro</div>
+                </p>
+                <a href="https://info.fam.br/prova-de-bolsas/" target="_blank" rel="noopener noreferrer" class="botao-prova-de-bolsas">7 de dezembro</a>
 
             </div>
         </div>
