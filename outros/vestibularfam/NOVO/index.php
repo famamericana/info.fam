@@ -252,7 +252,7 @@ $versao = "1.3.11";
             <img src="images/logoprovadebolsasPC.svg" alt="Logo Prova de Bolsas" />
             <div>
                 <div class="badge"> <i class="fa-solid fa-eye"></i> Fique de olho! </div>
-                <p> A FAM realizará a Prova de Bolsas, uma avaliação com 10 perguntas de conhecimento gerais e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
+                <p> A FAM realizará a Prova de Bolsas, uma avaliação com 20 perguntas de conhecimento gerais e uma redação com chances de ganhar até 100% de desconto nas mensalidades. Prepare-se e garanta sua chance!
                 <div class="botao-prova-de-bolsas"> 7 de dezembro</div>
 
             </div>
