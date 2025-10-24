@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     btn.addEventListener('click', function() {
-        window.location.href = 'https://fam.inscricao.crmeducacional.com/login/54';
+    window.location.href = 'https://fam.inscricao.crmeducacional.com/login/66';
     });
 });
 
