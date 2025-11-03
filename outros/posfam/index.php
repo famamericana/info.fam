@@ -111,26 +111,26 @@
                         </div>
                     </div>-->
 
-                    <!-- Curso 2 -->
+                    <!-- Direito Processual Civil -->
                     <div class="card-curso">
-                        <span class="modalidade">Semipresencial</span>
-                        <h3>MBA em Finanças, Investimentos e Banking</h3>
+                        <span class="modalidade">Presencial</span>
+                        <h3>Direito Processual Civil</h3>
                         <div class="info-curso">
-                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais (sextas e sábados)</span>
+                            <span class="duracao"><i class="fa-regular fa-clock"></i>  Aulas aos sábados quinzenalmente</span>
                         </div>
-                        <p class="descricao">Especialização em finanças corporativas e investimentos.</p>
+                        <p class="descricao">Foco em prática forense, elaboração de peças processuais e atualização jurisprudencial.</p>
                         <div class="tags">
-                            <span class="tag">exatas</span>
-                            <span class="tag">mercado</span>
-                            <span class="tag">gestão</span>
+                            <span class="tag">direito</span>
+                            <span class="tag">jurídico</span>
+                            <span class="tag">processo</span>
                         </div>
                         <div class="botoes-curso">
-                            <a href="https://www.fam.br/curso/curso-mba-em-financas-investimentos-e-banking-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://www.fam.br/curso/curso-direito-processual-civil/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
-                    <!-- Curso 3 -->
+                    <!-- Marketing -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Marketing e Negócios</h3>
@@ -149,7 +149,26 @@
                         </div>
                     </div>
 
-                    <!-- Curso 4 -->
+                    <!-- MBA -->
+                    <div class="card-curso">
+                        <span class="modalidade">Semipresencial</span>
+                        <h3>MBA em Finanças, Investimentos e Banking</h3>
+                        <div class="info-curso">
+                            <span class="duracao"><i class="fa-regular fa-clock"></i> Aulas quinzenais (sextas e sábados)</span>
+                        </div>
+                        <p class="descricao">Especialização em finanças corporativas e investimentos.</p>
+                        <div class="tags">
+                            <span class="tag">exatas</span>
+                            <span class="tag">mercado</span>
+                            <span class="tag">gestão</span>
+                        </div>
+                        <div class="botoes-curso">
+                            <a href="https://www.fam.br/curso/curso-mba-em-financas-investimentos-e-banking-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                        </div>
+                    </div>
+
+                    <!-- Medicina Equina -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Medicina Equina</h3>
@@ -168,7 +187,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 5 -->
+                    <!-- Medicina de Animais Silvestres e Exóticos -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Medicina de Animais Silvestres e Exóticos</h3>
@@ -187,7 +206,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 6 -->
+                    <!-- Neuropsicopedagogia Clínica -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Neuropsicopedagogia Clínica</h3>
@@ -206,7 +225,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 6 -->
+                    <!-- Neuropsicopedagogia e Psicomotricidade -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Neuropsicopedagogia e Psicomotricidade</h3>
@@ -225,7 +244,7 @@
                         </div>
                     </div>
 
-                    <!-- Curso 7 -->
+                    <!-- Psicologia Escolar e Educacional -->
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Psicologia Escolar e Educacional</h3>
@@ -243,7 +262,6 @@
                             <a href="" class="btn-inscricao" target="_blank">Em breve | 2026</a>
                         </div>
                     </div>
-
 
                 </div>
             </div>
