@@ -88,7 +88,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-biologia-conservacao-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-estrategia-fiscal-e-tributaria-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>-->
@@ -127,7 +127,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-direito-processual-civil/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
@@ -146,7 +146,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-marketing-e-negocios-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-mba-em-financas-investimentos-e-banking-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                            <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
                         </div>
                     </div>
 
@@ -184,7 +184,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-medicina-equina-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-medicina-de-animais-silvestres-e-exoticos-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-neuropsicopedagogia-clinica-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-neuropsicopedagogia-e-psicomotricidade-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>
@@ -264,7 +264,7 @@
                         </div>
                         <div class="botoes-curso">
                             <a href="https://www.fam.br/curso/curso-psicologia-escolar-e-educacional-fam/" class="btn-saiba-mais" target="_blank">Saiba mais</a>
-                             <a href="https://fam.inscricao.crmeducacional.com/login/57" class="btn-inscricao" target="_blank">Inscreva-se</a>
+                             <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
                     </div>
