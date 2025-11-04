@@ -49,7 +49,7 @@ class SemanaDeAreas {
         try {
             // Adiciona timestamp para forçar recarregamento do JSON
             const timestamp = Date.now();
-            const response = await fetch(`eventos-config.json?v=6.7`);
+            const response = await fetch(`eventos-config.json?v=6.8`);
             const data = await response.json();
             this.eventos = data.eventos;
             
@@ -308,16 +308,25 @@ class SemanaDeAreas {
                 <div class="tab__content">
                     <div class="content">
                         ${eventos.map(evento => {
-                                            const dataInicio = this.parseDate(evento.dataInicio);
-                                            const dataFim = this.parseDate(evento.dataFim);
-                            const mes = dataInicio.toLocaleDateString('pt-BR', { month: 'long' });
-                            const dia = dataInicio.getDate();
+                            const dataInicio = this.parseDate(evento.dataInicio);
+                            const dataFim = this.parseDate(evento.dataFim);
+                            const mesInicio = dataInicio.toLocaleDateString('pt-BR', { month: 'long' });
+                            const mesFim = dataFim.toLocaleDateString('pt-BR', { month: 'long' });
+                            const diaInicio = dataInicio.getDate();
                             const diaFim = dataFim.getDate();
-                            
-                            const periodo = dia === diaFim ? 
-                                `${mes} ${dia}` : 
-                                `${mes} ${dia} a ${diaFim}`;
-                                
+                            const diffDias = Math.round((dataFim - dataInicio) / (1000 * 60 * 60 * 24));
+
+                            let periodo;
+                            if (dataInicio.getMonth() !== dataFim.getMonth()) {
+                                periodo = `${mesInicio} ${diaInicio} a ${mesFim} ${diaFim}`;
+                            } else if (diaInicio === diaFim) {
+                                periodo = `${mesInicio} ${diaInicio}`;
+                            } else if (diffDias === 1) {
+                                periodo = `${mesInicio} ${diaInicio} e ${diaFim}`;
+                            } else {
+                                periodo = `${mesInicio} ${diaInicio} a ${diaFim}`;
+                            }
+
                             return `<a target="_blank" href="${evento.link}">${periodo} | ${evento.nome}</a>`;
                         }).join('')}
                     </div>
