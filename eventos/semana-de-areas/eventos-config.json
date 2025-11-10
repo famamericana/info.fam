@@ -1,6 +1,15 @@
 ﻿{
   "eventos": [
     {
+      "nome": "Comunicação",
+      "dataInicio": "12-11-2025",
+      "dataFim": "13-11-2025",
+      "descricao": "Semana de Comunicação 2025.",
+      "link": "https://info.fam.br/eventos/semana-de-areas/2025/comunicacao",
+      "ano": 2025,
+      "classe": "comunicacao"
+    },
+    {
       "nome": "Educação",
       "dataInicio": "29-09-2025",
       "dataFim": "03-10-2025",
@@ -72,6 +81,7 @@
       "ano": 2025,
       "classe": "comunicacao"
     },
+
     {
       "nome": "Tecnologias",
       "dataInicio": "05-05-2025",
