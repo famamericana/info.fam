@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pós-Graduação FAM</title>
-    <link rel="stylesheet" href="style.css?v=1.13">
+    <link rel="stylesheet" href="style.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="script.js" defer></script>
+    <script src="script.js?v=<?php echo $version; ?>" defer></script>
     <link rel="icon" href="images/famlogo.png" type="image/x-icon">
 </head>
 
@@ -42,7 +42,7 @@
                 qualidade de ensino com responsabilidade social!</p>
         </div>
         <div class="container-button">
-            <a href="https://fam.inscricao.crmeducacional.com/login/57" class="button">Inscreva-se</a>
+            <a href="https://fam.inscricao.crmeducacional.com/login/67" class="button">Inscreva-se</a>
             <a href="#cursos" class="button">Veja os cursos</a>
         </div>
     </header>

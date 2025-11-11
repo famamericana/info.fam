@@ -1,3 +1,6 @@
+<?php
+$version = "1.1"
+?>
 
 <nav class="navbar">
     <div class="navbar-container">

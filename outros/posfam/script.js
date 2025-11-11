@@ -270,10 +270,10 @@ function checkScreenSize() {
     // Check if both slides exist before changing their sources
     if (slide1 && slide2) {
         if (window.innerWidth < 600) {
-            slide1.src = "images/Vestibular-2025.2_Inverno_Banner_VestibularFam_1080x800_mobile.png"; // Altere para a imagem desejada
+            slide1.src = "images/VV2026.1_1080x800_site.png"; // Altere para a imagem desejada
             slide2.src = "images/Pós_Graduação_2024_1080x800.png";
         } else {
-            slide1.src = "images/Vestibular2025_Inverno_Banner_VestibularFam_960x300.png";
+            slide1.src = "images/VV2026.1_1080x300_site.png";
             slide2.src = "images/Pós_Graduação_2024_960x300.png";
         }
     }
