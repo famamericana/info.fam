@@ -229,7 +229,7 @@
                         </div>
                     </div>
 
-                    <!-- Neuropsicopedagogia e Psicomotricidade -->
+                    <!-- Neuropsicopedagogia e Psicomotricidade 
                     <div class="card-curso">
                         <span class="modalidade">Presencial</span>
                         <h3>Neuropsicopedagogia e Psicomotricidade</h3>
@@ -247,7 +247,7 @@
                              <a href="https://fam.inscricao.crmeducacional.com/login/67" class="btn-inscricao" target="_blank">Inscreva-se</a>
 
                         </div>
-                    </div>
+                    </div>-->
 
                     <!-- Psicologia Escolar e Educacional -->
                     <div class="card-curso">
