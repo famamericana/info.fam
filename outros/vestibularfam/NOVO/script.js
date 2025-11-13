@@ -393,8 +393,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'pos-graduacao': {
             titulo: 'Pós-Graduação',
             texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.',
-            link: 'https://fam.inscricao.crmeducacional.com/login/57',
-            linkText: 'Ver Pós-Graduação'
+            link: 'https://fam.inscricao.crmeducacional.com/login/67',
+            linkText: 'Inscrever-se na Pós-Graduação'
         },
         'reabertura': {
             titulo: 'Reabertura de Matrícula',
