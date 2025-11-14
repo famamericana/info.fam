@@ -2058,3 +2058,10 @@ footer .footer-info-icons i {
     opacity: 1;
     transform: translateY(0);
 }
+
+.aviso{
+    color: white;
+    background-color: var(--secondary);
+    padding: 2px 5px;
+    border-radius: var(--border-radius-sm);
+}

@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'pos-graduacao': {
             titulo: 'Pós-Graduação',
-            texto: 'Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.',
+            texto: '<span class="aviso">Cupom não válido para Pós-Graduação.</span> Especializações presenciais e EaD sem vestibular. MBA e cursos de alta qualidade para impulsionar sua carreira.',
             link: 'https://fam.inscricao.crmeducacional.com/login/67',
             linkText: 'Inscrever-se na Pós-Graduação'
         },

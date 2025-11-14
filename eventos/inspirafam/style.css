@@ -47,11 +47,34 @@ main {
     max-width: 1000px;
     box-sizing: border-box;
     padding: 20px;
-    margin: 20px auto;
+    margin: 0 auto;
     height: fit-content;
     background-color: white;
     border-radius: 10px;
 }
+
+
+.flex-container {
+  
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens se ajustem automaticamente */
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.flex-item {
+    background-color: #e53888;
+    padding: 10px;
+  
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    flex: 1 1 200px;
+}
+
 
 /* GALERIA ------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -86,6 +109,7 @@ main {
 }
 
 .textaofamexplicacao {
+     margin-top: 50px !important;
     text-align: center;
 }
 
