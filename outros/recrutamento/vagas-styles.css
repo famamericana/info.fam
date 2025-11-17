@@ -1,0 +1,271 @@
+/* ============================================
+   ESTILOS PARA VAGAS DINÂMICAS
+   ============================================ */
+
+/* Container principal de vagas */
+.vagas-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+/* Título da seção de vagas */
+.vagas-secao-titulo {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Grid de vagas */
+.vagas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Card de vaga individual */
+.vaga-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+}
+
+.vaga-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Vaga em destaque */
+.vaga-card.vaga-destaque {
+    border: 2px solid #ffd700;
+    background: linear-gradient(135deg, #fffef5 0%, #ffffff 100%);
+}
+
+/* Cabeçalho do card */
+.vaga-header {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: white;
+    padding: 1.5rem;
+}
+
+.vaga-titulo {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.vaga-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.vaga-destaque-badge,
+.vaga-tipo-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.vaga-destaque-badge {
+    background: #ffd700;
+    color: #003366;
+}
+
+.vaga-tipo-badge.docente {
+    background: #4CAF50;
+    color: white;
+}
+
+.vaga-tipo-badge.administrativo {
+    background: #2196F3;
+    color: white;
+}
+
+/* Corpo do card */
+.vaga-body {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.vaga-descricao {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.vaga-section {
+    margin: 1.5rem 0;
+}
+
+.vaga-section h4 {
+    color: #003366;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.vaga-section p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Grid de informações */
+.vaga-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.vaga-info-item {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.vaga-info-item strong {
+    color: #003366;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.vaga-data {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Rodapé do card */
+.vaga-footer {
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.vaga-candidatar-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Estados vazios e de erro */
+.vagas-loading,
+.vagas-vazio,
+.vagas-erro {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #555;
+}
+
+.vagas-loading {
+    font-size: 1.1rem;
+    color: #003366;
+}
+
+.vagas-vazio p,
+.vagas-erro p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.vagas-erro {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+}
+
+/* Seção de destaque */
+.vagas-destaque-secao {
+    margin-bottom: 4rem;
+}
+
+.vagas-destaque-secao .vagas-secao-titulo {
+    color: #ffa500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .vagas-section {
+        padding: 1rem;
+    }
+
+    .vagas-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .vaga-titulo {
+        font-size: 1.2rem;
+    }
+
+    .vagas-secao-titulo {
+        font-size: 1.5rem;
+    }
+
+    .vaga-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .vaga-card {
+        border-radius: 8px;
+    }
+
+    .vaga-header,
+    .vaga-body,
+    .vaga-footer {
+        padding: 1rem;
+    }
+
+    .vaga-badges {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vaga-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Impressão */
+@media print {
+    .vaga-footer {
+        display: none;
+    }
+
+    .vaga-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

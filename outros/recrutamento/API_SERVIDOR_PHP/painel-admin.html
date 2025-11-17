@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel RH - Gerenciar Vagas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #003366;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #004080;
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #da190b;
+        }
+
+        .btn-secondary {
+            background: #757575;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #616161;
+        }
+
+        .login-section,
+        .vagas-section {
+            display: none;
+        }
+
+        .login-section.active,
+        .vagas-section.active {
+            display: block;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .vagas-list {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .vaga-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: #fafafa;
+        }
+
+        .vaga-item.destaque {
+            border-color: #ffd700;
+            background: #fffef5;
+        }
+
+        .vaga-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .vaga-item-title {
+            font-size: 1.3rem;
+            color: #003366;
+            font-weight: 700;
+        }
+
+        .vaga-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .vaga-item-actions button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-docente {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .badge-administrativo {
+            background: #2196F3;
+            color: white;
+        }
+
+        .badge-destaque {
+            background: #ffd700;
+            color: #003366;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: #003366;
+        }
+
+        .close-modal {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #757575;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 Painel de Gerenciamento de Vagas</h1>
+        <p>FAM - Faculdade de Americana</p>
+    </header>
+
+    <!-- Seção de Login -->
+    <div class="login-section active">
+        <div class="login-form">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #003366;">Login RH</h2>
+            <div id="loginAlert"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">E-mail:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginSenha">Senha:</label>
+                    <input type="password" id="loginSenha" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Seção de Vagas -->
+    <div class="vagas-section">
+        <div class="container">
+            <div class="user-info">
+                <div>
+                    <strong>Usuário:</strong> <span id="userName"></span><br>
+                    <strong>E-mail:</strong> <span id="userEmail"></span>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()">Sair</button>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <button class="btn btn-success" onclick="abrirModalNovaVaga()">+ Nova Vaga</button>
+            </div>
+
+            <div id="vagasAlert"></div>
+
+            <div class="vagas-list">
+                <h2 style="margin-bottom: 1.5rem; color: #003366;">Vagas Cadastradas</h2>
+                <div id="vagasList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nova/Editar Vaga -->
+    <div id="vagaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Nova Vaga</h2>
+                <span class="close-modal" onclick="fecharModal()">&times;</span>
+            </div>
+            <form id="vagaForm">
+                <input type="hidden" id="vagaId">
+                
+                <div class="form-group">
+                    <label for="vagaTitulo">Título da Vaga: *</label>
+                    <input type="text" id="vagaTitulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaTipo">Tipo: *</label>
+                    <select id="vagaTipo" required>
+                        <option value="">Selecione...</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="docente">Docente</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaDescricao">Descrição: *</label>
+                    <textarea id="vagaDescricao" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaRequisitos">Requisitos:</label>
+                    <textarea id="vagaRequisitos"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaDiferenciais">Diferenciais:</label>
+                    <textarea id="vagaDiferenciais"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaRegime">Regime:</label>
+                    <input type="text" id="vagaRegime" placeholder="CLT, PJ, Horista...">
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaJornada">Jornada:</label>
+                    <input type="text" id="vagaJornada" placeholder="40h semanais, horários variados...">
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaLocal">Local:</label>
+                    <input type="text" id="vagaLocal" placeholder="Americana/SP - Presencial">
+                </div>
+
+                <div class="form-group">
+                    <label for="vagaSalario">Salário:</label>
+                    <input type="text" id="vagaSalario" placeholder="A combinar, R$ 3.000,00...">
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="vagaAtiva" checked>
+                        <label for="vagaAtiva">Vaga ativa</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="vagaDestaque">
+                        <label for="vagaDestaque">Destacar vaga</label>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-success" style="flex: 1;">Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal()" style="flex: 1;">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURAÇÃO - AJUSTE A URL DA API
+        const API_URL = 'https://famamericana.com.br/recrutamento/api/api.php';
+
+        let authToken = localStorage.getItem('authToken');
+        let currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+        // Verificar se já está logado
+        if (authToken && currentUser.id) {
+            mostrarSecaoVagas();
+        }
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginSenha').value;
+
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, senha })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    authToken = data.token;
+                    currentUser = data.usuario;
+                    localStorage.setItem('authToken', authToken);
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    mostrarSecaoVagas();
+                } else {
+                    mostrarAlerta('loginAlert', data.error, 'error');
+                }
+            } catch (error) {
+                mostrarAlerta('loginAlert', 'Erro ao fazer login', 'error');
+            }
+        });
+
+        function mostrarSecaoVagas() {
+            document.querySelector('.login-section').classList.remove('active');
+            document.querySelector('.vagas-section').classList.add('active');
+            document.getElementById('userName').textContent = currentUser.nome;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            carregarVagas();
+        }
+
+        function logout() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('currentUser');
+            location.reload();
+        }
+
+        // Carregar vagas
+        async function carregarVagas() {
+            try {
+                const response = await fetch(`${API_URL}/vagas`);
+                const data = await response.json();
+
+                if (data.success) {
+                    renderizarVagas(data.vagas);
+                }
+            } catch (error) {
+                mostrarAlerta('vagasAlert', 'Erro ao carregar vagas', 'error');
+            }
+        }
+
+        function renderizarVagas(vagas) {
+            const container = document.getElementById('vagasList');
+            
+            if (vagas.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #757575;">Nenhuma vaga cadastrada ainda.</p>';
+                return;
+            }
+
+            container.innerHTML = vagas.map(vaga => `
+                <div class="vaga-item ${vaga.destaque ? 'destaque' : ''}">
+                    <div class="vaga-item-header">
+                        <div>
+                            <h3 class="vaga-item-title">${vaga.titulo}</h3>
+                            <div>
+                                <span class="badge badge-${vaga.tipo}">${vaga.tipo === 'docente' ? 'Docente' : 'Administrativo'}</span>
+                                ${vaga.destaque ? '<span class="badge badge-destaque">⭐ Destaque</span>' : ''}
+                                ${vaga.ativa ? '<span class="badge" style="background: #4CAF50; color: white;">Ativa</span>' : '<span class="badge" style="background: #757575; color: white;">Inativa</span>'}
+                            </div>
+                        </div>
+                        <div class="vaga-item-actions">
+                            <button class="btn btn-primary" onclick='editarVaga(${JSON.stringify(vaga)})'>Editar</button>
+                            <button class="btn btn-danger" onclick="desativarVaga(${vaga.id})">Desativar</button>
+                        </div>
+                    </div>
+                    <p>${vaga.descricao.substring(0, 150)}...</p>
+                </div>
+            `).join('');
+        }
+
+        // Modal
+        function abrirModalNovaVaga() {
+            document.getElementById('modalTitle').textContent = 'Nova Vaga';
+            document.getElementById('vagaForm').reset();
+            document.getElementById('vagaId').value = '';
+            document.getElementById('vagaModal').classList.add('active');
+        }
+
+        function editarVaga(vaga) {
+            document.getElementById('modalTitle').textContent = 'Editar Vaga';
+            document.getElementById('vagaId').value = vaga.id;
+            document.getElementById('vagaTitulo').value = vaga.titulo;
+            document.getElementById('vagaTipo').value = vaga.tipo;
+            document.getElementById('vagaDescricao').value = vaga.descricao;
+            document.getElementById('vagaRequisitos').value = vaga.requisitos || '';
+            document.getElementById('vagaDiferenciais').value = vaga.diferenciais || '';
+            document.getElementById('vagaRegime').value = vaga.regime || '';
+            document.getElementById('vagaJornada').value = vaga.jornada || '';
+            document.getElementById('vagaLocal').value = vaga.local || '';
+            document.getElementById('vagaSalario').value = vaga.salario || '';
+            document.getElementById('vagaAtiva').checked = vaga.ativa;
+            document.getElementById('vagaDestaque').checked = vaga.destaque;
+            document.getElementById('vagaModal').classList.add('active');
+        }
+
+        function fecharModal() {
+            document.getElementById('vagaModal').classList.remove('active');
+        }
+
+        // Salvar vaga
+        document.getElementById('vagaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const vagaId = document.getElementById('vagaId').value;
+            const vagaData = {
+                titulo: document.getElementById('vagaTitulo').value,
+                tipo: document.getElementById('vagaTipo').value,
+                descricao: document.getElementById('vagaDescricao').value,
+                requisitos: document.getElementById('vagaRequisitos').value,
+                diferenciais: document.getElementById('vagaDiferenciais').value,
+                regime: document.getElementById('vagaRegime').value,
+                jornada: document.getElementById('vagaJornada').value,
+                local: document.getElementById('vagaLocal').value,
+                salario: document.getElementById('vagaSalario').value,
+                ativa: document.getElementById('vagaAtiva').checked ? 1 : 0,
+                destaque: document.getElementById('vagaDestaque').checked ? 1 : 0,
+                criado_por: currentUser.id
+            };
+
+            try {
+                const url = vagaId ? `${API_URL}/vaga?id=${vagaId}` : `${API_URL}/vaga`;
+                const method = vagaId ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(vagaData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    mostrarAlerta('vagasAlert', vagaId ? 'Vaga atualizada com sucesso!' : 'Vaga criada com sucesso!', 'success');
+                    fecharModal();
+                    carregarVagas();
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Erro ao salvar vaga');
+            }
+        });
+
+        // Desativar vaga
+        async function desativarVaga(id) {
+            if (!confirm('Deseja realmente desativar esta vaga?')) return;
+
+            try {
+                const response = await fetch(`${API_URL}/vaga?id=${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    mostrarAlerta('vagasAlert', 'Vaga desativada com sucesso!', 'success');
+                    carregarVagas();
+                }
+            } catch (error) {
+                alert('Erro ao desativar vaga');
+            }
+        }
+
+        function mostrarAlerta(containerId, mensagem, tipo) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<div class="alert alert-${tipo}">${mensagem}</div>`;
+            setTimeout(() => container.innerHTML = '', 5000);
+        }
+    </script>
+</body>
+</html>
