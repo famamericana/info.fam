@@ -71,6 +71,12 @@ switch ($path) {
         }
         break;
     
+    case '/alterar-senha':
+        if ($method === 'POST') {
+            alterarSenha();
+        }
+        break;
+    
     default:
         http_response_code(404);
         echo json_encode(['error' => 'Endpoint não encontrado']);
@@ -81,22 +87,57 @@ switch ($path) {
 
 /**
  * GET /api.php/vagas
- * Listar vagas ativas (público)
+ * Listar vagas (para painel admin, filtra por usuário se não for admin)
  */
 function listarVagas() {
     global $pdo;
     
     try {
-        // Buscar apenas vagas ativas e ordenar por destaque e data
-        $sql = "SELECT 
-                    id, titulo, tipo, descricao, requisitos, diferenciais, 
-                    regime, jornada, local, salario, destaque, publicado_em
-                FROM vagas 
-                WHERE ativa = 1 
-                    AND (expira_em IS NULL OR expira_em > NOW())
-                ORDER BY destaque DESC, publicado_em DESC";
+        // Verificar se é uma requisição autenticada (para painel admin)
+        $headers = getallheaders();
+        $isAuthenticated = isset($headers['Authorization']) && !empty($headers['Authorization']);
+        $userId = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
+        $isAdmin = isset($_GET['is_admin']) && $_GET['is_admin'] === '1';
         
-        $stmt = $pdo->query($sql);
+        if ($isAuthenticated && $userId) {
+            // Painel admin: mostrar vagas com filtro por usuário
+            if ($isAdmin) {
+                // Admin vê todas as vagas
+                $sql = "SELECT 
+                            v.id, v.titulo, v.tipo, v.descricao, v.requisitos, v.diferenciais, 
+                            v.regime, v.jornada, v.local, v.salario, v.ativa, v.destaque, 
+                            v.publicado_em, v.criado_por,
+                            u.nome as criador_nome
+                        FROM vagas v
+                        LEFT JOIN usuarios_rh u ON v.criado_por = u.id
+                        ORDER BY v.destaque DESC, v.publicado_em DESC";
+                $stmt = $pdo->query($sql);
+            } else {
+                // Usuário comum vê apenas suas vagas
+                $sql = "SELECT 
+                            v.id, v.titulo, v.tipo, v.descricao, v.requisitos, v.diferenciais, 
+                            v.regime, v.jornada, v.local, v.salario, v.ativa, v.destaque, 
+                            v.publicado_em, v.criado_por,
+                            u.nome as criador_nome
+                        FROM vagas v
+                        LEFT JOIN usuarios_rh u ON v.criado_por = u.id
+                        WHERE v.criado_por = ?
+                        ORDER BY v.destaque DESC, v.publicado_em DESC";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$userId]);
+            }
+        } else {
+            // Público: apenas vagas ativas
+            $sql = "SELECT 
+                        id, titulo, tipo, descricao, requisitos, diferenciais, 
+                        regime, jornada, local, salario, destaque, publicado_em
+                    FROM vagas 
+                    WHERE ativa = 1 
+                        AND (expira_em IS NULL OR expira_em > NOW())
+                    ORDER BY destaque DESC, publicado_em DESC";
+            $stmt = $pdo->query($sql);
+        }
+        
         $vagas = $stmt->fetchAll();
         
         // Formatar datas
@@ -105,6 +146,7 @@ function listarVagas() {
                 $vaga['publicado_em'] = date('d/m/Y', strtotime($vaga['publicado_em']));
             }
             $vaga['destaque'] = (bool) $vaga['destaque'];
+            $vaga['ativa'] = (bool) $vaga['ativa'];
         }
         
         echo json_encode([
@@ -250,7 +292,7 @@ function criarVaga() {
 
 /**
  * PUT /api.php/vaga?id=123
- * Atualizar vaga existente
+ * Atualizar vaga existente (apenas criador pode editar)
  */
 function atualizarVaga() {
     global $pdo;
@@ -272,7 +314,33 @@ function atualizarVaga() {
     
     $data = json_decode(file_get_contents('php://input'), true);
     
+    // Verificar se é o criador da vaga
+    $userId = $data['user_id'] ?? null;
+    if (!$userId) {
+        http_response_code(400);
+        echo json_encode(['error' => 'ID do usuário é obrigatório']);
+        return;
+    }
+    
     try {
+        // Verificar se a vaga pertence ao usuário
+        $stmt = $pdo->prepare("SELECT criado_por FROM vagas WHERE id = ?");
+        $stmt->execute([$id]);
+        $vaga = $stmt->fetch();
+        
+        if (!$vaga) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Vaga não encontrada']);
+            return;
+        }
+        
+        // Apenas o criador pode editar sua vaga
+        if ($vaga['criado_por'] != $userId) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Você não tem permissão para editar esta vaga']);
+            return;
+        }
+        
         $campos = [];
         $valores = [];
         
@@ -749,6 +817,72 @@ function removerAdmin() {
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao remover privilégios']);
+    }
+}
+
+/**
+ * POST /api.php/alterar-senha
+ * Alterar senha do usuário logado
+ */
+function alterarSenha() {
+    global $pdo;
+    
+    // Verificar autenticação
+    $headers = getallheaders();
+    if (!isset($headers['Authorization'])) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Não autorizado']);
+        return;
+    }
+    
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['usuario_id']) || empty($data['senha_atual']) || empty($data['senha_nova'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Todos os campos são obrigatórios']);
+        return;
+    }
+    
+    // Validar senha nova (mínimo 6 caracteres)
+    if (strlen($data['senha_nova']) < 6) {
+        http_response_code(400);
+        echo json_encode(['error' => 'A senha deve ter no mínimo 6 caracteres']);
+        return;
+    }
+    
+    try {
+        // Buscar usuário e verificar senha atual
+        $stmt = $pdo->prepare("SELECT senha FROM usuarios_rh WHERE id = ?");
+        $stmt->execute([$data['usuario_id']]);
+        $usuario = $stmt->fetch();
+        
+        if (!$usuario) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Usuário não encontrado']);
+            return;
+        }
+        
+        // Verificar senha atual
+        if (!password_verify($data['senha_atual'], $usuario['senha'])) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Senha atual incorreta']);
+            return;
+        }
+        
+        // Atualizar senha
+        $senhaHash = password_hash($data['senha_nova'], PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios_rh SET senha = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$senhaHash, $data['usuario_id']]);
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Senha alterada com sucesso'
+        ]);
+        
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Erro ao alterar senha']);
     }
 }
 ?>

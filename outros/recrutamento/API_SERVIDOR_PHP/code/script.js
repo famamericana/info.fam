@@ -99,7 +99,12 @@ function logout() {
 
 async function carregarVagas() {
     try {
-        const response = await fetch(`${API_URL}/vagas`);
+        const url = `${API_URL}/vagas?user_id=${currentUser.id}&is_admin=${isUserAdmin ? '1' : '0'}`;
+        const response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
         const data = await response.json();
 
         if (data.success) {
@@ -118,25 +123,41 @@ function renderizarVagas(vagas) {
         return;
     }
 
-    container.innerHTML = vagas.map(vaga => `
+    container.innerHTML = vagas.map(vaga => {
+        // Usuário só pode editar/desativar suas próprias vagas
+        const podeEditar = vaga.criado_por == currentUser.id;
+        const criadorInfo = vaga.criador_nome ? `<span class="badge" style="background: var(--info); color: white;"><i class="fas fa-user"></i> ${vaga.criador_nome}</span>` : '';
+        
+        return `
         <div class="vaga-item ${vaga.destaque ? 'destaque' : ''}">
             <div class="vaga-item-header">
                 <div>
                     <h3 class="vaga-item-title">${vaga.titulo}</h3>
                     <div>
-                        <span class="badge badge-${vaga.tipo}">${vaga.tipo === 'docente' ? 'Docente' : 'Administrativo'}</span>
-                        ${vaga.destaque ? '<span class="badge badge-destaque">⭐ Destaque</span>' : ''}
-                        ${vaga.ativa ? '<span class="badge" style="background: var(--success); color: white;">Ativa</span>' : '<span class="badge" style="background: var(--gray-600); color: white;">Inativa</span>'}
+                        <span class="badge badge-${vaga.tipo}">
+                            <i class="fas fa-${vaga.tipo === 'docente' ? 'chalkboard-teacher' : 'briefcase'}"></i>
+                            ${vaga.tipo === 'docente' ? 'Docente' : 'Administrativo'}
+                        </span>
+                        ${vaga.destaque ? '<span class="badge badge-destaque"><i class="fas fa-star"></i> Destaque</span>' : ''}
+                        ${vaga.ativa ? '<span class="badge" style="background: var(--success); color: white;"><i class="fas fa-check-circle"></i> Ativa</span>' : '<span class="badge" style="background: var(--gray-600); color: white;"><i class="fas fa-times-circle"></i> Inativa</span>'}
+                        ${isUserAdmin ? criadorInfo : ''}
                     </div>
                 </div>
                 <div class="vaga-item-actions">
-                    <button class="btn btn-primary" onclick='editarVaga(${JSON.stringify(vaga)})'>Editar</button>
-                    <button class="btn btn-danger" onclick="desativarVaga(${vaga.id})">Desativar</button>
+                    ${podeEditar ? `
+                        <button class="btn btn-primary" onclick='editarVaga(${JSON.stringify(vaga)})'>
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger" onclick="desativarVaga(${vaga.id})">
+                            <i class="fas fa-trash"></i> Desativar
+                        </button>
+                    ` : '<span style="color: var(--gray-600); font-size: 0.875rem;"><i class="fas fa-lock"></i> Somente leitura</span>'}
                 </div>
             </div>
             <p>${vaga.descricao.substring(0, 150)}...</p>
         </div>
-    `).join('');
+    `;
+    }).join('');
 }
 
 function abrirModalNovaVaga() {
@@ -183,7 +204,8 @@ document.getElementById('vagaForm').addEventListener('submit', async (e) => {
         salario: document.getElementById('vagaSalario').value,
         ativa: document.getElementById('vagaAtiva').checked ? 1 : 0,
         destaque: document.getElementById('vagaDestaque').checked ? 1 : 0,
-        criado_por: currentUser.id
+        criado_por: currentUser.id,
+        user_id: currentUser.id
     };
 
     try {
@@ -292,17 +314,17 @@ function renderizarUsuarios(usuarios) {
     let html = '';
     
     if (pendentes.length > 0) {
-        html += '<h3 style="color: var(--warning); margin: 2rem 0 1rem 0;">⏳ Pendentes de Aprovação (' + pendentes.length + ')</h3>';
+        html += '<h3 style="color: var(--warning); margin: 2rem 0 1rem 0;"><i class="fas fa-clock"></i> Pendentes de Aprovação (' + pendentes.length + ')</h3>';
         pendentes.forEach(usuario => html += renderizarUsuarioItem(usuario));
     }
     
     if (aprovados.length > 0) {
-        html += '<h3 style="color: var(--success); margin: 2rem 0 1rem 0;">✅ Aprovados (' + aprovados.length + ')</h3>';
+        html += '<h3 style="color: var(--success); margin: 2rem 0 1rem 0;"><i class="fas fa-check-circle"></i> Aprovados (' + aprovados.length + ')</h3>';
         aprovados.forEach(usuario => html += renderizarUsuarioItem(usuario));
     }
     
     if (rejeitados.length > 0) {
-        html += '<h3 style="color: var(--danger); margin: 2rem 0 1rem 0;">❌ Rejeitados (' + rejeitados.length + ')</h3>';
+        html += '<h3 style="color: var(--danger); margin: 2rem 0 1rem 0;"><i class="fas fa-times-circle"></i> Rejeitados (' + rejeitados.length + ')</h3>';
         rejeitados.forEach(usuario => html += renderizarUsuarioItem(usuario));
     }
     
@@ -311,25 +333,25 @@ function renderizarUsuarios(usuarios) {
 
 function renderizarUsuarioItem(usuario) {
     const statusBadge = {
-        'pendente': '<span class="badge-status badge-pendente">⏳ Pendente</span>',
-        'aprovado': '<span class="badge-status badge-aprovado">✅ Aprovado</span>',
-        'rejeitado': '<span class="badge-status badge-rejeitado">❌ Rejeitado</span>'
+        'pendente': '<span class="badge-status badge-pendente"><i class="fas fa-clock"></i> Pendente</span>',
+        'aprovado': '<span class="badge-status badge-aprovado"><i class="fas fa-check-circle"></i> Aprovado</span>',
+        'rejeitado': '<span class="badge-status badge-rejeitado"><i class="fas fa-times-circle"></i> Rejeitado</span>'
     }[usuario.status];
     
-    const adminBadge = usuario.is_admin ? '<span class="badge-status" style="background: var(--info); color: white;">👨‍💼 Admin</span>' : '';
+    const adminBadge = usuario.is_admin ? '<span class="badge-status" style="background: var(--info); color: white;"><i class="fas fa-user-shield"></i> Admin</span>' : '';
     
     let actions = '';
     
     if (usuario.status === 'pendente') {
         actions = `
-            <button class="btn btn-success" onclick="aprovarUsuario(${usuario.id})">✅ Aprovar</button>
-            <button class="btn btn-danger" onclick="abrirModalRejeitar(${usuario.id})">❌ Rejeitar</button>
+            <button class="btn btn-success" onclick="aprovarUsuario(${usuario.id})"><i class="fas fa-check"></i> Aprovar</button>
+            <button class="btn btn-danger" onclick="abrirModalRejeitar(${usuario.id})"><i class="fas fa-times"></i> Rejeitar</button>
         `;
     } else if (usuario.status === 'aprovado') {
         if (usuario.is_admin) {
-            actions = `<button class="btn btn-secondary" onclick="removerAdmin(${usuario.id})">⬇️ Remover Admin</button>`;
+            actions = `<button class="btn btn-secondary" onclick="removerAdmin(${usuario.id})"><i class="fas fa-arrow-down"></i> Remover Admin</button>`;
         } else {
-            actions = `<button class="btn" style="background: var(--info); color: white;" onclick="promoverAdmin(${usuario.id})">⬆️ Promover a Admin</button>`;
+            actions = `<button class="btn" style="background: var(--info); color: white;" onclick="promoverAdmin(${usuario.id})"><i class="fas fa-arrow-up"></i> Promover a Admin</button>`;
         }
     }
     
@@ -368,7 +390,7 @@ async function aprovarUsuario(usuarioId) {
         const data = await response.json();
 
         if (data.success) {
-            mostrarAlerta('vagasAlert', '✅ Usuário aprovado!', 'success');
+            mostrarAlerta('vagasAlert', '<i class="fas fa-check-circle"></i> Usuário aprovado!', 'success');
             carregarUsuarios();
             carregarEstatisticas();
         } else {
@@ -408,7 +430,7 @@ document.getElementById('rejeitarForm').addEventListener('submit', async (e) => 
         const data = await response.json();
 
         if (data.success) {
-            mostrarAlerta('vagasAlert', '❌ Usuário rejeitado.', 'success');
+            mostrarAlerta('vagasAlert', '<i class="fas fa-times-circle"></i> Usuário rejeitado.', 'success');
             fecharModalRejeitar();
             carregarUsuarios();
             carregarEstatisticas();
@@ -436,7 +458,7 @@ async function promoverAdmin(usuarioId) {
         const data = await response.json();
 
         if (data.success) {
-            mostrarAlerta('vagasAlert', '⬆️ Usuário promovido a Administrador!', 'success');
+            mostrarAlerta('vagasAlert', '<i class="fas fa-arrow-up"></i> Usuário promovido a Administrador!', 'success');
             carregarUsuarios();
             carregarEstatisticas();
         } else {
@@ -463,7 +485,7 @@ async function removerAdmin(usuarioId) {
         const data = await response.json();
 
         if (data.success) {
-            mostrarAlerta('vagasAlert', '⬇️ Privilégios removidos.', 'success');
+            mostrarAlerta('vagasAlert', '<i class="fas fa-arrow-down"></i> Privilégios removidos.', 'success');
             carregarUsuarios();
             carregarEstatisticas();
         } else {

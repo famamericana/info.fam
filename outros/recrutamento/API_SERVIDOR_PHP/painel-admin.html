@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel RH - Gerenciar Vagas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="code/style.css">
 </head>
 <body>
     <header>
-        <h1>🎓 Painel de Gerenciamento de Vagas</h1>
+        <h1><i class="fas fa-graduation-cap"></i> Painel de Gerenciamento de Vagas</h1>
         <p>FAM - Faculdade de Americana</p>
     </header>
 
@@ -39,7 +40,14 @@
                     <strong id="userName"></strong>
                     <span id="userEmail"></span>
                 </div>
-                <button class="btn btn-secondary" onclick="logout()">🚪 Sair</button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn" style="background: var(--info); color: white;" onclick="window.location.href='configuracoes.html'">
+                        <i class="fas fa-cog"></i> Configurações
+                    </button>
+                    <button class="btn btn-secondary" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </button>
+                </div>
             </div>
 
             <!-- Estatísticas (apenas para admins) -->
@@ -47,21 +55,21 @@
                 <div class="stats-grid">
                     <div class="stat-card stat-vagas" onclick="switchTab('vagas')">
                         <div class="stat-number" id="statVagasAtivas">0</div>
-                        <div class="stat-label">📋 Vagas Ativas</div>
+                        <div class="stat-label"><i class="fas fa-briefcase"></i> Vagas Ativas</div>
                     </div>
                     <div class="stat-card stat-pendentes" onclick="switchTab('usuarios')">
                         <div class="stat-number" id="statPendentes">0</div>
-                        <div class="stat-label">⏳ Usuários Pendentes</div>
+                        <div class="stat-label"><i class="fas fa-clock"></i> Usuários Pendentes</div>
                     </div>
                     <div class="stat-card stat-admins">
                         <div class="stat-number" id="statAdmins">0</div>
-                        <div class="stat-label">👨‍💼 Administradores</div>
+                        <div class="stat-label"><i class="fas fa-user-shield"></i> Administradores</div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mb-2">
-                <button class="btn btn-success" onclick="abrirModalNovaVaga()">✨ Nova Vaga</button>
+                <button class="btn btn-success" onclick="abrirModalNovaVaga()"><i class="fas fa-plus-circle"></i> Nova Vaga</button>
             </div>
 
             <div id="vagasAlert"></div>
