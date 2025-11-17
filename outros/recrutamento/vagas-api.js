@@ -6,7 +6,7 @@
 
 const API_CONFIG = {
     // URL base da API - AJUSTE PARA O DOMÍNIO CORRETO
-    baseURL: 'https://famamericana.com.br/recrutamento/api.php',
+    baseURL: 'https://famamericana.com.br/recrutamento/api',
     // Timeout em milissegundos
     timeout: 10000
 };
