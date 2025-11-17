@@ -1,9 +1,9 @@
 <?php
 // Configuração do banco de dados
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'recrutamento_fam');
-define('DB_USER', 'seu_usuario');
-define('DB_PASS', 'sua_senha');
+define('DB_NAME', 'u885853422_recrutamento');
+define('DB_USER', 'u885853422_recrutamento');
+define('DB_PASS', 'ba806\'I:>0c&`Q.99');
 
 // Configuração de CORS - IMPORTANTE: ajuste para o domínio correto
 header('Access-Control-Allow-Origin: *'); // Em produção, substitua * pelo domínio específico: https://famamericana.com.br
