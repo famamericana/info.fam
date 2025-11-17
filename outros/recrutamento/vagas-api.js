@@ -100,14 +100,14 @@ class VagasRenderer {
                     
                     ${vaga.requisitos ? `
                         <div class="vaga-section">
-                            <h4>📋 Requisitos:</h4>
+                            <h4>Requisitos:</h4>
                             <p>${this.formatarTexto(vaga.requisitos)}</p>
                         </div>
                     ` : ''}
                     
                     ${vaga.diferenciais ? `
                         <div class="vaga-section">
-                            <h4>✨ Diferenciais:</h4>
+                            <h4>Diferenciais:</h4>
                             <p>${this.formatarTexto(vaga.diferenciais)}</p>
                         </div>
                     ` : ''}
@@ -119,7 +119,7 @@ class VagasRenderer {
                         ${vaga.salario ? `<div class="vaga-info-item"><strong>Salário:</strong> ${this.escapeHtml(vaga.salario)}</div>` : ''}
                     </div>
                     
-                    ${vaga.publicado_em ? `<p class="vaga-data">📅 Publicado em: ${vaga.publicado_em}</p>` : ''}
+                    ${vaga.publicado_em ? `<p class="vaga-data">Publicado em: ${vaga.publicado_em}</p>` : ''}
                 </div>
                 
                 <div class="vaga-footer">
