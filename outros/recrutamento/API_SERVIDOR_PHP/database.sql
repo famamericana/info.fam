@@ -9,10 +9,21 @@ CREATE TABLE IF NOT EXISTS usuarios_rh (
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
+    telefone VARCHAR(20),
+    cargo VARCHAR(100),
+    status ENUM('pendente', 'aprovado', 'rejeitado') DEFAULT 'pendente',
     ativo TINYINT(1) DEFAULT 1,
+    token_verificacao VARCHAR(64) NULL,
+    email_verificado TINYINT(1) DEFAULT 0,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     ultimo_acesso TIMESTAMP NULL,
-    INDEX idx_email (email)
+    aprovado_por INT NULL,
+    aprovado_em TIMESTAMP NULL,
+    observacoes TEXT NULL,
+    INDEX idx_email (email),
+    INDEX idx_status (status),
+    INDEX idx_token (token_verificacao),
+    FOREIGN KEY (aprovado_por) REFERENCES usuarios_rh(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Tabela de vagas
@@ -41,9 +52,10 @@ CREATE TABLE IF NOT EXISTS vagas (
     INDEX idx_criado_em (criado_em)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserir usuário padrão (senha: admin123 - ALTERE DEPOIS!)
-INSERT INTO usuarios_rh (nome, email, senha) 
-VALUES ('Administrador', 'rh@fam.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+-- Inserir usuário administrador padrão (senha: admin123 - ALTERE DEPOIS!)
+-- Status 'aprovado' para ter acesso total
+INSERT INTO usuarios_rh (nome, email, senha, status, email_verificado) 
+VALUES ('Administrador', 'rh@fam.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'aprovado', 1);
 
 -- Exemplo de vagas iniciais
 INSERT INTO vagas (titulo, tipo, descricao, requisitos, diferenciais, regime, jornada, local, salario, ativa, destaque, criado_por) VALUES

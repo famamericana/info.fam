@@ -1,0 +1,412 @@
+<!-- 
+    ADICIONE ESTE CÓDIGO AO painel-admin.html
+    
+    1. Adicione o CSS no <style>
+    2. Adicione o HTML depois do botão "Nova Vaga"
+    3. Adicione o JavaScript no final
+-->
+
+<!-- ============================================
+     CSS - Adicione dentro da tag <style>
+     ============================================ -->
+<style>
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #757575;
+    transition: all 0.3s;
+}
+
+.tab:hover {
+    color: #003366;
+}
+
+.tab.active {
+    color: #003366;
+    border-bottom-color: #003366;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.usuario-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: #fafafa;
+}
+
+.usuario-item.pendente {
+    border-left: 4px solid #ffc107;
+}
+
+.usuario-item.aprovado {
+    border-left: 4px solid #4CAF50;
+}
+
+.usuario-item.rejeitado {
+    border-left: 4px solid #f44336;
+}
+
+.usuario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.usuario-nome {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #003366;
+}
+
+.usuario-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.badge-pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-aprovado {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-rejeitado {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.usuario-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    color: #555;
+}
+
+.usuario-info-item {
+    font-size: 0.9rem;
+}
+
+.usuario-info-item strong {
+    display: block;
+    color: #003366;
+    margin-bottom: 0.25rem;
+}
+
+.modal-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+</style>
+
+<!-- ============================================
+     HTML - Adicione depois da user-info
+     ============================================ -->
+<div class="tabs" id="tabsContainer" style="display: none;">
+    <button class="tab active" onclick="switchTab('vagas')">Vagas</button>
+    <button class="tab" onclick="switchTab('usuarios')">Usuários Pendentes</button>
+</div>
+
+<div id="vagasTab" class="tab-content active">
+    <!-- TODO conteúdo de vagas existente fica aqui -->
+</div>
+
+<div id="usuariosTab" class="tab-content">
+    <div class="vagas-list">
+        <h2 style="margin-bottom: 1.5rem; color: #003366;">Gerenciar Usuários</h2>
+        <div id="usuariosList"></div>
+    </div>
+</div>
+
+<!-- Modal Rejeitar Usuário -->
+<div id="rejeitarModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Rejeitar Usuário</h2>
+            <span class="close-modal" onclick="fecharModalRejeitar()">&times;</span>
+        </div>
+        <form id="rejeitarForm">
+            <input type="hidden" id="rejeitarUsuarioId">
+            
+            <div class="form-group">
+                <label for="motivoRejeicao">Motivo da Rejeição (opcional):</label>
+                <textarea id="motivoRejeicao" class="modal-textarea" placeholder="Ex: Não faz parte da equipe de RH"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-danger" style="flex: 1;">Confirmar Rejeição</button>
+                <button type="button" class="btn btn-secondary" onclick="fecharModalRejeitar()" style="flex: 1;">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ============================================
+     JAVASCRIPT - Adicione no final do <script>
+     ============================================ -->
+<script>
+// Variáveis globais
+let isUserAdmin = false;
+
+// Atualizar função mostrarSecaoVagas para verificar se é admin
+function mostrarSecaoVagas() {
+    document.querySelector('.login-section').classList.remove('active');
+    document.querySelector('.vagas-section').classList.add('active');
+    document.getElementById('userName').textContent = currentUser.nome;
+    document.getElementById('userEmail').textContent = currentUser.email;
+    
+    // Verificar se é admin
+    isUserAdmin = currentUser.isAdmin || currentUser.id == 1 || currentUser.email == 'rh@fam.br';
+    
+    if (isUserAdmin) {
+        // Mostrar tabs e carregar usuários
+        document.getElementById('tabsContainer').style.display = 'flex';
+        carregarUsuarios();
+    }
+    
+    carregarVagas();
+}
+
+// Trocar entre abas
+function switchTab(tab) {
+    // Atualizar botões
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Mostrar conteúdo
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    
+    if (tab === 'vagas') {
+        document.getElementById('vagasTab').classList.add('active');
+        carregarVagas();
+    } else if (tab === 'usuarios') {
+        document.getElementById('usuariosTab').classList.add('active');
+        carregarUsuarios();
+    }
+}
+
+// Carregar usuários pendentes
+async function carregarUsuarios() {
+    if (!isUserAdmin) return;
+    
+    try {
+        const response = await fetch(`${API_URL}/usuarios-pendentes`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            renderizarUsuarios(data.usuarios);
+        }
+    } catch (error) {
+        console.error('Erro ao carregar usuários:', error);
+    }
+}
+
+// Renderizar lista de usuários
+function renderizarUsuarios(usuarios) {
+    const container = document.getElementById('usuariosList');
+    
+    if (usuarios.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #757575;">Nenhum usuário para gerenciar.</p>';
+        return;
+    }
+    
+    // Separar por status
+    const pendentes = usuarios.filter(u => u.status === 'pendente');
+    const aprovados = usuarios.filter(u => u.status === 'aprovado');
+    const rejeitados = usuarios.filter(u => u.status === 'rejeitado');
+    
+    let html = '';
+    
+    if (pendentes.length > 0) {
+        html += '<h3 style="color: #ffc107; margin: 2rem 0 1rem 0;">⏳ Pendentes de Aprovação (' + pendentes.length + ')</h3>';
+        pendentes.forEach(usuario => {
+            html += renderizarUsuarioItem(usuario);
+        });
+    }
+    
+    if (aprovados.length > 0) {
+        html += '<h3 style="color: #4CAF50; margin: 2rem 0 1rem 0;">✅ Aprovados (' + aprovados.length + ')</h3>';
+        aprovados.forEach(usuario => {
+            html += renderizarUsuarioItem(usuario);
+        });
+    }
+    
+    if (rejeitados.length > 0) {
+        html += '<h3 style="color: #f44336; margin: 2rem 0 1rem 0;">❌ Rejeitados (' + rejeitados.length + ')</h3>';
+        rejeitados.forEach(usuario => {
+            html += renderizarUsuarioItem(usuario);
+        });
+    }
+    
+    container.innerHTML = html;
+}
+
+// Renderizar item de usuário
+function renderizarUsuarioItem(usuario) {
+    const statusBadge = {
+        'pendente': '<span class="badge-status badge-pendente">⏳ Pendente</span>',
+        'aprovado': '<span class="badge-status badge-aprovado">✅ Aprovado</span>',
+        'rejeitado': '<span class="badge-status badge-rejeitado">❌ Rejeitado</span>'
+    }[usuario.status];
+    
+    const actions = usuario.status === 'pendente' ? `
+        <button class="btn btn-success" onclick="aprovarUsuario(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+            ✅ Aprovar
+        </button>
+        <button class="btn btn-danger" onclick="abrirModalRejeitar(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+            ❌ Rejeitar
+        </button>
+    ` : '';
+    
+    return `
+        <div class="usuario-item ${usuario.status}">
+            <div class="usuario-header">
+                <div>
+                    <h3 class="usuario-nome">${usuario.nome}</h3>
+                    ${statusBadge}
+                </div>
+                <div class="usuario-actions">
+                    ${actions}
+                </div>
+            </div>
+            <div class="usuario-info">
+                <div class="usuario-info-item">
+                    <strong>E-mail:</strong>
+                    ${usuario.email}
+                </div>
+                <div class="usuario-info-item">
+                    <strong>Telefone:</strong>
+                    ${usuario.telefone || 'Não informado'}
+                </div>
+                <div class="usuario-info-item">
+                    <strong>Cargo:</strong>
+                    ${usuario.cargo || 'Não informado'}
+                </div>
+                <div class="usuario-info-item">
+                    <strong>Cadastrado em:</strong>
+                    ${usuario.criado_em}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Aprovar usuário
+async function aprovarUsuario(usuarioId) {
+    if (!confirm('Deseja aprovar este usuário? Ele receberá um e-mail de confirmação e poderá fazer login.')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/aprovar-usuario`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario_id: usuarioId,
+                admin_id: currentUser.id
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mostrarAlerta('vagasAlert', '✅ Usuário aprovado! Um e-mail foi enviado.', 'success');
+            carregarUsuarios();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erro ao aprovar usuário');
+    }
+}
+
+// Abrir modal de rejeição
+function abrirModalRejeitar(usuarioId) {
+    document.getElementById('rejeitarUsuarioId').value = usuarioId;
+    document.getElementById('motivoRejeicao').value = '';
+    document.getElementById('rejeitarModal').classList.add('active');
+}
+
+// Fechar modal de rejeição
+function fecharModalRejeitar() {
+    document.getElementById('rejeitarModal').classList.remove('active');
+}
+
+// Submit de rejeição
+document.getElementById('rejeitarForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const usuarioId = document.getElementById('rejeitarUsuarioId').value;
+    const motivo = document.getElementById('motivoRejeicao').value;
+    
+    try {
+        const response = await fetch(`${API_URL}/rejeitar-usuario`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario_id: usuarioId,
+                motivo: motivo
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mostrarAlerta('vagasAlert', '❌ Usuário rejeitado. Um e-mail foi enviado.', 'success');
+            fecharModalRejeitar();
+            carregarUsuarios();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erro ao rejeitar usuário');
+    }
+});
+</script>
