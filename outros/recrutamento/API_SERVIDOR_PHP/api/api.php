@@ -265,7 +265,7 @@ function criarVaga() {
         $sql = "INSERT INTO vagas (
                     titulo, tipo, descricao, requisitos, diferenciais, 
                     regime, jornada, local, salario, ativa, destaque, criado_por, publicado_em
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, ?, NOW())";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
@@ -278,8 +278,6 @@ function criarVaga() {
             $data['jornada'] ?? null,
             $data['local'] ?? null,
             $data['salario'] ?? null,
-            $data['ativa'] ?? 1,
-            $data['destaque'] ?? 0,
             $data['criado_por']
         ]);
         
@@ -350,7 +348,7 @@ function atualizarVaga() {
         $valores = [];
         
         $camposPermitidos = ['titulo', 'tipo', 'descricao', 'requisitos', 'diferenciais', 
-                             'regime', 'jornada', 'local', 'salario', 'ativa', 'destaque'];
+                             'regime', 'jornada', 'local', 'salario'];
         
         foreach ($camposPermitidos as $campo) {
             if (isset($data[$campo])) {
@@ -384,7 +382,7 @@ function atualizarVaga() {
 
 /**
  * DELETE /api.php/vaga?id=123
- * Desativar vaga
+ * Deletar vaga permanentemente
  */
 function deletarVaga() {
     global $pdo;
@@ -405,18 +403,18 @@ function deletarVaga() {
     }
     
     try {
-        // Não deletar, apenas desativar
-        $stmt = $pdo->prepare("UPDATE vagas SET ativa = 0 WHERE id = ?");
+        // Deletar permanentemente
+        $stmt = $pdo->prepare("DELETE FROM vagas WHERE id = ?");
         $stmt->execute([$id]);
         
         echo json_encode([
             'success' => true,
-            'message' => 'Vaga desativada com sucesso'
+            'message' => 'Vaga deletada com sucesso'
         ]);
         
     } catch (PDOException $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Erro ao desativar vaga']);
+        echo json_encode(['error' => 'Erro ao deletar vaga']);
     }
 }
 

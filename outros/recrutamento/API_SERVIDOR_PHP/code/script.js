@@ -132,7 +132,7 @@ function renderizarVagas(vagas) {
         const criadorInfo = vaga.criador_nome ? `<span class="badge" style="background: var(--info); color: white;"><i class="fas fa-user"></i> ${vaga.criador_nome}</span>` : '';
         
         return `
-        <div class="vaga-item ${vaga.destaque ? 'destaque' : ''}">
+        <div class="vaga-item">
             <div class="vaga-item-header">
                 <div>
                     <h3 class="vaga-item-title">${vaga.titulo}</h3>
@@ -141,8 +141,6 @@ function renderizarVagas(vagas) {
                             <i class="fas fa-${vaga.tipo === 'docente' ? 'chalkboard-teacher' : 'briefcase'}"></i>
                             ${vaga.tipo === 'docente' ? 'Docente' : 'Administrativo'}
                         </span>
-                        ${vaga.destaque ? '<span class="badge badge-destaque"><i class="fas fa-star"></i> Destaque</span>' : ''}
-                        ${(vaga.ativa == 1 || vaga.ativa === true) ? '<span class="badge" style="background: var(--success); color: white;"><i class="fas fa-check-circle"></i> Ativa</span>' : '<span class="badge" style="background: var(--gray-600); color: white;"><i class="fas fa-times-circle"></i> Inativa</span>'}
                         ${isUserAdmin ? criadorInfo : ''}
                     </div>
                 </div>
@@ -152,7 +150,7 @@ function renderizarVagas(vagas) {
                             <i class="fas fa-edit"></i> Editar
                         </button>
                         <button class="btn btn-danger" onclick="desativarVaga(${vaga.id})">
-                            <i class="fas fa-trash"></i> Desativar
+                            <i class="fas fa-trash"></i> Deletar
                         </button>
                     ` : '<span style="color: var(--gray-600); font-size: 0.875rem;"><i class="fas fa-lock"></i> Somente leitura</span>'}
                 </div>
@@ -182,8 +180,6 @@ function editarVaga(vaga) {
     document.getElementById('vagaJornada').value = vaga.jornada || '';
     document.getElementById('vagaLocal').value = vaga.local || '';
     document.getElementById('vagaSalario').value = vaga.salario || '';
-    document.getElementById('vagaAtiva').checked = vaga.ativa;
-    document.getElementById('vagaDestaque').checked = vaga.destaque;
     document.getElementById('vagaModal').classList.add('active');
 }
 
@@ -205,8 +201,6 @@ document.getElementById('vagaForm').addEventListener('submit', async (e) => {
         jornada: document.getElementById('vagaJornada').value,
         local: document.getElementById('vagaLocal').value,
         salario: document.getElementById('vagaSalario').value,
-        ativa: document.getElementById('vagaAtiva').checked ? 1 : 0,
-        destaque: document.getElementById('vagaDestaque').checked ? 1 : 0,
         criado_por: currentUser.id,
         user_id: currentUser.id
     };
@@ -239,7 +233,7 @@ document.getElementById('vagaForm').addEventListener('submit', async (e) => {
 });
 
 async function desativarVaga(id) {
-    if (!confirm('Deseja realmente desativar esta vaga?')) return;
+    if (!confirm('Deseja realmente deletar esta vaga?')) return;
 
     try {
         const response = await fetch(`${API_URL}/vaga?id=${id}`, {
@@ -253,11 +247,11 @@ async function desativarVaga(id) {
         const data = await response.json();
 
         if (data.success) {
-            mostrarAlerta('vagasAlert', 'Vaga desativada com sucesso!', 'success');
+            mostrarAlerta('vagasAlert', 'Vaga deletada com sucesso!', 'success');
             carregarVagas();
         }
     } catch (error) {
-        alert('Erro ao desativar vaga');
+        alert('Erro ao deletar vaga');
     }
 }
 
