@@ -2,6 +2,9 @@
    ESTILOS PARA VAGAS DINÂMICAS
    ============================================ */
 
+#vagas-disponiveis{
+    padding-bottom: 50px;
+}
 
 /* Título da seção de vagas */
 h2 {
