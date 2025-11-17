@@ -12,8 +12,8 @@ define('SMTP_PASS', 'Vt:H0Rg%3Co<Gr3V{T274fwIGD6fmM^2M!%0'); // senha do e-mail
 define('SMTP_FROM', 'noreply@famamericana.com.br');
 define('SMTP_FROM_NAME', 'Sistema de Vagas FAM');
 
-// URL base do sistema
-define('BASE_URL', 'https://famamericana.com.br/recrutamento/api');
+// URL base do sistema (interface do painel/api exposta em /recrutamento)
+define('BASE_URL', 'https://famamericana.com.br/recrutamento');
 
 /**
  * Enviar e-mail usando mail() nativo do PHP
