@@ -43,19 +43,19 @@
             </div>
 
             <!-- Estatísticas (apenas para admins) -->
-            <div id="statsContainer" style="display: none;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-                    <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2); cursor: pointer; transition: transform 0.3s;" onclick="switchTab('vagas')">
-                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statVagasAtivas">0</div>
-                        <div style="opacity: 0.9; font-size: 0.95rem;">📋 Vagas Ativas</div>
+            <div id="statsContainer" class="hidden">
+                <div class="stats-grid">
+                    <div class="stat-card stat-vagas" onclick="switchTab('vagas')">
+                        <div class="stat-number" id="statVagasAtivas">0</div>
+                        <div class="stat-label">📋 Vagas Ativas</div>
                     </div>
-                    <div style="background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2); cursor: pointer; transition: transform 0.3s;" onclick="switchTab('usuarios')">
-                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statPendentes">0</div>
-                        <div style="opacity: 0.9; font-size: 0.95rem;">⏳ Usuários Pendentes</div>
+                    <div class="stat-card stat-pendentes" onclick="switchTab('usuarios')">
+                        <div class="stat-number" id="statPendentes">0</div>
+                        <div class="stat-label">⏳ Usuários Pendentes</div>
                     </div>
-                    <div style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2); transition: transform 0.3s;">
-                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statAdmins">0</div>
-                        <div style="opacity: 0.9; font-size: 0.95rem;">👨‍💼 Administradores</div>
+                    <div class="stat-card stat-admins">
+                        <div class="stat-number" id="statAdmins">0</div>
+                        <div class="stat-label">👨‍💼 Administradores</div>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
 <!-- ============================================
      HTML - Adicione depois da user-info
      ============================================ -->
-<div class="tabs" id="tabsContainer" style="display: none;">
+<div class="tabs" id="tabsContainer" class="hidden">
     <button class="tab active" onclick="switchTab('vagas')">Vagas</button>
     <button class="tab" onclick="switchTab('usuarios')">Usuários Pendentes</button>
 </div>
