@@ -92,6 +92,11 @@ switch ($path) {
 function listarVagas() {
     global $pdo;
     
+    // Headers para evitar cache
+    header('Cache-Control: no-cache, no-store, must-revalidate');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    
     try {
         // Verificar se é uma requisição autenticada (para painel admin)
         $headers = getallheaders();
@@ -145,8 +150,8 @@ function listarVagas() {
             if ($vaga['publicado_em']) {
                 $vaga['publicado_em'] = date('d/m/Y', strtotime($vaga['publicado_em']));
             }
-            $vaga['destaque'] = (bool) $vaga['destaque'];
-            $vaga['ativa'] = (bool) $vaga['ativa'];
+            $vaga['destaque'] = (int) $vaga['destaque'];
+            $vaga['ativa'] = (int) $vaga['ativa'];
         }
         
         echo json_encode([

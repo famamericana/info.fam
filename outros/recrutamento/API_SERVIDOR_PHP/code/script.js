@@ -99,10 +99,13 @@ function logout() {
 
 async function carregarVagas() {
     try {
-        const url = `${API_URL}/vagas?user_id=${currentUser.id}&is_admin=${isUserAdmin ? '1' : '0'}`;
+        const url = `${API_URL}/vagas?user_id=${currentUser.id}&is_admin=${isUserAdmin ? '1' : '0'}&_t=${Date.now()}`;
         const response = await fetch(url, {
             headers: {
-                'Authorization': `Bearer ${authToken}`
+                'Authorization': `Bearer ${authToken}`,
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             }
         });
         const data = await response.json();
@@ -139,7 +142,7 @@ function renderizarVagas(vagas) {
                             ${vaga.tipo === 'docente' ? 'Docente' : 'Administrativo'}
                         </span>
                         ${vaga.destaque ? '<span class="badge badge-destaque"><i class="fas fa-star"></i> Destaque</span>' : ''}
-                        ${vaga.ativa ? '<span class="badge" style="background: var(--success); color: white;"><i class="fas fa-check-circle"></i> Ativa</span>' : '<span class="badge" style="background: var(--gray-600); color: white;"><i class="fas fa-times-circle"></i> Inativa</span>'}
+                        ${(vaga.ativa == 1 || vaga.ativa === true) ? '<span class="badge" style="background: var(--success); color: white;"><i class="fas fa-check-circle"></i> Ativa</span>' : '<span class="badge" style="background: var(--gray-600); color: white;"><i class="fas fa-times-circle"></i> Inativa</span>'}
                         ${isUserAdmin ? criadorInfo : ''}
                     </div>
                 </div>
@@ -242,7 +245,8 @@ async function desativarVaga(id) {
         const response = await fetch(`${API_URL}/vaga?id=${id}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${authToken}`
+                'Authorization': `Bearer ${authToken}`,
+                'Cache-Control': 'no-cache, no-store, must-revalidate'
             }
         });
 
@@ -284,9 +288,12 @@ async function carregarUsuarios() {
     if (!isUserAdmin) return;
     
     try {
-        const response = await fetch(`${API_URL}/usuarios-pendentes`, {
+        const response = await fetch(`${API_URL}/usuarios-pendentes?_t=${Date.now()}`, {
             headers: {
-                'Authorization': `Bearer ${authToken}`
+                'Authorization': `Bearer ${authToken}`,
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             }
         });
         const data = await response.json();
@@ -504,11 +511,22 @@ async function carregarEstatisticas() {
     if (!isUserAdmin) return;
     
     try {
-        const vagasResponse = await fetch(`${API_URL}/vagas`);
+        const vagasResponse = await fetch(`${API_URL}/vagas?_t=${Date.now()}`, {
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
         const vagasData = await vagasResponse.json();
         
-        const usuariosResponse = await fetch(`${API_URL}/usuarios-pendentes`, {
-            headers: { 'Authorization': `Bearer ${authToken}` }
+        const usuariosResponse = await fetch(`${API_URL}/usuarios-pendentes?_t=${Date.now()}`, {
+            headers: { 
+                'Authorization': `Bearer ${authToken}`,
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
         });
         const usuariosData = await usuariosResponse.json();
         
