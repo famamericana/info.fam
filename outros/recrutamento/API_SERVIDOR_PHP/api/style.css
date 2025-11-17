@@ -10,11 +10,11 @@
 }
 
 :root {
-    --primary: #000000;
-    --success: #2d8a3a;
-    --warning: #e68a00;
-    --danger: #c62828;
-    --gray-50: #fafafa;
+    --primary: #003366;
+    --primary-light: #004080;
+    --success: #4CAF50;
+    --warning: #ffc107;
+    --danger: #f44336;
     --gray-100: #f5f5f5;
     --gray-200: #e0e0e0;
     --gray-400: #bdbdbd;
@@ -25,7 +25,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--white);
+    background: var(--gray-100);
     color: var(--gray-800);
     line-height: 1.6;
 }
@@ -45,6 +45,7 @@ header {
     color: var(--white);
     padding: 2rem;
     text-align: center;
+    border-bottom: 1px solid var(--gray-200);
 }
 
 header h1 {
@@ -54,7 +55,7 @@ header h1 {
 }
 
 header p {
-    opacity: 0.8;
+    opacity: 0.9;
     font-size: 0.95rem;
 }
 
@@ -68,9 +69,10 @@ header p {
     align-items: center;
     margin-bottom: 2rem;
     padding: 1rem 1.25rem;
-    background: var(--gray-50);
+    background: var(--white);
     border-radius: 4px;
-    border-left: 2px solid var(--primary);
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--primary);
 }
 
 .user-info-text {
@@ -95,13 +97,13 @@ header p {
 
 .btn {
     padding: 0.625rem 1.25rem;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 4px;
     font-size: 0.875rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease;
     font-weight: 500;
-    background: var(--white);
+    border: 1px solid transparent;
 }
 
 .btn:hover {
@@ -153,7 +155,7 @@ header p {
 .login-form {
     max-width: 400px;
     margin: 3rem auto;
-    background: var(--gray-50);
+    background: var(--white);
     padding: 2rem;
     border-radius: 4px;
     border: 1px solid var(--gray-200);
@@ -188,7 +190,6 @@ header p {
     border-radius: 4px;
     font-size: 0.875rem;
     transition: border-color 0.2s;
-    background: var(--white);
 }
 
 .form-group input:focus,
@@ -219,22 +220,46 @@ header p {
 }
 
 .stat-card {
-    background: var(--gray-50);
+    background: var(--white);
     padding: 1.5rem;
     border-radius: 4px;
-    border: 1px solid var(--gray-200);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: opacity 0.2s;
+    border: 1px solid var(--gray-200);
+    border-left: 4px solid;
 }
 
 .stat-card:hover {
-    border-color: var(--gray-400);
+    opacity: 0.9;
+}
+
+.stat-card.green {
+    border-color: var(--success);
+}
+
+.stat-card.orange {
+    border-color: var(--warning);
+}
+
+.stat-card.blue {
+    border-color: var(--primary);
 }
 
 .stat-card-value {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+}
+
+.stat-card.green .stat-card-value {
+    color: var(--success);
+}
+
+.stat-card.orange .stat-card-value {
+    color: var(--warning);
+}
+
+.stat-card.blue .stat-card-value {
     color: var(--primary);
 }
 
@@ -251,7 +276,7 @@ header p {
     display: none;
     gap: 0.5rem;
     margin-bottom: 2rem;
-    background: var(--gray-50);
+    background: var(--white);
     padding: 0.5rem;
     border-radius: 4px;
     border: 1px solid var(--gray-200);
@@ -271,13 +296,12 @@ header p {
 
 .tab:hover {
     color: var(--primary);
-    background: var(--white);
+    background: var(--gray-100);
 }
 
 .tab.active {
     color: var(--primary);
-    background: var(--white);
-    border: 1px solid var(--gray-200);
+    background: var(--gray-100);
 }
 
 .tab-content {
@@ -293,7 +317,7 @@ header p {
    ============================================ */
 
 .vagas-list {
-    background: var(--gray-50);
+    background: var(--white);
     border-radius: 4px;
     padding: 1.5rem;
     border: 1px solid var(--gray-200);
@@ -314,7 +338,7 @@ header p {
     padding: 1.25rem;
     margin-bottom: 1rem;
     background: var(--white);
-    transition: all 0.2s;
+    transition: border-color 0.2s;
 }
 
 .vaga-item:hover,
@@ -328,15 +352,15 @@ header p {
 }
 
 .usuario-item.pendente {
-    border-left: 3px solid var(--warning);
+    border-left: 4px solid var(--warning);
 }
 
 .usuario-item.aprovado {
-    border-left: 3px solid var(--success);
+    border-left: 4px solid var(--success);
 }
 
 .usuario-item.rejeitado {
-    border-left: 3px solid var(--danger);
+    border-left: 4px solid var(--danger);
 }
 
 .vaga-item-header,
@@ -373,7 +397,7 @@ header p {
 .badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 500;
     margin-right: 0.5rem;
@@ -391,12 +415,12 @@ header p {
 
 .badge-destaque {
     background: var(--warning);
-    color: var(--white);
+    color: var(--primary);
 }
 
 .badge-status {
     padding: 0.25rem 0.75rem;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 500;
     margin-right: 0.5rem;
@@ -405,19 +429,16 @@ header p {
 .badge-pendente {
     background: #fff3cd;
     color: #856404;
-    border: 1px solid #ffeaa7;
 }
 
 .badge-aprovado {
     background: #d4edda;
     color: #155724;
-    border: 1px solid #c3e6cb;
 }
 
 .badge-rejeitado {
     background: #f8d7da;
     color: #721c24;
-    border: 1px solid #f5c6cb;
 }
 
 /* ============================================
@@ -450,7 +471,7 @@ header p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     overflow-y: auto;
 }
@@ -542,12 +563,8 @@ header p {
 }
 
 /* ============================================
-   UTILITY CLASSES
+   RESPONSIVE
    ============================================ */
-
-.hidden {
-    display: none;
-}
 
 .text-center {
     text-align: center;
@@ -571,9 +588,48 @@ header p {
     color: var(--primary);
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+.hidden {
+    display: none;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    border: 1px solid var(--gray-200);
+}
+
+.stat-vagas {
+    background: var(--success);
+}
+
+.stat-pendentes {
+    background: var(--warning);
+}
+
+.stat-admins {
+    background: var(--primary);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
 
 @media (max-width: 768px) {
     .container {
