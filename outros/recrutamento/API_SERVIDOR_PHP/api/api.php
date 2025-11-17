@@ -59,6 +59,18 @@ switch ($path) {
         }
         break;
     
+    case '/promover-admin':
+        if ($method === 'POST') {
+            promoverAdmin();
+        }
+        break;
+    
+    case '/remover-admin':
+        if ($method === 'POST') {
+            removerAdmin();
+        }
+        break;
+    
     default:
         http_response_code(404);
         echo json_encode(['error' => 'Endpoint não encontrado']);
@@ -122,7 +134,7 @@ function login() {
     }
     
     try {
-        $stmt = $pdo->prepare("SELECT id, nome, email, senha, status FROM usuarios_rh WHERE email = ? AND ativo = 1");
+        $stmt = $pdo->prepare("SELECT id, nome, email, senha, status, is_admin FROM usuarios_rh WHERE email = ? AND ativo = 1");
         $stmt->execute([$data['email']]);
         $usuario = $stmt->fetch();
         
@@ -148,8 +160,8 @@ function login() {
             $pdo->prepare("UPDATE usuarios_rh SET ultimo_acesso = NOW() WHERE id = ?")
                 ->execute([$usuario['id']]);
             
-            // Verificar se é admin (primeiro usuário ou email específico)
-            $isAdmin = ($usuario['id'] == 1 || $usuario['email'] == 'rh@fam.br');
+            // Verificar se é admin usando o campo is_admin
+            $isAdmin = (bool) $usuario['is_admin'];
             
             // Gerar token simples (em produção, use JWT)
             $token = bin2hex(random_bytes(32));
@@ -434,7 +446,7 @@ function listarUsuariosPendentes() {
     }
     
     try {
-        $sql = "SELECT id, nome, email, telefone, cargo, status, criado_em 
+        $sql = "SELECT id, nome, email, telefone, cargo, status, is_admin, criado_em 
                 FROM usuarios_rh 
                 WHERE status IN ('pendente', 'aprovado', 'rejeitado')
                 ORDER BY 
@@ -448,9 +460,10 @@ function listarUsuariosPendentes() {
         $stmt = $pdo->query($sql);
         $usuarios = $stmt->fetchAll();
         
-        // Formatar datas
+        // Formatar datas e converter is_admin para boolean
         foreach ($usuarios as &$usuario) {
             $usuario['criado_em'] = date('d/m/Y H:i', strtotime($usuario['criado_em']));
+            $usuario['is_admin'] = (bool) $usuario['is_admin'];
         }
         
         echo json_encode([
@@ -599,5 +612,142 @@ function verificarAdmin() {
         'success' => true,
         'isAdmin' => true
     ]);
+}
+
+/**
+ * POST /api.php/promover-admin
+ * Promover usuário a administrador (apenas admin pode fazer)
+ */
+function promoverAdmin() {
+    global $pdo;
+    
+    // Verificar autenticação
+    $headers = getallheaders();
+    if (!isset($headers['Authorization'])) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Não autorizado']);
+        return;
+    }
+    
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['usuario_id']) || empty($data['admin_id'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'ID do usuário e do admin são obrigatórios']);
+        return;
+    }
+    
+    try {
+        // Verificar se quem está promovendo é admin
+        $stmt = $pdo->prepare("SELECT is_admin FROM usuarios_rh WHERE id = ?");
+        $stmt->execute([$data['admin_id']]);
+        $admin = $stmt->fetch();
+        
+        if (!$admin || !$admin['is_admin']) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Apenas administradores podem promover outros usuários']);
+            return;
+        }
+        
+        // Buscar dados do usuário a ser promovido
+        $stmt = $pdo->prepare("SELECT nome, email, status FROM usuarios_rh WHERE id = ?");
+        $stmt->execute([$data['usuario_id']]);
+        $usuario = $stmt->fetch();
+        
+        if (!$usuario) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Usuário não encontrado']);
+            return;
+        }
+        
+        // Verificar se está aprovado
+        if ($usuario['status'] !== 'aprovado') {
+            http_response_code(400);
+            echo json_encode(['error' => 'Apenas usuários aprovados podem ser promovidos a administrador']);
+            return;
+        }
+        
+        // Promover a admin
+        $sql = "UPDATE usuarios_rh SET is_admin = 1 WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$data['usuario_id']]);
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Usuário promovido a administrador com sucesso'
+        ]);
+        
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Erro ao promover usuário']);
+    }
+}
+
+/**
+ * POST /api.php/remover-admin
+ * Remover privilégios de administrador (apenas admin pode fazer)
+ */
+function removerAdmin() {
+    global $pdo;
+    
+    // Verificar autenticação
+    $headers = getallheaders();
+    if (!isset($headers['Authorization'])) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Não autorizado']);
+        return;
+    }
+    
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['usuario_id']) || empty($data['admin_id'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'ID do usuário e do admin são obrigatórios']);
+        return;
+    }
+    
+    try {
+        // Verificar se quem está removendo é admin
+        $stmt = $pdo->prepare("SELECT is_admin FROM usuarios_rh WHERE id = ?");
+        $stmt->execute([$data['admin_id']]);
+        $admin = $stmt->fetch();
+        
+        if (!$admin || !$admin['is_admin']) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Apenas administradores podem remover privilégios']);
+            return;
+        }
+        
+        // Não permitir remover o próprio privilégio
+        if ($data['usuario_id'] == $data['admin_id']) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Você não pode remover seus próprios privilégios de administrador']);
+            return;
+        }
+        
+        // Verificar se é o último admin
+        $stmt = $pdo->query("SELECT COUNT(*) as total FROM usuarios_rh WHERE is_admin = 1");
+        $result = $stmt->fetch();
+        
+        if ($result['total'] <= 1) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Não é possível remover o último administrador do sistema']);
+            return;
+        }
+        
+        // Remover privilégios de admin
+        $sql = "UPDATE usuarios_rh SET is_admin = 0 WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$data['usuario_id']]);
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Privilégios de administrador removidos com sucesso'
+        ]);
+        
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Erro ao remover privilégios']);
+    }
 }
 ?>

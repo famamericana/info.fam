@@ -412,6 +412,7 @@
 }
 </style>
 
+
 </head>
 <body>
     <header>
@@ -585,6 +586,7 @@
         </form>
     </div>
 </div>
+
     <script>
         // CONFIGURAÇÃO - AJUSTE A URL DA API
         const API_URL = 'https://famamericana.com.br/recrutamento/api';
@@ -904,14 +906,34 @@ function renderizarUsuarioItem(usuario) {
         'rejeitado': '<span class="badge-status badge-rejeitado">❌ Rejeitado</span>'
     }[usuario.status];
     
-    const actions = usuario.status === 'pendente' ? `
-        <button class="btn btn-success" onclick="aprovarUsuario(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
-            ✅ Aprovar
-        </button>
-        <button class="btn btn-danger" onclick="abrirModalRejeitar(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
-            ❌ Rejeitar
-        </button>
-    ` : '';
+    const adminBadge = usuario.is_admin ? '<span class="badge-status" style="background: #1976D2; color: white;">👨‍💼 Admin</span>' : '';
+    
+    let actions = '';
+    
+    if (usuario.status === 'pendente') {
+        actions = `
+            <button class="btn btn-success" onclick="aprovarUsuario(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                ✅ Aprovar
+            </button>
+            <button class="btn btn-danger" onclick="abrirModalRejeitar(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                ❌ Rejeitar
+            </button>
+        `;
+    } else if (usuario.status === 'aprovado') {
+        if (usuario.is_admin) {
+            actions = `
+                <button class="btn btn-secondary" onclick="removerAdmin(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #757575;">
+                    ⬇️ Remover Admin
+                </button>
+            `;
+        } else {
+            actions = `
+                <button class="btn" onclick="promoverAdmin(${usuario.id})" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #1976D2; color: white;">
+                    ⬆️ Promover a Admin
+                </button>
+            `;
+        }
+    }
     
     return `
         <div class="usuario-item ${usuario.status}">
@@ -919,6 +941,7 @@ function renderizarUsuarioItem(usuario) {
                 <div>
                     <h3 class="usuario-nome">${usuario.nome}</h3>
                     ${statusBadge}
+                    ${adminBadge}
                 </div>
                 <div class="usuario-actions">
                     ${actions}
@@ -1023,7 +1046,72 @@ document.getElementById('rejeitarForm').addEventListener('submit', async (e) => 
         alert('Erro ao rejeitar usuário');
     }
 });
+
+// Promover usuário a admin
+async function promoverAdmin(usuarioId) {
+    if (!confirm('Deseja promover este usuário a Administrador? Ele terá permissão para aprovar outros usuários e promover/remover admins.')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/promover-admin`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario_id: usuarioId,
+                admin_id: currentUser.id
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mostrarAlerta('vagasAlert', '⬆️ Usuário promovido a Administrador!', 'success');
+            carregarUsuarios();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erro ao promover usuário');
+    }
+}
+
+// Remover privilégios de admin
+async function removerAdmin(usuarioId) {
+    if (!confirm('Deseja remover os privilégios de administrador deste usuário? Ele continuará podendo gerenciar vagas, mas não poderá mais aprovar usuários.')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/remover-admin`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario_id: usuarioId,
+                admin_id: currentUser.id
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mostrarAlerta('vagasAlert', '⬇️ Privilégios de administrador removidos.', 'success');
+            carregarUsuarios();
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert('Erro ao remover privilégios');
+    }
+}
 </script>
+
 
 </body>
 </html>
