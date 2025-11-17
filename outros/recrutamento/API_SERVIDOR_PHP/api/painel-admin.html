@@ -26,14 +26,42 @@
         header {
             background: linear-gradient(135deg, #003366 0%, #004080 100%);
             color: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+            font-size: 1.1rem;
         }
 
         .user-info {
@@ -41,56 +69,104 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-            padding: 1rem;
+            padding: 1.25rem 1.5rem;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #003366;
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .user-info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .user-info-text strong {
+            font-size: 1.1rem;
+            color: #003366;
+        }
+
+        .user-info-text span {
+            color: #757575;
+            font-size: 0.9rem;
         }
 
         .btn {
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
-            background: #003366;
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #004080;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+            transform: translateY(-2px);
         }
 
         .btn-success {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
             color: white;
         }
 
         .btn-success:hover {
-            background: #45a049;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
         }
 
         .btn-danger {
-            background: #f44336;
+            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
             color: white;
         }
 
         .btn-danger:hover {
-            background: #da190b;
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: #757575;
+            background: linear-gradient(135deg, #757575 0%, #616161 100%);
             color: white;
         }
 
         .btn-secondary:hover {
-            background: #616161;
+            box-shadow: 0 4px 12px rgba(117, 117, 117, 0.3);
+            transform: translateY(-2px);
         }
 
         .login-section,
@@ -291,27 +367,49 @@
     gap: 0.5rem;
     margin-bottom: 2rem;
     border-bottom: 2px solid #e0e0e0;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .tab {
     padding: 1rem 2rem;
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
     color: #757575;
     transition: all 0.3s;
+    position: relative;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #003366;
+    transition: width 0.3s;
 }
 
 .tab:hover {
     color: #003366;
+    background: rgba(0, 51, 102, 0.05);
 }
 
 .tab.active {
     color: #003366;
-    border-bottom-color: #003366;
+    background: rgba(0, 51, 102, 0.08);
+}
+
+.tab.active::after {
+    width: 80%;
 }
 
 .tab-content {
@@ -324,22 +422,32 @@
 
 .usuario-item {
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1rem;
-    background: #fafafa;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.usuario-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .usuario-item.pendente {
-    border-left: 4px solid #ffc107;
+    border-left: 5px solid #ffc107;
+    background: linear-gradient(to right, rgba(255, 193, 7, 0.03), white);
 }
 
 .usuario-item.aprovado {
-    border-left: 4px solid #4CAF50;
+    border-left: 5px solid #4CAF50;
+    background: linear-gradient(to right, rgba(76, 175, 80, 0.03), white);
 }
 
 .usuario-item.rejeitado {
-    border-left: 4px solid #f44336;
+    border-left: 5px solid #f44336;
+    background: linear-gradient(to right, rgba(244, 67, 54, 0.03), white);
 }
 
 .usuario-header {
@@ -443,15 +551,33 @@
     <div class="vagas-section">
         <div class="container">
             <div class="user-info">
-                <div>
-                    <strong>Usuário:</strong> <span id="userName"></span><br>
-                    <strong>E-mail:</strong> <span id="userEmail"></span>
+                <div class="user-info-text">
+                    <strong id="userName"></strong>
+                    <span id="userEmail"></span>
                 </div>
-                <button class="btn btn-secondary" onclick="logout()">Sair</button>
+                <button class="btn btn-secondary" onclick="logout()">🚪 Sair</button>
+            </div>
+
+            <!-- Estatísticas (apenas para admins) -->
+            <div id="statsContainer" style="display: none;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2); cursor: pointer; transition: transform 0.3s;" onclick="switchTab('vagas')">
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statVagasAtivas">0</div>
+                        <div style="opacity: 0.9; font-size: 0.95rem;">📋 Vagas Ativas</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2); cursor: pointer; transition: transform 0.3s;" onclick="switchTab('usuarios')">
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statPendentes">0</div>
+                        <div style="opacity: 0.9; font-size: 0.95rem;">⏳ Usuários Pendentes</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2); transition: transform 0.3s;">
+                        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="statAdmins">0</div>
+                        <div style="opacity: 0.9; font-size: 0.95rem;">👨‍💼 Administradores</div>
+                    </div>
+                </div>
             </div>
 
             <div style="text-align: center; margin-bottom: 2rem;">
-                <button class="btn btn-success" onclick="abrirModalNovaVaga()">+ Nova Vaga</button>
+                <button class="btn btn-success" onclick="abrirModalNovaVaga()">✨ Nova Vaga</button>
             </div>
 
             <div id="vagasAlert"></div>
@@ -593,6 +719,39 @@
 
         let authToken = localStorage.getItem('authToken');
         let currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        let isUserAdmin = false;
+
+        // Função mostrarSecaoVagas - DEFINIR ANTES DE USAR
+        function mostrarSecaoVagas() {
+            document.querySelector('.login-section').classList.remove('active');
+            document.querySelector('.vagas-section').classList.add('active');
+            document.getElementById('userName').textContent = currentUser.nome;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            
+            // Verificar se é admin (priorizar localStorage, depois verificar dados do usuário)
+            const isAdminStorage = localStorage.getItem('isUserAdmin');
+            if (isAdminStorage !== null) {
+                isUserAdmin = isAdminStorage === '1';
+            } else {
+                isUserAdmin = currentUser.isAdmin === true || currentUser.isAdmin === 1 || 
+                              currentUser.id == 1 || currentUser.email == 'rh@fam.br';
+                localStorage.setItem('isUserAdmin', isUserAdmin ? '1' : '0');
+            }
+            
+            if (isUserAdmin) {
+                // Mostrar tabs e carregar usuários
+                document.getElementById('tabsContainer').style.display = 'flex';
+                document.getElementById('statsContainer').style.display = 'block';
+                
+                // Usar setTimeout para garantir que as funções estejam carregadas
+                setTimeout(() => {
+                    if (typeof carregarUsuarios === 'function') carregarUsuarios();
+                    if (typeof carregarEstatisticas === 'function') carregarEstatisticas();
+                }, 0);
+            }
+            
+            carregarVagas();
+        }
 
         // Verificar se já está logado
         if (authToken && currentUser.id) {
@@ -618,8 +777,11 @@
                 if (data.success) {
                     authToken = data.token;
                     currentUser = data.usuario;
+                    isUserAdmin = data.usuario.isAdmin;
+                    
                     localStorage.setItem('authToken', authToken);
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    localStorage.setItem('isUserAdmin', isUserAdmin ? '1' : '0');
                     
                     mostrarSecaoVagas();
                 } else {
@@ -630,17 +792,10 @@
             }
         });
 
-        function mostrarSecaoVagas() {
-            document.querySelector('.login-section').classList.remove('active');
-            document.querySelector('.vagas-section').classList.add('active');
-            document.getElementById('userName').textContent = currentUser.nome;
-            document.getElementById('userEmail').textContent = currentUser.email;
-            carregarVagas();
-        }
-
         function logout() {
             localStorage.removeItem('authToken');
             localStorage.removeItem('currentUser');
+            localStorage.removeItem('isUserAdmin');
             location.reload();
         }
 
@@ -798,28 +953,6 @@
      JAVASCRIPT - Adicione no final do <script>
      ============================================ -->
 <script>
-// Variáveis globais
-let isUserAdmin = false;
-
-// Atualizar função mostrarSecaoVagas para verificar se é admin
-function mostrarSecaoVagas() {
-    document.querySelector('.login-section').classList.remove('active');
-    document.querySelector('.vagas-section').classList.add('active');
-    document.getElementById('userName').textContent = currentUser.nome;
-    document.getElementById('userEmail').textContent = currentUser.email;
-    
-    // Verificar se é admin
-    isUserAdmin = currentUser.isAdmin || currentUser.id == 1 || currentUser.email == 'rh@fam.br';
-    
-    if (isUserAdmin) {
-        // Mostrar tabs e carregar usuários
-        document.getElementById('tabsContainer').style.display = 'flex';
-        carregarUsuarios();
-    }
-    
-    carregarVagas();
-}
-
 // Trocar entre abas
 function switchTab(tab) {
     // Atualizar botões
@@ -993,6 +1126,7 @@ async function aprovarUsuario(usuarioId) {
         if (data.success) {
             mostrarAlerta('vagasAlert', '✅ Usuário aprovado! Um e-mail foi enviado.', 'success');
             carregarUsuarios();
+            carregarEstatisticas();
         } else {
             alert(data.error);
         }
@@ -1039,6 +1173,7 @@ document.getElementById('rejeitarForm').addEventListener('submit', async (e) => 
             mostrarAlerta('vagasAlert', '❌ Usuário rejeitado. Um e-mail foi enviado.', 'success');
             fecharModalRejeitar();
             carregarUsuarios();
+            carregarEstatisticas();
         } else {
             alert(data.error);
         }
@@ -1071,6 +1206,7 @@ async function promoverAdmin(usuarioId) {
         if (data.success) {
             mostrarAlerta('vagasAlert', '⬆️ Usuário promovido a Administrador!', 'success');
             carregarUsuarios();
+            carregarEstatisticas();
         } else {
             alert(data.error);
         }
@@ -1103,11 +1239,49 @@ async function removerAdmin(usuarioId) {
         if (data.success) {
             mostrarAlerta('vagasAlert', '⬇️ Privilégios de administrador removidos.', 'success');
             carregarUsuarios();
+            carregarEstatisticas();
         } else {
             alert(data.error);
         }
     } catch (error) {
         alert('Erro ao remover privilégios');
+    }
+}
+
+// Carregar estatísticas
+async function carregarEstatisticas() {
+    if (!isUserAdmin) return;
+    
+    try {
+        // Carregar vagas
+        const vagasResponse = await fetch(`${API_URL}/vagas`);
+        const vagasData = await vagasResponse.json();
+        
+        // Carregar usuários
+        const usuariosResponse = await fetch(`${API_URL}/usuarios-pendentes`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+        const usuariosData = await usuariosResponse.json();
+        
+        if (vagasData.success && usuariosData.success) {
+            const vagasAtivas = vagasData.vagas.length;
+            const usuariosPendentes = usuariosData.usuarios.filter(u => u.status === 'pendente').length;
+            const admins = usuariosData.usuarios.filter(u => u.is_admin).length;
+            
+            document.getElementById('statVagasAtivas').textContent = vagasAtivas;
+            document.getElementById('statPendentes').textContent = usuariosPendentes;
+            document.getElementById('statAdmins').textContent = admins;
+            
+            // Destacar se houver pendentes
+            const pendentesCard = document.getElementById('statPendentes').parentElement;
+            if (usuariosPendentes > 0) {
+                pendentesCard.style.animation = 'pulse 2s infinite';
+            }
+        }
+    } catch (error) {
+        console.error('Erro ao carregar estatísticas:', error);
     }
 }
 </script>

@@ -411,10 +411,11 @@ function registrarUsuario() {
         // Enviar e-mail para o usuário
         emailCadastroRealizado($data['nome'], $data['email']);
         
-        // Enviar e-mail para admin
-        $adminStmt = $pdo->query("SELECT email FROM usuarios_rh WHERE id = 1 OR email = 'rh@fam.br'");
-        $admin = $adminStmt->fetch();
-        if ($admin) {
+        // Enviar e-mail para TODOS os admins
+        $adminStmt = $pdo->query("SELECT email FROM usuarios_rh WHERE is_admin = 1 AND ativo = 1");
+        $admins = $adminStmt->fetchAll();
+        
+        foreach ($admins as $admin) {
             emailNovoUsuarioPendente($admin['email'], $data['nome'], $data['email']);
         }
         
