@@ -33,13 +33,6 @@ h2 {
     flex-direction: column;
 }
 
-
-/* Vaga em destaque */
-.vaga-card.vaga-destaque {
-    border: 2px solid #ffd700;
-    background: linear-gradient(135deg, #fffef5 0%, #ffffff 100%);
-}
-
 /* Cabeçalho do card */
 .vaga-header {
     background: linear-gradient(135deg, #003366 0%, #004080 100%);
@@ -60,18 +53,12 @@ h2 {
     margin-top: 0.75rem;
 }
 
-.vaga-destaque-badge,
 .vaga-tipo-badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
-}
-
-.vaga-destaque-badge {
-    background: #ffd700;
-    color: #003366;
 }
 
 .vaga-tipo-badge.docente {
@@ -181,15 +168,6 @@ h2 {
 .vagas-erro {
     background: #fff3cd;
     border: 2px solid #ffc107;
-}
-
-/* Seção de destaque */
-.vagas-destaque-secao {
-    margin-bottom: 4rem;
-}
-
-.vagas-destaque-secao .vagas-secao-titulo {
-    color: #ffa500;
 }
 
 /* Responsividade */

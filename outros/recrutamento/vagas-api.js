@@ -57,14 +57,6 @@ class VagasAPI {
         const vagas = await this.listarVagas();
         return vagas.filter(vaga => vaga.tipo === tipo);
     }
-
-    /**
-     * Buscar vagas em destaque
-     */
-    async listarVagasDestaque() {
-        const vagas = await this.listarVagas();
-        return vagas.filter(vaga => vaga.destaque);
-    }
 }
 
 /**
@@ -80,17 +72,15 @@ class VagasRenderer {
      * Criar HTML de uma vaga
      */
     criarCardVaga(vaga) {
-        const destaqueBadge = vaga.destaque ? '<span class="vaga-destaque-badge">⭐ Destaque</span>' : '';
         const tipoBadge = vaga.tipo === 'docente' ? 
             '<span class="vaga-tipo-badge docente">Docente</span>' : 
             '<span class="vaga-tipo-badge administrativo">Administrativo</span>';
 
         return `
-            <div class="vaga-card ${vaga.destaque ? 'vaga-destaque' : ''}" data-vaga-id="${vaga.id}">
+            <div class="vaga-card" data-vaga-id="${vaga.id}">
                 <div class="vaga-header">
                     <h3 class="vaga-titulo">${this.escapeHtml(vaga.titulo)}</h3>
                     <div class="vaga-badges">
-                        ${destaqueBadge}
                         ${tipoBadge}
                     </div>
                 </div>
@@ -175,31 +165,14 @@ class VagasRenderer {
                 return;
             }
 
-            // Separar vagas em destaque e normais
-            const vagasDestaque = vagas.filter(v => v.destaque);
-            const vagasNormais = vagas.filter(v => !v.destaque);
-
             let html = '';
-
-            if (vagasDestaque.length > 0) {
-                html += '<div class="vagas-secao vagas-destaque-secao">';
-                html += '<h2 class="vagas-secao-titulo">🌟 Vagas em Destaque</h2>';
-                html += '<div class="vagas-grid">';
-                vagasDestaque.forEach(vaga => {
-                    html += this.criarCardVaga(vaga);
-                });
-                html += '</div></div>';
-            }
-
-            if (vagasNormais.length > 0) {
-                html += '<div class="vagas-secao">';
-                html += '<h2 class="vagas-secao-titulo">Todas as Vagas</h2>';
-                html += '<div class="vagas-grid">';
-                vagasNormais.forEach(vaga => {
-                    html += this.criarCardVaga(vaga);
-                });
-                html += '</div></div>';
-            }
+            html += '<div class="vagas-secao">';
+            html += '<h2 class="vagas-secao-titulo">Vagas Disponíveis</h2>';
+            html += '<div class="vagas-grid">';
+            vagas.forEach(vaga => {
+                html += this.criarCardVaga(vaga);
+            });
+            html += '</div></div>';
 
             this.container.innerHTML = html;
 
