@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recrutamento RH - Gerenciar Vagas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="code/style.css">
+    <link rel="stylesheet" href="code/style.css?v=1.0.0">
 </head>
 <body>
     <header>
@@ -72,11 +72,28 @@
                 <button class="btn btn-success" onclick="abrirModalNovaVaga()"><i class="fas fa-plus-circle"></i> Nova Vaga</button>
             </div>
 
+            <!-- Tabs (apenas para admins) -->
+            <div class="tabs" id="tabsContainer" style="display: none;">
+                <button class="tab active" onclick="switchTab('vagas')">Vagas</button>
+                <button class="tab" onclick="switchTab('usuarios')">Usuários Pendentes</button>
+            </div>
+
             <div id="vagasAlert"></div>
 
-            <div class="vagas-list">
-                <h2 class="primary-title">Vagas Cadastradas</h2>
-                <div id="vagasList"></div>
+            <!-- Tab de Vagas -->
+            <div id="vagasTab" class="tab-content active">
+                <div class="vagas-list">
+                    <h2 class="primary-title">Vagas Cadastradas</h2>
+                    <div id="vagasList"></div>
+                </div>
+            </div>
+
+            <!-- Tab de Usuários -->
+            <div id="usuariosTab" class="tab-content">
+                <div class="vagas-list">
+                    <h2 class="primary-title">Gerenciar Usuários</h2>
+                    <div id="usuariosList"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -150,25 +167,8 @@
 
     
 <!-- ============================================
-     HTML - Adicione depois da user-info
+     Modal Rejeitar Usuário
      ============================================ -->
-<div class="tabs" id="tabsContainer" class="hidden">
-    <button class="tab active" onclick="switchTab('vagas')">Vagas</button>
-    <button class="tab" onclick="switchTab('usuarios')">Usuários Pendentes</button>
-</div>
-
-<div id="vagasTab" class="tab-content active">
-    <!-- TODO conteúdo de vagas existente fica aqui -->
-</div>
-
-<div id="usuariosTab" class="tab-content">
-    <div class="vagas-list">
-        <h2 class="primary-title">Gerenciar Usuários</h2>
-        <div id="usuariosList"></div>
-    </div>
-</div>
-
-<!-- Modal Rejeitar Usuário -->
 <div id="rejeitarModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -191,6 +191,6 @@
     </div>
 </div>
 
-<script src="code/script.js"></script>
+<script src="code/script.js?v=1.0.0"></script>
 </body>
 </html>

@@ -191,16 +191,33 @@ document.getElementById('vagaForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const vagaId = document.getElementById('vagaId').value;
+    
+    // Get form elements with null checks
+    const tituloEl = document.getElementById('vagaTitulo');
+    const tipoEl = document.getElementById('vagaTipo');
+    const descricaoEl = document.getElementById('vagaDescricao');
+    const requisitosEl = document.getElementById('vagaRequisitos');
+    const diferenciaisEl = document.getElementById('vagaDiferenciais');
+    const regimeEl = document.getElementById('vagaRegime');
+    const jornadaEl = document.getElementById('vagaJornada');
+    const localEl = document.getElementById('vagaLocal');
+    const salarioEl = document.getElementById('vagaSalario');
+    
+    if (!tituloEl || !tipoEl || !descricaoEl) {
+        alert('Campos obrigatórios não encontrados no formulário');
+        return;
+    }
+    
     const vagaData = {
-        titulo: document.getElementById('vagaTitulo').value,
-        tipo: document.getElementById('vagaTipo').value,
-        descricao: document.getElementById('vagaDescricao').value,
-        requisitos: document.getElementById('vagaRequisitos').value,
-        diferenciais: document.getElementById('vagaDiferenciais').value,
-        regime: document.getElementById('vagaRegime').value,
-        jornada: document.getElementById('vagaJornada').value,
-        local: document.getElementById('vagaLocal').value,
-        salario: document.getElementById('vagaSalario').value,
+        titulo: tituloEl.value,
+        tipo: tipoEl.value,
+        descricao: descricaoEl.value,
+        requisitos: requisitosEl ? requisitosEl.value : '',
+        diferenciais: diferenciaisEl ? diferenciaisEl.value : '',
+        regime: regimeEl ? regimeEl.value : '',
+        jornada: jornadaEl ? jornadaEl.value : '',
+        local: localEl ? localEl.value : '',
+        salario: salarioEl ? salarioEl.value : '',
         criado_por: currentUser.id,
         user_id: currentUser.id
     };
@@ -260,16 +277,26 @@ async function desativarVaga(id) {
 // ============================================
 
 function switchTab(tab) {
+    // Remove active class from all tabs
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
     
+    // Add active class to clicked tab
+    const clickedTab = event && event.target ? event.target : document.querySelector('.tab');
+    if (clickedTab) {
+        clickedTab.classList.add('active');
+    }
+    
+    // Hide all tab contents
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     
+    // Show selected tab content
     if (tab === 'vagas') {
-        document.getElementById('vagasTab').classList.add('active');
+        const vagasTab = document.getElementById('vagasTab');
+        if (vagasTab) vagasTab.classList.add('active');
         carregarVagas();
     } else if (tab === 'usuarios') {
-        document.getElementById('usuariosTab').classList.add('active');
+        const usuariosTab = document.getElementById('usuariosTab');
+        if (usuariosTab) usuariosTab.classList.add('active');
         carregarUsuarios();
     }
 }
@@ -415,8 +442,16 @@ function fecharModalRejeitar() {
 document.getElementById('rejeitarForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const usuarioId = document.getElementById('rejeitarUsuarioId').value;
-    const motivo = document.getElementById('motivoRejeicao').value;
+    const usuarioIdEl = document.getElementById('rejeitarUsuarioId');
+    const motivoEl = document.getElementById('motivoRejeicao');
+    
+    if (!usuarioIdEl) {
+        alert('Erro ao processar formulário');
+        return;
+    }
+    
+    const usuarioId = usuarioIdEl.value;
+    const motivo = motivoEl ? motivoEl.value : '';
     
     try {
         const response = await fetch(`${API_URL}/rejeitar-usuario`, {
