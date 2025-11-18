@@ -757,7 +757,7 @@ function formatarNivelEscolar(nivel) {
 
 // ========== CANDIDATAR VAGA ==========
 function candidatarVaga(codigoVaga) {
-  const url = `${URL_INSCRICAO}?codigoVagaPortal=${codigoVaga}&acesso=${CODIGO_ACESSO}`;
+  const url = `${URL_INSCRICAO}?codigoVagaPortal=${codigoVaga}&acesso=${CODIGO_ACESSO}&utm_source=produtosIEs&utm_medium=vitrine-api&utm_campaign=info.fam.br`;
   window.open(url, '_blank');
 }
 
