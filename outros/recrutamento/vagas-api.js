@@ -159,7 +159,6 @@ class VagasRenderer {
                     <div class="vagas-vazio">
                         <p>No momento não há vagas disponíveis.</p>
                         <p>Mas você pode enviar seu currículo mesmo assim! Mantemos um banco de talentos e entraremos em contato quando surgir uma oportunidade que combine com seu perfil.</p>
-                        <a href="#formularioCandidatura" class="btn2">Enviar Currículo</a>
                     </div>
                 `;
                 return;
