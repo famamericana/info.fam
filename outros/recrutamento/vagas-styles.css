@@ -62,12 +62,12 @@ h2 {
 }
 
 .vaga-tipo-badge.docente {
-    background: #4CAF50;
+    background: #45b7e5;
     color: white;
 }
 
 .vaga-tipo-badge.administrativo {
-    background: #2196F3;
+    background: #e53888;
     color: white;
 }
 
@@ -130,17 +130,12 @@ h2 {
 
 /* Rodapé do card */
 .vaga-footer {
-    padding: 1rem 1.5rem;
-    background: #f8f9fa;
+    padding: 1rem;
     border-top: 1px solid #e0e0e0;
 }
 
-.vaga-candidatar-btn {
-    width: 100%;
-    text-align: center;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    display: inline-block;
+.vaga-candidatar-btn:hover {
+color: black;
 }
 
 /* Estados vazios e de erro */
@@ -171,9 +166,7 @@ h2 {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .vagas-section {
-        padding: 1rem;
-    }
+
 
     .vagas-grid {
         grid-template-columns: 1fr;
