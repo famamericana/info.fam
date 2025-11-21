@@ -113,7 +113,7 @@ class VagasRenderer {
                 </div>
                 
                 <div class="vaga-footer">
-                    <a href="#formularioCandidatura" class="btn2 vaga-candidatar-btn" onclick="preencherTipoVaga('${vaga.tipo}')">
+                    <a href="#formularioCandidatura" class="btn2 vaga-candidatar-btn" onclick="preencherTipoVaga('${vaga.tipo}', '${this.escapeHtml(vaga.titulo)}')">
                         Candidatar-se
                     </a>
                 </div>
@@ -199,12 +199,21 @@ class VagasRenderer {
 /**
  * Função auxiliar para preencher o tipo de vaga no formulário
  */
-function preencherTipoVaga(tipo) {
+function preencherTipoVaga(tipo, tituloVaga = '') {
     const selectTipo = document.getElementById('tipoVaga');
     if (selectTipo) {
         selectTipo.value = tipo;
         // Disparar evento change para mostrar os campos corretos
         selectTipo.dispatchEvent(new Event('change'));
+        
+        // Preencher observações com o nome da vaga após os campos serem exibidos
+        setTimeout(() => {
+            const observacoesId = tipo === 'docente' ? 'observacoesDocente' : 'observacoesAdmin';
+            const campoObservacoes = document.getElementById(observacoesId);
+            if (campoObservacoes && tituloVaga) {
+                campoObservacoes.value = `Candidatura para a vaga: ${tituloVaga}\n\n`;
+            }
+        }, 100);
     }
 }
 
